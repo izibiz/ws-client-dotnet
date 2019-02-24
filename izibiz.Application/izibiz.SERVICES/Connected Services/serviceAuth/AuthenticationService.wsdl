@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.i2i.com/ei/wsdl" xmlns:gib1="http://gib.gov.tr/vedop3/eFatura" name="AuthenticationService" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/AuthenticationWS?xsd=1" namespace="http://schemas.i2i.com/ei/wsdl" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginRequestMessage">
+    <wsdl:part name="request" element="tns:LoginRequest" />
+  </wsdl:message>
+  <wsdl:message name="LoginResponseMessage">
+    <wsdl:part name="response" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutRequestMessage">
+    <wsdl:part name="request" element="tns:LogoutRequest" />
+  </wsdl:message>
+  <wsdl:message name="LogoutResponseMessage">
+    <wsdl:part name="response" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGibUserListRequestMessage">
+    <wsdl:part name="request" element="tns:GetGibUserListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetGibUserListResponseMessage">
+    <wsdl:part name="response" element="tns:GetGibUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserRequestMessage">
+    <wsdl:part name="request" element="tns:CheckUserRequest" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserResponseMessage">
+    <wsdl:part name="response" element="tns:CheckUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserAuthorizationRequestMessage">
+    <wsdl:part name="request" element="tns:GetUserAuthorizationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetUserAuthorizationResponseMessage">
+    <wsdl:part name="response" element="tns:GetUserAuthorizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestFaultMessage">
+    <wsdl:part name="parameters" element="tns:RequestFault" />
+  </wsdl:message>
+  <wsdl:portType name="AuthenticationServicePort">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginRequestMessage" />
+      <wsdl:output message="tns:LoginResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutRequestMessage" />
+      <wsdl:output message="tns:LogoutResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGibUserList">
+      <wsdl:input message="tns:GetGibUserListRequestMessage" />
+      <wsdl:output message="tns:GetGibUserListResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <wsdl:input message="tns:CheckUserRequestMessage" />
+      <wsdl:output message="tns:CheckUserResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAuthorization">
+      <wsdl:input message="tns:GetUserAuthorizationRequestMessage" />
+      <wsdl:output message="tns:GetUserAuthorizationResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthenticationPortBinding" type="tns:AuthenticationServicePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetGibUserList">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAuthorization">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticationWS">
+    <wsdl:port name="AuthenticationPort" binding="tns:AuthenticationPortBinding">
+      <soap:address location="https://efaturatest.izibiz.com.tr:443/AuthenticationWS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

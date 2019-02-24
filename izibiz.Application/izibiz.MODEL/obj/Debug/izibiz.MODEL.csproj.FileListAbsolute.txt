@@ -1,0 +1,11 @@
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.dll
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.pdb
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CoreCompileInputs.cache
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.dll
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.pdb
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csprojAssemblyReference.cache
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CoreCompileInputs.cache
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.dll
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.pdb
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.dll
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.pdb

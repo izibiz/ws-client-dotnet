@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="36263c63-2199-4f82-a413-bacba960804c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://efaturatest.izibiz.com.tr/EFaturaOIB?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EFaturaOIB.wsdl" MetadataType="Wsdl" ID="000acd42-7bb9-4500-8967-89d1e15155cb" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?wsdl" />
+    <MetadataFile FileName="EFaturaOIB.xsd" MetadataType="Schema" ID="f2bf3cd9-3b2b-4c37-9052-44fe036092ae" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=4" />
+    <MetadataFile FileName="EFaturaOIB1.xsd" MetadataType="Schema" ID="6e1c7a9f-de29-4918-aae9-decd24913cb1" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=3" />
+    <MetadataFile FileName="EFaturaOIB2.xsd" MetadataType="Schema" ID="39cb95f6-635d-45c9-82db-fdcd6d6dcaf3" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=2" />
+    <MetadataFile FileName="EFaturaOIB3.xsd" MetadataType="Schema" ID="12e3ec9d-d6c0-4b91-8b6c-5f28902405da" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

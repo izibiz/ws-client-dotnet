@@ -1,0 +1,14 @@
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll.config
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csprojAssemblyReference.cache
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
+C:\Users\gamze\source\repos\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll.config
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csprojAssemblyReference.cache
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
+C:\Users\gamze\Desktop\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:hr="http://www.hr-xml.org/3" xmlns:c="http://schemas.i2i.com/ei/common" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns="http://schemas.i2i.com/ei/wsdl" xmlns:e="http://schemas.i2i.com/ei/entity" xmlns:pck="http://www.efatura.gov.tr/package-namespace" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/AuthenticationWS?xsd=2" namespace="http://schemas.i2i.com/ei/common" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/AuthenticationWS?xsd=3" namespace="http://schemas.i2i.com/ei/entity" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/AuthenticationWS?xsd=4" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xsd:element name="RequestFault" type="e:REQUEST_ERRORType" />
+  <xsd:element name="LoginRequest" type="LoginRequest" />
+  <xsd:complexType name="LoginRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element name="USER_NAME" type="xsd:string" />
+          <xsd:element name="PASSWORD" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LoginResponse" type="LoginResponse" />
+  <xsd:complexType name="LoginResponse">
+    <xsd:sequence>
+      <xsd:element name="SESSION_ID" type="xsd:token" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="LogoutRequest" type="LogoutRequest" />
+  <xsd:complexType name="LogoutRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LogoutResponse" type="LogoutResponse" />
+  <xsd:complexType name="LogoutResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetGibUserListRequest" type="GetGibUserListRequest" />
+  <xsd:complexType name="GetGibUserListRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" default="XML" name="TYPE">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:token">
+                <xsd:enumeration value="CSV" />
+                <xsd:enumeration value="XML" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DOCUMENT_TYPE" type="xsd:normalizedString" />
+          <xsd:element minOccurs="0" name="REGISTER_TIME_START" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetGibUserListResponse" type="GetGibUserListResponse" />
+  <xsd:complexType name="GetGibUserListResponse">
+    <xsd:choice>
+      <xsd:element minOccurs="0" maxOccurs="1" name="CONTENT" type="xmime:base64Binary" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:element name="GetUserAuthorizationRequest" type="GetUserAuthorizationRequest" />
+  <xsd:complexType name="GetUserAuthorizationRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element name="PRODUCT" type="PRODUCT" />
+          <xsd:element name="PRODUCT_DETAIL_FLAG" type="PRODUCT_DETAIL_FLAG" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetUserAuthorizationResponse" type="GetUserAuthorizationResponse" />
+  <xsd:complexType name="GetUserAuthorizationResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="AUTHORIZED" type="AUTHORIZED" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="PRODUCT_LIST" type="PRODUCT_LIST" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="CheckUserRequest" type="CheckUserRequest" />
+  <xsd:complexType name="CheckUserRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="USER" type="GIBUSER" />
+          <xsd:element minOccurs="0" name="DOCUMENT_TYPE" type="xsd:normalizedString" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CheckUserResponse" type="CheckUserResponse" />
+  <xsd:complexType name="CheckUserResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="USER" type="GIBUSER" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GIBUSER">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ALIAS" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TITLE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TYPE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="REGISTER_TIME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UNIT" type="xsd:token" />
+      <xsd:element minOccurs="0" name="ALIAS_CREATION_TIME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ACCOUNT_TYPE" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PRODUCT_LIST">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PRODUCT" type="PRODUCT" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="PRODUCT">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="EINVOICE" />
+      <xsd:enumeration value="EARCHIVE" />
+      <xsd:enumeration value="EDESPATCH" />
+      <xsd:enumeration value="CREDITNOTE" />
+      <xsd:enumeration value="RECONCILIATION" />
+      <xsd:enumeration value="CONNECTOR" />
+      <xsd:enumeration value="ELEDGER" />
+      <xsd:enumeration value="ELEDGERARCHIVE" />
+      <xsd:enumeration value="EINVOICEARCHIVE" />
+      <xsd:enumeration value="EINVOICEARCHIVE" />
+      <xsd:enumeration value="ESMM" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PRODUCT_DETAIL_FLAG">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="Y" />
+      <xsd:enumeration value="N" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="AUTHORIZED">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="Y" />
+      <xsd:enumeration value="N" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
