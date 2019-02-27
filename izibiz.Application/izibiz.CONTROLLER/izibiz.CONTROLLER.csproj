@@ -49,8 +49,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Session.settings</DependentUpon>
     </Compile>
-    <Compile Include="WebServices\AuthenticationWebService.cs" />
-    <Compile Include="WebServices\InvoiceWebService.cs" />
+    <Compile Include="Singleton\Singleton.cs" />
+    <Compile Include="WebServices\AuthenticationController.cs" />
+    <Compile Include="WebServices\EInvoiceController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\izibiz.MODEL\izibiz.MODEL.csproj">
@@ -69,5 +70,6 @@
       <LastGenOutput>Session.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

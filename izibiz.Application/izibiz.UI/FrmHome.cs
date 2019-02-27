@@ -1,4 +1,5 @@
-﻿using System;
+﻿using izibiz.UI.Languages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,8 @@ namespace izibiz.UI
         {
             InitializeComponent();
         }
+
+
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
@@ -47,22 +50,23 @@ namespace izibiz.UI
             }
 
             //eleman text yazdır
-            this.Text = Localization.formHomeTitle;
-            btnFatura.Text = Localization.eFatura;
-            btnArsiv.Text = Localization.eArsiv;
-            btnIrsaliye.Text = Localization.eIrsaliye;
+            this.Text = Localization.formHomePage;
+            btnInvoice.Text = Localization.eInvoice;
+            btnArchive.Text = Localization.eArchive;
+            btnIrsaliye.Text = Localization.eDispatch;
             btnAyarlar.Text =Localization.settings;
             btnMutabakat.Text =Localization.eReconciliation;
-            btnSmm.Text = Localization.eSerbestMeslek;
-            btnMüstahsil.Text = Localization.eMustahsil;
+            btnSmm.Text = Localization.eFreeJob;
+            btnMüstahsil.Text = Localization.eManufacturer;
 
         }
-
-        private void btnFatura_Click_1(object sender, EventArgs e)
+                 
+        private void btnInvoice_Click(object sender, EventArgs e)
         {
             FrmInvoice frmInvoice = new FrmInvoice();
             frmInvoice.Show();
             this.Hide();
         }
+
     }
 }

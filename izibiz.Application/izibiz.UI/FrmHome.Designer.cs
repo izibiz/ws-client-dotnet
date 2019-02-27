@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             this.btnAyarlar = new System.Windows.Forms.Button();
-            this.btnFatura = new System.Windows.Forms.Button();
+            this.btnInvoice = new System.Windows.Forms.Button();
             this.btnSmm = new System.Windows.Forms.Button();
-            this.btnArsiv = new System.Windows.Forms.Button();
+            this.btnArchive = new System.Windows.Forms.Button();
             this.btnMüstahsil = new System.Windows.Forms.Button();
             this.btnIrsaliye = new System.Windows.Forms.Button();
             this.btnMutabakat = new System.Windows.Forms.Button();
@@ -58,25 +58,25 @@
             this.btnAyarlar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAyarlar.UseVisualStyleBackColor = false;
             // 
-            // btnFatura
+            // btnInvoice
             // 
-            this.btnFatura.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnFatura.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFatura.BackgroundImage")));
-            this.btnFatura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFatura.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFatura.FlatAppearance.BorderSize = 0;
-            this.btnFatura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnFatura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnFatura.ForeColor = System.Drawing.Color.Snow;
-            this.btnFatura.Location = new System.Drawing.Point(12, 36);
-            this.btnFatura.Name = "btnFatura";
-            this.btnFatura.Size = new System.Drawing.Size(141, 125);
-            this.btnFatura.TabIndex = 26;
-            this.btnFatura.Text = "E-Fatura";
-            this.btnFatura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFatura.UseVisualStyleBackColor = false;
-            this.btnFatura.Click += new System.EventHandler(this.btnFatura_Click_1);
+            this.btnInvoice.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInvoice.BackgroundImage")));
+            this.btnInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInvoice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInvoice.FlatAppearance.BorderSize = 0;
+            this.btnInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnInvoice.ForeColor = System.Drawing.Color.Snow;
+            this.btnInvoice.Location = new System.Drawing.Point(12, 36);
+            this.btnInvoice.Name = "btnInvoice";
+            this.btnInvoice.Size = new System.Drawing.Size(141, 125);
+            this.btnInvoice.TabIndex = 26;
+            this.btnInvoice.Text = "E-Fatura";
+            this.btnInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnInvoice.UseVisualStyleBackColor = false;
+            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
             // 
             // btnSmm
             // 
@@ -96,24 +96,24 @@
             this.btnSmm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSmm.UseVisualStyleBackColor = true;
             // 
-            // btnArsiv
+            // btnArchive
             // 
-            this.btnArsiv.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnArsiv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnArsiv.BackgroundImage")));
-            this.btnArsiv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnArsiv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArsiv.FlatAppearance.BorderSize = 0;
-            this.btnArsiv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnArsiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArsiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnArsiv.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnArsiv.Location = new System.Drawing.Point(216, 36);
-            this.btnArsiv.Name = "btnArsiv";
-            this.btnArsiv.Size = new System.Drawing.Size(141, 125);
-            this.btnArsiv.TabIndex = 25;
-            this.btnArsiv.Text = "E-Arşiv";
-            this.btnArsiv.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnArsiv.UseVisualStyleBackColor = false;
+            this.btnArchive.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnArchive.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnArchive.BackgroundImage")));
+            this.btnArchive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnArchive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArchive.FlatAppearance.BorderSize = 0;
+            this.btnArchive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnArchive.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnArchive.Location = new System.Drawing.Point(216, 36);
+            this.btnArchive.Name = "btnArchive";
+            this.btnArchive.Size = new System.Drawing.Size(141, 125);
+            this.btnArchive.TabIndex = 25;
+            this.btnArchive.Text = "E-Arşiv";
+            this.btnArchive.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnArchive.UseVisualStyleBackColor = false;
             // 
             // btnMüstahsil
             // 
@@ -177,9 +177,9 @@
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(573, 466);
             this.Controls.Add(this.btnAyarlar);
-            this.Controls.Add(this.btnFatura);
+            this.Controls.Add(this.btnInvoice);
             this.Controls.Add(this.btnSmm);
-            this.Controls.Add(this.btnArsiv);
+            this.Controls.Add(this.btnArchive);
             this.Controls.Add(this.btnMüstahsil);
             this.Controls.Add(this.btnIrsaliye);
             this.Controls.Add(this.btnMutabakat);
@@ -196,9 +196,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnAyarlar;
-        private System.Windows.Forms.Button btnFatura;
+        private System.Windows.Forms.Button btnInvoice;
         private System.Windows.Forms.Button btnSmm;
-        private System.Windows.Forms.Button btnArsiv;
+        private System.Windows.Forms.Button btnArchive;
         private System.Windows.Forms.Button btnMüstahsil;
         private System.Windows.Forms.Button btnIrsaliye;
         private System.Windows.Forms.Button btnMutabakat;

@@ -1,16 +1,12 @@
-﻿using izibiz.MODEL.Dto;
-using System;
+﻿using izibiz.MODEL.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace izibiz.MODEL
 {
-    public class DataListInvoice: Invoices
+    public class DataListInvoice: Invoice
     {
-        public static List<Invoices> GelenFaturalar;
-        public static DataListInvoice GidenFaturalar;
+        public static List<Invoice> incommingInvioces;
+        public static List<Invoice> sentInvoices;
 
     }
 }

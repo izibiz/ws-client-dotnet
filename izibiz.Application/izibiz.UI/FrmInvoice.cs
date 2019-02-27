@@ -1,5 +1,5 @@
-﻿using izibiz.CONTROLLER.Web_Services;
-using izibiz.SERVICES.serviceOib;
+﻿using izibiz.CONTROLLER.Singleton;
+using izibiz.UI.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,34 +42,34 @@ namespace izibiz.UI
             {
                 Localization.Culture = new CultureInfo("");
             }
-
+            #region writeAllFormItem
             //eleman text yazdır
-            this.Text = Localization.formFatura;
+            this.Text = Localization.formInvoice;
             itemComingInvoice.Text = Localization.commingInvoice;
-            itemComingListInvoice.Text = Localization.listCommingInvoice;
+            itemComingListInvoice.Text = Localization.listInvoice;
             itemSentInvoice.Text = Localization.sentInvoice;
-            itemDraftInvoice.Text = Localization.arshiveInvoice;
+            itemDraftInvoice.Text = Localization.draftInvoice;
             itemNewInvoice.Text = Localization.newInvoice;
-
+            itemSentInvoiceList.Text = Localization.listInvoice;
+            itemDraftInvoiceList.Text = Localization.listInvoice;
+            #endregion
         }
+
+
 
         private void itemComingListInvoice_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = Localization.commingInvoice;
 
-            lblTitle.Text = Localization.commingInvoice; 
-            InvoiceWebService invoiceWebService = new InvoiceWebService();
-
-            tableGrid.DataSource = invoiceWebService.getInvoiceList();
-
-            ListInvoiceAddToButtonDataGrid();
-
+            tableGrid.DataSource = null;
+            tableGrid.DataSource = Singleton.instanceInvoiceGet.getComingInvoice();
+            ComingListInvoiceAddToButtonDataGrid();
         }
 
 
 
-        private void ListInvoiceAddToButtonDataGrid()
+        private void ComingListInvoiceAddToButtonDataGrid()
         {
-
             DataGridViewButtonColumn accept = new DataGridViewButtonColumn();
             {
                 accept.Name = "accept";
@@ -94,8 +94,20 @@ namespace izibiz.UI
             }
         }
 
+        private void itemSentInvoiceList_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = Localization.sentInvoice;
 
+            tableGrid.DataSource = null;
+            tableGrid.DataSource = Singleton.instanceInvoiceGet.getSentInvoice();
+    
+        }
 
+        private void itemDraftInvoiceList_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = Localization.draftInvoice;
 
+            tableGrid.DataSource = null;
+        }
     }
 }

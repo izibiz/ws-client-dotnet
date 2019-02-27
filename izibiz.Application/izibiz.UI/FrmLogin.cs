@@ -8,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using izibiz.CONTROLLER.Web_Services;
+using izibiz.CONTROLLER.Singleton;
+using izibiz.UI.Languages;
 
 namespace izibiz.UI
 {
@@ -36,9 +37,8 @@ namespace izibiz.UI
                 MessageBox.Show(Localization.loginBadRequest);
             }
             else{
-                try{
-                    CONTROLLER.Web_Services.AuthenticationWebService authenticationWebService = new CONTROLLER.Web_Services.AuthenticationWebService();
-                   string sesoin= authenticationWebService.Login(txtUsername.Text, txtPassword.Text);
+                try{             
+                    string sesoin= Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text);
                     if (sesoin != "no-user"){
                         FrmHome frmHome = new FrmHome();
                         frmHome.Show();
@@ -67,11 +67,11 @@ namespace izibiz.UI
             }
 
             //eleman text yazdır
-            this.Text = Localization.formLoginTitle;
-            lblUsername.Text = Localization.username;
+            this.Text = Localization.formLoginPage;
+            lblUsername.Text = Localization.usurname;
             lblPassword.Text = Localization.password;
             btn_login.Text = Localization.login;
-            chooseLanguage_ToolStripMenuItem.Text = Localization.ch_language;
+            chooseLanguage_ToolStripMenuItem.Text = Localization.chooseLanguage;
             chkShowPass.Text = Localization.showPassword;
         }
       

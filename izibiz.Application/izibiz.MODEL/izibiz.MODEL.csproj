@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InvoicesData\DataListInvoice.cs" />
-    <Compile Include="Model\Invoices.cs" />
+    <Compile Include="Model\Invoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

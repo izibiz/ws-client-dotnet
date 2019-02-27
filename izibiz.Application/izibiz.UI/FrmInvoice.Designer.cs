@@ -32,10 +32,12 @@
             this.itemComingInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemComingListInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSentInvoice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemSentInvoiceList = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.itemDraftInvoiceList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +74,7 @@
             // 
             // itemComingListInvoice
             // 
-            this.itemComingListInvoice.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.itemComingListInvoice.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.itemComingListInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.itemComingListInvoice.Name = "itemComingListInvoice";
             this.itemComingListInvoice.Size = new System.Drawing.Size(186, 24);
@@ -82,6 +84,8 @@
             // itemSentInvoice
             // 
             this.itemSentInvoice.BackColor = System.Drawing.Color.Teal;
+            this.itemSentInvoice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemSentInvoiceList});
             this.itemSentInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.itemSentInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemSentInvoice.Name = "itemSentInvoice";
@@ -89,9 +93,20 @@
             this.itemSentInvoice.Size = new System.Drawing.Size(131, 29);
             this.itemSentInvoice.Text = " Giden Faturalar";
             // 
+            // itemSentInvoiceList
+            // 
+            this.itemSentInvoiceList.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.itemSentInvoiceList.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.itemSentInvoiceList.Name = "itemSentInvoiceList";
+            this.itemSentInvoiceList.Size = new System.Drawing.Size(186, 24);
+            this.itemSentInvoiceList.Text = "E-Fatura Listele";
+            this.itemSentInvoiceList.Click += new System.EventHandler(this.itemSentInvoiceList_Click);
+            // 
             // itemDraftInvoice
             // 
             this.itemDraftInvoice.BackColor = System.Drawing.Color.Teal;
+            this.itemDraftInvoice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemDraftInvoiceList});
             this.itemDraftInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.itemDraftInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemDraftInvoice.Name = "itemDraftInvoice";
@@ -127,6 +142,15 @@
             this.lblTitle.Size = new System.Drawing.Size(0, 16);
             this.lblTitle.TabIndex = 13;
             // 
+            // itemDraftInvoiceList
+            // 
+            this.itemDraftInvoiceList.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.itemDraftInvoiceList.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.itemDraftInvoiceList.Name = "itemDraftInvoiceList";
+            this.itemDraftInvoiceList.Size = new System.Drawing.Size(186, 24);
+            this.itemDraftInvoiceList.Text = "E-Fatura Listele";
+            this.itemDraftInvoiceList.Click += new System.EventHandler(this.itemDraftInvoiceList_Click);
+            // 
             // FrmInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,9 +180,11 @@
         private System.Windows.Forms.ToolStripMenuItem itemComingInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemSentInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemDraftInvoice;
-        private System.Windows.Forms.ToolStripMenuItem itemNewInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemComingListInvoice;
         private System.Windows.Forms.DataGridView tableGrid;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ToolStripMenuItem itemNewInvoice;
+        private System.Windows.Forms.ToolStripMenuItem itemSentInvoiceList;
+        private System.Windows.Forms.ToolStripMenuItem itemDraftInvoiceList;
     }
 }

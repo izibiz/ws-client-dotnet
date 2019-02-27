@@ -64,12 +64,12 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Localization.Designer.cs">
+    <Compile Include="Languages\Localization.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Localization.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization.en-US.Designer.cs">
+    <Compile Include="Languages\Localization.en-US.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Localization.en-US.resx</DependentUpon>
@@ -90,11 +90,11 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization.en-US.resx">
+    <EmbeddedResource Include="Languages\Localization.en-US.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Localization.en-US.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization.resx">
+    <EmbeddedResource Include="Languages\Localization.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Localization.Designer.cs</LastGenOutput>
     </EmbeddedResource>

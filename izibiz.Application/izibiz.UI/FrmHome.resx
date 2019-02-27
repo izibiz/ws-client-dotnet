@@ -1906,7 +1906,7 @@
         o7B5f/AH/38bjNVwErmiqwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnFatura.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnInvoice.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASUAAAEsCAYAAACFaKW/AAAABGdBTUEAALGPC/xhBQAAkwBJREFUeF7t
         vQvQp1lZH0hRFGVRFEVZlkWlLBxGE1h0DRBCWIKsUeKqUWNc17AuGpJFQwyymhjXdV2zxLgucV3LNYS4
@@ -2628,7 +2628,7 @@
         n/wfCzlNW0rJBIIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnArsiv.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnArchive.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAE5FJREFUeF7t
         nc+PHMUVx/kP2LXvkROJYyTnEuWAgs9EijgHReKKxME2iFhgxA8vBmMIFonjACLYIIEcIWGioEA4YJMF
