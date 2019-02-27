@@ -28,27 +28,19 @@ namespace izibiz.UI
 
 
 
-
-        private void btnFatura_Click(object sender, EventArgs e)
-        {
-            FrmInvoice frmInvoice = new FrmInvoice();
-            frmInvoice.Show();
-            this.Hide();
-        }
-
-
-
         private void localizationItemTextWrite()
         {
             //dil secimini sorgula
-            if (Settings.Default.language == "English"){
+            if (Settings.Default.language == "English")
+            {
                 Localization.Culture = new CultureInfo("en-US");
             }
-
-            else{
+            else
+            {
                 Localization.Culture = new CultureInfo("");
             }
 
+            #region writeFormInItem
             //eleman text yazdır
             this.Text = Localization.formHomePage;
             btnInvoice.Text = Localization.eInvoice;
@@ -58,9 +50,9 @@ namespace izibiz.UI
             btnMutabakat.Text =Localization.eReconciliation;
             btnSmm.Text = Localization.eFreeJob;
             btnMüstahsil.Text = Localization.eManufacturer;
-
+            #endregion
         }
-                 
+
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             FrmInvoice frmInvoice = new FrmInvoice();

@@ -16,8 +16,6 @@ namespace izibiz.UI
     public partial class FrmLogin : Form
     {
 
-
-
         public FrmLogin()
         {
             InitializeComponent();
@@ -30,22 +28,26 @@ namespace izibiz.UI
         }
 
 
-        private void btn_login_Click(object sender, EventArgs e)
-        {
-           
-            if(String.IsNullOrEmpty(txtUsername.Text.Trim()) ||  String.IsNullOrEmpty(txtPassword.Text.Trim())){
+        private void btnLogin_Click(object sender, EventArgs e)
+        {        
+            if(String.IsNullOrEmpty(txtUsername.Text.Trim()) ||  String.IsNullOrEmpty(txtPassword.Text.Trim()))
+            {
                 MessageBox.Show(Localization.loginBadRequest);
             }
-            else{
-                try{             
+            else
+            {
+                try
+                {             
                     string sesoin= Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text);
-                    if (sesoin != "no-user"){
+                    if (sesoin != "no-user")
+                    {
                         FrmHome frmHome = new FrmHome();
                         frmHome.Show();
                         this.Hide();
                     }
                 }
-                catch(Exception ex){
+                catch(Exception ex)
+                {
                     MessageBox.Show(ex.Message);
                 }           
             }
@@ -65,16 +67,17 @@ namespace izibiz.UI
             {
                 Localization.Culture = new CultureInfo("");
             }
-
+            #region writeItemInForm
             //eleman text yazdır
             this.Text = Localization.formLoginPage;
             lblUsername.Text = Localization.usurname;
             lblPassword.Text = Localization.password;
-            btn_login.Text = Localization.login;
+            btnLogin.Text = Localization.login;
             chooseLanguage_ToolStripMenuItem.Text = Localization.chooseLanguage;
             chkShowPass.Text = Localization.showPassword;
+            #endregion
         }
-      
+
         private void chkShowPass_CheckedChanged_1(object sender, EventArgs e)
         {
             if (chkShowPass.Checked == true)

@@ -42,6 +42,7 @@ namespace izibiz.UI
             {
                 Localization.Culture = new CultureInfo("");
             }
+
             #region writeAllFormItem
             //eleman text yazdır
             this.Text = Localization.formInvoice;
@@ -61,6 +62,7 @@ namespace izibiz.UI
         {
             lblTitle.Text = Localization.commingInvoice;
 
+            tableGrid.Columns.Clear();
             tableGrid.DataSource = null;
             tableGrid.DataSource = Singleton.instanceInvoiceGet.getComingInvoice();
             ComingListInvoiceAddToButtonDataGrid();
@@ -80,7 +82,7 @@ namespace izibiz.UI
                 {
                     this.tableGrid.Columns.Add(accept);
                 }      
-            }
+            }   
             DataGridViewButtonColumn reject = new DataGridViewButtonColumn();
             {
                 reject.Name = "reject";
@@ -98,6 +100,7 @@ namespace izibiz.UI
         {
             lblTitle.Text = Localization.sentInvoice;
 
+            tableGrid.Columns.Clear();
             tableGrid.DataSource = null;
             tableGrid.DataSource = Singleton.instanceInvoiceGet.getSentInvoice();
     
@@ -107,7 +110,9 @@ namespace izibiz.UI
         {
             lblTitle.Text = Localization.draftInvoice;
 
+            tableGrid.Columns.Clear();
             tableGrid.DataSource = null;
+
         }
     }
 }
