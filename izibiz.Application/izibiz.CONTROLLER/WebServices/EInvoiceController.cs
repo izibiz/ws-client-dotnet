@@ -35,7 +35,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
         public List<Invoice> getComingInvoice()
         {
-            using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+            using(new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
                 var req = new GetInvoiceRequest //sistemdeki gelen efatura listesi için request parametreleri
                 {
@@ -134,7 +134,6 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
-
         private List<Invoice> addToModel(INVOICE[] invoiceArray,List<Invoice> dataInvoice)
         {
             List<Invoice> invoiceList = new List<Invoice>();
@@ -168,6 +167,13 @@ namespace izibiz.CONTROLLER.Web_Services
         }
     
 
+      /*  public int invoiceIsRecaive(string vkn)
+        {
+
+
+
+
+        }*/
       
 
 

@@ -79,15 +79,6 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gelen Faturalar.
-        /// </summary>
-        internal static string commingInvoice {
-            get {
-                return ResourceManager.GetString("commingInvoice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Taslak Faturalar.
         /// </summary>
         internal static string draftInvoice {
@@ -174,6 +165,24 @@ namespace izibiz.UI.Languages {
         internal static string formLoginPage {
             get {
                 return ResourceManager.GetString("formLoginPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gelen Faturalar.
+        /// </summary>
+        internal static string incomingInvoice {
+            get {
+                return ResourceManager.GetString("incomingInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taslak Faturalar Listesi.
+        /// </summary>
+        internal static string listDraftInvoice {
+            get {
+                return ResourceManager.GetString("listDraftInvoice", resourceCulture);
             }
         }
         

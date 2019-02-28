@@ -123,9 +123,6 @@
   <data name="chooseLanguage" xml:space="preserve">
     <value>Dil Seçimi</value>
   </data>
-  <data name="commingInvoice" xml:space="preserve">
-    <value>Gelen Faturalar</value>
-  </data>
   <data name="draftInvoice" xml:space="preserve">
     <value>Taslak Faturalar</value>
   </data>
@@ -155,6 +152,12 @@
   </data>
   <data name="formLoginPage" xml:space="preserve">
     <value>İzibiz Masaüstü | Giriş</value>
+  </data>
+  <data name="incomingInvoice" xml:space="preserve">
+    <value>Gelen Faturalar</value>
+  </data>
+  <data name="listDraftInvoice" xml:space="preserve">
+    <value>Taslak Faturalar Listesi</value>
   </data>
   <data name="listInvoice" xml:space="preserve">
     <value>E-Fatura Listele</value>

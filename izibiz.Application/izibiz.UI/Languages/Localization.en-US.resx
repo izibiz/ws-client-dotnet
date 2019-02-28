@@ -123,9 +123,6 @@
   <data name="chooseLanguage" xml:space="preserve">
     <value>Choose Language</value>
   </data>
-  <data name="commingInvoice" xml:space="preserve">
-    <value>Comming Invoice</value>
-  </data>
   <data name="draftInvoice" xml:space="preserve">
     <value>Archive Invoice</value>
   </data>
@@ -155,6 +152,12 @@
   </data>
   <data name="formLoginPage" xml:space="preserve">
     <value>İzibiz Desktop | Login</value>
+  </data>
+  <data name="incomingInvoice" xml:space="preserve">
+    <value>Incoming Invoice</value>
+  </data>
+  <data name="listDraftInvoice" xml:space="preserve">
+    <value>Draft Invoice List</value>
   </data>
   <data name="listInvoice" xml:space="preserve">
     <value>E-Invoice List</value>

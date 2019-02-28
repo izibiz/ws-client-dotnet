@@ -15,3 +15,9 @@ C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izi
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CoreCompileInputs.cache
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.dll
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.pdb
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.dll
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.pdb
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csprojAssemblyReference.cache
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CoreCompileInputs.cache
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.dll
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.pdb

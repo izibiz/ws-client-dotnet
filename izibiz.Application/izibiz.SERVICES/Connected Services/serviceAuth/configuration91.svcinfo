@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="FvUUUlrsgx7rYjSWCusJPXl6/Qs=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="vTql31utr9jBq8NsciVhVyQBhvo=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="AuthenticationPortBinding">
       <properties>
@@ -221,10 +221,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="AuthenticationPort" contract="serviceAuth.AuthenticationServicePort" bindingType="basicHttpBinding" address="https://efaturatest.izibiz.com.tr/AuthenticationWS" bindingConfiguration="AuthenticationPortBinding">
+    <endpoint name="AuthenticationPort" contract="serviceAuth.AuthenticationServicePort" bindingType="basicHttpBinding" address="https://efaturadev.izibiz.com.tr/AuthenticationWS" bindingConfiguration="AuthenticationPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://efaturatest.izibiz.com.tr:443/AuthenticationWS</serializedValue>
+          <serializedValue>https://efaturadev.izibiz.com.tr:443/AuthenticationWS</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

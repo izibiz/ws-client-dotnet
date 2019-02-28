@@ -19,3 +19,10 @@ C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izi
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\izibiz.app\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll.config
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csprojAssemblyReference.cache
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb

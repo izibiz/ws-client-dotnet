@@ -2,7 +2,7 @@
 <wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.i2i.com/ei/wsdl" xmlns:gib1="http://gib.gov.tr/vedop3/eFatura" name="AuthenticationService" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema>
-      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/AuthenticationWS?xsd=1" namespace="http://schemas.i2i.com/ei/wsdl" />
+      <xsd:import schemaLocation="https://efaturadev.izibiz.com.tr:443/AuthenticationWS?xsd=1" namespace="http://schemas.i2i.com/ei/wsdl" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="LoginRequestMessage">
@@ -130,7 +130,7 @@
   </wsdl:binding>
   <wsdl:service name="AuthenticationWS">
     <wsdl:port name="AuthenticationPort" binding="tns:AuthenticationPortBinding">
-      <soap:address location="https://efaturatest.izibiz.com.tr:443/AuthenticationWS" />
+      <soap:address location="https://efaturadev.izibiz.com.tr:443/AuthenticationWS" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

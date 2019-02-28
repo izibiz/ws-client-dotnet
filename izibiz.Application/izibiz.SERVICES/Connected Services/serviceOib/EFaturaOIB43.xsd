@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns="http://schemas.i2i.com/ei/entity" xmlns:c="http://schemas.i2i.com/ei/common" targetNamespace="http://schemas.i2i.com/ei/entity" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/AuthenticationWS?xsd=2" namespace="http://schemas.i2i.com/ei/common" />
+  <xsd:import schemaLocation="https://efaturadev.izibiz.com.tr:443/EFaturaOIB?xsd=1" namespace="http://schemas.i2i.com/ei/common" />
   <xsd:complexType name="REQUEST">
     <xsd:sequence>
       <xsd:element name="REQUEST_HEADER" type="REQUEST_HEADERType" />

@@ -7,6 +7,6 @@ namespace izibiz.MODEL
     {
         public static List<Invoice> incommingInvioces;
         public static List<Invoice> sentInvoices;
-
+        public static List<Invoice> draftInvoices;
     }
 }

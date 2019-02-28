@@ -46,13 +46,13 @@ namespace izibiz.UI
             #region writeAllFormItem
             //eleman text yazdır
             this.Text = Localization.formInvoice;
-            itemComingInvoice.Text = Localization.commingInvoice;
+            itemIncomingInvoice.Text = Localization.incomingInvoice;
             itemComingListInvoice.Text = Localization.listInvoice;
             itemSentInvoice.Text = Localization.sentInvoice;
             itemDraftInvoice.Text = Localization.draftInvoice;
             itemNewInvoice.Text = Localization.newInvoice;
             itemSentInvoiceList.Text = Localization.listInvoice;
-            itemDraftInvoiceList.Text = Localization.listInvoice;
+            itemDraftInvoiceList.Text = Localization.listDraftInvoice;
             #endregion
         }
 
@@ -60,59 +60,75 @@ namespace izibiz.UI
 
         private void itemComingListInvoice_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = Localization.commingInvoice;
+            lblTitle.Text = Localization.incomingInvoice;
+            panelConfirmation.Visible = false;
+            btnIncomingRefresh.Visible = true;
 
-            tableGrid.Columns.Clear();
             tableGrid.DataSource = null;
             tableGrid.DataSource = Singleton.instanceInvoiceGet.getComingInvoice();
-            ComingListInvoiceAddToButtonDataGrid();
+
         }
 
 
 
-        private void ComingListInvoiceAddToButtonDataGrid()
-        {
-            DataGridViewButtonColumn accept = new DataGridViewButtonColumn();
-            {
-                accept.Name = "accept";
-                accept.HeaderText = "";
-                accept.Text = Localization.accept;
-                accept.UseColumnTextForButtonValue = true;
-                if (tableGrid.Columns["accept"] == null)
-                {
-                    this.tableGrid.Columns.Add(accept);
-                }      
-            }   
-            DataGridViewButtonColumn reject = new DataGridViewButtonColumn();
-            {
-                reject.Name = "reject";
-                reject.HeaderText = "";
-                reject.Text = Localization.reject;
-                reject.UseColumnTextForButtonValue = true;
-                if (tableGrid.Columns["reject"] == null)
-                {
-                    this.tableGrid.Columns.Add(reject);
-                }
-            }
-        }
+
 
         private void itemSentInvoiceList_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Localization.sentInvoice;
+            btnIncomingRefresh.Visible = false;
+            panelConfirmation.Visible = false;
 
-            tableGrid.Columns.Clear();
             tableGrid.DataSource = null;
             tableGrid.DataSource = Singleton.instanceInvoiceGet.getSentInvoice();
-    
+
         }
 
         private void itemDraftInvoiceList_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Localization.draftInvoice;
+            btnIncomingRefresh.Visible = false;
+            panelConfirmation.Visible = false;
 
-            tableGrid.Columns.Clear();
             tableGrid.DataSource = null;
 
         }
+
+
+
+
+
+
+
+        private void btnIncomingRefresh_Click(object sender, EventArgs e)
+        {
+            panelConfirmation.Visible = false;
+
+            tableGrid.DataSource = null;
+            tableGrid.DataSource = Singleton.instanceInvoiceGet.getComingInvoice();
+        }
+
+        private void tableGrid_Click(object sender, EventArgs e)
+        {
+            panelConfirmation.Visible = true;
+
+            foreach (DataGridViewRow row in tableGrid.SelectedRows)
+            {
+                if (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "RECEIVE - WAIT_APPLICATION_RESPONSE")//olmayan varsa
+                {
+                    btnAccept.Enabled = false;
+                    btnReject.Enabled = false;
+                    break;
+                }
+                else
+                {
+                    btnAccept.Enabled = true;
+                    btnReject.Enabled = true;
+                }
+            }
+        }
+
+
+
     }
 }
