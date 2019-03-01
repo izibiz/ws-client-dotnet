@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:hr="http://www.hr-xml.org/3" xmlns:c="http://schemas.i2i.com/ei/common" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns="http://schemas.i2i.com/ei/wsdl" xmlns:e="http://schemas.i2i.com/ei/entity" xmlns:pck="http://www.efatura.gov.tr/package-namespace" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:import schemaLocation="https://efaturadev.izibiz.com.tr:443/EFaturaOIB?xsd=1" namespace="http://schemas.i2i.com/ei/common" />
-  <xsd:import schemaLocation="https://efaturadev.izibiz.com.tr:443/EFaturaOIB?xsd=2" namespace="http://schemas.i2i.com/ei/entity" />
-  <xsd:import schemaLocation="https://efaturadev.izibiz.com.tr:443/EFaturaOIB?xsd=3" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EFaturaOIB?xsd=1" namespace="http://schemas.i2i.com/ei/common" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EFaturaOIB?xsd=2" namespace="http://schemas.i2i.com/ei/entity" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EFaturaOIB?xsd=3" namespace="http://www.w3.org/2005/05/xmlmime" />
   <xsd:element name="RequestFault" type="e:REQUEST_ERRORType" />
   <xsd:complexType name="INVOICE">
     <xsd:sequence>

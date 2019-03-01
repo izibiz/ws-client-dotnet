@@ -9,10 +9,10 @@ using izibiz.SERVICES.serviceAuth;
 
 namespace izibiz.CONTROLLER.Web_Services
 {
-   public class AuthenticationController
+    public class AuthenticationController
     {
 
-       AuthenticationServicePortClient  Auth= new AuthenticationServicePortClient();
+        AuthenticationServicePortClient Auth = new AuthenticationServicePortClient();
         private REQUEST_HEADERType authRequestHeader;
 
 
@@ -33,39 +33,26 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public string Login(string usurname, string password)
+        public void Login(string usurname, string password)
         {
-
             var req = new LoginRequest
-                {
+            {
                 REQUEST_HEADER = authRequestHeader,
                 USER_NAME = usurname,
                 PASSWORD = password
             };
 
-                LoginResponse loginRes = Auth.Login(req);
-                string sesionId = loginRes.SESSION_ID;
+            LoginResponse loginRes = Auth.Login(req);
+            string sesionId = loginRes.SESSION_ID;
 
-                //kullanıcı bulunmadı
-                if (loginRes.ERROR_TYPE != null && loginRes.ERROR_TYPE.ERROR_CODE == 10013)
-                {
-                    MessageBox.Show(loginRes.ERROR_TYPE.ERROR_SHORT_DES);
-                    return "no-user";
-                }
-                //basarılı gırıs
-                else
-                {
-                Session.Default.id = sesionId;
-                return sesionId;
-                }
-
+            Session.Default.id = sesionId;
         }
-           
-           
 
 
-     
-        
 
-        }
+
+
+
+
     }
+}

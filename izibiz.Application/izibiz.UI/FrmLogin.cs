@@ -5,10 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using izibiz.CONTROLLER.Singleton;
+using izibiz.SERVICES.serviceAuth;
+using izibiz.UI.Exceptions;
 using izibiz.UI.Languages;
 
 namespace izibiz.UI
@@ -25,35 +28,40 @@ namespace izibiz.UI
         private void Form1_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
-            txtUsername.Text = "izibiz-test2";
-            txtPassword.Text = "izi321";
         }
 
 
         private void btnLogin_Click(object sender, EventArgs e)
-        {        
-            if(String.IsNullOrEmpty(txtUsername.Text.Trim()) ||  String.IsNullOrEmpty(txtPassword.Text.Trim()))
+        {
+            try
             {
-                MessageBox.Show(Localization.loginBadRequest);
-            }
-            else
-            {
-                try
-                {             
-                    string sesoin= Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text);
-                    if (sesoin != "no-user")
-                    {
-                        FrmHome frmHome = new FrmHome();
-                        frmHome.Show();
-                        this.Hide();
-                    }
-                }
-                catch(Exception ex)
+                if (String.IsNullOrEmpty(txtUsername.Text.Trim()) || String.IsNullOrEmpty(txtPassword.Text.Trim()))
                 {
-                    MessageBox.Show(ex.Message);
-                }           
+                    throw new NullUserPassExceptions(Localization.loginBadRequest);
+                }
+                else
+                {
+                    Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text);
+
+                    FrmHome frmHome = new FrmHome();
+                    frmHome.Show();
+                    this.Hide();              
+                }
+            }
+            catch (NullUserPassExceptions ex)
+            {
+                MessageBox.Show(ex.Message, Localization.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
+
 
 
 

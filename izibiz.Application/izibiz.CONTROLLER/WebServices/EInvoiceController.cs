@@ -33,7 +33,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public List<Invoice> getComingInvoice()
+        public List<Invoice> getIncomingInvoice()
         {
             using(new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -50,7 +50,8 @@ namespace izibiz.CONTROLLER.Web_Services
                     HEADER_ONLY = "Y"
                 };
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
-                List<Invoice> invoiceList = addToModel(invoiceArray,DataListInvoice.incommingInvioces);
+                invoiceMarkRead(invoiceArray);
+                List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray);
 
                 if (DataListInvoice.incommingInvioces == null)
                 {
@@ -85,7 +86,8 @@ namespace izibiz.CONTROLLER.Web_Services
                 };
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
-                List<Invoice> invoiceList = addToModel(invoiceArray, DataListInvoice.sentInvoices);
+                invoiceMarkRead(invoiceArray);          //okundu ısaretle
+                List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray);
 
                 if (DataListInvoice.sentInvoices == null)
                 {
@@ -119,29 +121,27 @@ namespace izibiz.CONTROLLER.Web_Services
                 };
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
-                List<Invoice> invoiceList = addToModel(invoiceArray, DataListInvoice.sentInvoices);
+                invoiceMarkRead(invoiceArray);
 
-                if (DataListInvoice.sentInvoices == null)
+                List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray);
+                if (DataListInvoice.draftInvoices == null)
                 {
-                    DataListInvoice.sentInvoices = invoiceList;
+                    DataListInvoice.draftInvoices = invoiceList;
                 }
                 else
                 {
-                    DataListInvoice.sentInvoices.AddRange(invoiceList);
+                    DataListInvoice.draftInvoices.AddRange(invoiceList);
                 }
-                return DataListInvoice.sentInvoices;
+                return DataListInvoice.draftInvoices;
             }
         }
 
 
-        private List<Invoice> addToModel(INVOICE[] invoiceArray,List<Invoice> dataInvoice)
+        private List<Invoice> transferInvoiceArrayToList(INVOICE[] invoiceArray)
         {
             List<Invoice> invoiceList = new List<Invoice>();
             foreach (var inv in invoiceArray)
-            {
-                //GelenFaturalar bos ya da daha once bu FaturaNumarası eklenmemisse ekle
-                if (dataInvoice == null || dataInvoice.Where(x => x.faturaNumarası == inv.ID).FirstOrDefault() == null)
-                {
+            {          
                     Invoice invoice = new Invoice();
                     invoice.faturaNumarası = inv.ID;
                     invoice.ettn = inv.UUID;
@@ -160,25 +160,73 @@ namespace izibiz.CONTROLLER.Web_Services
                     invoice.alıcıPK = inv.HEADER.TO;
 
                     invoiceList.Add(invoice);
-                }
             }
             return invoiceList;
 
         }
-    
 
-      /*  public int invoiceIsRecaive(string vkn)
+
+        private string invoiceMarkRead(INVOICE[] invoiceList)
         {
+                using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+                {
+                    var markReq = new MarkInvoiceRequest() //sistemdeki gelen efatura listesi için request parametreleri
+                    {
+                        REQUEST_HEADER = requestHeader,
+                        MARK = new MarkInvoiceRequestMARK()
+                        {
+                            INVOICE = invoiceList,
+                            value = MarkInvoiceRequestMARKValue.READ,
+                            valueSpecified = true
+                        }
+                    };
+                    MarkInvoiceResponse markRes = EFaturaOIBPortClient.MarkInvoice(markReq);
+                    if (markRes.REQUEST_RETURN.RETURN_CODE == 0)
+                    {
+                        return "succes";
+                    }
+                    else
+                    {
+                        return "unsuccessful";
+                    }
+                }
+        }
 
 
+        public string sendInvoiceResponse(string[] invoiceID,string status)
+        {
+                INVOICE[] arrayInvoice = new INVOICE[invoiceID.Length];
+                for (int i = 0; i < invoiceID.Length; i++)
+                {
+                    INVOICE invoice = new INVOICE();
+                    invoice.ID = invoiceID[i];
+                    arrayInvoice[i] = invoice;
+                }
+                using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+                {       
+                    SendInvoiceResponseWithServerSignRequest req = new SendInvoiceResponseWithServerSignRequest()
+                    {
+                        REQUEST_HEADER = requestHeader,
+                        STATUS = status,
+                        INVOICE = arrayInvoice,       
+                    };
+
+                    SendInvoiceResponseWithServerSignResponse res= EFaturaOIBPortClient.SendInvoiceResponseWithServerSign(req);
+                    if (res.REQUEST_RETURN.RETURN_CODE==0)
+                    {
+                        return "succes";
+                    }
+                    else
+                    {
+                        return "unsuccessful";
+                    }
+                }
+            }
+           
 
 
-        }*/
-      
-
-
-
+        }
 
 
     }
-}
+

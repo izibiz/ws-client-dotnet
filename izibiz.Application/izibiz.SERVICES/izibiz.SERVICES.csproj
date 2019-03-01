@@ -60,17 +60,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\serviceAuth\AuthenticationService1.wsdl" />
-    <None Include="Connected Services\serviceAuth\AuthenticationWS4.xsd">
+    <None Include="Connected Services\serviceAuth\AuthenticationService.wsdl" />
+    <None Include="Connected Services\serviceAuth\AuthenticationWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceAuth\AuthenticationWS41.xsd">
+    <None Include="Connected Services\serviceAuth\AuthenticationWS1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceAuth\AuthenticationWS42.xsd">
+    <None Include="Connected Services\serviceAuth\AuthenticationWS2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceAuth\AuthenticationWS43.xsd">
+    <None Include="Connected Services\serviceAuth\AuthenticationWS3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.CheckUserResponse.datasource">
@@ -103,17 +103,17 @@
     <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.LogoutResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB1.wsdl" />
-    <None Include="Connected Services\serviceOib\EFaturaOIB4.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB.wsdl" />
+    <None Include="Connected Services\serviceOib\EFaturaOIB.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB41.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB42.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB43.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.base64Binary.datasource">

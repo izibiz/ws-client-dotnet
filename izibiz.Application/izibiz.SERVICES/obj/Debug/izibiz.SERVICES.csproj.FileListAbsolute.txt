@@ -26,3 +26,10 @@ C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Applicati
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
 C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll.config
+C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll
+C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csprojAssemblyReference.cache
+C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
+C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
+C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb
