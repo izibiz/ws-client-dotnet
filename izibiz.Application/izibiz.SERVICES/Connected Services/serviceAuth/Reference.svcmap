@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://efaturadev.izibiz.com.tr/AuthenticationWS?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://efaturatest.izibiz.com.tr/AuthenticationWS?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AuthenticationWS4.xsd" MetadataType="Schema" ID="45541b79-2182-4e71-a589-2bff405afd51" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/AuthenticationWS?xsd=4" />
-    <MetadataFile FileName="AuthenticationWS41.xsd" MetadataType="Schema" ID="0a5642de-f830-4929-b4f2-59fa33ac9824" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/AuthenticationWS?xsd=1" />
-    <MetadataFile FileName="AuthenticationWS42.xsd" MetadataType="Schema" ID="461b3b2f-c5f1-430e-b2bd-2ae9b418f598" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/AuthenticationWS?xsd=2" />
-    <MetadataFile FileName="AuthenticationService1.wsdl" MetadataType="Wsdl" ID="4e815630-9b57-4664-9cc5-bc69685232e1" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/AuthenticationWS?wsdl" />
-    <MetadataFile FileName="AuthenticationWS43.xsd" MetadataType="Schema" ID="3eb527e4-f56a-41b9-a6b6-292a0c6ee49b" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/AuthenticationWS?xsd=3" />
+    <MetadataFile FileName="AuthenticationService.wsdl" MetadataType="Wsdl" ID="34ac0ba4-94f2-4fc8-9746-662d3ba26025" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?wsdl" />
+    <MetadataFile FileName="AuthenticationWS.xsd" MetadataType="Schema" ID="89275aa2-17db-4d3a-9a96-535ef62fc4b7" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=4" />
+    <MetadataFile FileName="AuthenticationWS1.xsd" MetadataType="Schema" ID="eb60503f-8744-45ba-941e-e7343b2b2dce" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=3" />
+    <MetadataFile FileName="AuthenticationWS2.xsd" MetadataType="Schema" ID="6a73433f-aa9c-4db0-b6d2-a5d9d7ff5b73" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=1" />
+    <MetadataFile FileName="AuthenticationWS3.xsd" MetadataType="Schema" ID="01b5421a-8c13-4a7d-bdfe-706ff732dcce" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

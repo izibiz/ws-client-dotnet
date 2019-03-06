@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="C/6eJIHyfkvZSEMTpO6wstnj72Y=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="GF2QiUVOm2DHGArUgvvEY5KH71o=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="EFaturaOIBPortBinding">
       <properties>
@@ -221,10 +221,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="EFaturaOIBPort" contract="serviceOib.EFaturaOIBPort" bindingType="basicHttpBinding" address="https://efaturadev.izibiz.com.tr/EFaturaOIB" bindingConfiguration="EFaturaOIBPortBinding">
+    <endpoint name="EFaturaOIBPort" contract="serviceOib.EFaturaOIBPort" bindingType="basicHttpBinding" address="https://efaturatest.izibiz.com.tr/EFaturaOIB" bindingConfiguration="EFaturaOIBPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://efaturadev.izibiz.com.tr:443/EFaturaOIB</serializedValue>
+          <serializedValue>https://efaturatest.izibiz.com.tr:443/EFaturaOIB</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

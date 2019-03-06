@@ -120,6 +120,9 @@
   <data name="accept" xml:space="preserve">
     <value>Kabul Et</value>
   </data>
+  <data name="againSent" xml:space="preserve">
+    <value>Tekrar Gönder</value>
+  </data>
   <data name="chooseLanguage" xml:space="preserve">
     <value>Dil Seçimi</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="eReconciliation" xml:space="preserve">
     <value>E-Mutabakat</value>
   </data>
+  <data name="faulty" xml:space="preserve">
+    <value>Hatalılar</value>
+  </data>
   <data name="formHomePage" xml:space="preserve">
     <value>İzibiz Masaüstü | Anasayfa</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="formLoginPage" xml:space="preserve">
     <value>İzibiz Masaüstü | Giriş</value>
+  </data>
+  <data name="getInvoice" xml:space="preserve">
+    <value>Fatura Al</value>
   </data>
   <data name="incomingInvoice" xml:space="preserve">
     <value>Gelen Faturalar</value>
@@ -177,6 +186,12 @@
   <data name="password" xml:space="preserve">
     <value>Şifre</value>
   </data>
+  <data name="pdfDownload" xml:space="preserve">
+    <value>Pdf İndir</value>
+  </data>
+  <data name="refresh" xml:space="preserve">
+    <value>Yenile</value>
+  </data>
   <data name="reject" xml:space="preserve">
     <value>Red Et</value>
   </data>
@@ -189,7 +204,22 @@
   <data name="showPassword" xml:space="preserve">
     <value>Şifreyi Göster</value>
   </data>
+  <data name="succesChangeState" xml:space="preserve">
+    <value>Başarılı Durum Değiştirme</value>
+  </data>
+  <data name="updateState" xml:space="preserve">
+    <value>Durum Güncelle</value>
+  </data>
   <data name="usurname" xml:space="preserve">
     <value>Kullanıcı Adı</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="warning8Day" xml:space="preserve">
+    <value>Faturaya yanıt süresi kanuni olarak 8 gündür. Faturanın yanıt süresi geçtiği için yanıt verilemez</value>
+  </data>
+  <data name="warningBasicInvoice" xml:space="preserve">
+    <value>TEMEL FATURAYA YANIT VERILMEZ</value>
   </data>
 </root>

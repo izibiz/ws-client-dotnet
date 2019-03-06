@@ -120,6 +120,9 @@
   <data name="accept" xml:space="preserve">
     <value>Accept</value>
   </data>
+  <data name="againSent" xml:space="preserve">
+    <value>Again Sent</value>
+  </data>
   <data name="chooseLanguage" xml:space="preserve">
     <value>Choose Language</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="eReconciliation" xml:space="preserve">
     <value>E-Reconciliation</value>
   </data>
+  <data name="faulty" xml:space="preserve">
+    <value>Faulty Invoices</value>
+  </data>
   <data name="formHomePage" xml:space="preserve">
     <value>İzibiz Desktop | Home Page</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="formLoginPage" xml:space="preserve">
     <value>İzibiz Desktop | Login</value>
+  </data>
+  <data name="getInvoice" xml:space="preserve">
+    <value>Get Invoice</value>
   </data>
   <data name="incomingInvoice" xml:space="preserve">
     <value>Incoming Invoice</value>
@@ -177,6 +186,12 @@
   <data name="password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="pdfDownload" xml:space="preserve">
+    <value>Pdf Download</value>
+  </data>
+  <data name="refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
   <data name="reject" xml:space="preserve">
     <value>Reject</value>
   </data>
@@ -189,7 +204,22 @@
   <data name="showPassword" xml:space="preserve">
     <value>Show Password</value>
   </data>
+  <data name="succesChangeState" xml:space="preserve">
+    <value>Successful Change State</value>
+  </data>
+  <data name="updateState" xml:space="preserve">
+    <value>Update State</value>
+  </data>
   <data name="usurname" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="warning8Day" xml:space="preserve">
+    <value>The response time to the invoice is 8 days. Unable to respond because the billing response time has expired</value>
+  </data>
+  <data name="warningBasicInvoice" xml:space="preserve">
+    <value>Not Responsible To Basic Invoice</value>
   </data>
 </root>

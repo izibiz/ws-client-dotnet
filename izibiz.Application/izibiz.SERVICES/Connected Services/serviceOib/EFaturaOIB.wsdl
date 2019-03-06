@@ -2,7 +2,7 @@
 <wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.i2i.com/ei/wsdl" xmlns:gib1="http://gib.gov.tr/vedop3/eFatura" name="EFaturaOIB" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema>
-      <xsd:import schemaLocation="https://efaturadev.izibiz.com.tr:443/EFaturaOIB?xsd=4" namespace="http://schemas.i2i.com/ei/wsdl" />
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EFaturaOIB?xsd=4" namespace="http://schemas.i2i.com/ei/wsdl" />
     </xsd:schema>
     <xsd:schema xmlns:gib="http://gib.gov.tr/vedop3/eFatura" xmlns:ns1="http://www.w3.org/2005/05/xmlmime" targetNamespace="http://gib.gov.tr/vedop3/eFatura" version="1.0">
       <xsd:element name="getAppRespRequest" type="gib:getAppRespRequestType" />
@@ -512,7 +512,7 @@
   </wsdl:binding>
   <wsdl:service name="EFaturaOIB">
     <wsdl:port name="EFaturaOIBPort" binding="tns:EFaturaOIBPortBinding">
-      <soap:address location="https://efaturadev.izibiz.com.tr:443/EFaturaOIB" />
+      <soap:address location="https://efaturatest.izibiz.com.tr:443/EFaturaOIB" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

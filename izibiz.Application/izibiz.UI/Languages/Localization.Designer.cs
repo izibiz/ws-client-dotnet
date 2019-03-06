@@ -70,6 +70,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tekrar Gönder.
+        /// </summary>
+        internal static string againSent {
+            get {
+                return ResourceManager.GetString("againSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dil Seçimi.
         /// </summary>
         internal static string chooseLanguage {
@@ -142,6 +151,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hatalılar.
+        /// </summary>
+        internal static string faulty {
+            get {
+                return ResourceManager.GetString("faulty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İzibiz Masaüstü | Anasayfa.
         /// </summary>
         internal static string formHomePage {
@@ -165,6 +183,15 @@ namespace izibiz.UI.Languages {
         internal static string formLoginPage {
             get {
                 return ResourceManager.GetString("formLoginPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fatura Al.
+        /// </summary>
+        internal static string getInvoice {
+            get {
+                return ResourceManager.GetString("getInvoice", resourceCulture);
             }
         }
         
@@ -241,6 +268,24 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pdf İndir.
+        /// </summary>
+        internal static string pdfDownload {
+            get {
+                return ResourceManager.GetString("pdfDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yenile.
+        /// </summary>
+        internal static string refresh {
+            get {
+                return ResourceManager.GetString("refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Red Et.
         /// </summary>
         internal static string reject {
@@ -277,11 +322,56 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Başarılı Durum Değiştirme.
+        /// </summary>
+        internal static string succesChangeState {
+            get {
+                return ResourceManager.GetString("succesChangeState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Durum Güncelle.
+        /// </summary>
+        internal static string updateState {
+            get {
+                return ResourceManager.GetString("updateState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kullanıcı Adı.
         /// </summary>
         internal static string usurname {
             get {
                 return ResourceManager.GetString("usurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uyarı.
+        /// </summary>
+        internal static string warning {
+            get {
+                return ResourceManager.GetString("warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Faturaya yanıt süresi kanuni olarak 8 gündür. Faturanın yanıt süresi geçtiği için yanıt verilemez.
+        /// </summary>
+        internal static string warning8Day {
+            get {
+                return ResourceManager.GetString("warning8Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TEMEL FATURAYA YANIT VERILMEZ.
+        /// </summary>
+        internal static string warningBasicInvoice {
+            get {
+                return ResourceManager.GetString("warningBasicInvoice", resourceCulture);
             }
         }
     }

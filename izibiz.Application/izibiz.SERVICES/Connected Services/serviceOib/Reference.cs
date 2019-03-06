@@ -12,7 +12,7 @@ namespace izibiz.SERVICES.serviceOib {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -142,7 +142,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -174,7 +174,150 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
+    public partial class CUSTOMER : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string iDENTIFIERField;
+        
+        private string nAMEField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string IDENTIFIER {
+            get {
+                return this.iDENTIFIERField;
+            }
+            set {
+                this.iDENTIFIERField = value;
+                this.RaisePropertyChanged("IDENTIFIER");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string NAME {
+            get {
+                return this.nAMEField;
+            }
+            set {
+                this.nAMEField = value;
+                this.RaisePropertyChanged("NAME");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
+    public partial class PARTINFO : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string vKNField;
+        
+        private string iDENTIFIERField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="normalizedString")]
+        public string VKN {
+            get {
+                return this.vKNField;
+            }
+            set {
+                this.vKNField = value;
+                this.RaisePropertyChanged("VKN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="normalizedString")]
+        public string IDENTIFIER {
+            get {
+                return this.iDENTIFIERField;
+            }
+            set {
+                this.iDENTIFIERField = value;
+                this.RaisePropertyChanged("IDENTIFIER");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
+    public partial class LOV_VALUEType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private long lOV_IDField;
+        
+        private string lOV_CODEField;
+        
+        public LOV_VALUEType() {
+            this.lOV_CODEField = "\'N\'";
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public long LOV_ID {
+            get {
+                return this.lOV_IDField;
+            }
+            set {
+                this.lOV_IDField = value;
+                this.RaisePropertyChanged("LOV_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=1)]
+        [System.ComponentModel.DefaultValueAttribute("\'N\'")]
+        public string LOV_CODE {
+            get {
+                return this.lOV_CODEField;
+            }
+            set {
+                this.lOV_CODEField = value;
+                this.RaisePropertyChanged("LOV_CODE");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -234,7 +377,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -476,7 +619,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -620,7 +763,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -694,150 +837,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class CUSTOMER : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string iDENTIFIERField;
-        
-        private string nAMEField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string IDENTIFIER {
-            get {
-                return this.iDENTIFIERField;
-            }
-            set {
-                this.iDENTIFIERField = value;
-                this.RaisePropertyChanged("IDENTIFIER");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string NAME {
-            get {
-                return this.nAMEField;
-            }
-            set {
-                this.nAMEField = value;
-                this.RaisePropertyChanged("NAME");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class PARTINFO : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string vKNField;
-        
-        private string iDENTIFIERField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="normalizedString")]
-        public string VKN {
-            get {
-                return this.vKNField;
-            }
-            set {
-                this.vKNField = value;
-                this.RaisePropertyChanged("VKN");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="normalizedString")]
-        public string IDENTIFIER {
-            get {
-                return this.iDENTIFIERField;
-            }
-            set {
-                this.iDENTIFIERField = value;
-                this.RaisePropertyChanged("IDENTIFIER");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class LOV_VALUEType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private long lOV_IDField;
-        
-        private string lOV_CODEField;
-        
-        public LOV_VALUEType() {
-            this.lOV_CODEField = "\'N\'";
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public long LOV_ID {
-            get {
-                return this.lOV_IDField;
-            }
-            set {
-                this.lOV_IDField = value;
-                this.RaisePropertyChanged("LOV_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=1)]
-        [System.ComponentModel.DefaultValueAttribute("\'N\'")]
-        public string LOV_CODE {
-            get {
-                return this.lOV_CODEField;
-            }
-            set {
-                this.lOV_CODEField = value;
-                this.RaisePropertyChanged("LOV_CODE");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -869,7 +869,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -901,7 +901,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -975,7 +975,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1007,7 +1007,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1039,7 +1039,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1071,7 +1071,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1103,7 +1103,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1294,7 +1294,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1396,7 +1396,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1750,7 +1750,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1811,7 +1811,7 @@ namespace izibiz.SERVICES.serviceOib {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(USERCONTENT))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1857,7 +1857,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1978,7 +1978,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
     public enum USERTYPE {
@@ -2015,7 +2015,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
     public enum SIGNTYPE {
@@ -2037,7 +2037,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
     public enum USERCONTENTTYPE {
@@ -2050,7 +2050,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2082,7 +2082,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2198,7 +2198,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2230,7 +2230,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2262,7 +2262,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2294,7 +2294,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2326,7 +2326,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2358,7 +2358,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2390,7 +2390,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2436,7 +2436,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2496,7 +2496,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2703,7 +2703,7 @@ namespace izibiz.SERVICES.serviceOib {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(UserRequest))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(LogoutRequest))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoginRequest))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2735,7 +2735,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2870,7 +2870,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2912,7 +2912,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3196,7 +3196,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3219,7 +3219,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3251,7 +3251,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3274,7 +3274,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3334,7 +3334,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3366,7 +3366,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/wsdl")]
     public enum MarkEnvelopeRequestMARKValue {
@@ -3379,7 +3379,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3421,7 +3421,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3663,7 +3663,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3709,7 +3709,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3751,7 +3751,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
     public enum FLAG_VALUE {
@@ -3764,7 +3764,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3787,7 +3787,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3810,7 +3810,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3833,7 +3833,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3856,7 +3856,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3926,7 +3926,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/wsdl")]
     public enum GetUserListBinaryRequestTYPE {
@@ -3939,7 +3939,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3990,7 +3990,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4041,7 +4041,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4064,7 +4064,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4115,7 +4115,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4138,7 +4138,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4198,7 +4198,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/wsdl")]
     public enum MarkInvoiceRequestMARKValue {
@@ -4211,7 +4211,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4253,7 +4253,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4523,7 +4523,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
     public enum DATE_TYPE {
@@ -4536,7 +4536,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4587,7 +4587,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4633,7 +4633,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4679,7 +4679,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4702,7 +4702,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4711,7 +4711,7 @@ namespace izibiz.SERVICES.serviceOib {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4755,10 +4755,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -4786,10 +4786,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -4817,10 +4817,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -4848,10 +4848,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -4879,10 +4879,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -4910,10 +4910,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -4941,10 +4941,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -4972,10 +4972,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5003,10 +5003,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5034,10 +5034,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5065,10 +5065,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5096,10 +5096,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5127,10 +5127,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5158,10 +5158,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5189,10 +5189,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5220,10 +5220,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5251,10 +5251,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5282,10 +5282,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5313,10 +5313,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5344,10 +5344,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]
@@ -5375,10 +5375,10 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespRequestType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GetInvoiceCountResponse))]

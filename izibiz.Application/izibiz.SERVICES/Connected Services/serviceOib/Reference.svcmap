@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://efaturadev.izibiz.com.tr/EFaturaOIB?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://efaturatest.izibiz.com.tr/EFaturaOIB?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="EFaturaOIB4.xsd" MetadataType="Schema" ID="d13f3635-c504-402b-9189-6b8a527fe138" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/EFaturaOIB?xsd=1" />
-    <MetadataFile FileName="EFaturaOIB41.xsd" MetadataType="Schema" ID="c3352e69-bf10-4984-b8d0-11709e7b6c80" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/EFaturaOIB?xsd=4" />
-    <MetadataFile FileName="EFaturaOIB1.wsdl" MetadataType="Wsdl" ID="b6399d1f-aac4-4326-97bb-ae2d6684fc17" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/EFaturaOIB?wsdl" />
-    <MetadataFile FileName="EFaturaOIB42.xsd" MetadataType="Schema" ID="f538918c-5636-434c-ad18-1ebbf1538dcc" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/EFaturaOIB?xsd=3" />
-    <MetadataFile FileName="EFaturaOIB43.xsd" MetadataType="Schema" ID="73056087-340b-4961-a71f-8c1cd3e41549" SourceId="1" SourceUrl="https://efaturadev.izibiz.com.tr/EFaturaOIB?xsd=2" />
+    <MetadataFile FileName="EFaturaOIB.wsdl" MetadataType="Wsdl" ID="3b41f491-27e6-4470-af7b-6423e6377b7a" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?wsdl" />
+    <MetadataFile FileName="EFaturaOIB.xsd" MetadataType="Schema" ID="82b29293-82bd-41a2-92b2-951f5e94e14c" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=4" />
+    <MetadataFile FileName="EFaturaOIB1.xsd" MetadataType="Schema" ID="3680ea7d-ac86-4f11-8c9f-73dc493138a4" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=3" />
+    <MetadataFile FileName="EFaturaOIB2.xsd" MetadataType="Schema" ID="5f7d1f6f-1eec-4c47-a884-870a80cad5f8" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=2" />
+    <MetadataFile FileName="EFaturaOIB3.xsd" MetadataType="Schema" ID="a6e0692c-59f8-4c4f-9848-ccd030966aca" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EFaturaOIB?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
