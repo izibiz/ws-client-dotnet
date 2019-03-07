@@ -89,6 +89,10 @@ namespace izibiz.UI
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -113,6 +117,10 @@ namespace izibiz.UI
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -135,6 +143,10 @@ namespace izibiz.UI
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -156,6 +168,10 @@ namespace izibiz.UI
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -175,6 +191,10 @@ namespace izibiz.UI
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -182,9 +202,6 @@ namespace izibiz.UI
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
-
 
 
 
@@ -200,6 +217,8 @@ namespace izibiz.UI
                 tableGrid.Columns.Insert(columnIndex, viewButtonColumn);
             }
         }
+
+
 
         private void invoiceResponseAcceptOrReject(string response)
         {
@@ -245,6 +264,10 @@ namespace izibiz.UI
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -302,6 +325,10 @@ namespace izibiz.UI
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -317,16 +344,20 @@ namespace izibiz.UI
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
                     string id = row.Cells[1].Value.ToString();
-                   //controllerda fonksıyonu yazılacak
-                     /*
-                    using (FrmShowInvoiceState frmShowInvoiceState = new FrmShowInvoiceState())
-                    {
-                        frmShowInvoiceState.ShowDialog();
-                    }*/
+                    //controllerda fonksıyonu yazılacak
+                    /*
+                   using (FrmShowInvoiceState frmShowInvoiceState = new FrmShowInvoiceState())
+                   {
+                       frmShowInvoiceState.ShowDialog();
+                   }*/
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -344,6 +375,34 @@ namespace izibiz.UI
         {
             showStateInvoice();
         }
+
+       
+
+        private void btnPdfDownload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {
+                    string uuid = row.Cells[2].Value.ToString();
+                    Singleton.instanceInvoiceGet.downloadPdf(uuid);
+                    MessageBox.Show("secılı faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır");
+                }
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
 
         private void tableGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -370,35 +429,30 @@ namespace izibiz.UI
             }
         }
 
-        private void btnPdfDownload_Click(object sender, EventArgs e)
+        private void btnGetInvoiceIncoming_Click(object sender, EventArgs e)
         {
             try
             {
-                if (tableGrid.SelectedRows.Count == 1)
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    foreach (DataGridViewRow row in tableGrid.SelectedRows)
-                    {
-                        string id = row.Cells[1].Value.ToString();
-                 
+                    string uuid = row.Cells[2].Value.ToString();
+                
 
-             
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("secilen fatura sayısı 1 olmalıdır");
+                    MessageBox.Show("secılı faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır");
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
         }
     }
 

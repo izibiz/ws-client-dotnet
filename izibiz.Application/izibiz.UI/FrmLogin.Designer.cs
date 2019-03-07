@@ -49,7 +49,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lblPassword.Location = new System.Drawing.Point(247, 108);
+            this.lblPassword.Location = new System.Drawing.Point(187, 109);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(51, 22);
             this.lblPassword.TabIndex = 30;
@@ -60,7 +60,7 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Tai Le", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lblUsername.Location = new System.Drawing.Point(187, 71);
+            this.lblUsername.Location = new System.Drawing.Point(187, 72);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(111, 22);
             this.lblUsername.TabIndex = 29;
@@ -69,7 +69,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtPassword.Location = new System.Drawing.Point(304, 108);
+            this.txtPassword.Location = new System.Drawing.Point(299, 108);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(145, 23);
             this.txtPassword.TabIndex = 28;
@@ -78,7 +78,7 @@
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUsername.Location = new System.Drawing.Point(304, 71);
+            this.txtUsername.Location = new System.Drawing.Point(299, 71);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(145, 23);
             this.txtUsername.TabIndex = 27;
@@ -158,7 +158,7 @@
             this.chkShowPass.AutoSize = true;
             this.chkShowPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chkShowPass.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.chkShowPass.Location = new System.Drawing.Point(303, 136);
+            this.chkShowPass.Location = new System.Drawing.Point(298, 136);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(126, 21);
             this.chkShowPass.TabIndex = 32;

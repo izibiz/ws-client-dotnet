@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using izibiz.MODEL.Model;
 using izibiz.SERVICES.serviceOib;
 using izibiz.MODEL;
+using System.IO;
 
 namespace izibiz.CONTROLLER.Web_Services
 {
@@ -14,21 +15,27 @@ namespace izibiz.CONTROLLER.Web_Services
     {
 
         private EFaturaOIBPortClient EFaturaOIBPortClient = new EFaturaOIBPortClient();
-        private REQUEST_HEADERType requestHeader;
+        string inboxFolder = "D:\\temp\\GELEN\\";
+
+        public static REQUEST_HEADERType requestHeader;
 
         public EInvoiceController()
         {
-            #region createRequestHeader
-            //header hepsinde aynı oldugu için contr'da olustur
+            createRequestHeader();
+        }
+
+
+        public static void createRequestHeader()
+        {
             requestHeader = new REQUEST_HEADERType()
             {
                 SESSION_ID = Session.Default.id,
                 APPLICATION_NAME = "izibiz.Aplication",
                 COMPRESSED = "N"
             };
-            #endregion
-
         }
+
+
 
 
 
@@ -165,7 +172,6 @@ namespace izibiz.CONTROLLER.Web_Services
 
         }
 
-
         private string invoiceMarkRead(INVOICE[] invoiceList)
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
@@ -251,7 +257,8 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
-        public void downloadPdf(string invoiceID)
+
+        public void downloadPdf(string invoiceUuid)
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -261,38 +268,75 @@ namespace izibiz.CONTROLLER.Web_Services
 
                     INVOICE_SEARCH_KEY = new GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY()
                     {
-                        READ_INCLUDED = false,
+                        UUID=invoiceUuid,
+                        READ_INCLUDED = true,
                         READ_INCLUDEDSpecified = true,
-                        DIRECTION = "IN",
-                        ID = invoiceID,
                         TYPE = "PDF"//XML,PDF,HTML
-                    }
-                };
-         
+                    },
+                    HEADER_ONLY="N"
+                };   
                 INVOICE[] invoiceList = EFaturaOIBPortClient.GetInvoiceWithType(req);
+               
                 foreach (INVOICE invoice in invoiceList)
                 {
-                  //  saveInvoiceType(invoice);
+                    saveInvoiceTypePdf(invoice);
+                }
+            }
+        }
+        private void createInboxIfDoesNotExist(String inboxFolder)
+        {
+            if (!Directory.Exists(inboxFolder))
+            {
+                Directory.CreateDirectory(inboxFolder);
+            }              
+        }
+
+
+        private void saveInvoiceTypePdf(INVOICE invoice)
+        {
+            createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
+            System.IO.File.WriteAllBytes(inboxFolder + invoice.ID + ".pdf", invoice.CONTENT.Value);
+        }
+        
+
+        public void downloadInvoice(string invoiceUuid)
+        {
+            using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+            {
+                GetInvoiceRequest req = new GetInvoiceRequest()
+                {
+                    REQUEST_HEADER = new REQUEST_HEADERType()
+                    {
+                        SESSION_ID=Session.Default.id,
+                        APPLICATION_NAME= "izibiz.Aplication",
+                        COMPRESSED ="Y"
+                    },
+                    INVOICE_SEARCH_KEY = new GetInvoiceRequestINVOICE_SEARCH_KEY()
+                    {
+                        LIMIT=100,
+                        UUID = invoiceUuid,
+                        READ_INCLUDED = true,
+                        READ_INCLUDEDSpecified = true,
+                        DIRECTION="IN"                   
+                    },
+                    HEADER_ONLY="N"
+                };
+                INVOICE[] invoiceList = EFaturaOIBPortClient.GetInvoice(req);
+
+                foreach (INVOICE invoice in invoiceList)
+                {
+                    ınvoiceToUnzip(invoice);
                 }
             }
         }
 
-/*
-        private void saveInvoiceType(INVOICE invoice)
+        private void ınvoiceToUnzip(INVOICE invoice)
         {
-            createInboxIfDoesNotExist(inboxFolder);
-            string xmlContentStr = Encoding.UTF8.GetString(invoice.CONTENT.Value);
+            //zipten cıkar
 
-            //xml diske yazılıyor
-            string filePath = Path.Combine(inboxFolder, invoice.ID + ".html");
-            using (StreamWriter outFile = new StreamWriter(filePath, false, System.Text.Encoding.UTF8))
-            {
-                outFile.Write(xmlContentStr);
-                outFile.Close();
-            }
 
+            createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
         }
-        */
 
 
 

@@ -22,7 +22,6 @@ namespace izibiz.CONTROLLER.Web_Services
             authRequestHeader = new REQUEST_HEADERType()
             {
                 SESSION_ID = "-1",
-                CLIENT_TXN_ID = System.Guid.NewGuid().ToString(),
                 APPLICATION_NAME = "İZİBİZ MASAUSTU V1.0",
                 CHANNEL_NAME = "İZİBİZ",
                 HOSTNAME = "HOST-İZİBİZ-DEFAULT"
@@ -33,7 +32,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public void Login(string usurname, string password)
+        public bool Login(string usurname, string password)
         {
             var req = new LoginRequest
             {
@@ -41,11 +40,22 @@ namespace izibiz.CONTROLLER.Web_Services
                 USER_NAME = usurname,
                 PASSWORD = password
             };
-
             LoginResponse loginRes = Auth.Login(req);
-            string sesionId = loginRes.SESSION_ID;
 
-            Session.Default.id = sesionId;
+            if (loginRes.SESSION_ID != null)
+            {
+                string sesionId = loginRes.SESSION_ID;
+                Session.Default.id = sesionId;
+                if(EInvoiceController.requestHeader != null)
+                {
+                    EInvoiceController.createRequestHeader();
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }       
         }
 
 

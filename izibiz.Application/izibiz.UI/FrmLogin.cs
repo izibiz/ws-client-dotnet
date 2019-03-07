@@ -19,6 +19,9 @@ namespace izibiz.UI
     public partial class FrmLogin : Form
     {
 
+        public static string usurname;
+        public static string password;
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -43,11 +46,18 @@ namespace izibiz.UI
                 }
                 else
                 {
-                    Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text);
-
-                    FrmHome frmHome = new FrmHome();
-                    frmHome.Show();
-                    this.Hide();              
+                    if(Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text))
+                    {
+                        usurname = txtUsername.Text;
+                        password = txtPassword.Text;
+                        FrmHome frmHome = new FrmHome();
+                        frmHome.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Localization.loginWarring);
+                    }                             
                 }
             }
             catch (NullUserPassExceptions ex)
