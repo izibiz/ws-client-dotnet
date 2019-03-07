@@ -60,3 +60,4 @@ C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER
 C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.csproj.CopyComplete
 C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.dll
 C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.pdb
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.MODEL.dll.config

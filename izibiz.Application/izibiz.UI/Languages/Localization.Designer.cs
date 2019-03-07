@@ -187,6 +187,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to İzibiz Masaüstü | E-Fatura Durum Görüntüle.
+        /// </summary>
+        internal static string frmShowInvoiceStatus {
+            get {
+                return ResourceManager.GetString("frmShowInvoiceStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fatura Al.
         /// </summary>
         internal static string getInvoice {
@@ -372,6 +381,15 @@ namespace izibiz.UI.Languages {
         internal static string warningBasicInvoice {
             get {
                 return ResourceManager.GetString("warningBasicInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Faturaya yanıt verildiği için ikinci yanıt verilemez.
+        /// </summary>
+        internal static string warningHasAnswer {
+            get {
+                return ResourceManager.GetString("warningHasAnswer", resourceCulture);
             }
         }
     }

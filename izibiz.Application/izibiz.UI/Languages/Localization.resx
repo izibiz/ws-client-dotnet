@@ -159,6 +159,9 @@
   <data name="formLoginPage" xml:space="preserve">
     <value>İzibiz Masaüstü | Giriş</value>
   </data>
+  <data name="frmShowInvoiceStatus" xml:space="preserve">
+    <value>İzibiz Masaüstü | E-Fatura Durum Görüntüle</value>
+  </data>
   <data name="getInvoice" xml:space="preserve">
     <value>Fatura Al</value>
   </data>
@@ -221,5 +224,8 @@
   </data>
   <data name="warningBasicInvoice" xml:space="preserve">
     <value>TEMEL FATURAYA YANIT VERILMEZ</value>
+  </data>
+  <data name="warningHasAnswer" xml:space="preserve">
+    <value>Faturaya yanıt verildiği için ikinci yanıt verilemez</value>
   </data>
 </root>

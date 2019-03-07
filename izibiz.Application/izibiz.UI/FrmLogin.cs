@@ -28,6 +28,8 @@ namespace izibiz.UI
         private void Form1_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
+            txtUsername.Text = "izibiz-test2";
+            txtPassword.Text = "izi321";
         }
 
 

@@ -40,7 +40,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelConfirmation = new System.Windows.Forms.Panel();
             this.btnPdfDownload = new System.Windows.Forms.Button();
-            this.btnUpdateStateIncoming = new System.Windows.Forms.Button();
+            this.btnIncomingInvGetState = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
             this.btnGetInvoiceIncoming = new System.Windows.Forms.Button();
@@ -51,7 +51,7 @@
             this.panelConfirmationSentInv = new System.Windows.Forms.Panel();
             this.btnFaultyInvoices = new System.Windows.Forms.Button();
             this.btnSentInvAgainSent = new System.Windows.Forms.Button();
-            this.btnSentInvUpdateState = new System.Windows.Forms.Button();
+            this.btnSentInvGetState = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.panelConfirmation.SuspendLayout();
@@ -155,13 +155,13 @@
             // 
             this.tableGrid.BackgroundColor = System.Drawing.Color.MintCream;
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(168, 126);
+            this.tableGrid.Location = new System.Drawing.Point(168, 236);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(10);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(916, 421);
+            this.tableGrid.Size = new System.Drawing.Size(916, 311);
             this.tableGrid.TabIndex = 12;
-            this.tableGrid.Click += new System.EventHandler(this.tableGrid_Click);
+            this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellContentClick);
             // 
             // lblTitle
             // 
@@ -176,7 +176,7 @@
             // panelConfirmation
             // 
             this.panelConfirmation.Controls.Add(this.btnPdfDownload);
-            this.panelConfirmation.Controls.Add(this.btnUpdateStateIncoming);
+            this.panelConfirmation.Controls.Add(this.btnIncomingInvGetState);
             this.panelConfirmation.Controls.Add(this.btnAccept);
             this.panelConfirmation.Controls.Add(this.btnReject);
             this.panelConfirmation.Controls.Add(this.btnGetInvoiceIncoming);
@@ -200,21 +200,23 @@
             this.btnPdfDownload.TabIndex = 5;
             this.btnPdfDownload.Text = "pdf indir";
             this.btnPdfDownload.UseVisualStyleBackColor = false;
+            this.btnPdfDownload.Click += new System.EventHandler(this.btnPdfDownload_Click);
             // 
-            // btnUpdateStateIncoming
+            // btnIncomingInvGetState
             // 
-            this.btnUpdateStateIncoming.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnUpdateStateIncoming.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnUpdateStateIncoming.FlatAppearance.BorderSize = 2;
-            this.btnUpdateStateIncoming.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateStateIncoming.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnUpdateStateIncoming.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateStateIncoming.Location = new System.Drawing.Point(505, 20);
-            this.btnUpdateStateIncoming.Name = "btnUpdateStateIncoming";
-            this.btnUpdateStateIncoming.Size = new System.Drawing.Size(120, 35);
-            this.btnUpdateStateIncoming.TabIndex = 3;
-            this.btnUpdateStateIncoming.Text = "durum güncelle";
-            this.btnUpdateStateIncoming.UseVisualStyleBackColor = false;
+            this.btnIncomingInvGetState.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnIncomingInvGetState.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnIncomingInvGetState.FlatAppearance.BorderSize = 2;
+            this.btnIncomingInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIncomingInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnIncomingInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnIncomingInvGetState.Location = new System.Drawing.Point(505, 20);
+            this.btnIncomingInvGetState.Name = "btnIncomingInvGetState";
+            this.btnIncomingInvGetState.Size = new System.Drawing.Size(120, 35);
+            this.btnIncomingInvGetState.TabIndex = 3;
+            this.btnIncomingInvGetState.Text = "durum sorgula";
+            this.btnIncomingInvGetState.UseVisualStyleBackColor = false;
+            this.btnIncomingInvGetState.Click += new System.EventHandler(this.btnIncomingInvGetState_Click);
             // 
             // btnAccept
             // 
@@ -301,7 +303,7 @@
             // 
             this.panelIncomingInvoice.Controls.Add(this.panelConfirmation);
             this.panelIncomingInvoice.Controls.Add(this.btnIncomingRefresh);
-            this.panelIncomingInvoice.Location = new System.Drawing.Point(0, 0);
+            this.panelIncomingInvoice.Location = new System.Drawing.Point(168, 128);
             this.panelIncomingInvoice.Name = "panelIncomingInvoice";
             this.panelIncomingInvoice.Size = new System.Drawing.Size(916, 83);
             this.panelIncomingInvoice.TabIndex = 16;
@@ -309,10 +311,9 @@
             // 
             // panelSentInvoice
             // 
-            this.panelSentInvoice.Controls.Add(this.panelIncomingInvoice);
             this.panelSentInvoice.Controls.Add(this.panelConfirmationSentInv);
             this.panelSentInvoice.Controls.Add(this.btnRefreshSentInvoice);
-            this.panelSentInvoice.Location = new System.Drawing.Point(158, 30);
+            this.panelSentInvoice.Location = new System.Drawing.Point(161, 28);
             this.panelSentInvoice.Name = "panelSentInvoice";
             this.panelSentInvoice.Size = new System.Drawing.Size(913, 83);
             this.panelSentInvoice.TabIndex = 17;
@@ -322,7 +323,7 @@
             // 
             this.panelConfirmationSentInv.Controls.Add(this.btnFaultyInvoices);
             this.panelConfirmationSentInv.Controls.Add(this.btnSentInvAgainSent);
-            this.panelConfirmationSentInv.Controls.Add(this.btnSentInvUpdateState);
+            this.panelConfirmationSentInv.Controls.Add(this.btnSentInvGetState);
             this.panelConfirmationSentInv.Location = new System.Drawing.Point(145, 18);
             this.panelConfirmationSentInv.Name = "panelConfirmationSentInv";
             this.panelConfirmationSentInv.Size = new System.Drawing.Size(745, 47);
@@ -359,20 +360,21 @@
             this.btnSentInvAgainSent.Text = "Yeniden gönder";
             this.btnSentInvAgainSent.UseVisualStyleBackColor = false;
             // 
-            // btnSentInvUpdateState
+            // btnSentInvGetState
             // 
-            this.btnSentInvUpdateState.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSentInvUpdateState.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnSentInvUpdateState.FlatAppearance.BorderSize = 2;
-            this.btnSentInvUpdateState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSentInvUpdateState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSentInvUpdateState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSentInvUpdateState.Location = new System.Drawing.Point(17, 9);
-            this.btnSentInvUpdateState.Name = "btnSentInvUpdateState";
-            this.btnSentInvUpdateState.Size = new System.Drawing.Size(120, 35);
-            this.btnSentInvUpdateState.TabIndex = 16;
-            this.btnSentInvUpdateState.Text = "Durum güncelle";
-            this.btnSentInvUpdateState.UseVisualStyleBackColor = false;
+            this.btnSentInvGetState.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnSentInvGetState.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSentInvGetState.FlatAppearance.BorderSize = 2;
+            this.btnSentInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSentInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSentInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSentInvGetState.Location = new System.Drawing.Point(17, 9);
+            this.btnSentInvGetState.Name = "btnSentInvGetState";
+            this.btnSentInvGetState.Size = new System.Drawing.Size(120, 35);
+            this.btnSentInvGetState.TabIndex = 16;
+            this.btnSentInvGetState.Text = "Durum sorgula";
+            this.btnSentInvGetState.UseVisualStyleBackColor = false;
+            this.btnSentInvGetState.Click += new System.EventHandler(this.btnSentInvGetState_Click);
             // 
             // FrmInvoice
             // 
@@ -380,6 +382,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1136, 566);
+            this.Controls.Add(this.panelIncomingInvoice);
             this.Controls.Add(this.panelSentInvoice);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.tableGrid);
@@ -418,13 +421,13 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnGetInvoiceIncoming;
         private System.Windows.Forms.Button btnPdfDownload;
-        private System.Windows.Forms.Button btnUpdateStateIncoming;
+        private System.Windows.Forms.Button btnIncomingInvGetState;
         private System.Windows.Forms.Button btnIncomingRefresh;
         private System.Windows.Forms.Button btnRefreshSentInvoice;
         private System.Windows.Forms.Panel panelIncomingInvoice;
         private System.Windows.Forms.Panel panelSentInvoice;
         private System.Windows.Forms.Button btnSentInvAgainSent;
-        private System.Windows.Forms.Button btnSentInvUpdateState;
+        private System.Windows.Forms.Button btnSentInvGetState;
         private System.Windows.Forms.Panel panelConfirmationSentInv;
         private System.Windows.Forms.Button btnFaultyInvoices;
         private System.Windows.Forms.ToolStripMenuItem itemDraftNewInvoice;

@@ -159,6 +159,9 @@
   <data name="formLoginPage" xml:space="preserve">
     <value>İzibiz Desktop | Login</value>
   </data>
+  <data name="frmShowInvoiceStatus" xml:space="preserve">
+    <value>İzibiz Desktop | Show  E-İnvoice Status</value>
+  </data>
   <data name="getInvoice" xml:space="preserve">
     <value>Get Invoice</value>
   </data>
@@ -221,5 +224,8 @@
   </data>
   <data name="warningBasicInvoice" xml:space="preserve">
     <value>Not Responsible To Basic Invoice</value>
+  </data>
+  <data name="warningHasAnswer" xml:space="preserve">
+    <value>No second response because the invoice is answered</value>
   </data>
 </root>

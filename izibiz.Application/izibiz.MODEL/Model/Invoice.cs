@@ -9,21 +9,21 @@ namespace izibiz.MODEL.Model
   public  class Invoice
     {
 
-        public string faturaNumarası { get; set; }
+        public string ID { get; set; }
         public string ettn { get; set; }
-        public DateTime faturaTarihi { get; set; }
-        public string senaryo { get; set; }
-        public string faturaTipi { get; set; }
-        public string gönderenUnvan { get; set; }
-        public string gönderenVknTckn { get; set; }
-        public DateTime ulastıgiTarih { get; set; }
-        public string zarfID { get; set; }
-        public string durum { get; set; }
-        public int gibDurum { get; set; }
-        public string gibDurumAciklama { get; set; }
-        public string uygulamaYanitDurumu { get; set; }
-        public string gönderenGB { get; set; }
-        public string alıcıPK { get; set; }
+        public DateTime issueDate { get; set; }
+        public string profileid { get; set; }
+        public string type { get; set; }
+        public string supplier { get; set; }
+        public string sender { get; set; }
+        public DateTime cDate { get; set; }
+        public string envelopeIdentifier { get; set; }
+        public string status { get; set; }
+        public int gibStatus { get; set; }
+        public string gibSatusDescription { get; set; }
+        public string Uuid { get; set; }
+        public string from { get; set; }
+        public string to { get; set; }
 
     }
 }

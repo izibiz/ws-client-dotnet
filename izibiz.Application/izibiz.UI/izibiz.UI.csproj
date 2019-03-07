@@ -66,6 +66,12 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmShowInvoiceState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShowInvoiceState.Designer.cs">
+      <DependentUpon>FrmShowInvoiceState.cs</DependentUpon>
+    </Compile>
     <Compile Include="Languages\Localization.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShowInvoiceState.resx">
+      <DependentUpon>FrmShowInvoiceState.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Localization.en-US.resx">
       <Generator>ResXFileCodeGenerator</Generator>

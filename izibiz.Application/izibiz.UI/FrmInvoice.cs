@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.ServiceModel;
 using izibiz.SERVICES.serviceOib;
 
+
 namespace izibiz.UI
 {
     public partial class FrmInvoice : Form
@@ -58,7 +59,7 @@ namespace izibiz.UI
             itemDraftInvoiceList.Text = Localization.listDraftInvoice;
             //panelSentInvoices butonlar
             btnRefreshSentInvoice.Text = Localization.refresh;
-            btnSentInvUpdateState.Text = Localization.updateState;
+            btnSentInvGetState.Text = Localization.updateState;
             btnSentInvAgainSent.Text = Localization.againSent;
             btnFaultyInvoices.Text = Localization.faulty;
             //panelIncomingInvoices butonlar
@@ -67,7 +68,7 @@ namespace izibiz.UI
             btnReject.Text = Localization.reject;
             btnGetInvoiceIncoming.Text = Localization.getInvoice;
             btnPdfDownload.Text = Localization.pdfDownload;
-            btnUpdateStateIncoming.Text = Localization.updateState;
+            btnIncomingInvGetState.Text = Localization.updateState;
             #endregion
         }
 
@@ -83,6 +84,7 @@ namespace izibiz.UI
             try
             {
                 tableGrid.DataSource = null;
+                addViewButtonToDatagridView();
                 tableGrid.DataSource = Singleton.instanceInvoiceGet.getIncomingInvoice();
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -149,6 +151,7 @@ namespace izibiz.UI
             try
             {
                 tableGrid.DataSource = null;
+                addViewButtonToDatagridView();
                 tableGrid.DataSource = Singleton.instanceInvoiceGet.getIncomingInvoice();
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -182,37 +185,19 @@ namespace izibiz.UI
 
 
 
-        private void tableGrid_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (invType == 1)//gelen faturalara tıklandıysa
-                {
-                    panelConfirmation.Visible = true;
 
-                    foreach (DataGridViewRow row in tableGrid.SelectedRows)
-                    {
-                        if (row.Cells[9].Value == null || row.Cells[9].Value.ToString() != "RECEIVE - WAIT_APPLICATION_RESPONSE")//olan varsa
-                        {
-                            btnAccept.Enabled = false;
-                            btnReject.Enabled = false;
-                            break;
-                        }
-                        else
-                        {
-                            btnAccept.Enabled = true;
-                            btnReject.Enabled = true;
-                        }
-                    }
-                }
-                else if (invType == 2)//giden faturalar
-                {
-                    panelConfirmationSentInv.Visible = true;
-                }
-            }
-            catch (Exception ex)
+
+
+        private void addViewButtonToDatagridView()
+        {
+            DataGridViewButtonColumn viewButtonColumn = new DataGridViewButtonColumn();
+            viewButtonColumn.Name = "Preview";
+            viewButtonColumn.Text = "View Invioce";
+            viewButtonColumn.UseColumnTextForButtonValue = true;
+            int columnIndex = 0;
+            if (tableGrid.Columns["Preview"] == null)
             {
-                MessageBox.Show(ex.ToString());
+                tableGrid.Columns.Insert(columnIndex, viewButtonColumn);
             }
         }
 
@@ -225,7 +210,7 @@ namespace izibiz.UI
 
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    DateTime dt = DateTime.Parse(row.Cells[2].Value.ToString());
+                    DateTime dt = DateTime.Parse(row.Cells[3].Value.ToString());
                     TimeSpan fark = DateTime.Today - dt;
 
                     if (fark.TotalDays > 8)//8 gün geçmis
@@ -233,14 +218,19 @@ namespace izibiz.UI
                         MessageBox.Show(Localization.warning8Day);
                         break;
                     }
-                    else if (row.Cells[4].Value != null && row.Cells[4].Value.ToString() == "TEMELFATURA")//ticari faturaysa
+                    else if (row.Cells[5].Value == null || row.Cells[5].Value.ToString() == "TEMELFATURA")//ticari faturaysa
                     {
                         MessageBox.Show(Localization.warningBasicInvoice);
                         break;
                     }
+                    else if (row.Cells[9].Value == null || row.Cells[9].Value.ToString() != "RECEIVE - WAIT_APPLICATION_RESPONSE")//olan varsa
+                    {
+                        MessageBox.Show(Localization.warningHasAnswer);
+                        break;
+                    }
                     else//fatura noların oldugu kabul lıstesi olustur
                     {
-                        acceptList[i] = row.Cells[0].Value.ToString();
+                        acceptList[i] = row.Cells[1].Value.ToString();
                         i++;
                     }
                 }
@@ -265,7 +255,7 @@ namespace izibiz.UI
 
 
         private void btnAccept_Click(object sender, EventArgs e)
-        {    
+        {
             invoiceResponseAcceptOrReject("KABUL");
         }
 
@@ -277,9 +267,139 @@ namespace izibiz.UI
         }
 
 
+        private void showStateInvoice()
+        {
+            try
+            {
+                if (tableGrid.SelectedRows.Count == 1)
+                {
+                    foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                    {
+                        if (row.Cells[4].Value.ToString() == "TEMELFATURA")
+                        {
+                            MessageBox.Show("Temel faturanın durumu değişmeyeceği için durum sorgulaması yapılmayacaktır");
+                            break;
+                        }
+                        if (row.Cells[10].Value.ToString().Contains("SUCCEED") || row.Cells[10].Value.ToString().Contains("FAILED"))
+                        {
+                            MessageBox.Show("Faturanızın durumu nihai duruma ulaştığından değişmeyeceği için durum sorgulaması yapılmayacaktır");
+                            break;
+                        }
+
+                        string id = row.Cells[1].Value.ToString();
+                        InvoiceStatus invoiceStatus = Singleton.instanceInvoiceGet.getInvoiceState(id);
+
+                        using (FrmShowInvoiceState frmShowInvoiceState = new FrmShowInvoiceState(invoiceStatus))
+                        {
+                            frmShowInvoiceState.ShowDialog();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("secilen fatura sayısı 1 olmalıdır");
+                }
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void previewInvoice()
+        {
+            try
+            {
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {
+                    string id = row.Cells[1].Value.ToString();
+                   //controllerda fonksıyonu yazılacak
+                     /*
+                    using (FrmShowInvoiceState frmShowInvoiceState = new FrmShowInvoiceState())
+                    {
+                        frmShowInvoiceState.ShowDialog();
+                    }*/
+                }
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnIncomingInvGetState_Click(object sender, EventArgs e)
+        {
+            showStateInvoice();
+        }
+
+        private void btnSentInvGetState_Click(object sender, EventArgs e)
+        {
+            showStateInvoice();
+        }
+
+        private void tableGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (invType == 1)//gelen faturalara tıklandıysa
+                {
+                    panelConfirmation.Visible = true;
+                }
+                else if (invType == 2)//giden faturalar
+                {
+                    panelConfirmationSentInv.Visible = true;
+                }
+
+                //göruntule butonuna tıkladıysa
+                if (e.ColumnIndex == tableGrid.Columns["Preview"].Index)
+                {
+                    previewInvoice();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnPdfDownload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tableGrid.SelectedRows.Count == 1)
+                {
+                    foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                    {
+                        string id = row.Cells[1].Value.ToString();
+                 
+
+             
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("secilen fatura sayısı 1 olmalıdır");
+                }
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
 
-
+        }
     }
 
 }

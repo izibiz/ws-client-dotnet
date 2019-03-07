@@ -119,3 +119,5 @@ C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Deb
 C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CopyComplete
 C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.exe
 C:\Users\gamze\Desktop\git\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.pdb
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.MODEL.dll.config
+C:\Users\gamze.sahin\Desktop\Github\izibizForm\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmShowInvoiceState.resources
