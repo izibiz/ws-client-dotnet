@@ -194,7 +194,7 @@
             this.btnPdfDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPdfDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnPdfDownload.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPdfDownload.Location = new System.Drawing.Point(366, 20);
+            this.btnPdfDownload.Location = new System.Drawing.Point(493, 19);
             this.btnPdfDownload.Name = "btnPdfDownload";
             this.btnPdfDownload.Size = new System.Drawing.Size(120, 35);
             this.btnPdfDownload.TabIndex = 5;
@@ -210,7 +210,7 @@
             this.btnIncomingInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIncomingInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnIncomingInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIncomingInvGetState.Location = new System.Drawing.Point(505, 20);
+            this.btnIncomingInvGetState.Location = new System.Drawing.Point(354, 19);
             this.btnIncomingInvGetState.Name = "btnIncomingInvGetState";
             this.btnIncomingInvGetState.Size = new System.Drawing.Size(120, 35);
             this.btnIncomingInvGetState.TabIndex = 3;

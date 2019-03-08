@@ -12,13 +12,16 @@ namespace izibiz.CONTROLLER.Web_Services
     public class AuthenticationController
     {
 
-        AuthenticationServicePortClient Auth = new AuthenticationServicePortClient();
-        private REQUEST_HEADERType authRequestHeader;
-
+        AuthenticationServicePortClient Auth;
+        REQUEST_HEADERType authRequestHeader;
 
         public AuthenticationController()
         {
-            #region createRequestHeader   
+            Auth = new AuthenticationServicePortClient();
+        }
+
+        private  REQUEST_HEADERType createAuthRequestHeader()
+        {
             authRequestHeader = new REQUEST_HEADERType()
             {
                 SESSION_ID = "-1",
@@ -26,9 +29,8 @@ namespace izibiz.CONTROLLER.Web_Services
                 CHANNEL_NAME = "İZİBİZ",
                 HOSTNAME = "HOST-İZİBİZ-DEFAULT"
             };
-            #endregion
+            return authRequestHeader;
         }
-
 
 
 
@@ -36,7 +38,7 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             var req = new LoginRequest
             {
-                REQUEST_HEADER = authRequestHeader,
+                REQUEST_HEADER = createAuthRequestHeader(),
                 USER_NAME = usurname,
                 PASSWORD = password
             };
@@ -46,10 +48,7 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 string sesionId = loginRes.SESSION_ID;
                 Session.Default.id = sesionId;
-                if(EInvoiceController.requestHeader != null)
-                {
-                    EInvoiceController.createRequestHeader();
-                }
+                RequestHeader.createRequestHeader();
                 return true;
             }
             else

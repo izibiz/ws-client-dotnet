@@ -12,16 +12,16 @@ using System.Windows.Forms;
 
 namespace izibiz.UI
 {
-    public partial class FrmShowInvoiceState : Form
+    public partial class FrmDialog : Form
     {
         InvoiceStatus invoiceStatus;
 
-        public FrmShowInvoiceState()
+        public FrmDialog()
         {
             InitializeComponent();
         }
 
-        public FrmShowInvoiceState(InvoiceStatus invStatus)
+        public FrmDialog(InvoiceStatus invStatus)
         {
             InitializeComponent();
             invoiceStatus = invStatus;
@@ -67,7 +67,6 @@ namespace izibiz.UI
             
             dataGridView1.DataSource = dt;
         }
-
 
 
     }

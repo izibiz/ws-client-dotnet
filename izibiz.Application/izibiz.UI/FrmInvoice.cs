@@ -207,14 +207,26 @@ namespace izibiz.UI
 
         private void addViewButtonToDatagridView()
         {
-            DataGridViewButtonColumn viewButtonColumn = new DataGridViewButtonColumn();
-            viewButtonColumn.Name = "Preview";
-            viewButtonColumn.Text = "View Invioce";
-            viewButtonColumn.UseColumnTextForButtonValue = true;
-            int columnIndex = 0;
+            int columnIndex;
+            //pdf goruntule butonu
+            DataGridViewButtonColumn viewPdfButtonColumn = new DataGridViewButtonColumn();
+            viewPdfButtonColumn.Name = "PreviewPdf";
+            viewPdfButtonColumn.Text = "pdf";
+            viewPdfButtonColumn.UseColumnTextForButtonValue = true;
+            columnIndex = 0;
             if (tableGrid.Columns["Preview"] == null)
             {
-                tableGrid.Columns.Insert(columnIndex, viewButtonColumn);
+                tableGrid.Columns.Insert(columnIndex, viewPdfButtonColumn);
+            }
+            //xml goruntule butonu
+            DataGridViewButtonColumn viewXmlButtonColumn = new DataGridViewButtonColumn();
+            viewXmlButtonColumn.Name = "PreviewXml";
+            viewXmlButtonColumn.Text = "xml";
+            viewXmlButtonColumn.UseColumnTextForButtonValue = true;
+            columnIndex = 1;
+            if (tableGrid.Columns["PreviewXml"] == null)
+            {
+                tableGrid.Columns.Insert(columnIndex, viewXmlButtonColumn);
             }
         }
 
@@ -312,7 +324,7 @@ namespace izibiz.UI
                         string id = row.Cells[1].Value.ToString();
                         InvoiceStatus invoiceStatus = Singleton.instanceInvoiceGet.getInvoiceState(id);
 
-                        using (FrmShowInvoiceState frmShowInvoiceState = new FrmShowInvoiceState(invoiceStatus))
+                        using (FrmDialog frmShowInvoiceState = new FrmDialog(invoiceStatus))
                         {
                             frmShowInvoiceState.ShowDialog();
                         }
@@ -337,19 +349,15 @@ namespace izibiz.UI
             }
         }
 
-        private void previewInvoice()
+        private void previewInvoiceType(string type)
         {
             try
             {
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    string id = row.Cells[1].Value.ToString();
-                    //controllerda fonksıyonu yazılacak
-                    /*
-                   using (FrmShowInvoiceState frmShowInvoiceState = new FrmShowInvoiceState())
-                   {
-                       frmShowInvoiceState.ShowDialog();
-                   }*/
+                    string uuid = row.Cells[2].Value.ToString();
+                    string filepath=Singleton.instanceInvoiceGet.getInvoiceType(uuid,type);
+                    System.Diagnostics.Process.Start(filepath);
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -417,10 +425,10 @@ namespace izibiz.UI
                     panelConfirmationSentInv.Visible = true;
                 }
 
-                //göruntule butonuna tıkladıysa
-                if (e.ColumnIndex == tableGrid.Columns["Preview"].Index)
+                //PDF göruntule butonuna tıkladıysa
+                if (e.ColumnIndex == tableGrid.Columns["PreviewPdf"].Index)
                 {
-                    previewInvoice();
+                    previewInvoiceType("PDF");
                 }
             }
             catch (Exception ex)
@@ -433,13 +441,9 @@ namespace izibiz.UI
         {
             try
             {
-                foreach (DataGridViewRow row in tableGrid.SelectedRows)
-                {
-                    string uuid = row.Cells[2].Value.ToString();
+                Singleton.instanceInvoiceGet.downloadInvoice();
+                MessageBox.Show("Gelen faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır");
                 
-
-                    MessageBox.Show("secılı faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır");
-                }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -454,6 +458,11 @@ namespace izibiz.UI
                 MessageBox.Show(ex.ToString());
             }
         }
+
+       
+    
+
+     
     }
 
 }
