@@ -70,6 +70,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Açıklama Ekle.
+        /// </summary>
+        internal static string addDescription {
+            get {
+                return ResourceManager.GetString("addDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tekrar Gönder.
         /// </summary>
         internal static string againSent {
@@ -349,6 +358,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Durum Değiştirme Başarısız.
+        /// </summary>
+        internal static string unsuccesChangeState {
+            get {
+                return ResourceManager.GetString("unsuccesChangeState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Durum Güncelle.
         /// </summary>
         internal static string updateState {
@@ -399,6 +417,15 @@ namespace izibiz.UI.Languages {
         internal static string warningHasAnswer {
             get {
                 return ResourceManager.GetString("warningHasAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lütfen bir açıklama yazınız.
+        /// </summary>
+        internal static string writeDescription {
+            get {
+                return ResourceManager.GetString("writeDescription", resourceCulture);
             }
         }
     }

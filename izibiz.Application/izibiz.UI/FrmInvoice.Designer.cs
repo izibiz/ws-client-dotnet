@@ -340,6 +340,7 @@
             this.btnSentInvAgainSent.TabIndex = 17;
             this.btnSentInvAgainSent.Text = "Yeniden gönder";
             this.btnSentInvAgainSent.UseVisualStyleBackColor = false;
+            this.btnSentInvAgainSent.Click += new System.EventHandler(this.btnSentInvAgainSent_Click);
             // 
             // btnSentInvGetState
             // 

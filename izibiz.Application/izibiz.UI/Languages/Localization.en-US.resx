@@ -120,6 +120,9 @@
   <data name="accept" xml:space="preserve">
     <value>Accept</value>
   </data>
+  <data name="addDescription" xml:space="preserve">
+    <value>Add Description</value>
+  </data>
   <data name="againSent" xml:space="preserve">
     <value>Again Sent</value>
   </data>
@@ -213,6 +216,9 @@
   <data name="succesChangeState" xml:space="preserve">
     <value>Successful Change State</value>
   </data>
+  <data name="unsuccesChangeState" xml:space="preserve">
+    <value>Unsuccessful Change State</value>
+  </data>
   <data name="updateState" xml:space="preserve">
     <value>Update State</value>
   </data>
@@ -230,5 +236,8 @@
   </data>
   <data name="warningHasAnswer" xml:space="preserve">
     <value>No second response because the invoice is answered</value>
+  </data>
+  <data name="writeDescription" xml:space="preserve">
+    <value>Please Write  Description</value>
   </data>
 </root>

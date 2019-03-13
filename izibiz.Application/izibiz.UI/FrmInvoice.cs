@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.ServiceModel;
 using izibiz.SERVICES.serviceOib;
 using izibiz.UI.Properties;
+using Microsoft.VisualBasic;
 
 namespace izibiz.UI
 {
@@ -112,6 +113,7 @@ namespace izibiz.UI
             try
             {
                 tableGrid.DataSource = null;
+                addViewButtonToDatagridView();
                 tableGrid.DataSource = Singleton.instanceInvoiceGet.getSentInvoice();
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -138,6 +140,7 @@ namespace izibiz.UI
             try
             {
                 tableGrid.DataSource = null;
+                addViewButtonToDatagridView();
                 //gelecek
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -227,47 +230,66 @@ namespace izibiz.UI
 
 
 
-        private void invoiceResponseAcceptOrReject(string response)
+        private void invoiceResponseAcceptOrReject(string state)
+        {
+            int verifiedrow = 0;
+            int invoiceCount = tableGrid.SelectedRows.Count;
+            string[] description = new string[invoiceCount];
+
+
+            string desc = Interaction.InputBox(Localization.writeDescription, Localization.addDescription, "Default");
+
+            foreach (DataGridViewRow row in tableGrid.SelectedRows)
+            {
+                DateTime dt = DateTime.Parse(row.Cells["issueDate"].Value.ToString());
+                TimeSpan fark = DateTime.Today - dt;
+
+                if (row.Cells["profileid"].Value == null || row.Cells[5].Value.ToString() == "TEMELFATURA")//ticari faturaysa
+                {
+                    MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningBasicInvoice);
+                    break;
+                }
+                else if (fark.TotalDays > 8)//8 gün geçmis
+                {
+                    MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warning8Day);
+                    break;
+                }
+                else if (row.Cells["status"].Value == null || row.Cells["status"].Value.ToString() != "RECEIVE - WAIT_APPLICATION_RESPONSE")//olan varsa
+                {
+                    MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningHasAnswer);
+                    break;
+                }
+                else//fatura noların oldugu kabul lıstesi olustur
+                {
+                    string id = row.Cells["ID"].Value.ToString();
+                    Singleton.instanceInvoiceGet.createInvoiceWithId(invoiceCount, id, verifiedrow);
+
+                    description[verifiedrow] = desc;
+                    verifiedrow++;
+                }
+            }
+            if (verifiedrow > 0)//hicbir ınvoıce verıfıed olmamıssa
+            {
+
+                string res = Singleton.instanceInvoiceGet.sendInvoiceResponse(state, description);
+                if (res == "succes") //return code 0 ise
+                {
+                    MessageBox.Show(Localization.succesChangeState);
+                }
+                else
+                {
+                    MessageBox.Show(Localization.unsuccesChangeState);
+                }
+            }
+        }
+
+
+
+        private void btnAccept_Click(object sender, EventArgs e)
         {
             try
             {
-                string[] acceptList = new string[tableGrid.SelectedRows.Count];
-                int i = 0;
-
-                foreach (DataGridViewRow row in tableGrid.SelectedRows)
-                {
-                    DateTime dt = DateTime.Parse(row.Cells[3].Value.ToString());
-                    TimeSpan fark = DateTime.Today - dt;
-
-                    if (fark.TotalDays > 8)//8 gün geçmis
-                    {
-                        MessageBox.Show(Localization.warning8Day);
-                        break;
-                    }
-                    else if (row.Cells[5].Value == null || row.Cells[5].Value.ToString() == "TEMELFATURA")//ticari faturaysa
-                    {
-                        MessageBox.Show(Localization.warningBasicInvoice);
-                        break;
-                    }
-                    else if (row.Cells[9].Value == null || row.Cells[9].Value.ToString() != "RECEIVE - WAIT_APPLICATION_RESPONSE")//olan varsa
-                    {
-                        MessageBox.Show(Localization.warningHasAnswer);
-                        break;
-                    }
-                    else//fatura noların oldugu kabul lıstesi olustur
-                    {
-                        acceptList[i] = row.Cells[1].Value.ToString();
-                        i++;
-                    }
-                }
-                if (acceptList[0] != null)
-                {
-                    string res = Singleton.instanceInvoiceGet.sendInvoiceResponse(acceptList, response);
-                    if (res == "succes")
-                    {
-                        MessageBox.Show(Localization.succesChangeState);
-                    }
-                }
+                invoiceResponseAcceptOrReject("KABUL");
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -284,16 +306,26 @@ namespace izibiz.UI
         }
 
 
-        private void btnAccept_Click(object sender, EventArgs e)
-        {
-            invoiceResponseAcceptOrReject("KABUL");
-        }
-
-
 
         private void btnReject_Click(object sender, EventArgs e)
         {
-            invoiceResponseAcceptOrReject("RED");
+
+            try
+            {
+                invoiceResponseAcceptOrReject("RED");
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
 
@@ -305,19 +337,19 @@ namespace izibiz.UI
                 {
                     foreach (DataGridViewRow row in tableGrid.SelectedRows)
                     {
-                        if (row.Cells[4].Value.ToString() == "TEMELFATURA")
+                        if (row.Cells["profileid"].Value.ToString() == "TEMELFATURA")
                         {
                             MessageBox.Show("Temel faturanın durumu değişmeyeceği için durum sorgulaması yapılmayacaktır");
                             break;
                         }
-                        if (row.Cells[10].Value.ToString().Contains("SUCCEED") || row.Cells[10].Value.ToString().Contains("FAILED"))
+                        if (row.Cells["status"].Value.ToString().Contains("SUCCEED") || row.Cells[11].Value.ToString().Contains("FAILED"))
                         {
                             MessageBox.Show("Faturanızın durumu nihai duruma ulaştığından değişmeyeceği için durum sorgulaması yapılmayacaktır");
                             break;
                         }
 
-                        string id = row.Cells[1].Value.ToString();
-                        InvoiceStatus invoiceStatus = Singleton.instanceInvoiceGet.getInvoiceState(id);
+                        string uuid = row.Cells["ettn"].Value.ToString();
+                        InvoiceStatus invoiceStatus = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
 
                         using (FrmDialog frmShowInvoiceState = new FrmDialog(invoiceStatus))
                         {
@@ -382,7 +414,7 @@ namespace izibiz.UI
 
 
 
-       
+
 
 
         private void tableGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -437,7 +469,25 @@ namespace izibiz.UI
             }
         }
 
-       
+        private void btnSentInvAgainSent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 
 }

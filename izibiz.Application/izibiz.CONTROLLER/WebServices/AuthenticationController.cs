@@ -27,9 +27,7 @@ namespace izibiz.CONTROLLER.Web_Services
             authRequestHeader = new REQUEST_HEADERType()
             {
                 SESSION_ID = "-1",
-                APPLICATION_NAME = "İZİBİZ MASAUSTU V1.0",
-                CHANNEL_NAME = "İZİBİZ",
-                HOSTNAME = "HOST-İZİBİZ-DEFAULT"
+                APPLICATION_NAME = "izibiz.Application",
             };
             return authRequestHeader;
         }
@@ -46,16 +44,17 @@ namespace izibiz.CONTROLLER.Web_Services
             };
             LoginResponse loginRes = Auth.Login(req);
 
-            if (loginRes.SESSION_ID != null)
+            if (loginRes.ERROR_TYPE == null)
             {
-                 sesionID = loginRes.SESSION_ID;            
+                sesionID = loginRes.SESSION_ID;
                 RequestHeader.createRequestHeader();
                 return true;
             }
             else
             {
+                MessageBox.Show(loginRes.ERROR_TYPE.ERROR_CODE + " " + loginRes.ERROR_TYPE.ERROR_SHORT_DES);
                 return false;
-            }       
+            }
         }
 
 

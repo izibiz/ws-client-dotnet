@@ -17,10 +17,10 @@ namespace izibiz.CONTROLLER
 
         public static void createRequestHeader()
         {
-            requestHeader = new REQUEST_HEADERType()
+            requestHeader = new REQUEST_HEADERType() //default degerler ısterse degısebılır
             {
                 SESSION_ID = AuthenticationController.sesionID,
-                APPLICATION_NAME = "izibiz.Aplication",
+                APPLICATION_NAME = "izibiz.Application",
                 COMPRESSED = "N"
             };
         }

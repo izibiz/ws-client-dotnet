@@ -25,14 +25,15 @@ namespace izibiz.UI
         public FrmLogin()
         {
             InitializeComponent();
+            txtUsername.Text = "izibiz-test2";
+            txtPassword.Text = "izi321";
         }
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
-            txtUsername.Text = "izibiz-test2";
-            txtPassword.Text = "izi321";
+
         }
 
 
@@ -42,32 +43,24 @@ namespace izibiz.UI
             {
                 if (String.IsNullOrEmpty(txtUsername.Text.Trim()) || String.IsNullOrEmpty(txtPassword.Text.Trim()))
                 {
-                    throw new NullUserPassExceptions(Localization.loginBadRequest);
+                    MessageBox.Show(Localization.loginBadRequest, Localization.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);                 
                 }
                 else
                 {
-                    if(Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text))
+                    if(Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
                     {
                         usurname = txtUsername.Text;
                         password = txtPassword.Text;
                         FrmHome frmHome = new FrmHome();
                         frmHome.Show();
                         this.Hide();
-                    }
-                    else
-                    {
-                        MessageBox.Show(Localization.loginWarring);
                     }                             
                 }
-            }
-            catch (NullUserPassExceptions ex)
-            {
-                MessageBox.Show(ex.Message, Localization.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }      
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -125,5 +118,7 @@ namespace izibiz.UI
             Settings.Default.Save();
             localizationItemTextWrite();
         }
+
+       
     }
 }

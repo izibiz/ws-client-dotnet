@@ -120,6 +120,9 @@
   <data name="accept" xml:space="preserve">
     <value>Kabul Et</value>
   </data>
+  <data name="addDescription" xml:space="preserve">
+    <value>Açıklama Ekle</value>
+  </data>
   <data name="againSent" xml:space="preserve">
     <value>Tekrar Gönder</value>
   </data>
@@ -213,6 +216,9 @@
   <data name="succesChangeState" xml:space="preserve">
     <value>Başarılı Durum Değiştirme</value>
   </data>
+  <data name="unsuccesChangeState" xml:space="preserve">
+    <value>Durum Değiştirme Başarısız</value>
+  </data>
   <data name="updateState" xml:space="preserve">
     <value>Durum Güncelle</value>
   </data>
@@ -230,5 +236,8 @@
   </data>
   <data name="warningHasAnswer" xml:space="preserve">
     <value>Faturaya yanıt verildiği için ikinci yanıt verilemez</value>
+  </data>
+  <data name="writeDescription" xml:space="preserve">
+    <value>Lütfen bir açıklama yazınız</value>
   </data>
 </root>
