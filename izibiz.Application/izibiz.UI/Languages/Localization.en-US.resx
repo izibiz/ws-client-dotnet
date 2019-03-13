@@ -192,6 +192,9 @@
   <data name="pdfDownload" xml:space="preserve">
     <value>Pdf Download</value>
   </data>
+  <data name="preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
   <data name="refresh" xml:space="preserve">
     <value>Refresh</value>
   </data>

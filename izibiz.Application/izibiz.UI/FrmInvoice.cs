@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
 using izibiz.SERVICES.serviceOib;
-
+using izibiz.UI.Properties;
 
 namespace izibiz.UI
 {
@@ -67,7 +67,6 @@ namespace izibiz.UI
             btnAccept.Text = Localization.accept;
             btnReject.Text = Localization.reject;
             btnGetInvoiceIncoming.Text = Localization.getInvoice;
-            btnPdfDownload.Text = Localization.pdfDownload;
             btnIncomingInvGetState.Text = Localization.updateState;
             #endregion
         }
@@ -207,27 +206,23 @@ namespace izibiz.UI
 
         private void addViewButtonToDatagridView()
         {
-            int columnIndex;
+            tableGrid.Columns.Clear();
             //pdf goruntule butonu
-            DataGridViewButtonColumn viewPdfButtonColumn = new DataGridViewButtonColumn();
-            viewPdfButtonColumn.Name = "PreviewPdf";
-            viewPdfButtonColumn.Text = "pdf";
-            viewPdfButtonColumn.UseColumnTextForButtonValue = true;
-            columnIndex = 0;
-            if (tableGrid.Columns["Preview"] == null)
+            tableGrid.Columns.Add(new DataGridViewImageColumn()
             {
-                tableGrid.Columns.Insert(columnIndex, viewPdfButtonColumn);
-            }
+                Image = Properties.Resources.iconPdf,
+                Name = "PreviewPdf",
+                HeaderText = Localization.preview
+            });
+
+
             //xml goruntule butonu
-            DataGridViewButtonColumn viewXmlButtonColumn = new DataGridViewButtonColumn();
-            viewXmlButtonColumn.Name = "PreviewXml";
-            viewXmlButtonColumn.Text = "xml";
-            viewXmlButtonColumn.UseColumnTextForButtonValue = true;
-            columnIndex = 1;
-            if (tableGrid.Columns["PreviewXml"] == null)
+            tableGrid.Columns.Add(new DataGridViewImageColumn()
             {
-                tableGrid.Columns.Insert(columnIndex, viewXmlButtonColumn);
-            }
+                Image = Properties.Resources.iconXml,
+                Name = "PreviewXml",
+                HeaderText = Localization.preview,
+            });
         }
 
 
@@ -349,14 +344,15 @@ namespace izibiz.UI
             }
         }
 
+
         private void previewInvoiceType(string type)
         {
             try
             {
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    string uuid = row.Cells[2].Value.ToString();
-                    string filepath=Singleton.instanceInvoiceGet.getInvoiceType(uuid,type);
+                    string id = row.Cells["ID"].Value.ToString();
+                    string filepath = Singleton.instanceInvoiceGet.getInvoiceType(id, type);
                     System.Diagnostics.Process.Start(filepath);
                 }
             }
@@ -384,38 +380,16 @@ namespace izibiz.UI
             showStateInvoice();
         }
 
+
+
        
 
-        private void btnPdfDownload_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                foreach (DataGridViewRow row in tableGrid.SelectedRows)
-                {
-                    string uuid = row.Cells[2].Value.ToString();
-                    Singleton.instanceInvoiceGet.downloadPdf(uuid);
-                    MessageBox.Show("secılı faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır");
-                }
-            }
-            catch (FaultException<REQUEST_ERRORType> ex)
-            {
-                if (ex.Detail.ERROR_CODE == 2005)
-                {
-                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
-                }
-                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
-
-        private void tableGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void tableGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex >= 0)
             {
+                #region panelVisiblity
                 if (invType == 1)//gelen faturalara tıklandıysa
                 {
                     panelConfirmation.Visible = true;
@@ -424,18 +398,22 @@ namespace izibiz.UI
                 {
                     panelConfirmationSentInv.Visible = true;
                 }
+                #endregion
 
                 //PDF göruntule butonuna tıkladıysa
                 if (e.ColumnIndex == tableGrid.Columns["PreviewPdf"].Index)
                 {
                     previewInvoiceType("PDF");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                //xml göruntule butonuna tıkladıysa
+                else if (e.ColumnIndex == tableGrid.Columns["PreviewXml"].Index)
+                {
+                    previewInvoiceType("XML");
+                }
             }
         }
+
+
 
         private void btnGetInvoiceIncoming_Click(object sender, EventArgs e)
         {
@@ -443,7 +421,7 @@ namespace izibiz.UI
             {
                 Singleton.instanceInvoiceGet.downloadInvoice();
                 MessageBox.Show("Gelen faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır");
-                
+
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -460,9 +438,6 @@ namespace izibiz.UI
         }
 
        
-    
-
-     
     }
 
 }

@@ -39,7 +39,6 @@
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelConfirmation = new System.Windows.Forms.Panel();
-            this.btnPdfDownload = new System.Windows.Forms.Button();
             this.btnIncomingInvGetState = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
@@ -161,7 +160,7 @@
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tableGrid.Size = new System.Drawing.Size(916, 311);
             this.tableGrid.TabIndex = 12;
-            this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellContentClick);
+            this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
             // 
             // lblTitle
             // 
@@ -175,7 +174,6 @@
             // 
             // panelConfirmation
             // 
-            this.panelConfirmation.Controls.Add(this.btnPdfDownload);
             this.panelConfirmation.Controls.Add(this.btnIncomingInvGetState);
             this.panelConfirmation.Controls.Add(this.btnAccept);
             this.panelConfirmation.Controls.Add(this.btnReject);
@@ -185,22 +183,6 @@
             this.panelConfirmation.Size = new System.Drawing.Size(768, 72);
             this.panelConfirmation.TabIndex = 14;
             this.panelConfirmation.Visible = false;
-            // 
-            // btnPdfDownload
-            // 
-            this.btnPdfDownload.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnPdfDownload.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnPdfDownload.FlatAppearance.BorderSize = 2;
-            this.btnPdfDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPdfDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnPdfDownload.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPdfDownload.Location = new System.Drawing.Point(493, 19);
-            this.btnPdfDownload.Name = "btnPdfDownload";
-            this.btnPdfDownload.Size = new System.Drawing.Size(120, 35);
-            this.btnPdfDownload.TabIndex = 5;
-            this.btnPdfDownload.Text = "pdf indir";
-            this.btnPdfDownload.UseVisualStyleBackColor = false;
-            this.btnPdfDownload.Click += new System.EventHandler(this.btnPdfDownload_Click);
             // 
             // btnIncomingInvGetState
             // 
@@ -419,7 +401,6 @@
         private System.Windows.Forms.Button btnReject;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnGetInvoiceIncoming;
-        private System.Windows.Forms.Button btnPdfDownload;
         private System.Windows.Forms.Button btnIncomingInvGetState;
         private System.Windows.Forms.Button btnIncomingRefresh;
         private System.Windows.Forms.Button btnRefreshSentInvoice;

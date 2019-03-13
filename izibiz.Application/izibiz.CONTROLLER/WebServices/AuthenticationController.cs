@@ -14,6 +14,8 @@ namespace izibiz.CONTROLLER.Web_Services
 
         AuthenticationServicePortClient Auth;
         REQUEST_HEADERType authRequestHeader;
+        public static string sesionID;
+
 
         public AuthenticationController()
         {
@@ -46,8 +48,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
             if (loginRes.SESSION_ID != null)
             {
-                string sesionId = loginRes.SESSION_ID;
-                Session.Default.id = sesionId;
+                 sesionID = loginRes.SESSION_ID;            
                 RequestHeader.createRequestHeader();
                 return true;
             }

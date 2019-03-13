@@ -286,6 +286,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Önizleme.
+        /// </summary>
+        internal static string preview {
+            get {
+                return ResourceManager.GetString("preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yenile.
         /// </summary>
         internal static string refresh {

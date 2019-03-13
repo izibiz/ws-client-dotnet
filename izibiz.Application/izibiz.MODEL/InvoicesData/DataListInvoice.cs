@@ -5,7 +5,7 @@ namespace izibiz.MODEL
 {
     public class DataListInvoice: Invoice
     {
-        public static List<Invoice> incommingInvioces;
+        public static List<Invoice> incomingInvioces;
         public static List<Invoice> sentInvoices;
         public static List<Invoice> draftInvoices;
     }
