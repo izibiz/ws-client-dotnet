@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="InvoiceSearchKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestEnum.cs" />
     <Compile Include="RequestHeader.cs" />
     <Compile Include="Singleton\Singleton.cs" />
     <Compile Include="WebServices\AuthenticationController.cs" />

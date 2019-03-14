@@ -15,6 +15,8 @@ using System.ServiceModel;
 using izibiz.SERVICES.serviceOib;
 using izibiz.UI.Properties;
 using Microsoft.VisualBasic;
+using izibiz.CONTROLLER;
+using izibiz.MODEL;
 
 namespace izibiz.UI
 {
@@ -22,7 +24,7 @@ namespace izibiz.UI
     {
 
         private int invType;
-
+        DataTable dt;
 
         public FrmInvoice()
         {
@@ -59,12 +61,10 @@ namespace izibiz.UI
             itemSentInvoiceList.Text = Localization.listInvoice;
             itemDraftInvoiceList.Text = Localization.listDraftInvoice;
             //panelSentInvoices butonlar
-            btnRefreshSentInvoice.Text = Localization.refresh;
             btnSentInvGetState.Text = Localization.updateState;
             btnSentInvAgainSent.Text = Localization.againSent;
             btnFaultyInvoices.Text = Localization.faulty;
             //panelIncomingInvoices butonlar
-            btnIncomingRefresh.Text = Localization.refresh;
             btnAccept.Text = Localization.accept;
             btnReject.Text = Localization.reject;
             btnGetInvoiceIncoming.Text = Localization.getInvoice;
@@ -101,6 +101,13 @@ namespace izibiz.UI
             }
         }
 
+        private void AddColumns()
+        {
+            dt.Columns.Add("ıd", typeof(int));
+            dt.Columns.Add("tip", typeof(String));
+
+
+        }
 
 
         private void itemSentInvoiceList_Click(object sender, EventArgs e)
@@ -114,6 +121,7 @@ namespace izibiz.UI
             {
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
+
                 tableGrid.DataSource = Singleton.instanceInvoiceGet.getSentInvoice();
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -159,52 +167,6 @@ namespace izibiz.UI
 
 
 
-        private void btnIncomingRefresh_Click(object sender, EventArgs e)
-        {
-            panelConfirmation.Visible = false;
-            try
-            {
-                tableGrid.DataSource = null;
-                addViewButtonToDatagridView();
-                tableGrid.DataSource = Singleton.instanceInvoiceGet.getIncomingInvoice();
-            }
-            catch (FaultException<REQUEST_ERRORType> ex)
-            {
-                if (ex.Detail.ERROR_CODE == 2005)
-                {
-                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
-                }
-                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-
-        private void btnRefreshSentInvoice_Click(object sender, EventArgs e)
-        {
-            panelConfirmationSentInv.Visible = false;
-            try
-            {
-                tableGrid.DataSource = null;
-                tableGrid.DataSource = Singleton.instanceInvoiceGet.getSentInvoice();
-            }
-            catch (FaultException<REQUEST_ERRORType> ex)
-            {
-                if (ex.Detail.ERROR_CODE == 2005)
-                {
-                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
-                }
-                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
 
 
         private void addViewButtonToDatagridView()
@@ -241,10 +203,10 @@ namespace izibiz.UI
 
             foreach (DataGridViewRow row in tableGrid.SelectedRows)
             {
-                DateTime dt = DateTime.Parse(row.Cells["issueDate"].Value.ToString());
+                DateTime dt = DateTime.Parse(row.Cells["cDate"].Value.ToString());
                 TimeSpan fark = DateTime.Today - dt;
 
-                if (row.Cells["profileid"].Value == null || row.Cells[5].Value.ToString() == "TEMELFATURA")//ticari faturaysa
+                if (row.Cells["profileid"].Value == null || row.Cells[5].Value.ToString() == RequestEnum.GetInvoiceResponseInvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
                 {
                     MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningBasicInvoice);
                     break;
@@ -268,18 +230,9 @@ namespace izibiz.UI
                     verifiedrow++;
                 }
             }
-            if (verifiedrow > 0)//hicbir ınvoıce verıfıed olmamıssa
+            if (verifiedrow > 0)
             {
-
-                string res = Singleton.instanceInvoiceGet.sendInvoiceResponse(state, description);
-                if (res == "succes") //return code 0 ise
-                {
-                    MessageBox.Show(Localization.succesChangeState);
-                }
-                else
-                {
-                    MessageBox.Show(Localization.unsuccesChangeState);
-                }
+                Singleton.instanceInvoiceGet.sendInvoiceResponse(state, description);
             }
         }
 
@@ -289,7 +242,7 @@ namespace izibiz.UI
         {
             try
             {
-                invoiceResponseAcceptOrReject("KABUL");
+                invoiceResponseAcceptOrReject(RequestEnum.SendInvoiceResponseWithServerSignRequestStatus.KABUL.ToString());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -309,10 +262,9 @@ namespace izibiz.UI
 
         private void btnReject_Click(object sender, EventArgs e)
         {
-
             try
             {
-                invoiceResponseAcceptOrReject("RED");
+                invoiceResponseAcceptOrReject(RequestEnum.SendInvoiceResponseWithServerSignRequestStatus.RED.ToString());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -328,40 +280,79 @@ namespace izibiz.UI
             }
         }
 
+        private bool statusValidCheck(DataGridViewRow row)
+        {
+            if (row.Cells["profileid"].Value.ToString() == RequestEnum.GetInvoiceResponseInvoiceProfileid.TEMELFATURA.ToString() ||
+            row.Cells["status"].Value.ToString().Contains("SUCCEED") ||
+            row.Cells["status"].Value.ToString().Contains("FAILED"))
+            {
+                return false;
+            }
 
-        private void showStateInvoice()
+            return true;
+        }
+
+        /* string uuid = tableGrid.Rows[i].Cells["ettn"].Value.ToString();
+         InvoiceStatus invoiceStatus = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
+                         */
+
+
+        private void showStateInvoice(string invoiceType)
         {
             try
             {
-                if (tableGrid.SelectedRows.Count == 1)
+                List<string> unvalidList = new List<string>();
+                List<string> validList = new List<string>();
+                string uuid;
+
+                //   tableGrid.SelectedRows[0].Cells["status"] = Singleton.instanceInvoiceGet.getInvoiceState(validList);
+
+                for (int i = 0; i < tableGrid.SelectedRows.Count; i++)
                 {
-                    foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                    uuid = tableGrid.Rows[i].Cells["ettn"].Value.ToString();
+                    if (!statusValidCheck(tableGrid.SelectedRows[i])) //false ise
                     {
-                        if (row.Cells["profileid"].Value.ToString() == "TEMELFATURA")
+                        unvalidList.Add(uuid);
+                    }
+                    else //true ise
+                    {
+                        validList.Add(uuid);
+                        if (invoiceType == "GELEN")
                         {
-                            MessageBox.Show("Temel faturanın durumu değişmeyeceği için durum sorgulaması yapılmayacaktır");
-                            break;
+                            DataListInvoice.incomingInvioces.Find(x=>x.ettn==uuid).status=Singleton.instanceInvoiceGet.getInvoiceState(uuid);
                         }
-                        if (row.Cells["status"].Value.ToString().Contains("SUCCEED") || row.Cells[11].Value.ToString().Contains("FAILED"))
+                        else  //ınvoiceType GİDEN
                         {
-                            MessageBox.Show("Faturanızın durumu nihai duruma ulaştığından değişmeyeceği için durum sorgulaması yapılmayacaktır");
-                            break;
-                        }
-
-                        string uuid = row.Cells["ettn"].Value.ToString();
-                        InvoiceStatus invoiceStatus = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
-
-                        using (FrmDialog frmShowInvoiceState = new FrmDialog(invoiceStatus))
-                        {
-                            frmShowInvoiceState.ShowDialog();
+                            DataListInvoice.sentInvoices.Find(x => x.ettn == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
                         }
                     }
                 }
-                else
+                string message;
+                if (validList.First() == null) //hicbiri krıterlere uygun degılse
                 {
-                    MessageBox.Show("secilen fatura sayısı 1 olmalıdır");
+                     message = string.Join(Environment.NewLine, unvalidList);
+
+                    MessageBox.Show(message + Environment.NewLine+ "nolu faturalar uygun degil bu yuzden guncellenmedı");
+                }
+                else//uygun fatura varsa
+                {
+                    tableGrid.DataSource = null;
+                    addViewButtonToDatagridView();
+                    if (invoiceType == "GELEN")
+                    {
+                        tableGrid.DataSource = DataListInvoice.incomingInvioces;
+                    }
+                    else
+                    {
+                        tableGrid.DataSource = DataListInvoice.sentInvoices;
+                    }
+                    message = string.Join(Environment.NewLine, validList);
+                    MessageBox.Show(message + Environment.NewLine + "nolu faturalar guncellendı");
                 }
             }
+
+
+
             catch (FaultException<REQUEST_ERRORType> ex)
             {
                 if (ex.Detail.ERROR_CODE == 2005)
@@ -404,12 +395,12 @@ namespace izibiz.UI
 
         private void btnIncomingInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice();
+            showStateInvoice("GELEN");
         }
 
         private void btnSentInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice();
+            showStateInvoice("GİDEN");
         }
 
 
@@ -435,12 +426,12 @@ namespace izibiz.UI
                 //PDF göruntule butonuna tıkladıysa
                 if (e.ColumnIndex == tableGrid.Columns["PreviewPdf"].Index)
                 {
-                    previewInvoiceType("PDF");
+                    previewInvoiceType(RequestEnum.InvoiceSearchKeyType.PDF.ToString());
                 }
                 //xml göruntule butonuna tıkladıysa
                 else if (e.ColumnIndex == tableGrid.Columns["PreviewXml"].Index)
                 {
-                    previewInvoiceType("XML");
+                    previewInvoiceType(RequestEnum.InvoiceSearchKeyType.XML.ToString());
                 }
             }
         }

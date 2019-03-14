@@ -9,23 +9,32 @@ namespace izibiz.CONTROLLER
 {
    public class InvoiceSearchKey
     {
-        public static GetInvoiceRequestINVOICE_SEARCH_KEY getInvoiceRequestInvoiceSearchKey;
-        public static GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY getInvoiceWithTypeRequestInvoiceSearchKey;
+        public static GetInvoiceRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoiceRequest;
+        public static GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoiceWithTypeRequest;
 
 
-        public static void createGetInvoiceRequestInvoiceSearchKey()
+        public static void createInvoiceSearchKeyGetInvoiceRequest()
         {
-            getInvoiceRequestInvoiceSearchKey = new GetInvoiceRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
+            invoiceSearchKeyGetInvoiceRequest = new GetInvoiceRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
             {
-                LIMIT = 100,
+                LIMIT = 10,
+                LIMITSpecified =true,
                 READ_INCLUDED = true,
                 READ_INCLUDEDSpecified = true,
-                DIRECTION = "IN"
             };
         }
 
 
-
+        public static void createinvoiceSearchKeyGetInvoiceWithTypeRequest()
+        {
+            invoiceSearchKeyGetInvoiceWithTypeRequest = new GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
+            {
+                LIMIT = 10,
+                LIMITSpecified = true,
+                READ_INCLUDED = true,
+                READ_INCLUDEDSpecified = true,          
+            };
+        }
 
     }
 }

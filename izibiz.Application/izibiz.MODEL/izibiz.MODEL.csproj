@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="InvoicesData\DataListInvoice.cs" />
     <Compile Include="Model\Invoice.cs" />
-    <Compile Include="Model\InvoiceStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

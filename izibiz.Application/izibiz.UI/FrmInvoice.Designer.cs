@@ -36,27 +36,25 @@
             this.itemDraftInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftInvoiceList = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableGrid = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelConfirmation = new System.Windows.Forms.Panel();
             this.btnIncomingInvGetState = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
             this.btnGetInvoiceIncoming = new System.Windows.Forms.Button();
-            this.btnIncomingRefresh = new System.Windows.Forms.Button();
-            this.btnRefreshSentInvoice = new System.Windows.Forms.Button();
             this.panelIncomingInvoice = new System.Windows.Forms.Panel();
             this.panelSentInvoice = new System.Windows.Forms.Panel();
             this.panelConfirmationSentInv = new System.Windows.Forms.Panel();
             this.btnFaultyInvoices = new System.Windows.Forms.Button();
             this.btnSentInvAgainSent = new System.Windows.Forms.Button();
             this.btnSentInvGetState = new System.Windows.Forms.Button();
+            this.tableGrid = new System.Windows.Forms.DataGridView();
             this.menuInvoice.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.panelConfirmation.SuspendLayout();
             this.panelIncomingInvoice.SuspendLayout();
             this.panelSentInvoice.SuspendLayout();
             this.panelConfirmationSentInv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuInvoice
@@ -150,18 +148,6 @@
             this.itemDraftNewInvoice.Size = new System.Drawing.Size(219, 24);
             this.itemDraftNewInvoice.Text = "+Yeni Fatura";
             // 
-            // tableGrid
-            // 
-            this.tableGrid.BackgroundColor = System.Drawing.Color.MintCream;
-            this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(168, 236);
-            this.tableGrid.Margin = new System.Windows.Forms.Padding(10);
-            this.tableGrid.Name = "tableGrid";
-            this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(916, 311);
-            this.tableGrid.TabIndex = 12;
-            this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
-            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -178,7 +164,7 @@
             this.panelConfirmation.Controls.Add(this.btnAccept);
             this.panelConfirmation.Controls.Add(this.btnReject);
             this.panelConfirmation.Controls.Add(this.btnGetInvoiceIncoming);
-            this.panelConfirmation.Location = new System.Drawing.Point(145, 8);
+            this.panelConfirmation.Location = new System.Drawing.Point(17, 8);
             this.panelConfirmation.Name = "panelConfirmation";
             this.panelConfirmation.Size = new System.Drawing.Size(768, 72);
             this.panelConfirmation.TabIndex = 14;
@@ -248,55 +234,21 @@
             this.btnGetInvoiceIncoming.UseVisualStyleBackColor = false;
             this.btnGetInvoiceIncoming.Click += new System.EventHandler(this.btnGetInvoiceIncoming_Click);
             // 
-            // btnIncomingRefresh
-            // 
-            this.btnIncomingRefresh.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnIncomingRefresh.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnIncomingRefresh.FlatAppearance.BorderSize = 2;
-            this.btnIncomingRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncomingRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnIncomingRefresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIncomingRefresh.Location = new System.Drawing.Point(19, 28);
-            this.btnIncomingRefresh.Name = "btnIncomingRefresh";
-            this.btnIncomingRefresh.Size = new System.Drawing.Size(120, 35);
-            this.btnIncomingRefresh.TabIndex = 6;
-            this.btnIncomingRefresh.Text = "Yenile";
-            this.btnIncomingRefresh.UseVisualStyleBackColor = false;
-            this.btnIncomingRefresh.Click += new System.EventHandler(this.btnIncomingRefresh_Click);
-            // 
-            // btnRefreshSentInvoice
-            // 
-            this.btnRefreshSentInvoice.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnRefreshSentInvoice.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnRefreshSentInvoice.FlatAppearance.BorderSize = 2;
-            this.btnRefreshSentInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefreshSentInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnRefreshSentInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRefreshSentInvoice.Location = new System.Drawing.Point(19, 25);
-            this.btnRefreshSentInvoice.Name = "btnRefreshSentInvoice";
-            this.btnRefreshSentInvoice.Size = new System.Drawing.Size(120, 35);
-            this.btnRefreshSentInvoice.TabIndex = 15;
-            this.btnRefreshSentInvoice.Text = "Yenile";
-            this.btnRefreshSentInvoice.UseVisualStyleBackColor = false;
-            this.btnRefreshSentInvoice.Click += new System.EventHandler(this.btnRefreshSentInvoice_Click);
-            // 
             // panelIncomingInvoice
             // 
             this.panelIncomingInvoice.Controls.Add(this.panelConfirmation);
-            this.panelIncomingInvoice.Controls.Add(this.btnIncomingRefresh);
-            this.panelIncomingInvoice.Location = new System.Drawing.Point(162, 128);
+            this.panelIncomingInvoice.Location = new System.Drawing.Point(204, 128);
             this.panelIncomingInvoice.Name = "panelIncomingInvoice";
-            this.panelIncomingInvoice.Size = new System.Drawing.Size(916, 83);
+            this.panelIncomingInvoice.Size = new System.Drawing.Size(854, 83);
             this.panelIncomingInvoice.TabIndex = 16;
             this.panelIncomingInvoice.Visible = false;
             // 
             // panelSentInvoice
             // 
             this.panelSentInvoice.Controls.Add(this.panelConfirmationSentInv);
-            this.panelSentInvoice.Controls.Add(this.btnRefreshSentInvoice);
-            this.panelSentInvoice.Location = new System.Drawing.Point(161, 28);
+            this.panelSentInvoice.Location = new System.Drawing.Point(204, 28);
             this.panelSentInvoice.Name = "panelSentInvoice";
-            this.panelSentInvoice.Size = new System.Drawing.Size(913, 83);
+            this.panelSentInvoice.Size = new System.Drawing.Size(850, 83);
             this.panelSentInvoice.TabIndex = 17;
             this.panelSentInvoice.Visible = false;
             // 
@@ -305,7 +257,7 @@
             this.panelConfirmationSentInv.Controls.Add(this.btnFaultyInvoices);
             this.panelConfirmationSentInv.Controls.Add(this.btnSentInvAgainSent);
             this.panelConfirmationSentInv.Controls.Add(this.btnSentInvGetState);
-            this.panelConfirmationSentInv.Location = new System.Drawing.Point(145, 18);
+            this.panelConfirmationSentInv.Location = new System.Drawing.Point(17, 21);
             this.panelConfirmationSentInv.Name = "panelConfirmationSentInv";
             this.panelConfirmationSentInv.Size = new System.Drawing.Size(745, 47);
             this.panelConfirmationSentInv.TabIndex = 18;
@@ -358,16 +310,25 @@
             this.btnSentInvGetState.UseVisualStyleBackColor = false;
             this.btnSentInvGetState.Click += new System.EventHandler(this.btnSentInvGetState_Click);
             // 
+            // tableGrid
+            // 
+            this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableGrid.Location = new System.Drawing.Point(204, 268);
+            this.tableGrid.Name = "tableGrid";
+            this.tableGrid.Size = new System.Drawing.Size(854, 286);
+            this.tableGrid.TabIndex = 18;
+            this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
+            // 
             // FrmInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1136, 566);
+            this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.panelIncomingInvoice);
             this.Controls.Add(this.panelSentInvoice);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.menuInvoice);
             this.MainMenuStrip = this.menuInvoice;
             this.MaximizeBox = false;
@@ -377,11 +338,11 @@
             this.Load += new System.EventHandler(this.FrmInvoice_Load);
             this.menuInvoice.ResumeLayout(false);
             this.menuInvoice.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
             this.panelConfirmation.ResumeLayout(false);
             this.panelIncomingInvoice.ResumeLayout(false);
             this.panelSentInvoice.ResumeLayout(false);
             this.panelConfirmationSentInv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,7 +355,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemSentInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemDraftInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemComingListInvoice;
-        private System.Windows.Forms.DataGridView tableGrid;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ToolStripMenuItem itemSentInvoiceList;
         private System.Windows.Forms.ToolStripMenuItem itemDraftInvoiceList;
@@ -403,8 +363,6 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnGetInvoiceIncoming;
         private System.Windows.Forms.Button btnIncomingInvGetState;
-        private System.Windows.Forms.Button btnIncomingRefresh;
-        private System.Windows.Forms.Button btnRefreshSentInvoice;
         private System.Windows.Forms.Panel panelIncomingInvoice;
         private System.Windows.Forms.Panel panelSentInvoice;
         private System.Windows.Forms.Button btnSentInvAgainSent;
@@ -412,5 +370,6 @@
         private System.Windows.Forms.Panel panelConfirmationSentInv;
         private System.Windows.Forms.Button btnFaultyInvoices;
         private System.Windows.Forms.ToolStripMenuItem itemDraftNewInvoice;
+        private System.Windows.Forms.DataGridView tableGrid;
     }
 }
