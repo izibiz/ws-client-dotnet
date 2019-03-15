@@ -53,6 +53,7 @@
     <Compile Include="RequestEnum.cs" />
     <Compile Include="RequestHeader.cs" />
     <Compile Include="Singleton\Singleton.cs" />
+    <Compile Include="Ubl-Tr\Ubl_Invoice_2_1.cs" />
     <Compile Include="WebServices\AuthenticationController.cs" />
     <Compile Include="WebServices\EInvoiceController.cs" />
   </ItemGroup>

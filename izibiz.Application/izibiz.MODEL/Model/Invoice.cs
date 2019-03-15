@@ -19,11 +19,16 @@ namespace izibiz.MODEL.Model
         public DateTime cDate { get; set; }
         public string envelopeIdentifier { get; set; }
         public string status { get; set; }
-        public int gibStatus { get; set; }
+        public string statusDesc { get; set; }
+        public int gibStatusCode { get; set; }
         public string gibSatusDescription { get; set; }
         public string Uuid { get; set; }
         public string from { get; set; }
         public string to { get; set; }
+
+
+    
+
 
     }
 }

@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace izibiz.CONTROLLER
 {
-   public class RequestEnum
+   public partial class RequestEnum
     {
-        public enum MarkInvoiceRequestMARKValue
-        {
-            /// <remarks/>
-            READ,
 
-            /// <remarks/>
-            UNREAD,
+        public enum InvType
+        {
+            INCOMİNG,
+            SENT
         }
+
+
         public enum InvoiceSearchKeyDirection
         {
             IN,
             OUT
         }
 
-        public enum SendInvoiceResponseWithServerSignRequestStatus
+        public enum RequestStatus
         {
            RED,
            KABUL
@@ -55,6 +55,30 @@ namespace izibiz.CONTROLLER
            XML,
            HTML
         }
+
+        public enum StatusType
+        {
+            RECEIVE,
+            ACCEPT,
+            REJECT,
+            LOAD,
+            PACKAGE,
+            SEND,
+            ACCEPTED,
+            REJECTED,
+            SIGN
+        }
+
+        public enum SubStatusType
+        {
+            SUCCEED,
+            FAILED,
+            PROCESSING,
+            WAIT_GIB_RESPONSE,
+            WAIT_SYSTEM_RESPONSE,
+            WAIT_APPLICATION_RESPONSE
+        }
+
 
     }
 }

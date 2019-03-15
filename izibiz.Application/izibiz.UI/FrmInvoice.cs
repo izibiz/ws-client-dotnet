@@ -18,13 +18,15 @@ using Microsoft.VisualBasic;
 using izibiz.CONTROLLER;
 using izibiz.MODEL;
 
+
+
 namespace izibiz.UI
 {
     public partial class FrmInvoice : Form
     {
 
         private int invType;
-        DataTable dt;
+ 
 
         public FrmInvoice()
         {
@@ -85,7 +87,13 @@ namespace izibiz.UI
             {
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
-                tableGrid.DataSource = Singleton.instanceInvoiceGet.getIncomingInvoice();
+                List<Invoice> listIncoming = Singleton.instanceInvoiceGet.getIncomingInvoice();
+                foreach (var inv in listIncoming)
+                {
+                 inv.statusDesc=invoiceIncomingStatusWrite(inv);
+                }
+                tableGrid.DataSource = listIncoming;
+                tableGrid.Columns["status"].Visible = false;
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -101,13 +109,7 @@ namespace izibiz.UI
             }
         }
 
-        private void AddColumns()
-        {
-            dt.Columns.Add("ıd", typeof(int));
-            dt.Columns.Add("tip", typeof(String));
-
-
-        }
+      
 
 
         private void itemSentInvoiceList_Click(object sender, EventArgs e)
@@ -122,7 +124,13 @@ namespace izibiz.UI
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
 
-                tableGrid.DataSource = Singleton.instanceInvoiceGet.getSentInvoice();
+                List<Invoice> listSend = Singleton.instanceInvoiceGet.getSentInvoice();
+                foreach (var inv in listSend)
+                {
+                    inv.statusDesc = invoiceIncomingStatusWrite(inv);
+                }
+                tableGrid.DataSource = listSend;
+                tableGrid.Columns["status"].Visible = false;
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -191,6 +199,115 @@ namespace izibiz.UI
         }
 
 
+        public string invoiceIncomingStatusWrite(Invoice invoice)
+        {
+            string status = invoice.status;
+            int envelopeOpcode = invoice.gibStatusCode;
+
+            if (envelopeOpcode == 1210)
+            {
+                return "GİB'e gönderildi";
+            }
+            // RECEIVE
+            if (status.Contains(RequestEnum.StatusType.RECEIVE))
+            {
+                return "Alındı";
+            }
+            // LOAD
+            if (status.Contains(RequestEnum.StatusType.LOAD.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            {
+                return "Yüklendi";
+            }
+            if (status.Contains(RequestEnum.StatusType.LOAD.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            {
+                return "Yüklenemedi";
+            }
+            // PACKAGE
+            if (status.Contains(RequestEnum.StatusType.PACKAGE.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            {
+                return "İşleniyor";
+            }
+            if (status.Contains(RequestEnum.StatusType.PACKAGE.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            {
+                return "Yüklendi";
+            }
+            if (status.Contains(RequestEnum.StatusType.PACKAGE.ToString()) && status.Contains(RequestEnum.SubStatusType.PROCESSING.ToString()))
+            {
+                return "Paketleniyor";
+            }
+            if (status.Contains(RequestEnum.StatusType.SIGN.ToString()) && status.Contains(RequestEnum.SubStatusType.PROCESSING.ToString()))
+            {
+                return "İşleniyor";
+            }
+            if (status.Contains(RequestEnum.StatusType.SIGN.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            {
+                return "İmzalandı";
+            }
+            if (status.Contains(RequestEnum.StatusType.SIGN.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            {
+                return "İşleniyor";
+            }
+            return "Durum Atanması Bekleniyor";
+            }
+
+
+
+        public string invoiceSendStatusWrite(Invoice invoice)
+        {
+            string status = invoice.status;
+
+            // SEND
+            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.PROCESSING.ToString()))
+            {
+                return "İşleniyor";
+            }
+            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            {
+                return "Ulaştırıldı";
+            }
+            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            {
+                return "Ulaştırılamadı";
+            }
+            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.WAIT_GIB_RESPONSE.ToString()))
+            {
+                return "GİB'e gönderildi";
+            }
+            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.WAIT_SYSTEM_RESPONSE.ToString()))
+            {
+                return "Ulaştırıldı";
+            }
+            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString()))
+            {
+                return "Ulaştırıldı";
+            }
+            // ACCEPTED
+            if (status.Contains(RequestEnum.StatusType.ACCEPTED.ToString()))
+            {
+                return "Kabul edildi";
+            }
+            // REJECTED
+            if (status.Contains(RequestEnum.StatusType.REJECTED.ToString()))
+            {
+                return "Red edildi";
+            }
+            // ACCEPT
+            if (status.Contains(RequestEnum.StatusType.ACCEPT.ToString()))
+            {
+                return "Kabul";
+            }
+            // REJECT
+            if (status.Contains(RequestEnum.StatusType.REJECT.ToString()))
+            {
+                return "Red";
+            }
+            return "Durum Atanması Bekleniyor";
+        }
+
+
+
+
+
 
         private void invoiceResponseAcceptOrReject(string state)
         {
@@ -216,7 +333,7 @@ namespace izibiz.UI
                     MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warning8Day);
                     break;
                 }
-                else if (row.Cells["status"].Value == null || row.Cells["status"].Value.ToString() != "RECEIVE - WAIT_APPLICATION_RESPONSE")//olan varsa
+                else if (row.Cells["status"].Value == null || row.Cells["status"].Value.ToString() != RequestEnum.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString())//olan varsa
                 {
                     MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningHasAnswer);
                     break;
@@ -242,7 +359,7 @@ namespace izibiz.UI
         {
             try
             {
-                invoiceResponseAcceptOrReject(RequestEnum.SendInvoiceResponseWithServerSignRequestStatus.KABUL.ToString());
+                invoiceResponseAcceptOrReject(RequestEnum.RequestStatus.KABUL.ToString());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -264,7 +381,7 @@ namespace izibiz.UI
         {
             try
             {
-                invoiceResponseAcceptOrReject(RequestEnum.SendInvoiceResponseWithServerSignRequestStatus.RED.ToString());
+                invoiceResponseAcceptOrReject(RequestEnum.RequestStatus.RED.ToString());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -282,19 +399,22 @@ namespace izibiz.UI
 
         private bool statusValidCheck(DataGridViewRow row)
         {
-            if (row.Cells["profileid"].Value.ToString() == RequestEnum.GetInvoiceResponseInvoiceProfileid.TEMELFATURA.ToString() ||
+
+            if ((row.Cells["gibStatusCode"].Value.Equals(1300) || row.Cells["gibStatusCode"].Value.Equals(1215) || row.Cells["gibStatusCode"].Value.Equals(1230))
+                         || (Convert.ToInt32(row.Cells["gibStatusCode"].Value) < 1100 || (Convert.ToInt32(row.Cells["gibStatusCode"].Value) > 1200)))
+            {
+                return false;
+            }
+         /*   if (row.Cells["profileid"].Value.ToString() == RequestEnum.GetInvoiceResponseInvoiceProfileid.TEMELFATURA.ToString() ||
             row.Cells["status"].Value.ToString().Contains("SUCCEED") ||
             row.Cells["status"].Value.ToString().Contains("FAILED"))
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
-        /* string uuid = tableGrid.Rows[i].Cells["ettn"].Value.ToString();
-         InvoiceStatus invoiceStatus = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
-                         */
 
 
         private void showStateInvoice(string invoiceType)
@@ -305,21 +425,19 @@ namespace izibiz.UI
                 List<string> validList = new List<string>();
                 string uuid;
 
-                //   tableGrid.SelectedRows[0].Cells["status"] = Singleton.instanceInvoiceGet.getInvoiceState(validList);
-
                 for (int i = 0; i < tableGrid.SelectedRows.Count; i++)
                 {
                     uuid = tableGrid.Rows[i].Cells["ettn"].Value.ToString();
-                    if (!statusValidCheck(tableGrid.SelectedRows[i])) //false ise
+                    if (!statusValidCheck(tableGrid.SelectedRows[i])) //selectedrows valid degıl ise
                     {
                         unvalidList.Add(uuid);
                     }
-                    else //true ise
+                    else //valid ise modelde guncelle
                     {
                         validList.Add(uuid);
-                        if (invoiceType == "GELEN")
+                        if (invoiceType == RequestEnum.InvType.INCOMİNG.ToString())
                         {
-                            DataListInvoice.incomingInvioces.Find(x=>x.ettn==uuid).status=Singleton.instanceInvoiceGet.getInvoiceState(uuid);
+                            DataListInvoice.incomingInvioces.Find(x => x.ettn == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
                         }
                         else  //ınvoiceType GİDEN
                         {
@@ -330,15 +448,21 @@ namespace izibiz.UI
                 string message;
                 if (validList.First() == null) //hicbiri krıterlere uygun degılse
                 {
-                     message = string.Join(Environment.NewLine, unvalidList);
-
-                    MessageBox.Show(message + Environment.NewLine+ "nolu faturalar uygun degil bu yuzden guncellenmedı");
+                    if (tableGrid.SelectedRows.Count == 1)//tekli secim
+                    {
+                        MessageBox.Show("temel fatura veya 8 gün gecmiş faturaların durum sorgulaması yapılamaz");
+                    }
+                    else//coklu secım
+                    {
+                        message = string.Join(Environment.NewLine, unvalidList);
+                        MessageBox.Show(message + Environment.NewLine + "nolu faturalar uygun degil bu yuzden guncellenmedı");
+                    }
                 }
-                else//uygun fatura varsa
+                else//valid fatura varsa modelden datagride guncelle
                 {
                     tableGrid.DataSource = null;
                     addViewButtonToDatagridView();
-                    if (invoiceType == "GELEN")
+                    if (invoiceType == RequestEnum.InvType.INCOMİNG.ToString())
                     {
                         tableGrid.DataSource = DataListInvoice.incomingInvioces;
                     }
@@ -395,12 +519,12 @@ namespace izibiz.UI
 
         private void btnIncomingInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice("GELEN");
+            showStateInvoice(RequestEnum.InvType.INCOMİNG.ToString());
         }
 
         private void btnSentInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice("GİDEN");
+            showStateInvoice(RequestEnum.InvType.SENT.ToString());
         }
 
 
