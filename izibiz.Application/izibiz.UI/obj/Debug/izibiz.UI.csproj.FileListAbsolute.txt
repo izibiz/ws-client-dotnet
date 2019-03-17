@@ -148,3 +148,15 @@ C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\
 C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CopyComplete
 C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.exe
 C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.pdb
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csprojAssemblyReference.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmHome.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmInvoice.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmLogin.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmDialog.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Languages.Localization.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Properties.Resources.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Languages.Localization.en-US.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.GenerateResource.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CoreCompileInputs.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.exe
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.pdb

@@ -80,3 +80,7 @@ C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.CONTROL
 C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\Ionic.Zip.pdb
 C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\Ionic.Zip.xml
 C:\Users\gamze\Desktop\github\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.csproj.CopyComplete
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.csprojAssemblyReference.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.csproj.CoreCompileInputs.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.pdb

@@ -9,8 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using izibiz.CONTROLLER.Ubl_Tr;
 using Ubl_Invoice_2_1;
+using izibiz.COMMON;
 
 namespace izibiz.UI
 {

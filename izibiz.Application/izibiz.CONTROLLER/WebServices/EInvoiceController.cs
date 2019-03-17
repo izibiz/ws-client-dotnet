@@ -9,6 +9,7 @@ using izibiz.SERVICES.serviceOib;
 using izibiz.MODEL;
 using System.IO;
 using System.IO.Compression;
+using izibiz.COMMON;
 
 
 namespace izibiz.CONTROLLER.Web_Services
@@ -36,8 +37,8 @@ namespace izibiz.CONTROLLER.Web_Services
                 var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
-                req.INVOICE_SEARCH_KEY.DIRECTION = RequestEnum.InvoiceSearchKeyDirection.IN.ToString();
-                req.HEADER_ONLY = RequestEnum.RequestHeaderOnly.Y.ToString();
+                req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.IN.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 invoiceMarkRead(invoiceArray);
@@ -65,8 +66,8 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
-                req.INVOICE_SEARCH_KEY.DIRECTION = RequestEnum.InvoiceSearchKeyDirection.OUT.ToString();
-                req.HEADER_ONLY = RequestEnum.RequestHeaderOnly.Y.ToString();
+                req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.OUT.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray,DataListInvoice.sentInvoices);
@@ -93,8 +94,8 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
-                req.INVOICE_SEARCH_KEY.DIRECTION = RequestEnum.InvoiceSearchKeyDirection.OUT.ToString();
-                req.HEADER_ONLY = RequestEnum.RequestHeaderOnly.Y.ToString();
+                req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.OUT.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 invoiceMarkRead(invoiceArray);
@@ -249,10 +250,10 @@ namespace izibiz.CONTROLLER.Web_Services
                 GetInvoiceRequest req = new GetInvoiceRequest();
 
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
-                req.REQUEST_HEADER.COMPRESSED = RequestEnum.RequestHeaderTypeCompressed.Y.ToString();
+                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
-                req.INVOICE_SEARCH_KEY.DIRECTION = RequestEnum.InvoiceSearchKeyDirection.IN.ToString();
-                req.HEADER_ONLY = RequestEnum.RequestHeaderOnly.N.ToString();
+                req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.IN.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoiceList = EFaturaOIBPortClient.GetInvoice(req);
                 foreach (INVOICE invoice in invoiceList)
@@ -303,7 +304,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
                 req.INVOICE_SEARCH_KEY.ID = invoiceId;
                 req.INVOICE_SEARCH_KEY.TYPE = type;//XML,PDF 
-                req.HEADER_ONLY = RequestEnum.RequestHeaderOnly.N.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
                 string filePath;
@@ -322,9 +323,9 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
                 req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
-                req.INVOICE_SEARCH_KEY.TYPE = RequestEnum.InvoiceSearchKeyType.PDF.ToString();
+                req.INVOICE_SEARCH_KEY.TYPE = EI.InvoiceDownloadType.PDF.ToString();
 
-                req.HEADER_ONLY = RequestEnum.RequestHeaderOnly.N.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
                 return invoice[0].CONTENT.Value;

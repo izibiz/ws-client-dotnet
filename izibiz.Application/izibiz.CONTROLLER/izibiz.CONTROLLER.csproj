@@ -50,14 +50,16 @@
   <ItemGroup>
     <Compile Include="InvoiceSearchKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestEnum.cs" />
     <Compile Include="RequestHeader.cs" />
     <Compile Include="Singleton\Singleton.cs" />
-    <Compile Include="Ubl-Tr\Ubl_Invoice_2_1.cs" />
     <Compile Include="WebServices\AuthenticationController.cs" />
     <Compile Include="WebServices\EInvoiceController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\izibiz.COMMON\izibiz.COMMON.csproj">
+      <Project>{ec53cb2e-23c8-46be-92c3-464c845c393a}</Project>
+      <Name>izibiz.COMMON</Name>
+    </ProjectReference>
     <ProjectReference Include="..\izibiz.MODEL\izibiz.MODEL.csproj">
       <Project>{9a8efcb9-ae5d-4073-bb83-d1512ef1c58a}</Project>
       <Name>izibiz.MODEL</Name>

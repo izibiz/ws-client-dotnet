@@ -144,6 +144,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\izibiz.COMMON\izibiz.COMMON.csproj">
+      <Project>{ec53cb2e-23c8-46be-92c3-464c845c393a}</Project>
+      <Name>izibiz.COMMON</Name>
+    </ProjectReference>
     <ProjectReference Include="..\izibiz.CONTROLLER\izibiz.CONTROLLER.csproj">
       <Project>{24e9752e-b999-4e34-9f8c-d5b6596d6fe8}</Project>
       <Name>izibiz.CONTROLLER</Name>

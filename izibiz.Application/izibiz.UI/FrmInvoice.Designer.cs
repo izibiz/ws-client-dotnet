@@ -147,6 +147,7 @@
             this.itemDraftNewInvoice.Name = "itemDraftNewInvoice";
             this.itemDraftNewInvoice.Size = new System.Drawing.Size(219, 24);
             this.itemDraftNewInvoice.Text = "+Yeni Fatura";
+            this.itemDraftNewInvoice.Click += new System.EventHandler(this.itemDraftNewInvoice_Click);
             // 
             // lblTitle
             // 

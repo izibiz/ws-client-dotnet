@@ -603,6 +603,11 @@ namespace izibiz.UI
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void itemDraftNewInvoice_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
