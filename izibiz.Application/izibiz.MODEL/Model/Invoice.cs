@@ -10,7 +10,7 @@ namespace izibiz.MODEL.Model
     {
 
         public string ID { get; set; }
-        public string ettn { get; set; }
+        public string Uuid { get; set; }
         public DateTime issueDate { get; set; }
         public string profileid { get; set; }
         public string type { get; set; }
@@ -22,7 +22,6 @@ namespace izibiz.MODEL.Model
         public string statusDesc { get; set; }
         public int gibStatusCode { get; set; }
         public string gibSatusDescription { get; set; }
-        public string Uuid { get; set; }
         public string from { get; set; }
         public string to { get; set; }
 

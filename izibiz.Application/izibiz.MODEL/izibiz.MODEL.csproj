@@ -60,11 +60,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InvoicesData\DataListInvoice.cs" />
+    <Compile Include="SqlDbConnect.cs" />
     <Compile Include="Model\Invoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Db\izibiz-Entegrasyon.s3db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

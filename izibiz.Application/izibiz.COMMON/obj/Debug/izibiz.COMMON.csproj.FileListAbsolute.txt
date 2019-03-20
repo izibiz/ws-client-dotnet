@@ -4,3 +4,9 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\o
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.csproj.CoreCompileInputs.cache
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.pdb
+C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.csprojAssemblyReference.cache
+C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.csproj.CoreCompileInputs.cache
+C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.dll
+C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.pdb
+C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\bin\Debug\izibiz.COMMON.dll
+C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\bin\Debug\izibiz.COMMON.pdb

@@ -76,11 +76,7 @@ namespace izibiz.COMMON
             WAIT_APPLICATION_RESPONSE
         }
 
-        public enum UblVersion
-        {
-            2.1,
-            3.1
-        }
+    
 
 
     }

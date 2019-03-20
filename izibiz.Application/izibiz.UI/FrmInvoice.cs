@@ -17,8 +17,7 @@ using izibiz.UI.Properties;
 using Microsoft.VisualBasic;
 using izibiz.CONTROLLER;
 using izibiz.MODEL;
-
-
+using izibiz.COMMON;
 
 namespace izibiz.UI
 {
@@ -119,20 +118,20 @@ namespace izibiz.UI
             panelSentInvoice.Visible = true;
             panelConfirmationSentInv.Visible = false;
             invType = 2;
-            try
-            {
+         /*   try
+            {*/
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
 
-                List<Invoice> listSend = Singleton.instanceInvoiceGet.getSentInvoice();
-                foreach (var inv in listSend)
+               tableGrid.DataSource= Singleton.instanceInvoiceGet.getSentInvoice();
+            /*    foreach (var inv in listSend)
                 {
                     inv.statusDesc = invoiceIncomingStatusWrite(inv);
                 }
                 tableGrid.DataSource = listSend;
-                tableGrid.Columns["status"].Visible = false;
-            }
-            catch (FaultException<REQUEST_ERRORType> ex)
+                tableGrid.Columns["status"].Visible = false;*/
+          //  }
+      /*      catch (FaultException<REQUEST_ERRORType> ex)
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
@@ -143,7 +142,7 @@ namespace izibiz.UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
+            }*/
         }
 
 
@@ -209,41 +208,41 @@ namespace izibiz.UI
                 return "GİB'e gönderildi";
             }
             // RECEIVE
-            if (status.Contains(RequestEnum.StatusType.RECEIVE))
+            if (status.Contains(EI.StatusType.RECEIVE.ToString()))
             {
                 return "Alındı";
             }
             // LOAD
-            if (status.Contains(RequestEnum.StatusType.LOAD.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            if (status.Contains(EI.StatusType.LOAD.ToString()) && status.Contains(EI.SubStatusType.SUCCEED.ToString()))
             {
                 return "Yüklendi";
             }
-            if (status.Contains(RequestEnum.StatusType.LOAD.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            if (status.Contains(EI.StatusType.LOAD.ToString()) && status.Contains(EI.SubStatusType.FAILED.ToString()))
             {
                 return "Yüklenemedi";
             }
             // PACKAGE
-            if (status.Contains(RequestEnum.StatusType.PACKAGE.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            if (status.Contains(EI.StatusType.PACKAGE.ToString()) && status.Contains(EI.SubStatusType.FAILED.ToString()))
             {
                 return "İşleniyor";
             }
-            if (status.Contains(RequestEnum.StatusType.PACKAGE.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            if (status.Contains(EI.StatusType.PACKAGE.ToString()) && status.Contains(EI.SubStatusType.SUCCEED.ToString()))
             {
                 return "Yüklendi";
             }
-            if (status.Contains(RequestEnum.StatusType.PACKAGE.ToString()) && status.Contains(RequestEnum.SubStatusType.PROCESSING.ToString()))
+            if (status.Contains(EI.StatusType.PACKAGE.ToString()) && status.Contains(EI.SubStatusType.PROCESSING.ToString()))
             {
                 return "Paketleniyor";
             }
-            if (status.Contains(RequestEnum.StatusType.SIGN.ToString()) && status.Contains(RequestEnum.SubStatusType.PROCESSING.ToString()))
+            if (status.Contains(EI.StatusType.SIGN.ToString()) && status.Contains(EI.SubStatusType.PROCESSING.ToString()))
             {
                 return "İşleniyor";
             }
-            if (status.Contains(RequestEnum.StatusType.SIGN.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            if (status.Contains(EI.StatusType.SIGN.ToString()) && status.Contains(EI.SubStatusType.SUCCEED.ToString()))
             {
                 return "İmzalandı";
             }
-            if (status.Contains(RequestEnum.StatusType.SIGN.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            if (status.Contains(EI.StatusType.SIGN.ToString()) && status.Contains(EI.SubStatusType.FAILED.ToString()))
             {
                 return "İşleniyor";
             }
@@ -257,47 +256,47 @@ namespace izibiz.UI
             string status = invoice.status;
 
             // SEND
-            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.PROCESSING.ToString()))
+            if (status.Contains(EI.StatusType.SEND.ToString()) && status.Contains(EI.SubStatusType.PROCESSING.ToString()))
             {
                 return "İşleniyor";
             }
-            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.SUCCEED.ToString()))
+            if (status.Contains(EI.StatusType.SEND.ToString()) && status.Contains(EI.SubStatusType.SUCCEED.ToString()))
             {
                 return "Ulaştırıldı";
             }
-            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.FAILED.ToString()))
+            if (status.Contains(EI.StatusType.SEND.ToString()) && status.Contains(EI.SubStatusType.FAILED.ToString()))
             {
                 return "Ulaştırılamadı";
             }
-            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.WAIT_GIB_RESPONSE.ToString()))
+            if (status.Contains(EI.StatusType.SEND.ToString()) && status.Contains(EI.SubStatusType.WAIT_GIB_RESPONSE.ToString()))
             {
                 return "GİB'e gönderildi";
             }
-            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.WAIT_SYSTEM_RESPONSE.ToString()))
+            if (status.Contains(EI.StatusType.SEND.ToString()) && status.Contains(EI.SubStatusType.WAIT_SYSTEM_RESPONSE.ToString()))
             {
                 return "Ulaştırıldı";
             }
-            if (status.Contains(RequestEnum.StatusType.SEND.ToString()) && status.Contains(RequestEnum.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString()))
+            if (status.Contains(EI.StatusType.SEND.ToString()) && status.Contains(EI.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString()))
             {
                 return "Ulaştırıldı";
             }
             // ACCEPTED
-            if (status.Contains(RequestEnum.StatusType.ACCEPTED.ToString()))
+            if (status.Contains(EI.StatusType.ACCEPTED.ToString()))
             {
                 return "Kabul edildi";
             }
             // REJECTED
-            if (status.Contains(RequestEnum.StatusType.REJECTED.ToString()))
+            if (status.Contains(EI.StatusType.REJECTED.ToString()))
             {
                 return "Red edildi";
             }
             // ACCEPT
-            if (status.Contains(RequestEnum.StatusType.ACCEPT.ToString()))
+            if (status.Contains(EI.StatusType.ACCEPT.ToString()))
             {
                 return "Kabul";
             }
             // REJECT
-            if (status.Contains(RequestEnum.StatusType.REJECT.ToString()))
+            if (status.Contains(EI.StatusType.REJECT.ToString()))
             {
                 return "Red";
             }
@@ -323,7 +322,7 @@ namespace izibiz.UI
                 DateTime dt = DateTime.Parse(row.Cells["cDate"].Value.ToString());
                 TimeSpan fark = DateTime.Today - dt;
 
-                if (row.Cells["profileid"].Value == null || row.Cells[5].Value.ToString() == RequestEnum.GetInvoiceResponseInvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
+                if (row.Cells["profileid"].Value == null || row.Cells[5].Value.ToString() == EI.InvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
                 {
                     MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningBasicInvoice);
                     break;
@@ -333,7 +332,7 @@ namespace izibiz.UI
                     MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warning8Day);
                     break;
                 }
-                else if (row.Cells["status"].Value == null || row.Cells["status"].Value.ToString() != RequestEnum.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString())//olan varsa
+                else if (row.Cells["status"].Value == null || row.Cells["status"].Value.ToString() != EI.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString())//olan varsa
                 {
                     MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningHasAnswer);
                     break;
@@ -359,7 +358,7 @@ namespace izibiz.UI
         {
             try
             {
-                invoiceResponseAcceptOrReject(RequestEnum.RequestStatus.KABUL.ToString());
+                invoiceResponseAcceptOrReject(EI.InvoiceResponseStatus.KABUL.ToString());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -381,7 +380,7 @@ namespace izibiz.UI
         {
             try
             {
-                invoiceResponseAcceptOrReject(RequestEnum.RequestStatus.RED.ToString());
+                invoiceResponseAcceptOrReject(EI.InvoiceResponseStatus.RED.ToString());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -435,13 +434,13 @@ namespace izibiz.UI
                     else //valid ise modelde guncelle
                     {
                         validList.Add(uuid);
-                        if (invoiceType == RequestEnum.InvType.INCOMİNG.ToString())
+                        if (invoiceType == EI.InvType.INCOMING.ToString())
                         {
-                            DataListInvoice.incomingInvioces.Find(x => x.ettn == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
+                            DataListInvoice.incomingInvioces.Find(x => x.Uuid == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
                         }
                         else  //ınvoiceType GİDEN
                         {
-                            DataListInvoice.sentInvoices.Find(x => x.ettn == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
+                            DataListInvoice.sentInvoices.Find(x => x.Uuid == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
                         }
                     }
                 }
@@ -462,7 +461,7 @@ namespace izibiz.UI
                 {
                     tableGrid.DataSource = null;
                     addViewButtonToDatagridView();
-                    if (invoiceType == RequestEnum.InvType.INCOMİNG.ToString())
+                    if (invoiceType == EI.InvType.INCOMING.ToString())
                     {
                         tableGrid.DataSource = DataListInvoice.incomingInvioces;
                     }
@@ -519,12 +518,12 @@ namespace izibiz.UI
 
         private void btnIncomingInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice(RequestEnum.InvType.INCOMİNG.ToString());
+            showStateInvoice(EI.InvType.INCOMING.ToString());
         }
 
         private void btnSentInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice(RequestEnum.InvType.SENT.ToString());
+            showStateInvoice(EI.InvType.SENT.ToString());
         }
 
 
@@ -550,12 +549,12 @@ namespace izibiz.UI
                 //PDF göruntule butonuna tıkladıysa
                 if (e.ColumnIndex == tableGrid.Columns["PreviewPdf"].Index)
                 {
-                    previewInvoiceType(RequestEnum.InvoiceSearchKeyType.PDF.ToString());
+                    previewInvoiceType(EI.InvoiceDownloadType.PDF.ToString());
                 }
                 //xml göruntule butonuna tıkladıysa
                 else if (e.ColumnIndex == tableGrid.Columns["PreviewXml"].Index)
                 {
-                    previewInvoiceType(RequestEnum.InvoiceSearchKeyType.XML.ToString());
+                    previewInvoiceType(EI.InvoiceDownloadType.XML.ToString());
                 }
             }
         }
