@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace izibiz.MODEL
 {
   public  class SqlDbConnect
@@ -20,7 +21,8 @@ namespace izibiz.MODEL
 
         public SqlDbConnect()
         {
-            connection = new SQLiteConnection("Data Source=izibiz.MODEL/Db/izibiz-Entegrasyon.s3db;  Version=3;");
+       
+            connection = new SQLiteConnection(@"Data Source=C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\izibiz-Entegrasyon.s3db;Version=3;");
             connection.Open();
         }
 

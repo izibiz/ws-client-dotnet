@@ -86,13 +86,13 @@ namespace izibiz.UI
             {
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
-                List<Invoice> listIncoming = Singleton.instanceInvoiceGet.getIncomingInvoice();
+              /*  List<Invoice> listIncoming = Singleton.instanceInvoiceGet.getIncomingInvoice();
                 foreach (var inv in listIncoming)
                 {
                  inv.statusDesc=invoiceIncomingStatusWrite(inv);
                 }
                 tableGrid.DataSource = listIncoming;
-                tableGrid.Columns["status"].Visible = false;
+                tableGrid.Columns["status"].Visible = false;*/
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {

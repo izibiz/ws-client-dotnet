@@ -30,7 +30,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public List<Invoice> getIncomingInvoice()
+        public DataTable getIncomingInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -42,19 +42,20 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 invoiceMarkRead(invoiceArray);
+                dbSaveInvoices(invoiceArray,EI.InvTableName.IncomingInvoices.ToString());
+                return dbGetInvoices(EI.InvTableName.IncomingInvoices.ToString());
+                /*
+                                List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray,DataListInvoice.sentInvoices);
 
-
-                List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray,DataListInvoice.sentInvoices);
-
-                if (DataListInvoice.incomingInvioces == null)
-                {
-                    DataListInvoice.incomingInvioces = invoiceList;
-                }
-                else
-                {
-                    DataListInvoice.incomingInvioces.AddRange(invoiceList);
-                }
-                return DataListInvoice.incomingInvioces;
+                                if (DataListInvoice.incomingInvioces == null)
+                                {
+                                    DataListInvoice.incomingInvioces = invoiceList;
+                                }
+                                else
+                                {
+                                    DataListInvoice.incomingInvioces.AddRange(invoiceList);
+                                }
+                                return DataListInvoice.incomingInvioces;*/
             }
         }
 
@@ -72,8 +73,8 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
-                dbSaveInvoices(invoiceArray);
-                return dbGetIncomingInvoices();
+                dbSaveInvoices(invoiceArray,EI.InvTableName.SentInvoices.ToString());
+                return dbGetInvoices(EI.InvTableName.SentInvoices.ToString());
                 /*
                 List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray,DataListInvoice.sentInvoices);
 
@@ -90,28 +91,29 @@ namespace izibiz.CONTROLLER.Web_Services
             }
         }
 
-        private void dbSaveInvoices(INVOICE[] invoiceArray)
+        private void dbSaveInvoices(INVOICE[] invoiceArray,string tableName)
         {
             con = new SqlDbConnect();
             foreach (var inv in invoiceArray)
             {
-                con.sqlQuery("insert into invoices(ID,uuid,issueDate,profileid,type,suplier,sender,cDate,envelopeIdentifier,status,gibStatusCode,gibStatusDescription,from,to) " +
+                con.sqlQuery("insert into "+tableName+" (ID,uuid,issueDate,profileid,type,suplier,sender,cDate,envelopeIdentifier,status,gibStatusCode,gibStatusDescription,fromm,too) " +
             "Values('"+inv.ID+ "','" + inv.UUID + "','" + inv.HEADER.ISSUE_DATE + "','" + inv.HEADER.PROFILEID + "','" + inv.HEADER.INVOICE_TYPE_CODE + "','" + inv.HEADER.SUPPLIER + "','"
             + inv.HEADER.SENDER + "','" + inv.HEADER.CDATE + "','" + inv.HEADER.ENVELOPE_IDENTIFIER + "','" + inv.HEADER.STATUS + "','" + inv.HEADER.GIB_STATUS_CODE + "','"
-            + inv.HEADER.GIB_STATUS_DESCRIPTION + "','" + inv.HEADER.FROM + "',)'" + inv.HEADER.TO +"' ");
-            }             
-            con.nonQueryEx();  
+            + inv.HEADER.GIB_STATUS_DESCRIPTION + "','" + inv.HEADER.FROM + "','" + inv.HEADER.TO +"')");
+
+                con.nonQueryEx();
+            }               
         }
 
-        private DataTable dbGetIncomingInvoices()
+        private DataTable dbGetInvoices(string tableName)
         {
             con = new SqlDbConnect();
-            con.sqlQuery("select *  from invoices");
+            con.sqlQuery("select *  from "+tableName+" ");
             return con.queryEx();
         }
 
 
-        public List<Invoice> getDraftInvoice()
+        public DataTable getDraftInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -121,30 +123,19 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.OUT.ToString();
                 req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
+              
+
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 invoiceMarkRead(invoiceArray);
-                //DB YE KAYDET
-              //  dbSaveInvoices(invoiceArray);
-
-
-                
-                                List<Invoice> invoiceList = transferInvoiceArrayToList(invoiceArray,DataListInvoice.draftInvoices);
-                                if (DataListInvoice.draftInvoices == null)
-                                {
-                                    DataListInvoice.draftInvoices = invoiceList;
-                                }
-                                else
-                                {
-                                    DataListInvoice.draftInvoices.AddRange(invoiceList);
-                                }
-                                return DataListInvoice.draftInvoices;
-                            }
+                dbSaveInvoices(invoiceArray,EI.InvTableName.DraftInvoices.ToString());
+                return dbGetInvoices(EI.InvTableName.DraftInvoices.ToString()); 
             }
+        }
       
 
 
-        private List<Invoice> transferInvoiceArrayToList(INVOICE[] invoiceArray, List<Invoice> dataListInv)
+      /*  private List<Invoice> transferInvoiceArrayToList(INVOICE[] invoiceArray, List<Invoice> dataListInv)
         {
             List<Invoice> invoiceList = new List<Invoice>();
             foreach (var inv in invoiceArray)
@@ -171,7 +162,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 }
             }
             return invoiceList;
-        }
+        }*/
 
         private void invoiceMarkRead(INVOICE[] invoiceList)
         {

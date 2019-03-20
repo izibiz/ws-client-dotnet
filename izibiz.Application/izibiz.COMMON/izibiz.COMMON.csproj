@@ -45,5 +45,8 @@
     <Compile Include="EI.cs" />
     <Compile Include="Ubl-Tr\Ubl_Invoice_2_1.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ubl\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

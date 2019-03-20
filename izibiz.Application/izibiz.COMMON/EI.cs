@@ -10,6 +10,12 @@ namespace izibiz.COMMON
    public partial class EI
 
     {
+        public enum InvTableName
+        {
+            IncomingInvoices,
+            SentInvoices,
+            DraftInvoices
+        }
 
         public enum InvType
         {
