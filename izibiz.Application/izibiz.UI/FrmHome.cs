@@ -33,23 +33,23 @@ namespace izibiz.UI
             //dil secimini sorgula
             if (Settings.Default.language == "English")
             {
-                Localization.Culture = new CultureInfo("en-US");
+                Lcl.Culture = new CultureInfo("en-US");
             }
             else
             {
-                Localization.Culture = new CultureInfo("");
+                Lcl.Culture = new CultureInfo("");
             }
 
             #region writeFormInItem
             //eleman text yazdır
-            this.Text = Localization.formHomePage;
-            btnInvoice.Text = Localization.eInvoice;
-            btnArchive.Text = Localization.eArchive;
-            btnIrsaliye.Text = Localization.eDispatch;
-            btnAyarlar.Text =Localization.settings;
-            btnMutabakat.Text =Localization.eReconciliation;
-            btnSmm.Text = Localization.eFreeJob;
-            btnMüstahsil.Text = Localization.eManufacturer;
+            this.Text = Lcl.formHomePage;
+            btnInvoice.Text = Lcl.eInvoice;
+            btnArchive.Text = Lcl.eArchive;
+            btnIrsaliye.Text = Lcl.eDispatch;
+            btnAyarlar.Text =Lcl.settings;
+            btnMutabakat.Text =Lcl.eReconciliation;
+            btnSmm.Text = Lcl.eFreeJob;
+            btnMüstahsil.Text = Lcl.eManufacturer;
             #endregion
         }
 

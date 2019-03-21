@@ -89,4 +89,7 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\ob
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CopyComplete
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.pdb
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz-Entegrasyon.s3db
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.COMMON.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.COMMON.pdb
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.COMMON.dll.config
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\en-US\izibiz.COMMON.resources.dll

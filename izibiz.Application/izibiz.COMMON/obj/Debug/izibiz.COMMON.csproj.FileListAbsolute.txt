@@ -10,3 +10,14 @@ C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COM
 C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.pdb
 C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\bin\Debug\izibiz.COMMON.dll
 C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.COMMON\bin\Debug\izibiz.COMMON.pdb
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\izibiz.COMMON.dll.config
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\EntityFramework.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\EntityFramework.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.csproj.CopyComplete
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\en-US\izibiz.COMMON.resources.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.Languages.Localization.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.Languages.Localization.en-US.resources
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.csproj.GenerateResource.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\obj\Debug\en-US\izibiz.COMMON.resources.dll

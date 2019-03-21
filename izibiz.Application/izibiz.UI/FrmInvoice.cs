@@ -1,6 +1,5 @@
 ﻿using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Model;
-using izibiz.UI.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +17,7 @@ using Microsoft.VisualBasic;
 using izibiz.CONTROLLER;
 using izibiz.MODEL;
 using izibiz.COMMON;
+using izibiz.COMMON.Languages;
 
 namespace izibiz.UI
 {
@@ -25,7 +25,7 @@ namespace izibiz.UI
     {
 
         private int invType;
- 
+        private DataTable dt;
 
         public FrmInvoice()
         {
@@ -45,39 +45,45 @@ namespace izibiz.UI
             //dil secimini sorgula
             if (Settings.Default.language == "English")
             {
-                Localization.Culture = new CultureInfo("en-US");
+                Lcl.Culture = new CultureInfo("en-US");
             }
             else
             {
-                Localization.Culture = new CultureInfo("");
+                Lcl.Culture = new CultureInfo("");
             }
             #region writeAllFormItem
             //eleman text yazdır
-            this.Text = Localization.formInvoice;
-            itemIncomingInvoice.Text = Localization.incomingInvoice;
-            itemComingListInvoice.Text = Localization.listInvoice;
-            itemSentInvoice.Text = Localization.sentInvoice;
-            itemDraftInvoice.Text = Localization.draftInvoice;
-            itemDraftNewInvoice.Text = Localization.newInvoice;
-            itemSentInvoiceList.Text = Localization.listInvoice;
-            itemDraftInvoiceList.Text = Localization.listDraftInvoice;
+            this.Text = Lcl.formInvoice;
+            itemIncomingInvoice.Text = Lcl.incomingInvoice;
+            itemComingListInvoice.Text = Lcl.listInvoice;
+            itemSentInvoice.Text = Lcl.sentInvoice;
+            itemDraftInvoice.Text = Lcl.draftInvoice;
+            itemDraftNewInvoice.Text = Lcl.newInvoice;
+            itemSentInvoiceList.Text = Lcl.listInvoice;
+            itemDraftInvoiceList.Text = Lcl.listDraftInvoice;
             //panelSentInvoices butonlar
-            btnSentInvGetState.Text = Localization.updateState;
-            btnSentInvAgainSent.Text = Localization.againSent;
-            btnFaultyInvoices.Text = Localization.faulty;
+            btnSentInvGetState.Text = Lcl.updateState;
+            btnSentInvAgainSent.Text = Lcl.againSent;
+            btnFaultyInvoices.Text = Lcl.faulty;
             //panelIncomingInvoices butonlar
-            btnAccept.Text = Localization.accept;
-            btnReject.Text = Localization.reject;
-            btnGetInvoiceIncoming.Text = Localization.getInvoice;
-            btnIncomingInvGetState.Text = Localization.updateState;
+            btnAccept.Text = Lcl.accept;
+            btnReject.Text = Lcl.reject;
+            btnGetInvoiceIncoming.Text = Lcl.getInvoice;
+            btnIncomingInvGetState.Text = Lcl.updateState;
             #endregion
         }
+
+        private void dataGridChangeColoumnName()
+        {
+            tableGrid.Columns[2].Name = "i";
+        }
+
 
 
 
         private void itemComingListInvoice_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = Localization.incomingInvoice;
+            lblTitle.Text = Lcl.incomingInvoice;
             panelSentInvoice.Visible = false;
             panelIncomingInvoice.Visible = true;
             panelConfirmation.Visible = false;
@@ -86,13 +92,65 @@ namespace izibiz.UI
             {
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
-              /*  List<Invoice> listIncoming = Singleton.instanceInvoiceGet.getIncomingInvoice();
-                foreach (var inv in listIncoming)
+                var invoiceList = Singleton.instanceInvoiceGet.getIncomingInvoice();
+                if (invoiceList.Any() == false)
                 {
-                 inv.statusDesc=invoiceIncomingStatusWrite(inv);
+                    MessageBox.Show("Gösterilecek faturanız yok");
                 }
-                tableGrid.DataSource = listIncoming;
-                tableGrid.Columns["status"].Visible = false;*/
+                else
+                {
+                    /*foreach (var inv in invoiceDT)
+                    {
+                        inv.statusDesc = invoiceIncomingStatusWrite(inv.status,inv.gibStatusCode);
+                    }*/
+                    tableGrid.DataSource = invoiceList;
+               //     dataGridChangeColoumnName();
+               //     tableGrid.Columns["ii"].Visible = false;
+                }
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
+
+      
+
+
+        private void itemSentInvoiceList_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = Lcl.sentInvoice;
+            panelIncomingInvoice.Visible = false;
+            panelSentInvoice.Visible = true;
+            panelConfirmationSentInv.Visible = false;
+            invType = 2;
+            try
+            {
+                tableGrid.DataSource = null;
+                addViewButtonToDatagridView();
+                 dt= Singleton.instanceInvoiceGet.getSentInvoice();
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Gösterilecek okunmamıs faturanız yok");
+                }
+                else //yenı fatura varsa
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                      //  row[Lcl.statusDesc] = invoiceIncomingStatusWrite(row[Lcl.status].ToString());
+                    }
+                    tableGrid.DataSource = dt;
+                    tableGrid.Columns[Lcl.status].Visible = false;
+                }           
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -108,47 +166,10 @@ namespace izibiz.UI
             }
         }
 
-      
-
-
-        private void itemSentInvoiceList_Click(object sender, EventArgs e)
-        {
-            lblTitle.Text = Localization.sentInvoice;
-            panelIncomingInvoice.Visible = false;
-            panelSentInvoice.Visible = true;
-            panelConfirmationSentInv.Visible = false;
-            invType = 2;
-         /*   try
-            {*/
-                tableGrid.DataSource = null;
-                addViewButtonToDatagridView();
-
-               tableGrid.DataSource= Singleton.instanceInvoiceGet.getSentInvoice();
-            /*    foreach (var inv in listSend)
-                {
-                    inv.statusDesc = invoiceIncomingStatusWrite(inv);
-                }
-                tableGrid.DataSource = listSend;
-                tableGrid.Columns["status"].Visible = false;*/
-          //  }
-      /*      catch (FaultException<REQUEST_ERRORType> ex)
-            {
-                if (ex.Detail.ERROR_CODE == 2005)
-                {
-                    Singleton.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
-                }
-                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }*/
-        }
-
 
         private void itemDraftInvoiceList_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = Localization.draftInvoice;
+            lblTitle.Text = Lcl.draftInvoice;
             panelSentInvoice.Visible = false;
             panelIncomingInvoice.Visible = false;
             invType = 3;
@@ -184,7 +205,7 @@ namespace izibiz.UI
             {
                 Image = Properties.Resources.iconPdf,
                 Name = "PreviewPdf",
-                HeaderText = Localization.preview
+                HeaderText = Lcl.preview
             });
 
 
@@ -193,15 +214,15 @@ namespace izibiz.UI
             {
                 Image = Properties.Resources.iconXml,
                 Name = "PreviewXml",
-                HeaderText = Localization.preview,
+                HeaderText = Lcl.preview,
             });
         }
 
 
-        public string invoiceIncomingStatusWrite(Invoice invoice)
+        public string invoiceIncomingStatusWrite(string status, int envelopeOpcode)
         {
-            string status = invoice.status;
-            int envelopeOpcode = invoice.gibStatusCode;
+         //   string status = invoice.status;
+          //  int envelopeOpcode = invoice.gibStatusCode;
 
             if (envelopeOpcode == 1210)
             {
@@ -315,31 +336,31 @@ namespace izibiz.UI
             string[] description = new string[invoiceCount];
 
 
-            string desc = Interaction.InputBox(Localization.writeDescription, Localization.addDescription, "Default");
+            string desc = Interaction.InputBox(Lcl.writeDescription, Lcl.addDescription, "Default");
 
             foreach (DataGridViewRow row in tableGrid.SelectedRows)
             {
-                DateTime dt = DateTime.Parse(row.Cells["cDate"].Value.ToString());
+                DateTime dt = DateTime.Parse(row.Cells[Lcl.cDate].Value.ToString());
                 TimeSpan fark = DateTime.Today - dt;
 
-                if (row.Cells["profileid"].Value == null || row.Cells[5].Value.ToString() == EI.InvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
+                if (row.Cells[Lcl.profileid].Value == null || row.Cells[5].Value.ToString() == EI.InvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
                 {
-                    MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningBasicInvoice);
+                    MessageBox.Show((row.Cells[Lcl.id].Value.ToString()) + " " + Lcl.warningBasicInvoice);
                     break;
                 }
                 else if (fark.TotalDays > 8)//8 gün geçmis
                 {
-                    MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warning8Day);
+                    MessageBox.Show((row.Cells[Lcl.id].Value.ToString()) + " " + Lcl.warning8Day);
                     break;
                 }
-                else if (row.Cells["status"].Value == null || row.Cells["status"].Value.ToString() != EI.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString())//olan varsa
+                else if (row.Cells[Lcl.status].Value == null || row.Cells[Lcl.status].Value.ToString() != EI.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString())//olan varsa
                 {
-                    MessageBox.Show((row.Cells["ID"].Value.ToString()) + " " + Localization.warningHasAnswer);
+                    MessageBox.Show((row.Cells[Lcl.id].Value.ToString()) + " " + Lcl.warningHasAnswer);
                     break;
                 }
                 else//fatura noların oldugu kabul lıstesi olustur
                 {
-                    string id = row.Cells["ID"].Value.ToString();
+                    string id = row.Cells[Lcl.id].Value.ToString();
                     Singleton.instanceInvoiceGet.createInvoiceWithId(invoiceCount, id, verifiedrow);
 
                     description[verifiedrow] = desc;
@@ -399,18 +420,11 @@ namespace izibiz.UI
         private bool statusValidCheck(DataGridViewRow row)
         {
 
-            if ((row.Cells["gibStatusCode"].Value.Equals(1300) || row.Cells["gibStatusCode"].Value.Equals(1215) || row.Cells["gibStatusCode"].Value.Equals(1230))
-                         || (Convert.ToInt32(row.Cells["gibStatusCode"].Value) < 1100 || (Convert.ToInt32(row.Cells["gibStatusCode"].Value) > 1200)))
+            if ((row.Cells[Lcl.gibStatusCode].Value.Equals(1300) || row.Cells[Lcl.gibStatusCode].Value.Equals(1215) || row.Cells[Lcl.gibStatusCode].Value.Equals(1230))
+                         || (Convert.ToInt32(row.Cells[Lcl.gibStatusCode].Value) < 1100 || (Convert.ToInt32(row.Cells[Lcl.gibStatusCode].Value) > 1200)))
             {
                 return false;
             }
-         /*   if (row.Cells["profileid"].Value.ToString() == RequestEnum.GetInvoiceResponseInvoiceProfileid.TEMELFATURA.ToString() ||
-            row.Cells["status"].Value.ToString().Contains("SUCCEED") ||
-            row.Cells["status"].Value.ToString().Contains("FAILED"))
-            {
-                return false;
-            }*/
-
             return true;
         }
 
@@ -426,7 +440,7 @@ namespace izibiz.UI
 
                 for (int i = 0; i < tableGrid.SelectedRows.Count; i++)
                 {
-                    uuid = tableGrid.Rows[i].Cells["ettn"].Value.ToString();
+                    uuid = tableGrid.Rows[i].Cells[Lcl.uuid].Value.ToString();
                     if (!statusValidCheck(tableGrid.SelectedRows[i])) //selectedrows valid degıl ise
                     {
                         unvalidList.Add(uuid);
@@ -436,11 +450,12 @@ namespace izibiz.UI
                         validList.Add(uuid);
                         if (invoiceType == EI.InvType.INCOMING.ToString())
                         {
-                            DataListInvoice.incomingInvioces.Find(x => x.Uuid == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
+                            //entıtıy eklendıgınde acılacak
+                //            DataListInvoice.incomingInvioces.Find(x => x.Uuid == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
                         }
                         else  //ınvoiceType GİDEN
                         {
-                            DataListInvoice.sentInvoices.Find(x => x.Uuid == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
+                  //          DataListInvoice.sentInvoices.Find(x => x.Uuid == uuid).status = Singleton.instanceInvoiceGet.getInvoiceState(uuid);
                         }
                     }
                 }
@@ -463,11 +478,11 @@ namespace izibiz.UI
                     addViewButtonToDatagridView();
                     if (invoiceType == EI.InvType.INCOMING.ToString())
                     {
-                        tableGrid.DataSource = DataListInvoice.incomingInvioces;
+               //         tableGrid.DataSource = DataListInvoice.incomingInvioces;
                     }
                     else
                     {
-                        tableGrid.DataSource = DataListInvoice.sentInvoices;
+               //         tableGrid.DataSource = DataListInvoice.sentInvoices;
                     }
                     message = string.Join(Environment.NewLine, validList);
                     MessageBox.Show(message + Environment.NewLine + "nolu faturalar guncellendı");
@@ -497,7 +512,7 @@ namespace izibiz.UI
             {
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    string id = row.Cells["ID"].Value.ToString();
+                    string id = row.Cells[Lcl.id].Value.ToString();
                     string filepath = Singleton.instanceInvoiceGet.getInvoiceType(id, type);
                     System.Diagnostics.Process.Start(filepath);
                 }

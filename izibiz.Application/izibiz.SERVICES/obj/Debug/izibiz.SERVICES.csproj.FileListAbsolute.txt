@@ -54,3 +54,8 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CopyComplete

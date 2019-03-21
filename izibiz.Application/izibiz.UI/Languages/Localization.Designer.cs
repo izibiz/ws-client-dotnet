@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace izibiz.UI.Languages {
+namespace izibiz.COMMON.Languages {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace izibiz.UI.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Localization {
+    internal class Lcl {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Localization() {
+        internal Lcl() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace izibiz.UI.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("izibiz.UI.Languages.Localization", typeof(Localization).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("izibiz.UI.Languages.Localization", typeof(Lcl).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -84,6 +84,15 @@ namespace izibiz.UI.Languages {
         internal static string againSent {
             get {
                 return ResourceManager.GetString("againSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CDATE.
+        /// </summary>
+        internal static string cDate {
+            get {
+                return ResourceManager.GetString("cDate", resourceCulture);
             }
         }
         
@@ -151,6 +160,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ZARF ID.
+        /// </summary>
+        internal static string envelopeIdentifier {
+            get {
+                return ResourceManager.GetString("envelopeIdentifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-Mutabakat.
         /// </summary>
         internal static string eReconciliation {
@@ -205,6 +223,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to KIMDEN.
+        /// </summary>
+        internal static string from {
+            get {
+                return ResourceManager.GetString("from", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fatura Al.
         /// </summary>
         internal static string getInvoice {
@@ -214,11 +241,47 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GİB DURUM ACIKLAMA.
+        /// </summary>
+        internal static string gibSatusDescription {
+            get {
+                return ResourceManager.GetString("gibSatusDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GİB DURUM KOD.
+        /// </summary>
+        internal static string gibStatusCode {
+            get {
+                return ResourceManager.GetString("gibStatusCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        internal static string id {
+            get {
+                return ResourceManager.GetString("id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gelen Faturalar.
         /// </summary>
         internal static string incomingInvoice {
             get {
                 return ResourceManager.GetString("incomingInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IHRAC TARIH.
+        /// </summary>
+        internal static string issueDate {
+            get {
+                return ResourceManager.GetString("issueDate", resourceCulture);
             }
         }
         
@@ -304,6 +367,15 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PROFİL KIMLIK.
+        /// </summary>
+        internal static string profileid {
+            get {
+                return ResourceManager.GetString("profileid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yenile.
         /// </summary>
         internal static string refresh {
@@ -318,6 +390,15 @@ namespace izibiz.UI.Languages {
         internal static string reject {
             get {
                 return ResourceManager.GetString("reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GONDEREN.
+        /// </summary>
+        internal static string sender {
+            get {
+                return ResourceManager.GetString("sender", resourceCulture);
             }
         }
         
@@ -349,11 +430,56 @@ namespace izibiz.UI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DURUM.
+        /// </summary>
+        internal static string status {
+            get {
+                return ResourceManager.GetString("status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DURUM ACIKLAMA.
+        /// </summary>
+        internal static string statusDesc {
+            get {
+                return ResourceManager.GetString("statusDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Başarılı Durum Değiştirme.
         /// </summary>
         internal static string succesChangeState {
             get {
                 return ResourceManager.GetString("succesChangeState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TEDARIKCI.
+        /// </summary>
+        internal static string supplier {
+            get {
+                return ResourceManager.GetString("supplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KIME.
+        /// </summary>
+        internal static string to {
+            get {
+                return ResourceManager.GetString("to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIP.
+        /// </summary>
+        internal static string type {
+            get {
+                return ResourceManager.GetString("type", resourceCulture);
             }
         }
         
@@ -381,6 +507,15 @@ namespace izibiz.UI.Languages {
         internal static string usurname {
             get {
                 return ResourceManager.GetString("usurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ETTN.
+        /// </summary>
+        internal static string uuid {
+            get {
+                return ResourceManager.GetString("uuid", resourceCulture);
             }
         }
         

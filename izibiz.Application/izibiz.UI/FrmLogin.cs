@@ -43,7 +43,7 @@ namespace izibiz.UI
             {
                 if (String.IsNullOrEmpty(txtUsername.Text.Trim()) || String.IsNullOrEmpty(txtPassword.Text.Trim()))
                 {
-                    MessageBox.Show(Localization.loginBadRequest, Localization.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);                 
+                    MessageBox.Show(Lcl.loginBadRequest, Lcl.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);                 
                 }
                 else
                 {
@@ -75,21 +75,21 @@ namespace izibiz.UI
             //dil secimini sorgula
             if (Settings.Default.language == "English")
             {
-                Localization.Culture = new CultureInfo("en-US");
+                Lcl.Culture = new CultureInfo("en-US");
             }
 
             else
             {
-                Localization.Culture = new CultureInfo("");
+                Lcl.Culture = new CultureInfo("");
             }
             #region writeItemInForm
             //eleman text yazdır
-            this.Text = Localization.formLoginPage;
-            lblUsername.Text = Localization.usurname;
-            lblPassword.Text = Localization.password;
-            btnLogin.Text = Localization.login;
-            chooseLanguage_ToolStripMenuItem.Text = Localization.chooseLanguage;
-            chkShowPass.Text = Localization.showPassword;
+            this.Text = Lcl.formLoginPage;
+            lblUsername.Text = Lcl.usurname;
+            lblPassword.Text = Lcl.password;
+            btnLogin.Text = Lcl.login;
+            chooseLanguage_ToolStripMenuItem.Text = Lcl.chooseLanguage;
+            chkShowPass.Text = Lcl.showPassword;
             #endregion
         }
 

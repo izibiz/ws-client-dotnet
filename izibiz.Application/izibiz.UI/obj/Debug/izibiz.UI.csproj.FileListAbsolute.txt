@@ -212,4 +212,10 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\D
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\System.Data.SQLite.xml
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\en-US\izibiz.UI.resources.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CopyComplete
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz-Entegrasyon.s3db
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.COMMON.dll.config
