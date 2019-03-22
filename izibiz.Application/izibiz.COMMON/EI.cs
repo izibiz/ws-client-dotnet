@@ -10,17 +10,14 @@ namespace izibiz.COMMON
    public partial class EI
 
     {
-        public enum InvTableName
-        {
-            IncomingInvoices,
-            SentInvoices,
-            DraftInvoices
-        }
+        
+      
 
         public enum InvType
         {
             INCOMING,
-            SENT
+            SENT,
+            DRAFT
         }
 
 
@@ -82,8 +79,30 @@ namespace izibiz.COMMON
             WAIT_APPLICATION_RESPONSE
         }
 
-    
+        public enum InvTableName
+        {
+            Invoices
+        }
+        public enum InvClmName
+        {
+            ID,
+            uuid,
+            invType,
+            issueDate,
+            profileid,
+            type,
+            suplier,
+            sender,
+            cDate,
+            envelopeIdentifier,
+            status,
+            statusDesc,
+            gibStatusCode,
+            gibStatusDescription,
+            fromm,
+            too
+        }
 
-
+        
     }
 }

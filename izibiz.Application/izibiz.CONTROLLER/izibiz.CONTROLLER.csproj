@@ -66,10 +66,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal\InvoiceDAL.cs" />
     <Compile Include="InvoiceSearchKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHeader.cs" />
-    <Compile Include="Singleton\Singleton.cs" />
+    <Compile Include="Singleton\Singl.cs">
+      <Generator>public</Generator>
+    </Compile>
     <Compile Include="WebServices\AuthenticationController.cs" />
     <Compile Include="WebServices\EInvoiceController.cs" />
   </ItemGroup>

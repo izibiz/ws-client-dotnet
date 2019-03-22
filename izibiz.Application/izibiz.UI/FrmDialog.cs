@@ -1,5 +1,5 @@
 ﻿using izibiz.MODEL.Model;
-using izibiz.COMMON.Languages;
+using izibiz.COMMON.Language;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

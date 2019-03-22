@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.SERVICES.serviceAuth;
 using izibiz.UI.Exceptions;
-using izibiz.UI.Languages;
+using izibiz.COMMON.Language;
 
 namespace izibiz.UI
 {
@@ -43,11 +43,11 @@ namespace izibiz.UI
             {
                 if (String.IsNullOrEmpty(txtUsername.Text.Trim()) || String.IsNullOrEmpty(txtPassword.Text.Trim()))
                 {
-                    MessageBox.Show(Lcl.loginBadRequest, Lcl.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);                 
+                    MessageBox.Show(Lang.loginBadRequest, Lang.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);                 
                 }
                 else
                 {
-                    if(Singleton.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
+                    if(CONTROLLER.Singleton.Singl.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
                     {
                         usurname = txtUsername.Text;
                         password = txtPassword.Text;
@@ -75,21 +75,21 @@ namespace izibiz.UI
             //dil secimini sorgula
             if (Settings.Default.language == "English")
             {
-                Lcl.Culture = new CultureInfo("en-US");
+                Lang.Culture = new CultureInfo("en-US");
             }
 
             else
             {
-                Lcl.Culture = new CultureInfo("");
+                Lang.Culture = new CultureInfo("");
             }
             #region writeItemInForm
             //eleman text yazdır
-            this.Text = Lcl.formLoginPage;
-            lblUsername.Text = Lcl.usurname;
-            lblPassword.Text = Lcl.password;
-            btnLogin.Text = Lcl.login;
-            chooseLanguage_ToolStripMenuItem.Text = Lcl.chooseLanguage;
-            chkShowPass.Text = Lcl.showPassword;
+            this.Text = Lang.formLoginPage;
+            lblUsername.Text = Lang.usurname;
+            lblPassword.Text = Lang.password;
+            btnLogin.Text = Lang.login;
+            chooseLanguage_ToolStripMenuItem.Text = Lang.chooseLanguage;
+            chkShowPass.Text = Lang.showPassword;
             #endregion
         }
 

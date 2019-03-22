@@ -1,5 +1,4 @@
-﻿using izibiz.UI.Languages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using izibiz.COMMON.Language;
+
 
 namespace izibiz.UI
 {
@@ -33,23 +34,23 @@ namespace izibiz.UI
             //dil secimini sorgula
             if (Settings.Default.language == "English")
             {
-                Lcl.Culture = new CultureInfo("en-US");
+                Lang.Culture = new CultureInfo("en-US");
             }
             else
             {
-                Lcl.Culture = new CultureInfo("");
+                Lang.Culture = new CultureInfo("");
             }
 
             #region writeFormInItem
             //eleman text yazdır
-            this.Text = Lcl.formHomePage;
-            btnInvoice.Text = Lcl.eInvoice;
-            btnArchive.Text = Lcl.eArchive;
-            btnIrsaliye.Text = Lcl.eDispatch;
-            btnAyarlar.Text =Lcl.settings;
-            btnMutabakat.Text =Lcl.eReconciliation;
-            btnSmm.Text = Lcl.eFreeJob;
-            btnMüstahsil.Text = Lcl.eManufacturer;
+            this.Text = Lang.formHomePage;
+            btnInvoice.Text = Lang.eInvoice;
+            btnArchive.Text = Lang.eArchive;
+            btnIrsaliye.Text = Lang.eDispatch;
+            btnAyarlar.Text = Lang.settings;
+            btnMutabakat.Text = Lang.eReconciliation;
+            btnSmm.Text = Lang.eFreeJob;
+            btnMüstahsil.Text = Lang.eManufacturer;
             #endregion
         }
 

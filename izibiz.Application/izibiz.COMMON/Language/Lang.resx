@@ -285,4 +285,10 @@
   <data name="writeDescription" xml:space="preserve">
     <value>Lütfen bir açıklama yazınız</value>
   </data>
+  <data name="invType" xml:space="preserve">
+    <value>FATURA TURU</value>
+  </data>
+  <data name="dbFault" xml:space="preserve">
+    <value>Database tarafında bır sorun cıktı !</value>
+  </data>
 </root>

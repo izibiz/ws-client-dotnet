@@ -153,9 +153,7 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\D
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmInvoice.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmLogin.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmDialog.resources
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Languages.Localization.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Properties.Resources.resources
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Languages.Localization.en-US.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.GenerateResource.cache
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CoreCompileInputs.cache
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.exe
@@ -196,7 +194,6 @@ C:\Users\gamze\Desktop\git\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.cspr
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.UI.exe.config
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.UI.exe
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.UI.pdb
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\en-US\izibiz.UI.resources.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.COMMON.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.CONTROLLER.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.MODEL.dll
@@ -210,7 +207,6 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\D
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.SERVICES.pdb
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.SERVICES.dll.config
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\System.Data.SQLite.xml
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\en-US\izibiz.UI.resources.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CopyComplete
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.xml
@@ -219,3 +215,4 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\D
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.COMMON.dll.config
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\en-US\izibiz.COMMON.resources.dll

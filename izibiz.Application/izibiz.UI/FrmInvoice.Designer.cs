@@ -278,10 +278,12 @@
             this.btnFaultyInvoices.TabIndex = 18;
             this.btnFaultyInvoices.Text = "Hatalılar";
             this.btnFaultyInvoices.UseVisualStyleBackColor = false;
+            this.btnFaultyInvoices.Click += new System.EventHandler(this.btnFaultyInvoices_Click);
             // 
             // btnSentInvAgainSent
             // 
             this.btnSentInvAgainSent.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnSentInvAgainSent.Enabled = false;
             this.btnSentInvAgainSent.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
             this.btnSentInvAgainSent.FlatAppearance.BorderSize = 2;
             this.btnSentInvAgainSent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -314,9 +316,10 @@
             // tableGrid
             // 
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(204, 268);
+            this.tableGrid.Location = new System.Drawing.Point(204, 228);
             this.tableGrid.Name = "tableGrid";
-            this.tableGrid.Size = new System.Drawing.Size(854, 286);
+            this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tableGrid.Size = new System.Drawing.Size(854, 326);
             this.tableGrid.TabIndex = 18;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
             // 

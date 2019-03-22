@@ -14,6 +14,8 @@ namespace izibiz.MODEL.Data
 {
     public class DatabaseContext : DbContext
     {
+
+    
         public DatabaseContext() :
             base(new SQLiteConnection()
             {
@@ -21,15 +23,20 @@ namespace izibiz.MODEL.Data
             }, true)
         {
         }
+
+    
+
+
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {           
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<IncomingInvoices> IncomingInvoice { get; set; }
-     //   public DbSet<Invoice> SentInvoice { get; set; }
-     //   public DbSet<InvoiceMaster> DraftInvoice { get; set; }
+        public DbSet<Invoices> Invoices { get; set; }
+       
 
     }
 }

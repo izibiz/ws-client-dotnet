@@ -129,3 +129,4 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLL
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.COMMON.dll.config
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\en-US\izibiz.COMMON.resources.dll

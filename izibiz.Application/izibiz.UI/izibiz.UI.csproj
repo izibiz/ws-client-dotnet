@@ -97,16 +97,6 @@
     <Compile Include="FrmDialog.Designer.cs">
       <DependentUpon>FrmDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Languages\Localization.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Localization.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Languages\Localization.en-US.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Localization.en-US.resx</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.Designer.cs">
@@ -125,14 +115,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDialog.resx">
       <DependentUpon>FrmDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Localization.en-US.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localization.en-US.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Localization.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localization.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
