@@ -10,13 +10,12 @@ namespace izibiz.COMMON
    public partial class EI
 
     {
-        
-      
+    
 
         public enum InvType
         {
-            INCOMING,
-            SENT,
+            IN,
+            OUT,
             DRAFT
         }
 

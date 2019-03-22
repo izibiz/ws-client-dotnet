@@ -563,13 +563,13 @@ namespace izibiz.UI
 
         private void btnIncomingInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice(EI.InvType.INCOMING.ToString());
+            showStateInvoice(EI.InvType.IN.ToString());
         }
 
         private void btnSentInvGetState_Click(object sender, EventArgs e)
         {
             btnSentInvAgainSent.Enabled = false;
-            showStateInvoice(EI.InvType.SENT.ToString());
+            showStateInvoice(EI.InvType.OUT.ToString());
         }
 
 
@@ -633,7 +633,6 @@ namespace izibiz.UI
         {
             try
             {
-
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
 

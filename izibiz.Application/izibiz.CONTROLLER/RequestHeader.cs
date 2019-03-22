@@ -1,4 +1,5 @@
-﻿using izibiz.CONTROLLER.Web_Services;
+﻿using izibiz.COMMON;
+using izibiz.CONTROLLER.Web_Services;
 using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace izibiz.CONTROLLER
             {
                 SESSION_ID = AuthenticationController.sesionID,
                 APPLICATION_NAME = "izibiz.Application",
-                COMPRESSED = "N"
+                COMPRESSED = EI.ActiveOrPasive.N.ToString()
             };
         }
      

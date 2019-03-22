@@ -14,12 +14,12 @@ namespace izibiz.CONTROLLER.Dal
 
         public List<Invoices> getFaultyInvoices()
         {
-            return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.SENT)
+            return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.OUT)
             && x.status.Contains(nameof(EI.StatusType.LOAD))
             && x.status.Contains(nameof(EI.SubStatusType.FAILED))).ToList();
         }
 
-
+  
 
 
     }

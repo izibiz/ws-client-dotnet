@@ -50,10 +50,10 @@ namespace izibiz.CONTROLLER.Web_Services
                 {
                     invoiceMarkRead(invoiceArray);
                     //  dbSaveInvoices(invoiceArray, EI.InvTableName.IncomingInvoices.ToString());
-                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.INCOMING.ToString());
+                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.IN.ToString());
                 }
                 //return dbGetInvoices(EI.InvTableName.IncomingInvoices.ToString());
-                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.INCOMING)).ToList();
+                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.IN)).ToList();
             }
         }
 
@@ -108,11 +108,11 @@ namespace izibiz.CONTROLLER.Web_Services
                 {
                     invoiceMarkRead(invoiceArray);
                     // dbSaveInvoices(invoiceArray, EI.InvTableName.SentInvoices.ToString());
-                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.SENT.ToString());
+                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.OUT.ToString());
 
                 }
                 //  return dbGetInvoices(EI.InvTableName.SentInvoices.ToString());
-                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.SENT)).ToList();
+                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.OUT)).ToList();
             }
         }
 
@@ -155,7 +155,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 var draft = invoiceArray.Where(x => x.HEADER.STATUS.Contains(EI.StatusType.LOAD.ToString()) 
                 && x.HEADER.STATUS.Contains(EI.SubStatusType.SUCCEED.ToString()));
 
-                SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.SENT.ToString());
+                SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.OUT.ToString());
                 // dbSaveInvoices(invoiceArray, EI.InvTableName.DraftInvoices.ToString());
                 //  return dbGetInvoices(EI.InvTableName.DraftInvoices.ToString());
                 return Singl.databaseContextGet.Invoices.Where(x => x.invType == EI.InvType.DRAFT.ToString()).ToList();
@@ -240,21 +240,26 @@ namespace izibiz.CONTROLLER.Web_Services
             }
         }
 
-        public string sendInvAgain(string invoiceUuid)
+        public string sendInvAgain(string[] invoiceUuid)
         {
-            INVOICE invoice = new INVOICE();
-            invoice.UUID = invoiceUuid;
+            INVOICE[] invoices = new INVOICE[invoiceUuid.Length];
+            for (int i=0;i<invoiceUuid.Length;i++)
+            {
+                invoices[i].UUID = invoiceUuid[i];
+            }
+      
 
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
-                GetInvoiceStatusRequest req = new GetInvoiceStatusRequest()
+                LoadInvoiceRequest req = new LoadInvoiceRequest()
                 {
                     REQUEST_HEADER = RequestHeader.requestHeader,
-                    INVOICE = invoice,
+                    INVOICE = invoices,
+                    
                 };
 
-                GetInvoiceStatusResponse res = EFaturaOIBPortClient.GetInvoiceStatus(req);
-                return res.INVOICE_STATUS.STATUS;
+                LoadInvoiceResponse res = EFaturaOIBPortClient.LoadInvoice(req);
+                return res.REQUEST_RETURN.CLIENT_TXN_ID;
             }
         }
 
