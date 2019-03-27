@@ -102,6 +102,15 @@ namespace izibiz.COMMON
             too
         }
 
+        public enum invoiceTypeCodeValue
+        {
+            SATIS,
+            IADE,
+            TEVKİFAT,
+            ISTISNA,
+            OZELMATRAH,
+            IHRACKAYITLI
+        }
         
     }
 }

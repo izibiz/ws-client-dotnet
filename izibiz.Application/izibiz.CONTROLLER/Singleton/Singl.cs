@@ -17,11 +17,25 @@ namespace izibiz.CONTROLLER.Singleton
         private static EInvoiceController instanceInvoice = null;
         private static DatabaseContext databaseContext = null;
         private static InvoiceDAL InvoiceDAL = null;
-
+        private static CreateInvoice createInv = null;
 
         private Singl()
         {      
         }
+
+
+        public static CreateInvoice createInvoice
+        {
+            get
+            {
+                if (null == createInv)
+                {
+                    createInv = new CreateInvoice();
+                }
+                return createInv;
+            }
+        }
+
 
         public static InvoiceDAL invoiceDalGet
         {

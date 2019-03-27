@@ -91,11 +91,11 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDialog.cs">
+    <Compile Include="FrmCreateInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDialog.Designer.cs">
-      <DependentUpon>FrmDialog.cs</DependentUpon>
+    <Compile Include="FrmCreateInvoice.Designer.cs">
+      <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,8 +113,8 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDialog.resx">
-      <DependentUpon>FrmDialog.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCreateInvoice.resx">
+      <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

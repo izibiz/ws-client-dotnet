@@ -1,0 +1,730 @@
+﻿namespace izibiz.UI
+{
+    partial class FrmCreateInvoice
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtPayableAmount = new System.Windows.Forms.TextBox();
+            this.txtTotalAmountWithTax = new System.Windows.Forms.TextBox();
+            this.txtKdvAmount = new System.Windows.Forms.TextBox();
+            this.txtServiceAmount = new System.Windows.Forms.TextBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.grpboxRow = new System.Windows.Forms.GroupBox();
+            this.datagridRow = new System.Windows.Forms.DataGridView();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vatRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VatAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddRow = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbMoneyType = new System.Windows.Forms.ComboBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.cmbScenario = new System.Windows.Forms.ComboBox();
+            this.dateTime = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.msdVknOrTc = new System.Windows.Forms.MaskedTextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.msdPhone = new System.Windows.Forms.MaskedTextBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtDistrict = new System.Windows.Forms.TextBox();
+            this.txtProvince = new System.Windows.Forms.TextBox();
+            this.txtTaxAdministration = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.groupBox4.SuspendLayout();
+            this.grpboxRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridRow)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(346, 618);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(153, 23);
+            this.btnClear.TabIndex = 9;
+            this.btnClear.Text = "Temizle";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(520, 618);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(153, 23);
+            this.btnCreate.TabIndex = 10;
+            this.btnCreate.Text = "e-Fatura Oluştur";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.txtPayableAmount);
+            this.groupBox4.Controls.Add(this.txtTotalAmountWithTax);
+            this.groupBox4.Controls.Add(this.txtKdvAmount);
+            this.groupBox4.Controls.Add(this.txtServiceAmount);
+            this.groupBox4.Controls.Add(this.txtNote);
+            this.groupBox4.Location = new System.Drawing.Point(9, 406);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1176, 198);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Toplam ve Not Bilgileri";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(588, 168);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(85, 13);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Ödenecek Tutar";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(588, 129);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(135, 13);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Vergiler Dahil Toplam Tutar";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(588, 92);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(89, 13);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Hesaplanan KDV";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(588, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(129, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Mal/Hizmet Toplam Tutarı";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(21, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(24, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Not";
+            // 
+            // txtPayableAmount
+            // 
+            this.txtPayableAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtPayableAmount.Location = new System.Drawing.Point(748, 165);
+            this.txtPayableAmount.Name = "txtPayableAmount";
+            this.txtPayableAmount.ReadOnly = true;
+            this.txtPayableAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtPayableAmount.TabIndex = 1;
+            // 
+            // txtTotalAmountWithTax
+            // 
+            this.txtTotalAmountWithTax.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtTotalAmountWithTax.Location = new System.Drawing.Point(748, 126);
+            this.txtTotalAmountWithTax.Name = "txtTotalAmountWithTax";
+            this.txtTotalAmountWithTax.ReadOnly = true;
+            this.txtTotalAmountWithTax.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalAmountWithTax.TabIndex = 1;
+            // 
+            // txtKdvAmount
+            // 
+            this.txtKdvAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtKdvAmount.Location = new System.Drawing.Point(747, 89);
+            this.txtKdvAmount.Name = "txtKdvAmount";
+            this.txtKdvAmount.ReadOnly = true;
+            this.txtKdvAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtKdvAmount.TabIndex = 1;
+            // 
+            // txtServiceAmount
+            // 
+            this.txtServiceAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtServiceAmount.Location = new System.Drawing.Point(747, 49);
+            this.txtServiceAmount.Name = "txtServiceAmount";
+            this.txtServiceAmount.ReadOnly = true;
+            this.txtServiceAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtServiceAmount.TabIndex = 1;
+            // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(71, 47);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtNote.Size = new System.Drawing.Size(299, 62);
+            this.txtNote.TabIndex = 0;
+            // 
+            // grpboxRow
+            // 
+            this.grpboxRow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grpboxRow.CausesValidation = false;
+            this.grpboxRow.Controls.Add(this.datagridRow);
+            this.grpboxRow.Controls.Add(this.btnAddRow);
+            this.grpboxRow.Location = new System.Drawing.Point(14, 277);
+            this.grpboxRow.Name = "grpboxRow";
+            this.grpboxRow.Size = new System.Drawing.Size(1176, 121);
+            this.grpboxRow.TabIndex = 7;
+            this.grpboxRow.TabStop = false;
+            this.grpboxRow.Text = "Satır Bilgileri";
+            // 
+            // datagridRow
+            // 
+            this.datagridRow.AccessibleRole = System.Windows.Forms.AccessibleRole.List;
+            this.datagridRow.AllowUserToOrderColumns = true;
+            this.datagridRow.AllowUserToResizeColumns = false;
+            this.datagridRow.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagridRow.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.datagridRow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridRow.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.datagridRow.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.datagridRow.CausesValidation = false;
+            this.datagridRow.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.datagridRow.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagridRow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.datagridRow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridRow.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productName,
+            this.quantity,
+            this.unit,
+            this.unitPrice,
+            this.vatRate,
+            this.VatAmount,
+            this.total});
+            this.datagridRow.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagridRow.DefaultCellStyle = dataGridViewCellStyle10;
+            this.datagridRow.EnableHeadersVisualStyles = false;
+            this.datagridRow.Location = new System.Drawing.Point(6, 19);
+            this.datagridRow.MultiSelect = false;
+            this.datagridRow.Name = "datagridRow";
+            this.datagridRow.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.datagridRow.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagridRow.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.datagridRow.RowHeadersVisible = false;
+            this.datagridRow.RowHeadersWidth = 50;
+            this.datagridRow.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            this.datagridRow.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.datagridRow.Size = new System.Drawing.Size(820, 96);
+            this.datagridRow.TabIndex = 11;
+            this.datagridRow.VirtualMode = true;
+            // 
+            // productName
+            // 
+            dataGridViewCellStyle3.NullValue = "Ad";
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.productName.HeaderText = "ürün Adı";
+            this.productName.Name = "productName";
+            // 
+            // quantity
+            // 
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "1";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.quantity.HeaderText = "miktar";
+            this.quantity.Name = "quantity";
+            // 
+            // unit
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle5.NullValue = "Adet";
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.unit.DefaultCellStyle = dataGridViewCellStyle5;
+            this.unit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.unit.HeaderText = "Birim";
+            this.unit.Items.AddRange(new object[] {
+            "Adet",
+            "Paket",
+            "Kilo"});
+            this.unit.MaxDropDownItems = 15;
+            this.unit.MinimumWidth = 10;
+            this.unit.Name = "unit";
+            // 
+            // unitPrice
+            // 
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = "0,00";
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            this.unitPrice.HeaderText = "Birim Fiyat";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // vatRate
+            // 
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.vatRate.DefaultCellStyle = dataGridViewCellStyle7;
+            this.vatRate.HeaderText = "Kdv oranı";
+            this.vatRate.Name = "vatRate";
+            // 
+            // VatAmount
+            // 
+            dataGridViewCellStyle8.Format = "C2";
+            dataGridViewCellStyle8.NullValue = "0,00";
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.VatAmount.DefaultCellStyle = dataGridViewCellStyle8;
+            this.VatAmount.HeaderText = "Kdv tutarı";
+            this.VatAmount.Name = "VatAmount";
+            // 
+            // total
+            // 
+            dataGridViewCellStyle9.Format = "C2";
+            dataGridViewCellStyle9.NullValue = "0,00";
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.total.DefaultCellStyle = dataGridViewCellStyle9;
+            this.total.HeaderText = "Toplam";
+            this.total.Name = "total";
+            // 
+            // btnAddRow
+            // 
+            this.btnAddRow.Location = new System.Drawing.Point(832, 45);
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.Size = new System.Drawing.Size(75, 23);
+            this.btnAddRow.TabIndex = 3;
+            this.btnAddRow.Text = "Add row";
+            this.btnAddRow.UseVisualStyleBackColor = true;
+            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.cmbMoneyType);
+            this.groupBox2.Controls.Add(this.cmbType);
+            this.groupBox2.Controls.Add(this.cmbScenario);
+            this.groupBox2.Controls.Add(this.dateTime);
+            this.groupBox2.Location = new System.Drawing.Point(15, 161);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1176, 105);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Fatura Bilgileri";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(232, 67);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(56, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Para Birimi";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(232, 33);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 13);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Tip";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(24, 68);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(31, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Tarih";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(21, 33);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 13);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Senaryo";
+            // 
+            // cmbMoneyType
+            // 
+            this.cmbMoneyType.FormattingEnabled = true;
+            this.cmbMoneyType.Items.AddRange(new object[] {
+            "TÜRK LİRASI"});
+            this.cmbMoneyType.Location = new System.Drawing.Point(294, 60);
+            this.cmbMoneyType.Name = "cmbMoneyType";
+            this.cmbMoneyType.Size = new System.Drawing.Size(109, 21);
+            this.cmbMoneyType.TabIndex = 1;
+            // 
+            // cmbType
+            // 
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Items.AddRange(new object[] {
+            "SATIŞ"});
+            this.cmbType.Location = new System.Drawing.Point(294, 25);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(109, 21);
+            this.cmbType.TabIndex = 1;
+            // 
+            // cmbScenario
+            // 
+            this.cmbScenario.FormattingEnabled = true;
+            this.cmbScenario.Items.AddRange(new object[] {
+            "TEMEL FATURA",
+            "TİCARİ FATURA"});
+            this.cmbScenario.Location = new System.Drawing.Point(96, 25);
+            this.cmbScenario.Name = "cmbScenario";
+            this.cmbScenario.Size = new System.Drawing.Size(109, 21);
+            this.cmbScenario.TabIndex = 1;
+            // 
+            // dateTime
+            // 
+            this.dateTime.Location = new System.Drawing.Point(96, 61);
+            this.dateTime.Name = "dateTime";
+            this.dateTime.Size = new System.Drawing.Size(109, 20);
+            this.dateTime.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.msdVknOrTc);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtAddress);
+            this.groupBox1.Controls.Add(this.msdPhone);
+            this.groupBox1.Controls.Add(this.txtCountry);
+            this.groupBox1.Controls.Add(this.txtDistrict);
+            this.groupBox1.Controls.Add(this.txtProvince);
+            this.groupBox1.Controls.Add(this.txtTaxAdministration);
+            this.groupBox1.Controls.Add(this.txtTitle);
+            this.groupBox1.Location = new System.Drawing.Point(15, 14);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1176, 141);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Alıcı";
+            // 
+            // msdVknOrTc
+            // 
+            this.msdVknOrTc.Location = new System.Drawing.Point(96, 31);
+            this.msdVknOrTc.Mask = "00000000000";
+            this.msdVknOrTc.Name = "msdVknOrTc";
+            this.msdVknOrTc.Size = new System.Drawing.Size(109, 20);
+            this.msdVknOrTc.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(745, 35);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Adres";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(440, 71);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "E-Posta";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(440, 35);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Telefon Numarası";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(232, 108);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Ülke";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(232, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "İlçe";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(232, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(12, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "İl";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Vergi Dairesi";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Ünvanı";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "VKN/TCKN";
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(805, 32);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(340, 81);
+            this.txtAddress.TabIndex = 2;
+            // 
+            // msdPhone
+            // 
+            this.msdPhone.Location = new System.Drawing.Point(560, 31);
+            this.msdPhone.Mask = "(999) 000-0000";
+            this.msdPhone.Name = "msdPhone";
+            this.msdPhone.Size = new System.Drawing.Size(109, 20);
+            this.msdPhone.TabIndex = 1;
+            // 
+            // txtCountry
+            // 
+            this.txtCountry.Location = new System.Drawing.Point(294, 101);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(109, 20);
+            this.txtCountry.TabIndex = 0;
+            // 
+            // txtDistrict
+            // 
+            this.txtDistrict.Location = new System.Drawing.Point(294, 64);
+            this.txtDistrict.Name = "txtDistrict";
+            this.txtDistrict.Size = new System.Drawing.Size(109, 20);
+            this.txtDistrict.TabIndex = 0;
+            // 
+            // txtProvince
+            // 
+            this.txtProvince.Location = new System.Drawing.Point(294, 28);
+            this.txtProvince.Name = "txtProvince";
+            this.txtProvince.Size = new System.Drawing.Size(109, 20);
+            this.txtProvince.TabIndex = 0;
+            // 
+            // txtTaxAdministration
+            // 
+            this.txtTaxAdministration.Location = new System.Drawing.Point(96, 101);
+            this.txtTaxAdministration.Name = "txtTaxAdministration";
+            this.txtTaxAdministration.Size = new System.Drawing.Size(109, 20);
+            this.txtTaxAdministration.TabIndex = 0;
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Location = new System.Drawing.Point(96, 64);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(109, 20);
+            this.txtTitle.TabIndex = 0;
+            // 
+            // FrmCreateInvoice
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1219, 644);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.grpboxRow);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FrmCreateInvoice";
+            this.Load += new System.EventHandler(this.FrmCreateInvoice_Load);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.grpboxRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datagridRow)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtPayableAmount;
+        private System.Windows.Forms.TextBox txtTotalAmountWithTax;
+        private System.Windows.Forms.TextBox txtKdvAmount;
+        private System.Windows.Forms.TextBox txtServiceAmount;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.GroupBox grpboxRow;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmbMoneyType;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.ComboBox cmbScenario;
+        private System.Windows.Forms.DateTimePicker dateTime;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.MaskedTextBox msdPhone;
+        private System.Windows.Forms.TextBox txtCountry;
+        private System.Windows.Forms.TextBox txtDistrict;
+        private System.Windows.Forms.TextBox txtProvince;
+        private System.Windows.Forms.TextBox txtTaxAdministration;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.Button btnAddRow;
+        private System.Windows.Forms.MaskedTextBox msdVknOrTc;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView datagridRow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewComboBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vatRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VatAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+    }
+}

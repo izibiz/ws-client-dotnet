@@ -152,7 +152,6 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\D
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmHome.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmInvoice.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmLogin.resources
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmDialog.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Properties.Resources.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.GenerateResource.cache
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CoreCompileInputs.cache
@@ -216,3 +215,4 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\D
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\izibiz.COMMON.dll.config
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\bin\Debug\en-US\izibiz.COMMON.resources.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmCreateInvoice.resources
