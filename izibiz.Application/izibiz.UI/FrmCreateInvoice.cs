@@ -127,8 +127,7 @@ namespace izibiz.UI
             }
 
 
-            CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(profileId, invoiceTypeCodeValue, "TRY");
-
+            CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(profileId, invoiceTypeCodeValue);
             ublInvoice.SetInvoiceLines(ublInvoice.GetInvoiceLines());
 
             switch (txtTcVkn.Text.Length)

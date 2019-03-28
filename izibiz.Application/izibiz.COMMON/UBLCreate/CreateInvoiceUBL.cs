@@ -18,7 +18,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        public CreateInvoiceUBL(string profileId, string invoiceTypeCode, string documentCurrencyCode)
+        public CreateInvoiceUBL(string profileId, string invoiceTypeCode)
         {
             BaseUBL = new InvoiceType();
 
@@ -44,9 +44,7 @@ namespace izibiz.CONTROLLER
             BaseUBL.IssueDate = new IssueDateType { Value = DateTime.Now };
             BaseUBL.IssueTime = new IssueTimeType { Value = DateTime.Now };
             BaseUBL.InvoiceTypeCode = new InvoiceTypeCodeType { Value = invTypeCode };
-            /*  NoteType[] note = new NoteType[] { new NoteType { Value = "sdfasdfas" } };
-          BaseUBL.Note = note;*/
-            BaseUBL.DocumentCurrencyCode = new DocumentCurrencyCodeType { Value = EI.DocumentCurrencyCode.USD.ToString() };
+            BaseUBL.DocumentCurrencyCode = new DocumentCurrencyCodeType { Value = "TRY" };
 
         }
 
