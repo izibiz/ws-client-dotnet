@@ -129,9 +129,8 @@ namespace izibiz.UI
 
             CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(profileId, invoiceTypeCodeValue, "TRY");
 
-            ublInvoice.setAdditionalDocumentReference();
-            ublInvoice.SetSignature();
             ublInvoice.SetInvoiceLines(ublInvoice.GetInvoiceLines());
+
             switch (txtTcVkn.Text.Length)
             {
                 case 10:
