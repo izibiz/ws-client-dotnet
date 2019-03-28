@@ -140,7 +140,6 @@ namespace izibiz.CONTROLLER
             {
                 WebsiteURI = new WebsiteURIType { Value = "web sitesi" },
 
-
                 PartyIdentification = new[]
                 {
                    new PartyIdentificationType { ID = new IDType { schemeID = parametre, Value = vknTckn } }
@@ -179,9 +178,7 @@ namespace izibiz.CONTROLLER
                 }
             };
 
-
-
-
+            
             suppParty.PartyIdentification = suppPartyid;
             suppParty.PartyName = new PartyNameType { Name = new NameType1 { Value = "İZİBİZ BİLİŞİM TEKNOLOJİLERİ" } };
 
@@ -202,16 +199,6 @@ namespace izibiz.CONTROLLER
             supplier.Party = suppParty;
 
             invoice.AccountingSupplierParty = supplier;
-
-
-
-
-
-
-
-
-
-
 
 
         }
