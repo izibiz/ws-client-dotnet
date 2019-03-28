@@ -75,7 +75,6 @@ namespace izibiz.UI
         }
 
 
-  
 
         private void btnAddRow_Click(object sender, EventArgs e)
         {
@@ -91,16 +90,16 @@ namespace izibiz.UI
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            string profileid;
+            string profileId;
             string invoiceTypeCodeValue;
 
             if (cmbScenario.SelectedItem.ToString() == "Temel fatura")
             {
-                profileid = EI.InvoiceProfileid.TEMELFATURA.ToString();
+                profileId = EI.InvoiceProfileid.TEMELFATURA.ToString();
             }
             else
             {
-                profileid = EI.InvoiceProfileid.TICARIFATURA.ToString();
+                profileId = EI.InvoiceProfileid.TICARIFATURA.ToString();
             }
 
             switch (cmbType.SelectedItem)
@@ -127,11 +126,35 @@ namespace izibiz.UI
                     MessageBox.Show("senaryo alanı default olarak satıs secıldı"); invoiceTypeCodeValue = EI.invoiceTypeCodeValue.SATIS.ToString(); break;
             }
 
-           
 
-            InvoiceType ınvoiceType = new InvoiceType();
-            Singl.createInvoice.createInvoiceHeader(ınvoiceType,profileid,invoiceTypeCodeValue);
+            CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(profileId, invoiceTypeCodeValue, "TRY");
+
+            ublInvoice.setAdditionalDocumentReference();
+            ublInvoice.SetSignature();
+            ublInvoice.SetInvoiceLines(ublInvoice.GetInvoiceLines());
+            switch (txtTcVkn.Text.Length)
+            {
+                case 10:
+                    ublInvoice.SetSupplierParty(ublInvoice.GetParty(txtTcVkn.Text, "VKN"));
+                    ublInvoice.SetCustomerParty(ublInvoice.GetParty(txtTcVkn.Text, "VKN"));
+                    break;
+                case 11:
+                    ublInvoice.SetSupplierParty(ublInvoice.GetParty(txtTcVkn.Text, "TCKN"));
+                    ublInvoice.SetCustomerParty(ublInvoice.GetParty(txtTcVkn.Text, "TCKN"));
+                    break;
+            }
+
+            ublInvoice.SetLegalMonetaryTotal(ublInvoice.CalculateLegalMonetaryTotal());
+            ublInvoice.SetTaxTotal(ublInvoice.CalculateTaxTotal());
+            ublInvoice.SetAllowanceCharge(ublInvoice.CalculateAllowanceCharges());
+
 
         }
+
+      
+
+
+
+
     }
 }

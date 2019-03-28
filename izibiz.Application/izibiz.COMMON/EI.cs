@@ -10,7 +10,7 @@ namespace izibiz.COMMON
    public partial class EI
 
     {
-    
+     
 
         public enum InvType
         {
@@ -111,6 +111,15 @@ namespace izibiz.COMMON
             OZELMATRAH,
             IHRACKAYITLI
         }
-        
+
+
+        public enum DocumentCurrencyCode
+        {
+            USD
+        }
+        public enum DocumentType
+        {
+            XSLT
+        }
     }
 }
