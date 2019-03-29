@@ -145,7 +145,6 @@ namespace izibiz.UI
             }
            
             CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(profileId, invoiceTypeCodeValue);
-            ublInvoice.SetInvoiceLines(GetInvoiceLines());
 
             PartyType supParty;
             PartyType cusParty;
@@ -176,8 +175,9 @@ namespace izibiz.UI
                 ublInvoice.addPartyIdentification(cusParty,1,"TCKN", msdVknTc.Text,"","","","");
             }               
             ublInvoice.SetCustomerParty(cusParty);
-            
-            
+
+            TaxTotalType taxTotal=ublInvoice.createTaxTotal();
+            ublInvoice.createInvoiceLines(datagridRow.Rows.Count, taxTotal, GetInvoiceLines());
 
             ublInvoice.SetLegalMonetaryTotal(ublInvoice.CalculateLegalMonetaryTotal());
             ublInvoice.SetTaxTotal(ublInvoice.CalculateTaxTotal());

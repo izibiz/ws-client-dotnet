@@ -144,7 +144,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        public PartyType GetParty( string webUrı, string partyName,
+        public PartyType GetParty(string webUrı, string partyName,
              string streetName, string buldingName, string buldingNumber, string visionName, string cityName,
             string postalZone, string region, string country, string telephone, string fax, string mail)
         {
@@ -203,7 +203,7 @@ namespace izibiz.CONTROLLER
             string param2, string param2Value, string param3, string param3Value)
         {
             PartyIdentificationType[] partyIdentificationArr = new PartyIdentificationType[paramCount];
-            for (int i=0;i< paramCount; i++)
+            for (int i = 0; i < paramCount; i++)
             {
                 PartyIdentificationType partyIdentification = new PartyIdentificationType();
                 switch (i)
@@ -218,12 +218,133 @@ namespace izibiz.CONTROLLER
                         partyIdentification.ID.schemeID = param3;
                         partyIdentification.ID.schemeName = param3Value; break;
                 }
-                partyIdentificationArr[i]=partyIdentification;
+                partyIdentificationArr[i] = partyIdentification;
             }
-            party.PartyIdentification= partyIdentificationArr;
+            party.PartyIdentification = partyIdentificationArr;
         }
 
-       
+
+
+
+        public virtual void getInvoiceLines(InvoiceLineType[] invoiceLines)
+        {
+            BaseUBL.InvoiceLine = invoiceLines;
+            BaseUBL.LineCountNumeric = new LineCountNumericType { Value = invoiceLines.Length };
+        }
+
+
+
+        public void setTaxTotal(TaxTotalType[] taxTotal)
+        {
+            BaseUBL.TaxTotal = taxTotal;
+        }
+
+
+        public TaxTotalType[] createTaxTotal()
+        {
+            return new TaxTotalType[]
+            {
+                TaxAmount = new TaxAmountType
+                {
+                    currencyID = "TRY",
+                    Value = 0.19M
+                },
+                TaxSubtotal = new[]
+                {
+                    new TaxSubtotalType
+                    {
+                        TaxableAmount = new TaxableAmountType
+                        {
+                            currencyID = "TRY",                      
+                            Value = 19.00M
+                        },
+
+                        TaxAmount = new TaxAmountType
+                        {
+                            currencyID = "TRY",
+                            Value = 0.19M
+                        },
+
+                        CalculationSequenceNumeric =new CalculationSequenceNumericType
+                        {
+                            Value =1
+                        },
+                        Percent = new PercentType1 { Value = 1},
+
+                        TaxCategory = new TaxCategoryType
+                        {
+                            TaxScheme = new TaxSchemeType
+                            {
+                                Name = new NameType1 { Value = "KDV" },
+                                TaxTypeCode = new TaxTypeCodeType { Value = "0015" }
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+
+
+        public InvoiceLineType[] createInvoiceLines(int lineCount, TaxTotalType taxTotal)
+        {
+            List<InvoiceLineType> list = new List<InvoiceLineType>();
+            for (int i = 1; i <= lineCount; i++)
+            {
+                #region invoiceLine
+                InvoiceLineType invoiceLine = new InvoiceLineType
+                {
+
+                    ID = new IDType { Value = i.ToString() },
+                    InvoicedQuantity = new InvoicedQuantityType { unitCode = "C62", Value = 10 },
+                    LineExtensionAmount = new LineExtensionAmountType { currencyID = "TRY", Value = 20.00M },
+
+                    AllowanceCharge = new[]
+                        {
+                            new AllowanceChargeType
+                            {
+                                ChargeIndicator = new ChargeIndicatorType { Value = false },
+                                MultiplierFactorNumeric = new MultiplierFactorNumericType { Value = 0.05M },
+
+                                Amount = new AmountType2
+                                {
+                                    currencyID = "TRY",
+                                    Value = 1.00M
+                                },
+
+                                BaseAmount = new BaseAmountType
+                                {
+                                    currencyID = "TRY",
+                                    Value = 20
+                                }
+                            }
+                        },
+
+                    Item = new ItemType
+                    {
+                        Name = new NameType1 { Value = "Kalem" }
+                    },
+
+                    Price = new PriceType
+                    {
+                        PriceAmount = new PriceAmountType
+                        {
+                            currencyID = "TRY",
+                            Value = 2.00M
+                        }
+                    }
+                };
+                #endregion
+                list.Add(invoiceLine);
+            }
+
+            return list.ToArray();
+        }
+
+
+
+
+
 
 
 
