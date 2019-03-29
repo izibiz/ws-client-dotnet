@@ -89,7 +89,7 @@ namespace izibiz.CONTROLLER
                     SignatoryParty = new PartyType
                     {
                         WebsiteURI = new WebsiteURIType { Value = "www.FITsolutions.com.tr" },
-                        PartyIdentification = new[]                  
+                        PartyIdentification = new[]
                         {
                             new PartyIdentificationType
                             {
@@ -133,77 +133,97 @@ namespace izibiz.CONTROLLER
         }
 
 
+        public virtual void SetCustomerParty(PartyType customerParty)
+        {
+            var accountingCustomerParty = new CustomerPartyType //Alıcının fatura üzerindeki bilgileri
+            {
+                Party = customerParty
+            };
+            BaseUBL.AccountingCustomerParty = accountingCustomerParty;
+        }
 
-        public PartyType GetParty(string vknTckn, string parametre)
+
+
+        public PartyType GetParty( string webUrı, string partyName,
+             string streetName, string buldingName, string buldingNumber, string visionName, string cityName,
+            string postalZone, string region, string country, string telephone, string fax, string mail)
         {
             return new PartyType
             {
-                WebsiteURI = new WebsiteURIType { Value = "web sitesi" },
+                WebsiteURI = new WebsiteURIType { Value = webUrı },
 
-                PartyIdentification = new[]
-                {
-                   new PartyIdentificationType { ID = new IDType { schemeID = parametre, Value = vknTckn } }
-                },
-
-                PartyName = new PartyNameType { Name = new NameType1 { Value = "asdasd" } },
+                PartyName = new PartyNameType { Name = new NameType1 { Value = partyName } },
 
                 PostalAddress = new AddressType
                 {
-                    Room = new RoomType { Value = "kapi no" },
-                    StreetName = new StreetNameType { Value = "cadde" },
-                    BuildingName = new BuildingNameType { Value = "bina" },
-                    BuildingNumber = new BuildingNumberType { Value = "bina no" },
-                    CitySubdivisionName = new CitySubdivisionNameType { Value = "mahalle" },
-                    CityName = new CityNameType { Value = "sehir" },
-                    PostalZone = new PostalZoneType { Value = "posta kodu" },
-                    Region = new RegionType { Value = "asdasd" },
-                    Country = new CountryType { Name = new NameType1 { Value = "ülke" } }
-                },
-
-                PartyTaxScheme = new PartyTaxSchemeType
-                {
-                    TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "vergi dairesi" } }
+                    StreetName = new StreetNameType { Value = streetName },
+                    BuildingName = new BuildingNameType { Value = buldingName },
+                    BuildingNumber = new BuildingNumberType { Value = buldingNumber },
+                    CitySubdivisionName = new CitySubdivisionNameType { Value = visionName },
+                    CityName = new CityNameType { Value = cityName },
+                    PostalZone = new PostalZoneType { Value = postalZone },
+                    Region = new RegionType { Value = region },
+                    Country = new CountryType { Name = new NameType1 { Value = country } }
                 },
 
                 Contact = new ContactType
                 {
-                    Telephone = new TelephoneType { Value = "telefon" },
-                    Telefax = new TelefaxType { Value = "faks" },
-                    ElectronicMail = new ElectronicMailType { Value = "mail" }
+                    Telephone = new TelephoneType { Value = telephone },
+                    Telefax = new TelefaxType { Value = fax },
+                    ElectronicMail = new ElectronicMailType { Value = mail }
                 },
-                Person = new PersonType
-                {
-                    FirstName = new FirstNameType { Value = "İsim" },
-                    FamilyName = new FamilyNameType { Value = "Soyisim" },
-                }
             };
-
-            
-            suppParty.PartyIdentification = suppPartyid;
-            suppParty.PartyName = new PartyNameType { Name = new NameType1 { Value = "İZİBİZ BİLİŞİM TEKNOLOJİLERİ" } };
-
-            AddressType suppPartyAddr = new AddressType();
-            suppPartyAddr.StreetName = new StreetNameType() { Value = "Bahalibahce Sok." };
-            suppPartyAddr.BuildingName = new BuildingNameType() { Value = "Cenk Ap." };
-            suppPartyAddr.BuildingNumber = new BuildingNumberType() { Value = "11/2" };
-            suppPartyAddr.CitySubdivisionName = new CitySubdivisionNameType() { Value = "Bakirkoy" };
-            suppPartyAddr.CityName = new CityNameType() { Value = "İSTANBUL" };
-            suppPartyAddr.PostalZone = new PostalZoneType() { Value = "34100" };
-            suppPartyAddr.Region = new RegionType() { Value = "INCIRLI" };
-            suppPartyAddr.Country = new CountryType() { Name = new NameType1() { Value = "TR" } };
-
-            suppParty.PostalAddress = suppPartyAddr;
-            suppParty.PartyTaxScheme = new PartyTaxSchemeType { TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "BAKIRKOY" } } };
-            suppParty.Contact = new ContactType { ElectronicMail = new ElectronicMailType { Value = "yasar.gunes@izibiz.com.tr" } };
-
-            supplier.Party = suppParty;
-
-            invoice.AccountingSupplierParty = supplier;
-
-
         }
 
 
+
+        public void addPartyTaxSchemeOnParty(PartyType party, string taxScheme)
+        {
+            party.PartyTaxScheme = new PartyTaxSchemeType
+            {
+                TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = taxScheme } }
+            };
+        }
+
+
+
+
+        public void addPersonOnParty(PartyType party, string firstName, string familyName)
+        {
+            party.Person = new PersonType
+            {
+                FirstName = new FirstNameType { Value = firstName },
+                FamilyName = new FamilyNameType { Value = familyName }
+            };
+        }
+
+
+
+        public void addPartyIdentification(PartyType party, int paramCount, string param1, string param1Value,
+            string param2, string param2Value, string param3, string param3Value)
+        {
+            PartyIdentificationType[] partyIdentificationArr = new PartyIdentificationType[paramCount];
+            for (int i=0;i< paramCount; i++)
+            {
+                PartyIdentificationType partyIdentification = new PartyIdentificationType();
+                switch (i)
+                {
+                    case 0:
+                        partyIdentification.ID.schemeID = param1;
+                        partyIdentification.ID.schemeName = param1Value; break;
+                    case 1:
+                        partyIdentification.ID.schemeID = param2;
+                        partyIdentification.ID.schemeName = param2Value; break;
+                    case 2:
+                        partyIdentification.ID.schemeID = param3;
+                        partyIdentification.ID.schemeName = param3Value; break;
+                }
+                partyIdentificationArr[i]=partyIdentification;
+            }
+            party.PartyIdentification= partyIdentificationArr;
+        }
+
+       
 
 
 

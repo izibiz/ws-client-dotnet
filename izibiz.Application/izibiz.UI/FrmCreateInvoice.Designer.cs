@@ -73,8 +73,7 @@
             this.cmbScenario = new System.Windows.Forms.ComboBox();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.msdVknOrTc = new System.Windows.Forms.MaskedTextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.msdVknTc = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -83,13 +82,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.msdPhone = new System.Windows.Forms.MaskedTextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.txtDistrict = new System.Windows.Forms.TextBox();
-            this.txtProvince = new System.Windows.Forms.TextBox();
-            this.txtTaxAdministration = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtTaxScheme = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPartyName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtBuldingNo = new System.Windows.Forms.TextBox();
+            this.txtBuldingName = new System.Windows.Forms.TextBox();
+            this.txtVision = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtStreet = new System.Windows.Forms.TextBox();
+            this.txtMail = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
             this.grpboxRow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridRow)).BeginInit();
@@ -392,6 +401,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtPartyName);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label12);
@@ -419,7 +430,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(232, 33);
+            this.label14.Location = new System.Drawing.Point(232, 28);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(22, 13);
             this.label14.TabIndex = 3;
@@ -437,7 +448,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(21, 33);
+            this.label11.Location = new System.Drawing.Point(24, 28);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 13);
             this.label11.TabIndex = 3;
@@ -483,8 +494,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.msdVknOrTc);
+            this.groupBox1.Controls.Add(this.txtMail);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.txtStreet);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.txtBuldingNo);
+            this.groupBox1.Controls.Add(this.txtBuldingName);
+            this.groupBox1.Controls.Add(this.txtVision);
+            this.groupBox1.Controls.Add(this.msdVknTc);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -493,12 +512,11 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.msdPhone);
             this.groupBox1.Controls.Add(this.txtCountry);
             this.groupBox1.Controls.Add(this.txtDistrict);
-            this.groupBox1.Controls.Add(this.txtProvince);
-            this.groupBox1.Controls.Add(this.txtTaxAdministration);
+            this.groupBox1.Controls.Add(this.txtCity);
+            this.groupBox1.Controls.Add(this.txtTaxScheme);
             this.groupBox1.Controls.Add(this.txtTitle);
             this.groupBox1.Location = new System.Drawing.Point(15, 14);
             this.groupBox1.Name = "groupBox1";
@@ -507,27 +525,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alıcı";
             // 
-            // msdVknOrTc
+            // msdVknTc
             // 
-            this.msdVknOrTc.Location = new System.Drawing.Point(96, 31);
-            this.msdVknOrTc.Mask = "00000000000";
-            this.msdVknOrTc.Name = "msdVknOrTc";
-            this.msdVknOrTc.Size = new System.Drawing.Size(109, 20);
-            this.msdVknOrTc.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(745, 35);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Adres";
+            this.msdVknTc.Location = new System.Drawing.Point(96, 31);
+            this.msdVknTc.Mask = "00000000000";
+            this.msdVknTc.Name = "msdVknTc";
+            this.msdVknTc.Size = new System.Drawing.Size(109, 20);
+            this.msdVknTc.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(440, 71);
+            this.label9.Location = new System.Drawing.Point(654, 104);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 3;
@@ -536,11 +545,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(440, 35);
+            this.label8.Location = new System.Drawing.Point(654, 68);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 13);
+            this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Telefon Numarası";
+            this.label8.Text = "Telefon";
             // 
             // label7
             // 
@@ -596,17 +605,9 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "VKN/TCKN";
             // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(805, 32);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(340, 81);
-            this.txtAddress.TabIndex = 2;
-            // 
             // msdPhone
             // 
-            this.msdPhone.Location = new System.Drawing.Point(560, 31);
+            this.msdPhone.Location = new System.Drawing.Point(716, 65);
             this.msdPhone.Mask = "(999) 000-0000";
             this.msdPhone.Name = "msdPhone";
             this.msdPhone.Size = new System.Drawing.Size(109, 20);
@@ -626,19 +627,19 @@
             this.txtDistrict.Size = new System.Drawing.Size(109, 20);
             this.txtDistrict.TabIndex = 0;
             // 
-            // txtProvince
+            // txtCity
             // 
-            this.txtProvince.Location = new System.Drawing.Point(294, 28);
-            this.txtProvince.Name = "txtProvince";
-            this.txtProvince.Size = new System.Drawing.Size(109, 20);
-            this.txtProvince.TabIndex = 0;
+            this.txtCity.Location = new System.Drawing.Point(294, 28);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(109, 20);
+            this.txtCity.TabIndex = 0;
             // 
-            // txtTaxAdministration
+            // txtTaxScheme
             // 
-            this.txtTaxAdministration.Location = new System.Drawing.Point(96, 101);
-            this.txtTaxAdministration.Name = "txtTaxAdministration";
-            this.txtTaxAdministration.Size = new System.Drawing.Size(109, 20);
-            this.txtTaxAdministration.TabIndex = 0;
+            this.txtTaxScheme.Location = new System.Drawing.Point(96, 101);
+            this.txtTaxScheme.Name = "txtTaxScheme";
+            this.txtTaxScheme.Size = new System.Drawing.Size(109, 20);
+            this.txtTaxScheme.TabIndex = 0;
             // 
             // txtTitle
             // 
@@ -646,6 +647,93 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(109, 20);
             this.txtTitle.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(431, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Fatura Başlık";
+            // 
+            // txtPartyName
+            // 
+            this.txtPartyName.Location = new System.Drawing.Point(518, 25);
+            this.txtPartyName.Name = "txtPartyName";
+            this.txtPartyName.Size = new System.Drawing.Size(109, 20);
+            this.txtPartyName.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(426, 108);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "bina no";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(426, 71);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(44, 13);
+            this.label20.TabIndex = 10;
+            this.label20.Text = "bina adı";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(426, 35);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(43, 13);
+            this.label21.TabIndex = 11;
+            this.label21.Text = "mahalle";
+            // 
+            // txtBuldingNo
+            // 
+            this.txtBuldingNo.Location = new System.Drawing.Point(488, 101);
+            this.txtBuldingNo.Name = "txtBuldingNo";
+            this.txtBuldingNo.Size = new System.Drawing.Size(109, 20);
+            this.txtBuldingNo.TabIndex = 6;
+            // 
+            // txtBuldingName
+            // 
+            this.txtBuldingName.Location = new System.Drawing.Point(488, 64);
+            this.txtBuldingName.Name = "txtBuldingName";
+            this.txtBuldingName.Size = new System.Drawing.Size(109, 20);
+            this.txtBuldingName.TabIndex = 7;
+            // 
+            // txtVision
+            // 
+            this.txtVision.Location = new System.Drawing.Point(488, 28);
+            this.txtVision.Name = "txtVision";
+            this.txtVision.Size = new System.Drawing.Size(109, 20);
+            this.txtVision.TabIndex = 8;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(654, 35);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(36, 13);
+            this.label22.TabIndex = 13;
+            this.label22.Text = "sokak";
+            // 
+            // txtStreet
+            // 
+            this.txtStreet.Location = new System.Drawing.Point(716, 28);
+            this.txtStreet.Name = "txtStreet";
+            this.txtStreet.Size = new System.Drawing.Size(109, 20);
+            this.txtStreet.TabIndex = 12;
+            // 
+            // txtMail
+            // 
+            this.txtMail.Location = new System.Drawing.Point(716, 101);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(109, 20);
+            this.txtMail.TabIndex = 14;
             // 
             // FrmCreateInvoice
             // 
@@ -699,7 +787,6 @@
         private System.Windows.Forms.ComboBox cmbScenario;
         private System.Windows.Forms.DateTimePicker dateTime;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -708,15 +795,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.MaskedTextBox msdPhone;
         private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.TextBox txtDistrict;
-        private System.Windows.Forms.TextBox txtProvince;
-        private System.Windows.Forms.TextBox txtTaxAdministration;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtTaxScheme;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Button btnAddRow;
-        private System.Windows.Forms.MaskedTextBox msdVknOrTc;
+        private System.Windows.Forms.MaskedTextBox msdVknTc;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView datagridRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn productName;
@@ -726,5 +812,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vatRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn VatAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.TextBox txtPartyName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtBuldingNo;
+        private System.Windows.Forms.TextBox txtBuldingName;
+        private System.Windows.Forms.TextBox txtVision;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtStreet;
+        private System.Windows.Forms.TextBox txtMail;
     }
 }

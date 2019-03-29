@@ -18,7 +18,7 @@ namespace izibiz.UI
 {
     public partial class FrmCreateInvoice : Form
     {
-   
+
 
         public FrmCreateInvoice()
         {
@@ -79,19 +79,38 @@ namespace izibiz.UI
         private void btnAddRow_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = (DataGridViewRow)datagridRow.Rows[0].Clone();
-            datagridRow.Rows.Add(row);        
+            datagridRow.Rows.Add(row);
         }
 
 
 
 
-       
+
 
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
             string profileId;
             string invoiceTypeCodeValue;
+            //suplıer bılgılerı
+            string webUrı;
+            string partyName;
+            string streetName;
+            string buldingName;
+            string buldingNumber;
+            string visionName;
+            string cityName;
+            string postalZone;
+            string country;
+            string telephone;
+            string fax;
+            string mail;
+            string mersisNo;
+            string sicilNo;
+            string supVknTc;
+            string firstName;
+            string familyName;
+            string taxScheme;
 
             if (cmbScenario.SelectedItem.ToString() == "Temel fatura")
             {
@@ -101,10 +120,9 @@ namespace izibiz.UI
             {
                 profileId = EI.InvoiceProfileid.TICARIFATURA.ToString();
             }
-
             switch (cmbType.SelectedItem)
             {
-               case "Satıs":
+                case "Satıs":
                     invoiceTypeCodeValue = EI.invoiceTypeCodeValue.SATIS.ToString(); break;
 
                 case "iade":
@@ -125,22 +143,41 @@ namespace izibiz.UI
                 default:
                     MessageBox.Show("senaryo alanı default olarak satıs secıldı"); invoiceTypeCodeValue = EI.invoiceTypeCodeValue.SATIS.ToString(); break;
             }
-
-
+           
             CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(profileId, invoiceTypeCodeValue);
-            ublInvoice.SetInvoiceLines(ublInvoice.GetInvoiceLines());
+            ublInvoice.SetInvoiceLines(GetInvoiceLines());
 
-            switch (txtTcVkn.Text.Length)
-            {
-                case 10:
-                    ublInvoice.SetSupplierParty(ublInvoice.GetParty(txtTcVkn.Text, "VKN"));
-                    ublInvoice.SetCustomerParty(ublInvoice.GetParty(txtTcVkn.Text, "VKN"));
-                    break;
-                case 11:
-                    ublInvoice.SetSupplierParty(ublInvoice.GetParty(txtTcVkn.Text, "TCKN"));
-                    ublInvoice.SetCustomerParty(ublInvoice.GetParty(txtTcVkn.Text, "TCKN"));
-                    break;
+            PartyType supParty;
+            PartyType cusParty;
+
+            //supp party olusturulması  
+            supParty = ublInvoice.GetParty(webUrı, partyName, streetName, buldingName, buldingNumber, visionName, cityName, postalZone, "", country, telephone, fax, mail);
+            if (supVknTc.Length == 10) //sup vkn
+            {              
+                ublInvoice.addPartyIdentification(supParty,2, "VKN", supVknTc, mersisNo, sicilNo,"","");
+                ublInvoice.addPartyTaxSchemeOnParty(supParty,taxScheme);
             }
+            else  //sup tckn .. add person metodu eklenır
+            {
+                ublInvoice.addPartyIdentification(supParty,2,"TCKN", supVknTc, mersisNo, sicilNo,"","");
+                ublInvoice.addPersonOnParty(supParty,firstName,familyName); 
+            }
+            ublInvoice.SetSupplierParty(supParty);
+
+            //cust party olusturulması    
+            cusParty = ublInvoice.GetParty("", txtPartyName.Text, txtStreet.Text, txtBuldingName.Text, txtBuldingNo.Text, txtVision.Text, txtCity.Text, "", "", txtCountry.Text, msdPhone.Text, "", txtMail.Text);
+            if (msdVknTc.Text.Length == 10) //customer vkn
+            {
+                ublInvoice.addPartyIdentification(cusParty,1, "VKN", msdVknTc.Text,"","","","");
+                ublInvoice.addPartyTaxSchemeOnParty(cusParty,txtTaxScheme.Text);
+            }
+            else  //customer tckn
+            {
+                ublInvoice.addPartyIdentification(cusParty,1,"TCKN", msdVknTc.Text,"","","","");
+            }               
+            ublInvoice.SetCustomerParty(cusParty);
+            
+            
 
             ublInvoice.SetLegalMonetaryTotal(ublInvoice.CalculateLegalMonetaryTotal());
             ublInvoice.SetTaxTotal(ublInvoice.CalculateTaxTotal());
@@ -149,7 +186,7 @@ namespace izibiz.UI
 
         }
 
-      
+
 
 
 
