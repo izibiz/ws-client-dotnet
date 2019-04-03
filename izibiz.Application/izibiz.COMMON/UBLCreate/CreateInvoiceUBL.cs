@@ -13,7 +13,7 @@ namespace izibiz.CONTROLLER
     {
 
         public InvoiceType BaseUBL { get; protected set; }
-
+        private List<InvoiceLineType> listInvLine;
 
 
 
@@ -23,8 +23,8 @@ namespace izibiz.CONTROLLER
             BaseUBL = new InvoiceType();
 
             createInvoiceHeader(profileId, invoiceTypeCode);
-            setAdditionalDocumentReference();
-            SetSignature();
+            createAdditionalDocumentReference();
+            createSignature();
         }
 
 
@@ -52,7 +52,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        public void setAdditionalDocumentReference()
+        public void createAdditionalDocumentReference()
         {
             var idRef = new DocumentReferenceType()
             {
@@ -79,7 +79,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        public void SetSignature()
+        public void createSignature()
         {
             var signature = new[]
             {
@@ -122,18 +122,17 @@ namespace izibiz.CONTROLLER
         }
 
 
-        public virtual void SetSupplierParty(PartyType supplierParty)
+        public  void SetSupplierParty(PartyType supplierParty)
         {
             var accountingSupplierParty = new SupplierPartyType //göndericinin fatura üzerindeki bilgileri
             {
                 Party = supplierParty
             };
-
             BaseUBL.AccountingSupplierParty = accountingSupplierParty;
         }
 
 
-        public virtual void SetCustomerParty(PartyType customerParty)
+        public  void SetCustomerParty(PartyType customerParty)
         {
             var accountingCustomerParty = new CustomerPartyType //Alıcının fatura üzerindeki bilgileri
             {
@@ -144,7 +143,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        public PartyType GetParty(string webUrı, string partyName,
+        public PartyType createParty(string webUrı, string partyName,
              string streetName, string buldingName, string buldingNumber, string visionName, string cityName,
             string postalZone, string region, string country, string telephone, string fax, string mail)
         {
@@ -226,11 +225,101 @@ namespace izibiz.CONTROLLER
 
 
 
-        public virtual void getInvoiceLines(InvoiceLineType[] invoiceLines)
+
+        public void setInvLines()
         {
-            BaseUBL.InvoiceLine = invoiceLines;
-            BaseUBL.LineCountNumeric = new LineCountNumericType { Value = invoiceLines.Length };
+            BaseUBL.InvoiceLine = listInvLine.ToArray();
+            BaseUBL.LineCountNumeric = new LineCountNumericType { Value = listInvLine.Count };
         }
+      
+
+        public void addInvoiceLine(string invId, string note, string unitCode, decimal quantity, string currencyID,decimal lineExtensionAmount, decimal taxAmount,
+            decimal taxableAmount,decimal percent, string itemName,decimal price)
+        {
+            listInvLine = new List<InvoiceLineType>();
+          
+       
+                InvoiceLineType invoiceLine = new InvoiceLineType
+                {
+
+                    ID = new IDType { Value = invId },
+                    Note=new NoteType[] { new NoteType { Value=note } },
+                    InvoicedQuantity = new InvoicedQuantityType { unitCode = unitCode, Value = quantity },
+                    LineExtensionAmount = new LineExtensionAmountType { currencyID = currencyID, Value = lineExtensionAmount },
+                     AllowanceCharge = new[]                       
+                     {
+                             new AllowanceChargeType
+                             {
+                                 ChargeIndicator = new ChargeIndicatorType { Value = false },  //ıskonto false
+                                 Amount = new AmountType2
+                                 {
+                                     currencyID = currencyID,
+                                     Value = 0.00M                //suan ındırım yapmıyoruz
+                                 },
+                                 BaseAmount = new BaseAmountType
+                                 {
+                                     currencyID = currencyID,
+                                     Value = 0
+                                 }
+                             }
+                     },
+                    TaxTotal = new TaxTotalType
+                    {
+                        TaxAmount = new TaxAmountType
+                        {
+                            currencyID = currencyID,
+                            Value = taxAmount
+                        },
+
+                        TaxSubtotal = new[]
+                            {
+                                new TaxSubtotalType
+                                {
+                                    TaxableAmount = new TaxableAmountType
+                                    {
+                                        currencyID = currencyID,
+                                        Value = taxableAmount
+                                    },
+
+                                    TaxAmount = new TaxAmountType
+                                    {
+                                        currencyID = currencyID,
+                                        Value = taxAmount
+                                    },
+                                    CalculationSequenceNumeric=new CalculationSequenceNumericType
+                                    {
+                                        Value=1
+                                    },
+                                    Percent = new PercentType1 { Value =percent },
+
+                                    TaxCategory = new TaxCategoryType
+                                    {
+                                        TaxScheme = new TaxSchemeType
+                                        {
+                                            Name = new NameType1 { Value = nameof(EI.TaxType.KDV)},
+                                            TaxTypeCode = new TaxTypeCodeType { Value = "0015" }
+                                        }
+                                    }
+                                }
+                        }
+                    },
+                    Item = new ItemType
+                    {
+                        Name = new NameType1 { Value =itemName }
+                    },
+
+                    Price = new PriceType
+                    {
+                        PriceAmount = new PriceAmountType
+                        {
+                            currencyID = currencyID,
+                            Value = price
+                        }
+                    }
+                };      
+            listInvLine.Add(invoiceLine);
+        }
+
 
 
 
@@ -239,113 +328,163 @@ namespace izibiz.CONTROLLER
             BaseUBL.TaxTotal = taxTotal;
         }
 
-
-        public TaxTotalType[] createTaxTotal()
+        public void addTaxSubtotal(TaxTotalType taxTotal,string currencyCode, decimal taxableAmount, decimal taxAmount, decimal taxRate)
         {
-            return new TaxTotalType[]
+            List<TaxSubtotalType> taxSubTotalList = new List<TaxSubtotalType>();
+
+
+            TaxSubtotalType taxSubtotal=  new TaxSubtotalType
+            {
+                TaxableAmount = new TaxableAmountType
+                {
+                    currencyID = currencyCode,
+                    Value = taxableAmount
+                },
+
+                TaxAmount = new TaxAmountType
+                {
+                    currencyID = currencyCode,
+                    Value = taxAmount
+                },
+
+                CalculationSequenceNumeric = new CalculationSequenceNumericType
+                {
+                    Value = 1
+                },
+                Percent = new PercentType1 { Value = taxRate },
+
+                TaxCategory = new TaxCategoryType
+                {
+                    TaxScheme = new TaxSchemeType
+                    {
+                        Name = new NameType1 { Value = nameof(EI.TaxType.KDV) },
+                        TaxTypeCode = new TaxTypeCodeType { Value = "0015" }
+                    }
+                }
+            };
+           taxSubTotalList.Add(taxSubtotal);
+           taxTotal.TaxSubtotal = taxSubTotalList.ToArray();
+        }
+
+
+
+        public TaxTotalType createTaxTotal(string currencyCode, decimal totalTaxAmount)
+        {
+            return  new TaxTotalType
             {
                 TaxAmount = new TaxAmountType
                 {
-                    currencyID = "TRY",
-                    Value = 0.19M
+                    currencyID = currencyCode,
+                    Value = totalTaxAmount
                 },
-                TaxSubtotal = new[]
-                {
-                    new TaxSubtotalType
-                    {
-                        TaxableAmount = new TaxableAmountType
-                        {
-                            currencyID = "TRY",                      
-                            Value = 19.00M
-                        },
-
-                        TaxAmount = new TaxAmountType
-                        {
-                            currencyID = "TRY",
-                            Value = 0.19M
-                        },
-
-                        CalculationSequenceNumeric =new CalculationSequenceNumericType
-                        {
-                            Value =1
-                        },
-                        Percent = new PercentType1 { Value = 1},
-
-                        TaxCategory = new TaxCategoryType
-                        {
-                            TaxScheme = new TaxSchemeType
-                            {
-                                Name = new NameType1 { Value = "KDV" },
-                                TaxTypeCode = new TaxTypeCodeType { Value = "0015" }
-                            }
-                        }
-                    }
-                }
+                TaxSubtotal = new TaxSubtotalType[] { }
             };
         }
 
 
 
-        public InvoiceLineType[] createInvoiceLines(int lineCount, TaxTotalType taxTotal)
+        public virtual TaxTotalType[] CalculateTaxTotal()
         {
-            List<InvoiceLineType> list = new List<InvoiceLineType>();
-            for (int i = 1; i <= lineCount; i++)
+            List<TaxTotalType> taxTotalList = new List<TaxTotalType>();
+            List<TaxSubtotalType> taxSubTotalList = new List<TaxSubtotalType>();
+
+            TaxTotalType taxTotal = new TaxTotalType { TaxAmount = new TaxAmountType { Value = 0 } };
+
+            var taxSubtotal = new TaxSubtotalType
             {
-                #region invoiceLine
-                InvoiceLineType invoiceLine = new InvoiceLineType
+                TaxableAmount = new TaxableAmountType { Value = 0 },
+                TaxAmount = new TaxAmountType { Value = 0 },
+                Percent = new PercentType1 { Value = 0 },
+                TaxCategory = new TaxCategoryType
                 {
-
-                    ID = new IDType { Value = i.ToString() },
-                    InvoicedQuantity = new InvoicedQuantityType { unitCode = "C62", Value = 10 },
-                    LineExtensionAmount = new LineExtensionAmountType { currencyID = "TRY", Value = 20.00M },
-
-                    AllowanceCharge = new[]
-                        {
-                            new AllowanceChargeType
-                            {
-                                ChargeIndicator = new ChargeIndicatorType { Value = false },
-                                MultiplierFactorNumeric = new MultiplierFactorNumericType { Value = 0.05M },
-
-                                Amount = new AmountType2
-                                {
-                                    currencyID = "TRY",
-                                    Value = 1.00M
-                                },
-
-                                BaseAmount = new BaseAmountType
-                                {
-                                    currencyID = "TRY",
-                                    Value = 20
-                                }
-                            }
-                        },
-
-                    Item = new ItemType
+                    TaxScheme = new TaxSchemeType
                     {
-                        Name = new NameType1 { Value = "Kalem" }
-                    },
-
-                    Price = new PriceType
-                    {
-                        PriceAmount = new PriceAmountType
+                        Name = new NameType1 { Value =nameof(EI.TaxType.KDV) },
+                        TaxTypeCode = new TaxTypeCodeType
                         {
-                            currencyID = "TRY",
-                            Value = 2.00M
+                            Value = "0015"
                         }
                     }
-                };
-                #endregion
-                list.Add(invoiceLine);
-            }
+                }
+            };
 
-            return list.ToArray();
+            foreach (var item in BaseUBL.InvoiceLine)
+            {
+                taxTotal.TaxAmount.Value += item.TaxTotal.TaxAmount.Value;
+                taxTotal.TaxAmount.currencyID = item.TaxTotal.TaxAmount.currencyID;
+
+                foreach (var tax in item.TaxTotal.TaxSubtotal)
+                {
+                    taxSubtotal.TaxableAmount.Value += tax.TaxableAmount.Value;
+                    taxSubtotal.TaxableAmount.currencyID = tax.TaxableAmount.currencyID;
+
+                    taxSubtotal.TaxAmount.Value += item.TaxTotal.TaxAmount.Value;
+                    taxSubtotal.TaxAmount.currencyID = tax.TaxAmount.currencyID;
+
+                    taxSubtotal.Percent.Value = tax.Percent.Value;
+
+                }
+            }
+            taxSubTotalList.Add(taxSubtotal);
+            taxTotal.TaxSubtotal = taxSubTotalList.ToArray();
+            taxTotalList.Add(taxTotal);
+            return taxTotalList.ToArray();
         }
 
 
+        public  MonetaryTotalType CalculateLegalMonetaryTotal()
+        {
+            MonetaryTotalType legalMonetaryTotal = new MonetaryTotalType
+            {
+                LineExtensionAmount = new LineExtensionAmountType { Value = 0 },
+
+                TaxExclusiveAmount = new TaxExclusiveAmountType { Value = 0 },
+
+                TaxInclusiveAmount = new TaxInclusiveAmountType { Value = 0 },
+
+                AllowanceTotalAmount = new AllowanceTotalAmountType { Value = 0 },
+
+                PayableAmount = new PayableAmountType { Value = 0 }
+            };
+
+            foreach (var line in BaseUBL.InvoiceLine)
+            {
+
+                foreach (var allowance in line.AllowanceCharge)
+                {
+                    legalMonetaryTotal.AllowanceTotalAmount.currencyID = allowance.Amount.currencyID;
+                    legalMonetaryTotal.AllowanceTotalAmount.Value += allowance.Amount.Value;
+                    legalMonetaryTotal.TaxInclusiveAmount.currencyID = line.LineExtensionAmount.currencyID;
+
+                    legalMonetaryTotal.TaxInclusiveAmount.Value += line.LineExtensionAmount.Value -
+                        allowance.Amount.Value + line.TaxTotal.TaxAmount.Value;
+                }
+
+                legalMonetaryTotal.LineExtensionAmount.currencyID = line.LineExtensionAmount.currencyID;
+                legalMonetaryTotal.LineExtensionAmount.Value += line.LineExtensionAmount.Value;
 
 
+                legalMonetaryTotal.PayableAmount.currencyID = line.LineExtensionAmount.currencyID;
+                legalMonetaryTotal.PayableAmount.Value = legalMonetaryTotal.TaxInclusiveAmount.Value;
+
+                foreach (var tax in line.TaxTotal.TaxSubtotal)
+                {
+
+                    legalMonetaryTotal.TaxExclusiveAmount.currencyID = tax.TaxableAmount.currencyID;
+                    legalMonetaryTotal.TaxExclusiveAmount.Value += tax.TaxableAmount.Value;
 
 
+                }
+
+            }
+            return legalMonetaryTotal;
+        }
+
+
+        public  void SetLegalMonetaryTotal(MonetaryTotalType legalMonetoryTotal)
+        {
+            BaseUBL.LegalMonetaryTotal = legalMonetoryTotal;
+        }
 
 
     }

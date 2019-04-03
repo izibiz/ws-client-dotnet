@@ -112,14 +112,34 @@ namespace izibiz.COMMON
             IHRACKAYITLI
         }
 
-
-        public enum DocumentCurrencyCode
+        public enum Unit
         {
-            USD
+            ADET,
+            KILO,
+            GRAM,
+            PAKET
+        }
+
+        public enum CurrencyCode
+        {
+            USD,
+            TRY
+
         }
         public enum DocumentType
         {
             XSLT
+        }
+
+        public enum TaxType
+        {
+            KDV
+        }
+
+        public enum VknTckn
+        {
+            VKN,
+            TCKN
         }
     }
 }

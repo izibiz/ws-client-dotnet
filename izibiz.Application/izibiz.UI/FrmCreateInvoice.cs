@@ -45,41 +45,48 @@ namespace izibiz.UI
 
         private void addItemMoneyType()
         {
-            cmbMoneyType.Items.Add("türk lirası");
-            cmbMoneyType.Items.Add("dolar");
-            cmbMoneyType.Items.Add("Euro");
+            cmbMoneyType.Items.Add(nameof(EI.CurrencyCode.TRY));
+            cmbMoneyType.Items.Add(nameof(EI.CurrencyCode.USD));
         }
 
         private void addItemScenario()
         {
-            cmbScenario.Items.Add("Temel fatura");
-            cmbScenario.Items.Add("Ticari Fatura");
+            cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.TEMELFATURA));
+            cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.TICARIFATURA));
         }
 
         private void addItemType()
         {
-            cmbType.Items.Add("Satıs");
-            cmbType.Items.Add("iade");
-            cmbType.Items.Add("tevkifat");
-            cmbType.Items.Add("istisna");
-            cmbType.Items.Add("ozel matrah");
-            cmbType.Items.Add("ihrac kayıtlı");
+            cmbType.Items.Add(EI.invoiceTypeCodeValue.SATIS.ToString());
+            cmbType.Items.Add(EI.invoiceTypeCodeValue.IADE.ToString());
+            cmbType.Items.Add(EI.invoiceTypeCodeValue.TEVKİFAT.ToString());
+            cmbType.Items.Add(EI.invoiceTypeCodeValue.ISTISNA.ToString());
+            cmbType.Items.Add(EI.invoiceTypeCodeValue.OZELMATRAH.ToString());
+            cmbType.Items.Add(EI.invoiceTypeCodeValue.IHRACKAYITLI.ToString());
         }
 
         private void addItemRowUnit()
         {
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.datagridRow.Columns["unit"];
-            theColumn.Items.Add("Adet");
-            theColumn.Items.Add("Kilo");
-            theColumn.Items.Add("Paket");
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.gridInvoiceLine.Columns["unit"];
+            theColumn.Items.Add(nameof(EI.Unit.ADET));
+            theColumn.Items.Add(nameof(EI.Unit.KILO));
+            theColumn.Items.Add(nameof(EI.Unit.PAKET));
+            theColumn.Items.Add(nameof(EI.Unit.GRAM));
         }
 
 
 
         private void btnAddRow_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = (DataGridViewRow)datagridRow.Rows[0].Clone();
-            datagridRow.Rows.Add(row);
+            if (gridInvoiceLine.Rows.Count == 10)
+            {
+                MessageBox.Show("en fazla 10 satır eklenebılır");
+            }
+            else
+            {
+                DataGridViewRow row = (DataGridViewRow)gridInvoiceLine.Rows[0].Clone();
+                gridInvoiceLine.Rows.Add(row);
+            }   
         }
 
 
@@ -90,99 +97,78 @@ namespace izibiz.UI
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            string profileId;
-            string invoiceTypeCodeValue;
-            //suplıer bılgılerı
-            string webUrı;
-            string partyName;
-            string streetName;
-            string buldingName;
-            string buldingNumber;
-            string visionName;
-            string cityName;
-            string postalZone;
-            string country;
-            string telephone;
-            string fax;
-            string mail;
-            string mersisNo;
-            string sicilNo;
-            string supVknTc;
-            string firstName;
-            string familyName;
-            string taxScheme;
+            string unitCode = "";
+            //suplıer bılgılerı db den getirilecek
+            string webUrı = "";
+            string partyName ="";
+            string streetName ="";
+            string buldingName ="";
+            string buldingNumber= "";
+            string visionName ="";
+            string cityName ="";
+            string postalZone = "";
+            string country = "";
+            string telephone = "";
+            string fax = "";
+            string mail = "";
+            string mersisNo = "";
+            string sicilNo = "";
+            string supVknTc = "11111111111";
+            string firstName = "";
+            string familyName = "";
+            string taxScheme = "";
 
-            if (cmbScenario.SelectedItem.ToString() == "Temel fatura")
-            {
-                profileId = EI.InvoiceProfileid.TEMELFATURA.ToString();
-            }
-            else
-            {
-                profileId = EI.InvoiceProfileid.TICARIFATURA.ToString();
-            }
-            switch (cmbType.SelectedItem)
-            {
-                case "Satıs":
-                    invoiceTypeCodeValue = EI.invoiceTypeCodeValue.SATIS.ToString(); break;
 
-                case "iade":
-                    invoiceTypeCodeValue = EI.invoiceTypeCodeValue.IADE.ToString(); break;
 
-                case "tevkifat":
-                    invoiceTypeCodeValue = EI.invoiceTypeCodeValue.TEVKİFAT.ToString(); break;
-
-                case "istisna":
-                    invoiceTypeCodeValue = EI.invoiceTypeCodeValue.ISTISNA.ToString(); break;
-
-                case "ozel matrah":
-                    invoiceTypeCodeValue = EI.invoiceTypeCodeValue.OZELMATRAH.ToString(); break;
-
-                case "ihrac kayıtlı":
-                    invoiceTypeCodeValue = EI.invoiceTypeCodeValue.IHRACKAYITLI.ToString(); break;
-
-                default:
-                    MessageBox.Show("senaryo alanı default olarak satıs secıldı"); invoiceTypeCodeValue = EI.invoiceTypeCodeValue.SATIS.ToString(); break;
-            }
-           
-            CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(profileId, invoiceTypeCodeValue);
+            CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(cmbScenario.SelectedText, cmbType.SelectedText);
 
             PartyType supParty;
             PartyType cusParty;
 
             //supp party olusturulması  
-            supParty = ublInvoice.GetParty(webUrı, partyName, streetName, buldingName, buldingNumber, visionName, cityName, postalZone, "", country, telephone, fax, mail);
+            supParty = ublInvoice.createParty(webUrı, partyName, streetName, buldingName, buldingNumber, visionName, cityName, postalZone, "", country, telephone, fax, mail);
             if (supVknTc.Length == 10) //sup vkn
             {              
-                ublInvoice.addPartyIdentification(supParty,2, "VKN", supVknTc, mersisNo, sicilNo,"","");
+                ublInvoice.addPartyIdentification(supParty,2, nameof(EI.VknTckn.VKN), supVknTc, mersisNo, sicilNo,"","");
                 ublInvoice.addPartyTaxSchemeOnParty(supParty,taxScheme);
             }
             else  //sup tckn .. add person metodu eklenır
             {
-                ublInvoice.addPartyIdentification(supParty,2,"TCKN", supVknTc, mersisNo, sicilNo,"","");
+                ublInvoice.addPartyIdentification(supParty,2, nameof(EI.VknTckn.TCKN), supVknTc, mersisNo, sicilNo,"","");
                 ublInvoice.addPersonOnParty(supParty,firstName,familyName); 
             }
             ublInvoice.SetSupplierParty(supParty);
 
             //cust party olusturulması    
-            cusParty = ublInvoice.GetParty("", txtPartyName.Text, txtStreet.Text, txtBuldingName.Text, txtBuldingNo.Text, txtVision.Text, txtCity.Text, "", "", txtCountry.Text, msdPhone.Text, "", txtMail.Text);
+            cusParty = ublInvoice.createParty("", txtPartyName.Text, txtStreet.Text, txtBuldingName.Text, txtBuldingNo.Text, txtVision.Text, txtCity.Text, "", "", txtCountry.Text, msdPhone.Text, "", txtMail.Text);
             if (msdVknTc.Text.Length == 10) //customer vkn
             {
-                ublInvoice.addPartyIdentification(cusParty,1, "VKN", msdVknTc.Text,"","","","");
+                ublInvoice.addPartyIdentification(cusParty,1, nameof(EI.VknTckn.VKN), msdVknTc.Text,"","","","");
                 ublInvoice.addPartyTaxSchemeOnParty(cusParty,txtTaxScheme.Text);
             }
             else  //customer tckn
             {
-                ublInvoice.addPartyIdentification(cusParty,1,"TCKN", msdVknTc.Text,"","","","");
+                ublInvoice.addPartyIdentification(cusParty,1,nameof(EI.VknTckn.TCKN), msdVknTc.Text,"","","","");
             }               
             ublInvoice.SetCustomerParty(cusParty);
 
-            TaxTotalType taxTotal=ublInvoice.createTaxTotal();
-            ublInvoice.createInvoiceLines(datagridRow.Rows.Count, taxTotal, GetInvoiceLines());
+            foreach (DataGridViewRow row in gridInvoiceLine.Rows)
+            {
+                //unıt code get fonk cagırılacak
+
+                ublInvoice.addTaxSubtotal(ublInvoice.createTaxTotal(cmbMoneyType.Text, ""),,,,);
+
+              /*  ublInvoice.addInvoiceLine(row.Index.ToString(),txtNote.Text,unitCode, Convert.ToDecimal(row.Cells["quantity"].Value), cmbMoneyType.Text, Convert.ToDecimal(row.Cells["total"].Value),                              
+                    Convert.ToDecimal(row.Cells["taxAmount"].Value), Convert.ToDecimal(row.Cells["total"].Value), Convert.ToDecimal(row.Cells["taxPercent"].Value),row.Cells["productName"].Value.ToString(),  
+             Convert.ToDecimal(row.Cells["price"].Value));  */
+            }
+            ublInvoice.setInvLines();
+
+
+            ublInvoice.setTaxTotal(ublInvoice.CalculateTaxTotal());
 
             ublInvoice.SetLegalMonetaryTotal(ublInvoice.CalculateLegalMonetaryTotal());
-            ublInvoice.SetTaxTotal(ublInvoice.CalculateTaxTotal());
             ublInvoice.SetAllowanceCharge(ublInvoice.CalculateAllowanceCharges());
-
 
         }
 
