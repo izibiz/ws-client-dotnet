@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ubl_Invoice_2_1;
 
+
 namespace izibiz.CONTROLLER
 {
     public class CreateInvoiceUBL
@@ -54,23 +55,21 @@ namespace izibiz.CONTROLLER
 
         public void createAdditionalDocumentReference()
         {
-            var idRef = new DocumentReferenceType()
-            {
-                ID = new IDType { Value = Guid.NewGuid().ToString() },
-                IssueDate = BaseUBL.IssueDate,
-                DocumentType = new DocumentTypeType { Value = nameof(EI.DocumentType.XSLT) },
-                Attachment = new AttachmentType
-                {
-                    EmbeddedDocumentBinaryObject = new EmbeddedDocumentBinaryObjectType
-                    {
-                        characterSetCode = "UTF-8",
-                        encodingCode = "Base64",
-                        filename = BaseUBL.ID.ToString() + ".xslt",
-                        mimeCode = "application/xml",
-                        Value = Encoding.UTF8.GetBytes(XSLTInvoice.xsltGib)
-                    }
-                }
-            };
+            var idRef = new DocumentReferenceType();
+
+            idRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
+            idRef.IssueDate = BaseUBL.IssueDate;
+            idRef.DocumentType = new DocumentTypeType { Value = nameof(EI.DocumentType.XSLT) };
+            idRef.Attachment = new AttachmentType();
+            idRef.Attachment.EmbeddedDocumentBinaryObject = new EmbeddedDocumentBinaryObjectType();
+
+            idRef.Attachment.EmbeddedDocumentBinaryObject.characterSetCode = "UTF-8";
+            idRef.Attachment.EmbeddedDocumentBinaryObject.encodingCode = "Base64";
+            idRef.Attachment.EmbeddedDocumentBinaryObject.filename = BaseUBL.ID.Value.ToString() + ".xslt";
+            idRef.Attachment.EmbeddedDocumentBinaryObject.mimeCode = "application/xml";
+            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(XSLTInvoice.xsltGib);
+
+
             DocumentReferenceType[] DocRefArr = new DocumentReferenceType[1];
 
             DocRefArr[0] = idRef;
@@ -208,12 +207,14 @@ namespace izibiz.CONTROLLER
                 switch (i)
                 {
                     case 0:
+                        partyIdentification.ID = new IDType();
                         partyIdentification.ID.schemeID = param1;
                         partyIdentification.ID.schemeName = param1Value; break;
                     case 1:
+                        partyIdentification.ID = new IDType();
                         partyIdentification.ID.schemeID = param2;
                         partyIdentification.ID.schemeName = param2Value; break;
-                    case 2:
+                    case 2:   partyIdentification.ID = new IDType();
                         partyIdentification.ID.schemeID = param3;
                         partyIdentification.ID.schemeName = param3Value; break;
                 }
@@ -320,70 +321,69 @@ namespace izibiz.CONTROLLER
             listInvLine.Add(invoiceLine);
         }
 
-
-
+       
 
         public void setTaxTotal(TaxTotalType[] taxTotal)
         {
             BaseUBL.TaxTotal = taxTotal;
         }
 
-        public void addTaxSubtotal(TaxTotalType taxTotal,string currencyCode, decimal taxableAmount, decimal taxAmount, decimal taxRate)
-        {
-            List<TaxSubtotalType> taxSubTotalList = new List<TaxSubtotalType>();
+        //public void addTaxSubtotal(TaxTotalType taxTotal,string currencyCode, decimal taxableAmount, decimal taxAmount, decimal taxRate)
+        //{
+        //    List<TaxSubtotalType> taxSubTotalList = new List<TaxSubtotalType>();
 
 
-            TaxSubtotalType taxSubtotal=  new TaxSubtotalType
-            {
-                TaxableAmount = new TaxableAmountType
-                {
-                    currencyID = currencyCode,
-                    Value = taxableAmount
-                },
+        //    TaxSubtotalType taxSubtotal=  new TaxSubtotalType
+        //    {
+        //        TaxableAmount = new TaxableAmountType
+        //        {
+        //            currencyID = currencyCode,
+        //            Value = taxableAmount
+        //        },
 
-                TaxAmount = new TaxAmountType
-                {
-                    currencyID = currencyCode,
-                    Value = taxAmount
-                },
+        //        TaxAmount = new TaxAmountType
+        //        {
+        //            currencyID = currencyCode,
+        //            Value = taxAmount
+        //        },
 
-                CalculationSequenceNumeric = new CalculationSequenceNumericType
-                {
-                    Value = 1
-                },
-                Percent = new PercentType1 { Value = taxRate },
+        //        CalculationSequenceNumeric = new CalculationSequenceNumericType
+        //        {
+        //            Value = 1
+        //        },
+        //        Percent = new PercentType1 { Value = taxRate },
 
-                TaxCategory = new TaxCategoryType
-                {
-                    TaxScheme = new TaxSchemeType
-                    {
-                        Name = new NameType1 { Value = nameof(EI.TaxType.KDV) },
-                        TaxTypeCode = new TaxTypeCodeType { Value = "0015" }
-                    }
-                }
-            };
-           taxSubTotalList.Add(taxSubtotal);
-           taxTotal.TaxSubtotal = taxSubTotalList.ToArray();
-        }
-
-
-
-        public TaxTotalType createTaxTotal(string currencyCode, decimal totalTaxAmount)
-        {
-            return  new TaxTotalType
-            {
-                TaxAmount = new TaxAmountType
-                {
-                    currencyID = currencyCode,
-                    Value = totalTaxAmount
-                },
-                TaxSubtotal = new TaxSubtotalType[] { }
-            };
-        }
+        //        TaxCategory = new TaxCategoryType
+        //        {
+        //            TaxScheme = new TaxSchemeType
+        //            {
+        //                Name = new NameType1 { Value = nameof(EI.TaxType.KDV) },
+        //                TaxTypeCode = new TaxTypeCodeType { Value = "0015" }
+        //            }
+        //        }
+        //    };
+        //   taxSubTotalList.Add(taxSubtotal);
+        //   taxTotal.TaxSubtotal = taxSubTotalList.ToArray();
+        //}
 
 
 
-        public virtual TaxTotalType[] CalculateTaxTotal()
+        //public TaxTotalType createTaxTotal(string currencyCode, decimal totalTaxAmount)
+        //{
+        //    return  new TaxTotalType
+        //    {
+        //        TaxAmount = new TaxAmountType
+        //        {
+        //            currencyID = currencyCode,
+        //            Value = totalTaxAmount
+        //        },
+        //        TaxSubtotal = new TaxSubtotalType[] { }
+        //    };
+        //}
+
+
+
+        public virtual TaxTotalType[] invoiceTaxTotal()
         {
             List<TaxTotalType> taxTotalList = new List<TaxTotalType>();
             List<TaxSubtotalType> taxSubTotalList = new List<TaxSubtotalType>();
@@ -484,6 +484,35 @@ namespace izibiz.CONTROLLER
         public  void SetLegalMonetaryTotal(MonetaryTotalType legalMonetoryTotal)
         {
             BaseUBL.LegalMonetaryTotal = legalMonetoryTotal;
+        }
+
+        public virtual void SetAllowanceCharge(AllowanceChargeType[] allowenceCharges)
+        {
+            BaseUBL.AllowanceCharge = allowenceCharges;
+        }
+
+
+        public virtual AllowanceChargeType[] CalculateAllowanceCharges()
+        {
+            AllowanceChargeType allowanceCharge = new AllowanceChargeType
+            {
+                Amount = new AmountType2 { Value = 0 },
+                BaseAmount = new BaseAmountType { Value = 0 },
+                ChargeIndicator = new ChargeIndicatorType { Value = false },
+
+            };
+            foreach (var item in BaseUBL.InvoiceLine)
+            {
+                foreach (var iskonto in item.AllowanceCharge)
+                {
+                    allowanceCharge.BaseAmount.currencyID = iskonto.Amount.currencyID;
+                    allowanceCharge.Amount.currencyID = iskonto.Amount.currencyID;
+                    allowanceCharge.Amount.Value += iskonto.Amount.Value;
+                    allowanceCharge.BaseAmount.Value += iskonto.BaseAmount.Value;
+                }
+            }
+
+            return new[] { allowanceCharge };
         }
 
 

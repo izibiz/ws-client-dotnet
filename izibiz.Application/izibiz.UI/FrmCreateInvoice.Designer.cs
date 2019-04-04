@@ -30,18 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -54,7 +43,7 @@
             this.txtServiceAmount = new System.Windows.Forms.TextBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.grpboxRow = new System.Windows.Forms.GroupBox();
-            this.gridInvoiceLine = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnAddRow = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPartyName = new System.Windows.Forms.TextBox();
@@ -92,6 +81,7 @@
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtTaxScheme = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -101,7 +91,7 @@
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
             this.grpboxRow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridInvoiceLine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -114,16 +104,7 @@
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Temizle";
             this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(520, 618);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(153, 23);
-            this.btnCreate.TabIndex = 10;
-            this.btnCreate.Text = "e-Fatura Oluştur";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // groupBox4
             // 
@@ -238,7 +219,7 @@
             // 
             this.grpboxRow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.grpboxRow.CausesValidation = false;
-            this.grpboxRow.Controls.Add(this.gridInvoiceLine);
+            this.grpboxRow.Controls.Add(this.dataGridView2);
             this.grpboxRow.Controls.Add(this.btnAddRow);
             this.grpboxRow.Location = new System.Drawing.Point(14, 277);
             this.grpboxRow.Name = "grpboxRow";
@@ -247,32 +228,13 @@
             this.grpboxRow.TabStop = false;
             this.grpboxRow.Text = "Satır Bilgileri";
             // 
-            // gridInvoiceLine
+            // dataGridView2
             // 
-            this.gridInvoiceLine.AccessibleRole = System.Windows.Forms.AccessibleRole.List;
-            this.gridInvoiceLine.AllowUserToOrderColumns = true;
-            this.gridInvoiceLine.AllowUserToResizeColumns = false;
-            this.gridInvoiceLine.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridInvoiceLine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridInvoiceLine.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridInvoiceLine.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.gridInvoiceLine.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridInvoiceLine.CausesValidation = false;
-            this.gridInvoiceLine.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.gridInvoiceLine.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridInvoiceLine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridInvoiceLine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridInvoiceLine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
             this.quantity,
             this.unit,
@@ -280,40 +242,26 @@
             this.taxPercent,
             this.taxAmount,
             this.total});
-            this.gridInvoiceLine.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridInvoiceLine.DefaultCellStyle = dataGridViewCellStyle10;
-            this.gridInvoiceLine.EnableHeadersVisualStyles = false;
-            this.gridInvoiceLine.Location = new System.Drawing.Point(1, 19);
-            this.gridInvoiceLine.MultiSelect = false;
-            this.gridInvoiceLine.Name = "gridInvoiceLine";
-            this.gridInvoiceLine.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gridInvoiceLine.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridInvoiceLine.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.gridInvoiceLine.RowHeadersVisible = false;
-            this.gridInvoiceLine.RowHeadersWidth = 50;
-            this.gridInvoiceLine.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            this.gridInvoiceLine.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.gridInvoiceLine.Size = new System.Drawing.Size(820, 96);
-            this.gridInvoiceLine.TabIndex = 11;
-            this.gridInvoiceLine.VirtualMode = true;
+            this.dataGridView2.Location = new System.Drawing.Point(6, 37);
+            this.dataGridView2.Name = "dataGridView2";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView2.RowHeadersVisible = false;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView2.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dataGridView2.Size = new System.Drawing.Size(712, 78);
+            this.dataGridView2.TabIndex = 5;
             // 
             // btnAddRow
             // 
-            this.btnAddRow.Location = new System.Drawing.Point(832, 45);
+            this.btnAddRow.Location = new System.Drawing.Point(751, 37);
             this.btnAddRow.Name = "btnAddRow";
             this.btnAddRow.Size = new System.Drawing.Size(75, 23);
             this.btnAddRow.TabIndex = 3;
@@ -394,9 +342,9 @@
             // 
             // cmbMoneyType
             // 
+            this.cmbMoneyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMoneyType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMoneyType.FormattingEnabled = true;
-            this.cmbMoneyType.Items.AddRange(new object[] {
-            "TÜRK LİRASI"});
             this.cmbMoneyType.Location = new System.Drawing.Point(294, 60);
             this.cmbMoneyType.Name = "cmbMoneyType";
             this.cmbMoneyType.Size = new System.Drawing.Size(109, 21);
@@ -404,9 +352,8 @@
             // 
             // cmbType
             // 
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Items.AddRange(new object[] {
-            "SATIŞ"});
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbType.Location = new System.Drawing.Point(294, 25);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(109, 21);
@@ -414,10 +361,9 @@
             // 
             // cmbScenario
             // 
+            this.cmbScenario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbScenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbScenario.FormattingEnabled = true;
-            this.cmbScenario.Items.AddRange(new object[] {
-            "TEMEL FATURA",
-            "TİCARİ FATURA"});
             this.cmbScenario.Location = new System.Drawing.Point(96, 25);
             this.cmbScenario.Name = "cmbScenario";
             this.cmbScenario.Size = new System.Drawing.Size(109, 21);
@@ -638,6 +584,7 @@
             // 
             // txtCity
             // 
+            this.txtCity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCity.Location = new System.Drawing.Point(294, 28);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(109, 20);
@@ -657,82 +604,51 @@
             this.txtTitle.Size = new System.Drawing.Size(109, 20);
             this.txtTitle.TabIndex = 0;
             // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(537, 618);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 10;
+            this.btnCreate.Text = "button1";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
+            // 
             // productName
             // 
-            dataGridViewCellStyle3.NullValue = "Ad";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.productName.HeaderText = "ürün Adı";
+            this.productName.HeaderText = "ad";
             this.productName.Name = "productName";
             // 
             // quantity
             // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "1";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
             this.quantity.HeaderText = "miktar";
             this.quantity.Name = "quantity";
             // 
             // unit
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle5.NullValue = "Adet";
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.unit.DefaultCellStyle = dataGridViewCellStyle5;
-            this.unit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.unit.HeaderText = "Birim";
-            this.unit.Items.AddRange(new object[] {
-            "Adet",
-            "Paket",
-            "Kilo"});
-            this.unit.MaxDropDownItems = 15;
-            this.unit.MinimumWidth = 10;
+            this.unit.HeaderText = "birim";
             this.unit.Name = "unit";
             // 
             // unitPrice
             // 
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = "0,00";
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle6;
-            this.unitPrice.HeaderText = "Birim Fiyat";
+            this.unitPrice.HeaderText = "birim fiyat";
             this.unitPrice.Name = "unitPrice";
             this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // taxPercent
             // 
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0";
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle7;
-            this.taxPercent.HeaderText = "Kdv oranı";
+            this.taxPercent.HeaderText = "kdv oranı";
             this.taxPercent.Name = "taxPercent";
             // 
             // taxAmount
             // 
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = "0,00";
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle8;
-            this.taxAmount.HeaderText = "Kdv tutarı";
+            this.taxAmount.HeaderText = "kdv tutarı";
             this.taxAmount.Name = "taxAmount";
             // 
             // total
             // 
-            dataGridViewCellStyle9.Format = "C2";
-            dataGridViewCellStyle9.NullValue = "0,00";
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.total.DefaultCellStyle = dataGridViewCellStyle9;
-            this.total.HeaderText = "Toplam";
+            this.total.HeaderText = "toplam";
             this.total.Name = "total";
             // 
             // FrmCreateInvoice
@@ -740,8 +656,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 644);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.grpboxRow);
             this.Controls.Add(this.groupBox2);
@@ -753,7 +669,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.grpboxRow.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridInvoiceLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -765,7 +681,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
@@ -804,7 +719,6 @@
         private System.Windows.Forms.Button btnAddRow;
         private System.Windows.Forms.MaskedTextBox msdVknTc;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView gridInvoiceLine;
         private System.Windows.Forms.TextBox txtPartyName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
@@ -816,6 +730,8 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtStreet;
         private System.Windows.Forms.TextBox txtMail;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn productName;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewComboBoxColumn unit;

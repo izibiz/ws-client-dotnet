@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DatabaseContext.cs" />
-    <Compile Include="Data\SqlDbConnect.cs" />
     <Compile Include="Data\SqLiteConfiguration.cs" />
     <Compile Include="Model\InvoiceMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

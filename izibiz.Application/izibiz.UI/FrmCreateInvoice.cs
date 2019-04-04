@@ -33,6 +33,9 @@ namespace izibiz.UI
             addItemScenario();
             addItemType();
             addItemRowUnit();
+
+            int rowId = dataGridView2.Rows.Add();
+            DataGridViewRow row = dataGridView2.Rows[rowId];
         }
 
 
@@ -67,7 +70,7 @@ namespace izibiz.UI
 
         private void addItemRowUnit()
         {
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.gridInvoiceLine.Columns["unit"];
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridView2.Columns["unit"];
             theColumn.Items.Add(nameof(EI.Unit.ADET));
             theColumn.Items.Add(nameof(EI.Unit.KILO));
             theColumn.Items.Add(nameof(EI.Unit.PAKET));
@@ -78,34 +81,38 @@ namespace izibiz.UI
 
         private void btnAddRow_Click(object sender, EventArgs e)
         {
-            if (gridInvoiceLine.Rows.Count == 10)
+            if (dataGridView2.Rows.Count == 10)
             {
                 MessageBox.Show("en fazla 10 satır eklenebılır");
             }
             else
             {
-                DataGridViewRow row = (DataGridViewRow)gridInvoiceLine.Rows[0].Clone();
-                gridInvoiceLine.Rows.Add(row);
-            }   
+                DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                dataGridView2.Rows.Add(row);
+            }
+
         }
 
 
 
+    
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            
+        }
 
-
-
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnCreate_Click_1(object sender, EventArgs e)
         {
             string unitCode = "";
             //suplıer bılgılerı db den getirilecek
             string webUrı = "";
-            string partyName ="";
-            string streetName ="";
-            string buldingName ="";
-            string buldingNumber= "";
-            string visionName ="";
-            string cityName ="";
+            string partyName = "";
+            string streetName = "";
+            string buldingName = "";
+            string buldingNumber = "";
+            string visionName = "";
+            string cityName = "";
             string postalZone = "";
             string country = "";
             string telephone = "";
@@ -128,14 +135,14 @@ namespace izibiz.UI
             //supp party olusturulması  
             supParty = ublInvoice.createParty(webUrı, partyName, streetName, buldingName, buldingNumber, visionName, cityName, postalZone, "", country, telephone, fax, mail);
             if (supVknTc.Length == 10) //sup vkn
-            {              
-                ublInvoice.addPartyIdentification(supParty,2, nameof(EI.VknTckn.VKN), supVknTc, mersisNo, sicilNo,"","");
-                ublInvoice.addPartyTaxSchemeOnParty(supParty,taxScheme);
+            {
+                ublInvoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), supVknTc, mersisNo, sicilNo, "", "");
+                ublInvoice.addPartyTaxSchemeOnParty(supParty, taxScheme);
             }
             else  //sup tckn .. add person metodu eklenır
             {
-                ublInvoice.addPartyIdentification(supParty,2, nameof(EI.VknTckn.TCKN), supVknTc, mersisNo, sicilNo,"","");
-                ublInvoice.addPersonOnParty(supParty,firstName,familyName); 
+                ublInvoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), supVknTc, mersisNo, sicilNo, "", "");
+                ublInvoice.addPersonOnParty(supParty, firstName, familyName);
             }
             ublInvoice.SetSupplierParty(supParty);
 
@@ -143,39 +150,29 @@ namespace izibiz.UI
             cusParty = ublInvoice.createParty("", txtPartyName.Text, txtStreet.Text, txtBuldingName.Text, txtBuldingNo.Text, txtVision.Text, txtCity.Text, "", "", txtCountry.Text, msdPhone.Text, "", txtMail.Text);
             if (msdVknTc.Text.Length == 10) //customer vkn
             {
-                ublInvoice.addPartyIdentification(cusParty,1, nameof(EI.VknTckn.VKN), msdVknTc.Text,"","","","");
-                ublInvoice.addPartyTaxSchemeOnParty(cusParty,txtTaxScheme.Text);
+                ublInvoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.VKN), msdVknTc.Text, "", "", "", "");
+                ublInvoice.addPartyTaxSchemeOnParty(cusParty, txtTaxScheme.Text);
             }
             else  //customer tckn
             {
-                ublInvoice.addPartyIdentification(cusParty,1,nameof(EI.VknTckn.TCKN), msdVknTc.Text,"","","","");
-            }               
+                ublInvoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
+            }
             ublInvoice.SetCustomerParty(cusParty);
 
-            foreach (DataGridViewRow row in gridInvoiceLine.Rows)
+            foreach (DataGridViewRow row in dataGridView2.Rows)
             {
                 //unıt code get fonk cagırılacak
 
-                ublInvoice.addTaxSubtotal(ublInvoice.createTaxTotal(cmbMoneyType.Text, ""),,,,);
-
-              /*  ublInvoice.addInvoiceLine(row.Index.ToString(),txtNote.Text,unitCode, Convert.ToDecimal(row.Cells["quantity"].Value), cmbMoneyType.Text, Convert.ToDecimal(row.Cells["total"].Value),                              
-                    Convert.ToDecimal(row.Cells["taxAmount"].Value), Convert.ToDecimal(row.Cells["total"].Value), Convert.ToDecimal(row.Cells["taxPercent"].Value),row.Cells["productName"].Value.ToString(),  
-             Convert.ToDecimal(row.Cells["price"].Value));  */
+                ublInvoice.addInvoiceLine(row.Index.ToString(), txtNote.Text, unitCode, Convert.ToDecimal(row.Cells["quantity"].Value), cmbMoneyType.Text, Convert.ToDecimal(row.Cells["total"].Value),
+                    Convert.ToDecimal(row.Cells["taxAmount"].Value), Convert.ToDecimal(row.Cells["total"].Value), Convert.ToDecimal(row.Cells["taxPercent"].Value), row.Cells["productName"].Value.ToString(),
+             Convert.ToDecimal(row.Cells["unitPrice"].Value));
             }
             ublInvoice.setInvLines();
-
-
-            ublInvoice.setTaxTotal(ublInvoice.CalculateTaxTotal());
-
+            ublInvoice.setTaxTotal(ublInvoice.invoiceTaxTotal());
             ublInvoice.SetLegalMonetaryTotal(ublInvoice.CalculateLegalMonetaryTotal());
             ublInvoice.SetAllowanceCharge(ublInvoice.CalculateAllowanceCharges());
 
+            Singl.instanceInvoiceGet.CreateInvoiceXml(ublInvoice);
         }
-
-
-
-
-
-
     }
 }

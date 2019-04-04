@@ -14,6 +14,8 @@ using System.Data;
 using izibiz.MODEL.Data;
 using System.Data.Entity;
 using izibiz.CONTROLLER.Singleton;
+using System.Xml.Serialization;
+using izibiz.COMMON.UblSerializer;
 
 namespace izibiz.CONTROLLER.Web_Services
 {
@@ -61,9 +63,10 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             foreach (var inv in invoiceArray)
             {
-                //getirilen fatura turu taslaksa load succed olanlar
-                if ( type !=EI.InvType.DRAFT.ToString() || (inv.HEADER.STATUS.Contains(EI.StatusType.LOAD.ToString()) && inv.HEADER.STATUS.Contains(EI.SubStatusType.SUCCEED.ToString())) )
-                {               
+                //db de aynı uuid ve aynı type ınv varsa ekleme
+                var ob = Singl.databaseContextGet.Invoices.Where(x => x.Uuid == inv.UUID && x.invType == type);
+                if (ob == null )
+                {
                     Invoices invoiceMaster = new Invoices();
 
                     invoiceMaster.ID = inv.ID;
@@ -107,35 +110,14 @@ namespace izibiz.CONTROLLER.Web_Services
                 if (invoiceArray.Length > 0)
                 {
                     invoiceMarkRead(invoiceArray);
-                    // dbSaveInvoices(invoiceArray, EI.InvTableName.SentInvoices.ToString());
                     SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.OUT.ToString());
-
                 }
-                //  return dbGetInvoices(EI.InvTableName.SentInvoices.ToString());
+
                 return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.OUT)).ToList();
             }
         }
 
-        /*  private void dbSaveInvoices(INVOICE[] invoiceArray, string tableName)
-          {
-              con = new SqlDbConnect();
-              foreach (var inv in invoiceArray)
-              {
-                  con.sqlQuery("insert into " + tableName + " (ID,uuid,issueDate,profileid,type,suplier,sender,cDate,envelopeIdentifier,status,gibStatusCode,gibStatusDescription,fromm,too) " +
-              "Values('" + inv.ID + "','" + inv.UUID + "','" + inv.HEADER.ISSUE_DATE + "','" + inv.HEADER.PROFILEID + "','" + inv.HEADER.INVOICE_TYPE_CODE + "','" + inv.HEADER.SUPPLIER + "','"
-              + inv.HEADER.SENDER + "','" + inv.HEADER.CDATE + "','" + inv.HEADER.ENVELOPE_IDENTIFIER + "','" + inv.HEADER.STATUS + "','" + inv.HEADER.GIB_STATUS_CODE + "','"
-              + inv.HEADER.GIB_STATUS_DESCRIPTION + "','" + inv.HEADER.FROM + "','" + inv.HEADER.TO + "')");
-
-                  con.nonQueryEx();
-              }
-          }*/
-
-        /*  private DataTable dbGetInvoices(string tableName)
-          {
-              con = new SqlDbConnect();
-              con.sqlQuery("select *  from " + tableName + " ");
-              return con.queryEx();
-          }*/
+      
 
 
         public List<Invoices> getDraftInvoice()
@@ -156,8 +138,6 @@ namespace izibiz.CONTROLLER.Web_Services
                 && x.HEADER.STATUS.Contains(EI.SubStatusType.SUCCEED.ToString()));
 
                 SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.OUT.ToString());
-                // dbSaveInvoices(invoiceArray, EI.InvTableName.DraftInvoices.ToString());
-                //  return dbGetInvoices(EI.InvTableName.DraftInvoices.ToString());
                 return Singl.databaseContextGet.Invoices.Where(x => x.invType == EI.InvType.DRAFT.ToString()).ToList();
             }
         }
@@ -374,6 +354,19 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
                 return invoice[0].CONTENT.Value;
+            }
+        }
+
+
+        public void CreateInvoiceXml(CreateInvoiceUBL invoice)
+        {
+            var createdUBL = invoice.BaseUBL;  // Fatura UBL i oluşturulur
+
+            inboxFolder = Path.Combine("D:/", createdUBL.UUID.Value.ToString() + ".xml");
+            using (FileStream stream=new FileStream(inboxFolder, FileMode.Create))
+            {
+                XmlSerializer x = new XmlSerializer(createdUBL.GetType());
+                x.Serialize(stream, createdUBL, InvoiceSerializer.SerializerNamespace);   
             }
         }
 
