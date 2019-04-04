@@ -83,7 +83,6 @@ namespace izibiz.CONTROLLER.Web_Services
                     invoiceMaster.too = inv.HEADER.TO;
 
                     entitiyInv.Add(invoiceMaster);
-                    changeDb = true;
                 }
             }
 
