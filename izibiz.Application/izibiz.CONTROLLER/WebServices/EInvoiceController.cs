@@ -25,7 +25,6 @@ namespace izibiz.CONTROLLER.Web_Services
         private EFaturaOIBPortClient EFaturaOIBPortClient = new EFaturaOIBPortClient();
         string inboxFolder = "D:\\temp\\GELEN\\";
         INVOICE[] stateInvoice = null;
-        //  private SqlDbConnect con;
 
 
 
@@ -51,10 +50,8 @@ namespace izibiz.CONTROLLER.Web_Services
                 if (invoiceArray.Length > 0)
                 {
                     invoiceMarkRead(invoiceArray);
-                    //  dbSaveInvoices(invoiceArray, EI.InvTableName.IncomingInvoices.ToString());
                     SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.IN.ToString());
                 }
-                //return dbGetInvoices(EI.InvTableName.IncomingInvoices.ToString());
                 return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.IN)).ToList();
             }
         }
@@ -64,8 +61,7 @@ namespace izibiz.CONTROLLER.Web_Services
             foreach (var inv in invoiceArray)
             {
                 //db de aynı uuid ve aynı type ınv varsa ekleme
-                var ob = Singl.databaseContextGet.Invoices.Where(x => x.Uuid == inv.UUID && x.invType == type);
-                if (ob == null )
+                if (Singl.databaseContextGet.Invoices.Where(x => x.Uuid == inv.UUID && x.invType == type).FirstOrDefault() == null )
                 {
                     Invoices invoiceMaster = new Invoices();
 
@@ -86,10 +82,13 @@ namespace izibiz.CONTROLLER.Web_Services
                     invoiceMaster.fromm = inv.HEADER.FROM;
                     invoiceMaster.too = inv.HEADER.TO;
 
-                    entitiyInv.Add(invoiceMaster);    
+                    entitiyInv.Add(invoiceMaster);
+                    changeDb = true;
                 }
             }
-            Singl.databaseContextGet.SaveChanges();
+
+                Singl.databaseContextGet.SaveChanges();
+         
         }
 
 

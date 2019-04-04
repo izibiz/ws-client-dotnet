@@ -86,7 +86,9 @@ namespace izibiz.MODEL.Model
 
 
         [Column(Name = nameof(EI.InvClmName.too), DbType = "NVARCHAR")]
-        public string too { get; set; } 
+        public string too { get; set; }
+
+
     }
 
 

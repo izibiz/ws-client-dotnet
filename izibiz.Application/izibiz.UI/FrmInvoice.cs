@@ -147,9 +147,9 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
-                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.dbFault+ex.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -473,7 +473,7 @@ namespace izibiz.UI
 
 
 
-        private void showStateInvoice(string invoiceType)
+        private void showStateInvoice(string invoiceType,string type)
         {
             try
             {
@@ -493,7 +493,7 @@ namespace izibiz.UI
                         validList.Add(uuid);
                         string updatedState= Singl.instanceInvoiceGet.getInvoiceState(uuid);
                         //modelde guncelle
-                        Singl.databaseContextGet.Invoices.Find(uuid).statusDesc = updatedState;
+                        Singl.databaseContextGet.Invoices.Where(x=>x.Uuid==uuid && x.type==type).FirstOrDefault().statusDesc = updatedState;
                         //datagrıdde yazdır
                         tableGrid.Rows[i].Cells[nameof(EI.InvClmName.statusDesc)].Value = updatedState;
                     }
@@ -563,13 +563,13 @@ namespace izibiz.UI
 
         private void btnIncomingInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice(EI.InvType.IN.ToString());
+            showStateInvoice(EI.InvType.IN.ToString(),nameof(EI.InvType.IN));
         }
 
         private void btnSentInvGetState_Click(object sender, EventArgs e)
         {
             btnSentInvAgainSent.Enabled = false;
-            showStateInvoice(EI.InvType.OUT.ToString());
+            showStateInvoice(EI.InvType.OUT.ToString(),nameof(EI.InvType.OUT));
         }
 
 
@@ -656,7 +656,8 @@ namespace izibiz.UI
 
         private void itemDraftNewInvoice_Click(object sender, EventArgs e)
         {
-
+            FrmCreateInvoice frmCreateInvoice = new FrmCreateInvoice();
+            frmCreateInvoice.Show();
         }
 
         private void btnFaultyInvoices_Click(object sender, EventArgs e)
