@@ -41,7 +41,7 @@
             this.btnIncomingInvGetState = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
-            this.btnGetInvoiceIncoming = new System.Windows.Forms.Button();
+            this.btnDownInvIncoming = new System.Windows.Forms.Button();
             this.panelIncomingInvoice = new System.Windows.Forms.Panel();
             this.panelSentInvoice = new System.Windows.Forms.Panel();
             this.panelConfirmationSentInv = new System.Windows.Forms.Panel();
@@ -155,16 +155,16 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblTitle.Location = new System.Drawing.Point(543, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(48, 25);
+            this.lblTitle.Size = new System.Drawing.Size(110, 25);
             this.lblTitle.TabIndex = 13;
-            this.lblTitle.Text = "kkm";
+            this.lblTitle.Text = "hosgeldınız";
             // 
             // panelConfirmation
             // 
             this.panelConfirmation.Controls.Add(this.btnIncomingInvGetState);
             this.panelConfirmation.Controls.Add(this.btnAccept);
             this.panelConfirmation.Controls.Add(this.btnReject);
-            this.panelConfirmation.Controls.Add(this.btnGetInvoiceIncoming);
+            this.panelConfirmation.Controls.Add(this.btnDownInvIncoming);
             this.panelConfirmation.Location = new System.Drawing.Point(17, 8);
             this.panelConfirmation.Name = "panelConfirmation";
             this.panelConfirmation.Size = new System.Drawing.Size(768, 72);
@@ -219,21 +219,21 @@
             this.btnReject.UseVisualStyleBackColor = false;
             this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
             // 
-            // btnGetInvoiceIncoming
+            // btnDownInvIncoming
             // 
-            this.btnGetInvoiceIncoming.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnGetInvoiceIncoming.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnGetInvoiceIncoming.FlatAppearance.BorderSize = 2;
-            this.btnGetInvoiceIncoming.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGetInvoiceIncoming.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGetInvoiceIncoming.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetInvoiceIncoming.Location = new System.Drawing.Point(228, 20);
-            this.btnGetInvoiceIncoming.Name = "btnGetInvoiceIncoming";
-            this.btnGetInvoiceIncoming.Size = new System.Drawing.Size(120, 35);
-            this.btnGetInvoiceIncoming.TabIndex = 2;
-            this.btnGetInvoiceIncoming.Text = "fatura al";
-            this.btnGetInvoiceIncoming.UseVisualStyleBackColor = false;
-            this.btnGetInvoiceIncoming.Click += new System.EventHandler(this.btnGetInvoiceIncoming_Click);
+            this.btnDownInvIncoming.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnDownInvIncoming.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnDownInvIncoming.FlatAppearance.BorderSize = 2;
+            this.btnDownInvIncoming.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDownInvIncoming.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDownInvIncoming.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDownInvIncoming.Location = new System.Drawing.Point(228, 20);
+            this.btnDownInvIncoming.Name = "btnDownInvIncoming";
+            this.btnDownInvIncoming.Size = new System.Drawing.Size(120, 35);
+            this.btnDownInvIncoming.TabIndex = 2;
+            this.btnDownInvIncoming.Text = "fatura al";
+            this.btnDownInvIncoming.UseVisualStyleBackColor = false;
+            this.btnDownInvIncoming.Click += new System.EventHandler(this.btnDownInvIncoming_Click);
             // 
             // panelIncomingInvoice
             // 
@@ -365,7 +365,7 @@
         private System.Windows.Forms.Panel panelConfirmation;
         private System.Windows.Forms.Button btnReject;
         private System.Windows.Forms.Button btnAccept;
-        private System.Windows.Forms.Button btnGetInvoiceIncoming;
+        private System.Windows.Forms.Button btnDownInvIncoming;
         private System.Windows.Forms.Button btnIncomingInvGetState;
         private System.Windows.Forms.Panel panelIncomingInvoice;
         private System.Windows.Forms.Panel panelSentInvoice;

@@ -115,6 +115,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gelen faturalar &apos;D:\\temp\\GELEN\\&apos; klasorune kaydedılmıstır.
+        /// </summary>
+        public static string downInvSaveFolder {
+            get {
+                return ResourceManager.GetString("downInvSaveFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taslak Faturalar.
         /// </summary>
         public static string draftInvoice {
@@ -358,6 +367,42 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to nolu faturalar uygun degil bu yuzden guncellenmedı.
+        /// </summary>
+        public static string noInvNotUpdated {
+            get {
+                return ResourceManager.GetString("noInvNotUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nolu faturalar guncellendı.
+        /// </summary>
+        public static string noInvUpdated {
+            get {
+                return ResourceManager.GetString("noInvUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gösterilecek faturanız yok.
+        /// </summary>
+        public static string noShowInvoice {
+            get {
+                return ResourceManager.GetString("noShowInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gösterilecek hatalı faturanız yok.
+        /// </summary>
+        public static string notFaultyInv {
+            get {
+                return ResourceManager.GetString("notFaultyInv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Şifre.
         /// </summary>
         public static string password {
@@ -570,6 +615,15 @@ namespace izibiz.COMMON.Language {
         public static string warningHasAnswer {
             get {
                 return ResourceManager.GetString("warningHasAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to temel fatura veya 8 gün gecmiş faturaların durum sorgulaması yapılamaz.
+        /// </summary>
+        public static string warningStateShow {
+            get {
+                return ResourceManager.GetString("warningStateShow", resourceCulture);
             }
         }
         

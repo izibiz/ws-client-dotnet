@@ -173,6 +173,17 @@ namespace izibiz.UI
             ublInvoice.SetAllowanceCharge(ublInvoice.CalculateAllowanceCharges());
 
             Singl.instanceInvoiceGet.CreateInvoiceXml(ublInvoice);
+            saveCreatedInvOnDb();
         }
+
+
+        private void saveCreatedInvOnDb()
+        {
+
+        }
+
+
+
+
     }
 }

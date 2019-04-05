@@ -44,12 +44,12 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.IN.ToString();
-                req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 if (invoiceArray.Length > 0)
                 {
-                    invoiceMarkRead(invoiceArray);
+                    //       invoiceMarkRead(invoiceArray);
                     SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.IN.ToString());
                 }
                 return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.IN)).ToList();
@@ -60,34 +60,31 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             foreach (var inv in invoiceArray)
             {
-                //db de aynı uuid ve aynı type ınv varsa ekleme
-                if (Singl.databaseContextGet.Invoices.Where(x => x.Uuid == inv.UUID && x.invType == type).FirstOrDefault() == null )
-                {
-                    Invoices invoiceMaster = new Invoices();
+                Invoices InvoiceTable = new Invoices();
 
-                    invoiceMaster.ID = inv.ID;
-                    invoiceMaster.Uuid = inv.UUID;
-                    invoiceMaster.invType = type;
-                    invoiceMaster.issueDate = inv.HEADER.ISSUE_DATE;
-                    invoiceMaster.profileid = inv.HEADER.PROFILEID;
-                    invoiceMaster.type = inv.HEADER.INVOICE_TYPE_CODE;
-                    invoiceMaster.suplier = inv.HEADER.SUPPLIER;
-                    invoiceMaster.sender = inv.HEADER.SENDER;
-                    invoiceMaster.cDate = inv.HEADER.CDATE;
-                    invoiceMaster.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
-                    invoiceMaster.status = inv.HEADER.STATUS;
-                    invoiceMaster.statusDesc = inv.HEADER.STATUS;
-                    invoiceMaster.gibStatusCode = inv.HEADER.GIB_STATUS_CODE;
-                    invoiceMaster.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
-                    invoiceMaster.fromm = inv.HEADER.FROM;
-                    invoiceMaster.too = inv.HEADER.TO;
+                InvoiceTable.ID = inv.ID;
+                InvoiceTable.Uuid = inv.UUID;
+                InvoiceTable.invType = type;
+                InvoiceTable.issueDate = inv.HEADER.ISSUE_DATE;
+                InvoiceTable.profileid = inv.HEADER.PROFILEID;
+                InvoiceTable.type = inv.HEADER.INVOICE_TYPE_CODE;
+                InvoiceTable.suplier = inv.HEADER.SUPPLIER;
+                InvoiceTable.sender = inv.HEADER.SENDER;
+                InvoiceTable.cDate = inv.HEADER.CDATE;
+                InvoiceTable.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
+                InvoiceTable.status = inv.HEADER.STATUS;
+                InvoiceTable.statusDesc = inv.HEADER.STATUS;
+                InvoiceTable.gibStatusCode = inv.HEADER.GIB_STATUS_CODE;
+                InvoiceTable.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
+                InvoiceTable.fromm = inv.HEADER.FROM;
+                InvoiceTable.too = inv.HEADER.TO;
+                InvoiceTable.content = Encoding.UTF8.GetString(inv.CONTENT.Value); //xml db de tututlur
 
-                    entitiyInv.Add(invoiceMaster);
-                }
+                entitiyInv.Add(InvoiceTable);
+
             }
 
-                Singl.databaseContextGet.SaveChanges();
-         
+            Singl.databaseContextGet.SaveChanges();
         }
 
 
@@ -102,7 +99,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.OUT.ToString();
-                req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 if (invoiceArray.Length > 0)
@@ -115,7 +112,7 @@ namespace izibiz.CONTROLLER.Web_Services
             }
         }
 
-      
+
 
 
         public List<Invoices> getDraftInvoice()
@@ -128,11 +125,11 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.OUT.ToString();
                 req.INVOICE_SEARCH_KEY.DRAFT_FLAG = EI.ActiveOrPasive.Y.ToString();
-                req.HEADER_ONLY = EI.ActiveOrPasive.Y.ToString();
+                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
 
-                var draft = invoiceArray.Where(x => x.HEADER.STATUS.Contains(EI.StatusType.LOAD.ToString()) 
+                var draft = invoiceArray.Where(x => x.HEADER.STATUS.Contains(EI.StatusType.LOAD.ToString())
                 && x.HEADER.STATUS.Contains(EI.SubStatusType.SUCCEED.ToString()));
 
                 SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.OUT.ToString());
@@ -218,14 +215,15 @@ namespace izibiz.CONTROLLER.Web_Services
             }
         }
 
+
+
         public string sendInvAgain(string[] invoiceUuid)
         {
             INVOICE[] invoices = new INVOICE[invoiceUuid.Length];
-            for (int i=0;i<invoiceUuid.Length;i++)
+            for (int i = 0; i < invoiceUuid.Length; i++)
             {
                 invoices[i].UUID = invoiceUuid[i];
             }
-      
 
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -233,7 +231,6 @@ namespace izibiz.CONTROLLER.Web_Services
                 {
                     REQUEST_HEADER = RequestHeader.requestHeader,
                     INVOICE = invoices,
-                    
                 };
 
                 LoadInvoiceResponse res = EFaturaOIBPortClient.LoadInvoice(req);
@@ -316,7 +313,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public string getInvoiceType(string invoiceId, string type)
+        public string getInvoiceType(string invoiceUuid, string type, string direction)
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -325,16 +322,16 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
 
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
-                req.INVOICE_SEARCH_KEY.ID = invoiceId;
+                req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
                 req.INVOICE_SEARCH_KEY.TYPE = type;//XML,PDF 
+                req.INVOICE_SEARCH_KEY.DIRECTION = direction;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
-                string filePath;
-                filePath = saveInvoiceType(invoice[0], type);
-                return filePath;
+                return saveInvoiceType(invoice[0], type);
             }
         }
+
 
 
         public byte[] getInvoiceXml(string invoiceUuid)
@@ -346,8 +343,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
                 req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
-                req.INVOICE_SEARCH_KEY.TYPE = EI.InvoiceDownloadType.PDF.ToString();
-
+                req.INVOICE_SEARCH_KEY.TYPE = EI.DocumentType.PDF.ToString();
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
@@ -361,10 +357,11 @@ namespace izibiz.CONTROLLER.Web_Services
             var createdUBL = invoice.BaseUBL;  // Fatura UBL i oluşturulur
 
             inboxFolder = Path.Combine("D:/", createdUBL.UUID.Value.ToString() + ".xml");
-            using (FileStream stream=new FileStream(inboxFolder, FileMode.Create))
+            using (FileStream stream = new FileStream(inboxFolder, FileMode.Create))
             {
                 XmlSerializer x = new XmlSerializer(createdUBL.GetType());
-                x.Serialize(stream, createdUBL, InvoiceSerializer.SerializerNamespace);   
+
+                x.Serialize(stream, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
             }
         }
 

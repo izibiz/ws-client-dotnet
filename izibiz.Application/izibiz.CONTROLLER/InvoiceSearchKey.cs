@@ -18,8 +18,8 @@ namespace izibiz.CONTROLLER
             invoiceSearchKeyGetInvoiceRequest = new GetInvoiceRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
             {
                 LIMIT = 10,
-                LIMITSpecified =true,
-                READ_INCLUDED = true,
+                LIMITSpecified =false,
+                READ_INCLUDED = false,
                 READ_INCLUDEDSpecified = true,              
             };
         }
@@ -31,8 +31,8 @@ namespace izibiz.CONTROLLER
             {
                 LIMIT = 10,
                 LIMITSpecified = true,
-                READ_INCLUDED = false,
-                READ_INCLUDEDSpecified = false,          
+                READ_INCLUDED = true,
+                READ_INCLUDEDSpecified = true,          
             };
         }
 

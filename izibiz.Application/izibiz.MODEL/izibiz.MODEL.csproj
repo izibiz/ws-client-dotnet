@@ -64,7 +64,8 @@
   <ItemGroup>
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Data\SqLiteConfiguration.cs" />
-    <Compile Include="Model\InvoiceMaster.cs" />
+    <Compile Include="Model\DraftInvoice.cs" />
+    <Compile Include="Model\Invoices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

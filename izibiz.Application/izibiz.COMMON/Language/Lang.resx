@@ -291,4 +291,22 @@
   <data name="dbFault" xml:space="preserve">
     <value>Database tarafında bır sorun cıktı !</value>
   </data>
+  <data name="noShowInvoice" xml:space="preserve">
+    <value>Gösterilecek faturanız yok</value>
+  </data>
+  <data name="noInvNotUpdated" xml:space="preserve">
+    <value>nolu faturalar uygun degil bu yuzden guncellenmedı</value>
+  </data>
+  <data name="noInvUpdated" xml:space="preserve">
+    <value>nolu faturalar guncellendı</value>
+  </data>
+  <data name="warningStateShow" xml:space="preserve">
+    <value>temel fatura veya 8 gün gecmiş faturaların durum sorgulaması yapılamaz</value>
+  </data>
+  <data name="downInvSaveFolder" xml:space="preserve">
+    <value>Gelen faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır</value>
+  </data>
+  <data name="notFaultyInv" xml:space="preserve">
+    <value>Gösterilecek hatalı faturanız yok</value>
+  </data>
 </root>

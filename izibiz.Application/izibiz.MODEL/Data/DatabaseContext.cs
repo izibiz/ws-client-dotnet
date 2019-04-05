@@ -24,9 +24,6 @@ namespace izibiz.MODEL.Data
         {
         }
 
-    
-
-
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,7 +33,7 @@ namespace izibiz.MODEL.Data
         }
 
         public DbSet<Invoices> Invoices { get; set; }
-       
+        public DbSet<DraftCreatedInv> DraftInvoice { get; set; }
 
     }
 }

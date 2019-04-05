@@ -3,6 +3,7 @@ using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,19 @@ namespace izibiz.CONTROLLER.Dal
             && x.status.Contains(nameof(EI.SubStatusType.FAILED))).ToList();
         }
 
-  
+        public Invoices getInvoice(string uuid,string direction )
+        {
+            return Singl.databaseContextGet.Invoices.Where(x => x.invType == direction
+            && x.Uuid==uuid ).First();
+        }
 
+        public void insertDraftInvoice()
+        {
+            DraftCreatedInv draftCreatedInv = new DraftCreatedInv();
+            draftCreatedInv.
+
+            Singl.databaseContextGet.DraftInvoice.Add();
+        }
 
     }
 }

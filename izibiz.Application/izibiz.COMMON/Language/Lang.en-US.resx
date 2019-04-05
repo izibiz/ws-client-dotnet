@@ -291,4 +291,22 @@
   <data name="dbFault" xml:space="preserve">
     <value>There is problem in Database!</value>
   </data>
+  <data name="noShowInvoice" xml:space="preserve">
+    <value>No Unread Invoice</value>
+  </data>
+  <data name="noInvNotUpdated" xml:space="preserve">
+    <value>has id ınvoices can not updated</value>
+  </data>
+  <data name="noInvUpdated" xml:space="preserve">
+    <value>has id ınvoices updated</value>
+  </data>
+  <data name="warningStateShow" xml:space="preserve">
+    <value>Can not status invoices of basic invoice or invoices over 8 days</value>
+  </data>
+  <data name="downInvSaveFolder" xml:space="preserve">
+    <value>the downloaded ınvoices save  folder in the : 'D:\\temp\\GELEN\\'</value>
+  </data>
+  <data name="notFaultyInv" xml:space="preserve">
+    <value>you has not faulty ınvoice</value>
+  </data>
 </root>

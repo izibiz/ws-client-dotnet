@@ -11,20 +11,11 @@ namespace izibiz.COMMON.UblSerializer
    public abstract class InvoiceSerializer
     {
 
-        public static XmlSerializerNamespaces SerializerNamespace { get; set; }
+    
 
 
-        protected InvoiceSerializer()
-        {
-            SerializerNamespace = GetXmlSerializerNamespace();
-        }
 
-
-        /// <summary>
-        ///  XmlSerializer nesnesini oluşturur ve prefix ile namespace ekler.
-        /// </summary>
-        /// <returns>Oluşturulan XmlSerializer Nesnesi</returns>
-        private XmlSerializerNamespaces GetXmlSerializerNamespace()
+        public static XmlSerializerNamespaces GetXmlSerializerNamespace()
         {
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
 
@@ -63,7 +54,7 @@ namespace izibiz.COMMON.UblSerializer
 
             MemoryStream ms = new MemoryStream();
             TextWriter writeFileStream = new StreamWriter(ms, Encoding.UTF8);
-            serializerObj.Serialize(writeFileStream, obj, SerializerNamespace);
+            serializerObj.Serialize(writeFileStream, obj, GetXmlSerializerNamespace());
             writeFileStream.Close();
             return ms.ToArray();
         }

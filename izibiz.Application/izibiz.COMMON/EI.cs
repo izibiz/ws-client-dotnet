@@ -48,11 +48,12 @@ namespace izibiz.COMMON
 
     
 
-        public enum InvoiceDownloadType
+        public enum DocumentType
         {
            PDF,
            XML,
-           HTML
+           HTML,
+           XSLT
         }
 
         public enum StatusType
@@ -99,7 +100,14 @@ namespace izibiz.COMMON
             gibStatusCode,
             gibStatusDescription,
             fromm,
-            too
+            too,
+            content        
+        }
+
+        public enum gridBtnClmName
+        {
+            previewXml,
+            previewPdf
         }
 
         public enum invoiceTypeCodeValue
@@ -126,10 +134,7 @@ namespace izibiz.COMMON
             TRY
 
         }
-        public enum DocumentType
-        {
-            XSLT
-        }
+   
 
         public enum TaxType
         {
