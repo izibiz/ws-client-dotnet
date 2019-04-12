@@ -161,6 +161,31 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
+
+
+        public void sendInvoice()
+        {
+            using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+            {
+                var req = new SendInvoiceRequest();
+/*
+                req.REQUEST_HEADER = RequestHeader.requestHeader;
+                req.SENDER = new SendInvoiceRequestSENDER();
+                req.SENDER.vkn = fromVkn;
+                req.SENDER.alias = fromAlias;
+                req.RECEIVER = new SendInvoiceRequestRECEIVER();
+                req.RECEIVER.vkn = toVkn;
+                req.RECEIVER.alias = toAlias;
+                req.REQUEST_HEADER = requestHeader;
+
+
+                */
+
+              EFaturaOIBPortClient.SendInvoice(req);
+               
+            }
+        }
+
         public void sendInvoiceResponse(string status, string[] description)
         {
 
