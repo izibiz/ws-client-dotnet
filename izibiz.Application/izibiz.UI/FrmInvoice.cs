@@ -651,7 +651,7 @@ namespace izibiz.UI
             {
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-
+                    //buradan devam et
 
                 }
             }
