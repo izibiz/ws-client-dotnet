@@ -38,7 +38,6 @@ namespace izibiz.CONTROLLER
             BaseUBL.UBLVersionID = new UBLVersionIDType { Value = "2.1" }; //uluslararası fatura standardı 2.1
             BaseUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" }; //fakat GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2 efatura formatını kullanıyor.
             BaseUBL.ProfileID = new ProfileIDType { Value = profileid };
-            /**/
             BaseUBL.ID = new IDType { Value = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") };//id yi simdilik unıqıe bır deger verıyoruz , load ınv da degıstırılecek
             BaseUBL.CopyIndicator = new CopyIndicatorType { Value = false };
             BaseUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
@@ -84,10 +83,10 @@ namespace izibiz.CONTROLLER
             {
                 new SignatureType
                 {
-                    ID = new IDType { schemeID = "VKN_TCKN", Value = "4840847211" },
+                    ID = new IDType { schemeID = "VKN_TCKN", Value = "484084721" },
                     SignatoryParty = new PartyType
                     {
-                        WebsiteURI = new WebsiteURIType { Value = "www.FITsolutions.com.tr" },
+                        WebsiteURI = new WebsiteURIType { Value = "www.izibiz.com.tr" },
                         PartyIdentification = new[]
                         {
                             new PartyIdentificationType
@@ -209,14 +208,16 @@ namespace izibiz.CONTROLLER
                     case 0:
                         partyIdentification.ID = new IDType();
                         partyIdentification.ID.schemeID = param1;
-                        partyIdentification.ID.schemeName = param1Value; break;
+                        partyIdentification.ID.Value = param1Value; break;
+
                     case 1:
                         partyIdentification.ID = new IDType();
                         partyIdentification.ID.schemeID = param2;
-                        partyIdentification.ID.schemeName = param2Value; break;
+                        partyIdentification.ID.Value = param2Value; break;
+
                     case 2:   partyIdentification.ID = new IDType();
                         partyIdentification.ID.schemeID = param3;
-                        partyIdentification.ID.schemeName = param3Value; break;
+                        partyIdentification.ID.Value = param3Value; break;
                 }
                 partyIdentificationArr[i] = partyIdentification;
             }

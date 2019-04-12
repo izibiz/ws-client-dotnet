@@ -13,6 +13,7 @@ using Ubl_Invoice_2_1;
 using izibiz.COMMON;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.CONTROLLER;
+using izibiz.CONTROLLER.Dal;
 
 namespace izibiz.UI
 {
@@ -127,61 +128,72 @@ namespace izibiz.UI
 
 
 
-            CreateInvoiceUBL ublInvoice = new CreateInvoiceUBL(cmbScenario.SelectedText, cmbType.SelectedText);
+            CreateInvoiceUBL invoice = new CreateInvoiceUBL(cmbScenario.Text, cmbType.Text);
+
 
             PartyType supParty;
-            PartyType cusParty;
-
+            PartyType cusParty;           
             //supp party olusturulması  
-            supParty = ublInvoice.createParty(webUrı, partyName, streetName, buldingName, buldingNumber, visionName, cityName, postalZone, "", country, telephone, fax, mail);
+            supParty = invoice.createParty(webUrı, partyName, streetName, buldingName, buldingNumber, visionName, cityName, postalZone, "", country, telephone, fax, mail);
             if (supVknTc.Length == 10) //sup vkn
             {
-                ublInvoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), supVknTc, mersisNo, sicilNo, "", "");
-                ublInvoice.addPartyTaxSchemeOnParty(supParty, taxScheme);
+                invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), supVknTc, mersisNo, sicilNo, "", "");
+                invoice.addPartyTaxSchemeOnParty(supParty, taxScheme);
             }
             else  //sup tckn .. add person metodu eklenır
             {
-                ublInvoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), supVknTc, mersisNo, sicilNo, "", "");
-                ublInvoice.addPersonOnParty(supParty, firstName, familyName);
+                invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), supVknTc, mersisNo, sicilNo, "", "");
+                invoice.addPersonOnParty(supParty, firstName, familyName);
             }
-            ublInvoice.SetSupplierParty(supParty);
+            invoice.SetSupplierParty(supParty);
 
-            //cust party olusturulması    
-            cusParty = ublInvoice.createParty("", txtPartyName.Text, txtStreet.Text, txtBuldingName.Text, txtBuldingNo.Text, txtVision.Text, txtCity.Text, "", "", txtCountry.Text, msdPhone.Text, "", txtMail.Text);
+          
+            
+            
+            //cust party olusturulması        
+            cusParty = invoice.createParty("", txtPartyName.Text, txtStreet.Text, txtBuldingName.Text, txtBuldingNo.Text, txtVision.Text, txtCity.Text, "", "", txtCountry.Text, msdPhone.Text, "", txtMail.Text);
             if (msdVknTc.Text.Length == 10) //customer vkn
             {
-                ublInvoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.VKN), msdVknTc.Text, "", "", "", "");
-                ublInvoice.addPartyTaxSchemeOnParty(cusParty, txtTaxScheme.Text);
+                invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.VKN), msdVknTc.Text, "", "", "", "");
+                invoice.addPartyTaxSchemeOnParty(cusParty, txtTaxScheme.Text);
             }
             else  //customer tckn
             {
-                ublInvoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
+                invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
             }
-            ublInvoice.SetCustomerParty(cusParty);
+            invoice.SetCustomerParty(cusParty);
 
+
+
+            //ınv line olusturulması
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
                 //unıt code get fonk cagırılacak
 
-                ublInvoice.addInvoiceLine(row.Index.ToString(), txtNote.Text, unitCode, Convert.ToDecimal(row.Cells["quantity"].Value), cmbMoneyType.Text, Convert.ToDecimal(row.Cells["total"].Value),
+                invoice.addInvoiceLine(row.Index.ToString(), txtNote.Text, unitCode, Convert.ToDecimal(row.Cells["quantity"].Value), cmbMoneyType.Text, Convert.ToDecimal(row.Cells["total"].Value),
                     Convert.ToDecimal(row.Cells["taxAmount"].Value), Convert.ToDecimal(row.Cells["total"].Value), Convert.ToDecimal(row.Cells["taxPercent"].Value), row.Cells["productName"].Value.ToString(),
              Convert.ToDecimal(row.Cells["unitPrice"].Value));
             }
-            ublInvoice.setInvLines();
-            ublInvoice.setTaxTotal(ublInvoice.invoiceTaxTotal());
-            ublInvoice.SetLegalMonetaryTotal(ublInvoice.CalculateLegalMonetaryTotal());
-            ublInvoice.SetAllowanceCharge(ublInvoice.CalculateAllowanceCharges());
+            invoice.setInvLines();
 
-            Singl.instanceInvoiceGet.CreateInvoiceXml(ublInvoice);
-            saveCreatedInvOnDb();
+
+
+            invoice.setTaxTotal(invoice.invoiceTaxTotal());
+            invoice.SetLegalMonetaryTotal(invoice.CalculateLegalMonetaryTotal());
+            invoice.SetAllowanceCharge(invoice.CalculateAllowanceCharges());
+
+            var invoiceUbl = invoice.BaseUBL; //olusturdugumuz nesne ubl turune cevrılır
+
+            //xml olustur
+            string contentXml = Singl.instanceInvoiceGet.CreateInvoiceXml(invoiceUbl).ToString();
+           
+            //db ye kaydet
+            Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, contentXml);
+
         }
 
 
-        private void saveCreatedInvOnDb()
-        {
-
-        }
-
+      
 
 
 

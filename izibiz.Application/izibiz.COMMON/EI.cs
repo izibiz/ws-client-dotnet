@@ -101,7 +101,8 @@ namespace izibiz.COMMON
             gibStatusDescription,
             fromm,
             too,
-            content        
+            content,
+            draftFlag
         }
 
         public enum gridBtnClmName

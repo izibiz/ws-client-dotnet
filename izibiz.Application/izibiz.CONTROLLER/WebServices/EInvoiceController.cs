@@ -16,6 +16,7 @@ using System.Data.Entity;
 using izibiz.CONTROLLER.Singleton;
 using System.Xml.Serialization;
 using izibiz.COMMON.UblSerializer;
+using Ubl_Invoice_2_1;
 
 namespace izibiz.CONTROLLER.Web_Services
 {
@@ -56,37 +57,6 @@ namespace izibiz.CONTROLLER.Web_Services
             }
         }
 
-        private void SaveInvoiceArrayToEntitiy(INVOICE[] invoiceArray, DbSet<Invoices> entitiyInv, string type)
-        {
-            foreach (var inv in invoiceArray)
-            {
-                Invoices InvoiceTable = new Invoices();
-
-                InvoiceTable.ID = inv.ID;
-                InvoiceTable.Uuid = inv.UUID;
-                InvoiceTable.invType = type;
-                InvoiceTable.issueDate = inv.HEADER.ISSUE_DATE;
-                InvoiceTable.profileid = inv.HEADER.PROFILEID;
-                InvoiceTable.type = inv.HEADER.INVOICE_TYPE_CODE;
-                InvoiceTable.suplier = inv.HEADER.SUPPLIER;
-                InvoiceTable.sender = inv.HEADER.SENDER;
-                InvoiceTable.cDate = inv.HEADER.CDATE;
-                InvoiceTable.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
-                InvoiceTable.status = inv.HEADER.STATUS;
-                InvoiceTable.statusDesc = inv.HEADER.STATUS;
-                InvoiceTable.gibStatusCode = inv.HEADER.GIB_STATUS_CODE;
-                InvoiceTable.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
-                InvoiceTable.fromm = inv.HEADER.FROM;
-                InvoiceTable.too = inv.HEADER.TO;
-                InvoiceTable.content = Encoding.UTF8.GetString(inv.CONTENT.Value); //xml db de tututlur
-
-                entitiyInv.Add(InvoiceTable);
-
-            }
-
-            Singl.databaseContextGet.SaveChanges();
-        }
-
 
 
 
@@ -114,7 +84,6 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-
         public List<Invoices> getDraftInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
@@ -128,16 +97,50 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
+                if (invoiceArray.Length > 0)
+                {
+                    invoiceMarkRead(invoiceArray);
+                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.DRAFT.ToString());
+                }
 
-                var draft = invoiceArray.Where(x => x.HEADER.STATUS.Contains(EI.StatusType.LOAD.ToString())
-                && x.HEADER.STATUS.Contains(EI.SubStatusType.SUCCEED.ToString()));
-
-                SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.OUT.ToString());
-                return Singl.databaseContextGet.Invoices.Where(x => x.invType == EI.InvType.DRAFT.ToString()).ToList();
+                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.DRAFT)).ToList();
             }
         }
 
 
+        private void SaveInvoiceArrayToEntitiy(INVOICE[] invoiceArray, DbSet<Invoices> entitiyInv, string type)
+        {
+            foreach (var inv in invoiceArray)
+            {
+                Invoices invoice = new Invoices();
+
+                invoice.ID = inv.ID;
+                invoice.Uuid = inv.UUID;
+                invoice.invType = type;
+                invoice.issueDate = inv.HEADER.ISSUE_DATE;
+                invoice.profileid = inv.HEADER.PROFILEID;
+                invoice.type = inv.HEADER.INVOICE_TYPE_CODE;
+                invoice.suplier = inv.HEADER.SUPPLIER;
+                invoice.sender = inv.HEADER.SENDER;
+                invoice.cDate = inv.HEADER.CDATE;
+                invoice.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
+                invoice.status = inv.HEADER.STATUS;
+                invoice.statusDesc = inv.HEADER.STATUS;
+                invoice.gibStatusCode = inv.HEADER.GIB_STATUS_CODE;
+                invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
+                invoice.fromm = inv.HEADER.FROM;
+                invoice.too = inv.HEADER.TO;
+                invoice.content = Encoding.UTF8.GetString(inv.CONTENT.Value); //xml db de tututlur
+
+                if (type == EI.InvType.DRAFT.ToString())
+                {
+                    invoice.draftFlag = EI.ActiveOrPasive.Y.ToString();  //servisten cektıklerımız flag Y  ☺
+                }
+                entitiyInv.Add(invoice);
+            }
+
+            Singl.databaseContextGet.SaveChanges();
+        }
 
         private void invoiceMarkRead(INVOICE[] invoiceList)
         {
@@ -352,17 +355,31 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
-        public void CreateInvoiceXml(CreateInvoiceUBL invoice)
+        public string CreateInvoiceXml(InvoiceType createdUBL)
         {
-            var createdUBL = invoice.BaseUBL;  // Fatura UBL i oluşturulur
+            /////// DİSKE KAYDETMEK İSTERSEK ASAGIDAKI KODU ACARIZ 
 
-            inboxFolder = Path.Combine("D:/", createdUBL.UUID.Value.ToString() + ".xml");
-            using (FileStream stream = new FileStream(inboxFolder, FileMode.Create))
+            //string draftPath = "D://Taslak//";
+            //createInboxIfDoesNotExist(draftPath); //dosya yolu yoksa olustur
+            //inboxFolder = Path.Combine(draftPath, createdUBL.UUID.Value.ToString() + ".xml");
+
+
+            //using (FileStream stream = new FileStream(inboxFolder, FileMode.Create))
+            //{
+            //    XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
+
+            //    xmlSerializer.Serialize(stream, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
+            //}
+
+
+            using (StringWriter textWriter = new StringWriter())
             {
-                XmlSerializer x = new XmlSerializer(createdUBL.GetType());
+                XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
 
-                x.Serialize(stream, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
+                xmlSerializer.Serialize(textWriter, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());              
+                return textWriter.ToString();
             }
+  
         }
 
 

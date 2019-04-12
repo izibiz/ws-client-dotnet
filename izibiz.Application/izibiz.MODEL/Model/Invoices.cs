@@ -37,6 +37,10 @@ namespace izibiz.MODEL.Model
 
 
 
+        [Column(Name = nameof(EI.InvClmName.draftFlag), DbType = "VARCHAR")]
+        public string draftFlag { get; set; }
+
+
         [Column(Name = nameof(EI.InvClmName.issueDate), DbType = "NUMERIC")]
         public DateTime issueDate { get; set; }
 

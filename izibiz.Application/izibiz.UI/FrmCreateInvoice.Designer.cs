@@ -47,6 +47,13 @@
             this.txtNote = new System.Windows.Forms.TextBox();
             this.grpboxRow = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddRow = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPartyName = new System.Windows.Forms.TextBox();
@@ -56,7 +63,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbMoneyType = new System.Windows.Forms.ComboBox();
-            this.cmbType = new System.Windows.Forms.ComboBox();
             this.cmbScenario = new System.Windows.Forms.ComboBox();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -85,13 +91,7 @@
             this.txtTaxScheme = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.groupBox4.SuspendLayout();
             this.grpboxRow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -277,6 +277,45 @@
             this.dataGridView2.Size = new System.Drawing.Size(712, 78);
             this.dataGridView2.TabIndex = 5;
             // 
+            // productName
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.productName.HeaderText = "ad";
+            this.productName.Name = "productName";
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "miktar";
+            this.quantity.Name = "quantity";
+            // 
+            // unit
+            // 
+            this.unit.HeaderText = "birim";
+            this.unit.Name = "unit";
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.HeaderText = "birim fiyat";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // taxPercent
+            // 
+            this.taxPercent.HeaderText = "kdv oranı";
+            this.taxPercent.Name = "taxPercent";
+            // 
+            // taxAmount
+            // 
+            this.taxAmount.HeaderText = "kdv tutarı";
+            this.taxAmount.Name = "taxAmount";
+            // 
+            // total
+            // 
+            this.total.HeaderText = "toplam";
+            this.total.Name = "total";
+            // 
             // btnAddRow
             // 
             this.btnAddRow.Location = new System.Drawing.Point(751, 37);
@@ -289,6 +328,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbType);
             this.groupBox2.Controls.Add(this.txtPartyName);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label13);
@@ -296,7 +336,6 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.cmbMoneyType);
-            this.groupBox2.Controls.Add(this.cmbType);
             this.groupBox2.Controls.Add(this.cmbScenario);
             this.groupBox2.Controls.Add(this.dateTime);
             this.groupBox2.Location = new System.Drawing.Point(15, 161);
@@ -367,15 +406,6 @@
             this.cmbMoneyType.Name = "cmbMoneyType";
             this.cmbMoneyType.Size = new System.Drawing.Size(109, 21);
             this.cmbMoneyType.TabIndex = 1;
-            // 
-            // cmbType
-            // 
-            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbType.Location = new System.Drawing.Point(294, 25);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(109, 21);
-            this.cmbType.TabIndex = 1;
             // 
             // cmbScenario
             // 
@@ -632,44 +662,15 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
-            // productName
+            // cmbType
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.productName.HeaderText = "ad";
-            this.productName.Name = "productName";
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "miktar";
-            this.quantity.Name = "quantity";
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "birim";
-            this.unit.Name = "unit";
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.HeaderText = "birim fiyat";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // taxPercent
-            // 
-            this.taxPercent.HeaderText = "kdv oranı";
-            this.taxPercent.Name = "taxPercent";
-            // 
-            // taxAmount
-            // 
-            this.taxAmount.HeaderText = "kdv tutarı";
-            this.taxAmount.Name = "taxAmount";
-            // 
-            // total
-            // 
-            this.total.HeaderText = "toplam";
-            this.total.Name = "total";
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(294, 25);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(109, 21);
+            this.cmbType.TabIndex = 7;
             // 
             // FrmCreateInvoice
             // 
@@ -718,7 +719,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbMoneyType;
-        private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.ComboBox cmbScenario;
         private System.Windows.Forms.DateTimePicker dateTime;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -759,5 +759,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn taxPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn taxAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.ComboBox cmbType;
     }
 }

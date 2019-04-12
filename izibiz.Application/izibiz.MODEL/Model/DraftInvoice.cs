@@ -36,6 +36,11 @@ namespace izibiz.MODEL.Model
 
 
 
+        [Column(Name = nameof(EI.InvClmName.type), DbType = "NVARCHAR")]
+        public string type { get; set; }
+
+
+
         [Column(Name = nameof(EI.InvClmName.suplier), DbType = "NVARCHAR")]
         public string suplier { get; set; }
 
@@ -63,6 +68,9 @@ namespace izibiz.MODEL.Model
 
         [Column(Name = nameof(EI.InvClmName.content), DbType = "NVARCHAR")]
         public string content { get; set; }
+
+
+ 
     }
 
 }

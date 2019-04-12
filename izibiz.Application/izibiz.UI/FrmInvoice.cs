@@ -73,6 +73,16 @@ namespace izibiz.UI
 
         private void dataGridChangeColoumnName()
         {
+
+            tableGrid.Columns[EI.InvClmName.status.ToString()].HeaderText = Lang.status;
+
+            tableGrid.Columns[EI.InvClmName.statusDesc.ToString()].HeaderText = Lang.statusDesc;
+
+            tableGrid.Columns[EI.InvClmName.gibStatusCode.ToString()].HeaderText = Lang.gibStatusCode;
+
+            tableGrid.Columns[EI.InvClmName.gibStatusDescription.ToString()].HeaderText = Lang.gibSatusDescription;
+
+
             tableGrid.Columns[EI.InvClmName.ID.ToString()].HeaderText = Lang.id;
 
             tableGrid.Columns[EI.InvClmName.uuid.ToString()].HeaderText = Lang.uuid;
@@ -93,14 +103,6 @@ namespace izibiz.UI
 
             tableGrid.Columns[EI.InvClmName.envelopeIdentifier.ToString()].HeaderText = Lang.envelopeIdentifier;
 
-            tableGrid.Columns[EI.InvClmName.status.ToString()].HeaderText = Lang.status;
-
-            tableGrid.Columns[EI.InvClmName.statusDesc.ToString()].HeaderText = Lang.statusDesc;
-
-            tableGrid.Columns[EI.InvClmName.gibStatusCode.ToString()].HeaderText = Lang.gibStatusCode;
-
-            tableGrid.Columns[EI.InvClmName.gibStatusDescription.ToString()].HeaderText = Lang.gibSatusDescription;
-
             tableGrid.Columns[EI.InvClmName.fromm.ToString()].HeaderText = Lang.from;
 
             tableGrid.Columns[EI.InvClmName.too.ToString()].HeaderText = Lang.to;
@@ -113,9 +115,9 @@ namespace izibiz.UI
         private void itemComingListInvoice_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Lang.incomingInvoice;
-            panelSentInvoice.Visible = false;
-            panelIncomingInvoice.Visible = true;
-            panelConfirmation.Visible = false;
+            panelSentInv.Visible = false;
+            panelIncomingInv.Visible = false;
+            panelDraftInv.Visible = false;
             direction = nameof(EI.InvType.IN);
             try
             {
@@ -136,6 +138,7 @@ namespace izibiz.UI
                     dataGridChangeColoumnName();
                     tableGrid.Columns[nameof(EI.InvClmName.status)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.invType)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.draftFlag)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.content)].Visible = false;
                 }
             }
@@ -164,30 +167,31 @@ namespace izibiz.UI
         private void itemSentInvoiceList_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Lang.sentInvoice;
-            panelIncomingInvoice.Visible = false;
-            panelSentInvoice.Visible = true;
-            panelConfirmationSentInv.Visible = false;
+            panelSentInv.Visible = false;
+            panelIncomingInv.Visible = false;
+            panelDraftInv.Visible = false;
             btnSentInvAgainSent.Enabled = false;
             direction = nameof(EI.InvType.OUT);
             try
             {
-                var List = Singl.instanceInvoiceGet.getSentInvoice();
-                if (List.Count == 0)
+                var list = Singl.instanceInvoiceGet.getSentInvoice();
+                if (list.Count == 0)
                 {
                     MessageBox.Show(Lang.noShowInvoice);
                 }
                 else //yenı fatura varsa
                 {
-                    foreach (var inv in List)
+                    foreach (var inv in list)
                     {
                         inv.statusDesc = invoiceIncomingStatusWrite(inv.status, inv.gibStatusCode);
                     }
                     tableGrid.DataSource = null;
                     addViewButtonToDatagridView();
-                    tableGrid.DataSource = List;
+                    tableGrid.DataSource = list;
                     dataGridChangeColoumnName();
                     tableGrid.Columns[EI.InvClmName.status.ToString()].Visible = false;
                     tableGrid.Columns[EI.InvClmName.invType.ToString()].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.draftFlag)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.content)].Visible = false;
                 }
             }
@@ -213,14 +217,38 @@ namespace izibiz.UI
         private void itemDraftInvoiceList_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Lang.draftInvoice;
-            panelSentInvoice.Visible = false;
-            panelIncomingInvoice.Visible = false;
+            panelSentInv.Visible = false;
+            panelIncomingInv.Visible = false;
+            panelDraftInv.Visible = false;
             direction = nameof(EI.InvType.DRAFT);
             try
             {
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
-                //gelecek
+                var list = Singl.instanceInvoiceGet.getDraftInvoice();
+                if (list.Count == 0)
+                {
+                    MessageBox.Show(Lang.noShowInvoice);
+                }
+                else //yenı fatura varsa
+                {
+                    foreach (var inv in list)
+                    {
+                        inv.statusDesc = invoiceIncomingStatusWrite(inv.status, inv.gibStatusCode);
+                    }
+                    tableGrid.DataSource = null;
+                    addViewButtonToDatagridView();
+                    tableGrid.DataSource = list;
+                    dataGridChangeColoumnName();
+                    tableGrid.Columns[nameof(EI.InvClmName.invType)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.draftFlag)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.envelopeIdentifier)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.status)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.gibStatusDescription)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.fromm)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.too)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.content)].Visible = false;
+                }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -230,9 +258,9 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
-                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.dbFault + " " + ex.Message, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -560,11 +588,15 @@ namespace izibiz.UI
                 #region panelVisiblity
                 if (direction == nameof(EI.InvType.IN))//gelen faturalara tıklandıysa
                 {
-                    panelConfirmation.Visible = true;
+                    panelIncomingInv.Visible = true;
                 }
                 else if (direction == nameof(EI.InvType.OUT))//giden faturalar
                 {
-                    panelConfirmationSentInv.Visible = true;
+                    panelSentInv.Visible = true;
+                }
+                else//taslak faturalar
+                {
+                    panelDraftInv.Visible = true;
                 }
                 #endregion
 
@@ -575,14 +607,14 @@ namespace izibiz.UI
                 if (e.ColumnIndex == tableGrid.Columns[nameof(EI.gridBtnClmName.previewPdf)].Index)
                 {
                     //pdf ıcın getınvoicewithtype metodu cagırılcak
-                  string filepath= Singl.instanceInvoiceGet.getInvoiceType(uuid, nameof(EI.DocumentType.PDF), direction);
-                  System.Diagnostics.Process.Start(filepath);
+                    string filepath = Singl.instanceInvoiceGet.getInvoiceType(uuid, nameof(EI.DocumentType.PDF), direction);
+                    System.Diagnostics.Process.Start(filepath);
                 }
                 //xml göruntule butonuna tıkladıysa
                 else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.gridBtnClmName.previewXml)].Index)
                 {
-                   // xml contenti db de tutuldugu ıcın conent db den cekılecek
-                   string content = Singl.invoiceDalGet.getInvoice(uuid, direction).content;
+                    // xml contenti db de tutuldugu ıcın conent db den cekılecek
+                    string content = Singl.invoiceDalGet.getInvoice(uuid, direction).content;
                     FrmPreviewInvoices previewInvoices = new FrmPreviewInvoices(content);
                     previewInvoices.Show();
                 }
@@ -595,7 +627,7 @@ namespace izibiz.UI
         {
             try
             {
-                CONTROLLER.Singleton.Singl.instanceInvoiceGet.downloadInvoice();
+                Singl.instanceInvoiceGet.downloadInvoice();
                 MessageBox.Show(Lang.downInvSaveFolder); //Gelen faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır
 
             }
@@ -683,6 +715,8 @@ namespace izibiz.UI
                 MessageBox.Show(ex.ToString());
             }
         }
+
+     
     }
 
 }
