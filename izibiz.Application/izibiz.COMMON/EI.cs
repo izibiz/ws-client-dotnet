@@ -12,7 +12,7 @@ namespace izibiz.COMMON
     {
      
 
-        public enum InvType
+        public enum Direction
         {
             IN,
             OUT,
@@ -20,11 +20,6 @@ namespace izibiz.COMMON
         }
 
 
-        public enum Direction
-        {
-            IN,
-            OUT
-        }
 
         public enum InvoiceResponseStatus
         {
@@ -81,8 +76,10 @@ namespace izibiz.COMMON
 
         public enum InvTableName
         {
-            Invoices
+            InvoicesTable
         }
+
+
         public enum InvClmName
         {
             ID,
@@ -92,7 +89,8 @@ namespace izibiz.COMMON
             profileid,
             type,
             suplier,
-            sender,
+            senderVkn,
+            receiverVkn,
             cDate,
             envelopeIdentifier,
             status,
@@ -133,7 +131,6 @@ namespace izibiz.COMMON
         {
             USD,
             TRY
-
         }
    
 

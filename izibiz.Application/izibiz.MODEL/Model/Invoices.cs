@@ -19,8 +19,8 @@ using izibiz.COMMON;
 namespace izibiz.MODEL.Model
 {
 
-    [Table(Name = "Invoices")]
-    public class Invoices
+    [Table(Name = "InvoicesTable")]
+    public class InvoicesTable
     {
 
         [Column(Name = nameof(EI.InvClmName.ID), DbType = "NVARCHAR")]
@@ -57,8 +57,12 @@ namespace izibiz.MODEL.Model
         public string suplier { get; set; }
 
 
-        [Column(Name = nameof(EI.InvClmName.sender), DbType = "NVARCHAR")]
-        public string sender { get; set; }
+        [Column(Name = nameof(EI.InvClmName.senderVkn), DbType = "VARCHAR")]
+        public string senderVkn { get; set; }
+
+
+        [Column(Name = nameof(EI.InvClmName.receiverVkn), DbType = "VARCHAR")]
+        public string receiverVkn { get; set; }
 
 
         [Column(Name = nameof(EI.InvClmName.cDate), DbType = "NUMERIC")]

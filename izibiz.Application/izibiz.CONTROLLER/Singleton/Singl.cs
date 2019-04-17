@@ -13,8 +13,8 @@ namespace izibiz.CONTROLLER.Singleton
    public class Singl
     {
 
-        private static AuthenticationController instanceAuth = null;
-        private static EInvoiceController instanceInvoice = null;
+        private static AuthenticationController authenticationController = null;
+        private static EInvoiceController invoiceController = null;
         private static DatabaseContext databaseContext = null;
         private static InvoiceDAL InvoiceDAL = null;
         //private static CreateInvoiceUBL createInv = null;
@@ -37,7 +37,7 @@ namespace izibiz.CONTROLLER.Singleton
         //}
 
 
-        public static InvoiceDAL invoiceDalGet
+        public static InvoiceDAL invoiceDALGet
         {
             get
             {
@@ -64,29 +64,29 @@ namespace izibiz.CONTROLLER.Singleton
         }
 
 
-        public static AuthenticationController instanceAuthGet
+        public static AuthenticationController authControllerGet
         {
             get
             {
-                if (null == instanceAuth)
+                if (null == authenticationController)
                 {
-                    instanceAuth = new AuthenticationController();
+                    authenticationController = new AuthenticationController();
                 }
 
-                return instanceAuth;
+                return authenticationController;
             }
         }
 
-        public static EInvoiceController instanceInvoiceGet
+        public static EInvoiceController invoiceControllerGet
         {
             get
             {
-                if (null == instanceInvoice)
+                if (null == invoiceController)
                 {
-                    instanceInvoice = new EInvoiceController();
+                    invoiceController = new EInvoiceController();
                 }
 
-                return instanceInvoice;
+                return invoiceController;
             }
         }
 

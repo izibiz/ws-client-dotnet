@@ -309,4 +309,13 @@
   <data name="notFaultyInv" xml:space="preserve">
     <value>you has not faulty ınvoice</value>
   </data>
+  <data name="receiver" xml:space="preserve">
+    <value>Receiver</value>
+  </data>
+  <data name="loadPortal" xml:space="preserve">
+    <value>Load Portal</value>
+  </data>
+  <data name="send" xml:space="preserve">
+    <value>Send</value>
+  </data>
 </root>

@@ -331,6 +331,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Portala Yükle.
+        /// </summary>
+        public static string loadPortal {
+            get {
+                return ResourceManager.GetString("loadPortal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giriş Yap.
         /// </summary>
         public static string login {
@@ -439,6 +448,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alıcı.
+        /// </summary>
+        public static string receiver {
+            get {
+                return ResourceManager.GetString("receiver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yenile.
         /// </summary>
         public static string refresh {
@@ -453,6 +471,15 @@ namespace izibiz.COMMON.Language {
         public static string reject {
             get {
                 return ResourceManager.GetString("reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gönder.
+        /// </summary>
+        public static string send {
+            get {
+                return ResourceManager.GetString("send", resourceCulture);
             }
         }
         

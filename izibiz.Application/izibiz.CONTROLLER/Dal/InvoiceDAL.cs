@@ -14,34 +14,51 @@ namespace izibiz.CONTROLLER.Dal
     public class InvoiceDAL
     {
 
-        public List<Invoices> getFaultyInvoices()
+        public List<InvoicesTable> getFaultyInvoices()
         {
-            return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.OUT)
+            return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.Direction.OUT)
             && x.status.Contains(nameof(EI.StatusType.LOAD))
             && x.status.Contains(nameof(EI.SubStatusType.FAILED))).ToList();
         }
 
-        public Invoices getInvoice(string uuid,string direction )
+
+
+        public InvoicesTable getInvoice(string uuid,string direction )
         {
             return Singl.databaseContextGet.Invoices.Where(x => x.invType == direction
             && x.Uuid==uuid ).First();
         }
 
-        public List<Invoices> getInvoiceList(string direction)
-        {
-            return Singl.databaseContextGet.Invoices.Where(x => x.invType == direction).ToList();
-        }
 
+
+
+
+
+
+     /*   public InvoicesTable[] getInvoiceArr(string[] uuid, string direction)
+        {
+            List<InvoicesTable> listInv = new List<InvoicesTable>();
+
+            for (int i=0;i<uuid.Length;i++)
+            {
+                InvoicesTable invoice = Singl.databaseContextGet.Invoices.Where(x => x.invType == direction
+                          && x.Uuid == uuid[i]).First();
+
+                listInv.Add(invoice);
+            }
+
+            return listInv.ToArray();
+        }*/
 
 
 
         public void insertDraftInvoice(InvoiceType invoiceUbl,string xmlContent)
         {
-            Invoices draftCreatedInv = new Invoices();
+            InvoicesTable draftCreatedInv = new InvoicesTable();
 
             draftCreatedInv.ID = invoiceUbl.ID.Value.ToString();
             draftCreatedInv.Uuid = invoiceUbl.UUID.Value.ToString();
-            draftCreatedInv.invType = EI.InvType.DRAFT.ToString();
+            draftCreatedInv.invType = EI.Direction.DRAFT.ToString();
             draftCreatedInv.draftFlag = EI.ActiveOrPasive.N.ToString();  //load ınv yapmadıklarımız flag N
             draftCreatedInv.issueDate =Convert.ToDateTime(invoiceUbl.IssueDate.Value);
             draftCreatedInv.profileid = invoiceUbl.ProfileID.Value.ToString();

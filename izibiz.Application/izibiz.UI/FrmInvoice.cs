@@ -68,6 +68,9 @@ namespace izibiz.UI
             btnReject.Text = Lang.reject;
             btnDownInvIncoming.Text = Lang.getInvoice;
             btnIncomingInvGetState.Text = Lang.updateState;
+            //panelDraftInvoices butonlar
+            btnSendDraft.Text = Lang.send;
+            btnLoadPortal.Text = Lang.loadPortal;
             #endregion
         }
 
@@ -81,7 +84,6 @@ namespace izibiz.UI
             tableGrid.Columns[EI.InvClmName.gibStatusCode.ToString()].HeaderText = Lang.gibStatusCode;
 
             tableGrid.Columns[EI.InvClmName.gibStatusDescription.ToString()].HeaderText = Lang.gibSatusDescription;
-
 
             tableGrid.Columns[EI.InvClmName.ID.ToString()].HeaderText = Lang.id;
 
@@ -97,7 +99,9 @@ namespace izibiz.UI
 
             tableGrid.Columns[EI.InvClmName.suplier.ToString()].HeaderText = Lang.supplier;
 
-            tableGrid.Columns[EI.InvClmName.sender.ToString()].HeaderText = Lang.sender;
+            tableGrid.Columns[EI.InvClmName.senderVkn.ToString()].HeaderText = Lang.sender;
+
+            tableGrid.Columns[EI.InvClmName.receiverVkn.ToString()].HeaderText = Lang.receiver;
 
             tableGrid.Columns[EI.InvClmName.cDate.ToString()].HeaderText = Lang.cDate;
 
@@ -118,12 +122,12 @@ namespace izibiz.UI
             panelSentInv.Visible = false;
             panelIncomingInv.Visible = false;
             panelDraftInv.Visible = false;
-            direction = nameof(EI.InvType.IN);
+            direction = nameof(EI.Direction.IN);
             try
             {
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
-                var invoiceList = Singl.instanceInvoiceGet.getIncomingInvoice();
+                var invoiceList = Singl.invoiceControllerGet.getIncomingInvoice();
                 if (invoiceList.Count == 0)
                 {
                     MessageBox.Show(Lang.noShowInvoice);
@@ -139,6 +143,7 @@ namespace izibiz.UI
                     tableGrid.Columns[nameof(EI.InvClmName.status)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.invType)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.draftFlag)].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.receiverVkn)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.content)].Visible = false;
                 }
             }
@@ -146,7 +151,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -171,10 +176,10 @@ namespace izibiz.UI
             panelIncomingInv.Visible = false;
             panelDraftInv.Visible = false;
             btnSentInvAgainSent.Enabled = false;
-            direction = nameof(EI.InvType.OUT);
+            direction = nameof(EI.Direction.OUT);
             try
             {
-                var list = Singl.instanceInvoiceGet.getSentInvoice();
+                var list = Singl.invoiceControllerGet.getSentInvoice();
                 if (list.Count == 0)
                 {
                     MessageBox.Show(Lang.noShowInvoice);
@@ -191,6 +196,7 @@ namespace izibiz.UI
                     dataGridChangeColoumnName();
                     tableGrid.Columns[EI.InvClmName.status.ToString()].Visible = false;
                     tableGrid.Columns[EI.InvClmName.invType.ToString()].Visible = false;
+                    tableGrid.Columns[nameof(EI.InvClmName.receiverVkn)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.draftFlag)].Visible = false;
                     tableGrid.Columns[nameof(EI.InvClmName.content)].Visible = false;
                 }
@@ -199,7 +205,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -220,12 +226,12 @@ namespace izibiz.UI
             panelSentInv.Visible = false;
             panelIncomingInv.Visible = false;
             panelDraftInv.Visible = false;
-            direction = nameof(EI.InvType.DRAFT);
+            direction = nameof(EI.Direction.DRAFT);
             try
             {
                 tableGrid.DataSource = null;
                 addViewButtonToDatagridView();
-                var list = Singl.instanceInvoiceGet.getDraftInvoice();
+                var list = Singl.invoiceControllerGet.getDraftInvoice();
                 if (list.Count == 0)
                 {
                     MessageBox.Show(Lang.noShowInvoice);
@@ -254,7 +260,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -262,10 +268,10 @@ namespace izibiz.UI
             {
                 MessageBox.Show(Lang.dbFault + " " + ex.Message, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+          /*  catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
+            }*/
         }
 
 
@@ -434,7 +440,7 @@ namespace izibiz.UI
                 else//fatura noların oldugu kabul lıstesi olustur
                 {
                     string uuid = row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString();
-                    Singl.instanceInvoiceGet.createInvoiceWithUuid(invoiceCount, uuid, verifiedrow);
+                    Singl.invoiceControllerGet.createInvoiceWithUuid(invoiceCount, uuid, verifiedrow);
 
                     description[verifiedrow] = desc;
                     verifiedrow++;
@@ -442,7 +448,7 @@ namespace izibiz.UI
             }
             if (verifiedrow > 0)
             {
-                Singl.instanceInvoiceGet.sendInvoiceResponse(state, description);
+                Singl.invoiceControllerGet.sendInvoiceResponse(state, description);
             }
         }
 
@@ -458,7 +464,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -480,7 +486,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -520,7 +526,7 @@ namespace izibiz.UI
                     else //valid ise modelde guncelle
                     {
                         validList.Add(uuid);
-                        string updatedState = Singl.instanceInvoiceGet.getInvoiceState(uuid);
+                        string updatedState = Singl.invoiceControllerGet.getInvoiceState(uuid);
                         //modelde guncelle
                         Singl.databaseContextGet.Invoices.Where(x => x.Uuid == uuid && x.type == type).FirstOrDefault().statusDesc = updatedState;
                         //datagrıdde yazdır
@@ -550,7 +556,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -567,13 +573,13 @@ namespace izibiz.UI
 
         private void btnIncomingInvGetState_Click(object sender, EventArgs e)
         {
-            showStateInvoice(EI.InvType.IN.ToString(), nameof(EI.InvType.IN));
+            showStateInvoice(EI.Direction.IN.ToString(), nameof(EI.Direction.IN));
         }
 
         private void btnSentInvGetState_Click(object sender, EventArgs e)
         {
             btnSentInvAgainSent.Enabled = false;
-            showStateInvoice(EI.InvType.OUT.ToString(), nameof(EI.InvType.OUT));
+            showStateInvoice(EI.Direction.OUT.ToString(), nameof(EI.Direction.OUT));
         }
 
 
@@ -586,11 +592,11 @@ namespace izibiz.UI
             if (e.RowIndex >= 0)
             {
                 #region panelVisiblity
-                if (direction == nameof(EI.InvType.IN))//gelen faturalara tıklandıysa
+                if (direction == nameof(EI.Direction.IN))//gelen faturalara tıklandıysa
                 {
                     panelIncomingInv.Visible = true;
                 }
-                else if (direction == nameof(EI.InvType.OUT))//giden faturalar
+                else if (direction == nameof(EI.Direction.OUT))//giden faturalar
                 {
                     panelSentInv.Visible = true;
                 }
@@ -607,14 +613,14 @@ namespace izibiz.UI
                 if (e.ColumnIndex == tableGrid.Columns[nameof(EI.gridBtnClmName.previewPdf)].Index)
                 {
                     //pdf ıcın getınvoicewithtype metodu cagırılcak
-                    string filepath = Singl.instanceInvoiceGet.getInvoiceType(uuid, nameof(EI.DocumentType.PDF), direction);
+                    string filepath = Singl.invoiceControllerGet.getInvoiceType(uuid, nameof(EI.DocumentType.PDF), direction);
                     System.Diagnostics.Process.Start(filepath);
                 }
                 //xml göruntule butonuna tıkladıysa
                 else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.gridBtnClmName.previewXml)].Index)
                 {
                     // xml contenti db de tutuldugu ıcın conent db den cekılecek
-                    string content = Singl.invoiceDalGet.getInvoice(uuid, direction).content;
+                    string content = Singl.invoiceDALGet.getInvoice(uuid, direction).content;
                     FrmPreviewInvoices previewInvoices = new FrmPreviewInvoices(content);
                     previewInvoices.Show();
                 }
@@ -627,7 +633,7 @@ namespace izibiz.UI
         {
             try
             {
-                Singl.instanceInvoiceGet.downloadInvoice();
+                Singl.invoiceControllerGet.downloadInvoice();
                 MessageBox.Show(Lang.downInvSaveFolder); //Gelen faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır
 
             }
@@ -635,7 +641,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -645,21 +651,47 @@ namespace izibiz.UI
             }
         }
 
+
+
+
+
+
+
+
+
+
         private void btnSentInvAgainSent_Click(object sender, EventArgs e)
         {
             try
             {
+                List<string> uuidArr = new List<string>();
+
+                //ilk secılı rowun receıverını al, karsılastırma yapmak için
+                DataGridViewRow gridRow = tableGrid.SelectedRows[0];
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    //buradan devam et
-
+                    //aynı kısıye fatura gonderıyo kontrolu //recevierVkn ilk secılen row vkn ile esıt olmalı
+                    if (gridRow.Cells[nameof(EI.InvClmName.receiverVkn)].Value != row.Cells[nameof(EI.InvClmName.receiverVkn)].Value)
+                    {
+                        MessageBox.Show("aynı kısıye olan faturaları bırlıkte gonderebılırsınız");
+                        break;
+                    }
+                    uuidArr.Add(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString());
                 }
+
+
+                //send inv 
+                Singl.invoiceControllerGet.sendInvoice(nameof(EI.Direction.OUT),uuidArr.ToArray(), gridRow.Cells[nameof(EI.InvClmName.senderVkn)].Value.ToString(), 
+                    gridRow.Cells[nameof(EI.InvClmName.fromm)].Value.ToString(), gridRow.Cells[nameof(EI.InvClmName.receiverVkn)].Value.ToString(),
+                    gridRow.Cells[nameof(EI.InvClmName.too)].Value.ToString());
+
+
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -680,7 +712,7 @@ namespace izibiz.UI
             try
             {
                 //db ye yuklenen gıden faturalardan hatalı olanları getır
-                List<Invoices> list = Singl.invoiceDalGet.getFaultyInvoices();
+                List<InvoicesTable> list = Singl.invoiceDALGet.getFaultyInvoices();
                 if (list.Count == 0 || list == null)
                 {
                     MessageBox.Show(Lang.notFaultyInv); //gosterılecek hatalı fatura yok
@@ -702,7 +734,7 @@ namespace izibiz.UI
             {
                 if (ex.Detail.ERROR_CODE == 2005)
                 {
-                    Singl.instanceAuthGet.Login(FrmLogin.usurname, FrmLogin.password);
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -716,7 +748,96 @@ namespace izibiz.UI
             }
         }
 
-     
+        private void btnSendDraft_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<string> uuidArr = new List<string>();
+
+                //ilk secılı rowun receıverını al, karsılastırma yapmak için
+                DataGridViewRow gridRow = tableGrid.SelectedRows[0];
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {   
+                    //LOAD INV YAPMIS MI
+                    //if (row.Cells[nameof(EI.InvClmName.ID)].Value.ToString().Length !=16)  //fatura ıd atanmıssa
+                    //{
+                    //    MessageBox.Show("load ınvoice yapamadan send invoice yapamazsınız asagıdakı faturaya " +
+                    //        "önce load ınvoice yapınız" + row.Cells[nameof(EI.InvClmName.ID)].Value.ToString());
+                    //    break;
+                    //}
+
+                    //aynı kısıye fatura gonderıyo kontrolu //recevierVkn ilk secılen row vkn ile esıt olmalı
+                    if (gridRow.Cells[nameof(EI.InvClmName.receiverVkn)].Value != row.Cells[nameof(EI.InvClmName.receiverVkn)].Value)
+                    {
+                        MessageBox.Show("aynı kısıye olan faturaları bırlıkte gonderebılırsınız");
+                        break;
+                    }
+                 
+                    uuidArr.Add(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString());
+                }
+
+                //send inv 
+                Singl.invoiceControllerGet.sendInvoice(nameof(EI.Direction.DRAFT),uuidArr.ToArray(), gridRow.Cells[nameof(EI.InvClmName.senderVkn)].Value.ToString(),
+                     gridRow.Cells[nameof(EI.InvClmName.receiverVkn)].Value.ToString(), gridRow.Cells[nameof(EI.InvClmName.receiverVkn)].Value.ToString(),
+                     gridRow.Cells[nameof(EI.InvClmName.receiverVkn)].Value.ToString());
+
+                //db de taslak faturalardan sıl
+                //gridRefresh
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnLoadPortal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<string> uuidArr = new List<string>();
+
+                //ilk secılı rowun receıverını al, karsılastırma yapmak için
+                DataGridViewRow gridRow = tableGrid.SelectedRows[0];
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {
+                  
+                    //aynı kısıye fatura gonderıyo kontrolu //recevierVkn ilk secılen row vkn ile esıt olmalı
+                    if (gridRow.Cells[nameof(EI.InvClmName.receiverVkn)].Value != row.Cells[nameof(EI.InvClmName.receiverVkn)].Value)
+                    {
+                        MessageBox.Show("aynı kısıye olan faturaları bırlıkte gonderebılırsınız");
+                        break;
+                    }
+
+                    uuidArr.Add(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString());
+                    Singl.invoiceControllerGet.
+
+                }
+
+            
+            
+                //gridRefresh
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 
 }

@@ -32,7 +32,7 @@ namespace izibiz.MODEL.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Invoices> Invoices { get; set; }
+        public DbSet<InvoicesTable> Invoices { get; set; }
         public DbSet<DraftCreatedInv> DraftInvoice { get; set; }
 
     }

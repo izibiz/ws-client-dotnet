@@ -45,8 +45,12 @@ namespace izibiz.MODEL.Model
         public string suplier { get; set; }
 
 
-        [Column(Name = nameof(EI.InvClmName.sender), DbType = "NVARCHAR")]
+        [Column(Name = nameof(EI.InvClmName.senderVkn), DbType = "NVARCHAR")]
         public string sender { get; set; }
+
+
+        [Column(Name = nameof(EI.InvClmName.receiverVkn), DbType = "NVARCHAR")]
+        public string receiverVkn { get; set; }
 
 
         [Column(Name = nameof(EI.InvClmName.cDate), DbType = "NUMERIC")]

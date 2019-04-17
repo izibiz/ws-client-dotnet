@@ -309,4 +309,13 @@
   <data name="notFaultyInv" xml:space="preserve">
     <value>Gösterilecek hatalı faturanız yok</value>
   </data>
+  <data name="receiver" xml:space="preserve">
+    <value>Alıcı</value>
+  </data>
+  <data name="loadPortal" xml:space="preserve">
+    <value>Portala Yükle</value>
+  </data>
+  <data name="send" xml:space="preserve">
+    <value>Gönder</value>
+  </data>
 </root>

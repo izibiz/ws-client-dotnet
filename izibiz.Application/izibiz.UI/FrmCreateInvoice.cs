@@ -185,10 +185,10 @@ namespace izibiz.UI
             var invoiceUbl = invoice.BaseUBL; //olusturdugumuz nesne ubl turune cevrılır
 
             //xml olustur
-            string contentXml = Singl.instanceInvoiceGet.CreateInvoiceXml(invoiceUbl).ToString();
+            string contentXml = Singl.invoiceControllerGet.CreateInvoiceXml(invoiceUbl).ToString();
            
             //db ye kaydet
-            Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, contentXml);
+            Singl.invoiceDALGet.insertDraftInvoice(invoiceUbl, contentXml);
 
         }
 

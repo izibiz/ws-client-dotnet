@@ -47,7 +47,7 @@ namespace izibiz.UI
                 }
                 else
                 {
-                    if(CONTROLLER.Singleton.Singl.instanceAuthGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
+                    if(CONTROLLER.Singleton.Singl.authControllerGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
                     {
                         usurname = txtUsername.Text;
                         password = txtPassword.Text;

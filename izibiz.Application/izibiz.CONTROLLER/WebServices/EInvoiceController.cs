@@ -37,7 +37,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public List<Invoices> getIncomingInvoice()
+        public List<InvoicesTable> getIncomingInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -51,16 +51,16 @@ namespace izibiz.CONTROLLER.Web_Services
                 if (invoiceArray.Length > 0)
                 {
                     //       invoiceMarkRead(invoiceArray);
-                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.IN.ToString());
+                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.Direction.IN.ToString());
                 }
-                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.IN)).ToList();
+                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.Direction.IN)).ToList();
             }
         }
 
 
 
 
-        public List<Invoices> getSentInvoice()
+        public List<InvoicesTable> getSentInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -75,16 +75,16 @@ namespace izibiz.CONTROLLER.Web_Services
                 if (invoiceArray.Length > 0)
                 {
                     invoiceMarkRead(invoiceArray);
-                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.OUT.ToString());
+                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.Direction.OUT.ToString());
                 }
 
-                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.OUT)).ToList();
+                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.Direction.OUT)).ToList();
             }
         }
 
 
 
-        public List<Invoices> getDraftInvoice()
+        public List<InvoicesTable> getDraftInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -99,20 +99,20 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 if (invoiceArray.Length > 0)
                 {
-                    invoiceMarkRead(invoiceArray);
-                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.InvType.DRAFT.ToString());
+         //           invoiceMarkRead(invoiceArray);
+                    SaveInvoiceArrayToEntitiy(invoiceArray, Singl.databaseContextGet.Invoices, EI.Direction.DRAFT.ToString());
                 }
 
-                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.InvType.DRAFT)).ToList();
+                return Singl.databaseContextGet.Invoices.Where(x => x.invType == nameof(EI.Direction.DRAFT)).ToList();
             }
         }
 
 
-        private void SaveInvoiceArrayToEntitiy(INVOICE[] invoiceArray, DbSet<Invoices> entitiyInv, string type)
+        private void SaveInvoiceArrayToEntitiy(INVOICE[] invoiceArray, DbSet<InvoicesTable> entitiyInv, string type)
         {
             foreach (var inv in invoiceArray)
             {
-                Invoices invoice = new Invoices();
+                InvoicesTable invoice = new InvoicesTable();
 
                 invoice.ID = inv.ID;
                 invoice.Uuid = inv.UUID;
@@ -121,7 +121,8 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.profileid = inv.HEADER.PROFILEID;
                 invoice.type = inv.HEADER.INVOICE_TYPE_CODE;
                 invoice.suplier = inv.HEADER.SUPPLIER;
-                invoice.sender = inv.HEADER.SENDER;
+                invoice.senderVkn = inv.HEADER.SENDER;
+                invoice.receiverVkn = inv.HEADER.RECEIVER;
                 invoice.cDate = inv.HEADER.CDATE;
                 invoice.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
                 invoice.status = inv.HEADER.STATUS;
@@ -132,15 +133,16 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.too = inv.HEADER.TO;
                 invoice.content = Encoding.UTF8.GetString(inv.CONTENT.Value); //xml db de tututlur
 
-                if (type == EI.InvType.DRAFT.ToString())
+                if (type == EI.Direction.DRAFT.ToString())
                 {
                     invoice.draftFlag = EI.ActiveOrPasive.Y.ToString();  //servisten cektıklerımız flag Y  ☺
                 }
                 entitiyInv.Add(invoice);
             }
-
             Singl.databaseContextGet.SaveChanges();
         }
+
+
 
         private void invoiceMarkRead(INVOICE[] invoiceList)
         {
@@ -162,29 +164,78 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
+        private byte[] stringToByteArr(string content)
+        {
+            return Encoding.UTF8.GetBytes(content);
+        }
 
-        public void sendInvoice()
+
+    
+
+        public INVOICE[] createInvArrWithContent(string[] uuidArr,string direction)
+        {
+            INVOICE[] invoiceArr = new INVOICE[uuidArr.Length];
+        
+            for (int i = 0; i < invoiceArr.Length; i++)
+            {
+                INVOICE inv = new INVOICE();
+                invoiceArr[i] = inv;
+                //uuid array ile db den cekılen contentı base64 tipide yazdır
+                base64Binary cont = new base64Binary();
+             
+                cont.Value = stringToByteArr(Singl.invoiceDALGet.getInvoice(uuidArr[i], direction).content);
+                invoiceArr[i].CONTENT = cont;
+
+            }
+
+            return invoiceArr;
+        }
+
+
+
+        public void sendInvoice(string direction,string[] uuidArr,string senderVkn,string fromAlias,string receiverVkn,string toAlias)
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
                 var req = new SendInvoiceRequest();
-/*
+
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
+                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.N.ToString();
                 req.SENDER = new SendInvoiceRequestSENDER();
-                req.SENDER.vkn = fromVkn;
-                req.SENDER.alias = fromAlias;
+                req.SENDER.vkn = senderVkn; 
+                req.SENDER.alias =fromAlias;  
                 req.RECEIVER = new SendInvoiceRequestRECEIVER();
-                req.RECEIVER.vkn = toVkn;
+                req.RECEIVER.vkn = receiverVkn;   
                 req.RECEIVER.alias = toAlias;
-                req.REQUEST_HEADER = requestHeader;
 
+                INVOICE[] invoiceArr= createInvArrWithContent(uuidArr,direction);
+                req.INVOICE = invoiceArr;
 
-                */
-
-              EFaturaOIBPortClient.SendInvoice(req);
-               
+               var o= EFaturaOIBPortClient.SendInvoice(req).REQUEST_RETURN.RETURN_CODE;
             }
         }
+
+     public void loadInvoice()
+        {
+            //using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+            //{
+            //    var req = new SendInvoiceRequest();
+
+            //    req.REQUEST_HEADER = RequestHeader.requestHeader;
+            //    req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.N.ToString();
+            //    req.SENDER = new LoadInvoiceRequest();
+  
+            //    req.RECEIVER = new SendInvoiceRequestRECEIVER();
+ 
+
+            //    INVOICE[] invoiceArr = createInvArrWithContent(uuidArr, direction);
+            //    req.INVOICE = invoiceArr;
+
+            //    var o = EFaturaOIBPortClient.SendInvoice(req).REQUEST_RETURN.RETURN_CODE;
+            //}
+        }
+
+
 
         public void sendInvoiceResponse(string status, string[] description)
         {
@@ -244,27 +295,6 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
-
-        public string sendInvAgain(string[] invoiceUuid)
-        {
-            INVOICE[] invoices = new INVOICE[invoiceUuid.Length];
-            for (int i = 0; i < invoiceUuid.Length; i++)
-            {
-                invoices[i].UUID = invoiceUuid[i];
-            }
-
-            using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
-            {
-                LoadInvoiceRequest req = new LoadInvoiceRequest()
-                {
-                    REQUEST_HEADER = RequestHeader.requestHeader,
-                    INVOICE = invoices,
-                };
-
-                LoadInvoiceResponse res = EFaturaOIBPortClient.LoadInvoice(req);
-                return res.REQUEST_RETURN.CLIENT_TXN_ID;
-            }
-        }
 
 
         private void createInboxIfDoesNotExist(String inboxFolder)
@@ -396,15 +426,13 @@ namespace izibiz.CONTROLLER.Web_Services
             //    xmlSerializer.Serialize(stream, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
             //}
 
-
             using (StringWriter textWriter = new StringWriter())
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
 
-                xmlSerializer.Serialize(textWriter, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());              
+                xmlSerializer.Serialize(textWriter, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
                 return textWriter.ToString();
             }
-  
         }
 
 
