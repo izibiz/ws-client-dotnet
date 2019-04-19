@@ -12,7 +12,7 @@ namespace izibiz.COMMON
     {
      
 
-        public enum Direction
+        public enum InvDirection
         {
             IN,
             OUT,
@@ -61,7 +61,8 @@ namespace izibiz.COMMON
             SEND,
             ACCEPTED,
             REJECTED,
-            SIGN
+            SIGN,
+            CREATED//bunu ben ekledım yenı olusturulan taslak faturalar ıcın
         }
 
         public enum SubStatusType
@@ -74,11 +75,7 @@ namespace izibiz.COMMON
             WAIT_APPLICATION_RESPONSE
         }
 
-        public enum InvTableName
-        {
-            InvoicesTable
-        }
-
+    
 
         public enum InvClmName
         {

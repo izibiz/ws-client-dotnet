@@ -73,8 +73,8 @@
     <Compile Include="Singleton\Singl.cs">
       <Generator>public</Generator>
     </Compile>
-    <Compile Include="WebServices\AuthenticationController.cs" />
-    <Compile Include="WebServices\EInvoiceController.cs" />
+    <Compile Include="WebServicesController\AuthenticationController.cs" />
+    <Compile Include="WebServicesController\EInvoiceController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\izibiz.COMMON\izibiz.COMMON.csproj">

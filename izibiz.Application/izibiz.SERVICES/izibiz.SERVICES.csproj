@@ -247,18 +247,6 @@
     <WCFMetadataStorage Include="Connected Services\serviceOib\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\serviceOib\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\serviceOib\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\serviceOib\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\serviceAuth\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +254,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceAuth\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceOib\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceOib\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceOib\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

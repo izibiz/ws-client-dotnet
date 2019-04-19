@@ -19,6 +19,7 @@ namespace izibiz.MODEL.Data
         public DatabaseContext() :
             base(new SQLiteConnection()
             {
+                //datasourcede projenızın yer aldıgı dızını yazınız
                 ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = "C:\\Users\\gamze.sahin\\Desktop\\ws-client-dotnet\\izibiz.Application\\izibiz.MODEL\\Db\\izibiz-Entegrasyon.s3db", ForeignKeys = true }.ConnectionString
             }, true)
         {
@@ -32,8 +33,8 @@ namespace izibiz.MODEL.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<InvoicesTable> Invoices { get; set; }
-        public DbSet<DraftCreatedInv> DraftInvoice { get; set; }
+        public DbSet<Invoices> Invoices { get; set; }
+
 
     }
 }

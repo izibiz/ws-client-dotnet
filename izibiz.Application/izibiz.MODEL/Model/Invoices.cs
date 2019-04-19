@@ -19,8 +19,8 @@ using izibiz.COMMON;
 namespace izibiz.MODEL.Model
 {
 
-    [Table(Name = "InvoicesTable")]
-    public class InvoicesTable
+    [Table(Name = "Invoices")]
+    public class Invoices
     {
 
         [Column(Name = nameof(EI.InvClmName.ID), DbType = "NVARCHAR")]
@@ -29,7 +29,7 @@ namespace izibiz.MODEL.Model
 
         [Column(Name = nameof(EI.InvClmName.uuid), IsDbGenerated = true, IsPrimaryKey = true, DbType = "NVARCHAR")]
         [Key]
-        public string Uuid { get; set; }
+        public string uuid { get; set; }
 
 
         [Column(Name = nameof(EI.InvClmName.invType), DbType = "VARCHAR")]

@@ -189,7 +189,7 @@ namespace izibiz.UI
            
             //db ye kaydet
             Singl.invoiceDALGet.insertDraftInvoice(invoiceUbl, contentXml);
-
+            Singl.invoiceDALGet.dbSaveChanges();
         }
 
 

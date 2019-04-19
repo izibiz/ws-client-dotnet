@@ -29,7 +29,7 @@ namespace izibiz.CONTROLLER
         {
             invoiceSearchKeyGetInvoiceWithTypeRequest = new GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
             {
-                LIMIT = 10,
+                LIMIT = 1,
                 LIMITSpecified = true,
                 READ_INCLUDED = false,
                 READ_INCLUDEDSpecified = false,          

@@ -11,19 +11,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.SERVICES.serviceAuth;
-using izibiz.UI.Exceptions;
 using izibiz.COMMON.Language;
+using System.Net.Security;
+using System.Net;
 
 namespace izibiz.UI
 {
+   
     public partial class FrmLogin : Form
     {
 
         public static string usurname;
         public static string password;
 
+         private static RemoteCertificateValidationCallback cert;
+
         public FrmLogin()
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            cert = ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+
             InitializeComponent();
             txtUsername.Text = "izibiz-test2";
             txtPassword.Text = "izi321";
@@ -47,7 +54,7 @@ namespace izibiz.UI
                 }
                 else
                 {
-                    if(CONTROLLER.Singleton.Singl.authControllerGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
+                    if(Singl.authControllerGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
                     {
                         usurname = txtUsername.Text;
                         password = txtPassword.Text;
