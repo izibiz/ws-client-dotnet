@@ -1,7 +1,8 @@
 ﻿using izibiz.COMMON;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.Model;
+using izibiz.MODEL.Models;
+using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -36,11 +37,32 @@ namespace izibiz.CONTROLLER.Dal
         }
 
 
-        public void updateStateInv(string uuid, string direction, string status)
+        public void updateIdInv(string uuid, string direction, string newId)
         {
-             Singl.databaseContextGet.Invoices.Where(inv => inv.invType == direction
-             && inv.uuid == uuid).First().statusDesc = status;
+            Singl.databaseContextGet.Invoices.Where(inv => inv.invType == direction
+            && inv.uuid == uuid).First().ID = newId;
         }
+
+        public void updateInvState(string uuid, string direction, GetInvoiceStatusResponseINVOICE_STATUS invStatusResponse)
+        {
+            var invoice = Singl.databaseContextGet.Invoices.Where(inv => inv.invType == direction
+              && inv.uuid == uuid).First();
+
+            invoice.status = invStatusResponse.STATUS;
+            invoice.cDate = invStatusResponse.CDATE;
+            invoice.envelopeIdentifier = invStatusResponse.ENVELOPE_IDENTIFIER;
+            invoice.gibStatusCode = invStatusResponse.GIB_STATUS_CODE;
+            invoice.gibStatusDescription = invStatusResponse.GIB_STATUS_DESCRIPTION;
+        }
+
+
+        public void changeInvDirection(string uuid, string direction, string newDirection)
+        {
+            Singl.databaseContextGet.Invoices.Where(inv => inv.invType == direction
+            && inv.uuid == uuid).First().invType = newDirection;
+        }
+
+
 
         public void addInvoice(Invoices inv)
         {
@@ -92,7 +114,7 @@ namespace izibiz.CONTROLLER.Dal
             draftCreatedInv.type = invoiceUbl.InvoiceTypeCode.Value.ToString();
             //draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.ToString();
             //  draftCreatedInv.sender = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.GetValue(0).ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
-            draftCreatedInv.status = nameof(EI.StatusType.CREATED); //simdilik default deger atıyoruz load ınv yaparken guncellenecektır
+            draftCreatedInv.status = ""; //simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
             draftCreatedInv.content = xmlContent;
 
             Singl.databaseContextGet.Invoices.Add(draftCreatedInv);

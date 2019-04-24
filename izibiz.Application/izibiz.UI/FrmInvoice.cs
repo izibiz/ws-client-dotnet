@@ -11,12 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
 using izibiz.SERVICES.serviceOib;
-using izibiz.UI.Properties;
 using Microsoft.VisualBasic;
-using izibiz.CONTROLLER;
 using izibiz.COMMON;
 using izibiz.COMMON.Language;
-using izibiz.MODEL.Model;
+using izibiz.MODEL.Models;
+using izibiz.CONTROLLER;
+
+
+
 
 namespace izibiz.UI
 {
@@ -69,7 +71,7 @@ namespace izibiz.UI
             btnDownInvIncoming.Text = Lang.getInvoice;
             btnIncomingInvGetState.Text = Lang.updateState;
             //panelDraftInvoices butonlar
-            btnSendDraft.Text = Lang.send;
+            btnSendDraftInv.Text = Lang.send;
             btnLoadPortal.Text = Lang.loadPortal;
             #endregion
         }
@@ -136,11 +138,10 @@ namespace izibiz.UI
 
 
 
-        private void getInvListUpdateGrid(string direction)
+        private void gridUpdateList(List<Invoices> listInv)
         {
             tableGrid.DataSource = null;
 
-            var listInv = Singl.invoiceDALGet.getInvoiceList(direction);         
             if (listInv.Count == 0)
             {
                 MessageBox.Show(Lang.noShowInvoice);
@@ -175,9 +176,8 @@ namespace izibiz.UI
             gridDirection = nameof(EI.InvDirection.IN);
             try
             {
-                Singl.invoiceControllerGet.getIncomingInvoice();
-                getInvListUpdateGrid(nameof(EI.InvDirection.IN));
-
+                //web servıceden okunmamıs faturaları db ye yazdır  db den cekılen lısteyı datagride aktar
+                gridUpdateList(Singl.invoiceControllerGet.getIncomingInvoice());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -189,12 +189,15 @@ namespace izibiz.UI
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
-                MessageBox.Show(Lang.dbFault + " " + ex.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
@@ -211,8 +214,8 @@ namespace izibiz.UI
             gridDirection = nameof(EI.InvDirection.OUT);
             try
             {
-                Singl.invoiceControllerGet.getSentInvoice();
-                getInvListUpdateGrid(nameof(EI.InvDirection.OUT));
+                //web servıceden okunmamıs faturaları db ye yazdır db den cekılen lısteyı datagride aktar
+                gridUpdateList(Singl.invoiceControllerGet.getSentInvoice());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -222,13 +225,17 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
-                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.dbFault + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
         }
 
@@ -242,9 +249,9 @@ namespace izibiz.UI
             gridDirection = nameof(EI.InvDirection.DRAFT);
             try
             {
-                Singl.invoiceControllerGet.getDraftInvoice();
-                getInvListUpdateGrid(nameof(EI.InvDirection.DRAFT));
-                
+
+                //web servıceden okunmamıs faturaları db ye yazdır db den cekılen lısteyı datagride aktar
+                gridUpdateList(Singl.invoiceControllerGet.getDraftInvoice());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -254,21 +261,25 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            //catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            //{
+            //    MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            catch (System.Data.DataException ex)
             {
-                MessageBox.Show(Lang.dbFault + " " + ex.Message, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
             }
-              catch (Exception ex)
-              {
-                  MessageBox.Show(ex.ToString());
-              }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.InnerException.Message.ToString());
+            //}
         }
 
 
 
 
 
-    
+
 
 
         public string invoiceIncomingStatusWrite(string status, int gibStatusCode)
@@ -383,12 +394,10 @@ namespace izibiz.UI
 
         private void invoiceResponseAcceptOrReject(string state)
         {
-            int verifiedrow = 0;
-            int invoiceCount = tableGrid.SelectedRows.Count;
-            string[] description = new string[invoiceCount];
+            bool verified = false;
+            List<string> description = new List<string>();
 
-
-            string desc = Interaction.InputBox(Lang.writeDescription, Lang.addDescription, "Default");
+            string desc = Interaction.InputBox(Lang.writeDescription, Lang.addDescription, "Reasen");
 
             foreach (DataGridViewRow row in tableGrid.SelectedRows)
             {
@@ -412,14 +421,14 @@ namespace izibiz.UI
                 }
                 else//fatura noların oldugu kabul lıstesi olustur
                 {
-                    string uuid = row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString();
-                    Singl.invoiceControllerGet.createInvoiceWithUuid(invoiceCount, uuid, verifiedrow);
+                    //bir kez daha secılı ınvlar kadar donmemesı ıcın foreachın ıcınde ınvArrlerı eklıyoruz
+                    Singl.invoiceControllerGet.addInvToStateList(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString());
 
-                    description[verifiedrow] = desc;
-                    verifiedrow++;
+                    description.Add(desc);
+                    verified = true;
                 }
             }
-            if (verifiedrow > 0)
+            if (verified)
             {
                 Singl.invoiceControllerGet.sendInvoiceResponse(state, description);
             }
@@ -499,11 +508,8 @@ namespace izibiz.UI
                     else //valid ise modelde guncelle
                     {
                         validList.Add(uuid);
-                        string updatedState = Singl.invoiceControllerGet.getInvoiceState(uuid);
-                        //modelde guncelle
-                        Singl.databaseContextGet.Invoices.Where(x => x.uuid == uuid && x.type == direction).FirstOrDefault().statusDesc = updatedState;
-                        //datagrıdde yazdır
-                        tableGrid.Rows[i].Cells[nameof(EI.InvClmName.statusDesc)].Value = updatedState;
+                        //servisten cekılen ınv responsu modelde guncelle 
+                        Singl.invoiceDalGet.updateInvState(uuid, direction, Singl.invoiceControllerGet.getInvoiceState(uuid));
                     }
                 }
 
@@ -518,11 +524,16 @@ namespace izibiz.UI
                         MessageBox.Show(string.Join(Environment.NewLine, unvalidList) + Environment.NewLine + Lang.noInvNotUpdated); //nolu faturalar guncellenemedi
                     }
                 }
-                else//valid fatura varsa modelden datagride guncelle
+                else//valid fatura varsa 
                 {
+                    //db de yapılan degısıklıklerı kaydet
+                    Singl.invoiceDalGet.dbSaveChanges();
+                    //ınv listesini  db den datagride getir
+                    gridUpdateList(Singl.invoiceDalGet.getInvoiceList(direction));
                     MessageBox.Show(string.Join(Environment.NewLine, validList) + Environment.NewLine + Lang.noInvUpdated); //nolu faturalar guncellendı
                 }
             }
+
             catch (FaultException<REQUEST_ERRORType> ex)
             {
                 if (ex.Detail.ERROR_CODE == 2005)
@@ -592,7 +603,7 @@ namespace izibiz.UI
                 else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.gridBtnClmName.previewXml)].Index)
                 {
                     // xml contenti db de tutuldugu ıcın conent db den cekılecek
-                    string content = Singl.invoiceDALGet.getInvoice(uuid, gridDirection).content;
+                    string content = Singl.invoiceDalGet.getInvoice(uuid, gridDirection).content;
                     FrmPreviewInvoices previewInvoices = new FrmPreviewInvoices(content);
                     previewInvoices.Show();
                 }
@@ -607,7 +618,6 @@ namespace izibiz.UI
             {
                 Singl.invoiceControllerGet.downloadInvoice();
                 MessageBox.Show(Lang.downInvSaveFolder); //Gelen faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır
-
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -652,8 +662,8 @@ namespace izibiz.UI
                 }
 
                 //send inv 
-                Singl.invoiceControllerGet.sendInvoice(nameof(EI.InvDirection.OUT), uuidArr.ToArray());
-
+                Singl.invoiceControllerGet.sendInvoice("");
+              
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -681,26 +691,12 @@ namespace izibiz.UI
 
         private void btnFaultyInvoices_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = Lang.faulty;
+            btnSentInvAgainSent.Enabled = true;
             try
             {
-                //db ye yuklenen gıden faturalardan hatalı olanları getır
-                List<Invoices> list = Singl.invoiceDALGet.getFaultyInvoices();
-                if (list.Count == 0 || list == null)
-                {
-                    MessageBox.Show(Lang.notFaultyInv); //gosterılecek hatalı fatura yok
-                }
-                else //yenı fatura varsa
-                {
-                    tableGrid.DataSource = null;
-                    addViewButtonToDatagridView();
-                    tableGrid.DataSource = list;
-                    dataGridChangeColoumnName();
-                    tableGrid.Columns[EI.InvClmName.status.ToString()].Visible = false;
-                    tableGrid.Columns[EI.InvClmName.invType.ToString()].Visible = false;
-                    lblTitle.Text = Lang.faulty;
-                    btnSentInvAgainSent.Enabled = true;
-                }
-
+                //db den cekılen gıden faturalardan hatalı olanları   datagride aktar
+                gridUpdateList(Singl.invoiceDalGet.getFaultyInvoices());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -710,52 +706,116 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
-                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
         }
 
-        private void btnSendDraft_Click(object sender, EventArgs e)
+
+
+        private string updateInvWithNewId(string seriName, bool invTpyeSetOut)
+        {
+            //verılmek ıstenen ıd on ekıye aıt yenı ıd serıal arr olusturulur
+            string[] newIdArr = InvoiceIdSetSerilaze.createNewInvId(seriName, tableGrid.SelectedRows.Count);
+            int counter = 0;
+
+            foreach (DataGridViewRow row in tableGrid.SelectedRows)
+            {
+                //getContentNewInvId fonk uuid ve directiona verilmisfaturanın cantentını db den getırır ve atanmak ıstenen yenı ıd yı xml e atar 
+                //yenı xml ı dondurur
+                //createInvContentCompress fonk yenı donen contentı  base64 tipinde inv olusturup ,ınvArr dizisıne aktarır
+                Singl.invoiceControllerGet.createInvContentCompress(
+                    Singl.invoiceControllerGet.getContentNewInvId(
+                       row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString(), nameof(EI.InvDirection.DRAFT), newIdArr[counter]));
+
+                //db'de fatura  ıd'yi guncelle
+                Singl.invoiceDalGet.updateIdInv(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString(),
+                    nameof(EI.InvDirection.DRAFT), newIdArr[counter]);
+
+
+                if (invTpyeSetOut) ///send ınv ıse ınv type out yapılır
+                {
+                    Singl.invoiceDalGet.changeInvDirection(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString(), nameof(EI.InvDirection.DRAFT), nameof(EI.InvDirection.OUT));
+                }
+
+                counter++;
+            }
+
+            //db'de fatura state guncellendi 
+            showStateInvoice(nameof(EI.InvDirection.DRAFT));
+
+            //       Singl.invoiceDalGet.dbSaveChanges();
+
+            //son eklenen ınv ıd dondurur
+            return newIdArr[counter - 1];
+        }
+
+
+        private void btnSendDraftInv_Click(object sender, EventArgs e)
         {
             try
             {
-                List<string> uuidArr = new List<string>();
+                bool valid = true;
+                string receiverVkn = tableGrid.SelectedRows[0].Cells[nameof(EI.InvClmName.receiverVkn)].Value.ToString();
+                    List<string> listİtem = new List<string>();
+                listİtem.Add("j");
+
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    //LOAD INV YAPMIS MI
-                    if (!row.Cells[nameof(EI.InvClmName.status)].Value.ToString().Equals(nameof(EI.StatusType.LOAD)) &&
-                            !row.Cells[nameof(EI.InvClmName.status)].Value.ToString().Equals(nameof(EI.SubStatusType.SUCCEED)))
+                    if (row.Cells[nameof(EI.InvClmName.receiverVkn)].Value!=null && row.Cells[nameof(EI.InvClmName.receiverVkn)].Value.ToString() == receiverVkn) //receiver vkn aynı ıse
                     {
-                        //Load Succes olmadıysa
-                        MessageBox.Show("load ınvoice yapamadan send invoice yapamazsınız asagıdakı faturaya " +
-                            "önce load ınvoice yapınız" + row.Cells[nameof(EI.InvClmName.ID)].Value.ToString());
-                        break;
+                        if (row.Cells[nameof(EI.InvClmName.status)].Value == null) //load ınv yapmamıssa, status atanmamıssa
+                        {
+                            MessageBox.Show("once load ınv yapınız");
+                            valid = false; break;
+                        }
                     }
-                    uuidArr.Add(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString());
+                    else //vkn farklı ıse
+                    {
+                        MessageBox.Show("sadece aynı kısıye olan faturaları bırlıkte gonderebılırsınız");
+                        valid = false; break;
+                    }
                 }
 
-                //send inv 
-                int returnCode = Singl.invoiceControllerGet.sendInvoice(nameof(EI.InvDirection.DRAFT), uuidArr.ToArray());
-
-                if (returnCode == 0)
+                if (valid) //uymayan fatura durumu yoksa
                 {
-                    //db de taslak faturalardan sıl
-                    foreach (var uuid in uuidArr)
+                    //db den getırılen serı Namelerı comboboxda sectır
+                    FrmDialogSelectCombo frmDialogSelectSeriName = new FrmDialogSelectCombo(Singl.invIdSerilazeDalGet.getSeriNames(),true);
+                    if (frmDialogSelectSeriName.ShowDialog() == DialogResult.OK)
                     {
-                        Singl.invoiceDALGet.deleteInvoices(uuid, nameof(EI.InvDirection.DRAFT));
+
+                        FrmDialogSelectCombo frmDialogIdSelectAlias = new FrmDialogSelectCombo(listİtem,false);
+                        //gb  sectır
+                        if (frmDialogIdSelectAlias.ShowDialog() == DialogResult.OK)
+                        {
+                            string lastIdSerial = updateInvWithNewId(frmDialogSelectSeriName.selectedValue, true); //true degerı gonderıyoruz işlem bıttıkten sonra secılı ınvların direction out olacak
+
+                            //send inv 
+                /           if (Singl.invoiceControllerGet.sendInvoice(frmDialogIdSelectAlias.selectedValue) == 0)
+                            {
+                                //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
+                                Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(lastIdSerial);
+
+                                //db guncellemeleri kaydet
+                                Singl.invoiceDalGet.dbSaveChanges();
+
+                                //datagrıd listesini guncelle
+                                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
+
+                                MessageBox.Show("basarılı");
+                            }
+                        }
                     }
-                    Singl.invoiceDALGet.dbSaveChanges();
-
-                    //gridRefresh
-                    itemDraftInvoiceList_Click(sender, e);
                 }
-
-
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -772,35 +832,32 @@ namespace izibiz.UI
         }
 
 
-
-
         private void btnLoadPortal_Click(object sender, EventArgs e)
         {
             try
             {
-                List<string> uuidArr = new List<string>();
-
-                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                //db den getırılen serı Namelerı comboboxda sectır
+                FrmDialogSelectCombo frmDialogIdSeriName = new FrmDialogSelectCombo(Singl.invIdSerilazeDalGet.getSeriNames(), true);
+                if (frmDialogIdSeriName.ShowDialog() == DialogResult.OK)
                 {
-                    uuidArr.Add(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString());
-                }
+                    string lastIdSerial = updateInvWithNewId(frmDialogIdSeriName.selectedValue, false); //load ınvda  direction degıstırmıyoruz o yuzden false
 
-                int returnCode = Singl.invoiceControllerGet.loadInvoice(uuidArr.ToArray());
-
-                if (returnCode == 0)
-                {
-                    foreach (var uuid in uuidArr)
+                    if (Singl.invoiceControllerGet.loadInvoice() == 0) //     int returnCode = 0 / basarılıysa
                     {
-                        //fatura state guncelle  (load succed yapıldı)
-                        Singl.invoiceDALGet.updateStateInv(uuid, nameof(EI.InvDirection.DRAFT),
-                            nameof(EI.StatusType.LOAD) +" - "+ nameof(EI.SubStatusType.SUCCEED));
-                    }
-                    //db guncellemeyı kaydet
-                    Singl.invoiceDALGet.dbSaveChanges();
+                        //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
+                        Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(lastIdSerial);
 
-                    // datagrıd guncelle
-                    getInvListUpdateGrid(nameof(EI.InvDirection.DRAFT));
+                        //db guncellemeleri kaydet
+                        Singl.invoiceDalGet.dbSaveChanges();
+
+                        // db den cekılen taslak faturaları datagrıdde listele
+                        gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
+
+                        MessageBox.Show(Lang.successLoad);//"yukleme basarılı"
+                    }
                 }
+
+                frmDialogIdSeriName.Dispose();
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -812,9 +869,11 @@ namespace izibiz.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
+
+
     }
 
 }

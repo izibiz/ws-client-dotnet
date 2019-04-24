@@ -48,8 +48,8 @@
             this.btnSentInvGetState = new System.Windows.Forms.Button();
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.panelDraftInv = new System.Windows.Forms.Panel();
-            this.btnSendDraft = new System.Windows.Forms.Button();
             this.btnLoadPortal = new System.Windows.Forms.Button();
+            this.btnSendDraftInv = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
@@ -299,6 +299,7 @@
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.Location = new System.Drawing.Point(204, 305);
             this.tableGrid.Name = "tableGrid";
+            this.tableGrid.ReadOnly = true;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tableGrid.Size = new System.Drawing.Size(854, 249);
             this.tableGrid.TabIndex = 18;
@@ -307,28 +308,12 @@
             // panelDraftInv
             // 
             this.panelDraftInv.Controls.Add(this.btnLoadPortal);
-            this.panelDraftInv.Controls.Add(this.btnSendDraft);
+            this.panelDraftInv.Controls.Add(this.btnSendDraftInv);
             this.panelDraftInv.Location = new System.Drawing.Point(204, 208);
             this.panelDraftInv.Name = "panelDraftInv";
             this.panelDraftInv.Size = new System.Drawing.Size(804, 69);
             this.panelDraftInv.TabIndex = 19;
             this.panelDraftInv.Visible = false;
-            // 
-            // btnSendDraft
-            // 
-            this.btnSendDraft.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSendDraft.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnSendDraft.FlatAppearance.BorderSize = 2;
-            this.btnSendDraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendDraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSendDraft.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendDraft.Location = new System.Drawing.Point(75, 17);
-            this.btnSendDraft.Name = "btnSendDraft";
-            this.btnSendDraft.Size = new System.Drawing.Size(120, 35);
-            this.btnSendDraft.TabIndex = 24;
-            this.btnSendDraft.Text = "Gönder";
-            this.btnSendDraft.UseVisualStyleBackColor = false;
-            this.btnSendDraft.Click += new System.EventHandler(this.btnSendDraft_Click);
             // 
             // btnLoadPortal
             // 
@@ -345,6 +330,22 @@
             this.btnLoadPortal.Text = "portala yukle";
             this.btnLoadPortal.UseVisualStyleBackColor = false;
             this.btnLoadPortal.Click += new System.EventHandler(this.btnLoadPortal_Click);
+            // 
+            // btnSendDraftInv
+            // 
+            this.btnSendDraftInv.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnSendDraftInv.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSendDraftInv.FlatAppearance.BorderSize = 2;
+            this.btnSendDraftInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendDraftInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSendDraftInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSendDraftInv.Location = new System.Drawing.Point(75, 17);
+            this.btnSendDraftInv.Name = "btnSendDraftInv";
+            this.btnSendDraftInv.Size = new System.Drawing.Size(120, 35);
+            this.btnSendDraftInv.TabIndex = 24;
+            this.btnSendDraftInv.Text = "Gönder";
+            this.btnSendDraftInv.UseVisualStyleBackColor = false;
+            this.btnSendDraftInv.Click += new System.EventHandler(this.btnSendDraftInv_Click);
             // 
             // FrmInvoice
             // 
@@ -397,7 +398,7 @@
         private System.Windows.Forms.Button btnSentInvAgainSent;
         private System.Windows.Forms.Button btnSentInvGetState;
         private System.Windows.Forms.Panel panelDraftInv;
-        private System.Windows.Forms.Button btnSendDraft;
+        private System.Windows.Forms.Button btnSendDraftInv;
         private System.Windows.Forms.Button btnLoadPortal;
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using izibiz.MODEL.Model;
+using izibiz.MODEL.Models;
 using izibiz.SERVICES.serviceOib;
 using izibiz.MODEL;
 using System.IO;
@@ -17,15 +17,22 @@ using izibiz.CONTROLLER.Singleton;
 using System.Xml.Serialization;
 using izibiz.COMMON.UblSerializer;
 using Ubl_Invoice_2_1;
+using izibiz.COMMON.Zip;
+
 
 namespace izibiz.CONTROLLER.Web_Services
 {
+
+
+
     public class EInvoiceController
     {
 
         private EFaturaOIBPortClient EFaturaOIBPortClient = new EFaturaOIBPortClient();
         string inboxFolder = "D:\\temp\\GELEN\\";
-        INVOICE[] stateInvoice = null;
+        List<INVOICE> invoiceList = new List<INVOICE>();
+
+
 
 
 
@@ -37,12 +44,13 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public void getIncomingInvoice()
+        public List<Invoices> getIncomingInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
                 var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
+                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.IN.ToString();
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
@@ -51,21 +59,23 @@ namespace izibiz.CONTROLLER.Web_Services
                 if (invoiceArray.Length > 0)
                 {
                     invoiceMarkRead(invoiceArray);
-                    SaveInvoiceArrayToEntitiy(invoiceArray,EI.InvDirection.IN.ToString());
-                }    
+                    SaveInvoiceArrayToEntitiy(invoiceArray, EI.InvDirection.IN.ToString());
+                }
+                return Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.IN));
             }
         }
 
 
 
 
-        public void getSentInvoice()
+        public List<Invoices> getSentInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
                 var req = new GetInvoiceRequest();//sistemdeki gelen efatura listesi için request parametreleri
 
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
+                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.OUT.ToString();
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
@@ -76,18 +86,20 @@ namespace izibiz.CONTROLLER.Web_Services
                     invoiceMarkRead(invoiceArray);
                     SaveInvoiceArrayToEntitiy(invoiceArray, EI.InvDirection.OUT.ToString());
                 }
+                return Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT));
             }
         }
 
 
 
-        public void getDraftInvoice()
+        public List<Invoices> getDraftInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
                 var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
 
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
+                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.OUT.ToString();
                 req.INVOICE_SEARCH_KEY.DRAFT_FLAG = EI.ActiveOrPasive.Y.ToString();
@@ -96,9 +108,10 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArray = EFaturaOIBPortClient.GetInvoice(req);
                 if (invoiceArray.Length > 0)
                 {
-                  //  invoiceMarkRead(invoiceArray);
-                    SaveInvoiceArrayToEntitiy(invoiceArray,EI.InvDirection.DRAFT.ToString());
+                    invoiceMarkRead(invoiceArray);
+                    SaveInvoiceArrayToEntitiy(invoiceArray, EI.InvDirection.DRAFT.ToString());
                 }
+                return Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT));
             }
         }
 
@@ -126,15 +139,15 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
                 invoice.fromm = inv.HEADER.FROM;
                 invoice.too = inv.HEADER.TO;
-                invoice.content = Encoding.UTF8.GetString(inv.CONTENT.Value); //xml db de tututlur
+                invoice.content = Encoding.UTF8.GetString(Compress.UncompressFile(inv.CONTENT.Value)); //xml db de tututlur
 
                 if (direction == EI.InvDirection.DRAFT.ToString())
                 {
                     invoice.draftFlag = EI.ActiveOrPasive.Y.ToString();  //servisten cektıklerımız flag Y  ☺
                 }
-                Singl.invoiceDALGet.addInvoice(invoice);
+                Singl.invoiceDalGet.addInvoice(invoice);
             }
-            Singl.invoiceDALGet.dbSaveChanges();
+            Singl.invoiceDalGet.dbSaveChanges();
         }
 
 
@@ -153,40 +166,15 @@ namespace izibiz.CONTROLLER.Web_Services
                         valueSpecified = true
                     }
                 };
-                MarkInvoiceResponse markRes = EFaturaOIBPortClient.MarkInvoice(markReq);
+         //       MarkInvoiceResponse markRes = EFaturaOIBPortClient.MarkInvoice(markReq);
             }
         }
 
+        
 
+        
 
-        private byte[] stringToByteArr(string content)
-        {
-            return Encoding.UTF8.GetBytes(content);
-        }
-
-
-
-
-        public INVOICE[] createInvArrWithContent(string[] uuidArr, string direction)
-        {
-            INVOICE[] invoiceArr = new INVOICE[uuidArr.Length];
-
-            for (int i = 0; i < invoiceArr.Length; i++)
-            {
-                INVOICE inv = new INVOICE();
-                invoiceArr[i] = inv;
-                //uuid array ile db den cekılen contentı base64 tipide yazdır
-                base64Binary cont = new base64Binary();
-                cont.Value = stringToByteArr(Singl.invoiceDALGet.getInvoice(uuidArr[i], direction).content);
-                invoiceArr[i].CONTENT = cont;
-            }
-
-            return invoiceArr;
-        }
-
-
-
-        public int sendInvoice(string direction, string[] uuidArr)
+        public int sendInvoice(string receiverAlias)
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -195,58 +183,81 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.N.ToString();
                 req.SENDER = new SendInvoiceRequestSENDER();
                 req.RECEIVER = new SendInvoiceRequestRECEIVER();
+                req.RECEIVER.alias = receiverAlias;
 
-                INVOICE[] invoiceArr = createInvArrWithContent(uuidArr, direction);
-                req.INVOICE = invoiceArr;
+                req.INVOICE = invoiceList.ToArray();
 
-              return  EFaturaOIBPortClient.SendInvoice(req).REQUEST_RETURN.RETURN_CODE;
+                invoiceList.Clear();
+
+                return EFaturaOIBPortClient.SendInvoice(req).REQUEST_RETURN.RETURN_CODE;
             }
         }
 
 
+        public void createInvContentCompress(string contentString)
+        {
+            INVOICE invoice = new INVOICE();
+   
+            base64Binary contentByte = new base64Binary();
+            contentByte.Value =Compress.compressContent(contentString);
+            invoice.CONTENT = contentByte;
 
-        public int loadInvoice(string[] uuidArr)
+            invoiceList.Add(invoice);
+
+        }
+
+
+        public string  getContentNewInvId(string uuid,string direction, string newId)
+        {         
+           return XmlSet.xmlChangeIdValue(Singl.invoiceDalGet.getInvoice(uuid, direction).content, newId);
+        }
+
+
+
+
+
+        public int loadInvoice()
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
-            {
+            {            
                 var req = new LoadInvoiceRequest();
 
                 req.REQUEST_HEADER = RequestHeader.requestHeader;
-                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.N.ToString();
+                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
+                req.INVOICE = invoiceList.ToArray();
 
-                INVOICE[] invoiceArr = createInvArrWithContent(uuidArr, nameof(EI.InvDirection.DRAFT));//load ınv oldugu ıcın drectıon draft
-                req.INVOICE = invoiceArr;
+                invoiceList.Clear();
 
-             return  EFaturaOIBPortClient.LoadInvoice(req).REQUEST_RETURN.RETURN_CODE;
+                return EFaturaOIBPortClient.LoadInvoice(req).REQUEST_RETURN.RETURN_CODE;
             }
         }
 
 
 
-        public void sendInvoiceResponse(string status, string[] description)
+        public void sendInvoiceResponse(string status,List<string> description)
         {
-
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
                 SendInvoiceResponseWithServerSignRequest req = new SendInvoiceResponseWithServerSignRequest()
                 {
                     REQUEST_HEADER = RequestHeader.requestHeader,
                     STATUS = status,
-                    INVOICE = stateInvoice,
-                    DESCRIPTION = description
+                    INVOICE = invoiceList.ToArray(),
+                    DESCRIPTION = description.ToArray(),
                 };
+                invoiceList.Clear();
 
-                SendInvoiceResponseWithServerSignResponse res = EFaturaOIBPortClient.SendInvoiceResponseWithServerSign(req);
-                stateInvoice = null;
+                EFaturaOIBPortClient.SendInvoiceResponseWithServerSign(req);            
             }
         }
 
-        public void createInvoiceWithUuid(int arrayLength, string invoiceUuid, int i)
+
+
+        public void addInvToStateList(string uuid)
         {
-            stateInvoice = new INVOICE[arrayLength];
             INVOICE invoice = new INVOICE();
-            invoice.UUID = invoiceUuid;
-            stateInvoice[i] = invoice;
+            invoice.UUID = uuid;
+            invoiceList.Add(invoice);
         }
 
         /*  public INVOICE[] ArrayUuidToInvoice(string[] invoiceUuid)
@@ -262,7 +273,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public string getInvoiceState(string invoiceUuid)
+        public GetInvoiceStatusResponseINVOICE_STATUS getInvoiceState(string invoiceUuid)
         {
             INVOICE invoice = new INVOICE();
             invoice.UUID = invoiceUuid;
@@ -275,8 +286,7 @@ namespace izibiz.CONTROLLER.Web_Services
                     INVOICE = invoice,
                 };
 
-                GetInvoiceStatusResponse res = EFaturaOIBPortClient.GetInvoiceStatus(req);
-                return res.INVOICE_STATUS.STATUS;
+                return EFaturaOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;            
             }
         }
 
@@ -292,76 +302,65 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
-        private string saveInvoiceType(INVOICE invoice, string type)
-        {
-            createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
-            string filePath;
-            filePath = inboxFolder + invoice.ID + "." + type;
 
-            System.IO.File.WriteAllBytes(filePath, invoice.CONTENT.Value);
-            return filePath;
-        }
 
+
+        /// <summary>
+        /// web servıse ugramadan db ye ındırelen faturaların contentlerını dıske kaydeder
+        /// </summary>
 
         public void downloadInvoice()
         {
-            using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+            //db deki faturalardan dırectıon "IN" olanların contentını alıp dıske kaydet
+            List<Invoices> listInv = Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.IN));
+            if (listInv.Count > 0)
             {
-                GetInvoiceRequest req = new GetInvoiceRequest();
-
-                req.REQUEST_HEADER = RequestHeader.requestHeader;
-                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
-                req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.IN.ToString();
-                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
-
-                INVOICE[] invoiceList = EFaturaOIBPortClient.GetInvoice(req);
-                if (invoiceList.Length>0)
+                foreach (Invoices invoice in listInv)
                 {
-                    foreach (INVOICE invoice in invoiceList)
-                    {
-                        ınvoiceWriteToUnzip(invoice);
-                    }
-                    invoiceMarkRead(invoiceList);
-
-                    if (invoiceList.Length == 100)
-                    {
-                        downloadInvoice();
-                    }
-                }
-            }
-        }
-
-
-        private void ınvoiceWriteToUnzip(INVOICE invoice)
-        {
-            //invoice daha 
-            byte[] content = invoice.CONTENT.Value;
-            using (var zippedStream = new MemoryStream(content))
-            {
-                using (var archive = new ZipArchive(zippedStream))
-                {
-                    var entry = archive.Entries.FirstOrDefault();
-                    if (entry != null)
-                    {
-                        using (var unzippedEntryStream = entry.Open())
-                        {
-                            using (var ms = new MemoryStream())
-                            {
-                                unzippedEntryStream.CopyTo(ms);
-                                var unzippedArray = ms.ToArray();
-
-                                System.IO.File.WriteAllBytes(inboxFolder + invoice.ID + ".xml", unzippedArray);
-                            }
-                        }
-                    }
+                    saveContentWithString(invoice.content, inboxFolder, invoice.ID, nameof(EI.DocumentType.XML));
                 }
             }
         }
 
 
 
-        public string getInvoiceType(string invoiceUuid, string type, string direction)
+
+        //BU FONK SOR HANGISINI KULLANALIM USSTEKI MI ALLTAKI MI
+
+
+        //public void downloadInvoice()
+        //{
+        //    using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+        //    {
+        //        GetInvoiceRequest req = new GetInvoiceRequest();
+        //        req.REQUEST_HEADER = RequestHeader.requestHeader;
+        //        req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
+        //        req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
+        //        req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.IN.ToString();
+        //        req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
+
+        //        INVOICE[] invoiceList = EFaturaOIBPortClient.GetInvoice(req);
+        //        if (invoiceList.Length > 0)
+        //        {
+        //            foreach (INVOICE invoice in invoiceList)
+        //            {
+        //                saveInvoiceWithType(Compress.UncompressFile(invoice.CONTENT.Value),inboxFolder, invoice.ID,nameof(EI.DocumentType.XML));
+        //                //mark ınv yapmadan once ınvlist contentını temızlıyoruz sıstemı yormamak ıcın
+        //                Array.Clear(invoice.CONTENT.Value, 0, invoice.CONTENT.Value.Length);
+        //            }
+        //            invoiceMarkRead(invoiceList);
+
+        //            if (invoiceList.Length == 100)
+        //            {
+        //                downloadInvoice();
+        //            }
+        //        }
+        //    }
+        //}
+
+
+
+        public string getInvoiceType(string invoiceUuid, string documentType, string direction)
         {
             using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
             {
@@ -371,36 +370,54 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
                 req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
-                req.INVOICE_SEARCH_KEY.TYPE = type;//XML,PDF 
+                req.INVOICE_SEARCH_KEY.TYPE = documentType;//XML,PDF 
                 req.INVOICE_SEARCH_KEY.DIRECTION = direction;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
-                return saveInvoiceType(invoice[0], type);
+                return saveContentWithByte(invoice[0].CONTENT.Value, inboxFolder, invoice[0].ID, documentType);
             }
         }
 
 
 
-        public byte[] getInvoiceXml(string invoiceUuid)
+        private string saveContentWithByte(Byte[] content, string inboxFolder, string fileName, string docType)
         {
-            using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
-            {
-                GetInvoiceWithTypeRequest req = new GetInvoiceWithTypeRequest();
-                req.REQUEST_HEADER = RequestHeader.requestHeader;
-
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
-                req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
-                req.INVOICE_SEARCH_KEY.TYPE = EI.DocumentType.PDF.ToString();
-                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
-
-                INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
-                return invoice[0].CONTENT.Value;
-            }
+            createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
+            System.IO.File.WriteAllBytes(inboxFolder + fileName + "." + docType, content);
+            return Path.Combine(inboxFolder, fileName, "." + docType);  //return fılepath
         }
 
 
-        public string CreateInvoiceXml(InvoiceType createdUBL)
+        private string saveContentWithString(string content, string inboxFolder, string fileName, string docType)
+        {
+            createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
+            System.IO.File.WriteAllText(inboxFolder + fileName + "." + docType, content);
+            return Path.Combine(inboxFolder, fileName, "." + docType);  //return fılepath
+        }
+
+
+
+
+        //public byte[] getInvoiceXml(string invoiceUuid)
+        //{
+        //    using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
+        //    {
+        //        GetInvoiceWithTypeRequest req = new GetInvoiceWithTypeRequest();
+        //        req.REQUEST_HEADER = RequestHeader.requestHeader;
+
+        //        req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
+        //        req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
+        //        req.INVOICE_SEARCH_KEY.TYPE = EI.DocumentType.PDF.ToString();
+        //        req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
+
+        //        INVOICE[] invoice = EFaturaOIBPortClient.GetInvoiceWithType(req);
+        //        return invoice[0].CONTENT.Value;
+        //    }
+        //}
+
+
+        public string CreateInvUblToXml(InvoiceType createdUBL)
         {
             /////// DİSKE KAYDETMEK İSTERSEK ASAGIDAKI KODU ACARIZ 
 

@@ -67,10 +67,10 @@ namespace izibiz.UI
             catch (FaultException<REQUEST_ERRORType> ex)
             {
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }      
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
         }
 

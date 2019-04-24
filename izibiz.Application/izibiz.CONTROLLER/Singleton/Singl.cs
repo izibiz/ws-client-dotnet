@@ -16,7 +16,8 @@ namespace izibiz.CONTROLLER.Singleton
         private static AuthenticationController authenticationController = null;
         private static EInvoiceController invoiceController = null;
         private static DatabaseContext databaseContext = null;
-        private static InvoiceDAL InvoiceDAL = null;
+        private static InvoiceDAL invoiceDal = null;
+        private static IdSerilazeDAL idSerilazeDal = null;
         //private static CreateInvoiceUBL createInv = null;
 
         private Singl()
@@ -37,16 +38,30 @@ namespace izibiz.CONTROLLER.Singleton
         //}
 
 
-        public static InvoiceDAL invoiceDALGet
+        public static IdSerilazeDAL invIdSerilazeDalGet
         {
             get
             {
-                if (null == InvoiceDAL)
+                if (null == idSerilazeDal)
                 {
-                    InvoiceDAL = new InvoiceDAL();
+                    idSerilazeDal = new IdSerilazeDAL();
                 }
 
-                return InvoiceDAL;
+                return idSerilazeDal;
+            }
+        }
+
+
+        public static InvoiceDAL invoiceDalGet
+        {
+            get
+            {
+                if (null == invoiceDal)
+                {
+                    invoiceDal = new InvoiceDAL();
+                }
+
+                return invoiceDal;
             }
         }
 

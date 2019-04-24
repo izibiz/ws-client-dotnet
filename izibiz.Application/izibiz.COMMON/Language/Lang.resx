@@ -318,4 +318,25 @@
   <data name="send" xml:space="preserve">
     <value>Gönder</value>
   </data>
+  <data name="dataException" xml:space="preserve">
+    <value>Db tarafında bir sorun cıktı.Buyuk olasılıkla projenin içindeki sqlite datasource konumunu kendi konumunuza ayarlamadınız.</value>
+  </data>
+  <data name="formDialogSeriName" xml:space="preserve">
+    <value>İzibiz Masaüstü | Seri Ön Ek Seçimi</value>
+  </data>
+  <data name="okey" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="selectSeriName" xml:space="preserve">
+    <value>Lütfen fatura id için bir seri ön eki seçiniz.</value>
+  </data>
+  <data name="sel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="successLoad" xml:space="preserve">
+    <value>Fatura yükleme işlemi başarılı.</value>
+  </data>
+  <data name="selectAlias" xml:space="preserve">
+    <value>Lütfen bir alıcı posta kutusu seçiniz.</value>
+  </data>
 </root>

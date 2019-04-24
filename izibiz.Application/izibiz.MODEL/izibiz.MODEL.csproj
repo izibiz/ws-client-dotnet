@@ -64,7 +64,8 @@
   <ItemGroup>
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Data\SqLiteConfiguration.cs" />
-    <Compile Include="Model\Invoices.cs" />
+    <Compile Include="Models\InvoiceIdSerial.cs" />
+    <Compile Include="Models\Invoices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,9 +82,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Db\izibiz-Entegrasyon.s3db" />

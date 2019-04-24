@@ -72,6 +72,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDialogIdSeriName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDialogIdSeriName.Designer.cs">
+      <DependentUpon>FrmDialogIdSeriName.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmDialogIdSeriName.resx">
+      <DependentUpon>FrmDialogIdSeriName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>

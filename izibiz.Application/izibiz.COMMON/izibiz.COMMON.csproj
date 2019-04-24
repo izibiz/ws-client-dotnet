@@ -67,6 +67,7 @@
     <Compile Include="Ubl-Tr\XSLTInvoice.cs" />
     <Compile Include="UBLCreate\CreateInvoiceUBL.cs" />
     <Compile Include="UblSerializer\InvoiceSerializer.cs" />
+    <Compile Include="XmlSet.cs" />
     <Compile Include="Zip\Compress.cs" />
   </ItemGroup>
   <ItemGroup />
