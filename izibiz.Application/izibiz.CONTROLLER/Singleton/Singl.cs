@@ -12,7 +12,7 @@ namespace izibiz.CONTROLLER.Singleton
 {
    public class Singl
     {
-
+        public static object invoiceDALGet;
         private static AuthenticationController authenticationController = null;
         private static EInvoiceController invoiceController = null;
         private static DatabaseContext databaseContext = null;

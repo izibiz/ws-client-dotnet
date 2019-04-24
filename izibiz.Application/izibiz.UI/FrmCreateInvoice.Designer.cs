@@ -653,7 +653,6 @@
             this.btnCreateUbl.TabIndex = 10;
             this.btnCreateUbl.Text = "button1";
             this.btnCreateUbl.UseVisualStyleBackColor = true;
-            this.btnCreateUbl.Click += new System.EventHandler(this.btnCreateUbl_Click_1);
             // 
             // txtNote
             // 
