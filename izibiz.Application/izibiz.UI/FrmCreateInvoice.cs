@@ -359,10 +359,10 @@ namespace izibiz.UI
 
                 var invoiceUbl = invoice.BaseUBL; //olusturdugumuz nesne ubl turune cevrılır
                 //xml olustur
-           //     string contentXml = Singl.invoiceControllerGet.CreateInvoiceXml(invoiceUbl).ToString();
+                string contentXml = Singl.invoiceControllerGet.CreateInvoiceXml(invoiceUbl).ToString();
                 //db ye kaydet
-          //      Singl.invoiceDALGet.insertDraftInvoice(invoiceUbl, contentXml);
-          //      Singl.invoiceDALGet.dbSaveChanges();
+              Singl.invoiceDALGet.insertDraftInvoice(invoiceUbl, contentXml);
+                Singl.invoiceDALGet.dbSaveChanges();
             }
             else  //bos eleman varsa
             {

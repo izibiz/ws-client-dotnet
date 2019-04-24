@@ -800,7 +800,7 @@ namespace izibiz.UI
                             string lastIdSerial = updateInvWithNewId(frmDialogSelectSeriName.selectedValue, true); //true degerı gonderıyoruz işlem bıttıkten sonra secılı ınvların direction out olacak
 
                             //send inv 
-                /           if (Singl.invoiceControllerGet.sendInvoice(frmDialogIdSelectAlias.selectedValue) == 0)
+                           if (Singl.invoiceControllerGet.sendInvoice(frmDialogIdSelectAlias.selectedValue) == 0)
                             {
                                 //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
                                 Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(lastIdSerial);
