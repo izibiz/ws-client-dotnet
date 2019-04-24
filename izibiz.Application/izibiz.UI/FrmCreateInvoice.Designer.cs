@@ -30,11 +30,17 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClear = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grpboxTotal = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -44,18 +50,12 @@
             this.txtTotalAmountWithTax = new System.Windows.Forms.TextBox();
             this.txtKdvAmount = new System.Windows.Forms.TextBox();
             this.txtServiceAmount = new System.Windows.Forms.TextBox();
-            this.txtNote = new System.Windows.Forms.TextBox();
             this.grpboxRow = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRemoveRow = new System.Windows.Forms.Button();
+            this.gridPrice = new System.Windows.Forms.DataGridView();
             this.btnAddRow = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpInvInformation = new System.Windows.Forms.GroupBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.txtPartyName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.cmbMoneyType = new System.Windows.Forms.ComboBox();
             this.cmbScenario = new System.Windows.Forms.ComboBox();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpReceiver = new System.Windows.Forms.GroupBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtStreet = new System.Windows.Forms.TextBox();
@@ -90,13 +90,20 @@
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtTaxScheme = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.cmbType = new System.Windows.Forms.ComboBox();
-            this.groupBox4.SuspendLayout();
+            this.btnCreateUbl = new System.Windows.Forms.Button();
+            this.txtNote = new System.Windows.Forms.RichTextBox();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpboxTotal.SuspendLayout();
             this.grpboxRow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).BeginInit();
+            this.grpInvInformation.SuspendLayout();
+            this.grpReceiver.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
@@ -109,24 +116,24 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // groupBox4
+            // grpboxTotal
             // 
-            this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.txtPayableAmount);
-            this.groupBox4.Controls.Add(this.txtTotalAmountWithTax);
-            this.groupBox4.Controls.Add(this.txtKdvAmount);
-            this.groupBox4.Controls.Add(this.txtServiceAmount);
-            this.groupBox4.Controls.Add(this.txtNote);
-            this.groupBox4.Location = new System.Drawing.Point(9, 406);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1176, 198);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Toplam ve Not Bilgileri";
+            this.grpboxTotal.Controls.Add(this.txtNote);
+            this.grpboxTotal.Controls.Add(this.label19);
+            this.grpboxTotal.Controls.Add(this.label18);
+            this.grpboxTotal.Controls.Add(this.label17);
+            this.grpboxTotal.Controls.Add(this.label16);
+            this.grpboxTotal.Controls.Add(this.label15);
+            this.grpboxTotal.Controls.Add(this.txtPayableAmount);
+            this.grpboxTotal.Controls.Add(this.txtTotalAmountWithTax);
+            this.grpboxTotal.Controls.Add(this.txtKdvAmount);
+            this.grpboxTotal.Controls.Add(this.txtServiceAmount);
+            this.grpboxTotal.Location = new System.Drawing.Point(9, 406);
+            this.grpboxTotal.Name = "grpboxTotal";
+            this.grpboxTotal.Size = new System.Drawing.Size(1176, 198);
+            this.grpboxTotal.TabIndex = 8;
+            this.grpboxTotal.TabStop = false;
+            this.grpboxTotal.Text = "Toplam ve Not Bilgileri";
             // 
             // label19
             // 
@@ -209,20 +216,12 @@
             this.txtServiceAmount.Size = new System.Drawing.Size(100, 20);
             this.txtServiceAmount.TabIndex = 1;
             // 
-            // txtNote
-            // 
-            this.txtNote.Location = new System.Drawing.Point(71, 47);
-            this.txtNote.Multiline = true;
-            this.txtNote.Name = "txtNote";
-            this.txtNote.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtNote.Size = new System.Drawing.Size(299, 62);
-            this.txtNote.TabIndex = 0;
-            // 
             // grpboxRow
             // 
             this.grpboxRow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.grpboxRow.CausesValidation = false;
-            this.grpboxRow.Controls.Add(this.dataGridView2);
+            this.grpboxRow.Controls.Add(this.btnRemoveRow);
+            this.grpboxRow.Controls.Add(this.gridPrice);
             this.grpboxRow.Controls.Add(this.btnAddRow);
             this.grpboxRow.Location = new System.Drawing.Point(14, 277);
             this.grpboxRow.Name = "grpboxRow";
@@ -231,15 +230,26 @@
             this.grpboxRow.TabStop = false;
             this.grpboxRow.Text = "Satır Bilgileri";
             // 
-            // dataGridView2
+            // btnRemoveRow
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.btnRemoveRow.Location = new System.Drawing.Point(751, 66);
+            this.btnRemoveRow.Name = "btnRemoveRow";
+            this.btnRemoveRow.Size = new System.Drawing.Size(91, 23);
+            this.btnRemoveRow.TabIndex = 6;
+            this.btnRemoveRow.Text = "Remove Row";
+            this.btnRemoveRow.UseVisualStyleBackColor = true;
+            this.btnRemoveRow.Click += new System.EventHandler(this.btnRemoveRow_Click);
+            // 
+            // gridPrice
+            // 
+            this.gridPrice.AllowUserToAddRows = false;
+            this.gridPrice.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
+            this.gridPrice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridPrice.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.gridPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridPrice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GrayText;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -247,9 +257,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridPrice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gridPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPrice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
             this.quantity,
             this.unit,
@@ -257,93 +267,75 @@
             this.taxPercent,
             this.taxAmount,
             this.total});
-            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 37);
-            this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridView2.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dataGridView2.Size = new System.Drawing.Size(712, 78);
-            this.dataGridView2.TabIndex = 5;
-            // 
-            // productName
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.productName.HeaderText = "ad";
-            this.productName.Name = "productName";
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "miktar";
-            this.quantity.Name = "quantity";
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "birim";
-            this.unit.Name = "unit";
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.HeaderText = "birim fiyat";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // taxPercent
-            // 
-            this.taxPercent.HeaderText = "kdv oranı";
-            this.taxPercent.Name = "taxPercent";
-            // 
-            // taxAmount
-            // 
-            this.taxAmount.HeaderText = "kdv tutarı";
-            this.taxAmount.Name = "taxAmount";
-            // 
-            // total
-            // 
-            this.total.HeaderText = "toplam";
-            this.total.Name = "total";
+            this.gridPrice.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridPrice.DefaultCellStyle = dataGridViewCellStyle9;
+            this.gridPrice.Location = new System.Drawing.Point(6, 19);
+            this.gridPrice.MultiSelect = false;
+            this.gridPrice.Name = "gridPrice";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrice.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.gridPrice.RowHeadersVisible = false;
+            this.gridPrice.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.gridPrice.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.gridPrice.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gridPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridPrice.Size = new System.Drawing.Size(712, 96);
+            this.gridPrice.TabIndex = 5;
+            this.gridPrice.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridPrice_CellValidating);
             // 
             // btnAddRow
             // 
             this.btnAddRow.Location = new System.Drawing.Point(751, 37);
             this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(75, 23);
+            this.btnAddRow.Size = new System.Drawing.Size(91, 23);
             this.btnAddRow.TabIndex = 3;
             this.btnAddRow.Text = "Add row";
             this.btnAddRow.UseVisualStyleBackColor = true;
             this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
             // 
-            // groupBox2
+            // grpInvInformation
             // 
-            this.groupBox2.Controls.Add(this.cmbType);
-            this.groupBox2.Controls.Add(this.txtPartyName);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.cmbMoneyType);
-            this.groupBox2.Controls.Add(this.cmbScenario);
-            this.groupBox2.Controls.Add(this.dateTime);
-            this.groupBox2.Location = new System.Drawing.Point(15, 161);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1176, 105);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Fatura Bilgileri";
+            this.grpInvInformation.Controls.Add(this.cmbType);
+            this.grpInvInformation.Controls.Add(this.txtPartyName);
+            this.grpInvInformation.Controls.Add(this.label1);
+            this.grpInvInformation.Controls.Add(this.label13);
+            this.grpInvInformation.Controls.Add(this.label14);
+            this.grpInvInformation.Controls.Add(this.label12);
+            this.grpInvInformation.Controls.Add(this.label11);
+            this.grpInvInformation.Controls.Add(this.cmbMoneyType);
+            this.grpInvInformation.Controls.Add(this.cmbScenario);
+            this.grpInvInformation.Controls.Add(this.dateTime);
+            this.grpInvInformation.Location = new System.Drawing.Point(15, 161);
+            this.grpInvInformation.Name = "grpInvInformation";
+            this.grpInvInformation.Size = new System.Drawing.Size(1176, 105);
+            this.grpInvInformation.TabIndex = 6;
+            this.grpInvInformation.TabStop = false;
+            this.grpInvInformation.Text = "Fatura Bilgileri";
+            // 
+            // cmbType
+            // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(294, 25);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(109, 21);
+            this.cmbType.TabIndex = 7;
             // 
             // txtPartyName
             // 
@@ -424,38 +416,38 @@
             this.dateTime.Size = new System.Drawing.Size(109, 20);
             this.dateTime.TabIndex = 0;
             // 
-            // groupBox1
+            // grpReceiver
             // 
-            this.groupBox1.Controls.Add(this.txtMail);
-            this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.txtStreet);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.txtBuldingNo);
-            this.groupBox1.Controls.Add(this.txtBuldingName);
-            this.groupBox1.Controls.Add(this.txtVision);
-            this.groupBox1.Controls.Add(this.msdVknTc);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.msdPhone);
-            this.groupBox1.Controls.Add(this.txtCountry);
-            this.groupBox1.Controls.Add(this.txtDistrict);
-            this.groupBox1.Controls.Add(this.txtCity);
-            this.groupBox1.Controls.Add(this.txtTaxScheme);
-            this.groupBox1.Controls.Add(this.txtTitle);
-            this.groupBox1.Location = new System.Drawing.Point(15, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1176, 141);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Alıcı";
+            this.grpReceiver.Controls.Add(this.txtMail);
+            this.grpReceiver.Controls.Add(this.label22);
+            this.grpReceiver.Controls.Add(this.txtStreet);
+            this.grpReceiver.Controls.Add(this.label10);
+            this.grpReceiver.Controls.Add(this.label20);
+            this.grpReceiver.Controls.Add(this.label21);
+            this.grpReceiver.Controls.Add(this.txtBuldingNo);
+            this.grpReceiver.Controls.Add(this.txtBuldingName);
+            this.grpReceiver.Controls.Add(this.txtVision);
+            this.grpReceiver.Controls.Add(this.msdVknTc);
+            this.grpReceiver.Controls.Add(this.label9);
+            this.grpReceiver.Controls.Add(this.label8);
+            this.grpReceiver.Controls.Add(this.label7);
+            this.grpReceiver.Controls.Add(this.label6);
+            this.grpReceiver.Controls.Add(this.label5);
+            this.grpReceiver.Controls.Add(this.label4);
+            this.grpReceiver.Controls.Add(this.label3);
+            this.grpReceiver.Controls.Add(this.label2);
+            this.grpReceiver.Controls.Add(this.msdPhone);
+            this.grpReceiver.Controls.Add(this.txtCountry);
+            this.grpReceiver.Controls.Add(this.txtDistrict);
+            this.grpReceiver.Controls.Add(this.txtCity);
+            this.grpReceiver.Controls.Add(this.txtTaxScheme);
+            this.grpReceiver.Controls.Add(this.txtTitle);
+            this.grpReceiver.Location = new System.Drawing.Point(15, 14);
+            this.grpReceiver.Name = "grpReceiver";
+            this.grpReceiver.Size = new System.Drawing.Size(1176, 141);
+            this.grpReceiver.TabIndex = 5;
+            this.grpReceiver.TabStop = false;
+            this.grpReceiver.Text = "Alıcı";
             // 
             // txtMail
             // 
@@ -530,6 +522,7 @@
             // 
             // msdVknTc
             // 
+            this.msdVknTc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.msdVknTc.Location = new System.Drawing.Point(96, 31);
             this.msdVknTc.Mask = "00000000000";
             this.msdVknTc.Name = "msdVknTc";
@@ -652,49 +645,103 @@
             this.txtTitle.Size = new System.Drawing.Size(109, 20);
             this.txtTitle.TabIndex = 0;
             // 
-            // btnCreate
+            // btnCreateUbl
             // 
-            this.btnCreate.Location = new System.Drawing.Point(537, 618);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 10;
-            this.btnCreate.Text = "button1";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
+            this.btnCreateUbl.Location = new System.Drawing.Point(537, 618);
+            this.btnCreateUbl.Name = "btnCreateUbl";
+            this.btnCreateUbl.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateUbl.TabIndex = 10;
+            this.btnCreateUbl.Text = "button1";
+            this.btnCreateUbl.UseVisualStyleBackColor = true;
+            this.btnCreateUbl.Click += new System.EventHandler(this.btnCreateUbl_Click_1);
             // 
-            // cmbType
+            // txtNote
             // 
-            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(294, 25);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(109, 21);
-            this.cmbType.TabIndex = 7;
+            this.txtNote.Location = new System.Drawing.Point(65, 47);
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(251, 93);
+            this.txtNote.TabIndex = 4;
+            this.txtNote.Text = "";
+            // 
+            // productName
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.productName.HeaderText = "ad";
+            this.productName.Name = "productName";
+            // 
+            // quantity
+            // 
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.quantity.HeaderText = "miktar";
+            this.quantity.Name = "quantity";
+            // 
+            // unit
+            // 
+            this.unit.HeaderText = "birim";
+            this.unit.Name = "unit";
+            // 
+            // unitPrice
+            // 
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.unitPrice.HeaderText = "birim fiyat";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // taxPercent
+            // 
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle6;
+            this.taxPercent.HeaderText = "kdv oranı";
+            this.taxPercent.Name = "taxPercent";
+            // 
+            // taxAmount
+            // 
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle7;
+            this.taxAmount.HeaderText = "kdv tutarı";
+            this.taxAmount.Name = "taxAmount";
+            this.taxAmount.ReadOnly = true;
+            // 
+            // total
+            // 
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.total.DefaultCellStyle = dataGridViewCellStyle8;
+            this.total.HeaderText = "toplam";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
             // 
             // FrmCreateInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 644);
-            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnCreateUbl);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.grpboxTotal);
             this.Controls.Add(this.grpboxRow);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpInvInformation);
+            this.Controls.Add(this.grpReceiver);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCreateInvoice";
             this.Load += new System.EventHandler(this.FrmCreateInvoice_Load);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.grpboxTotal.ResumeLayout(false);
+            this.grpboxTotal.PerformLayout();
             this.grpboxRow.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).EndInit();
+            this.grpInvInformation.ResumeLayout(false);
+            this.grpInvInformation.PerformLayout();
+            this.grpReceiver.ResumeLayout(false);
+            this.grpReceiver.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -702,7 +749,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grpboxTotal;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
@@ -712,7 +759,6 @@
         private System.Windows.Forms.TextBox txtTotalAmountWithTax;
         private System.Windows.Forms.TextBox txtKdvAmount;
         private System.Windows.Forms.TextBox txtServiceAmount;
-        private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.GroupBox grpboxRow;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -721,7 +767,7 @@
         private System.Windows.Forms.ComboBox cmbMoneyType;
         private System.Windows.Forms.ComboBox cmbScenario;
         private System.Windows.Forms.DateTimePicker dateTime;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpReceiver;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -738,7 +784,7 @@
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Button btnAddRow;
         private System.Windows.Forms.MaskedTextBox msdVknTc;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpInvInformation;
         private System.Windows.Forms.TextBox txtPartyName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
@@ -750,8 +796,11 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtStreet;
         private System.Windows.Forms.TextBox txtMail;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnCreateUbl;
+        private System.Windows.Forms.DataGridView gridPrice;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.Button btnRemoveRow;
+        private System.Windows.Forms.RichTextBox txtNote;
         private System.Windows.Forms.DataGridViewTextBoxColumn productName;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewComboBoxColumn unit;
@@ -759,6 +808,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn taxPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn taxAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
-        private System.Windows.Forms.ComboBox cmbType;
     }
 }

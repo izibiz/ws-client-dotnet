@@ -106,6 +106,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Db tarafında bir sorun cıktı.Buyuk olasılıkla projenin içindeki sqlite datasource konumunu kendi konumunuza ayarlamadınız..
+        /// </summary>
+        public static string dataException {
+            get {
+                return ResourceManager.GetString("dataException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database tarafında bır sorun cıktı !.
         /// </summary>
         public static string dbFault {
@@ -201,6 +210,15 @@ namespace izibiz.COMMON.Language {
         public static string faulty {
             get {
                 return ResourceManager.GetString("faulty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İzibiz Masaüstü | Seri Ön Ek Seçimi.
+        /// </summary>
+        public static string formDialogSeriName {
+            get {
+                return ResourceManager.GetString("formDialogSeriName", resourceCulture);
             }
         }
         
@@ -412,6 +430,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tamam.
+        /// </summary>
+        public static string okey {
+            get {
+                return ResourceManager.GetString("okey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Şifre.
         /// </summary>
         public static string password {
@@ -471,6 +498,33 @@ namespace izibiz.COMMON.Language {
         public static string reject {
             get {
                 return ResourceManager.GetString("reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string sel {
+            get {
+                return ResourceManager.GetString("sel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lütfen bir alıcı posta kutusu seçiniz..
+        /// </summary>
+        public static string selectAlias {
+            get {
+                return ResourceManager.GetString("selectAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lütfen fatura id için bir seri ön eki seçiniz..
+        /// </summary>
+        public static string selectSeriName {
+            get {
+                return ResourceManager.GetString("selectSeriName", resourceCulture);
             }
         }
         
@@ -543,6 +597,15 @@ namespace izibiz.COMMON.Language {
         public static string succesChangeState {
             get {
                 return ResourceManager.GetString("succesChangeState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fatura yükleme işlemi başarılı..
+        /// </summary>
+        public static string successLoad {
+            get {
+                return ResourceManager.GetString("successLoad", resourceCulture);
             }
         }
         

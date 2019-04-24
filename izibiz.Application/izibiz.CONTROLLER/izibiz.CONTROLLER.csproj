@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\InvoiceDAL.cs" />
+    <Compile Include="InvoiceIdSetSerilaze.cs" />
     <Compile Include="InvoiceSearchKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHeader.cs" />

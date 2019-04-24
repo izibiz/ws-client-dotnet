@@ -318,4 +318,22 @@
   <data name="send" xml:space="preserve">
     <value>Send</value>
   </data>
+  <data name="dataException" xml:space="preserve">
+    <value>DataException is a problem in the Db site. The sqlite data source where the project is located is based on your own location.</value>
+  </data>
+  <data name="formDialogSeriName" xml:space="preserve">
+    <value>İzibiz Desktop | Series Front Attachment Selection</value>
+  </data>
+  <data name="okey" xml:space="preserve">
+    <value>Okey</value>
+  </data>
+  <data name="selectSeriName" xml:space="preserve">
+    <value>Please select a serial prefix for the invoice id.</value>
+  </data>
+  <data name="successLoad" xml:space="preserve">
+    <value>The bill loading process is successful.</value>
+  </data>
+  <data name="selectAlias" xml:space="preserve">
+    <value>Please select a receiver mailbox.</value>
+  </data>
 </root>
