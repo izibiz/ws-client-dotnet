@@ -342,36 +342,7 @@ namespace izibiz.CONTROLLER.Web_Services
         /// web servısten ınv ları xml turunde ındırır diske yazar
         /// </summary>
 
-        //public void downloadInvoice()
-        //{
-        //    using (new OperationContextScope(EFaturaOIBPortClient.InnerChannel))
-        //    {
-        //        GetInvoiceRequest req = new GetInvoiceRequest();
-        //        req.REQUEST_HEADER = RequestHeader.requestHeader;
-        //        req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-        //        req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
-        //        req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.IN.ToString();
-        //        req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
-
-        //        INVOICE[] invoiceList = EFaturaOIBPortClient.GetInvoice(req);
-        //        if (invoiceList.Length > 0)
-        //        {
-        //            foreach (INVOICE invoice in invoiceList)
-        //            {
-        //                //compreslenen contentı dıske yazar
-        //                saveInvoiceWithType(Compress.UncompressFile(invoice.CONTENT.Value), inboxFolder, invoice.ID, nameof(EI.DocumentType.XML));
-        //                //mark ınv yapmadan once ınvlist contentını temızlıyoruz sıstemı yormamak ıcın
-        //                Array.Clear(invoice.CONTENT.Value, 0, invoice.CONTENT.Value.Length);
-        //            }
-        //            invoiceMarkRead(invoiceList);
-
-        //            if (invoiceList.Length == 100)
-        //            {
-        //                downloadInvoice();
-        //            }
-        //        }
-        //    }
-        //}
+ 
 
 
 

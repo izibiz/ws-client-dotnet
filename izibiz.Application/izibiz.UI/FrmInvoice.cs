@@ -68,7 +68,7 @@ namespace izibiz.UI
             //panelIncomingInvoices butonlar
             btnAccept.Text = Lang.accept;
             btnReject.Text = Lang.reject;
-            btnDownInvIncoming.Text = Lang.getInvoice;
+            btnTakeInvIn.Text = Lang.getInvoice;
             btnIncomingInvGetState.Text = Lang.updateState;
             //panelDraftInvoices butonlar
             btnSendDraftInv.Text = Lang.send;
@@ -180,7 +180,8 @@ namespace izibiz.UI
             try
             {
                 //web servıceden okunmamıs faturaları db ye yazdır  db den cekılen lısteyı datagride aktar
-                gridUpdateList(Singl.invoiceControllerGet.getIncomingInvoice());
+                //  gridUpdateList(Singl.invoiceControllerGet.getIncomingInvoice());
+                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.IN)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -654,7 +655,7 @@ namespace izibiz.UI
 
 
 
-        private void btnDownInvIncoming_Click(object sender, EventArgs e)
+        private void btnTakeInvIn_Click(object sender, EventArgs e)
         {
             try
             {
