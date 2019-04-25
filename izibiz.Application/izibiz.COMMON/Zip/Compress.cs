@@ -41,7 +41,6 @@ namespace izibiz.COMMON.Zip
                     zipStream.CopyTo(ms);
                     zipsizData = ms.ToArray();
                 }
-
             }
             return zipsizData;
         }
@@ -58,7 +57,6 @@ namespace izibiz.COMMON.Zip
                     uncompressedStream.CopyTo(compressorStream);
                 }
 
-                // call compressedStream.ToArray() after the enclosing DeflateStream has closed and flushed its buffer to compressedStream
                 return compressedStream.ToArray();
             };
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Models;
-using izibiz.MODEL.Model;
+
 
 
 namespace izibiz.CONTROLLER

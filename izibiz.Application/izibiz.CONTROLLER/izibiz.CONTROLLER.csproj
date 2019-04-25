@@ -71,7 +71,8 @@
     <Compile Include="InvoiceIdSetSerilaze.cs" />
     <Compile Include="InvoiceSearchKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestHeader.cs" />
+    <Compile Include="RequestHeaderOib.cs" />
+    <Compile Include="RequestHeaderAuth.cs" />
     <Compile Include="Singleton\Singl.cs">
       <Generator>public</Generator>
     </Compile>

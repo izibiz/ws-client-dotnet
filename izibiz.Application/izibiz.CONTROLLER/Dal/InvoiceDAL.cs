@@ -43,6 +43,8 @@ namespace izibiz.CONTROLLER.Dal
             && inv.uuid == uuid).First().ID = newId;
         }
 
+
+
         public void updateInvState(string uuid, string direction, GetInvoiceStatusResponseINVOICE_STATUS invStatusResponse)
         {
             var invoice = Singl.databaseContextGet.Invoices.Where(inv => inv.invType == direction
@@ -112,9 +114,10 @@ namespace izibiz.CONTROLLER.Dal
             draftCreatedInv.issueDate = Convert.ToDateTime(invoiceUbl.IssueDate.Value);
             draftCreatedInv.profileid = invoiceUbl.ProfileID.Value.ToString();
             draftCreatedInv.type = invoiceUbl.InvoiceTypeCode.Value.ToString();
-            //draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.ToString();
-            //  draftCreatedInv.sender = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.GetValue(0).ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
-            draftCreatedInv.status = ""; //simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
+            draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value.ToString();
+            draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value.ToString();
+            draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value.ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
+            draftCreatedInv.status = "Created"; //simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
             draftCreatedInv.content = xmlContent;
 
             Singl.databaseContextGet.Invoices.Add(draftCreatedInv);

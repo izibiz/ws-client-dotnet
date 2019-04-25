@@ -41,6 +41,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClear = new System.Windows.Forms.Button();
             this.grpboxTotal = new System.Windows.Forms.GroupBox();
+            this.txtNote = new System.Windows.Forms.RichTextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -48,11 +49,18 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtPayableAmount = new System.Windows.Forms.TextBox();
             this.txtTotalAmountWithTax = new System.Windows.Forms.TextBox();
-            this.txtKdvAmount = new System.Windows.Forms.TextBox();
+            this.txtTaxAmount = new System.Windows.Forms.TextBox();
             this.txtServiceAmount = new System.Windows.Forms.TextBox();
             this.grpboxRow = new System.Windows.Forms.GroupBox();
             this.btnRemoveRow = new System.Windows.Forms.Button();
             this.gridPrice = new System.Windows.Forms.DataGridView();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddRow = new System.Windows.Forms.Button();
             this.grpInvInformation = new System.Windows.Forms.GroupBox();
             this.cmbType = new System.Windows.Forms.ComboBox();
@@ -91,14 +99,6 @@
             this.txtTaxScheme = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.btnCreateUbl = new System.Windows.Forms.Button();
-            this.txtNote = new System.Windows.Forms.RichTextBox();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpboxTotal.SuspendLayout();
             this.grpboxRow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).BeginInit();
@@ -126,7 +126,7 @@
             this.grpboxTotal.Controls.Add(this.label15);
             this.grpboxTotal.Controls.Add(this.txtPayableAmount);
             this.grpboxTotal.Controls.Add(this.txtTotalAmountWithTax);
-            this.grpboxTotal.Controls.Add(this.txtKdvAmount);
+            this.grpboxTotal.Controls.Add(this.txtTaxAmount);
             this.grpboxTotal.Controls.Add(this.txtServiceAmount);
             this.grpboxTotal.Location = new System.Drawing.Point(9, 406);
             this.grpboxTotal.Name = "grpboxTotal";
@@ -134,6 +134,14 @@
             this.grpboxTotal.TabIndex = 8;
             this.grpboxTotal.TabStop = false;
             this.grpboxTotal.Text = "Toplam ve Not Bilgileri";
+            // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(65, 47);
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(251, 93);
+            this.txtNote.TabIndex = 4;
+            this.txtNote.Text = "";
             // 
             // label19
             // 
@@ -198,14 +206,14 @@
             this.txtTotalAmountWithTax.Size = new System.Drawing.Size(100, 20);
             this.txtTotalAmountWithTax.TabIndex = 1;
             // 
-            // txtKdvAmount
+            // txtTaxAmount
             // 
-            this.txtKdvAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtKdvAmount.Location = new System.Drawing.Point(747, 89);
-            this.txtKdvAmount.Name = "txtKdvAmount";
-            this.txtKdvAmount.ReadOnly = true;
-            this.txtKdvAmount.Size = new System.Drawing.Size(100, 20);
-            this.txtKdvAmount.TabIndex = 1;
+            this.txtTaxAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtTaxAmount.Location = new System.Drawing.Point(747, 89);
+            this.txtTaxAmount.Name = "txtTaxAmount";
+            this.txtTaxAmount.ReadOnly = true;
+            this.txtTaxAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtTaxAmount.TabIndex = 1;
             // 
             // txtServiceAmount
             // 
@@ -297,6 +305,62 @@
             this.gridPrice.Size = new System.Drawing.Size(712, 96);
             this.gridPrice.TabIndex = 5;
             this.gridPrice.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridPrice_CellValidating);
+            // 
+            // productName
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.productName.HeaderText = "ad";
+            this.productName.Name = "productName";
+            // 
+            // quantity
+            // 
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.quantity.HeaderText = "miktar";
+            this.quantity.Name = "quantity";
+            // 
+            // unit
+            // 
+            this.unit.HeaderText = "birim";
+            this.unit.Name = "unit";
+            // 
+            // unitPrice
+            // 
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.unitPrice.HeaderText = "birim fiyat";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // taxPercent
+            // 
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle6;
+            this.taxPercent.HeaderText = "kdv oranı";
+            this.taxPercent.Name = "taxPercent";
+            // 
+            // taxAmount
+            // 
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle7;
+            this.taxAmount.HeaderText = "kdv tutarı";
+            this.taxAmount.Name = "taxAmount";
+            this.taxAmount.ReadOnly = true;
+            // 
+            // total
+            // 
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.total.DefaultCellStyle = dataGridViewCellStyle8;
+            this.total.HeaderText = "toplam";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
             // 
             // btnAddRow
             // 
@@ -651,72 +715,9 @@
             this.btnCreateUbl.Name = "btnCreateUbl";
             this.btnCreateUbl.Size = new System.Drawing.Size(75, 23);
             this.btnCreateUbl.TabIndex = 10;
-            this.btnCreateUbl.Text = "button1";
+            this.btnCreateUbl.Text = "Olustur";
             this.btnCreateUbl.UseVisualStyleBackColor = true;
-            // 
-            // txtNote
-            // 
-            this.txtNote.Location = new System.Drawing.Point(65, 47);
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(251, 93);
-            this.txtNote.TabIndex = 4;
-            this.txtNote.Text = "";
-            // 
-            // productName
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.productName.HeaderText = "ad";
-            this.productName.Name = "productName";
-            // 
-            // quantity
-            // 
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.quantity.HeaderText = "miktar";
-            this.quantity.Name = "quantity";
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "birim";
-            this.unit.Name = "unit";
-            // 
-            // unitPrice
-            // 
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle5;
-            this.unitPrice.HeaderText = "birim fiyat";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // taxPercent
-            // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle6;
-            this.taxPercent.HeaderText = "kdv oranı";
-            this.taxPercent.Name = "taxPercent";
-            // 
-            // taxAmount
-            // 
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle7;
-            this.taxAmount.HeaderText = "kdv tutarı";
-            this.taxAmount.Name = "taxAmount";
-            this.taxAmount.ReadOnly = true;
-            // 
-            // total
-            // 
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.total.DefaultCellStyle = dataGridViewCellStyle8;
-            this.total.HeaderText = "toplam";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
+            this.btnCreateUbl.Click += new System.EventHandler(this.btnCreateUbl_Click);
             // 
             // FrmCreateInvoice
             // 
@@ -756,7 +757,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtPayableAmount;
         private System.Windows.Forms.TextBox txtTotalAmountWithTax;
-        private System.Windows.Forms.TextBox txtKdvAmount;
+        private System.Windows.Forms.TextBox txtTaxAmount;
         private System.Windows.Forms.TextBox txtServiceAmount;
         private System.Windows.Forms.GroupBox grpboxRow;
         private System.Windows.Forms.Label label13;

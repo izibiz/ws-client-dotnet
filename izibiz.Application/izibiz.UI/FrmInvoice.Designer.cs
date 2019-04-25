@@ -181,7 +181,7 @@
             this.btnIncomingInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnIncomingInvGetState.Location = new System.Drawing.Point(521, 19);
             this.btnIncomingInvGetState.Name = "btnIncomingInvGetState";
-            this.btnIncomingInvGetState.Size = new System.Drawing.Size(120, 35);
+            this.btnIncomingInvGetState.Size = new System.Drawing.Size(139, 35);
             this.btnIncomingInvGetState.TabIndex = 22;
             this.btnIncomingInvGetState.Text = "durum sorgula";
             this.btnIncomingInvGetState.UseVisualStyleBackColor = false;
@@ -195,7 +195,7 @@
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAccept.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAccept.Location = new System.Drawing.Point(75, 19);
+            this.btnAccept.Location = new System.Drawing.Point(216, 19);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(120, 35);
             this.btnAccept.TabIndex = 19;
@@ -211,7 +211,7 @@
             this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReject.Location = new System.Drawing.Point(216, 19);
+            this.btnReject.Location = new System.Drawing.Point(363, 19);
             this.btnReject.Name = "btnReject";
             this.btnReject.Size = new System.Drawing.Size(120, 35);
             this.btnReject.TabIndex = 20;
@@ -227,7 +227,7 @@
             this.btnDownInvIncoming.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDownInvIncoming.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnDownInvIncoming.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDownInvIncoming.Location = new System.Drawing.Point(363, 19);
+            this.btnDownInvIncoming.Location = new System.Drawing.Point(75, 19);
             this.btnDownInvIncoming.Name = "btnDownInvIncoming";
             this.btnDownInvIncoming.Size = new System.Drawing.Size(120, 35);
             this.btnDownInvIncoming.TabIndex = 21;
