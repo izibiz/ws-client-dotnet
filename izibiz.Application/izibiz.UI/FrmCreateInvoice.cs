@@ -361,8 +361,8 @@ namespace izibiz.UI
                 //xml olustur
                 string contentXml = Singl.invoiceControllerGet.CreateInvUblToXml(invoiceUbl).ToString();
                 //db ye kaydet
-              Singl.invoiceDALGet.insertDraftInvoice(invoiceUbl, contentXml);
-                Singl.invoiceDALGet.dbSaveChanges();
+              Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, contentXml);
+                Singl.invoiceDalGet.dbSaveChanges();
             }
             else  //bos eleman varsa
             {
