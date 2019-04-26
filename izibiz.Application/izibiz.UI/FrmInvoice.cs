@@ -134,6 +134,8 @@ namespace izibiz.UI
 
             tableGrid.Columns[EI.InvClmName.too.ToString()].HeaderText = Lang.to;
 
+            tableGrid.Columns[EI.InvClmName.draftFlag.ToString()].HeaderText = Lang.isDraftFlag;
+
         }
 
 
@@ -156,9 +158,14 @@ namespace izibiz.UI
                 addViewButtonToDatagridView();
                 tableGrid.DataSource = listInv;
                 dataGridChangeColoumnHeaderText();
+                
+                //gridde taslak faturaları lısletemıyorsak
+                if (!gridDirection.Equals(nameof(EI.InvDirection.DRAFT)))
+                {
+                    tableGrid.Columns[nameof(EI.InvClmName.draftFlag)].Visible = false;
+                }
 
                 tableGrid.Columns[nameof(EI.InvClmName.invType)].Visible = false;
-                tableGrid.Columns[nameof(EI.InvClmName.draftFlag)].Visible = false;
                 tableGrid.Columns[nameof(EI.InvClmName.state)].Visible = false;
                 tableGrid.Columns[nameof(EI.InvClmName.status)].Visible = false;
                 tableGrid.Columns[nameof(EI.InvClmName.gibStatusDescription)].Visible = false;
@@ -218,8 +225,8 @@ namespace izibiz.UI
             gridDirection = nameof(EI.InvDirection.OUT);
             try
             {
-                //web servıceden okunmamıs faturaları db ye yazdır db den cekılen lısteyı datagride aktar
-                gridUpdateList(Singl.invoiceControllerGet.getSentInvoice());
+                //db den cekılen lısteyı datagride aktar
+                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -253,9 +260,8 @@ namespace izibiz.UI
             gridDirection = nameof(EI.InvDirection.DRAFT);
             try
             {
-
                 //web servıceden okunmamıs faturaları db ye yazdır db den cekılen lısteyı datagride aktar
-                gridUpdateList(Singl.invoiceControllerGet.getDraftInvoice());
+                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -659,8 +665,8 @@ namespace izibiz.UI
         {
             try
             {
-                Singl.invoiceControllerGet.downloadInvoice();
-                MessageBox.Show(Lang.downInvSaveFolder); //Gelen faturalar 'D:\\temp\\GELEN\\' klasorune kaydedılmıstır
+                //servisten yenı faturaları cek db ye kaydet ve datagridde göster
+                gridUpdateList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.IN)));    
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -751,7 +757,7 @@ namespace izibiz.UI
 
 
 
-        private string updateInvWithNewId(string seriName, bool isSendInv)
+        private string updateInvWithNewId(string seriName,bool isSendWithZip ,bool isSendInv)
         {
             //verılmek ıstenen ıd on ekıye aıt yenı ıd serıal arr olusturulur
             string[] newIdArr = InvoiceIdSetSerilaze.createNewInvId(seriName, tableGrid.SelectedRows.Count);
@@ -759,29 +765,30 @@ namespace izibiz.UI
 
             foreach (DataGridViewRow row in tableGrid.SelectedRows)
             {
-                //getContentNewInvId fonk uuid ve directiona verilmisfaturanın cantentını db den getırır ve atanmak ıstenen yenı ıd yı xml e atar 
-                //yenı xml ı dondurur
-                //createInvContentCompress fonk yenı donen contentı  base64 tipinde inv olusturup ,ınvArr dizisıne aktarır
-                Singl.invoiceControllerGet.createInvContentCompress(
-                    Singl.invoiceControllerGet.getContentNewInvId(
-                       row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString(), nameof(EI.InvDirection.DRAFT), newIdArr[counter]));
+                string uuidRow = row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString();
 
-                //db'de secılı faturaya aıt yenı fatura  ıd'yi guncelle
-                Singl.invoiceDalGet.updateIdInv(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString(),
-                    nameof(EI.InvDirection.DRAFT), newIdArr[counter]);
+                //diskten kaydettıgım contentı cekıyorum
+                //bu contentdekı ıd yı  xmlChangeIdValue fonk ıle ıd degıstırıyorum
+                //ıd sı degıstırılmıs contentı ,ıstege gore zıpleyıp, ınvoiceliste aktarıyorum
+                Singl.invoiceControllerGet.createInvContentCompress(isSendWithZip,
+                    XmlSet.xmlChangeIdValue(
+                        Singl.invoiceControllerGet.getContentOnDisk(uuidRow, nameof(EI.InvDirection.DRAFT)), newIdArr[counter]));
 
 
-                if (isSendInv) ///send ınv ıse ınv type out yapılır
+                //DB 'DE SECİLİ İNVOİCE BILGILERINI GUNCELLE
+                Invoices invoice = Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.InvDirection.DRAFT));
+                invoice.ID = newIdArr[counter];
+                if (isSendInv) //send ınv ıse ınv direction out yapılır
                 {
-                    Singl.invoiceDalGet.changeInvDirection(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString(), nameof(EI.InvDirection.DRAFT), nameof(EI.InvDirection.OUT));
+                    invoice.invType = nameof(EI.InvDirection.OUT);
+                    invoice.state = nameof(EI.StateNote.SEND);
                 }
                 else //send ınv degılse (load) c date guncelle , durumu load succed yap ve gib code -1 yap
-                {
-                    Invoices invoice = Singl.invoiceDalGet.getInvoice(row.Cells[nameof(EI.InvClmName.uuid)].Value.ToString(), nameof(EI.InvDirection.DRAFT));
-
+                {                  
                     invoice.cDate= DateTime.Now;
                     invoice.status = nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED);
                     invoice.gibStatusCode= -1;
+                    invoice.state = nameof(EI.StateNote.LOAD);
                 }
 
                 counter++;
@@ -800,6 +807,14 @@ namespace izibiz.UI
                 string receiverVkn = tableGrid.SelectedRows[0].Cells[nameof(EI.InvClmName.receiverVkn)].Value.ToString();
                 List<string> listİtem = new List<string>();
                 listİtem.Add("j");
+
+                bool isSendWithZip = true;
+                //zipli gonderme kontrolu
+                if (rdWithUnzip.Checked) //ikisini de ısaretlememisse zipli gonderılır
+                {
+                    isSendWithZip = false;
+                }
+
 
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
@@ -830,10 +845,10 @@ namespace izibiz.UI
                         //gb  sectır
                         if (frmDialogIdSelectAlias.ShowDialog() == DialogResult.OK)
                         {
-                            string lastIdSerial = updateInvWithNewId(frmDialogSelectSeriName.selectedValue, true); //true degerı gonderıyoruz işlem bıttıkten sonra secılı ınvların direction out olacak
+                            string lastIdSerial = updateInvWithNewId(frmDialogSelectSeriName.selectedValue,isSendWithZip,true); //true degerı gonderıyoruz işlem bıttıkten sonra secılı ınvların direction out olacak
 
                             //send inv 
-                            if (Singl.invoiceControllerGet.sendInvoice(frmDialogIdSelectAlias.selectedValue) == 0)
+                            if (Singl.invoiceControllerGet.sendInvoice(frmDialogIdSelectAlias.selectedValue,isSendWithZip) == 0)
                             {
                                 //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
                                 Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(lastIdSerial);
@@ -869,23 +884,28 @@ namespace izibiz.UI
         {
             try
             {
+                bool isSendWithZip = true;
+                //zipli gonderme kontrolu
+                if (rdWithUnzip.Checked) //ikisini de isaretmemısse zıplı gonderılır
+                {
+                    isSendWithZip = false;
+                }
+
                 //db den getırılen serı Namelerı comboboxda sectır
                 FrmDialogSelectCombo frmDialogIdSeriName = new FrmDialogSelectCombo(Singl.invIdSerilazeDalGet.getSeriNames(), true);
                 if (frmDialogIdSeriName.ShowDialog() == DialogResult.OK)
                 {
-                    updateInvWithNewId(frmDialogIdSeriName.selectedValue, false); //load ınvda  direction degıstırmıyoruz o yuzden false
+                    updateInvWithNewId(frmDialogIdSeriName.selectedValue, false, isSendWithZip); //load ınvda  direction degıstırmıyoruz o yuzden false
 
-                    if (Singl.invoiceControllerGet.loadInvoice() == 0) //     int returnCode = 0 / basarılıysa
-                    {
-                        
-                        //db guncellemeleri kaydet
+                    if (Singl.invoiceControllerGet.loadInvoice(isSendWithZip) == 0) //     int returnCode = 0 / basarılıysa
+                    {                      
+                        //eger islem basarılı ise db guncellemeleri kaydet
                         Singl.invoiceDalGet.dbSaveChanges();
 
                         // db den cekılen taslak faturaları datagrıdde listele
                         gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
 
                         MessageBox.Show(Lang.successLoad);//"yukleme basarılı"
-
                     }
                 }
 
@@ -905,7 +925,17 @@ namespace izibiz.UI
             }
         }
 
+        private void btnTakeInvDraft_Click(object sender, EventArgs e)
+        {
+            //servisten yenı faturaları cek db ye kaydet ve datagridde göster
+            gridUpdateList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.DRAFT)));
+        }
 
+        private void btnTakeInvOut_Click(object sender, EventArgs e)
+        {
+            //servisten yenı faturaları cek db ye kaydet ve datagridde göster
+            gridUpdateList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.OUT)));
+        }
     }
 
 }

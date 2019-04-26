@@ -592,6 +592,7 @@
             this.msdVknTc.Name = "msdVknTc";
             this.msdVknTc.Size = new System.Drawing.Size(109, 20);
             this.msdVknTc.TabIndex = 5;
+            this.msdVknTc.Text = "4840847211";
             // 
             // label9
             // 

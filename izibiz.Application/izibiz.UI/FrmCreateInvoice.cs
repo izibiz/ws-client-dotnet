@@ -321,10 +321,10 @@ namespace izibiz.UI
         {
             switch (unitName)
             {
-                case nameof(EI.Unit.ADET): return "unıtKarsılık";
-                case nameof(EI.Unit.GRAM): return "unıtKarsılık";
-                case nameof(EI.Unit.KILO): return "unıtKarsılık";
-                case nameof(EI.Unit.PAKET): return "unıtKarsılık";
+                case nameof(EI.Unit.ADET): return "C62";
+                case nameof(EI.Unit.GRAM): return "GRM";
+                case nameof(EI.Unit.KILO): return "KGM";
+                case nameof(EI.Unit.PAKET): return "PA";
                 default: return "";
             }
         }
@@ -340,23 +340,23 @@ namespace izibiz.UI
 
                 //hesap acıp suplıer bılgılerı db den getirilecek
                 string webUrı = "j";
-                string partyName = "u";
-                string streetName = "u";
-                string buldingName = "u";
-                string buldingNumber = "u";
-                string visionName = "u";
-                string cityName = "u";
-                string postalZone = "u";
-                string country = "u";
-                string telephone = "u";
-                string fax = "u";
-                string mail = "u";
-                string mersisNo = "u";
-                string sicilNo = "u";
-                string senderVknTc = "22222222222";
-                string firstName = "u";
-                string familyName = "u";
-                string taxScheme = "u";
+                string partyName = "Deneme Ltd. Sti.";
+                string streetName = "a";
+                string buldingName = "b";
+                string buldingNumber = "c";
+                string visionName = "d";
+                string cityName = "e";
+                string postalZone = "f";
+                string country = "g";
+                string telephone = "h";
+                string fax = "ı";
+                string mail = "i";
+                string mersisNo = "MERSISNO";
+                string sicilNo = "ü";
+                string senderVknTc = "4840847211";
+                string firstName = "t";
+                string familyName = "v";
+                string taxScheme = "y";
 
                 CreateInvoiceUBL invoice = new CreateInvoiceUBL(cmbScenario.Text, cmbType.Text);
 
@@ -407,9 +407,9 @@ namespace izibiz.UI
 
                 var invoiceUbl = invoice.BaseUBL; //olusturdugumuz nesne ubl turune cevrılır
                 //xml olustur
-                string contentXml = Singl.invoiceControllerGet.createInvUblToXml(invoiceUbl).ToString();
+                string xmlPath = Singl.invoiceControllerGet.createInvUblToXml(invoiceUbl).ToString();
                 //db ye kaydet
-                Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, contentXml);
+                Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
                 Singl.invoiceDalGet.dbSaveChanges();
 
                 MessageBox.Show("taslak faturalara kaydedıldı");

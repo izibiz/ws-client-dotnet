@@ -43,15 +43,17 @@
             this.btnReject = new System.Windows.Forms.Button();
             this.btnTakeInvIn = new System.Windows.Forms.Button();
             this.panelSentInv = new System.Windows.Forms.Panel();
+            this.btnTakeInvOut = new System.Windows.Forms.Button();
             this.btnFaultyInvoices = new System.Windows.Forms.Button();
             this.btnSentInvAgainSent = new System.Windows.Forms.Button();
             this.btnSentInvGetState = new System.Windows.Forms.Button();
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.panelDraftInv = new System.Windows.Forms.Panel();
+            this.btnTakeInvDraft = new System.Windows.Forms.Button();
             this.btnLoadPortal = new System.Windows.Forms.Button();
             this.btnSendDraftInv = new System.Windows.Forms.Button();
-            this.btnTakeInvDraft = new System.Windows.Forms.Button();
-            this.btnTakeInvOut = new System.Windows.Forms.Button();
+            this.rdWithUnzip = new System.Windows.Forms.RadioButton();
+            this.rdWithZip = new System.Windows.Forms.RadioButton();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
@@ -249,6 +251,22 @@
             this.panelSentInv.TabIndex = 18;
             this.panelSentInv.Visible = false;
             // 
+            // btnTakeInvOut
+            // 
+            this.btnTakeInvOut.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnTakeInvOut.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnTakeInvOut.FlatAppearance.BorderSize = 2;
+            this.btnTakeInvOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTakeInvOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTakeInvOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnTakeInvOut.Location = new System.Drawing.Point(75, 14);
+            this.btnTakeInvOut.Name = "btnTakeInvOut";
+            this.btnTakeInvOut.Size = new System.Drawing.Size(120, 35);
+            this.btnTakeInvOut.TabIndex = 25;
+            this.btnTakeInvOut.Text = "fatura al";
+            this.btnTakeInvOut.UseVisualStyleBackColor = false;
+            this.btnTakeInvOut.Click += new System.EventHandler(this.btnTakeInvOut_Click);
+            // 
             // btnFaultyInvoices
             // 
             this.btnFaultyInvoices.BackColor = System.Drawing.Color.CadetBlue;
@@ -310,6 +328,8 @@
             // 
             // panelDraftInv
             // 
+            this.panelDraftInv.Controls.Add(this.rdWithZip);
+            this.panelDraftInv.Controls.Add(this.rdWithUnzip);
             this.panelDraftInv.Controls.Add(this.btnTakeInvDraft);
             this.panelDraftInv.Controls.Add(this.btnLoadPortal);
             this.panelDraftInv.Controls.Add(this.btnSendDraftInv);
@@ -318,6 +338,22 @@
             this.panelDraftInv.Size = new System.Drawing.Size(804, 69);
             this.panelDraftInv.TabIndex = 19;
             this.panelDraftInv.Visible = false;
+            // 
+            // btnTakeInvDraft
+            // 
+            this.btnTakeInvDraft.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnTakeInvDraft.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnTakeInvDraft.FlatAppearance.BorderSize = 2;
+            this.btnTakeInvDraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTakeInvDraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTakeInvDraft.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnTakeInvDraft.Location = new System.Drawing.Point(75, 19);
+            this.btnTakeInvDraft.Name = "btnTakeInvDraft";
+            this.btnTakeInvDraft.Size = new System.Drawing.Size(120, 35);
+            this.btnTakeInvDraft.TabIndex = 26;
+            this.btnTakeInvDraft.Text = "fatura al";
+            this.btnTakeInvDraft.UseVisualStyleBackColor = false;
+            this.btnTakeInvDraft.Click += new System.EventHandler(this.btnTakeInvDraft_Click);
             // 
             // btnLoadPortal
             // 
@@ -351,35 +387,27 @@
             this.btnSendDraftInv.UseVisualStyleBackColor = false;
             this.btnSendDraftInv.Click += new System.EventHandler(this.btnSendDraftInv_Click);
             // 
-            // btnTakeInvDraft
+            // rdWithUnzip
             // 
-            this.btnTakeInvDraft.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeInvDraft.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeInvDraft.FlatAppearance.BorderSize = 2;
-            this.btnTakeInvDraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeInvDraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeInvDraft.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeInvDraft.Location = new System.Drawing.Point(75, 19);
-            this.btnTakeInvDraft.Name = "btnTakeInvDraft";
-            this.btnTakeInvDraft.Size = new System.Drawing.Size(120, 35);
-            this.btnTakeInvDraft.TabIndex = 26;
-            this.btnTakeInvDraft.Text = "fatura al";
-            this.btnTakeInvDraft.UseVisualStyleBackColor = false;
+            this.rdWithUnzip.AutoSize = true;
+            this.rdWithUnzip.Location = new System.Drawing.Point(504, 28);
+            this.rdWithUnzip.Name = "rdWithUnzip";
+            this.rdWithUnzip.Size = new System.Drawing.Size(50, 17);
+            this.rdWithUnzip.TabIndex = 20;
+            this.rdWithUnzip.TabStop = true;
+            this.rdWithUnzip.Text = "zipsiz";
+            this.rdWithUnzip.UseVisualStyleBackColor = true;
             // 
-            // btnTakeInvOut
+            // rdWithZip
             // 
-            this.btnTakeInvOut.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeInvOut.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeInvOut.FlatAppearance.BorderSize = 2;
-            this.btnTakeInvOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeInvOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeInvOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeInvOut.Location = new System.Drawing.Point(75, 14);
-            this.btnTakeInvOut.Name = "btnTakeInvOut";
-            this.btnTakeInvOut.Size = new System.Drawing.Size(120, 35);
-            this.btnTakeInvOut.TabIndex = 25;
-            this.btnTakeInvOut.Text = "fatura al";
-            this.btnTakeInvOut.UseVisualStyleBackColor = false;
+            this.rdWithZip.AutoSize = true;
+            this.rdWithZip.Location = new System.Drawing.Point(576, 28);
+            this.rdWithZip.Name = "rdWithZip";
+            this.rdWithZip.Size = new System.Drawing.Size(42, 17);
+            this.rdWithZip.TabIndex = 27;
+            this.rdWithZip.TabStop = true;
+            this.rdWithZip.Text = "zipli";
+            this.rdWithZip.UseVisualStyleBackColor = true;
             // 
             // FrmInvoice
             // 
@@ -405,6 +433,7 @@
             this.panelSentInv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
             this.panelDraftInv.ResumeLayout(false);
+            this.panelDraftInv.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,5 +465,7 @@
         private System.Windows.Forms.Button btnLoadPortal;
         private System.Windows.Forms.Button btnTakeInvOut;
         private System.Windows.Forms.Button btnTakeInvDraft;
+        private System.Windows.Forms.RadioButton rdWithZip;
+        private System.Windows.Forms.RadioButton rdWithUnzip;
     }
 }

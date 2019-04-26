@@ -6,6 +6,7 @@ using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,24 +87,10 @@ namespace izibiz.CONTROLLER.Dal
         }
 
 
-        /*   public InvoicesTable[] getInvoiceArr(string[] uuid, string direction)
-           {
-               List<InvoicesTable> listInv = new List<InvoicesTable>();
-
-               for (int i=0;i<uuid.Length;i++)
-               {
-                   InvoicesTable invoice = Singl.databaseContextGet.Invoices.Where(x => x.invType == direction
-                             && x.Uuid == uuid[i]).First();
-
-                   listInv.Add(invoice);
-               }
-
-               return listInv.ToArray();
-           }*/
+      
 
 
-
-        public void insertDraftInvoice(InvoiceType invoiceUbl, string xmlContent)
+        public void insertDraftInvoice(InvoiceType invoiceUbl, string xmlPath)
         {
             Invoices draftCreatedInv = new Invoices();
 
@@ -117,8 +104,11 @@ namespace izibiz.CONTROLLER.Dal
             draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value.ToString();
             draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value.ToString();
             draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value.ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
-            draftCreatedInv.status = "Created"; //simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
-            draftCreatedInv.content = xmlContent;
+            draftCreatedInv.status = "";//simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
+            draftCreatedInv.state = nameof(EI.StateNote.CREATED);
+            draftCreatedInv.draftFlag = nameof(EI.ActiveOrPasive.N);//bizim olusturdugumuz fatura flag N
+            draftCreatedInv.content =File.ReadAllText(xmlPath, Encoding.UTF8);
+            draftCreatedInv.folderPath = xmlPath;
 
             Singl.databaseContextGet.Invoices.Add(draftCreatedInv);
         }

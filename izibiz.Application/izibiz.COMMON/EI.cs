@@ -151,6 +151,11 @@ namespace izibiz.COMMON
             ALL
         }
 
-
+        public enum StateNote
+        {
+           CREATED,
+           LOAD,
+           SEND
+        }
     }
 }
