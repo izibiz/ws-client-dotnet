@@ -322,6 +322,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Servisten Gelme Durumu.
+        /// </summary>
+        public static string isDraftFlag {
+            get {
+                return ResourceManager.GetString("isDraftFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IHRAC TARIH.
         /// </summary>
         public static string issueDate {

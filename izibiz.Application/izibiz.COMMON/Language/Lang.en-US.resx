@@ -336,4 +336,7 @@
   <data name="selectAlias" xml:space="preserve">
     <value>Please select a receiver mailbox.</value>
   </data>
+  <data name="isDraftFlag" xml:space="preserve">
+    <value>From Service Status</value>
+  </data>
 </root>

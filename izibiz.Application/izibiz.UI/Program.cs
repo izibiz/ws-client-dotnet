@@ -22,7 +22,7 @@ namespace izibiz.UI
             a = ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCreateInvoice());
+            Application.Run(new FrmLogin());
         }
     }
 }

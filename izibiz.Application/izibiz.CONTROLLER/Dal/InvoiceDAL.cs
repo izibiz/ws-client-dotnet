@@ -6,6 +6,7 @@ using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,8 @@ namespace izibiz.CONTROLLER.Dal
             Singl.databaseContextGet.Invoices.Where(inv => inv.invType == direction
             && inv.uuid == uuid).First().ID = newId;
         }
+
+
 
         public void updateInvState(string uuid, string direction, GetInvoiceStatusResponseINVOICE_STATUS invStatusResponse)
         {
@@ -84,24 +87,10 @@ namespace izibiz.CONTROLLER.Dal
         }
 
 
-        /*   public InvoicesTable[] getInvoiceArr(string[] uuid, string direction)
-           {
-               List<InvoicesTable> listInv = new List<InvoicesTable>();
-
-               for (int i=0;i<uuid.Length;i++)
-               {
-                   InvoicesTable invoice = Singl.databaseContextGet.Invoices.Where(x => x.invType == direction
-                             && x.Uuid == uuid[i]).First();
-
-                   listInv.Add(invoice);
-               }
-
-               return listInv.ToArray();
-           }*/
+      
 
 
-
-        public void insertDraftInvoice(InvoiceType invoiceUbl, string xmlContent)
+        public void insertDraftInvoice(InvoiceType invoiceUbl, string xmlPath)
         {
             Invoices draftCreatedInv = new Invoices();
 
@@ -112,10 +101,14 @@ namespace izibiz.CONTROLLER.Dal
             draftCreatedInv.issueDate = Convert.ToDateTime(invoiceUbl.IssueDate.Value);
             draftCreatedInv.profileid = invoiceUbl.ProfileID.Value.ToString();
             draftCreatedInv.type = invoiceUbl.InvoiceTypeCode.Value.ToString();
-            //draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.ToString();
-            //  draftCreatedInv.sender = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.GetValue(0).ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
-            draftCreatedInv.status = ""; //simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
-            draftCreatedInv.content = xmlContent;
+            draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value.ToString();
+            draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value.ToString();
+            draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value.ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
+            draftCreatedInv.status = "";//simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
+            draftCreatedInv.state = nameof(EI.StateNote.CREATED);
+            draftCreatedInv.draftFlag = nameof(EI.ActiveOrPasive.N);//bizim olusturdugumuz fatura flag N
+            draftCreatedInv.content =File.ReadAllText(xmlPath, Encoding.UTF8);
+            draftCreatedInv.folderPath = xmlPath;
 
             Singl.databaseContextGet.Invoices.Add(draftCreatedInv);
         }

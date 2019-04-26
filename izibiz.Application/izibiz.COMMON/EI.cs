@@ -90,6 +90,7 @@ namespace izibiz.COMMON
             receiverVkn,
             cDate,
             envelopeIdentifier,
+            state,
             status,
             statusDesc,
             gibStatusCode,
@@ -97,6 +98,7 @@ namespace izibiz.COMMON
             fromm,
             too,
             content,
+            folderPath,
             draftFlag
         }
 
@@ -140,6 +142,20 @@ namespace izibiz.COMMON
         {
             VKN,
             TCKN
+        }
+
+        public enum ProductType
+        {
+           INVOICE,
+            DESPATCHADVICE,
+            ALL
+        }
+
+        public enum StateNote
+        {
+           CREATED,
+           LOAD,
+           SEND
         }
     }
 }

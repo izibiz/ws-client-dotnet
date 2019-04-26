@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using izibiz.COMMON;
+using izibiz.CONTROLLER.InvoiceRequestSection;
 using izibiz.SERVICES.serviceAuth;
 
 
@@ -12,14 +15,14 @@ namespace izibiz.CONTROLLER.Web_Services
     public class AuthenticationController
     {
 
-        AuthenticationServicePortClient Auth;
+        AuthenticationServicePortClient authenticationPortClient;
         REQUEST_HEADERType authRequestHeader;
         public static string sesionID;
 
 
         public AuthenticationController()
         {
-            Auth = new AuthenticationServicePortClient();
+            authenticationPortClient = new AuthenticationServicePortClient();
         }
 
         private  REQUEST_HEADERType createAuthRequestHeader()
@@ -42,12 +45,12 @@ namespace izibiz.CONTROLLER.Web_Services
                 USER_NAME = usurname,
                 PASSWORD = password
             };
-            LoginResponse loginRes = Auth.Login(req);
+            LoginResponse loginRes = authenticationPortClient.Login(req);
 
             if (loginRes.ERROR_TYPE == null)
             {
                 sesionID = loginRes.SESSION_ID;
-                RequestHeader.createRequestHeader();
+                RequestHeaderOib.getRequestHeaderOib();
                 return true;
             }
             else
@@ -59,7 +62,22 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
+        public void getGibUserList()
+        {
+            using (new OperationContextScope(authenticationPortClient.InnerChannel))
+            {
+                GetGibUserListRequest req = new GetGibUserListRequest();
 
+                req.REQUEST_HEADER = RequestHeaderAuth.getRequestHeaderAuth;
+                req.TYPE = GetGibUserListRequestTYPE.XML;
+                req.DOCUMENT_TYPE = nameof(EI.ProductType.INVOICE);
+
+                GetGibUserListResponse getUserListRes = authenticationPortClient.GetGibUserList(req);
+
+                //servısten cekılen verıyı db ye kaydet
+
+            }
+        }
 
 
 

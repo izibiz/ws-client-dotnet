@@ -69,9 +69,10 @@
     <Compile Include="Dal\IdSerilazeDAL.cs" />
     <Compile Include="Dal\InvoiceDAL.cs" />
     <Compile Include="InvoiceIdSetSerilaze.cs" />
-    <Compile Include="InvoiceSearchKey.cs" />
+    <Compile Include="InvoiceRequestSection\InvoiceSearchKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestHeader.cs" />
+    <Compile Include="InvoiceRequestSection\RequestHeaderOib.cs" />
+    <Compile Include="InvoiceRequestSection\RequestHeaderAuth.cs" />
     <Compile Include="Singleton\Singl.cs">
       <Generator>public</Generator>
     </Compile>

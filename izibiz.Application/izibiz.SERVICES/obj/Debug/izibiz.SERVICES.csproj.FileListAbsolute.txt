@@ -71,3 +71,15 @@ C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\D
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CopyComplete
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll.config
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\bin\Debug\izibiz.SERVICES.pdb
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csprojAssemblyReference.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CoreCompileInputs.cache
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.csproj.CopyComplete
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.dll
+C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.SERVICES\obj\Debug\izibiz.SERVICES.pdb

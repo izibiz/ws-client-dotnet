@@ -72,6 +72,8 @@ namespace izibiz.MODEL.Models
         [Column(Name = nameof(EI.InvClmName.envelopeIdentifier), DbType = "NVARCHAR")]
         public string envelopeIdentifier { get; set; }
 
+        [Column(Name = nameof(EI.InvClmName.state), DbType = "NVARCHAR")]
+        public string state { get; set; }
 
         [Column(Name = nameof(EI.InvClmName.status), DbType = "NVARCHAR")]
         public string status { get; set; }
@@ -99,6 +101,9 @@ namespace izibiz.MODEL.Models
 
         [Column(Name = nameof(EI.InvClmName.content), DbType = "NVARCHAR")]
         public string content { get; set; }
+
+        [Column(Name = nameof(EI.InvClmName.folderPath), DbType = "NVARCHAR")]
+        public string folderPath { get; set; }
     }
 
 

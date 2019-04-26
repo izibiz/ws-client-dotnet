@@ -339,4 +339,7 @@
   <data name="selectAlias" xml:space="preserve">
     <value>Lütfen bir alıcı posta kutusu seçiniz.</value>
   </data>
+  <data name="isDraftFlag" xml:space="preserve">
+    <value>Servisten Gelme Durumu</value>
+  </data>
 </root>
