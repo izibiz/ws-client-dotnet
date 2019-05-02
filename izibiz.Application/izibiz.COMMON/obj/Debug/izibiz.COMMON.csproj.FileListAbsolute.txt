@@ -66,3 +66,4 @@ C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Deb
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.Compression.Base.xml
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.OCRProcessor.Base.xml
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.Pdf.Base.xml
+

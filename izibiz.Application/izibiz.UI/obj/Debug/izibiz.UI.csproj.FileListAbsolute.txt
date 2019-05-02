@@ -252,6 +252,7 @@ C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\i
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.CopyComplete
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.exe
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.pdb
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmDialogSelectCombo.resources
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.UI\bin\Debug\izibiz.UI.exe.config
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.UI\bin\Debug\izibiz.UI.exe
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.UI\bin\Debug\izibiz.UI.pdb

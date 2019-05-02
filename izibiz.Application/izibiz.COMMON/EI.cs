@@ -92,6 +92,7 @@ namespace izibiz.COMMON
             cDate,
             envelopeIdentifier,
             stateNote,
+            state,
             status,
             statusDesc,
             gibStatusCode,
@@ -101,7 +102,8 @@ namespace izibiz.COMMON
             content,
             folderPath,
             draftFlag,
-            draftFlagDesc
+            draftFlagDesc,
+            draftFlag
         }
 
 
@@ -206,6 +208,7 @@ namespace izibiz.COMMON
         public enum ProductType
         {
             INVOICE,
+           INVOICE,
             DESPATCHADVICE,
             ALL
         }
@@ -213,7 +216,10 @@ namespace izibiz.COMMON
         public enum StateNote
         {
             CREATED,         
-            SENDRESPONSE
+            SENDRESPONSE,
+           CREATED,
+           LOAD,
+           SEND
         }
     }
 }
