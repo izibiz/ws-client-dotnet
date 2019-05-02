@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://schemas.i2i.com/ei/entity" xmlns:c="http://schemas.i2i.com/ei/common" targetNamespace="http://schemas.i2i.com/ei/entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIArchiveWS/EFaturaArchive?xsd=6" namespace="http://schemas.i2i.com/ei/common" />
+  <xs:complexType name="REQUEST_HEADERType">
+    <xs:annotation>
+      <xs:documentation>Request related information context including data
+				such as TRANSACTION_ID, USER_ID etc.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" name="SESSION_ID">
+        <xs:annotation>
+          <xs:documentation>Initiating domain Transaction ID of the action
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string" />
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="CLIENT_TXN_ID">
+        <xs:annotation>
+          <xs:documentation>Initiating domain Transaction ID of the action
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="INTL_TXN_ID" type="xs:long">
+        <xs:annotation>
+          <xs:documentation>Internal Transaction ID
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="INTL_PARENT_TXN_ID" type="xs:long">
+        <xs:annotation>
+          <xs:documentation>Parent Transaction ID
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ACTION_DATE" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Action Date provided by client system
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CHANGE_INFO" type="c:CHANGE_INFOType">
+        <xs:annotation>
+          <xs:documentation>See CHANGE_INFO type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="REASON">
+        <xs:annotation>
+          <xs:documentation>Reason of the Action</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:minLength value="1" />
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="APPLICATION_NAME">
+        <xs:annotation>
+          <xs:documentation>Application Name</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:minLength value="1" />
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="HOSTNAME">
+        <xs:annotation>
+          <xs:documentation>Initiating host name or IP address
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:maxLength value="64" />
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="CHANNEL_NAME">
+        <xs:annotation>
+          <xs:documentation>Initiating domain channel name of the action
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:minLength value="1" />
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="SIMULATION_FLAG" type="xs:token">
+        <xs:annotation>
+          <xs:documentation>A true or yes indicates that the request will be
+						executed but not committed
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="COMPRESSED" type="xs:token">
+        <xs:annotation>
+          <xs:documentation>Indicates parent message contains compressed
+						content
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" default="SIGNED" name="SIGN_STATUS">
+        <xs:annotation>
+          <xs:documentation>Sign</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="SIGNED" />
+            <xs:enumeration value="SIGN_BY_CLIENTCER_TIFICATE" />
+            <xs:enumeration value="SIGN_BY_ENTEGRATOR_CERTIFICATE" />
+            <xs:enumeration value="NOSIGN" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ATTRIBUTES" type="c:ATTRIBUTESTYPE">
+        <xs:annotation>
+          <xs:documentation>Attributes array that composed by name-value
+						pairs using for information manners.
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="REQUEST_RETURNType">
+    <xs:annotation>
+      <xs:documentation>Request response related context information
+				including data such as RETURN_CODE, DETAILED_RESULT information etc.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="INTL_TXN_ID" type="xs:long">
+        <xs:annotation>
+          <xs:documentation>Internal TXN ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CLIENT_TXN_ID">
+        <xs:annotation>
+          <xs:documentation>Initiating domain Transaction ID of the action
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="RETURN_CODE">
+        <xs:annotation>
+          <xs:documentation>Numeric return code of the action. 0: success,
+						negative: failure, positive: success with warning
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int" />
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WARNINGS" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="REQUEST_ERRORType">
+    <xs:annotation>
+      <xs:documentation>This will be fault type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="INTL_TXN_ID" type="xs:long">
+        <xs:annotation>
+          <xs:documentation>Internal TXN ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="TXN_ID">
+        <xs:annotation>
+          <xs:documentation>Initiating domain Transaction ID of the action
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ERROR_CODE">
+        <xs:annotation>
+          <xs:documentation>Error Code</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="-99999" />
+            <xs:maxInclusive value="99999" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ERROR_SHORT_DES">
+        <xs:annotation>
+          <xs:documentation>Error Short Description</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token" />
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ERROR_LONG_DES">
+        <xs:annotation>
+          <xs:documentation>Error Long Description</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token" />
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="STACKTRACE" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This is printStackTrace output...
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ERROR_ELEMENT_INDEX" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>In case of multiple requests this is the failing
+						element index
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="REQUEST_INFOType">
+    <xs:annotation>
+      <xs:documentation>Detailed Information about the status of a request
+			</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="REQUEST_HEADER" type="REQUEST_HEADERType">
+        <xs:annotation>
+          <xs:documentation>See REQUEST_HEADER type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="REQUEST_RETURN" type="REQUEST_RETURNType">
+        <xs:annotation>
+          <xs:documentation>See REQUEST_RETURNType</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="REQUEST_ERROR" type="REQUEST_ERRORType">
+        <xs:annotation>
+          <xs:documentation>See REQUEST_ERRORType</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -366,4 +366,16 @@
   <data name="addedsucc" xml:space="preserve">
     <value>Succesful Added</value>
   </data>
+  <data name="eArchiveDraftInvoices" xml:space="preserve">
+    <value>E Archive Draft Invoices</value>
+  </data>
+  <data name="eArchiveDraftInvoicesList" xml:space="preserve">
+    <value>E Archive Draft Invoices List</value>
+  </data>
+  <data name="eArchiveInvoices" xml:space="preserve">
+    <value>E Archive Invoices</value>
+  </data>
+  <data name="eArchiveInvoicesList" xml:space="preserve">
+    <value>E Archive Invoices List</value>
+  </data>
 </root>

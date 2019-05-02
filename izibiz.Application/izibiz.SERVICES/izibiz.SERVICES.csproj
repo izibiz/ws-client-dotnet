@@ -50,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\serviceArchive\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\serviceAuth\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,6 +72,151 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\serviceArchive\EFaturaArchive.wsdl" />
+    <None Include="Connected Services\serviceArchive\EFaturaArchive.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\EFaturaArchive1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\EFaturaArchive2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\EFaturaArchive3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\EFaturaArchive4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\EFaturaArchive5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\EFaturaArchive6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\EFaturaArchive7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveGenericDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveGenericDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveGetInvoiceInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveGetInvoiceInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveInvoiceCopyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveInvoiceExtendedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveInvoiceReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ArchiveInvoiceWriteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.CancelEArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.CancelEArchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.CancelEDefterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.CancelEDefterResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.CopyToArchiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.EArchiveInvoiceCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.EArchiveInvoiceCountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GenericReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GenericReadResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveInvoiceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveInvoiceListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveInvoiceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveInvoiceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEmailEarchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEmailEarchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetGenericArchiveByPeriodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetGenericArchiveByPeriodResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetGenericArchiveStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetGenericArchiveStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.MarkEArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.MarkEArchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ReadEArchiveReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ReadEArchiveReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.ReadFromArchiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.SendSmsEarchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.SendSmsEarchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.WriteToArchiveExtendedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.WriteToArchiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceAuth\AuthenticationService.wsdl" />
     <None Include="Connected Services\serviceAuth\AuthenticationWS.xsd">
       <SubType>Designer</SubType>
@@ -110,17 +260,17 @@
     <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.LogoutResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB.wsdl" />
-    <None Include="Connected Services\serviceOib\EFaturaOIB.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB1.wsdl" />
+    <None Include="Connected Services\serviceOib\EFaturaOIB4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB1.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB2.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceOib\EFaturaOIB3.xsd">
+    <None Include="Connected Services\serviceOib\EFaturaOIB43.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.base64Binary.datasource">
@@ -243,6 +393,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\serviceArchive\" />
     <WCFMetadataStorage Include="Connected Services\serviceAuth\" />
     <WCFMetadataStorage Include="Connected Services\serviceOib\" />
   </ItemGroup>
@@ -266,6 +417,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceOib\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceArchive\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceArchive\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceArchive\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

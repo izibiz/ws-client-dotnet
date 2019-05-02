@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ad6cff4-bf13-4627-a43b-827a61fb33d4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EFaturaArchive.xsd" MetadataType="Schema" ID="a5823782-3073-47ce-9ce6-2544839537f7" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=2" />
+    <MetadataFile FileName="EFaturaArchive1.xsd" MetadataType="Schema" ID="007747e7-7a19-4882-8728-0e4806f216ad" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=1" />
+    <MetadataFile FileName="EFaturaArchive2.xsd" MetadataType="Schema" ID="ce9d22d3-4fc7-469a-904f-049d1ee8f5b1" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=6" />
+    <MetadataFile FileName="EFaturaArchive3.xsd" MetadataType="Schema" ID="bbab65c4-7628-4ee7-925c-4c15a9f89fa4" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=7" />
+    <MetadataFile FileName="EFaturaArchive4.xsd" MetadataType="Schema" ID="221af347-d31a-4c40-a25d-f2033f857f8b" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=4" />
+    <MetadataFile FileName="EFaturaArchive5.xsd" MetadataType="Schema" ID="ffd5e09e-e24b-4962-a662-7897d78b75f8" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=5" />
+    <MetadataFile FileName="EFaturaArchive6.xsd" MetadataType="Schema" ID="faf9558d-f701-4925-940c-8dd1b0b6833d" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=8" />
+    <MetadataFile FileName="EFaturaArchive.wsdl" MetadataType="Wsdl" ID="e9ddb6b1-17b7-4e38-8ba8-92768994bb63" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?wsdl" />
+    <MetadataFile FileName="EFaturaArchive7.xsd" MetadataType="Schema" ID="439935df-27da-4bc8-91d4-af398c6fe250" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIArchiveWS/EFaturaArchive?xsd=3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

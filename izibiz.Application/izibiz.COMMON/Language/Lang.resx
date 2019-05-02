@@ -372,4 +372,16 @@
   <data name="valueAlreadyAdded" xml:space="preserve">
     <value>Eklemek istediğiniz deger zaten eklenmiş</value>
   </data>
+  <data name="eArchiveDraftInvoices" xml:space="preserve">
+    <value>E Arşiv Taslak Faturaları</value>
+  </data>
+  <data name="eArchiveDraftInvoicesList" xml:space="preserve">
+    <value>E Arşiv Taslak Faturaları Listele</value>
+  </data>
+  <data name="eArchiveInvoices" xml:space="preserve">
+    <value>E Arşiv Faturaları</value>
+  </data>
+  <data name="eArchiveInvoicesList" xml:space="preserve">
+    <value>E Arşiv Faturaları Listele</value>
+  </data>
 </root>

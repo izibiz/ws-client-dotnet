@@ -29,6 +29,7 @@ namespace izibiz.UI
                 cmbSeriNames.DataSource =  Singl.invIdSerilazeDalGet.getSeriNames();
                 linkLblAddSeriName.Text = Lang.addSeriName;
                 btnAddSeriName.Text = Lang.add;
+                linkLblAddSeriName.Visible = true;
             }
             else //alias sectiriceksek
             {

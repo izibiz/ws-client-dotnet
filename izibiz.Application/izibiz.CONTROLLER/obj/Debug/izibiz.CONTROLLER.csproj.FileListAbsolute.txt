@@ -118,8 +118,6 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLL
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.MODEL.dll.config
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.SERVICES.pdb
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.SERVICES.dll.config
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\Ionic.Zip.pdb
-C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\Ionic.Zip.xml
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\System.Data.SQLite.xml
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.csproj.CopyComplete
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\EntityFramework.dll

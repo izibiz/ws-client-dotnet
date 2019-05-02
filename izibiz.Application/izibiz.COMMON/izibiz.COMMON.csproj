@@ -69,7 +69,7 @@
   <ItemGroup>
     <Compile Include="FileControl\Compress.cs" />
     <Compile Include="FileControl\FolderControl.cs" />
-    <Compile Include="FileControl\Xml.cs" />
+    <Compile Include="FileControl\XmlControl.cs" />
     <Compile Include="Language\Lang.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,9 +87,6 @@
     <Compile Include="Ubl-Tr\Xslt.cs" />
     <Compile Include="UBLCreate\CreateInvoiceUBL.cs" />
     <Compile Include="UblSerializer\InvoiceSerializer.cs" />
-    <Compile Include="XmlSet.cs" />
-    <Compile Include="File\Compress.cs" />
-    <Compile Include="File\Folder.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

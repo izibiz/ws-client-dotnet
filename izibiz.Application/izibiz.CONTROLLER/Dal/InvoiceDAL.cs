@@ -114,13 +114,11 @@ namespace izibiz.CONTROLLER.DAL
             draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value.ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
             draftCreatedInv.status = "";//simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
             draftCreatedInv.stateNote = nameof(EI.StateNote.CREATED);
-            draftCreatedInv.state = nameof(EI.StateNote.CREATED);
             draftCreatedInv.draftFlag = nameof(EI.ActiveOrPasive.N);//bizim olusturdugumuz fatura flag N
             draftCreatedInv.content =File.ReadAllText(xmlPath, Encoding.UTF8);
             draftCreatedInv.folderPath = xmlPath;
 
             Singl.databaseContextGet.invoices.Add(draftCreatedInv);
-            Singl.databaseContextGet.Invoices.Add(draftCreatedInv);
         }
 
 

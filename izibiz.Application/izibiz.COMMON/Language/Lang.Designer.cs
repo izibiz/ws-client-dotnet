@@ -178,6 +178,42 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E Arşiv Taslak Faturaları.
+        /// </summary>
+        public static string eArchiveDraftInvoices {
+            get {
+                return ResourceManager.GetString("eArchiveDraftInvoices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E Arşiv Taslak Faturaları Listele.
+        /// </summary>
+        public static string eArchiveDraftInvoicesList {
+            get {
+                return ResourceManager.GetString("eArchiveDraftInvoicesList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E Arşiv Faturaları.
+        /// </summary>
+        public static string eArchiveInvoices {
+            get {
+                return ResourceManager.GetString("eArchiveInvoices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E Arşiv Faturaları Listele.
+        /// </summary>
+        public static string eArchiveInvoicesList {
+            get {
+                return ResourceManager.GetString("eArchiveInvoicesList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-İrsailye.
         /// </summary>
         public static string eDispatch {

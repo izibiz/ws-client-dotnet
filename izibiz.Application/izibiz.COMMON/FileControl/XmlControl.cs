@@ -12,15 +12,18 @@ using TallComponents.PDF.Layout;
 
 namespace izibiz.COMMON.FileControl
 {
-  public  class Xml
+    public class XmlControl
     {
         /// <summary>
         /// VERİLEN PATHDEKI XMLIN ICINDEKI ID YI DEGISTIRIR,  XML PATH DONER
         /// </summary>
         /// <returns> XML STRING </returns>
         public static string xmlChangeIdValue(string xmlPath, string newInvId)
-        {      
-            XDocument doc = XDocument.Parse( System.IO.File.ReadAllText(xmlPath, Encoding.UTF8) );
+        {
+        //    newInvId = DateTime.Now.ToString();
+
+
+            XDocument doc = XDocument.Parse(System.IO.File.ReadAllText(xmlPath, Encoding.UTF8));
 
             foreach (XElement element in doc.Descendants()/*.Where(
                    e => e.Name.LocalName.ToString().Equals("ID")
@@ -34,17 +37,17 @@ namespace izibiz.COMMON.FileControl
                    && element.Parent.Name.LocalName.ToString().Equals("Invoice"))
                 {
                     element.Value = newInvId;
+
                 }
                 else if (element.Name.LocalName.ToString().Equals("EmbeddedDocumentBinaryObject")
                        && element.Parent.Name.LocalName.ToString().Equals("Attachment"))
                 {
-                    element.LastAttribute.Value = newInvId+".xslt";
+                    element.LastAttribute.Value = newInvId + ".xslt";
                     break;
-                }            
+                }
             }
-
-         //   doc.Save(xmlPath);
-              return doc.ToString();
+            //      doc.Save(xmlPath);
+            return doc.ToString();
         }
 
 
@@ -89,7 +92,7 @@ namespace izibiz.COMMON.FileControl
         //    //pathdekı xmli okuyoruz
         //    string inputXml = File.ReadAllText(xmlPath);
 
-    
+
         //}
 
 

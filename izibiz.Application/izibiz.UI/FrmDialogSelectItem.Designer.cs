@@ -78,6 +78,7 @@
             this.linkLblAddSeriName.TabIndex = 3;
             this.linkLblAddSeriName.TabStop = true;
             this.linkLblAddSeriName.Text = "seri Name ekle";
+            this.linkLblAddSeriName.Visible = false;
             this.linkLblAddSeriName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblAddSeriName_LinkClicked);
             // 
             // btnAddSeriName

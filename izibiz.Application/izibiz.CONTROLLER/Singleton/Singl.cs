@@ -1,5 +1,6 @@
 ﻿using izibiz.CONTROLLER.DAL;
 using izibiz.CONTROLLER.Web_Services;
+using izibiz.CONTROLLER.WebServicesController;
 using izibiz.MODEL.Data;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,10 @@ namespace izibiz.CONTROLLER.Singleton
       
         private static AuthenticationController authenticationController = null;
         private static EInvoiceController invoiceController = null;
+        private static ArchiveController archiveController = null;
         private static DatabaseContext databaseContext = null;
         private static InvoiceDal invoiceDal = null;
+        private static ArchiveInvoicesDal archiveInvoiceDal = null;
         private static IdSerilazeDal idSerilazeDal = null;
         private static UserInformationDal userInformationDal = null;
         private static GibUsersDal gibUsersDal = null;
@@ -67,6 +70,18 @@ namespace izibiz.CONTROLLER.Singleton
             }
         }
 
+        public static ArchiveInvoicesDal archiveInvoiceDalGet
+        {
+            get
+            {
+                if (null == archiveInvoiceDal)
+                {
+                    archiveInvoiceDal = new  ArchiveInvoicesDal();
+                }
+
+                return archiveInvoiceDal;
+            }
+        }
 
         public static InvoiceDal invoiceDalGet
         {
@@ -94,6 +109,19 @@ namespace izibiz.CONTROLLER.Singleton
             }
         }
 
+
+        public static ArchiveController archiveControllerGet
+        {
+            get
+            {
+                if (null == invoiceController)
+                {
+                    archiveController = new ArchiveController();
+                }
+
+                return archiveController;
+            }
+        }
 
         public static AuthenticationController authControllerGet
         {

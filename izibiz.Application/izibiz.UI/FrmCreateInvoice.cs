@@ -117,11 +117,9 @@ namespace izibiz.UI
         {
 
             //row miktar , birim fiyat ,kdv oranı  rowlarındaysa
-            if (gridPrice.Columns[e.ColumnIndex].Name.Equals(nameof(EI.InvLineGridRowClm.quantity)) 
-                || gridPrice.Columns[e.ColumnIndex].Name.Equals((nameof(EI.InvLineGridRowClm.unitPrice))) 
+            if (gridPrice.Columns[e.ColumnIndex].Name.Equals(nameof(EI.InvLineGridRowClm.quantity))
+                || gridPrice.Columns[e.ColumnIndex].Name.Equals((nameof(EI.InvLineGridRowClm.unitPrice)))
                 || gridPrice.Columns[e.ColumnIndex].Name.Equals(nameof(EI.InvLineGridRowClm.taxPercent)))
-            string clmName = gridPrice.Columns[e.ColumnIndex].Name;
-            if (clmName.Equals("quantity") || clmName.Equals("unitPrice") || clmName.Equals("taxPercent"))
             {
                 //girilen deger numerıc degilse
                 int i = 0;
@@ -159,7 +157,7 @@ namespace izibiz.UI
                     }
                     else if (item.Name == "msdPhone")  //phone number
                     {
-                        if (item.Text.Replace(" ", String.Empty).Length != 13)  //10 hane tel , 3 hane de parantezler
+                        if (item.Text.Replace(" ", String.Empty).Length != 10)  //10 hane tel 
                         {
                             item.BackColor = Color.IndianRed;
                             valid = false;
@@ -212,19 +210,19 @@ namespace izibiz.UI
                 for (int i = 0; i < gridPrice.ColumnCount; i++)
                 {
                     //total ve tax total clmları ıcın yapma
-                    if (gridPrice.Columns[i].Name !=nameof(EI.InvLineGridRowClm.taxAmount) && gridPrice.Columns[i].Name != nameof(EI.InvLineGridRowClm.total)) 
-                    if (gridPrice.Columns[i].Name != "taxAmount" && gridPrice.Columns[i].Name != "total") //total ve tax total clmları ıcın yapma
-                    {
-                        if (row.Cells[i].Value == null || String.IsNullOrEmpty(row.Cells[i].Value.ToString().Trim()))
+                    if (gridPrice.Columns[i].Name != nameof(EI.InvLineGridRowClm.taxAmount) && gridPrice.Columns[i].Name != nameof(EI.InvLineGridRowClm.total))
+                        if (gridPrice.Columns[i].Name != "taxAmount" && gridPrice.Columns[i].Name != "total") //total ve tax total clmları ıcın yapma
                         {
-                            row.Cells[i].Style.BackColor = Color.IndianRed;
-                            valid = false;
+                            if (row.Cells[i].Value == null || String.IsNullOrEmpty(row.Cells[i].Value.ToString().Trim()))
+                            {
+                                row.Cells[i].Style.BackColor = Color.IndianRed;
+                                valid = false;
+                            }
+                            else
+                            {
+                                row.Cells[i].Style.BackColor = Color.White;
+                            }
                         }
-                        else
-                        {
-                            row.Cells[i].Style.BackColor = Color.White;
-                        }
-                    }
                 }
             }
             foreach (Control item in grpboxTotal.Controls)  //grupbox not ve toplam bilgileri
@@ -305,8 +303,8 @@ namespace izibiz.UI
             foreach (DataGridViewRow row in gridPrice.Rows)
             {
                 //kdv sız tutar
-                decimal totalRevenue = Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value) 
-                    * Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value); 
+                decimal totalRevenue = Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value)
+                    * Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value);
 
 
                 decimal rowTaxAmount = totalRevenue * (Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value) / 100); //kdv tutarı             
@@ -315,12 +313,6 @@ namespace izibiz.UI
                 row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value = rowTaxAmount;
                 row.Cells[nameof(EI.InvLineGridRowClm.total)].Value = rowTotalWithTax;
 
-                decimal totalRevenue = Convert.ToDecimal(row.Cells["quantity"].Value) * Convert.ToDecimal(row.Cells["unitPrice"].Value); //kdv sız tutar
-                decimal rowTaxAmount = totalRevenue * (Convert.ToDecimal(row.Cells["taxPercent"].Value) / 100); //kdv tutarı             
-                decimal rowTotalWithTax = totalRevenue + ((totalRevenue * Convert.ToDecimal(row.Cells["taxPercent"].Value)) / 100); //kdv dahil tutarı; 
-
-                row.Cells["taxAmount"].Value = rowTaxAmount;
-                row.Cells["total"].Value = rowTotalWithTax;
 
                 total = +totalRevenue;
                 taxTotal = +rowTaxAmount;
@@ -349,7 +341,7 @@ namespace izibiz.UI
         }
 
 
-  
+
 
 
         private void btnCreateUbl_Click(object sender, EventArgs e)
@@ -357,10 +349,10 @@ namespace izibiz.UI
             if (validEmptyComponent())
             {
                 //tutar hesapla
-                calculateTotalMoney();  
-        
+                calculateTotalMoney();
+
                 //kullanıcı bılgılerı getır              
-                UserInformation user=  Singl.userInformationDalGet.getUserInformation();
+                UserInformation user = Singl.userInformationDalGet.getUserInformation();
                 string senderVknTc = user.vknTckn;
                 string webUrı = user.webUri;
                 string partyName = user.partyName;
@@ -379,7 +371,7 @@ namespace izibiz.UI
                 string familyName = user.familyName;
                 string taxScheme = user.taxScheme;
 
- 
+
                 ////////UBL OLUSTURMA ISLEMI////////
                 CreateInvoiceUBL invoice = new CreateInvoiceUBL(cmbScenario.Text, cmbType.Text);
                 PartyType supParty;
@@ -391,18 +383,11 @@ namespace izibiz.UI
                 if (senderVknTc.Length == 10) //sup vkn
                 {
                     invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
-
-                //supp party olusturulması  
-                supParty = invoice.createParty(webUrı, partyName, streetName, buldingName, buldingNumber, visionName, cityName, postalZone, "", country, telephone, fax, mail);
-                if (senderVknTc.Length == 10) //sup vkn
-                {
-                    invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), senderVknTc, mersisNo, sicilNo, "", "");
                     invoice.addPartyTaxSchemeOnParty(supParty, taxScheme);
                 }
                 else  //sup tckn .. add person metodu eklenır
                 {
                     invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
-                    invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), senderVknTc, mersisNo, sicilNo, "", "");
                     invoice.addPersonOnParty(supParty, firstName, familyName);
                 }
                 invoice.SetSupplierParty(supParty);
@@ -426,29 +411,22 @@ namespace izibiz.UI
                 {
                     //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılırilerek aktarılır
                     invoice.addInvoiceLine(row.Index.ToString(), cmbMoneyType.Text, txtNote.Text, getUnitCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString())
-                        ,Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value) , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
-                        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value),Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
-                        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value),row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString()
-                        ,Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value));
-                    //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılır
-                    rowUnitCode = getUnitCode(row.Cells["unit"].Value.ToString());
-
-                    invoice.addInvoiceLine(row.Index.ToString(), txtNote.Text, rowUnitCode, Convert.ToDecimal(row.Cells["quantity"].Value), cmbMoneyType.Text, Convert.ToDecimal(row.Cells["total"].Value),
-                        Convert.ToDecimal(row.Cells["taxAmount"].Value), Convert.ToDecimal(row.Cells["total"].Value), Convert.ToDecimal(row.Cells["taxPercent"].Value), row.Cells["productName"].Value.ToString(),
-                 Convert.ToDecimal(row.Cells["unitPrice"].Value));
+                        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
+                        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
+                        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value), row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString()
+                        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value));
+      
                 }
 
                 invoice.setInvLines();
                 invoice.setTaxTotal(invoice.invoiceTaxTotal());
                 invoice.SetLegalMonetaryTotal(invoice.CalculateLegalMonetaryTotal());
                 invoice.SetAllowanceCharge(invoice.CalculateAllowanceCharges());
-                
+
                 //olusturdugumuz nesne ubl turune cevrılır
-                var invoiceUbl = invoice.BaseUBL; 
+                var invoiceUbl = invoice.BaseUBL;
                 //xml olustur
                 string xmlPath = FolderControl.createInvUblToXml(invoiceUbl).ToString();
-                //bilgileri db ye kaydet
-                string xmlPath = Singl.invoiceControllerGet.createInvUblToXml(invoiceUbl).ToString();
                 //db ye kaydet
                 Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
                 Singl.invoiceDalGet.dbSaveChanges();
@@ -467,6 +445,6 @@ namespace izibiz.UI
 
 
 
-        }
     }
 }
+

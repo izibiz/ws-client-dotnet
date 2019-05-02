@@ -61,6 +61,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\ArchiveInvoicesDal.cs" />
     <Compile Include="DAL\GibUsersDal.cs" />
     <Compile Include="DAL\IdSerilazeDal.cs" />
     <Compile Include="DAL\InvoiceDal.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Singleton\Singl.cs">
       <Generator>public</Generator>
     </Compile>
+    <Compile Include="WebServicesController\ArchiveController.cs" />
     <Compile Include="WebServicesController\AuthenticationController.cs" />
     <Compile Include="WebServicesController\EInvoiceController.cs" />
   </ItemGroup>

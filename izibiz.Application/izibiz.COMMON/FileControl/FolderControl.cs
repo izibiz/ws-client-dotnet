@@ -24,6 +24,7 @@ namespace izibiz.COMMON.FileControl
         }
 
 
+
         public static string createXmlPath(string xmlName, string direction)
         {
             if (direction.Equals(nameof(EI.InvDirection.IN)))
@@ -144,12 +145,30 @@ namespace izibiz.COMMON.FileControl
             }
             createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
             System.IO.File.WriteAllText(inboxFolder + fileName + "." + nameof(EI.DocumentType.XML), xmlStr);
-            return Path.Combine(inboxFolder, fileName, "." + nameof(EI.DocumentType.XML));  //return fılepath
+            return Path.Combine(inboxFolder, fileName+ "." + nameof(EI.DocumentType.XML));  //return fılepath
         }
 
 
+        public static string saveInvDocContentWithByte(byte[] content, string direction, string fileName,string docType)
+        {
+            string inboxFolder;
+            if (direction == nameof(EI.InvDirection.IN))
+            {
+                inboxFolder = inboxFolderIn;
+            }
+            else if (direction == nameof(EI.InvDirection.OUT))
+            {
+                inboxFolder = inboxFolderOut;
+            }
+            else
+            {
+                inboxFolder = inboxFolderDraft;
+            }
+            createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
+            System.IO.File.WriteAllBytes(inboxFolder + fileName + "." + docType, content);
+            return Path.Combine(inboxFolder, fileName+ "." + docType);  //return fılepath
+        }
 
-     
 
 
     }

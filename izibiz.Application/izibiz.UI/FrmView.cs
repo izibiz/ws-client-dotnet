@@ -36,7 +36,7 @@ namespace izibiz.UI
 
             if (docType.Equals(nameof(EI.DocumentType.XML)))
             {
-                webBrowser1.DocumentText = Xml.xmlToHtml(Xslt.xsltGib, xmlPath);
+                webBrowser1.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGib, xmlPath);
             }
             else
             {
@@ -51,38 +51,6 @@ namespace izibiz.UI
 
 
 
-        public string transformXMLToHTML(string inputXml, string xsltString)
-        {
-            XslCompiledTransform transform = new XslCompiledTransform();
-            using (XmlReader reader = XmlReader.Create(new StringReader(xsltString)))
-            {
-                transform.Load(reader);
-            }
-            StringWriter results = new StringWriter();
-            using (XmlReader reader = XmlReader.Create(new StringReader(inputXml)))
-            {
-                transform.Transform(reader, null, results);
-            }
-            return results.ToString();
-        }
-
-        public string viewInvoice()
-        {
-            String xslt = "C:\\Users\\gamze\\Desktop\\a.xslt";
-            String input = xmlPath;
-            String output = "C:/Users/gamze/Desktop/TransformOutputXml.xml";
-
-            XPathDocument myXMLPath = new XPathDocument(input);
-            XslCompiledTransform myXSLTrans = new XslCompiledTransform();
-            myXSLTrans.Load(xslt);
-            XmlTextWriter myWriter = new XmlTextWriter(output, null);
-            myXSLTrans.Transform(myXMLPath, null, myWriter);
-            myWriter.Close();
-            System.IO.FileStream fileXml = new System.IO.FileStream(output, FileMode.Open, FileAccess.Read);
-            System.IO.StreamReader sr = new System.IO.StreamReader(fileXml, Encoding.UTF8);
-            return sr.ReadToEnd();
-
-        }
 
 
 

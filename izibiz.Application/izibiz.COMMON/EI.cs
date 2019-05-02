@@ -80,6 +80,7 @@ namespace izibiz.COMMON
         public enum Invoice
         {
             Invoices,
+            ArchiveInvoices,      
             ID,
             uuid,
             direction,
@@ -103,7 +104,6 @@ namespace izibiz.COMMON
             folderPath,
             draftFlag,
             draftFlagDesc,
-            draftFlag
         }
 
 
@@ -208,7 +208,6 @@ namespace izibiz.COMMON
         public enum ProductType
         {
             INVOICE,
-           INVOICE,
             DESPATCHADVICE,
             ALL
         }
@@ -217,7 +216,6 @@ namespace izibiz.COMMON
         {
             CREATED,         
             SENDRESPONSE,
-           CREATED,
            LOAD,
            SEND
         }

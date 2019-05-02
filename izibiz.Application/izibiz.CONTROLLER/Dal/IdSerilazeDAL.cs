@@ -39,7 +39,7 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public bool addSeriName(string seriName)
+        public void addSeriName(string seriName)
         {
          /*   foreach (var seri in getSeriNames())
             {
@@ -51,7 +51,6 @@ namespace izibiz.CONTROLLER.DAL
             InvoiceIdSerials idSerials = new InvoiceIdSerials();
             idSerials.serialName = seriName;
             dataBaseContext.invoiceIdSerials.Add(idSerials);
-            return true;
         }
 
         public void dbSaveChanges()
