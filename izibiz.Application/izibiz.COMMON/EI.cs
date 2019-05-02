@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace izibiz.COMMON
 {
-   public partial class EI
+    public partial class EI
 
     {
-     
+
 
         public enum InvDirection
         {
@@ -23,32 +23,32 @@ namespace izibiz.COMMON
 
         public enum InvoiceResponseStatus
         {
-           RED,
-           KABUL
+            RED,
+            KABUL
         }
 
         public enum ActiveOrPasive
         {
-          Y,
-          N
+            Y,
+            N
         }
 
-      
+
 
         public enum InvoiceProfileid
         {
-           TEMELFATURA,
-           TICARIFATURA
+            TEMELFATURA,
+            TICARIFATURA
         }
 
-    
+
 
         public enum DocumentType
         {
-           PDF,
-           XML,
-           HTML,
-           XSLT
+            PDF,
+            XML,
+            HTML,
+            XSLT
         }
 
         public enum StatusType
@@ -75,13 +75,14 @@ namespace izibiz.COMMON
             WAIT_APPLICATION_RESPONSE
         }
 
-    
 
-        public enum InvClmName
+
+        public enum Invoice
         {
+            Invoices,
             ID,
             uuid,
-            invType,
+            direction,
             issueDate,
             profileid,
             type,
@@ -90,25 +91,79 @@ namespace izibiz.COMMON
             receiverVkn,
             cDate,
             envelopeIdentifier,
-            state,
+            stateNote,
             status,
             statusDesc,
             gibStatusCode,
             gibStatusDescription,
-            fromm,
-            too,
+            senderAlias,
+            receiverAlias,
             content,
             folderPath,
-            draftFlag
+            draftFlag,
+            draftFlagDesc
         }
 
-        public enum gridBtnClmName
+
+        public enum InvLineGridRowClm
+        {
+            productName,
+            quantity,
+            unit,
+            unitPrice,
+            taxPercent,
+            taxAmount,
+            total
+        }
+
+
+        public enum UserInformation
+        {
+            UserInformation,
+            vknTckn,
+            firstName,
+            familyName,
+            partyName,
+            mail,
+            phone,
+            fax,
+            webUri,
+            sicilNo,
+            taxScheme,
+            country,
+            cityName,
+            citySubdivisionName,
+            streetName,
+            buldingName,
+            buldingNumber,
+            postalZone
+        }
+
+
+        public enum InvoiceIdSerial
+        {
+            InvoiceIdSerials,
+            serialName,
+            year,
+            seriNo
+        }
+
+
+        public enum GibUser
+        {
+            GibUsers,
+            aliasPk,
+            identifier,
+            title
+        }
+
+        public enum GridBtnClmName
         {
             previewXml,
             previewPdf
         }
 
-        public enum invoiceTypeCodeValue
+        public enum InvoiceTypeCodeValue
         {
             SATIS,
             IADE,
@@ -131,7 +186,11 @@ namespace izibiz.COMMON
             USD,
             TRY
         }
-   
+
+        public enum Mersis
+        {
+            MERSISNO
+        }
 
         public enum TaxType
         {
@@ -146,16 +205,15 @@ namespace izibiz.COMMON
 
         public enum ProductType
         {
-           INVOICE,
+            INVOICE,
             DESPATCHADVICE,
             ALL
         }
 
         public enum StateNote
         {
-           CREATED,
-           LOAD,
-           SEND
+            CREATED,         
+            SENDRESPONSE
         }
     }
 }

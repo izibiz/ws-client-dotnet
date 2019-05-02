@@ -133,7 +133,7 @@
     <value>Choose Language</value>
   </data>
   <data name="draftInvoice" xml:space="preserve">
-    <value>Archive Invoice</value>
+    <value>Draft Invoice</value>
   </data>
   <data name="eArchive" xml:space="preserve">
     <value>E- Archive</value>
@@ -338,5 +338,32 @@
   </data>
   <data name="isDraftFlag" xml:space="preserve">
     <value>From Service Status</value>
+  </data>
+  <data name="listFilter" xml:space="preserve">
+    <value>Get Filter</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="addSeriName" xml:space="preserve">
+    <value>Add Seri Name</value>
+  </data>
+  <data name="seriNameControl" xml:space="preserve">
+    <value>serial name; cannot be a number, cannot be empty, the number of characters cannot be less than 3 or lowercase</value>
+  </data>
+  <data name="withUnzip" xml:space="preserve">
+    <value>With Unzip</value>
+  </data>
+  <data name="withZip" xml:space="preserve">
+    <value>With Zip</value>
+  </data>
+  <data name="addedsucc" xml:space="preserve">
+    <value>Succesful Added</value>
   </data>
 </root>

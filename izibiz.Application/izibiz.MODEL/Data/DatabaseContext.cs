@@ -1,4 +1,4 @@
-﻿using izibiz.MODEL.Models;
+﻿using izibiz.MODEL.DbModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,7 +20,7 @@ namespace izibiz.MODEL.Data
             base(new SQLiteConnection()
             {
                 //datasourcede projenızın yer aldıgı dızını yazınız
-                ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = "C:\\Users\\gamze.sahin\\Desktop\\ws-client-dotnet-son\\izibiz.Application\\izibiz.MODEL\\Db\\izibiz-Entegrasyon.s3db", ForeignKeys = true }.ConnectionString
+                ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = @"C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.MODEL\Db\izibiz-Entegrasyon.s3db", ForeignKeys = true }.ConnectionString
             }, true)
         {
         }
@@ -33,9 +33,12 @@ namespace izibiz.MODEL.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Invoices> Invoices { get; set; }
+        public DbSet<Invoices> invoices { get; set; }
 
-        public DbSet<InvoiceIdSerials> InvoiceIdSerials { get; set; }
+        public DbSet<InvoiceIdSerials> invoiceIdSerials { get; set; }
 
+        public DbSet<UserInformation> userInformations { get; set; }
+
+        public DbSet<GibUsers> gibUsers { get; set; }
     }
 }

@@ -41,24 +41,27 @@
             this.btnIncomingInvGetState = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
-            this.btnTakeInvIn = new System.Windows.Forms.Button();
             this.panelSentInv = new System.Windows.Forms.Panel();
-            this.btnTakeInvOut = new System.Windows.Forms.Button();
             this.btnFaultyInvoices = new System.Windows.Forms.Button();
             this.btnSentInvAgainSent = new System.Windows.Forms.Button();
             this.btnSentInvGetState = new System.Windows.Forms.Button();
+            this.btnTakeInv = new System.Windows.Forms.Button();
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.panelDraftInv = new System.Windows.Forms.Panel();
-            this.btnTakeInvDraft = new System.Windows.Forms.Button();
+            this.rdWithZip = new System.Windows.Forms.RadioButton();
+            this.rdWithUnzip = new System.Windows.Forms.RadioButton();
             this.btnLoadPortal = new System.Windows.Forms.Button();
             this.btnSendDraftInv = new System.Windows.Forms.Button();
-            this.rdWithUnzip = new System.Windows.Forms.RadioButton();
-            this.rdWithZip = new System.Windows.Forms.RadioButton();
+            this.timeStartFilter = new System.Windows.Forms.DateTimePicker();
+            this.timeFinishFilter = new System.Windows.Forms.DateTimePicker();
+            this.btnFilterList = new System.Windows.Forms.Button();
+            this.grpFilter = new System.Windows.Forms.GroupBox();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.panelDraftInv.SuspendLayout();
+            this.grpFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuInvoice
@@ -165,13 +168,13 @@
             // 
             // panelIncomingInv
             // 
+            this.panelIncomingInv.BackColor = System.Drawing.Color.Transparent;
             this.panelIncomingInv.Controls.Add(this.btnIncomingInvGetState);
             this.panelIncomingInv.Controls.Add(this.btnAccept);
             this.panelIncomingInv.Controls.Add(this.btnReject);
-            this.panelIncomingInv.Controls.Add(this.btnTakeInvIn);
-            this.panelIncomingInv.Location = new System.Drawing.Point(204, 128);
+            this.panelIncomingInv.Location = new System.Drawing.Point(328, 44);
             this.panelIncomingInv.Name = "panelIncomingInv";
-            this.panelIncomingInv.Size = new System.Drawing.Size(804, 64);
+            this.panelIncomingInv.Size = new System.Drawing.Size(606, 68);
             this.panelIncomingInv.TabIndex = 14;
             this.panelIncomingInv.Visible = false;
             // 
@@ -183,7 +186,7 @@
             this.btnIncomingInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIncomingInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnIncomingInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIncomingInvGetState.Location = new System.Drawing.Point(521, 19);
+            this.btnIncomingInvGetState.Location = new System.Drawing.Point(320, 15);
             this.btnIncomingInvGetState.Name = "btnIncomingInvGetState";
             this.btnIncomingInvGetState.Size = new System.Drawing.Size(139, 35);
             this.btnIncomingInvGetState.TabIndex = 22;
@@ -199,7 +202,7 @@
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAccept.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAccept.Location = new System.Drawing.Point(216, 19);
+            this.btnAccept.Location = new System.Drawing.Point(15, 15);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(120, 35);
             this.btnAccept.TabIndex = 19;
@@ -215,7 +218,7 @@
             this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReject.Location = new System.Drawing.Point(363, 19);
+            this.btnReject.Location = new System.Drawing.Point(162, 15);
             this.btnReject.Name = "btnReject";
             this.btnReject.Size = new System.Drawing.Size(120, 35);
             this.btnReject.TabIndex = 20;
@@ -223,49 +226,17 @@
             this.btnReject.UseVisualStyleBackColor = false;
             this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
             // 
-            // btnTakeInvIn
-            // 
-            this.btnTakeInvIn.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeInvIn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeInvIn.FlatAppearance.BorderSize = 2;
-            this.btnTakeInvIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeInvIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeInvIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeInvIn.Location = new System.Drawing.Point(75, 19);
-            this.btnTakeInvIn.Name = "btnTakeInvIn";
-            this.btnTakeInvIn.Size = new System.Drawing.Size(120, 35);
-            this.btnTakeInvIn.TabIndex = 21;
-            this.btnTakeInvIn.Text = "fatura al";
-            this.btnTakeInvIn.UseVisualStyleBackColor = false;
-            this.btnTakeInvIn.Click += new System.EventHandler(this.btnTakeInvIn_Click);
-            // 
             // panelSentInv
             // 
-            this.panelSentInv.Controls.Add(this.btnTakeInvOut);
+            this.panelSentInv.BackColor = System.Drawing.Color.Transparent;
             this.panelSentInv.Controls.Add(this.btnFaultyInvoices);
             this.panelSentInv.Controls.Add(this.btnSentInvAgainSent);
             this.panelSentInv.Controls.Add(this.btnSentInvGetState);
-            this.panelSentInv.Location = new System.Drawing.Point(204, 43);
+            this.panelSentInv.Location = new System.Drawing.Point(328, 44);
             this.panelSentInv.Name = "panelSentInv";
-            this.panelSentInv.Size = new System.Drawing.Size(804, 69);
+            this.panelSentInv.Size = new System.Drawing.Size(603, 69);
             this.panelSentInv.TabIndex = 18;
             this.panelSentInv.Visible = false;
-            // 
-            // btnTakeInvOut
-            // 
-            this.btnTakeInvOut.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeInvOut.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeInvOut.FlatAppearance.BorderSize = 2;
-            this.btnTakeInvOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeInvOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeInvOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeInvOut.Location = new System.Drawing.Point(75, 14);
-            this.btnTakeInvOut.Name = "btnTakeInvOut";
-            this.btnTakeInvOut.Size = new System.Drawing.Size(120, 35);
-            this.btnTakeInvOut.TabIndex = 25;
-            this.btnTakeInvOut.Text = "fatura al";
-            this.btnTakeInvOut.UseVisualStyleBackColor = false;
-            this.btnTakeInvOut.Click += new System.EventHandler(this.btnTakeInvOut_Click);
             // 
             // btnFaultyInvoices
             // 
@@ -275,7 +246,7 @@
             this.btnFaultyInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFaultyInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnFaultyInvoices.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFaultyInvoices.Location = new System.Drawing.Point(363, 14);
+            this.btnFaultyInvoices.Location = new System.Drawing.Point(162, 15);
             this.btnFaultyInvoices.Name = "btnFaultyInvoices";
             this.btnFaultyInvoices.Size = new System.Drawing.Size(120, 35);
             this.btnFaultyInvoices.TabIndex = 24;
@@ -291,7 +262,7 @@
             this.btnSentInvAgainSent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSentInvAgainSent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSentInvAgainSent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSentInvAgainSent.Location = new System.Drawing.Point(216, 14);
+            this.btnSentInvAgainSent.Location = new System.Drawing.Point(15, 15);
             this.btnSentInvAgainSent.Name = "btnSentInvAgainSent";
             this.btnSentInvAgainSent.Size = new System.Drawing.Size(120, 35);
             this.btnSentInvAgainSent.TabIndex = 23;
@@ -307,53 +278,76 @@
             this.btnSentInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSentInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSentInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSentInvGetState.Location = new System.Drawing.Point(521, 14);
+            this.btnSentInvGetState.Location = new System.Drawing.Point(320, 15);
             this.btnSentInvGetState.Name = "btnSentInvGetState";
-            this.btnSentInvGetState.Size = new System.Drawing.Size(120, 35);
+            this.btnSentInvGetState.Size = new System.Drawing.Size(139, 35);
             this.btnSentInvGetState.TabIndex = 22;
             this.btnSentInvGetState.Text = "Durum sorgula";
             this.btnSentInvGetState.UseVisualStyleBackColor = false;
             this.btnSentInvGetState.Click += new System.EventHandler(this.btnSentInvGetState_Click);
             // 
+            // btnTakeInv
+            // 
+            this.btnTakeInv.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnTakeInv.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnTakeInv.FlatAppearance.BorderSize = 2;
+            this.btnTakeInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTakeInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTakeInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnTakeInv.Location = new System.Drawing.Point(202, 57);
+            this.btnTakeInv.Name = "btnTakeInv";
+            this.btnTakeInv.Size = new System.Drawing.Size(120, 35);
+            this.btnTakeInv.TabIndex = 25;
+            this.btnTakeInv.Text = "fatura al";
+            this.btnTakeInv.UseVisualStyleBackColor = false;
+            this.btnTakeInv.Visible = false;
+            this.btnTakeInv.Click += new System.EventHandler(this.btnTakeInv_Click);
+            // 
             // tableGrid
             // 
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(204, 305);
+            this.tableGrid.Location = new System.Drawing.Point(176, 176);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(854, 249);
+            this.tableGrid.Size = new System.Drawing.Size(882, 378);
             this.tableGrid.TabIndex = 18;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
             // 
             // panelDraftInv
             // 
+            this.panelDraftInv.BackColor = System.Drawing.Color.Transparent;
             this.panelDraftInv.Controls.Add(this.rdWithZip);
             this.panelDraftInv.Controls.Add(this.rdWithUnzip);
-            this.panelDraftInv.Controls.Add(this.btnTakeInvDraft);
             this.panelDraftInv.Controls.Add(this.btnLoadPortal);
             this.panelDraftInv.Controls.Add(this.btnSendDraftInv);
-            this.panelDraftInv.Location = new System.Drawing.Point(204, 208);
+            this.panelDraftInv.Location = new System.Drawing.Point(328, 44);
             this.panelDraftInv.Name = "panelDraftInv";
-            this.panelDraftInv.Size = new System.Drawing.Size(804, 69);
+            this.panelDraftInv.Size = new System.Drawing.Size(603, 69);
             this.panelDraftInv.TabIndex = 19;
             this.panelDraftInv.Visible = false;
             // 
-            // btnTakeInvDraft
+            // rdWithZip
             // 
-            this.btnTakeInvDraft.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeInvDraft.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeInvDraft.FlatAppearance.BorderSize = 2;
-            this.btnTakeInvDraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeInvDraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeInvDraft.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeInvDraft.Location = new System.Drawing.Point(75, 19);
-            this.btnTakeInvDraft.Name = "btnTakeInvDraft";
-            this.btnTakeInvDraft.Size = new System.Drawing.Size(120, 35);
-            this.btnTakeInvDraft.TabIndex = 26;
-            this.btnTakeInvDraft.Text = "fatura al";
-            this.btnTakeInvDraft.UseVisualStyleBackColor = false;
-            this.btnTakeInvDraft.Click += new System.EventHandler(this.btnTakeInvDraft_Click);
+            this.rdWithZip.AutoSize = true;
+            this.rdWithZip.Location = new System.Drawing.Point(369, 23);
+            this.rdWithZip.Name = "rdWithZip";
+            this.rdWithZip.Size = new System.Drawing.Size(42, 17);
+            this.rdWithZip.TabIndex = 27;
+            this.rdWithZip.TabStop = true;
+            this.rdWithZip.Text = "zipli";
+            this.rdWithZip.UseVisualStyleBackColor = true;
+            // 
+            // rdWithUnzip
+            // 
+            this.rdWithUnzip.AutoSize = true;
+            this.rdWithUnzip.Location = new System.Drawing.Point(297, 23);
+            this.rdWithUnzip.Name = "rdWithUnzip";
+            this.rdWithUnzip.Size = new System.Drawing.Size(50, 17);
+            this.rdWithUnzip.TabIndex = 20;
+            this.rdWithUnzip.TabStop = true;
+            this.rdWithUnzip.Text = "zipsiz";
+            this.rdWithUnzip.UseVisualStyleBackColor = true;
             // 
             // btnLoadPortal
             // 
@@ -363,7 +357,7 @@
             this.btnLoadPortal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadPortal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLoadPortal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLoadPortal.Location = new System.Drawing.Point(363, 19);
+            this.btnLoadPortal.Location = new System.Drawing.Point(156, 13);
             this.btnLoadPortal.Name = "btnLoadPortal";
             this.btnLoadPortal.Size = new System.Drawing.Size(120, 35);
             this.btnLoadPortal.TabIndex = 25;
@@ -379,7 +373,7 @@
             this.btnSendDraftInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendDraftInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendDraftInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendDraftInv.Location = new System.Drawing.Point(222, 19);
+            this.btnSendDraftInv.Location = new System.Drawing.Point(15, 13);
             this.btnSendDraftInv.Name = "btnSendDraftInv";
             this.btnSendDraftInv.Size = new System.Drawing.Size(120, 35);
             this.btnSendDraftInv.TabIndex = 24;
@@ -387,27 +381,43 @@
             this.btnSendDraftInv.UseVisualStyleBackColor = false;
             this.btnSendDraftInv.Click += new System.EventHandler(this.btnSendDraftInv_Click);
             // 
-            // rdWithUnzip
+            // timeStartFilter
             // 
-            this.rdWithUnzip.AutoSize = true;
-            this.rdWithUnzip.Location = new System.Drawing.Point(504, 28);
-            this.rdWithUnzip.Name = "rdWithUnzip";
-            this.rdWithUnzip.Size = new System.Drawing.Size(50, 17);
-            this.rdWithUnzip.TabIndex = 20;
-            this.rdWithUnzip.TabStop = true;
-            this.rdWithUnzip.Text = "zipsiz";
-            this.rdWithUnzip.UseVisualStyleBackColor = true;
+            this.timeStartFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.timeStartFilter.Location = new System.Drawing.Point(25, 11);
+            this.timeStartFilter.Name = "timeStartFilter";
+            this.timeStartFilter.Size = new System.Drawing.Size(107, 20);
+            this.timeStartFilter.TabIndex = 26;
             // 
-            // rdWithZip
+            // timeFinishFilter
             // 
-            this.rdWithZip.AutoSize = true;
-            this.rdWithZip.Location = new System.Drawing.Point(576, 28);
-            this.rdWithZip.Name = "rdWithZip";
-            this.rdWithZip.Size = new System.Drawing.Size(42, 17);
-            this.rdWithZip.TabIndex = 27;
-            this.rdWithZip.TabStop = true;
-            this.rdWithZip.Text = "zipli";
-            this.rdWithZip.UseVisualStyleBackColor = true;
+            this.timeFinishFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.timeFinishFilter.Location = new System.Drawing.Point(25, 45);
+            this.timeFinishFilter.Name = "timeFinishFilter";
+            this.timeFinishFilter.Size = new System.Drawing.Size(107, 20);
+            this.timeFinishFilter.TabIndex = 27;
+            // 
+            // btnFilterList
+            // 
+            this.btnFilterList.Location = new System.Drawing.Point(44, 81);
+            this.btnFilterList.Name = "btnFilterList";
+            this.btnFilterList.Size = new System.Drawing.Size(75, 23);
+            this.btnFilterList.TabIndex = 28;
+            this.btnFilterList.Text = "Filtrele";
+            this.btnFilterList.UseVisualStyleBackColor = true;
+            this.btnFilterList.Click += new System.EventHandler(this.btnFilterList_Click);
+            // 
+            // grpFilter
+            // 
+            this.grpFilter.Controls.Add(this.btnFilterList);
+            this.grpFilter.Controls.Add(this.timeStartFilter);
+            this.grpFilter.Controls.Add(this.timeFinishFilter);
+            this.grpFilter.Location = new System.Drawing.Point(949, 36);
+            this.grpFilter.Name = "grpFilter";
+            this.grpFilter.Size = new System.Drawing.Size(175, 114);
+            this.grpFilter.TabIndex = 29;
+            this.grpFilter.TabStop = false;
+            this.grpFilter.Visible = false;
             // 
             // FrmInvoice
             // 
@@ -417,8 +427,10 @@
             this.ClientSize = new System.Drawing.Size(1136, 566);
             this.Controls.Add(this.panelDraftInv);
             this.Controls.Add(this.panelSentInv);
-            this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.panelIncomingInv);
+            this.Controls.Add(this.grpFilter);
+            this.Controls.Add(this.btnTakeInv);
+            this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.menuInvoice);
             this.MainMenuStrip = this.menuInvoice;
@@ -434,6 +446,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
             this.panelDraftInv.ResumeLayout(false);
             this.panelDraftInv.PerformLayout();
+            this.grpFilter.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,16 +469,18 @@
         private System.Windows.Forms.Button btnIncomingInvGetState;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnReject;
-        private System.Windows.Forms.Button btnTakeInvIn;
         private System.Windows.Forms.Button btnFaultyInvoices;
         private System.Windows.Forms.Button btnSentInvAgainSent;
         private System.Windows.Forms.Button btnSentInvGetState;
         private System.Windows.Forms.Panel panelDraftInv;
         private System.Windows.Forms.Button btnSendDraftInv;
         private System.Windows.Forms.Button btnLoadPortal;
-        private System.Windows.Forms.Button btnTakeInvOut;
-        private System.Windows.Forms.Button btnTakeInvDraft;
+        private System.Windows.Forms.Button btnTakeInv;
         private System.Windows.Forms.RadioButton rdWithZip;
         private System.Windows.Forms.RadioButton rdWithUnzip;
+        private System.Windows.Forms.DateTimePicker timeStartFilter;
+        private System.Windows.Forms.DateTimePicker timeFinishFilter;
+        private System.Windows.Forms.Button btnFilterList;
+        private System.Windows.Forms.GroupBox grpFilter;
     }
 }

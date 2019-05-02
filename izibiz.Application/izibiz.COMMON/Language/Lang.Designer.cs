@@ -70,11 +70,38 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ekle.
+        /// </summary>
+        public static string add {
+            get {
+                return ResourceManager.GetString("add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Açıklama Ekle.
         /// </summary>
         public static string addDescription {
             get {
                 return ResourceManager.GetString("addDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ekleme Başarılı.
+        /// </summary>
+        public static string addedsucc {
+            get {
+                return ResourceManager.GetString("addedsucc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seri Ön Ek Ekle.
+        /// </summary>
+        public static string addSeriName {
+            get {
+                return ResourceManager.GetString("addSeriName", resourceCulture);
             }
         }
         
@@ -349,6 +376,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filtrele.
+        /// </summary>
+        public static string listFilter {
+            get {
+                return ResourceManager.GetString("listFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-Fatura Listele.
         /// </summary>
         public static string listInvoice {
@@ -399,6 +435,15 @@ namespace izibiz.COMMON.Language {
         public static string newInvoice {
             get {
                 return ResourceManager.GetString("newInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hayır.
+        /// </summary>
+        public static string no {
+            get {
+                return ResourceManager.GetString("no", resourceCulture);
             }
         }
         
@@ -565,6 +610,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to seri name; sayı olamaz, bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz.
+        /// </summary>
+        public static string seriNameControl {
+            get {
+                return ResourceManager.GetString("seriNameControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ayarlar.
         /// </summary>
         public static string settings {
@@ -682,6 +736,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eklemek istediğiniz deger zaten eklenmiş.
+        /// </summary>
+        public static string valueAlreadyAdded {
+            get {
+                return ResourceManager.GetString("valueAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uyarı.
         /// </summary>
         public static string warning {
@@ -727,11 +790,38 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to With Unzip.
+        /// </summary>
+        public static string withUnzip {
+            get {
+                return ResourceManager.GetString("withUnzip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to With Zip.
+        /// </summary>
+        public static string withZip {
+            get {
+                return ResourceManager.GetString("withZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lütfen bir açıklama yazınız.
         /// </summary>
         public static string writeDescription {
             get {
                 return ResourceManager.GetString("writeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evet.
+        /// </summary>
+        public static string yes {
+            get {
+                return ResourceManager.GetString("yes", resourceCulture);
             }
         }
     }

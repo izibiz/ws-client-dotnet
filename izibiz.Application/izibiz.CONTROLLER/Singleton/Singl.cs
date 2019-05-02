@@ -1,4 +1,4 @@
-﻿using izibiz.CONTROLLER.Dal;
+﻿using izibiz.CONTROLLER.DAL;
 using izibiz.CONTROLLER.Web_Services;
 using izibiz.MODEL.Data;
 using System;
@@ -16,35 +16,51 @@ namespace izibiz.CONTROLLER.Singleton
         private static AuthenticationController authenticationController = null;
         private static EInvoiceController invoiceController = null;
         private static DatabaseContext databaseContext = null;
-        private static InvoiceDAL invoiceDal = null;
-        private static IdSerilazeDAL idSerilazeDal = null;
-        //private static CreateInvoiceUBL createInv = null;
+        private static InvoiceDal invoiceDal = null;
+        private static IdSerilazeDal idSerilazeDal = null;
+        private static UserInformationDal userInformationDal = null;
+        private static GibUsersDal gibUsersDal = null;
 
         private Singl()
         {      
         }
 
 
-        //public static CreateInvoiceUBL createInvoice
-        //{
-        //    get
-        //    {
-        //        if (null == createInv)
-        //        {
-        //            createInv = new CreateInvoiceUBL();
-        //        }
-        //        return createInv;
-        //    }
-        //}
+
+        public static GibUsersDal gibUsersDalGet
+        {
+            get
+            {
+                if (null == gibUsersDal)
+                {
+                    gibUsersDal = new GibUsersDal();
+                }
+
+                return gibUsersDal;
+            }
+        }
+
+        public static UserInformationDal userInformationDalGet
+        {
+            get
+            {
+                if (null == userInformationDal)
+                {
+                    userInformationDal = new UserInformationDal();
+                }
+
+                return userInformationDal;
+            }
+        }
 
 
-        public static IdSerilazeDAL invIdSerilazeDalGet
+        public static IdSerilazeDal invIdSerilazeDalGet
         {
             get
             {
                 if (null == idSerilazeDal)
                 {
-                    idSerilazeDal = new IdSerilazeDAL();
+                    idSerilazeDal = new IdSerilazeDal();
                 }
 
                 return idSerilazeDal;
@@ -52,13 +68,13 @@ namespace izibiz.CONTROLLER.Singleton
         }
 
 
-        public static InvoiceDAL invoiceDalGet
+        public static InvoiceDal invoiceDalGet
         {
             get
             {
                 if (null == invoiceDal)
                 {
-                    invoiceDal = new InvoiceDAL();
+                    invoiceDal = new InvoiceDal();
                 }
 
                 return invoiceDal;

@@ -66,7 +66,7 @@ namespace izibiz.CONTROLLER
             idRef.Attachment.EmbeddedDocumentBinaryObject.encodingCode = "Base64";
             idRef.Attachment.EmbeddedDocumentBinaryObject.filename = BaseUBL.ID.Value.ToString() + ".xslt";
             idRef.Attachment.EmbeddedDocumentBinaryObject.mimeCode = "application/xml";
-            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(XSLTInvoice.xsltGib);
+            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGib);
 
 
             DocumentReferenceType[] DocRefArr = new DocumentReferenceType[1];
@@ -235,7 +235,7 @@ namespace izibiz.CONTROLLER
         }
       
 
-        public void addInvoiceLine(string invId, string note, string unitCode, decimal quantity, string currencyID,decimal lineExtensionAmount, decimal taxAmount,
+        public void addInvoiceLine(string invId, string currencyID, string note, string unitCode, decimal quantity,decimal lineExtensionAmount, decimal taxAmount,
             decimal taxableAmount,decimal percent, string itemName,decimal price)
         {
             listInvLine = new List<InvoiceLineType>();

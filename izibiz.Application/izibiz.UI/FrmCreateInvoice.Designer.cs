@@ -673,6 +673,7 @@
             this.msdPhone.Name = "msdPhone";
             this.msdPhone.Size = new System.Drawing.Size(109, 20);
             this.msdPhone.TabIndex = 1;
+            this.msdPhone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtCountry
             // 

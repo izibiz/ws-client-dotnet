@@ -64,8 +64,10 @@
   <ItemGroup>
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Data\SqLiteConfiguration.cs" />
-    <Compile Include="Models\InvoiceIdSerial.cs" />
-    <Compile Include="Models\Invoices.cs" />
+    <Compile Include="DbModels\GibUsers.cs" />
+    <Compile Include="DbModels\InvoiceIdSerial.cs" />
+    <Compile Include="DbModels\Invoices.cs" />
+    <Compile Include="DbModels\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

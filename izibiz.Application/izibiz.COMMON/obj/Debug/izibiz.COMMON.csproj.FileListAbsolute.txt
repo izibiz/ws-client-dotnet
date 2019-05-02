@@ -55,3 +55,14 @@ C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.COMM
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.csproj.CopyComplete
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.dll
 C:\Users\gamze.sahin\Desktop\ws-client-dotnet-son\izibiz.Application\izibiz.COMMON\obj\Debug\izibiz.COMMON.pdb
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\IronPdf.dll
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\TallComponents.PDF.Layout.dll
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\IronPdf.xml
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\TallComponents.PDF.Layout.xml
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.Compression.Base.dll
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.OCRProcessor.Base.dll
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.Pdf.Base.dll
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Microsoft.mshtml.dll
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.Compression.Base.xml
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.OCRProcessor.Base.xml
+C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.COMMON\bin\Debug\Syncfusion.Pdf.Base.xml

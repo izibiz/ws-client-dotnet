@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.Models;
+using izibiz.MODEL.DbModels;
 
 
 
@@ -47,6 +47,7 @@ namespace izibiz.CONTROLLER
 
             return newIdSeriArr;
         }
+
 
         //public static string[] createNewInvId(string idSeriName, int idCount)
         //{

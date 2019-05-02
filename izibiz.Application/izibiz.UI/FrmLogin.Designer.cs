@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.chkShowPass = new System.Windows.Forms.CheckBox();
+            this.timerGetUserAlias = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -166,6 +168,11 @@
             this.chkShowPass.UseVisualStyleBackColor = true;
             this.chkShowPass.CheckedChanged += new System.EventHandler(this.chkShowPass_CheckedChanged_1);
             // 
+            // timerGetUserAlias
+            // 
+            this.timerGetUserAlias.Interval = 1000;
+         //   this.timerGetUserAlias.Tick += new System.EventHandler(this.timerGetUserAlias_Tick);
+            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
@@ -207,6 +214,7 @@
         private System.Windows.Forms.ToolStripMenuItem turkishToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox chkShowPass;
+        private System.Windows.Forms.Timer timerGetUserAlias;
     }
 }
 

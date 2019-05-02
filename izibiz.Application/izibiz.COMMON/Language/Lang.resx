@@ -342,4 +342,34 @@
   <data name="isDraftFlag" xml:space="preserve">
     <value>Servisten Gelme Durumu</value>
   </data>
+  <data name="listFilter" xml:space="preserve">
+    <value>Filtrele</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>Hayır</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="addSeriName" xml:space="preserve">
+    <value>Seri Ön Ek Ekle</value>
+  </data>
+  <data name="seriNameControl" xml:space="preserve">
+    <value>seri name; sayı olamaz, bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz</value>
+  </data>
+  <data name="withUnzip" xml:space="preserve">
+    <value>With Unzip</value>
+  </data>
+  <data name="withZip" xml:space="preserve">
+    <value>With Zip</value>
+  </data>
+  <data name="addedsucc" xml:space="preserve">
+    <value>Ekleme Başarılı</value>
+  </data>
+  <data name="valueAlreadyAdded" xml:space="preserve">
+    <value>Eklemek istediğiniz deger zaten eklenmiş</value>
+  </data>
 </root>

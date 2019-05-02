@@ -149,8 +149,6 @@ C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.SERVICES.dll.config
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\EntityFramework.xml
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\Ionic.Zip.pdb
-C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\Ionic.Zip.xml
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\System.Data.SQLite.xml
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\en-US\izibiz.COMMON.resources.dll
 C:\Users\gamze\Desktop\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.csprojAssemblyReference.cache

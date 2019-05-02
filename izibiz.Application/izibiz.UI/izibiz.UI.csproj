@@ -72,11 +72,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmDialogIdSeriName.cs">
+    <Compile Include="FrmDialogSelectItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDialogIdSeriName.Designer.cs">
-      <DependentUpon>FrmDialogIdSeriName.cs</DependentUpon>
+    <Compile Include="FrmDialogSelectItem.Designer.cs">
+      <DependentUpon>FrmDialogSelectItem.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
@@ -102,11 +102,11 @@
     <Compile Include="FrmCreateInvoice.Designer.cs">
       <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPreviewInvoices.cs">
+    <Compile Include="FrmView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPreviewInvoices.Designer.cs">
-      <DependentUpon>FrmPreviewInvoices.cs</DependentUpon>
+    <Compile Include="FrmView.Designer.cs">
+      <DependentUpon>FrmView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,8 +115,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FrmDialogIdSeriName.resx">
-      <DependentUpon>FrmDialogIdSeriName.cs</DependentUpon>
+    <EmbeddedResource Include="FrmDialogSelectItem.resx">
+      <DependentUpon>FrmDialogSelectItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
@@ -130,8 +130,8 @@
     <EmbeddedResource Include="FrmCreateInvoice.resx">
       <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPreviewInvoices.resx">
-      <DependentUpon>FrmPreviewInvoices.cs</DependentUpon>
+    <EmbeddedResource Include="FrmView.resx">
+      <DependentUpon>FrmView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -23,6 +23,7 @@ namespace izibiz.UI
 
         public static string usurname;
         public static string password;
+        int saniye=0;
 
          private static RemoteCertificateValidationCallback cert;
 
@@ -61,6 +62,8 @@ namespace izibiz.UI
                         FrmHome frmHome = new FrmHome();
                         frmHome.Show();
                         this.Hide();
+                        //timer baslat
+                        timerGetUserAlias.Start();
                     }                             
                 }
             }
@@ -100,6 +103,8 @@ namespace izibiz.UI
             #endregion
         }
 
+
+
         private void chkShowPass_CheckedChanged_1(object sender, EventArgs e)
         {
             if (chkShowPass.Checked == true)
@@ -111,6 +116,8 @@ namespace izibiz.UI
                 txtPassword.UseSystemPasswordChar = true;
             }
         }
+
+
 
         private void englishToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -126,6 +133,31 @@ namespace izibiz.UI
             localizationItemTextWrite();
         }
 
-       
+
+
+        //private void timerGetUserAlias_Tick(object sender, EventArgs e)
+        //{
+        //    if (saniye == 28800) //8 saat olduysa get user lıstı db ye yazdır
+        //    {
+        //        timerGetUserAlias.Stop(); 
+        //        MessageBox.Show("8 saatte bir olan rutın user list cekme ıslemı ıslemı yapılıyor bu ıslem bıraz uzun surebılır, Lütfen bekleyınız");
+
+        //        var userList= Singl.invoiceControllerGet.getGibUserList();
+        //        foreach (var user in userList)
+        //        {
+        //            Singl.gibUsersDalGet.addGibUser(user.ALIAS, user.IDENTIFIER, user.TITLE);
+        //        }
+        //        Singl.gibUsersDalGet.dbSaveChanges();
+        //        saniye = 0;
+        //        MessageBox.Show("işlem bitmiştir kaldıgınız yerden devam edebılırsınız");
+        //        timerGetUserAlias.Start();
+        //    }
+
+        //    saniye++;
+        //}
+
+
+
+
     }
 }
