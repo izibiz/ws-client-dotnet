@@ -11,12 +11,20 @@ namespace izibiz.CONTROLLER.DAL
     public class ArchiveInvoicesDal
     {
 
-        public List<ArchiveInvoices> getInvoiceList(bool isDraft)
+        public List<ArchiveInvoices> getArchiveReportList( )
         {
-            return Singl.databaseContextGet.archiveInvoices.Where(arc =>arc.draftFlag==isDraft).ToList();
+            return Singl.databaseContextGet.archiveInvoices.Where(arc =>arc.reportFlag== true).ToList();
+        }
+
+        public void addArchive(ArchiveInvoices archive)
+        {
+            Singl.databaseContextGet.archiveInvoices.Add(archive);
         }
 
 
-
+        public void dbSaveChanges()
+        {
+            Singl.databaseContextGet.SaveChanges();
+        }
     }
 }

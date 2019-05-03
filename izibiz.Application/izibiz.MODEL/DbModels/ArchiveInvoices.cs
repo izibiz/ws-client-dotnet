@@ -30,6 +30,8 @@ namespace izibiz.MODEL.DbModels
         public string uuid { get; set; }
 
 
+        [Column(Name = nameof(EI.Invoice.reportFlag), DbType = "BOOLEAN")]
+        public bool reportFlag { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.draftFlag), DbType = "BOOLEAN")]
@@ -48,12 +50,24 @@ namespace izibiz.MODEL.DbModels
         public string profileid { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.type), DbType = "NVARCHAR")]
-        public string type { get; set; }
+        [Column(Name = nameof(EI.Invoice.invoiceType), DbType = "NVARCHAR")]
+        public string invoiceType { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.suplier), DbType = "NVARCHAR")]
-        public string suplier { get; set; }
+        [Column(Name = nameof(EI.Invoice.eArchiveType), DbType = "NVARCHAR")]
+        public string eArchiveType { get; set; }
+
+
+        [Column(Name = nameof(EI.Invoice.sendingType), DbType = "NVARCHAR")]
+        public string sendingType { get; set; }
+
+
+        [Column(Name = nameof(EI.Invoice.currenyCode), DbType = "NVARCHAR")]
+        public string currenyCode { get; set; }
+
+
+        [Column(Name = nameof(EI.Invoice.senderName), DbType = "NVARCHAR")]
+        public string senderName { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.senderVkn), DbType = "VARCHAR")]
@@ -66,10 +80,6 @@ namespace izibiz.MODEL.DbModels
 
         [Column(Name = nameof(EI.Invoice.cDate), DbType = "NUMERIC")]
         public DateTime cDate { get; set; }
-
-
-        [Column(Name = nameof(EI.Invoice.envelopeIdentifier), DbType = "NVARCHAR")]
-        public string envelopeIdentifier { get; set; }
 
 
 
@@ -87,13 +97,9 @@ namespace izibiz.MODEL.DbModels
 
 
 
-        [Column(Name = nameof(EI.Invoice.gibStatusCode), DbType = "INTEGER")]
-        public int gibStatusCode { get; set; }
+        [Column(Name = nameof(EI.Invoice.statusCode), DbType = "NVARCHAR")]
+        public string statusCode { get; set; }
 
-
-
-        [Column(Name = nameof(EI.Invoice.gibStatusDescription), DbType = "NVARCHAR")]
-        public string gibStatusDescription { get; set; }
 
 
 

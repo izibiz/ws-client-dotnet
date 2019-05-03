@@ -43,7 +43,7 @@ namespace izibiz.CONTROLLER.Web_Services
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
                 var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
-                req.REQUEST_HEADER = RequestHeaderOib.requestHeaderOib;
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
@@ -88,12 +88,11 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.cDate = inv.HEADER.CDATE;
                 invoice.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
                 invoice.status = inv.HEADER.STATUS;
-                invoice.statusDesc = inv.HEADER.STATUS;
                 invoice.gibStatusCode = inv.HEADER.GIB_STATUS_CODE;
                 invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
                 invoice.senderAlias = inv.HEADER.FROM;
                 invoice.receiverAlias = inv.HEADER.TO;
-                invoice.folderPath = FolderControl.createXmlPath(inv.UUID, direction);
+                invoice.folderPath = FolderControl.createInvXmlPath(inv.UUID, direction);
 
                 byte[] unCompressedContent = Compress.UncompressFile(inv.CONTENT.Value);
                 invoice.content = Encoding.UTF8.GetString(unCompressedContent);  //xml db de tututlur
@@ -122,7 +121,7 @@ namespace izibiz.CONTROLLER.Web_Services
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
                 var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
-                req.REQUEST_HEADER = RequestHeaderOib.requestHeaderOib;
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.UUID = uuid;
@@ -161,7 +160,7 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 var markReq = new MarkInvoiceRequest() //sistemdeki gelen efatura listesi için request parametreleri
                 {
-                    REQUEST_HEADER = RequestHeaderOib.requestHeaderOib,
+                    REQUEST_HEADER = RequestHeader.getRequestHeaderOib,
                     MARK = new MarkInvoiceRequestMARK()
                     {
                         INVOICE = invoiceList,
@@ -223,7 +222,7 @@ namespace izibiz.CONTROLLER.Web_Services
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
                 var req = new SendInvoiceRequest();
-                req.REQUEST_HEADER = RequestHeaderOib.requestHeaderOib;
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 if (isWithZip)
                 {
                     req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
@@ -252,7 +251,7 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 LoadInvoiceRequest req = new LoadInvoiceRequest();
 
-                req.REQUEST_HEADER = RequestHeaderOib.requestHeaderOib;
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 if (isWithZip) //zipli gonderılmek ıstenıyorsa
                 {
                     req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
@@ -276,7 +275,7 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 SendInvoiceResponseWithServerSignRequest req = new SendInvoiceResponseWithServerSignRequest()
                 {
-                    REQUEST_HEADER = RequestHeaderOib.requestHeaderOib,
+                    REQUEST_HEADER = RequestHeader.getRequestHeaderOib,
                     STATUS = status,
                     INVOICE = invoiceList.ToArray(),
                     DESCRIPTION = description.ToArray(),
@@ -321,7 +320,7 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 GetInvoiceStatusRequest req = new GetInvoiceStatusRequest()
                 {
-                    REQUEST_HEADER = RequestHeaderOib.requestHeaderOib,
+                    REQUEST_HEADER = RequestHeader.getRequestHeaderOib,
                     INVOICE = invoice,
                 };
 
@@ -338,7 +337,7 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 GetUserListRequest req = new GetUserListRequest();
 
-                req.REQUEST_HEADER = RequestHeaderOib.requestHeaderOib;
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.DOCUMENT_TYPE = nameof(EI.ProductType.INVOICE);
                 GetUserListResponse response = eInvoiceOIBPortClient.GetUserList(req);
 
@@ -357,10 +356,11 @@ namespace izibiz.CONTROLLER.Web_Services
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
                 GetInvoiceWithTypeRequest req = new GetInvoiceWithTypeRequest();
-
-                req.REQUEST_HEADER = RequestHeaderOib.requestHeaderOib;
-
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
+                req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.N);
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
+                req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
+                req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
                 req.INVOICE_SEARCH_KEY.TYPE = documentType;//XML,PDF 
                 req.INVOICE_SEARCH_KEY.DIRECTION = direction;
@@ -376,28 +376,6 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
-
-
-
-
-
-        //public byte[] getInvoiceXml(string invoiceUuid)
-        //{
-        //    using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
-        //    {
-        //        GetInvoiceWithTypeRequest req = new GetInvoiceWithTypeRequest();
-        //        req.REQUEST_HEADER = RequestHeaderOib.requestHeaderOib;
-
-        //        req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
-        //        req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
-        //        req.INVOICE_SEARCH_KEY.TYPE = documentType;//XML,PDF 
-        //        req.INVOICE_SEARCH_KEY.DIRECTION = direction;
-        //        req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
-
-        //        INVOICE[] invoice = eInvoiceOIBPortClient.GetInvoiceWithType(req);
-        //        return invoice[0].CONTENT.Value;
-        //    }
-        //}
 
 
 
@@ -426,10 +404,12 @@ namespace izibiz.CONTROLLER.Web_Services
 
       
 
+
+
+
+
+
     }
-
-
-
 }
 
 

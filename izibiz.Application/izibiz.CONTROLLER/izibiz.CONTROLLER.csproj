@@ -70,8 +70,7 @@
     <Compile Include="InvoiceRequestSection\InvoiceSearchKey.cs" />
     <Compile Include="Model\IdXmlModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InvoiceRequestSection\RequestHeaderOib.cs" />
-    <Compile Include="InvoiceRequestSection\RequestHeaderAuth.cs" />
+    <Compile Include="InvoiceRequestSection\RequestHeader.cs" />
     <Compile Include="Singleton\Singl.cs">
       <Generator>public</Generator>
     </Compile>

@@ -38,7 +38,8 @@ namespace izibiz.COMMON
         public enum InvoiceProfileid
         {
             TEMELFATURA,
-            TICARIFATURA
+            TICARIFATURA,
+            EARSIVFATURA
         }
 
 
@@ -48,7 +49,8 @@ namespace izibiz.COMMON
             PDF,
             XML,
             HTML,
-            XSLT
+            XSLT,
+            ZİP
         }
 
         public enum StatusType
@@ -86,7 +88,7 @@ namespace izibiz.COMMON
             direction,
             issueDate,
             profileid,
-            type,
+            invoiceType,
             suplier,
             senderVkn,
             receiverVkn,
@@ -104,6 +106,14 @@ namespace izibiz.COMMON
             folderPath,
             draftFlag,
             draftFlagDesc,
+            //archive
+            reportFlag,
+            senderName,
+            statusCode,
+            eArchiveType,
+            sendingType,
+            currenyCode
+
         }
 
 

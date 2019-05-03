@@ -53,8 +53,8 @@ namespace izibiz.MODEL.DbModels
         public string profileid { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.type), DbType = "NVARCHAR")]
-        public string type { get; set; }
+        [Column(Name = nameof(EI.Invoice.invoiceType), DbType = "NVARCHAR")]
+        public string invoiceType { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.suplier), DbType = "NVARCHAR")]

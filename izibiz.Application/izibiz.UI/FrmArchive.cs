@@ -21,8 +21,7 @@ namespace izibiz.UI
     {
 
 
-        private bool gridIsDraft;
-
+      
 
 
 
@@ -52,35 +51,14 @@ namespace izibiz.UI
             }
             #region writeAllFormItem
 
-            itemArchiveInvoice.Text = Lang.eArchiveInvoices;
-            itemListArchiveInvoice.Text = Lang.eArchiveInvoicesList;
-            itemDraftArchiveInvoice.Text = Lang.eArchiveDraftInvoices;
-            itemListDraftArchiveInvoice.Text = Lang.eArchiveDraftInvoicesList;
-
-
+            itemArchiveInvoices.Text = Lang.eArchiveInvoices;
+            itemListArchiveReport.Text = Lang.eArchiveInvoicesList;
+            itemArchiveNewCreated.Text = Lang.eArchiveDraftInvoices;
             #endregion
 
         }
 
 
-        private void addViewButtonToDatagridView()
-        {
-            tableGrid.Columns.Clear();
-            //pdf goruntule butonu
-            tableGrid.Columns.Add(new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources.iconPdf,
-                Name = EI.GridBtnClmName.previewPdf.ToString(),
-                HeaderText = Lang.preview
-            });
-            //xml goruntule butonu
-            tableGrid.Columns.Add(new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources.iconXml,
-                Name = EI.GridBtnClmName.previewXml.ToString(),
-                HeaderText = Lang.preview,
-            });
-        }
 
 
 
@@ -88,40 +66,39 @@ namespace izibiz.UI
         private void dataGridChangeColoumnHeaderText()
         {
 
-            tableGrid.Columns[EI.Invoice.status.ToString()].HeaderText = Lang.status;
+            tableArchiveGrid.Columns[EI.Invoice.status.ToString()].HeaderText = Lang.status;
 
-            tableGrid.Columns[EI.Invoice.statusDesc.ToString()].HeaderText = Lang.statusDesc;
+            tableArchiveGrid.Columns[EI.Invoice.statusDesc.ToString()].HeaderText = Lang.statusDesc;
 
-            tableGrid.Columns[EI.Invoice.gibStatusCode.ToString()].HeaderText = Lang.gibStatusCode;
+            tableArchiveGrid.Columns[EI.Invoice.gibStatusCode.ToString()].HeaderText = Lang.gibStatusCode;
 
-            tableGrid.Columns[EI.Invoice.gibStatusDescription.ToString()].HeaderText = Lang.gibSatusDescription;
+            tableArchiveGrid.Columns[EI.Invoice.gibStatusDescription.ToString()].HeaderText = Lang.gibSatusDescription;
 
-            tableGrid.Columns[EI.Invoice.ID.ToString()].HeaderText = Lang.id;
+            tableArchiveGrid.Columns[EI.Invoice.ID.ToString()].HeaderText = Lang.id;
 
-            tableGrid.Columns[EI.Invoice.uuid.ToString()].HeaderText = Lang.uuid;
+            tableArchiveGrid.Columns[EI.Invoice.uuid.ToString()].HeaderText = Lang.uuid;
 
-            tableGrid.Columns[EI.Invoice.issueDate.ToString()].HeaderText = Lang.issueDate;
+            tableArchiveGrid.Columns[EI.Invoice.issueDate.ToString()].HeaderText = Lang.issueDate;
 
-            tableGrid.Columns[EI.Invoice.profileid.ToString()].HeaderText = Lang.profileid;
+            tableArchiveGrid.Columns[EI.Invoice.profileid.ToString()].HeaderText = Lang.profileid;
 
-            tableGrid.Columns[EI.Invoice.type.ToString()].HeaderText = Lang.type;
+            tableArchiveGrid.Columns[EI.Invoice.invoiceType.ToString()].HeaderText = Lang.type;
 
-            tableGrid.Columns[EI.Invoice.suplier.ToString()].HeaderText = Lang.supplier;
+            tableArchiveGrid.Columns[EI.Invoice.suplier.ToString()].HeaderText = Lang.supplier;
 
-            tableGrid.Columns[EI.Invoice.senderVkn.ToString()].HeaderText = Lang.sender;
+            tableArchiveGrid.Columns[EI.Invoice.senderVkn.ToString()].HeaderText = Lang.sender;
 
-            tableGrid.Columns[EI.Invoice.receiverVkn.ToString()].HeaderText = Lang.receiver;
+            tableArchiveGrid.Columns[EI.Invoice.receiverVkn.ToString()].HeaderText = Lang.receiver;
 
-            tableGrid.Columns[EI.Invoice.cDate.ToString()].HeaderText = Lang.cDate;
+            tableArchiveGrid.Columns[EI.Invoice.cDate.ToString()].HeaderText = Lang.cDate;
 
-            tableGrid.Columns[EI.Invoice.envelopeIdentifier.ToString()].HeaderText = Lang.envelopeIdentifier;
+            tableArchiveGrid.Columns[EI.Invoice.envelopeIdentifier.ToString()].HeaderText = Lang.envelopeIdentifier;
 
-            tableGrid.Columns[EI.Invoice.senderAlias.ToString()].HeaderText = Lang.from;
+            tableArchiveGrid.Columns[EI.Invoice.senderAlias.ToString()].HeaderText = Lang.from;
 
-            tableGrid.Columns[EI.Invoice.receiverAlias.ToString()].HeaderText = Lang.to;
+            tableArchiveGrid.Columns[EI.Invoice.receiverAlias.ToString()].HeaderText = Lang.to;
 
-
-            tableGrid.Columns[EI.Invoice.draftFlagDesc.ToString()].HeaderText = Lang.isDraftFlag;
+            tableArchiveGrid.Columns[EI.Invoice.draftFlagDesc.ToString()].HeaderText = Lang.isDraftFlag;
 
         }
 
@@ -135,8 +112,8 @@ namespace izibiz.UI
         {
             try
             {
-                
-                gridUpdateList(Singl.archiveInvoiceDalGet.getInvoiceList(gridIsDraft));
+                //db dekı raporlanmıs arsıv faturaları getır
+                gridUpdateList(Singl.archiveInvoiceDalGet.getArchiveReportList());
             }
 
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -168,7 +145,7 @@ namespace izibiz.UI
 
         private void gridUpdateList(List<ArchiveInvoices> gridListInv)
         {
-            tableGrid.DataSource = null;
+            tableArchiveGrid.DataSource = null;
 
             if (gridListInv.Count == 0)
             {
@@ -178,44 +155,105 @@ namespace izibiz.UI
             {
                 foreach (ArchiveInvoices inv in gridListInv)
                 {
-                  //  inv.statusDesc = invoiceStatusDescWrite(inv.status, inv.gibStatusCode);
-                  
-                        if (inv.draftFlag.Equals(true))
-                        {
-                            inv.draftFlagDesc = Lang.yes;
-                        }
-                        else if (inv.draftFlag.Equals(false))
-                        {
-                            inv.draftFlagDesc = Lang.no;
-                        }             
+                    //  inv.statusDesc = invoiceStatusDescWrite(inv.status, inv.gibStatusCode);
+
+                    if (inv.draftFlag.Equals(true))
+                    {
+                        inv.draftFlagDesc = Lang.yes;
+                    }
+                    else if (inv.draftFlag.Equals(false))
+                    {
+                        inv.draftFlagDesc = Lang.no;
+                    }
                 }
 
-                addViewButtonToDatagridView();
-                tableGrid.DataSource = gridListInv;
+                tableArchiveGrid.DataSource = gridListInv;
                 dataGridChangeColoumnHeaderText();
 
-                //gridde taslak faturaları lısletemıyorsak
-                if (gridIsDraft==false)
-                {
-                    tableGrid.Columns[nameof(EI.Invoice.draftFlagDesc)].Visible = false;
-                }
 
-                tableGrid.Columns[nameof(EI.Invoice.draftFlag)].Visible = false;
-                tableGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
-                tableGrid.Columns[nameof(EI.Invoice.status)].Visible = false;
-                tableGrid.Columns[nameof(EI.Invoice.gibStatusDescription)].Visible = false;
-                tableGrid.Columns[nameof(EI.Invoice.content)].Visible = false;
-                tableGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
+                tableArchiveGrid.Columns[nameof(EI.Invoice.draftFlag)].Visible = false;
+                tableArchiveGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
+                tableArchiveGrid.Columns[nameof(EI.Invoice.status)].Visible = false;
+                tableArchiveGrid.Columns[nameof(EI.Invoice.gibStatusDescription)].Visible = false;
+                tableArchiveGrid.Columns[nameof(EI.Invoice.content)].Visible = false;
+                tableArchiveGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
             }
         }
 
 
 
+        private void btnArchiveView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string docType;
+                if (rdViewHtml.Checked)  //html
+                {
+                    docType = nameof(EI.DocumentType.HTML);
+                }
+                else if (rdViewXml.Checked) //xml
+                {
+                    docType = nameof(EI.DocumentType.XML);
+                }
+                else //pdf
+                {
+                    docType = nameof(EI.DocumentType.PDF);
+                }
+
+                if (String.IsNullOrEmpty(txtInvUuid.Text))
+                {
+                    Singl.archiveControllerGet.getReadFromEArchive(txtInvUuid.Text, docType);
+
+                }
 
 
 
 
 
+            }
 
+            catch (FaultException<REQUEST_ERRORType> ex)  //archive req error
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void btnTakeArchiveInv_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //servisten yenı faturaları cek db ye kaydet ve datagridde göster
+                gridUpdateList(Singl.archiveControllerGet.getInvoiceListOnService(gridDirection));
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
-    }
+}

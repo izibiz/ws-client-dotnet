@@ -1,6 +1,7 @@
 ﻿using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.DAL;
 using izibiz.CONTROLLER.Singleton;
+using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,19 +24,38 @@ namespace izibiz.UI
 
         public FrmDialogSelectItem(bool isSeriName, string vknTckn)
         {
-            InitializeComponent();
-            if (isSeriName)  //seri no sectırıceksek
+            try
             {
-                lblInformation.Text = Lang.selectSeriName;
-                cmbSeriNames.DataSource =  Singl.invIdSerilazeDalGet.getSeriNames();
-                linkLblAddSeriName.Text = Lang.addSeriName;
-                btnAddSeriName.Text = Lang.add;
-                linkLblAddSeriName.Visible = true;
+                InitializeComponent();
+                if (isSeriName)  //seri no sectırıceksek
+                {
+                    lblInformation.Text = Lang.selectSeriName;
+                    cmbSeriNames.DataSource = Singl.invIdSerilazeDalGet.getSeriNames();
+                    linkLblAddSeriName.Text = Lang.addSeriName;
+                    btnAddSeriName.Text = Lang.add;
+                    linkLblAddSeriName.Visible = true;
+                }
+                else //alias sectiriceksek
+                {
+                    lblInformation.Text = Lang.selectAlias;
+                    cmbSeriNames.DataSource = Singl.gibUsersDalGet.getGibUserAliasList(vknTckn);
+                }
             }
-            else //alias sectiriceksek
+            catch (FaultException<REQUEST_ERRORType> ex) //oib req error
             {
-                lblInformation.Text = Lang.selectAlias;
-                cmbSeriNames.DataSource  = Singl.gibUsersDalGet.getGibUserAliasList(vknTckn);
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -84,18 +105,37 @@ namespace izibiz.UI
 
         private void btnAddSeriName_Click(object sender, EventArgs e)
         {
-            int number = 0;
-            if (msdAddSeriName.Text != null && msdAddSeriName.Text.Length == 3
-                && !int.TryParse(msdAddSeriName.Text, out number) && !msdAddSeriName.Text.Any(char.IsLower))
-            {         
-                idSerilazeDal.addSeriName(msdAddSeriName.Text);
-                idSerilazeDal.dbSaveChanges();
-                cmbSeriNames.DataSource = idSerilazeDal.getSeriNames();
-                MessageBox.Show(Lang.addedsucc);
-            }
-            else
+            try
             {
-                MessageBox.Show(Lang.seriNameControl);//seri name; sayı olamaz, bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz
+                int number = 0;
+                if (msdAddSeriName.Text != null && msdAddSeriName.Text.Length == 3
+                    && !int.TryParse(msdAddSeriName.Text, out number) && !msdAddSeriName.Text.Any(char.IsLower))
+                {
+                    idSerilazeDal.addSeriName(msdAddSeriName.Text);
+                    idSerilazeDal.dbSaveChanges();
+                    cmbSeriNames.DataSource = idSerilazeDal.getSeriNames();
+                    MessageBox.Show(Lang.addedsucc);
+                }
+                else
+                {
+                    MessageBox.Show(Lang.seriNameControl);//seri name; sayı olamaz, bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz
+                }
+            }
+            catch (FaultException<REQUEST_ERRORType> ex) //oib req error
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 

@@ -28,23 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.viewDoc = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // webBrowser1
+            // viewDoc
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(4, 4);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1096, 485);
-            this.webBrowser1.TabIndex = 0;
+            this.viewDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewDoc.Location = new System.Drawing.Point(0, 0);
+            this.viewDoc.MinimumSize = new System.Drawing.Size(20, 20);
+            this.viewDoc.Name = "viewDoc";
+            this.viewDoc.Size = new System.Drawing.Size(1104, 501);
+            this.viewDoc.TabIndex = 0;
             // 
             // FrmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1104, 501);
-            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.viewDoc);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmView";
             this.Text = "PreviewInvoices";
             this.Load += new System.EventHandler(this.PreviewInvoices_Load);
@@ -54,6 +58,6 @@
 
         #endregion
 
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.WebBrowser viewDoc;
     }
 }

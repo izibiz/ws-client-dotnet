@@ -16,6 +16,8 @@ namespace izibiz.COMMON.FileControl
          static string inboxFolderIn { get; } = "D:\\temp\\GELEN\\";
          static string inboxFolderOut { get; } = "D:\\temp\\GİDEN\\";
          static string inboxFolderDraft { get; } = "D:\\temp\\TASLAK\\";
+       public static string inboxFolderArchive { get; } = "D:\\temp\\ARŞİV\\";
+
 
 
         public static void deleteFileFromPath(string path)
@@ -25,7 +27,7 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        public static string createXmlPath(string xmlName, string direction)
+        public static string createInvXmlPath(string xmlName, string direction)
         {
             if (direction.Equals(nameof(EI.InvDirection.IN)))
             {
@@ -35,13 +37,15 @@ namespace izibiz.COMMON.FileControl
             {
                 return Path.Combine(inboxFolderOut + xmlName + "." + nameof(EI.DocumentType.XML));
             }
-            else //draft
+            else  //draft
             {
                 return Path.Combine(inboxFolderDraft +xmlName + "." + nameof(EI.DocumentType.XML));
             }
+
         }
 
 
+     
 
 
 
@@ -84,7 +88,7 @@ namespace izibiz.COMMON.FileControl
             //olusturulan xmli diske kaydediyor
             createInboxIfDoesNotExist(inboxFolderDraft); //dosya yolu yoksa olustur
 
-            string inboxFolder = createXmlPath(createdUBL.UUID.Value, nameof(EI.InvDirection.DRAFT));
+            string inboxFolder = createInvXmlPath(createdUBL.UUID.Value, nameof(EI.InvDirection.DRAFT));
 
 
             using (FileStream stream = new FileStream(inboxFolder, FileMode.Create))
@@ -94,7 +98,7 @@ namespace izibiz.COMMON.FileControl
             }
             return inboxFolder;
             ////
-            ////xmli strıng durunde return edıyoruz contentını db ye kaydetmek ıcın asagıdakı kodu acarız
+            ////xmli strıng durunde return edıyoruz contentını dondurmek ıcın /db ye kaydetmek ıcın asagıdakı kodu acarız
             //using (StringWriter textWriter = new StringWriter())
             //{
             //    XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
@@ -127,26 +131,28 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        //suan kullanılmıyor///
-        public static string saveXmlContentWithString(string xmlStr, string direction, string fileName)
-        {
-            string inboxFolder;
-            if (direction == nameof(EI.InvDirection.IN))
-            {
-                inboxFolder = inboxFolderIn;
-            }
-            else if (direction == nameof(EI.InvDirection.OUT))
-            {
-                inboxFolder = inboxFolderOut;
-            }
-            else
-            {
-                inboxFolder = inboxFolderDraft;
-            }
-            createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
-            System.IO.File.WriteAllText(inboxFolder + fileName + "." + nameof(EI.DocumentType.XML), xmlStr);
-            return Path.Combine(inboxFolder, fileName+ "." + nameof(EI.DocumentType.XML));  //return fılepath
-        }
+        ////suan kullanılmıyor///
+        //public static string saveXmlContentWithString(string xmlStr, string direction, string fileName)
+        //{
+        //    string inboxFolder;
+        //    if (direction == nameof(EI.InvDirection.IN))
+        //    {
+        //        inboxFolder = inboxFolderIn;
+        //    }
+        //    else if (direction == nameof(EI.InvDirection.OUT))
+        //    {
+        //        inboxFolder = inboxFolderOut;
+        //    }
+        //    else
+        //    {
+        //        inboxFolder = inboxFolderDraft;
+        //    }
+        //    createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
+        //    System.IO.File.WriteAllText(inboxFolder + fileName + "." + nameof(EI.DocumentType.XML), xmlStr);
+        //    return Path.Combine(inboxFolder, fileName+ "." + nameof(EI.DocumentType.XML));  //return fılepath
+        //}
+
+
 
 
         public static string saveInvDocContentWithByte(byte[] content, string direction, string fileName,string docType)

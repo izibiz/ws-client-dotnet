@@ -330,7 +330,7 @@
             // rdUnzip
             // 
             this.rdUnzip.AutoSize = true;
-            this.rdUnzip.Location = new System.Drawing.Point(404, 20);
+            this.rdUnzip.Location = new System.Drawing.Point(404, 29);
             this.rdUnzip.Name = "rdUnzip";
             this.rdUnzip.Size = new System.Drawing.Size(50, 17);
             this.rdUnzip.TabIndex = 27;
@@ -341,7 +341,7 @@
             // rdZip
             // 
             this.rdZip.AutoSize = true;
-            this.rdZip.Location = new System.Drawing.Point(313, 20);
+            this.rdZip.Location = new System.Drawing.Point(313, 29);
             this.rdZip.Name = "rdZip";
             this.rdZip.Size = new System.Drawing.Size(42, 17);
             this.rdZip.TabIndex = 26;
@@ -412,7 +412,7 @@
             this.grpFilter.Controls.Add(this.btnFilterList);
             this.grpFilter.Controls.Add(this.timeStartFilter);
             this.grpFilter.Controls.Add(this.timeFinishFilter);
-            this.grpFilter.Location = new System.Drawing.Point(949, 36);
+            this.grpFilter.Location = new System.Drawing.Point(949, 29);
             this.grpFilter.Name = "grpFilter";
             this.grpFilter.Size = new System.Drawing.Size(175, 114);
             this.grpFilter.TabIndex = 29;

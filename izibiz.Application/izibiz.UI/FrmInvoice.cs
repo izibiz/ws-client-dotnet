@@ -121,7 +121,7 @@ namespace izibiz.UI
 
             tableGrid.Columns[EI.Invoice.profileid.ToString()].HeaderText = Lang.profileid;
 
-            tableGrid.Columns[EI.Invoice.type.ToString()].HeaderText = Lang.type;
+            tableGrid.Columns[EI.Invoice.invoiceType.ToString()].HeaderText = Lang.type;
 
             tableGrid.Columns[EI.Invoice.suplier.ToString()].HeaderText = Lang.supplier;
 
@@ -425,8 +425,7 @@ namespace izibiz.UI
             List<string> verifiredInvList = new List<string>();
             List<string> description = new List<string>();
 
-            string desc = Interaction.InputBox(Lang.writeDescription, Lang.addDescription, "Reasen");
-
+          
             foreach (DataGridViewRow row in tableGrid.SelectedRows)
             {
                 rowUuid = row.Cells[nameof(EI.Invoice.uuid)].Value.ToString();
@@ -456,6 +455,8 @@ namespace izibiz.UI
                 }
                 else//fatura cevap gondermeye uygunsa,fatura uuid oldugu kabul lıstesi olustur
                 {
+                    string desc = Interaction.InputBox(Lang.writeDescription, Lang.addDescription, "Reasen");
+
                     //uygun olan ınv u controllerdakı dakı Inv listesine aktarıyoruz
                     Singl.invoiceControllerGet.createInvListWithUuid(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
                     Singl.invoiceDalGet.getInvoice(rowUuid, nameof(EI.InvDirection.IN)).stateNote = nameof(EI.StateNote.SENDRESPONSE);//db ye cevap gonderıldı dıye not edılır
@@ -897,7 +898,7 @@ namespace izibiz.UI
                                     invoice.ID = idXmlModel.idArr[rowCnt];
                                     invoice.direction = nameof(EI.InvDirection.OUT);
                                     invoice.stateNote = nameof(EI.StatusType.SEND);
-                                    invoice.folderPath = FolderControl.createXmlPath(uuidRow, nameof(EI.InvDirection.OUT)); // yenı path db ye yazılır
+                                    invoice.folderPath = FolderControl.createInvXmlPath(uuidRow, nameof(EI.InvDirection.OUT)); // yenı path db ye yazılır
                                     invoice.content = idXmlModel.xmlContentArr[rowCnt];
 
                                     //eskı folderPathdekı dosyayı konumdan sıler
@@ -974,6 +975,9 @@ namespace izibiz.UI
                             FolderControl.writeFileOnDiskWithString(invoice.content, invoice.folderPath);
                         }
 
+                        //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
+                        Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(idXmlModel.idArr[tableGrid.SelectedRows.Count - 1]);
+
                         //eger islem basarılı ise db guncellemeleri kaydet
                         Singl.invoiceDalGet.dbSaveChanges();
 
@@ -983,7 +987,6 @@ namespace izibiz.UI
                         MessageBox.Show(Lang.successLoad);//"yukleme basarılı"
 
                     }
-
                     frmDialogIdSeriName.Dispose();
                 }
             }

@@ -16,7 +16,7 @@ namespace izibiz.CONTROLLER.Web_Services
     {
 
         AuthenticationServicePortClient authenticationPortClient;
-        REQUEST_HEADERType authRequestHeader;
+ 
         public static string sesionID;
 
 
@@ -25,15 +25,7 @@ namespace izibiz.CONTROLLER.Web_Services
             authenticationPortClient = new AuthenticationServicePortClient();
         }
 
-        private  REQUEST_HEADERType createAuthRequestHeader()
-        {
-            authRequestHeader = new REQUEST_HEADERType()
-            {
-                SESSION_ID = "-1",
-                APPLICATION_NAME = "izibiz.Application",
-            };
-            return authRequestHeader;
-        }
+     
 
 
 
@@ -41,7 +33,7 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             var req = new LoginRequest
             {
-                REQUEST_HEADER = createAuthRequestHeader(),
+                REQUEST_HEADER = RequestHeader.getRequestHeaderAuth,
                 USER_NAME = usurname,
                 PASSWORD = password
             };
@@ -50,7 +42,8 @@ namespace izibiz.CONTROLLER.Web_Services
             if (loginRes.ERROR_TYPE == null)
             {
                 sesionID = loginRes.SESSION_ID;
-                RequestHeaderOib.getRequestHeaderOib();
+                RequestHeader.createRequestHeaderOib();
+                RequestHeader.createRequestHeaderArchive();
                 return true;
             }
             else
@@ -68,7 +61,7 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 GetGibUserListRequest req = new GetGibUserListRequest();
 
-                req.REQUEST_HEADER = RequestHeaderAuth.getRequestHeaderAuth;
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderAuth;
                 req.TYPE = GetGibUserListRequestTYPE.XML;
                 req.DOCUMENT_TYPE = nameof(EI.ProductType.INVOICE);
 

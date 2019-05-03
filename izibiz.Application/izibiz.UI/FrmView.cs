@@ -33,20 +33,24 @@ namespace izibiz.UI
 
         private void PreviewInvoices_Load(object sender, EventArgs e)
         {
-
-            if (docType.Equals(nameof(EI.DocumentType.XML)))
+            try
             {
-                webBrowser1.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGib, xmlPath);
+
+                if (docType.Equals(nameof(EI.DocumentType.XML)))
+                {
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGib, xmlPath);
+                }
+                else
+                {
+                    //var data=Xml.viewToPdf(Xslt.xsltGib,xmlPath);
+                    //viewDoc.DocumentText=(Encoding.ASCII.GetString(data));
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //var data=Xml.viewToPdf(Xslt.xsltGib,xmlPath);
-                //webBrowser1.DocumentText=(Encoding.ASCII.GetString(data));
-
-
+                MessageBox.Show(ex.ToString());
             }
-
-
         }
 
 
@@ -57,5 +61,5 @@ namespace izibiz.UI
 
     }
 
-   
+
 }
