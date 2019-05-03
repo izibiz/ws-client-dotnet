@@ -378,4 +378,7 @@
   <data name="eArchiveInvoicesList" xml:space="preserve">
     <value>E Archive Invoices List</value>
   </data>
+  <data name="eArchiveReportList" xml:space="preserve">
+    <value>E Archive Invoices  Report List</value>
+  </data>
 </root>

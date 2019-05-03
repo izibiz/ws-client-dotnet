@@ -381,7 +381,7 @@
   <data name="eArchiveInvoices" xml:space="preserve">
     <value>E Arşiv Faturaları</value>
   </data>
-  <data name="eArchiveInvoicesList" xml:space="preserve">
-    <value>E Arşiv Faturaları Listele</value>
+  <data name="eArchiveReportList" xml:space="preserve">
+    <value>E Arşiv Fatura Raporları Listele</value>
   </data>
 </root>

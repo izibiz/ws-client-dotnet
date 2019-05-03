@@ -61,5 +61,11 @@ namespace izibiz.UI
             this.Hide();
         }
 
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            FrmArchive frmArchive = new FrmArchive();
+            frmArchive.Show();
+            this.Hide();
+        }
     }
 }

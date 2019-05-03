@@ -108,7 +108,6 @@
             this.button1.TabIndex = 27;
             this.button1.Text = "iade Et";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
             // 
             // button2
             // 
@@ -124,7 +123,6 @@
             this.button2.TabIndex = 28;
             this.button2.Text = "durum sorgula";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
             // 
             // button3
             // 
@@ -140,7 +138,6 @@
             this.button3.TabIndex = 29;
             this.button3.Text = "rapor detay sorgula";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Visible = false;
             // 
             // button4
             // 
@@ -156,7 +153,6 @@
             this.button4.TabIndex = 30;
             this.button4.Text = "maıle gonder";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Visible = false;
             // 
             // button5
             // 
@@ -172,7 +168,6 @@
             this.button5.TabIndex = 31;
             this.button5.Text = "donemlık arsıv raporu";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Visible = false;
             // 
             // tableArchiveGrid
             // 
@@ -198,7 +193,6 @@
             this.btnArchiveView.TabIndex = 37;
             this.btnArchiveView.Text = "goruntule";
             this.btnArchiveView.UseVisualStyleBackColor = false;
-            this.btnArchiveView.Visible = false;
             this.btnArchiveView.Click += new System.EventHandler(this.btnArchiveView_Click);
             // 
             // rdViewHtml
@@ -248,7 +242,6 @@
             this.btnTakeArchiveInv.TabIndex = 41;
             this.btnTakeArchiveInv.Text = "fatura al";
             this.btnTakeArchiveInv.UseVisualStyleBackColor = false;
-            this.btnTakeArchiveInv.Visible = false;
             this.btnTakeArchiveInv.Click += new System.EventHandler(this.btnTakeArchiveInv_Click);
             // 
             // FrmArchive

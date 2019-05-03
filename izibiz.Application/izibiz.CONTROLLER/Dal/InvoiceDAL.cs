@@ -108,7 +108,7 @@ namespace izibiz.CONTROLLER.DAL
             draftCreatedInv.draftFlag = EI.ActiveOrPasive.N.ToString();  //load ınv yapmadıklarımız flag N
             draftCreatedInv.issueDate = Convert.ToDateTime(invoiceUbl.IssueDate.Value);
             draftCreatedInv.profileid = invoiceUbl.ProfileID.Value.ToString();
-            draftCreatedInv.type = invoiceUbl.InvoiceTypeCode.Value.ToString();
+            draftCreatedInv.invoiceType = invoiceUbl.InvoiceTypeCode.Value.ToString();
             draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value.ToString();
             draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value.ToString();
             draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value.ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         

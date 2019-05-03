@@ -25,13 +25,15 @@ namespace izibiz.UI
         public static string password;
         int saniye=0;
 
-         private static RemoteCertificateValidationCallback cert;
+      //   private static RemoteCertificateValidationCallback cert;
+ 
 
         public FrmLogin()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
-            cert = ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+          //  cert = ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
 
+     
             InitializeComponent();
             txtUsername.Text = "izibiz-test2";
             txtPassword.Text = "izi321";

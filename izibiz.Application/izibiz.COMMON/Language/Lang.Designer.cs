@@ -205,11 +205,11 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E Arşiv Faturaları Listele.
+        ///   Looks up a localized string similar to E Arşiv Fatura Raporları Listele.
         /// </summary>
-        public static string eArchiveInvoicesList {
+        public static string eArchiveReportList {
             get {
-                return ResourceManager.GetString("eArchiveInvoicesList", resourceCulture);
+                return ResourceManager.GetString("eArchiveReportList", resourceCulture);
             }
         }
         

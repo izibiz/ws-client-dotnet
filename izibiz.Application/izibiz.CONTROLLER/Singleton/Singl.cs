@@ -114,7 +114,7 @@ namespace izibiz.CONTROLLER.Singleton
         {
             get
             {
-                if (null == invoiceController)
+                if (null == archiveController)
                 {
                     archiveController = new ArchiveController();
                 }

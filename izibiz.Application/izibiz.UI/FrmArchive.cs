@@ -52,8 +52,8 @@ namespace izibiz.UI
             #region writeAllFormItem
 
             itemArchiveInvoices.Text = Lang.eArchiveInvoices;
-            itemListArchiveReport.Text = Lang.eArchiveInvoicesList;
-            itemArchiveNewCreated.Text = Lang.eArchiveDraftInvoices;
+            itemListArchiveReport.Text = Lang.eArchiveReportList;
+            itemArchiveNewCreated.Text = Lang.newInvoice;
             #endregion
 
         }
@@ -200,12 +200,6 @@ namespace izibiz.UI
                     docType = nameof(EI.DocumentType.PDF);
                 }
 
-                if (String.IsNullOrEmpty(txtInvUuid.Text))
-                {
-                    Singl.archiveControllerGet.getReadFromEArchive(txtInvUuid.Text, docType);
-
-                }
-
 
 
 
@@ -239,7 +233,7 @@ namespace izibiz.UI
             try
             {
                 //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridUpdateList(Singl.archiveControllerGet.getInvoiceListOnService(gridDirection));
+                gridUpdateList(Singl.archiveControllerGet.getInvoiceListOnService());
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)

@@ -114,6 +114,7 @@
             this.btnArchive.Text = "E-Arşiv";
             this.btnArchive.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnArchive.UseVisualStyleBackColor = false;
+            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
             // 
             // btnMüstahsil
             // 

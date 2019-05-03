@@ -81,7 +81,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.direction = direction;
                 invoice.issueDate = inv.HEADER.ISSUE_DATE;
                 invoice.profileid = inv.HEADER.PROFILEID;
-                invoice.type = inv.HEADER.INVOICE_TYPE_CODE;
+                invoice.invoiceType = inv.HEADER.INVOICE_TYPE_CODE;
                 invoice.suplier = inv.HEADER.SUPPLIER;
                 invoice.senderVkn = inv.HEADER.SENDER;
                 invoice.receiverVkn = inv.HEADER.RECEIVER;
