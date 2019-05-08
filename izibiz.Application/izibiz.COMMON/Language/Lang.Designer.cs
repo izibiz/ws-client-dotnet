@@ -142,15 +142,6 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Db tarafında bir sorun cıktı.Buyuk olasılıkla projenin içindeki sqlite datasource konumunu kendi konumunuza ayarlamadınız..
-        /// </summary>
-        public static string dataException {
-            get {
-                return ResourceManager.GetString("dataException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Database tarafında bır sorun cıktı !.
         /// </summary>
         public static string dbFault {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,13 @@ namespace izibiz.MODEL.Data
     public class DatabaseContext : DbContext
     {
 
+        private static string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
 
-        public DatabaseContext() :         
+
+        public DatabaseContext() :
             base(new SQLiteConnection()
             {
-                //datasourcede projenızın yer aldıgı dızını yazınız
-                ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = @"C:\Users\gamze\Desktop\a\ws-client-dotnet\izibiz.Application\izibiz.MODEL\Db\izibiz-Entegrasyon.s3db", ForeignKeys = true }.ConnectionString
+                ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = projectDirectory + @"\izibiz.MODEL\Db\izibiz-Entegrasyon.s3db", ForeignKeys = true }.ConnectionString
             }, true)
         {
         }
@@ -28,7 +30,7 @@ namespace izibiz.MODEL.Data
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {           
+        {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }

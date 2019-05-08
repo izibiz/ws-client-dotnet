@@ -456,7 +456,6 @@
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1136, 566);
             this.Controls.Add(this.btnHomePage);
-            this.Controls.Add(this.panelDraftInv);
             this.Controls.Add(this.panelSentInv);
             this.Controls.Add(this.panelIncomingInv);
             this.Controls.Add(this.grpFilter);
@@ -464,6 +463,7 @@
             this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.menuInvoice);
+            this.Controls.Add(this.panelDraftInv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuInvoice;
             this.MaximizeBox = false;

@@ -45,7 +45,7 @@ namespace izibiz.CONTROLLER
                 firstSeriNo = (Convert.ToInt32(firstSeriNo) + 1).ToString();        
             }
 
-            return newIdSeriArr;
+             return newIdSeriArr;
         }
 
 

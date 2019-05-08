@@ -225,7 +225,7 @@ namespace izibiz.UI
             }
             catch (System.Data.DataException ex)
             {
-                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -265,7 +265,7 @@ namespace izibiz.UI
             }
             catch (System.Data.DataException ex)
             {
-                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -304,7 +304,7 @@ namespace izibiz.UI
             }
             catch (System.Data.DataException ex)
             {
-                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -827,7 +827,7 @@ namespace izibiz.UI
             }
             catch (System.Data.DataException ex)
             {
-                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -896,11 +896,11 @@ namespace izibiz.UI
                         valid = false; break;
                     }
                     //Status note nullsa veya load degılse
-                    else if (row.Cells[nameof(EI.Invoice.stateNote)].Value == null || row.Cells[nameof(EI.Invoice.stateNote)].Value.ToString() != nameof(EI.StatusType.LOAD))
+                  /*  else if (row.Cells[nameof(EI.Invoice.stateNote)].Value == null || row.Cells[nameof(EI.Invoice.stateNote)].Value.ToString() != nameof(EI.StatusType.LOAD))
                     {
                         MessageBox.Show("faturayı once portala yukleyınız");
                         valid = false; break;
-                    }
+                    }*/
                 }
 
                 if (valid) //uymayan fatura durumu yoksa

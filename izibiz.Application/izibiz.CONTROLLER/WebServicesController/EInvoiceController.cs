@@ -125,7 +125,9 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
                 req.INVOICE_SEARCH_KEY.UUID = uuid;
-                req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;  //daha onceden cektıgımız ıcın mark ınv yapılmıstır o yuzden true
+                req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
+                req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
+                //daha onceden cektıgımız ıcın mark ınv yapılmıstır o yuzden true
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 if (direction.Equals(nameof(EI.InvDirection.DRAFT))) //direction taslak fatura ıse

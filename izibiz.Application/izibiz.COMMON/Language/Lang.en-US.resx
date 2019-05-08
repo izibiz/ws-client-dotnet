@@ -318,9 +318,6 @@
   <data name="send" xml:space="preserve">
     <value>Send</value>
   </data>
-  <data name="dataException" xml:space="preserve">
-    <value>DataException is a problem in the Db site. The sqlite data source where the project is located is based on your own location.</value>
-  </data>
   <data name="formDialogSeriName" xml:space="preserve">
     <value>İzibiz Desktop | Series Front Attachment Selection</value>
   </data>

@@ -31,13 +31,10 @@ namespace izibiz.UI
         {
             localizationTextWrite();
 
-
             for (int cntId=0;cntId<idArr.Length;cntId++)
             {
                 gridSendMail.Rows.Add(idArr[cntId], "mail@mail.com");
             }
- 
-
         }
 
 

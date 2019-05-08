@@ -25,8 +25,6 @@ namespace izibiz.CONTROLLER.WebServicesController
 
         public ArchiveController()
         {
-            //InvoiceSearchKey.createInvoiceSearchKeyGetInvoiceRequest();
-            //InvoiceSearchKey.createinvoiceSearchKeyGetInvoiceWithTypeRequest();
         }
 
 
@@ -58,6 +56,8 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
                 req.READ_INCLUDED = false.ToString();
 
+                
+
 
                 EARCHIVEINV[] archiveArr = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req).INVOICE;
 
@@ -79,28 +79,36 @@ namespace izibiz.CONTROLLER.WebServicesController
             foreach (var arc in archiveArr)
             {
                 ArchiveInvoices archive = new ArchiveInvoices();
+               
+                //aynı id ve uuid sahıp faturalar gelebıldıgı ıcın unıque row olusturduk
+                archive.rowUnique = arc.HEADER.INVOICE_ID +"/"+ arc.HEADER.UUID +"/"+ arc.HEADER.PROFILE_ID;
 
-                archive.ID = arc.HEADER.INVOICE_ID;
-                archive.uuid = arc.HEADER.UUID;
-                archive.totalAmount = Convert.ToDecimal(arc.HEADER.PAYABLE_AMOUNT);
-                archive.issueDate = Convert.ToDateTime(arc.HEADER.ISSUE_DATE);
-                archive.profileid = arc.HEADER.PROFILE_ID;
-                archive.invoiceType = arc.HEADER.INVOICE_TYPE;
-                archive.sendingType = arc.HEADER.SENDING_TYPE;
-                archive.eArchiveType = arc.HEADER.EARCHIVE_TYPE;
-                archive.senderName = arc.HEADER.SENDER_NAME;
-                archive.senderVkn = arc.HEADER.SENDER_IDENTIFIER;
-                archive.receiverVkn = arc.HEADER.CUSTOMER_IDENTIFIER;
-                archive.status = arc.HEADER.STATUS;
-                archive.statusCode = arc.HEADER.STATUS_CODE;
-                archive.currencyCode = arc.HEADER.CURRENCY_CODE;
-                archive.reportFlag = true;  //raporluları getırdıgımız ıcın true
-                archive.folderPath = FolderControl.inboxFolderArchive + archive.uuid + "." + nameof(EI.DocumentType.XML);
+                //bu row unıque degerı dbye daha once eklenmemısse
+                //bu kontrolu yapmamızın sebebı markRead calısmamasıdır calıstıgında kontrol kaldrılacaktır
+                if (Singl.databaseContextGet.archiveInvoices.Find(archive.rowUnique)==null)
+                {
+                    archive.ID = arc.HEADER.INVOICE_ID;
+                    archive.uuid = arc.HEADER.UUID;
+                    archive.totalAmount = Convert.ToDecimal(arc.HEADER.PAYABLE_AMOUNT);
+                    archive.issueDate = Convert.ToDateTime(arc.HEADER.ISSUE_DATE);
+                    archive.profileid = arc.HEADER.PROFILE_ID;
+                    archive.invoiceType = arc.HEADER.INVOICE_TYPE;
+                    archive.sendingType = arc.HEADER.SENDING_TYPE;
+                    archive.eArchiveType = arc.HEADER.EARCHIVE_TYPE;
+                    archive.senderName = arc.HEADER.SENDER_NAME;
+                    archive.senderVkn = arc.HEADER.SENDER_IDENTIFIER;
+                    archive.receiverVkn = arc.HEADER.CUSTOMER_IDENTIFIER;
+                    archive.status = arc.HEADER.STATUS;
+                    archive.statusCode = arc.HEADER.STATUS_CODE;
+                    archive.currencyCode = arc.HEADER.CURRENCY_CODE;
+                    archive.reportFlag = true;  //raporluları getırdıgımız ıcın true
+                    archive.folderPath = FolderControl.inboxFolderArchive + archive.uuid + "." + nameof(EI.DocumentType.XML);
 
-                //archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
-                //FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
+                    //archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
+                    //FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
 
-                Singl.archiveInvoiceDalGet.addArchive(archive);
+                    Singl.archiveInvoiceDalGet.addArchive(archive);
+                }       
             }
             Singl.archiveInvoiceDalGet.dbSaveChanges();
         }
@@ -120,7 +128,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 markReq.MARK.value = MarkEArchiveInvoiceRequestMARKValue.READ;
                 markReq.MARK.valueSpecified = true;
 
-                eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
+              var res=  eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
             }
         }
 
@@ -154,10 +162,10 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public string getArchiveContentXml(string uuid,string profileId)
+        public string getArchiveContentXml(string uuid,string rowUnique)
         {
             //db den pathı getırdı
-            string xmlPath = Singl.archiveInvoiceDalGet.getArchive(uuid,profileId).folderPath;
+            string xmlPath = Singl.archiveInvoiceDalGet.findArchive(rowUnique).folderPath;
 
             if (FolderControl.xmlFileIsInFolder(xmlPath)) // xml dosyası verılen pathde bulunuyorsa
             {

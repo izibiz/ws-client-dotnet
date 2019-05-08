@@ -46,7 +46,7 @@
             this.btnTakeArchiveInv = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
             this.pnlArchive = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSendSms = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableArchiveGrid)).BeginInit();
             this.pnlArchive.SuspendLayout();
@@ -277,7 +277,7 @@
             // 
             // pnlArchive
             // 
-            this.pnlArchive.Controls.Add(this.button1);
+            this.pnlArchive.Controls.Add(this.btnSendSms);
             this.pnlArchive.Controls.Add(this.btnArchiveView);
             this.pnlArchive.Controls.Add(this.rdViewXml);
             this.pnlArchive.Controls.Add(this.rdViewHtml);
@@ -293,20 +293,21 @@
             this.pnlArchive.TabIndex = 43;
             this.pnlArchive.Visible = false;
             // 
-            // button1
+            // btnSendSms
             // 
-            this.button1.BackColor = System.Drawing.Color.CadetBlue;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.button1.FlatAppearance.BorderSize = 2;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(359, 82);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 48);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "sms gonder";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSendSms.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnSendSms.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSendSms.FlatAppearance.BorderSize = 2;
+            this.btnSendSms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendSms.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSendSms.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSendSms.Location = new System.Drawing.Point(359, 82);
+            this.btnSendSms.Name = "btnSendSms";
+            this.btnSendSms.Size = new System.Drawing.Size(120, 48);
+            this.btnSendSms.TabIndex = 41;
+            this.btnSendSms.Text = "sms gonder";
+            this.btnSendSms.UseVisualStyleBackColor = false;
+            this.btnSendSms.Click += new System.EventHandler(this.btnSendSms_Click);
             // 
             // FrmArchive
             // 
@@ -353,6 +354,6 @@
         private System.Windows.Forms.Button btnTakeArchiveInv;
         private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.Panel pnlArchive;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSendSms;
     }
 }

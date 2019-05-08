@@ -131,6 +131,8 @@ namespace izibiz.UI
                 tableArchiveGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.content)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
+                tableArchiveGrid.Columns[nameof(EI.Invoice.rowUnique)].Visible = false;
+
             }
         }
 
@@ -160,7 +162,7 @@ namespace izibiz.UI
             }
             catch (System.Data.DataException ex)
             {
-                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -186,7 +188,7 @@ namespace izibiz.UI
 
                 if (rdViewHtml.Checked) //html
                 {
-                    string xmlContent = Singl.archiveControllerGet.getArchiveContentXml(uuid, tableArchiveGrid.SelectedRows[0].Cells[nameof(EI.Invoice.profileid)].Value.ToString());
+                    string xmlContent = Singl.archiveControllerGet.getArchiveContentXml(uuid, tableArchiveGrid.SelectedRows[0].Cells[nameof(EI.Invoice.rowUnique)].Value.ToString());
                     if (xmlContent != null)
                     {
                         FrmView previewInvoices = new FrmView(xmlContent, nameof(EI.Invoice.ArchiveInvoices));
@@ -227,7 +229,7 @@ namespace izibiz.UI
             }
             catch (System.Data.DataException ex)
             {
-                MessageBox.Show(Lang.dataException + ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -243,7 +245,6 @@ namespace izibiz.UI
             {
                 //servisten yenı faturaları cek db ye kaydet ve datagridde göster
                 gridUpdateList(Singl.archiveControllerGet.getInvoiceListOnService());
-
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -252,6 +253,14 @@ namespace izibiz.UI
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -299,44 +308,49 @@ namespace izibiz.UI
 
 
 
+
+
+
         private void btnArchiveCancel_Click(object sender, EventArgs e)
         {
             try
             {
-                UuidProfileIDModel uuidProfileID = new UuidProfileIDModel(tableArchiveGrid.SelectedRows.Count);
+                List<string> validRowUniqueList = new List<string>();
 
                 //cancelcontentlıst dekı cancel contentlerı foreachle gecerken olusturuyoruz
                 for (int cnt = 0; cnt < tableArchiveGrid.SelectedRows.Count; cnt++)
                 {
                     //daha onceden cancel edılmemıs ıse
-                    if (tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.stateNote)].Value == null
-                        || tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.stateNote)].Value.ToString() != nameof(EI.StateNote.CANCEL))
+                    if (tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.stateNote)].Value == null|| tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.stateNote)].Value.ToString() != nameof(EI.StateNote.CANCEL))
                     {
-                        Singl.archiveControllerGet.addContentCancelArcOnCancelContentArr(
-                            tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString(),
-                            tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString(),
-                            Convert.ToDecimal(tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.totalAmount)].Value));
-                        //validse uuid ve profıleId yı kaydet
-                        uuidProfileID.uuidArr[cnt] = tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-                        uuidProfileID.profileIDArr[cnt] = tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.profileid)].Value.ToString();
+                        //validse cancel contentlerı olustur 
+                        Singl.archiveControllerGet.addContentCancelArcOnCancelContentArr(tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString(), tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString(),Convert.ToDecimal(tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.totalAmount)].Value));
+                      
+                        //validse RowUnique yı kaydet
+                        validRowUniqueList.Add(tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.rowUnique)].Value.ToString());
                     }
                 }
 
+
                 //valid fatura varsa
-                if (uuidProfileID.uuidArr.Length != 0)
+                if (validRowUniqueList.Count != 0)
                 {
                     if (Singl.archiveControllerGet.cancelEarchive()) //return code 0 ise ,true ıse
                     {
+                        string succList="";
                         //valid olanları db de status note cancel yap
-                        for (int cnt = 0; cnt < uuidProfileID.uuidArr.Length; cnt++)
+                        foreach (string rowUnique in validRowUniqueList)
                         {
-                            var archive = Singl.archiveInvoiceDalGet.getArchive(uuidProfileID.uuidArr[cnt], uuidProfileID.profileIDArr[cnt]);
-                            archive.stateNote = EI.StateNote.CANCEL.ToString();
+                             Singl.archiveInvoiceDalGet.findArchive(rowUnique).stateNote= EI.StateNote.CANCEL.ToString();
+
+                            List<string> idList = new List<string>();
+                            idList.Add(rowUnique.Split('/').First());
+
+                             succList = string.Join(Environment.NewLine, idList) ;
                         }
                         Singl.archiveInvoiceDalGet.dbSaveChanges();
 
-                        string message = string.Join(Environment.NewLine, uuidProfileID.uuidArr) + Environment.NewLine + "secılı arsıv iptal edildi";
-                        MessageBox.Show(message);
+                        MessageBox.Show(succList+ Environment.NewLine+"secılı arsıv iptal edildi");
                     }
                     else
                     {
@@ -355,6 +369,14 @@ namespace izibiz.UI
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
             }
             catch (Exception ex)
             {
@@ -403,6 +425,14 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -428,13 +458,11 @@ namespace izibiz.UI
                 string[] idArr = new string[tableArchiveGrid.SelectedRows.Count];
                 string[] uuidArr = new string[tableArchiveGrid.SelectedRows.Count];
 
-
                 for (int cntRow = 0; cntRow < tableArchiveGrid.SelectedRows.Count; cntRow++)
                 {
                     idArr[cntRow] = tableArchiveGrid.SelectedRows[cntRow].Cells[nameof(EI.Invoice.ID)].Value.ToString();
                     uuidArr[cntRow] = tableArchiveGrid.SelectedRows[cntRow].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
                 }
-
 
                 FrmSelectMail frmSelectMail = new FrmSelectMail(idArr);
                 frmSelectMail.ShowDialog();
@@ -464,6 +492,14 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -472,7 +508,40 @@ namespace izibiz.UI
 
 
 
+        private void btnSendSms_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               
 
 
+
+
+
+
+
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

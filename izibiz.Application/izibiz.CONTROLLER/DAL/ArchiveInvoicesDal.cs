@@ -23,6 +23,12 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
+        public ArchiveInvoices findArchive(string rowUnique)
+        {
+            return Singl.databaseContextGet.archiveInvoices.Find(rowUnique);
+        }
+
+
         public void addArchive(ArchiveInvoices archive)
         {
             Singl.databaseContextGet.archiveInvoices.Add(archive);

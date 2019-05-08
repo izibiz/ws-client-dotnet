@@ -114,7 +114,8 @@ namespace izibiz.COMMON
             sendingType,
             currencyCode,
             totalAmount,
-            mailStatus
+            mailStatus,
+            rowUnique
 
         }
 

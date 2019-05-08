@@ -21,6 +21,10 @@ namespace izibiz.MODEL.DbModels
     public  class ArchiveInvoices
     {
 
+        [Column(Name = nameof(EI.Invoice.rowUnique), IsDbGenerated = true, IsPrimaryKey = true, DbType = "NVARCHAR")]
+        [Key]
+        public string rowUnique { get; set; }
+
 
         [Column(Name = nameof(EI.Invoice.ID), DbType = "NVARCHAR")]
         public string ID { get; set; }
