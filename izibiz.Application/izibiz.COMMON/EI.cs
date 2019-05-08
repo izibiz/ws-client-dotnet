@@ -112,7 +112,9 @@ namespace izibiz.COMMON
             statusCode,
             eArchiveType,
             sendingType,
-            currenyCode
+            currencyCode,
+            totalAmount,
+            mailStatus
 
         }
 
@@ -227,7 +229,8 @@ namespace izibiz.COMMON
             CREATED,         
             SENDRESPONSE,
            LOAD,
-           SEND
+           SEND,
+           CANCEL
         }
     }
 }

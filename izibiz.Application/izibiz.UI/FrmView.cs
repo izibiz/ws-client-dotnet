@@ -21,31 +21,34 @@ namespace izibiz.UI
     public partial class FrmView : Form
     {
 
-        private string xmlPath;
-        private string docType;
+        private string xmlContent;
+        private string invoiceType;
 
-        public FrmView(string xmlPath, string docType)
+        public FrmView(string xmlContent, string invoiceType)
         {
             InitializeComponent();
-            this.xmlPath = xmlPath;
-            this.docType = docType;
+            this.xmlContent = xmlContent;
+            this.invoiceType = invoiceType;
         }
 
         private void PreviewInvoices_Load(object sender, EventArgs e)
         {
             try
             {
-
-                if (docType.Equals(nameof(EI.DocumentType.XML)))
+                if (invoiceType == EI.Invoice.ArchiveInvoices.ToString())
                 {
-                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGib, xmlPath);
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibArchive, xmlContent);
                 }
-                else
-                {
-                    //var data=Xml.viewToPdf(Xslt.xsltGib,xmlPath);
-                    //viewDoc.DocumentText=(Encoding.ASCII.GetString(data));
+                else if (invoiceType == EI.Invoice.Invoices.ToString())
+                { 
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibInvoice, xmlContent);
+                }
 
-                }
+
+                //pdf ise
+                //var data=Xml.viewToPdf(Xslt.xsltGib,xmlPath);
+                //viewDoc.DocumentText=(Encoding.ASCII.GetString(data));
+
             }
             catch (Exception ex)
             {

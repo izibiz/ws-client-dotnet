@@ -15,15 +15,14 @@ namespace izibiz.COMMON.FileControl
     public class XmlControl
     {
         /// <summary>
-        /// VERİLEN PATHDEKI XMLIN ICINDEKI ID YI DEGISTIRIR,  XML PATH DONER
+        /// VERİLEN  XMLIN ICINDEKI ID YI DEGISTIRIR,  XML PATH DONER
         /// </summary>
         /// <returns> XML STRING </returns>
-        public static string xmlChangeIdValue(string xmlPath, string newInvId)
+        public static string xmlChangeIdValue(string xmlContent, string newInvId)
         {
         //    newInvId = DateTime.Now.ToString();
 
-
-            XDocument doc = XDocument.Parse(System.IO.File.ReadAllText(xmlPath, Encoding.UTF8));
+            XDocument doc = XDocument.Parse(xmlContent);
 
             foreach (XElement element in doc.Descendants()/*.Where(
                    e => e.Name.LocalName.ToString().Equals("ID")
@@ -97,13 +96,12 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        public static string xmlToHtml(string xslEncoded, string xmlPath)
+        public static string xmlToHtml(string xslEncoded, string inputXml)
         {
             //xslt text cevırme
-            byte[] data = Convert.FromBase64String(xslEncoded);
-            string decodedXslt = Encoding.UTF8.GetString(data);
-            //pathdekı xmli okuyoruz
-            string inputXml = File.ReadAllText(xmlPath);
+            byte[] data = System.Convert.FromBase64String(xslEncoded);
+          string decodedXslt = System.Text.UTF8Encoding.UTF8.GetString(data);
+          //  string decodedXslt = Encoding.UTF8.GetString(Convert.FromBase64String(xslEncoded));
 
 
             using (StringReader srt = new StringReader(decodedXslt)) // xslInput is a string that contains xsl

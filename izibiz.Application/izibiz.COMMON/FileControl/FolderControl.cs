@@ -16,7 +16,7 @@ namespace izibiz.COMMON.FileControl
          static string inboxFolderIn { get; } = "D:\\temp\\GELEN\\";
          static string inboxFolderOut { get; } = "D:\\temp\\GİDEN\\";
          static string inboxFolderDraft { get; } = "D:\\temp\\TASLAK\\";
-       public static string inboxFolderArchive { get; } = "D:\\temp\\ARŞİV\\";
+        public static string inboxFolderArchive { get; } = "D:\\temp\\ARŞİV\\";
 
 
 
@@ -27,25 +27,25 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        public static string createInvXmlPath(string xmlName, string direction)
+        public static string createInvDocPath(string docName, string direction, string docType)
         {
             if (direction.Equals(nameof(EI.InvDirection.IN)))
             {
-                return Path.Combine(inboxFolderIn+ xmlName + "." + nameof(EI.DocumentType.XML));
+                return inboxFolderIn + docName + "." + docType;
             }
             else if (direction.Equals(nameof(EI.InvDirection.OUT)))
             {
-                return Path.Combine(inboxFolderOut + xmlName + "." + nameof(EI.DocumentType.XML));
+                return inboxFolderOut + docName + "." + docType;
             }
             else  //draft
             {
-                return Path.Combine(inboxFolderDraft +xmlName + "." + nameof(EI.DocumentType.XML));
+                return inboxFolderDraft + docName + "." + docType;
             }
 
         }
 
 
-     
+
 
 
 
@@ -88,7 +88,7 @@ namespace izibiz.COMMON.FileControl
             //olusturulan xmli diske kaydediyor
             createInboxIfDoesNotExist(inboxFolderDraft); //dosya yolu yoksa olustur
 
-            string inboxFolder = createInvXmlPath(createdUBL.UUID.Value, nameof(EI.InvDirection.DRAFT));
+            string inboxFolder = createInvDocPath(createdUBL.UUID.Value, nameof(EI.InvDirection.DRAFT),nameof(EI.DocumentType.XML));
 
 
             using (FileStream stream = new FileStream(inboxFolder, FileMode.Create))
@@ -111,21 +111,23 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        public static void writeFileOnDiskWithByte(byte[] fileDoc, string filePath)
+        public static void writeFileOnDiskWithByte(byte[] fileDocContent, string filePath)
         {
             string folderPath = Path.GetDirectoryName(filePath);
             createInboxIfDoesNotExist(folderPath); //dosya yolu yoksa olustur
-            System.IO.File.WriteAllBytes(filePath, fileDoc);
+
+            System.IO.File.WriteAllBytes(filePath, fileDocContent);
         }
 
 
 
 
-        public static void writeFileOnDiskWithString(string fileDoc, string filePath)
+        public static void writeFileOnDiskWithString(string content, string filePath)
         {
             string folderPath = Path.GetDirectoryName(filePath);
             createInboxIfDoesNotExist(folderPath); //dosya yolu yoksa olustur
-            System.IO.File.WriteAllText(filePath, fileDoc);
+
+            System.IO.File.WriteAllText(filePath, content);
         }
 
 
@@ -155,14 +157,14 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        public static string saveInvDocContentWithByte(byte[] content, string direction, string fileName,string docType)
+        public static string saveInvDocContentWithByte(byte[] content, string invDirection, string fileName, string docType)
         {
             string inboxFolder;
-            if (direction == nameof(EI.InvDirection.IN))
+            if (invDirection == nameof(EI.InvDirection.IN))
             {
                 inboxFolder = inboxFolderIn;
             }
-            else if (direction == nameof(EI.InvDirection.OUT))
+            else if (invDirection == nameof(EI.InvDirection.OUT))
             {
                 inboxFolder = inboxFolderOut;
             }
@@ -172,7 +174,7 @@ namespace izibiz.COMMON.FileControl
             }
             createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
             System.IO.File.WriteAllBytes(inboxFolder + fileName + "." + docType, content);
-            return Path.Combine(inboxFolder, fileName+ "." + docType);  //return fılepath
+            return Path.Combine(inboxFolder, fileName + "." + docType);  //return fılepath
         }
 
 

@@ -24,7 +24,7 @@ namespace izibiz.CONTROLLER.Web_Services
     {
 
         private EFaturaOIBPortClient eInvoiceOIBPortClient = new EFaturaOIBPortClient();
-      
+
         List<INVOICE> invoiceList = new List<INVOICE>();
 
 
@@ -92,7 +92,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
                 invoice.senderAlias = inv.HEADER.FROM;
                 invoice.receiverAlias = inv.HEADER.TO;
-                invoice.folderPath = FolderControl.createInvXmlPath(inv.UUID, direction);
+                invoice.folderPath = FolderControl.createInvDocPath(inv.UUID, direction,nameof(EI.DocumentType.XML));
 
                 byte[] unCompressedContent = Compress.UncompressFile(inv.CONTENT.Value);
                 invoice.content = Encoding.UTF8.GetString(unCompressedContent);  //xml db de tututlur
@@ -120,7 +120,7 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
-                var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
+                GetInvoiceRequest req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
@@ -139,13 +139,11 @@ namespace izibiz.CONTROLLER.Web_Services
                 }
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
 
-                byte[] unCompressedContent; //servisten getırılemezse content null doner
 
                 if (invoiceArray.Length != 0)
                 {
-                    //getirilen faturanın contentını zipten cıkar
-                    unCompressedContent = Compress.UncompressFile(invoiceArray[0].CONTENT.Value);
-                    return Encoding.UTF8.GetString(unCompressedContent);
+                    //getirilen faturanın contentını zipten cıkar , string halınde dondur
+                    return Encoding.UTF8.GetString(Compress.UncompressFile(invoiceArray[0].CONTENT.Value));
                 }
 
                 return null;
@@ -186,7 +184,7 @@ namespace izibiz.CONTROLLER.Web_Services
             }
             else  //zipsiz content value
             {
-                contentByte.Value =Encoding.UTF8.GetBytes(xmlStr);
+                contentByte.Value = Encoding.UTF8.GetBytes(xmlStr);
             }
             invoice.CONTENT = contentByte;
 
@@ -196,25 +194,6 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
         
-
-
-        //public string getContentOnDisk(string uuid, string direction)
-        //{
-        //    string folderPath = Singl.invoiceDalGet.getInvoice(uuid, direction).folderPath;
-
-        //    if (!invoiceXmlFileIsInFolder(folderPath)) // xml dıskte bulunmuyorsa
-        //    {
-        //        //servisten cekılemedıyse content db deki contentı diske kaydet
-        //        if (getInvoiceWithUuidOnService(uuid, direction) == null)
-        //        {
-        //            saveContentWithString(Singl.invoiceDalGet.getInvoice(uuid, direction).content, inboxFolderDraft, uuid, nameof(EI.DocumentType.XML));
-        //        }
-        //    }
-        //    return File.ReadAllText(folderPath, Encoding.UTF8);
-        //}
-
-
-
 
 
         public int sendInvoice(string receiverAlias, bool isWithZip)
@@ -298,20 +277,8 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        /*  public INVOICE[] ArrayUuidToInvoice(string[] invoiceUuid)
-          {
-              INVOICE[] invoiceArray = new INVOICE[invoiceUuid.Length];
-              for(int i = 0; i <= invoiceUuid.Length; i++)
-              {
-                  INVOICE invoice = new INVOICE();
-                  invoice.UUID = invoiceUuid[i];
-              }
-              return invoiceArray;
-          }*/
 
-
-
-        public GetInvoiceStatusResponseINVOICE_STATUS getInvoiceState(string invoiceUuid)
+        public GetInvoiceStatusResponseINVOICE_STATUS getInvoiceStatatus(string invoiceUuid)
         {
             INVOICE invoice = new INVOICE();
             invoice.UUID = invoiceUuid;
@@ -351,7 +318,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public string getInvoiceType(string invoiceUuid, string documentType, string direction)
+        public byte[] getInvoiceType(string invoiceUuid, string documentType, string direction)
         {
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
@@ -367,9 +334,9 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 INVOICE[] invoice = eInvoiceOIBPortClient.GetInvoiceWithType(req);
-                if(invoice.Length != 0)
+                if (invoice.Length != 0)
                 {
-                    return FolderControl.saveInvDocContentWithByte(invoice[0].CONTENT.Value, direction, invoice[0].UUID, documentType);
+                    return Compress.UncompressFile(invoice[0].CONTENT.Value);
                 }
                 return null;
             }
@@ -377,10 +344,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-
-
-
-        public string checkInvFolderOnDisk(string uuid, string direction)
+        public string getInvoiceContentXml(string uuid, string direction)
         {
             //db den pathı getırdı
             string xmlPath = Singl.invoiceDalGet.getInvoice(uuid, direction).folderPath;
@@ -388,21 +352,20 @@ namespace izibiz.CONTROLLER.Web_Services
             if (!FolderControl.xmlFileIsInFolder(xmlPath)) // xml dosyası verılen pathde bulunmuyorsa
             {
                 //servisten, gonderilen uuıd ye aıt faturanın contentını getır
-                string invContent = Singl.invoiceControllerGet.getInvoiceWithUuidOnService(uuid, direction);
-                if (invContent != null)
-                {
-                    FolderControl.writeFileOnDiskWithString(invContent, xmlPath);
-                }
-                else  //servisten cekılemedıyse content db deki contentı diske kaydet
-                {
-                    FolderControl.writeFileOnDiskWithString(Singl.invoiceDalGet.getInvoice(uuid, direction).content, xmlPath);
-                }
+                return getInvoiceWithUuidOnService(uuid, direction);
             }
-            return xmlPath;
+            else
+            {
+              return  File.ReadAllText(xmlPath);
+            }
         }
 
 
-      
+
+        
+
+
+
 
 
 

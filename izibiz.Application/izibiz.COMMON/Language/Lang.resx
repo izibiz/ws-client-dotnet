@@ -127,7 +127,7 @@
     <value>Tekrar Gönder</value>
   </data>
   <data name="cDate" xml:space="preserve">
-    <value>CDATE</value>
+    <value>OLUSTURULMA TARİHİ</value>
   </data>
   <data name="chooseLanguage" xml:space="preserve">
     <value>Dil Seçimi</value>
@@ -171,8 +171,8 @@
   <data name="frmShowInvoiceStatus" xml:space="preserve">
     <value>İzibiz Masaüstü | E-Fatura Durum Görüntüle</value>
   </data>
-  <data name="from" xml:space="preserve">
-    <value>KIMDEN</value>
+  <data name="fromAlias" xml:space="preserve">
+    <value>GÖNDEREN MAİL</value>
   </data>
   <data name="getInvoice" xml:space="preserve">
     <value>Fatura Al</value>
@@ -190,7 +190,7 @@
     <value>Gelen Faturalar</value>
   </data>
   <data name="issueDate" xml:space="preserve">
-    <value>IHRAC TARIH</value>
+    <value>DUZENLENME TARIH</value>
   </data>
   <data name="listDraftInvoice" xml:space="preserve">
     <value>Taslak Faturalar Listesi</value>
@@ -228,8 +228,8 @@
   <data name="reject" xml:space="preserve">
     <value>Red Et</value>
   </data>
-  <data name="sender" xml:space="preserve">
-    <value>GONDEREN</value>
+  <data name="senderVkn" xml:space="preserve">
+    <value>GONDEREN VKN/TCKN</value>
   </data>
   <data name="sentInvoice" xml:space="preserve">
     <value>Gönderilen Faturalar</value>
@@ -252,8 +252,8 @@
   <data name="supplier" xml:space="preserve">
     <value>TEDARIKCI</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>KIME</value>
+  <data name="toAlias" xml:space="preserve">
+    <value>ALICI MAİL</value>
   </data>
   <data name="type" xml:space="preserve">
     <value>TIP</value>
@@ -309,8 +309,8 @@
   <data name="notFaultyInv" xml:space="preserve">
     <value>Gösterilecek hatalı faturanız yok</value>
   </data>
-  <data name="receiver" xml:space="preserve">
-    <value>Alıcı</value>
+  <data name="receiverVkn" xml:space="preserve">
+    <value>ALICI VKN/TCKN</value>
   </data>
   <data name="loadPortal" xml:space="preserve">
     <value>Portala Yükle</value>
@@ -340,7 +340,7 @@
     <value>Lütfen bir alıcı posta kutusu seçiniz.</value>
   </data>
   <data name="isDraftFlag" xml:space="preserve">
-    <value>Servisten Gelme Durumu</value>
+    <value>TASLAK MI</value>
   </data>
   <data name="listFilter" xml:space="preserve">
     <value>Filtrele</value>
@@ -383,5 +383,29 @@
   </data>
   <data name="eArchiveReportList" xml:space="preserve">
     <value>E Arşiv Fatura Raporları Listele</value>
+  </data>
+  <data name="currencyCode" xml:space="preserve">
+    <value>PARA BİRİMİ</value>
+  </data>
+  <data name="eArchiveType" xml:space="preserve">
+    <value>E ARŞİV TİP</value>
+  </data>
+  <data name="reportState" xml:space="preserve">
+    <value>RAPORLANMA  DURUMU</value>
+  </data>
+  <data name="senderName" xml:space="preserve">
+    <value>GONDEREN AD</value>
+  </data>
+  <data name="sendingType" xml:space="preserve">
+    <value>GONDERIM TIPI</value>
+  </data>
+  <data name="statusCode" xml:space="preserve">
+    <value>DURUM KODU</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Hoşgeldiniz</value>
+  </data>
+  <data name="mailStatus" xml:space="preserve">
+    <value>MAIL DURUMU</value>
   </data>
 </root>

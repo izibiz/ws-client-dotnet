@@ -127,7 +127,7 @@
     <value>Again Sent</value>
   </data>
   <data name="cDate" xml:space="preserve">
-    <value>CDATE</value>
+    <value>CREATED DATE</value>
   </data>
   <data name="chooseLanguage" xml:space="preserve">
     <value>Choose Language</value>
@@ -171,8 +171,8 @@
   <data name="frmShowInvoiceStatus" xml:space="preserve">
     <value>İzibiz Desktop | Show  E-İnvoice Status</value>
   </data>
-  <data name="from" xml:space="preserve">
-    <value>FROM</value>
+  <data name="fromAlias" xml:space="preserve">
+    <value>FROM ALIAS</value>
   </data>
   <data name="getInvoice" xml:space="preserve">
     <value>Get Invoice</value>
@@ -190,7 +190,7 @@
     <value>Incoming Invoice</value>
   </data>
   <data name="issueDate" xml:space="preserve">
-    <value>ISSUEDATE</value>
+    <value>ISSUE DATE</value>
   </data>
   <data name="listDraftInvoice" xml:space="preserve">
     <value>Draft Invoice List</value>
@@ -228,8 +228,8 @@
   <data name="reject" xml:space="preserve">
     <value>Reject</value>
   </data>
-  <data name="sender" xml:space="preserve">
-    <value>SENDER</value>
+  <data name="senderVkn" xml:space="preserve">
+    <value>SENDER VKN/TCKN</value>
   </data>
   <data name="sentInvoice" xml:space="preserve">
     <value>Sent Invoice</value>
@@ -252,8 +252,8 @@
   <data name="supplier" xml:space="preserve">
     <value>SUPPLİER</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>TO</value>
+  <data name="toAlias" xml:space="preserve">
+    <value>TO ALIAS</value>
   </data>
   <data name="type" xml:space="preserve">
     <value>TYPE</value>
@@ -309,8 +309,8 @@
   <data name="notFaultyInv" xml:space="preserve">
     <value>you has not faulty ınvoice</value>
   </data>
-  <data name="receiver" xml:space="preserve">
-    <value>Receiver</value>
+  <data name="receiverVkn" xml:space="preserve">
+    <value>Receiver VKN/TCKN</value>
   </data>
   <data name="loadPortal" xml:space="preserve">
     <value>Load Portal</value>
@@ -337,7 +337,7 @@
     <value>Please select a receiver mailbox.</value>
   </data>
   <data name="isDraftFlag" xml:space="preserve">
-    <value>From Service Status</value>
+    <value>IS DRAFT</value>
   </data>
   <data name="listFilter" xml:space="preserve">
     <value>Get Filter</value>
@@ -380,5 +380,29 @@
   </data>
   <data name="eArchiveReportList" xml:space="preserve">
     <value>E Archive Invoices  Report List</value>
+  </data>
+  <data name="currencyCode" xml:space="preserve">
+    <value>CURRENCY CODE</value>
+  </data>
+  <data name="eArchiveType" xml:space="preserve">
+    <value>E ARCHIVE TYPE</value>
+  </data>
+  <data name="reportState" xml:space="preserve">
+    <value>REPORT STATE</value>
+  </data>
+  <data name="senderName" xml:space="preserve">
+    <value>SENDER NAME</value>
+  </data>
+  <data name="sendingType" xml:space="preserve">
+    <value>SENDING TYPE</value>
+  </data>
+  <data name="statusCode" xml:space="preserve">
+    <value>STATUS CODE</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="mailStatus" xml:space="preserve">
+    <value>MAIL STATUS</value>
   </data>
 </root>

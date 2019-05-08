@@ -30,7 +30,7 @@ namespace izibiz.UI
 
         public FrmLogin()
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+         //   ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
           //  cert = ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
 
      
@@ -134,7 +134,7 @@ namespace izibiz.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 

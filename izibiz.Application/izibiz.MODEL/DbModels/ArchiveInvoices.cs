@@ -21,13 +21,19 @@ namespace izibiz.MODEL.DbModels
     public  class ArchiveInvoices
     {
 
+
         [Column(Name = nameof(EI.Invoice.ID), DbType = "NVARCHAR")]
         public string ID { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.uuid), IsDbGenerated = true, IsPrimaryKey = true, DbType = "NVARCHAR")]
-        [Key]
+  //      [Column(Name = nameof(EI.Invoice.ID), IsDbGenerated = true, IsPrimaryKey = true, DbType = "NVARCHAR")]
+   //     [Key]
+        [Column(Name = nameof(EI.Invoice.uuid), DbType = "NVARCHAR")]
         public string uuid { get; set; }
+
+
+        [Column(Name = nameof(EI.Invoice.totalAmount), DbType = "DECIMAL")]
+        public decimal totalAmount { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.reportFlag), DbType = "BOOLEAN")]
@@ -42,8 +48,9 @@ namespace izibiz.MODEL.DbModels
         public string draftFlagDesc { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.issueDate), DbType = "NUMERIC")]
+        [Column(Name = nameof(EI.Invoice.issueDate), DbType = "DATETIME")]
         public DateTime issueDate { get; set; }
+
 
 
         [Column(Name = nameof(EI.Invoice.profileid), DbType = "NVARCHAR")]
@@ -62,10 +69,6 @@ namespace izibiz.MODEL.DbModels
         public string sendingType { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.currenyCode), DbType = "NVARCHAR")]
-        public string currenyCode { get; set; }
-
-
         [Column(Name = nameof(EI.Invoice.senderName), DbType = "NVARCHAR")]
         public string senderName { get; set; }
 
@@ -78,8 +81,8 @@ namespace izibiz.MODEL.DbModels
         public string receiverVkn { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.cDate), DbType = "NUMERIC")]
-        public DateTime cDate { get; set; }
+        [Column(Name = nameof(EI.Invoice.currencyCode), DbType = "VARCHAR")]
+        public string currencyCode { get; set; }
 
 
 
@@ -88,28 +91,19 @@ namespace izibiz.MODEL.DbModels
 
 
 
+        [Column(Name = nameof(EI.Invoice.mailStatus), DbType = "NVARCHAR")]
+        public string mailStatus { get; set; }
+
+
+
         [Column(Name = nameof(EI.Invoice.status), DbType = "NVARCHAR")]
         public string status { get; set; }
-
-
-        [Column(Name = nameof(EI.Invoice.statusDesc), DbType = "NVARCHAR")]
-        public string statusDesc { get; set; }
 
 
 
         [Column(Name = nameof(EI.Invoice.statusCode), DbType = "NVARCHAR")]
         public string statusCode { get; set; }
 
-
-
-
-        [Column(Name = nameof(EI.Invoice.senderAlias), DbType = "NVARCHAR")]
-        public string senderAlias { get; set; }
-
-
-
-        [Column(Name = nameof(EI.Invoice.receiverAlias), DbType = "NVARCHAR")]
-        public string receiverAlias { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.content), DbType = "NVARCHAR")]

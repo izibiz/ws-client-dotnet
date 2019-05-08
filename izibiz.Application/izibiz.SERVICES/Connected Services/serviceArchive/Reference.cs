@@ -587,37 +587,48 @@ namespace izibiz.SERVICES.serviceArchive {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://earsiv.efatura.gov.tr")]
-    public partial class vknTcknType : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/entity")]
+    public partial class REQUEST_INFOType : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string itemField;
+        private REQUEST_HEADERType rEQUEST_HEADERField;
         
-        private ItemChoiceType itemElementNameField;
+        private REQUEST_RETURNType rEQUEST_RETURNField;
+        
+        private REQUEST_ERRORType rEQUEST_ERRORField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("tckn", typeof(string), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("vkn", typeof(string), Order=0)]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
-        public string Item {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public REQUEST_HEADERType REQUEST_HEADER {
             get {
-                return this.itemField;
+                return this.rEQUEST_HEADERField;
             }
             set {
-                this.itemField = value;
-                this.RaisePropertyChanged("Item");
+                this.rEQUEST_HEADERField = value;
+                this.RaisePropertyChanged("REQUEST_HEADER");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemChoiceType ItemElementName {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public REQUEST_RETURNType REQUEST_RETURN {
             get {
-                return this.itemElementNameField;
+                return this.rEQUEST_RETURNField;
             }
             set {
-                this.itemElementNameField = value;
-                this.RaisePropertyChanged("ItemElementName");
+                this.rEQUEST_RETURNField = value;
+                this.RaisePropertyChanged("REQUEST_RETURN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public REQUEST_ERRORType REQUEST_ERROR {
+            get {
+                return this.rEQUEST_ERRORField;
+            }
+            set {
+                this.rEQUEST_ERRORField = value;
+                this.RaisePropertyChanged("REQUEST_ERROR");
             }
         }
         
@@ -634,14 +645,262 @@ namespace izibiz.SERVICES.serviceArchive {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://earsiv.efatura.gov.tr", IncludeInSchema=false)]
-    public enum ItemChoiceType {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/entity")]
+    public partial class REQUEST_HEADERType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string sESSION_IDField;
+        
+        private string cLIENT_TXN_IDField;
+        
+        private long iNTL_TXN_IDField;
+        
+        private bool iNTL_TXN_IDFieldSpecified;
+        
+        private long iNTL_PARENT_TXN_IDField;
+        
+        private bool iNTL_PARENT_TXN_IDFieldSpecified;
+        
+        private System.DateTime aCTION_DATEField;
+        
+        private bool aCTION_DATEFieldSpecified;
+        
+        private CHANGE_INFOType cHANGE_INFOField;
+        
+        private string rEASONField;
+        
+        private string aPPLICATION_NAMEField;
+        
+        private string hOSTNAMEField;
+        
+        private string cHANNEL_NAMEField;
+        
+        private string sIMULATION_FLAGField;
+        
+        private string cOMPRESSEDField;
+        
+        private REQUEST_HEADERTypeSIGN_STATUS sIGN_STATUSField;
+        
+        private ATTRIBUTESTYPE[] aTTRIBUTESField;
+        
+        public REQUEST_HEADERType() {
+            this.sIGN_STATUSField = REQUEST_HEADERTypeSIGN_STATUS.SIGNED;
+        }
         
         /// <remarks/>
-        tckn,
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string SESSION_ID {
+            get {
+                return this.sESSION_IDField;
+            }
+            set {
+                this.sESSION_IDField = value;
+                this.RaisePropertyChanged("SESSION_ID");
+            }
+        }
         
         /// <remarks/>
-        vkn,
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string CLIENT_TXN_ID {
+            get {
+                return this.cLIENT_TXN_IDField;
+            }
+            set {
+                this.cLIENT_TXN_IDField = value;
+                this.RaisePropertyChanged("CLIENT_TXN_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public long INTL_TXN_ID {
+            get {
+                return this.iNTL_TXN_IDField;
+            }
+            set {
+                this.iNTL_TXN_IDField = value;
+                this.RaisePropertyChanged("INTL_TXN_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool INTL_TXN_IDSpecified {
+            get {
+                return this.iNTL_TXN_IDFieldSpecified;
+            }
+            set {
+                this.iNTL_TXN_IDFieldSpecified = value;
+                this.RaisePropertyChanged("INTL_TXN_IDSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public long INTL_PARENT_TXN_ID {
+            get {
+                return this.iNTL_PARENT_TXN_IDField;
+            }
+            set {
+                this.iNTL_PARENT_TXN_IDField = value;
+                this.RaisePropertyChanged("INTL_PARENT_TXN_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool INTL_PARENT_TXN_IDSpecified {
+            get {
+                return this.iNTL_PARENT_TXN_IDFieldSpecified;
+            }
+            set {
+                this.iNTL_PARENT_TXN_IDFieldSpecified = value;
+                this.RaisePropertyChanged("INTL_PARENT_TXN_IDSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public System.DateTime ACTION_DATE {
+            get {
+                return this.aCTION_DATEField;
+            }
+            set {
+                this.aCTION_DATEField = value;
+                this.RaisePropertyChanged("ACTION_DATE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ACTION_DATESpecified {
+            get {
+                return this.aCTION_DATEFieldSpecified;
+            }
+            set {
+                this.aCTION_DATEFieldSpecified = value;
+                this.RaisePropertyChanged("ACTION_DATESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public CHANGE_INFOType CHANGE_INFO {
+            get {
+                return this.cHANGE_INFOField;
+            }
+            set {
+                this.cHANGE_INFOField = value;
+                this.RaisePropertyChanged("CHANGE_INFO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=6)]
+        public string REASON {
+            get {
+                return this.rEASONField;
+            }
+            set {
+                this.rEASONField = value;
+                this.RaisePropertyChanged("REASON");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=7)]
+        public string APPLICATION_NAME {
+            get {
+                return this.aPPLICATION_NAMEField;
+            }
+            set {
+                this.aPPLICATION_NAMEField = value;
+                this.RaisePropertyChanged("APPLICATION_NAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=8)]
+        public string HOSTNAME {
+            get {
+                return this.hOSTNAMEField;
+            }
+            set {
+                this.hOSTNAMEField = value;
+                this.RaisePropertyChanged("HOSTNAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=9)]
+        public string CHANNEL_NAME {
+            get {
+                return this.cHANNEL_NAMEField;
+            }
+            set {
+                this.cHANNEL_NAMEField = value;
+                this.RaisePropertyChanged("CHANNEL_NAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=10)]
+        public string SIMULATION_FLAG {
+            get {
+                return this.sIMULATION_FLAGField;
+            }
+            set {
+                this.sIMULATION_FLAGField = value;
+                this.RaisePropertyChanged("SIMULATION_FLAG");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=11)]
+        public string COMPRESSED {
+            get {
+                return this.cOMPRESSEDField;
+            }
+            set {
+                this.cOMPRESSEDField = value;
+                this.RaisePropertyChanged("COMPRESSED");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        [System.ComponentModel.DefaultValueAttribute(REQUEST_HEADERTypeSIGN_STATUS.SIGNED)]
+        public REQUEST_HEADERTypeSIGN_STATUS SIGN_STATUS {
+            get {
+                return this.sIGN_STATUSField;
+            }
+            set {
+                this.sIGN_STATUSField = value;
+                this.RaisePropertyChanged("SIGN_STATUS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ATTRIBUTES", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
+        public ATTRIBUTESTYPE[] ATTRIBUTES {
+            get {
+                return this.aTTRIBUTESField;
+            }
+            set {
+                this.aTTRIBUTESField = value;
+                this.RaisePropertyChanged("ATTRIBUTES");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     /// <remarks/>
@@ -649,139 +908,1275 @@ namespace izibiz.SERVICES.serviceArchive {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://earsiv.efatura.gov.tr")]
-    public partial class baslikType : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
+    public partial class CHANGE_INFOType : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string versiyonField;
+        private System.DateTime cDATEField;
         
-        private vknTcknType mukellefField;
+        private long cPOSITION_IDField;
         
-        private vknTcknType hazirlayanField;
+        private long cUSER_IDField;
         
-        private string raporNoField;
+        private System.DateTime uDATEField;
         
-        private System.DateTime donemBaslangicTarihiField;
+        private bool uDATEFieldSpecified;
         
-        private System.DateTime donemBitisTarihiField;
+        private long uPOSITION_IDField;
         
-        private System.DateTime bolumBaslangicTarihiField;
+        private bool uPOSITION_IDFieldSpecified;
         
-        private System.DateTime bolumBitisTarihiField;
+        private long uUSER_IDField;
         
-        private int bolumNoField;
+        private bool uUSER_IDFieldSpecified;
         
-        private SignatureType signatureField;
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
+        public System.DateTime CDATE {
+            get {
+                return this.cDATEField;
+            }
+            set {
+                this.cDATEField = value;
+                this.RaisePropertyChanged("CDATE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public long CPOSITION_ID {
+            get {
+                return this.cPOSITION_IDField;
+            }
+            set {
+                this.cPOSITION_IDField = value;
+                this.RaisePropertyChanged("CPOSITION_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public long CUSER_ID {
+            get {
+                return this.cUSER_IDField;
+            }
+            set {
+                this.cUSER_IDField = value;
+                this.RaisePropertyChanged("CUSER_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=3)]
+        public System.DateTime UDATE {
+            get {
+                return this.uDATEField;
+            }
+            set {
+                this.uDATEField = value;
+                this.RaisePropertyChanged("UDATE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool UDATESpecified {
+            get {
+                return this.uDATEFieldSpecified;
+            }
+            set {
+                this.uDATEFieldSpecified = value;
+                this.RaisePropertyChanged("UDATESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public long UPOSITION_ID {
+            get {
+                return this.uPOSITION_IDField;
+            }
+            set {
+                this.uPOSITION_IDField = value;
+                this.RaisePropertyChanged("UPOSITION_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool UPOSITION_IDSpecified {
+            get {
+                return this.uPOSITION_IDFieldSpecified;
+            }
+            set {
+                this.uPOSITION_IDFieldSpecified = value;
+                this.RaisePropertyChanged("UPOSITION_IDSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public long UUSER_ID {
+            get {
+                return this.uUSER_IDField;
+            }
+            set {
+                this.uUSER_IDField = value;
+                this.RaisePropertyChanged("UUSER_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool UUSER_IDSpecified {
+            get {
+                return this.uUSER_IDFieldSpecified;
+            }
+            set {
+                this.uUSER_IDFieldSpecified = value;
+                this.RaisePropertyChanged("UUSER_IDSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/entity")]
+    public enum REQUEST_HEADERTypeSIGN_STATUS {
+        
+        /// <remarks/>
+        SIGNED,
+        
+        /// <remarks/>
+        SIGN_BY_CLIENTCER_TIFICATE,
+        
+        /// <remarks/>
+        SIGN_BY_ENTEGRATOR_CERTIFICATE,
+        
+        /// <remarks/>
+        NOSIGN,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/entity")]
+    public partial class REQUEST_RETURNType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private long iNTL_TXN_IDField;
+        
+        private string cLIENT_TXN_IDField;
+        
+        private int rETURN_CODEField;
+        
+        private string[] wARNINGSField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public long INTL_TXN_ID {
+            get {
+                return this.iNTL_TXN_IDField;
+            }
+            set {
+                this.iNTL_TXN_IDField = value;
+                this.RaisePropertyChanged("INTL_TXN_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string CLIENT_TXN_ID {
+            get {
+                return this.cLIENT_TXN_IDField;
+            }
+            set {
+                this.cLIENT_TXN_IDField = value;
+                this.RaisePropertyChanged("CLIENT_TXN_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int RETURN_CODE {
+            get {
+                return this.rETURN_CODEField;
+            }
+            set {
+                this.rETURN_CODEField = value;
+                this.RaisePropertyChanged("RETURN_CODE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("WARNINGS", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string[] WARNINGS {
+            get {
+                return this.wARNINGSField;
+            }
+            set {
+                this.wARNINGSField = value;
+                this.RaisePropertyChanged("WARNINGS");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.4.1#")]
+    public partial class ValidationDataType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CertificateValuesType certificateValuesField;
+        
+        private RevocationValuesType revocationValuesField;
+        
+        private string idField;
+        
+        private string urField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#", Order=0)]
+        public CertificateValuesType CertificateValues {
+            get {
+                return this.certificateValuesField;
+            }
+            set {
+                this.certificateValuesField = value;
+                this.RaisePropertyChanged("CertificateValues");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#", Order=1)]
+        public RevocationValuesType RevocationValues {
+            get {
+                return this.revocationValuesField;
+            }
+            set {
+                this.revocationValuesField = value;
+                this.RaisePropertyChanged("RevocationValues");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string UR {
+            get {
+                return this.urField;
+            }
+            set {
+                this.urField = value;
+                this.RaisePropertyChanged("UR");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CertificateValuesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private object[] itemsField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("EncapsulatedX509Certificate", typeof(EncapsulatedPKIDataType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("OtherCertificate", typeof(AnyType), Order=0)]
+        public object[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+                this.RaisePropertyChanged("Items");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class EncapsulatedPKIDataType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idField;
+        
+        private string encodingField;
+        
+        private byte[] valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string Encoding {
+            get {
+                return this.encodingField;
+            }
+            set {
+                this.encodingField = value;
+                this.RaisePropertyChanged("Encoding");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute(DataType="base64Binary")]
+        public byte[] Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class AnyType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private System.Xml.XmlNode[] anyField;
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        [System.Xml.Serialization.XmlAnyElementAttribute(Order=0)]
+        public System.Xml.XmlNode[] Any {
+            get {
+                return this.anyField;
+            }
+            set {
+                this.anyField = value;
+                this.RaisePropertyChanged("Any");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
+                this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class RevocationValuesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private EncapsulatedPKIDataType[] cRLValuesField;
+        
+        private EncapsulatedPKIDataType[] oCSPValuesField;
+        
+        private AnyType[] otherValuesField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("EncapsulatedCRLValue", IsNullable=false)]
+        public EncapsulatedPKIDataType[] CRLValues {
+            get {
+                return this.cRLValuesField;
+            }
+            set {
+                this.cRLValuesField = value;
+                this.RaisePropertyChanged("CRLValues");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("EncapsulatedOCSPValue", IsNullable=false)]
+        public EncapsulatedPKIDataType[] OCSPValues {
+            get {
+                return this.oCSPValuesField;
+            }
+            set {
+                this.oCSPValuesField = value;
+                this.RaisePropertyChanged("OCSPValues");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("OtherValue", IsNullable=false)]
+        public AnyType[] OtherValues {
+            get {
+                return this.otherValuesField;
+            }
+            set {
+                this.otherValuesField = value;
+                this.RaisePropertyChanged("OtherValues");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class NoticeReferenceType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string organizationField;
+        
+        private string[] noticeNumbersField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string versiyon {
+        public string Organization {
             get {
-                return this.versiyonField;
+                return this.organizationField;
             }
             set {
-                this.versiyonField = value;
-                this.RaisePropertyChanged("versiyon");
+                this.organizationField = value;
+                this.RaisePropertyChanged("Organization");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("int", DataType="integer", IsNullable=false)]
+        public string[] NoticeNumbers {
+            get {
+                return this.noticeNumbersField;
+            }
+            set {
+                this.noticeNumbersField = value;
+                this.RaisePropertyChanged("NoticeNumbers");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SPUserNoticeType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private NoticeReferenceType noticeRefField;
+        
+        private string explicitTextField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public NoticeReferenceType NoticeRef {
+            get {
+                return this.noticeRefField;
+            }
+            set {
+                this.noticeRefField = value;
+                this.RaisePropertyChanged("NoticeRef");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public vknTcknType mukellef {
+        public string ExplicitText {
             get {
-                return this.mukellefField;
+                return this.explicitTextField;
             }
             set {
-                this.mukellefField = value;
-                this.RaisePropertyChanged("mukellef");
+                this.explicitTextField = value;
+                this.RaisePropertyChanged("ExplicitText");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class QualifyingPropertiesReferenceType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string uRIField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string URI {
+            get {
+                return this.uRIField;
+            }
+            set {
+                this.uRIField = value;
+                this.RaisePropertyChanged("URI");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public vknTcknType hazirlayan {
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
             get {
-                return this.hazirlayanField;
+                return this.idField;
             }
             set {
-                this.hazirlayanField = value;
-                this.RaisePropertyChanged("hazirlayan");
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class UnsignedDataObjectPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private AnyType[] unsignedDataObjectPropertyField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("UnsignedDataObjectProperty", Order=0)]
+        public AnyType[] UnsignedDataObjectProperty {
+            get {
+                return this.unsignedDataObjectPropertyField;
+            }
+            set {
+                this.unsignedDataObjectPropertyField = value;
+                this.RaisePropertyChanged("UnsignedDataObjectProperty");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string raporNo {
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
             get {
-                return this.raporNoField;
+                return this.idField;
             }
             set {
-                this.raporNoField = value;
-                this.RaisePropertyChanged("raporNo");
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class ResponderIDType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private object itemField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ByKey", typeof(byte[]), DataType="base64Binary", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ByName", typeof(string), Order=0)]
+        public object Item {
+            get {
+                return this.itemField;
+            }
+            set {
+                this.itemField = value;
+                this.RaisePropertyChanged("Item");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class OCSPIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private ResponderIDType responderIDField;
+        
+        private System.DateTime producedAtField;
+        
+        private string uRIField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public ResponderIDType ResponderID {
+            get {
+                return this.responderIDField;
+            }
+            set {
+                this.responderIDField = value;
+                this.RaisePropertyChanged("ResponderID");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=4)]
-        public System.DateTime donemBaslangicTarihi {
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public System.DateTime ProducedAt {
             get {
-                return this.donemBaslangicTarihiField;
+                return this.producedAtField;
             }
             set {
-                this.donemBaslangicTarihiField = value;
-                this.RaisePropertyChanged("donemBaslangicTarihi");
+                this.producedAtField = value;
+                this.RaisePropertyChanged("ProducedAt");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=5)]
-        public System.DateTime donemBitisTarihi {
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string URI {
             get {
-                return this.donemBitisTarihiField;
+                return this.uRIField;
             }
             set {
-                this.donemBitisTarihiField = value;
-                this.RaisePropertyChanged("donemBitisTarihi");
+                this.uRIField = value;
+                this.RaisePropertyChanged("URI");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class OCSPRefType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private OCSPIdentifierType oCSPIdentifierField;
+        
+        private DigestAlgAndValueType digestAlgAndValueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public OCSPIdentifierType OCSPIdentifier {
+            get {
+                return this.oCSPIdentifierField;
+            }
+            set {
+                this.oCSPIdentifierField = value;
+                this.RaisePropertyChanged("OCSPIdentifier");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=6)]
-        public System.DateTime bolumBaslangicTarihi {
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public DigestAlgAndValueType DigestAlgAndValue {
             get {
-                return this.bolumBaslangicTarihiField;
+                return this.digestAlgAndValueField;
             }
             set {
-                this.bolumBaslangicTarihiField = value;
-                this.RaisePropertyChanged("bolumBaslangicTarihi");
+                this.digestAlgAndValueField = value;
+                this.RaisePropertyChanged("DigestAlgAndValue");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class DigestAlgAndValueType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DigestMethodType digestMethodField;
+        
+        private byte[] digestValueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=0)]
+        public DigestMethodType DigestMethod {
+            get {
+                return this.digestMethodField;
+            }
+            set {
+                this.digestMethodField = value;
+                this.RaisePropertyChanged("DigestMethod");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=7)]
-        public System.DateTime bolumBitisTarihi {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", DataType="base64Binary", Order=1)]
+        public byte[] DigestValue {
             get {
-                return this.bolumBitisTarihiField;
+                return this.digestValueField;
             }
             set {
-                this.bolumBitisTarihiField = value;
-                this.RaisePropertyChanged("bolumBitisTarihi");
+                this.digestValueField = value;
+                this.RaisePropertyChanged("DigestValue");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CRLIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string issuerField;
+        
+        private System.DateTime issueTimeField;
+        
+        private string numberField;
+        
+        private string uRIField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Issuer {
+            get {
+                return this.issuerField;
+            }
+            set {
+                this.issuerField = value;
+                this.RaisePropertyChanged("Issuer");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
-        public int bolumNo {
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public System.DateTime IssueTime {
             get {
-                return this.bolumNoField;
+                return this.issueTimeField;
             }
             set {
-                this.bolumNoField = value;
-                this.RaisePropertyChanged("bolumNo");
+                this.issueTimeField = value;
+                this.RaisePropertyChanged("IssueTime");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer", Order=2)]
+        public string Number {
+            get {
+                return this.numberField;
+            }
+            set {
+                this.numberField = value;
+                this.RaisePropertyChanged("Number");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string URI {
+            get {
+                return this.uRIField;
+            }
+            set {
+                this.uRIField = value;
+                this.RaisePropertyChanged("URI");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CRLRefType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DigestAlgAndValueType digestAlgAndValueField;
+        
+        private CRLIdentifierType cRLIdentifierField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public DigestAlgAndValueType DigestAlgAndValue {
+            get {
+                return this.digestAlgAndValueField;
+            }
+            set {
+                this.digestAlgAndValueField = value;
+                this.RaisePropertyChanged("DigestAlgAndValue");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CRLIdentifierType CRLIdentifier {
+            get {
+                return this.cRLIdentifierField;
+            }
+            set {
+                this.cRLIdentifierField = value;
+                this.RaisePropertyChanged("CRLIdentifier");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CompleteRevocationRefsType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CRLRefType[] cRLRefsField;
+        
+        private OCSPRefType[] oCSPRefsField;
+        
+        private AnyType[] otherRefsField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("CRLRef", IsNullable=false)]
+        public CRLRefType[] CRLRefs {
+            get {
+                return this.cRLRefsField;
+            }
+            set {
+                this.cRLRefsField = value;
+                this.RaisePropertyChanged("CRLRefs");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("OCSPRef", IsNullable=false)]
+        public OCSPRefType[] OCSPRefs {
+            get {
+                return this.oCSPRefsField;
+            }
+            set {
+                this.oCSPRefsField = value;
+                this.RaisePropertyChanged("OCSPRefs");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("OtherRef", IsNullable=false)]
+        public AnyType[] OtherRefs {
+            get {
+                return this.otherRefsField;
+            }
+            set {
+                this.otherRefsField = value;
+                this.RaisePropertyChanged("OtherRefs");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CompleteCertificateRefsType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CertIDType[] certRefsField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Cert", IsNullable=false)]
+        public CertIDType[] CertRefs {
+            get {
+                return this.certRefsField;
+            }
+            set {
+                this.certRefsField = value;
+                this.RaisePropertyChanged("CertRefs");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CertIDType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DigestAlgAndValueType certDigestField;
+        
+        private X509IssuerSerialType issuerSerialField;
+        
+        private string uRIField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public DigestAlgAndValueType CertDigest {
+            get {
+                return this.certDigestField;
+            }
+            set {
+                this.certDigestField = value;
+                this.RaisePropertyChanged("CertDigest");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public X509IssuerSerialType IssuerSerial {
+            get {
+                return this.issuerSerialField;
+            }
+            set {
+                this.issuerSerialField = value;
+                this.RaisePropertyChanged("IssuerSerial");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string URI {
+            get {
+                return this.uRIField;
+            }
+            set {
+                this.uRIField = value;
+                this.RaisePropertyChanged("URI");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#")]
+    public partial class X509IssuerSerialType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string x509IssuerNameField;
+        
+        private string x509SerialNumberField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string X509IssuerName {
+            get {
+                return this.x509IssuerNameField;
+            }
+            set {
+                this.x509IssuerNameField = value;
+                this.RaisePropertyChanged("X509IssuerName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer", Order=1)]
+        public string X509SerialNumber {
+            get {
+                return this.x509SerialNumberField;
+            }
+            set {
+                this.x509SerialNumberField = value;
+                this.RaisePropertyChanged("X509SerialNumber");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CounterSignatureType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private SignatureType signatureField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=0)]
         public SignatureType Signature {
             get {
                 return this.signatureField;
@@ -1628,52 +3023,6 @@ namespace izibiz.SERVICES.serviceArchive {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#")]
-    public partial class X509IssuerSerialType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string x509IssuerNameField;
-        
-        private string x509SerialNumberField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string X509IssuerName {
-            get {
-                return this.x509IssuerNameField;
-            }
-            set {
-                this.x509IssuerNameField = value;
-                this.RaisePropertyChanged("X509IssuerName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer", Order=1)]
-        public string X509SerialNumber {
-            get {
-                return this.x509SerialNumberField;
-            }
-            set {
-                this.x509SerialNumberField = value;
-                this.RaisePropertyChanged("X509SerialNumber");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", IncludeInSchema=false)]
     public enum ItemsChoiceType {
         
@@ -1791,6 +3140,1526 @@ namespace izibiz.SERVICES.serviceArchive {
             set {
                 this.encodingField = value;
                 this.RaisePropertyChanged("Encoding");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class UnsignedSignaturePropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private object[] itemsField;
+        
+        private ItemsChoiceType3[] itemsElementNameField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyElementAttribute(Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ArchiveTimeStamp", typeof(XAdESTimeStampType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("AttrAuthoritiesCertValues", typeof(CertificateValuesType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("AttributeCertificateRefs", typeof(CompleteCertificateRefsType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("AttributeRevocationRefs", typeof(CompleteRevocationRefsType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("AttributeRevocationValues", typeof(RevocationValuesType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("CertificateValues", typeof(CertificateValuesType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("CompleteCertificateRefs", typeof(CompleteCertificateRefsType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("CompleteRevocationRefs", typeof(CompleteRevocationRefsType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("CounterSignature", typeof(CounterSignatureType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("RefsOnlyTimeStamp", typeof(XAdESTimeStampType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("RevocationValues", typeof(RevocationValuesType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("SigAndRefsTimeStamp", typeof(XAdESTimeStampType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("SignatureTimeStamp", typeof(XAdESTimeStampType), Order=0)]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+                this.RaisePropertyChanged("Items");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName", Order=1)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType3[] ItemsElementName {
+            get {
+                return this.itemsElementNameField;
+            }
+            set {
+                this.itemsElementNameField = value;
+                this.RaisePropertyChanged("ItemsElementName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class XAdESTimeStampType : GenericTimeStampType {
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OtherTimeStampType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XAdESTimeStampType))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public abstract partial class GenericTimeStampType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private object[] itemsField;
+        
+        private CanonicalizationMethodType canonicalizationMethodField;
+        
+        private object[] items1Field;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Include", typeof(IncludeType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ReferenceInfo", typeof(ReferenceInfoType), Order=0)]
+        public object[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+                this.RaisePropertyChanged("Items");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=1)]
+        public CanonicalizationMethodType CanonicalizationMethod {
+            get {
+                return this.canonicalizationMethodField;
+            }
+            set {
+                this.canonicalizationMethodField = value;
+                this.RaisePropertyChanged("CanonicalizationMethod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("EncapsulatedTimeStamp", typeof(EncapsulatedPKIDataType), Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute("XMLTimeStamp", typeof(AnyType), Order=2)]
+        public object[] Items1 {
+            get {
+                return this.items1Field;
+            }
+            set {
+                this.items1Field = value;
+                this.RaisePropertyChanged("Items1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class IncludeType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string uRIField;
+        
+        private bool referencedDataField;
+        
+        private bool referencedDataFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string URI {
+            get {
+                return this.uRIField;
+            }
+            set {
+                this.uRIField = value;
+                this.RaisePropertyChanged("URI");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool referencedData {
+            get {
+                return this.referencedDataField;
+            }
+            set {
+                this.referencedDataField = value;
+                this.RaisePropertyChanged("referencedData");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool referencedDataSpecified {
+            get {
+                return this.referencedDataFieldSpecified;
+            }
+            set {
+                this.referencedDataFieldSpecified = value;
+                this.RaisePropertyChanged("referencedDataSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class ReferenceInfoType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DigestMethodType digestMethodField;
+        
+        private byte[] digestValueField;
+        
+        private string idField;
+        
+        private string uRIField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=0)]
+        public DigestMethodType DigestMethod {
+            get {
+                return this.digestMethodField;
+            }
+            set {
+                this.digestMethodField = value;
+                this.RaisePropertyChanged("DigestMethod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", DataType="base64Binary", Order=1)]
+        public byte[] DigestValue {
+            get {
+                return this.digestValueField;
+            }
+            set {
+                this.digestValueField = value;
+                this.RaisePropertyChanged("DigestValue");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string URI {
+            get {
+                return this.uRIField;
+            }
+            set {
+                this.uRIField = value;
+                this.RaisePropertyChanged("URI");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class OtherTimeStampType : GenericTimeStampType {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#", IncludeInSchema=false)]
+    public enum ItemsChoiceType3 {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("##any:")]
+        Item,
+        
+        /// <remarks/>
+        ArchiveTimeStamp,
+        
+        /// <remarks/>
+        AttrAuthoritiesCertValues,
+        
+        /// <remarks/>
+        AttributeCertificateRefs,
+        
+        /// <remarks/>
+        AttributeRevocationRefs,
+        
+        /// <remarks/>
+        AttributeRevocationValues,
+        
+        /// <remarks/>
+        CertificateValues,
+        
+        /// <remarks/>
+        CompleteCertificateRefs,
+        
+        /// <remarks/>
+        CompleteRevocationRefs,
+        
+        /// <remarks/>
+        CounterSignature,
+        
+        /// <remarks/>
+        RefsOnlyTimeStamp,
+        
+        /// <remarks/>
+        RevocationValues,
+        
+        /// <remarks/>
+        SigAndRefsTimeStamp,
+        
+        /// <remarks/>
+        SignatureTimeStamp,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class UnsignedPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private UnsignedSignaturePropertiesType unsignedSignaturePropertiesField;
+        
+        private UnsignedDataObjectPropertiesType unsignedDataObjectPropertiesField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public UnsignedSignaturePropertiesType UnsignedSignatureProperties {
+            get {
+                return this.unsignedSignaturePropertiesField;
+            }
+            set {
+                this.unsignedSignaturePropertiesField = value;
+                this.RaisePropertyChanged("UnsignedSignatureProperties");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public UnsignedDataObjectPropertiesType UnsignedDataObjectProperties {
+            get {
+                return this.unsignedDataObjectPropertiesField;
+            }
+            set {
+                this.unsignedDataObjectPropertiesField = value;
+                this.RaisePropertyChanged("UnsignedDataObjectProperties");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class CommitmentTypeIndicationType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private ObjectIdentifierType commitmentTypeIdField;
+        
+        private object[] itemsField;
+        
+        private AnyType[] commitmentTypeQualifiersField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public ObjectIdentifierType CommitmentTypeId {
+            get {
+                return this.commitmentTypeIdField;
+            }
+            set {
+                this.commitmentTypeIdField = value;
+                this.RaisePropertyChanged("CommitmentTypeId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("AllSignedDataObjects", typeof(object), Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute("ObjectReference", typeof(string), DataType="anyURI", Order=1)]
+        public object[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+                this.RaisePropertyChanged("Items");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("CommitmentTypeQualifier", IsNullable=false)]
+        public AnyType[] CommitmentTypeQualifiers {
+            get {
+                return this.commitmentTypeQualifiersField;
+            }
+            set {
+                this.commitmentTypeQualifiersField = value;
+                this.RaisePropertyChanged("CommitmentTypeQualifiers");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class ObjectIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private IdentifierType identifierField;
+        
+        private string descriptionField;
+        
+        private DocumentationReferencesType documentationReferencesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public IdentifierType Identifier {
+            get {
+                return this.identifierField;
+            }
+            set {
+                this.identifierField = value;
+                this.RaisePropertyChanged("Identifier");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+                this.RaisePropertyChanged("Description");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public DocumentationReferencesType DocumentationReferences {
+            get {
+                return this.documentationReferencesField;
+            }
+            set {
+                this.documentationReferencesField = value;
+                this.RaisePropertyChanged("DocumentationReferences");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class IdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private QualifierType qualifierField;
+        
+        private bool qualifierFieldSpecified;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public QualifierType Qualifier {
+            get {
+                return this.qualifierField;
+            }
+            set {
+                this.qualifierField = value;
+                this.RaisePropertyChanged("Qualifier");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool QualifierSpecified {
+            get {
+                return this.qualifierFieldSpecified;
+            }
+            set {
+                this.qualifierFieldSpecified = value;
+                this.RaisePropertyChanged("QualifierSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute(DataType="anyURI")]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public enum QualifierType {
+        
+        /// <remarks/>
+        OIDAsURI,
+        
+        /// <remarks/>
+        OIDAsURN,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class DocumentationReferencesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string[] documentationReferenceField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DocumentationReference", DataType="anyURI", Order=0)]
+        public string[] DocumentationReference {
+            get {
+                return this.documentationReferenceField;
+            }
+            set {
+                this.documentationReferenceField = value;
+                this.RaisePropertyChanged("DocumentationReference");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class DataObjectFormatType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string descriptionField;
+        
+        private ObjectIdentifierType objectIdentifierField;
+        
+        private string mimeTypeField;
+        
+        private string encodingField;
+        
+        private string objectReferenceField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+                this.RaisePropertyChanged("Description");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public ObjectIdentifierType ObjectIdentifier {
+            get {
+                return this.objectIdentifierField;
+            }
+            set {
+                this.objectIdentifierField = value;
+                this.RaisePropertyChanged("ObjectIdentifier");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string MimeType {
+            get {
+                return this.mimeTypeField;
+            }
+            set {
+                this.mimeTypeField = value;
+                this.RaisePropertyChanged("MimeType");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="anyURI", Order=3)]
+        public string Encoding {
+            get {
+                return this.encodingField;
+            }
+            set {
+                this.encodingField = value;
+                this.RaisePropertyChanged("Encoding");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string ObjectReference {
+            get {
+                return this.objectReferenceField;
+            }
+            set {
+                this.objectReferenceField = value;
+                this.RaisePropertyChanged("ObjectReference");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SignedDataObjectPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DataObjectFormatType[] dataObjectFormatField;
+        
+        private CommitmentTypeIndicationType[] commitmentTypeIndicationField;
+        
+        private XAdESTimeStampType[] allDataObjectsTimeStampField;
+        
+        private XAdESTimeStampType[] individualDataObjectsTimeStampField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DataObjectFormat", Order=0)]
+        public DataObjectFormatType[] DataObjectFormat {
+            get {
+                return this.dataObjectFormatField;
+            }
+            set {
+                this.dataObjectFormatField = value;
+                this.RaisePropertyChanged("DataObjectFormat");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CommitmentTypeIndication", Order=1)]
+        public CommitmentTypeIndicationType[] CommitmentTypeIndication {
+            get {
+                return this.commitmentTypeIndicationField;
+            }
+            set {
+                this.commitmentTypeIndicationField = value;
+                this.RaisePropertyChanged("CommitmentTypeIndication");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("AllDataObjectsTimeStamp", Order=2)]
+        public XAdESTimeStampType[] AllDataObjectsTimeStamp {
+            get {
+                return this.allDataObjectsTimeStampField;
+            }
+            set {
+                this.allDataObjectsTimeStampField = value;
+                this.RaisePropertyChanged("AllDataObjectsTimeStamp");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("IndividualDataObjectsTimeStamp", Order=3)]
+        public XAdESTimeStampType[] IndividualDataObjectsTimeStamp {
+            get {
+                return this.individualDataObjectsTimeStampField;
+            }
+            set {
+                this.individualDataObjectsTimeStampField = value;
+                this.RaisePropertyChanged("IndividualDataObjectsTimeStamp");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SignerRoleType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private AnyType[] claimedRolesField;
+        
+        private EncapsulatedPKIDataType[] certifiedRolesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("ClaimedRole", IsNullable=false)]
+        public AnyType[] ClaimedRoles {
+            get {
+                return this.claimedRolesField;
+            }
+            set {
+                this.claimedRolesField = value;
+                this.RaisePropertyChanged("ClaimedRoles");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("CertifiedRole", IsNullable=false)]
+        public EncapsulatedPKIDataType[] CertifiedRoles {
+            get {
+                return this.certifiedRolesField;
+            }
+            set {
+                this.certifiedRolesField = value;
+                this.RaisePropertyChanged("CertifiedRoles");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SignatureProductionPlaceType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string cityField;
+        
+        private string stateOrProvinceField;
+        
+        private string postalCodeField;
+        
+        private string countryNameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string City {
+            get {
+                return this.cityField;
+            }
+            set {
+                this.cityField = value;
+                this.RaisePropertyChanged("City");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string StateOrProvince {
+            get {
+                return this.stateOrProvinceField;
+            }
+            set {
+                this.stateOrProvinceField = value;
+                this.RaisePropertyChanged("StateOrProvince");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string PostalCode {
+            get {
+                return this.postalCodeField;
+            }
+            set {
+                this.postalCodeField = value;
+                this.RaisePropertyChanged("PostalCode");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string CountryName {
+            get {
+                return this.countryNameField;
+            }
+            set {
+                this.countryNameField = value;
+                this.RaisePropertyChanged("CountryName");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SignaturePolicyIdType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private ObjectIdentifierType sigPolicyIdField;
+        
+        private TransformType[] transformsField;
+        
+        private DigestAlgAndValueType sigPolicyHashField;
+        
+        private AnyType[] sigPolicyQualifiersField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public ObjectIdentifierType SigPolicyId {
+            get {
+                return this.sigPolicyIdField;
+            }
+            set {
+                this.sigPolicyIdField = value;
+                this.RaisePropertyChanged("SigPolicyId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Transform", IsNullable=false)]
+        public TransformType[] Transforms {
+            get {
+                return this.transformsField;
+            }
+            set {
+                this.transformsField = value;
+                this.RaisePropertyChanged("Transforms");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public DigestAlgAndValueType SigPolicyHash {
+            get {
+                return this.sigPolicyHashField;
+            }
+            set {
+                this.sigPolicyHashField = value;
+                this.RaisePropertyChanged("SigPolicyHash");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("SigPolicyQualifier", IsNullable=false)]
+        public AnyType[] SigPolicyQualifiers {
+            get {
+                return this.sigPolicyQualifiersField;
+            }
+            set {
+                this.sigPolicyQualifiersField = value;
+                this.RaisePropertyChanged("SigPolicyQualifiers");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SignaturePolicyIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private object itemField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("SignaturePolicyId", typeof(SignaturePolicyIdType), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("SignaturePolicyImplied", typeof(object), Order=0)]
+        public object Item {
+            get {
+                return this.itemField;
+            }
+            set {
+                this.itemField = value;
+                this.RaisePropertyChanged("Item");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SignedSignaturePropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private System.DateTime signingTimeField;
+        
+        private bool signingTimeFieldSpecified;
+        
+        private CertIDType[] signingCertificateField;
+        
+        private SignaturePolicyIdentifierType signaturePolicyIdentifierField;
+        
+        private SignatureProductionPlaceType signatureProductionPlaceField;
+        
+        private SignerRoleType signerRoleField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public System.DateTime SigningTime {
+            get {
+                return this.signingTimeField;
+            }
+            set {
+                this.signingTimeField = value;
+                this.RaisePropertyChanged("SigningTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SigningTimeSpecified {
+            get {
+                return this.signingTimeFieldSpecified;
+            }
+            set {
+                this.signingTimeFieldSpecified = value;
+                this.RaisePropertyChanged("SigningTimeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Cert", IsNullable=false)]
+        public CertIDType[] SigningCertificate {
+            get {
+                return this.signingCertificateField;
+            }
+            set {
+                this.signingCertificateField = value;
+                this.RaisePropertyChanged("SigningCertificate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public SignaturePolicyIdentifierType SignaturePolicyIdentifier {
+            get {
+                return this.signaturePolicyIdentifierField;
+            }
+            set {
+                this.signaturePolicyIdentifierField = value;
+                this.RaisePropertyChanged("SignaturePolicyIdentifier");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public SignatureProductionPlaceType SignatureProductionPlace {
+            get {
+                return this.signatureProductionPlaceField;
+            }
+            set {
+                this.signatureProductionPlaceField = value;
+                this.RaisePropertyChanged("SignatureProductionPlace");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public SignerRoleType SignerRole {
+            get {
+                return this.signerRoleField;
+            }
+            set {
+                this.signerRoleField = value;
+                this.RaisePropertyChanged("SignerRole");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class SignedPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private SignedSignaturePropertiesType signedSignaturePropertiesField;
+        
+        private SignedDataObjectPropertiesType signedDataObjectPropertiesField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public SignedSignaturePropertiesType SignedSignatureProperties {
+            get {
+                return this.signedSignaturePropertiesField;
+            }
+            set {
+                this.signedSignaturePropertiesField = value;
+                this.RaisePropertyChanged("SignedSignatureProperties");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public SignedDataObjectPropertiesType SignedDataObjectProperties {
+            get {
+                return this.signedDataObjectPropertiesField;
+            }
+            set {
+                this.signedDataObjectPropertiesField = value;
+                this.RaisePropertyChanged("SignedDataObjectProperties");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
+    public partial class QualifyingPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private SignedPropertiesType signedPropertiesField;
+        
+        private UnsignedPropertiesType unsignedPropertiesField;
+        
+        private string targetField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public SignedPropertiesType SignedProperties {
+            get {
+                return this.signedPropertiesField;
+            }
+            set {
+                this.signedPropertiesField = value;
+                this.RaisePropertyChanged("SignedProperties");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public UnsignedPropertiesType UnsignedProperties {
+            get {
+                return this.unsignedPropertiesField;
+            }
+            set {
+                this.unsignedPropertiesField = value;
+                this.RaisePropertyChanged("UnsignedProperties");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string Target {
+            get {
+                return this.targetField;
+            }
+            set {
+                this.targetField = value;
+                this.RaisePropertyChanged("Target");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://earsiv.efatura.gov.tr")]
+    public partial class vknTcknType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string itemField;
+        
+        private ItemChoiceType itemElementNameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("tckn", typeof(string), Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("vkn", typeof(string), Order=0)]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
+        public string Item {
+            get {
+                return this.itemField;
+            }
+            set {
+                this.itemField = value;
+                this.RaisePropertyChanged("Item");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemChoiceType ItemElementName {
+            get {
+                return this.itemElementNameField;
+            }
+            set {
+                this.itemElementNameField = value;
+                this.RaisePropertyChanged("ItemElementName");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://earsiv.efatura.gov.tr", IncludeInSchema=false)]
+    public enum ItemChoiceType {
+        
+        /// <remarks/>
+        tckn,
+        
+        /// <remarks/>
+        vkn,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://earsiv.efatura.gov.tr")]
+    public partial class baslikType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string versiyonField;
+        
+        private vknTcknType mukellefField;
+        
+        private vknTcknType hazirlayanField;
+        
+        private string raporNoField;
+        
+        private System.DateTime donemBaslangicTarihiField;
+        
+        private System.DateTime donemBitisTarihiField;
+        
+        private System.DateTime bolumBaslangicTarihiField;
+        
+        private System.DateTime bolumBitisTarihiField;
+        
+        private int bolumNoField;
+        
+        private SignatureType signatureField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string versiyon {
+            get {
+                return this.versiyonField;
+            }
+            set {
+                this.versiyonField = value;
+                this.RaisePropertyChanged("versiyon");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public vknTcknType mukellef {
+            get {
+                return this.mukellefField;
+            }
+            set {
+                this.mukellefField = value;
+                this.RaisePropertyChanged("mukellef");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public vknTcknType hazirlayan {
+            get {
+                return this.hazirlayanField;
+            }
+            set {
+                this.hazirlayanField = value;
+                this.RaisePropertyChanged("hazirlayan");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string raporNo {
+            get {
+                return this.raporNoField;
+            }
+            set {
+                this.raporNoField = value;
+                this.RaisePropertyChanged("raporNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=4)]
+        public System.DateTime donemBaslangicTarihi {
+            get {
+                return this.donemBaslangicTarihiField;
+            }
+            set {
+                this.donemBaslangicTarihiField = value;
+                this.RaisePropertyChanged("donemBaslangicTarihi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=5)]
+        public System.DateTime donemBitisTarihi {
+            get {
+                return this.donemBitisTarihiField;
+            }
+            set {
+                this.donemBitisTarihiField = value;
+                this.RaisePropertyChanged("donemBitisTarihi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=6)]
+        public System.DateTime bolumBaslangicTarihi {
+            get {
+                return this.bolumBaslangicTarihiField;
+            }
+            set {
+                this.bolumBaslangicTarihiField = value;
+                this.RaisePropertyChanged("bolumBaslangicTarihi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=7)]
+        public System.DateTime bolumBitisTarihi {
+            get {
+                return this.bolumBitisTarihiField;
+            }
+            set {
+                this.bolumBitisTarihiField = value;
+                this.RaisePropertyChanged("bolumBitisTarihi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public int bolumNo {
+            get {
+                return this.bolumNoField;
+            }
+            set {
+                this.bolumNoField = value;
+                this.RaisePropertyChanged("bolumNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=9)]
+        public SignatureType Signature {
+            get {
+                return this.signatureField;
+            }
+            set {
+                this.signatureField = value;
+                this.RaisePropertyChanged("Signature");
             }
         }
         
@@ -3603,2875 +6472,6 @@ namespace izibiz.SERVICES.serviceArchive {
             set {
                 this.fisTarihField = value;
                 this.RaisePropertyChanged("fisTarih");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.4.1#")]
-    public partial class ValidationDataType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private CertificateValuesType certificateValuesField;
-        
-        private RevocationValuesType revocationValuesField;
-        
-        private string idField;
-        
-        private string urField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#", Order=0)]
-        public CertificateValuesType CertificateValues {
-            get {
-                return this.certificateValuesField;
-            }
-            set {
-                this.certificateValuesField = value;
-                this.RaisePropertyChanged("CertificateValues");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#", Order=1)]
-        public RevocationValuesType RevocationValues {
-            get {
-                return this.revocationValuesField;
-            }
-            set {
-                this.revocationValuesField = value;
-                this.RaisePropertyChanged("RevocationValues");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string UR {
-            get {
-                return this.urField;
-            }
-            set {
-                this.urField = value;
-                this.RaisePropertyChanged("UR");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CertificateValuesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private object[] itemsField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("EncapsulatedX509Certificate", typeof(EncapsulatedPKIDataType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("OtherCertificate", typeof(AnyType), Order=0)]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-                this.RaisePropertyChanged("Items");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class EncapsulatedPKIDataType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string idField;
-        
-        private string encodingField;
-        
-        private byte[] valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string Encoding {
-            get {
-                return this.encodingField;
-            }
-            set {
-                this.encodingField = value;
-                this.RaisePropertyChanged("Encoding");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute(DataType="base64Binary")]
-        public byte[] Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class AnyType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.Xml.XmlNode[] anyField;
-        
-        private System.Xml.XmlAttribute[] anyAttrField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order=0)]
-        public System.Xml.XmlNode[] Any {
-            get {
-                return this.anyField;
-            }
-            set {
-                this.anyField = value;
-                this.RaisePropertyChanged("Any");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
-        public System.Xml.XmlAttribute[] AnyAttr {
-            get {
-                return this.anyAttrField;
-            }
-            set {
-                this.anyAttrField = value;
-                this.RaisePropertyChanged("AnyAttr");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class RevocationValuesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private EncapsulatedPKIDataType[] cRLValuesField;
-        
-        private EncapsulatedPKIDataType[] oCSPValuesField;
-        
-        private AnyType[] otherValuesField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("EncapsulatedCRLValue", IsNullable=false)]
-        public EncapsulatedPKIDataType[] CRLValues {
-            get {
-                return this.cRLValuesField;
-            }
-            set {
-                this.cRLValuesField = value;
-                this.RaisePropertyChanged("CRLValues");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("EncapsulatedOCSPValue", IsNullable=false)]
-        public EncapsulatedPKIDataType[] OCSPValues {
-            get {
-                return this.oCSPValuesField;
-            }
-            set {
-                this.oCSPValuesField = value;
-                this.RaisePropertyChanged("OCSPValues");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("OtherValue", IsNullable=false)]
-        public AnyType[] OtherValues {
-            get {
-                return this.otherValuesField;
-            }
-            set {
-                this.otherValuesField = value;
-                this.RaisePropertyChanged("OtherValues");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class NoticeReferenceType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string organizationField;
-        
-        private string[] noticeNumbersField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Organization {
-            get {
-                return this.organizationField;
-            }
-            set {
-                this.organizationField = value;
-                this.RaisePropertyChanged("Organization");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("int", DataType="integer", IsNullable=false)]
-        public string[] NoticeNumbers {
-            get {
-                return this.noticeNumbersField;
-            }
-            set {
-                this.noticeNumbersField = value;
-                this.RaisePropertyChanged("NoticeNumbers");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SPUserNoticeType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private NoticeReferenceType noticeRefField;
-        
-        private string explicitTextField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public NoticeReferenceType NoticeRef {
-            get {
-                return this.noticeRefField;
-            }
-            set {
-                this.noticeRefField = value;
-                this.RaisePropertyChanged("NoticeRef");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string ExplicitText {
-            get {
-                return this.explicitTextField;
-            }
-            set {
-                this.explicitTextField = value;
-                this.RaisePropertyChanged("ExplicitText");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class QualifyingPropertiesReferenceType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string uRIField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string URI {
-            get {
-                return this.uRIField;
-            }
-            set {
-                this.uRIField = value;
-                this.RaisePropertyChanged("URI");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class UnsignedDataObjectPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private AnyType[] unsignedDataObjectPropertyField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("UnsignedDataObjectProperty", Order=0)]
-        public AnyType[] UnsignedDataObjectProperty {
-            get {
-                return this.unsignedDataObjectPropertyField;
-            }
-            set {
-                this.unsignedDataObjectPropertyField = value;
-                this.RaisePropertyChanged("UnsignedDataObjectProperty");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class ResponderIDType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private object itemField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ByKey", typeof(byte[]), DataType="base64Binary", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("ByName", typeof(string), Order=0)]
-        public object Item {
-            get {
-                return this.itemField;
-            }
-            set {
-                this.itemField = value;
-                this.RaisePropertyChanged("Item");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class OCSPIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private ResponderIDType responderIDField;
-        
-        private System.DateTime producedAtField;
-        
-        private string uRIField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public ResponderIDType ResponderID {
-            get {
-                return this.responderIDField;
-            }
-            set {
-                this.responderIDField = value;
-                this.RaisePropertyChanged("ResponderID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public System.DateTime ProducedAt {
-            get {
-                return this.producedAtField;
-            }
-            set {
-                this.producedAtField = value;
-                this.RaisePropertyChanged("ProducedAt");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string URI {
-            get {
-                return this.uRIField;
-            }
-            set {
-                this.uRIField = value;
-                this.RaisePropertyChanged("URI");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class OCSPRefType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private OCSPIdentifierType oCSPIdentifierField;
-        
-        private DigestAlgAndValueType digestAlgAndValueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public OCSPIdentifierType OCSPIdentifier {
-            get {
-                return this.oCSPIdentifierField;
-            }
-            set {
-                this.oCSPIdentifierField = value;
-                this.RaisePropertyChanged("OCSPIdentifier");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public DigestAlgAndValueType DigestAlgAndValue {
-            get {
-                return this.digestAlgAndValueField;
-            }
-            set {
-                this.digestAlgAndValueField = value;
-                this.RaisePropertyChanged("DigestAlgAndValue");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class DigestAlgAndValueType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private DigestMethodType digestMethodField;
-        
-        private byte[] digestValueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=0)]
-        public DigestMethodType DigestMethod {
-            get {
-                return this.digestMethodField;
-            }
-            set {
-                this.digestMethodField = value;
-                this.RaisePropertyChanged("DigestMethod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", DataType="base64Binary", Order=1)]
-        public byte[] DigestValue {
-            get {
-                return this.digestValueField;
-            }
-            set {
-                this.digestValueField = value;
-                this.RaisePropertyChanged("DigestValue");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CRLIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string issuerField;
-        
-        private System.DateTime issueTimeField;
-        
-        private string numberField;
-        
-        private string uRIField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Issuer {
-            get {
-                return this.issuerField;
-            }
-            set {
-                this.issuerField = value;
-                this.RaisePropertyChanged("Issuer");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public System.DateTime IssueTime {
-            get {
-                return this.issueTimeField;
-            }
-            set {
-                this.issueTimeField = value;
-                this.RaisePropertyChanged("IssueTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer", Order=2)]
-        public string Number {
-            get {
-                return this.numberField;
-            }
-            set {
-                this.numberField = value;
-                this.RaisePropertyChanged("Number");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string URI {
-            get {
-                return this.uRIField;
-            }
-            set {
-                this.uRIField = value;
-                this.RaisePropertyChanged("URI");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CRLRefType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private DigestAlgAndValueType digestAlgAndValueField;
-        
-        private CRLIdentifierType cRLIdentifierField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public DigestAlgAndValueType DigestAlgAndValue {
-            get {
-                return this.digestAlgAndValueField;
-            }
-            set {
-                this.digestAlgAndValueField = value;
-                this.RaisePropertyChanged("DigestAlgAndValue");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public CRLIdentifierType CRLIdentifier {
-            get {
-                return this.cRLIdentifierField;
-            }
-            set {
-                this.cRLIdentifierField = value;
-                this.RaisePropertyChanged("CRLIdentifier");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CompleteRevocationRefsType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private CRLRefType[] cRLRefsField;
-        
-        private OCSPRefType[] oCSPRefsField;
-        
-        private AnyType[] otherRefsField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("CRLRef", IsNullable=false)]
-        public CRLRefType[] CRLRefs {
-            get {
-                return this.cRLRefsField;
-            }
-            set {
-                this.cRLRefsField = value;
-                this.RaisePropertyChanged("CRLRefs");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("OCSPRef", IsNullable=false)]
-        public OCSPRefType[] OCSPRefs {
-            get {
-                return this.oCSPRefsField;
-            }
-            set {
-                this.oCSPRefsField = value;
-                this.RaisePropertyChanged("OCSPRefs");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("OtherRef", IsNullable=false)]
-        public AnyType[] OtherRefs {
-            get {
-                return this.otherRefsField;
-            }
-            set {
-                this.otherRefsField = value;
-                this.RaisePropertyChanged("OtherRefs");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CompleteCertificateRefsType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private CertIDType[] certRefsField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Cert", IsNullable=false)]
-        public CertIDType[] CertRefs {
-            get {
-                return this.certRefsField;
-            }
-            set {
-                this.certRefsField = value;
-                this.RaisePropertyChanged("CertRefs");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CertIDType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private DigestAlgAndValueType certDigestField;
-        
-        private X509IssuerSerialType issuerSerialField;
-        
-        private string uRIField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public DigestAlgAndValueType CertDigest {
-            get {
-                return this.certDigestField;
-            }
-            set {
-                this.certDigestField = value;
-                this.RaisePropertyChanged("CertDigest");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public X509IssuerSerialType IssuerSerial {
-            get {
-                return this.issuerSerialField;
-            }
-            set {
-                this.issuerSerialField = value;
-                this.RaisePropertyChanged("IssuerSerial");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string URI {
-            get {
-                return this.uRIField;
-            }
-            set {
-                this.uRIField = value;
-                this.RaisePropertyChanged("URI");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CounterSignatureType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private SignatureType signatureField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=0)]
-        public SignatureType Signature {
-            get {
-                return this.signatureField;
-            }
-            set {
-                this.signatureField = value;
-                this.RaisePropertyChanged("Signature");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class UnsignedSignaturePropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private object[] itemsField;
-        
-        private ItemsChoiceType3[] itemsElementNameField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("ArchiveTimeStamp", typeof(XAdESTimeStampType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("AttrAuthoritiesCertValues", typeof(CertificateValuesType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("AttributeCertificateRefs", typeof(CompleteCertificateRefsType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("AttributeRevocationRefs", typeof(CompleteRevocationRefsType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("AttributeRevocationValues", typeof(RevocationValuesType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("CertificateValues", typeof(CertificateValuesType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("CompleteCertificateRefs", typeof(CompleteCertificateRefsType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("CompleteRevocationRefs", typeof(CompleteRevocationRefsType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("CounterSignature", typeof(CounterSignatureType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("RefsOnlyTimeStamp", typeof(XAdESTimeStampType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("RevocationValues", typeof(RevocationValuesType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("SigAndRefsTimeStamp", typeof(XAdESTimeStampType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("SignatureTimeStamp", typeof(XAdESTimeStampType), Order=0)]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-                this.RaisePropertyChanged("Items");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName", Order=1)]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType3[] ItemsElementName {
-            get {
-                return this.itemsElementNameField;
-            }
-            set {
-                this.itemsElementNameField = value;
-                this.RaisePropertyChanged("ItemsElementName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class XAdESTimeStampType : GenericTimeStampType {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OtherTimeStampType))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XAdESTimeStampType))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public abstract partial class GenericTimeStampType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private object[] itemsField;
-        
-        private CanonicalizationMethodType canonicalizationMethodField;
-        
-        private object[] items1Field;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Include", typeof(IncludeType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("ReferenceInfo", typeof(ReferenceInfoType), Order=0)]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-                this.RaisePropertyChanged("Items");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=1)]
-        public CanonicalizationMethodType CanonicalizationMethod {
-            get {
-                return this.canonicalizationMethodField;
-            }
-            set {
-                this.canonicalizationMethodField = value;
-                this.RaisePropertyChanged("CanonicalizationMethod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("EncapsulatedTimeStamp", typeof(EncapsulatedPKIDataType), Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute("XMLTimeStamp", typeof(AnyType), Order=2)]
-        public object[] Items1 {
-            get {
-                return this.items1Field;
-            }
-            set {
-                this.items1Field = value;
-                this.RaisePropertyChanged("Items1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class IncludeType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string uRIField;
-        
-        private bool referencedDataField;
-        
-        private bool referencedDataFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string URI {
-            get {
-                return this.uRIField;
-            }
-            set {
-                this.uRIField = value;
-                this.RaisePropertyChanged("URI");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool referencedData {
-            get {
-                return this.referencedDataField;
-            }
-            set {
-                this.referencedDataField = value;
-                this.RaisePropertyChanged("referencedData");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool referencedDataSpecified {
-            get {
-                return this.referencedDataFieldSpecified;
-            }
-            set {
-                this.referencedDataFieldSpecified = value;
-                this.RaisePropertyChanged("referencedDataSpecified");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class ReferenceInfoType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private DigestMethodType digestMethodField;
-        
-        private byte[] digestValueField;
-        
-        private string idField;
-        
-        private string uRIField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=0)]
-        public DigestMethodType DigestMethod {
-            get {
-                return this.digestMethodField;
-            }
-            set {
-                this.digestMethodField = value;
-                this.RaisePropertyChanged("DigestMethod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", DataType="base64Binary", Order=1)]
-        public byte[] DigestValue {
-            get {
-                return this.digestValueField;
-            }
-            set {
-                this.digestValueField = value;
-                this.RaisePropertyChanged("DigestValue");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string URI {
-            get {
-                return this.uRIField;
-            }
-            set {
-                this.uRIField = value;
-                this.RaisePropertyChanged("URI");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class OtherTimeStampType : GenericTimeStampType {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#", IncludeInSchema=false)]
-    public enum ItemsChoiceType3 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("##any:")]
-        Item,
-        
-        /// <remarks/>
-        ArchiveTimeStamp,
-        
-        /// <remarks/>
-        AttrAuthoritiesCertValues,
-        
-        /// <remarks/>
-        AttributeCertificateRefs,
-        
-        /// <remarks/>
-        AttributeRevocationRefs,
-        
-        /// <remarks/>
-        AttributeRevocationValues,
-        
-        /// <remarks/>
-        CertificateValues,
-        
-        /// <remarks/>
-        CompleteCertificateRefs,
-        
-        /// <remarks/>
-        CompleteRevocationRefs,
-        
-        /// <remarks/>
-        CounterSignature,
-        
-        /// <remarks/>
-        RefsOnlyTimeStamp,
-        
-        /// <remarks/>
-        RevocationValues,
-        
-        /// <remarks/>
-        SigAndRefsTimeStamp,
-        
-        /// <remarks/>
-        SignatureTimeStamp,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class UnsignedPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private UnsignedSignaturePropertiesType unsignedSignaturePropertiesField;
-        
-        private UnsignedDataObjectPropertiesType unsignedDataObjectPropertiesField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public UnsignedSignaturePropertiesType UnsignedSignatureProperties {
-            get {
-                return this.unsignedSignaturePropertiesField;
-            }
-            set {
-                this.unsignedSignaturePropertiesField = value;
-                this.RaisePropertyChanged("UnsignedSignatureProperties");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public UnsignedDataObjectPropertiesType UnsignedDataObjectProperties {
-            get {
-                return this.unsignedDataObjectPropertiesField;
-            }
-            set {
-                this.unsignedDataObjectPropertiesField = value;
-                this.RaisePropertyChanged("UnsignedDataObjectProperties");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class CommitmentTypeIndicationType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private ObjectIdentifierType commitmentTypeIdField;
-        
-        private object[] itemsField;
-        
-        private AnyType[] commitmentTypeQualifiersField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public ObjectIdentifierType CommitmentTypeId {
-            get {
-                return this.commitmentTypeIdField;
-            }
-            set {
-                this.commitmentTypeIdField = value;
-                this.RaisePropertyChanged("CommitmentTypeId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("AllSignedDataObjects", typeof(object), Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("ObjectReference", typeof(string), DataType="anyURI", Order=1)]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-                this.RaisePropertyChanged("Items");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("CommitmentTypeQualifier", IsNullable=false)]
-        public AnyType[] CommitmentTypeQualifiers {
-            get {
-                return this.commitmentTypeQualifiersField;
-            }
-            set {
-                this.commitmentTypeQualifiersField = value;
-                this.RaisePropertyChanged("CommitmentTypeQualifiers");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class ObjectIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private IdentifierType identifierField;
-        
-        private string descriptionField;
-        
-        private DocumentationReferencesType documentationReferencesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public IdentifierType Identifier {
-            get {
-                return this.identifierField;
-            }
-            set {
-                this.identifierField = value;
-                this.RaisePropertyChanged("Identifier");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-                this.RaisePropertyChanged("Description");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public DocumentationReferencesType DocumentationReferences {
-            get {
-                return this.documentationReferencesField;
-            }
-            set {
-                this.documentationReferencesField = value;
-                this.RaisePropertyChanged("DocumentationReferences");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class IdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private QualifierType qualifierField;
-        
-        private bool qualifierFieldSpecified;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public QualifierType Qualifier {
-            get {
-                return this.qualifierField;
-            }
-            set {
-                this.qualifierField = value;
-                this.RaisePropertyChanged("Qualifier");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool QualifierSpecified {
-            get {
-                return this.qualifierFieldSpecified;
-            }
-            set {
-                this.qualifierFieldSpecified = value;
-                this.RaisePropertyChanged("QualifierSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute(DataType="anyURI")]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public enum QualifierType {
-        
-        /// <remarks/>
-        OIDAsURI,
-        
-        /// <remarks/>
-        OIDAsURN,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class DocumentationReferencesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string[] documentationReferenceField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DocumentationReference", DataType="anyURI", Order=0)]
-        public string[] DocumentationReference {
-            get {
-                return this.documentationReferenceField;
-            }
-            set {
-                this.documentationReferenceField = value;
-                this.RaisePropertyChanged("DocumentationReference");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class DataObjectFormatType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string descriptionField;
-        
-        private ObjectIdentifierType objectIdentifierField;
-        
-        private string mimeTypeField;
-        
-        private string encodingField;
-        
-        private string objectReferenceField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-                this.RaisePropertyChanged("Description");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public ObjectIdentifierType ObjectIdentifier {
-            get {
-                return this.objectIdentifierField;
-            }
-            set {
-                this.objectIdentifierField = value;
-                this.RaisePropertyChanged("ObjectIdentifier");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string MimeType {
-            get {
-                return this.mimeTypeField;
-            }
-            set {
-                this.mimeTypeField = value;
-                this.RaisePropertyChanged("MimeType");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="anyURI", Order=3)]
-        public string Encoding {
-            get {
-                return this.encodingField;
-            }
-            set {
-                this.encodingField = value;
-                this.RaisePropertyChanged("Encoding");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string ObjectReference {
-            get {
-                return this.objectReferenceField;
-            }
-            set {
-                this.objectReferenceField = value;
-                this.RaisePropertyChanged("ObjectReference");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SignedDataObjectPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private DataObjectFormatType[] dataObjectFormatField;
-        
-        private CommitmentTypeIndicationType[] commitmentTypeIndicationField;
-        
-        private XAdESTimeStampType[] allDataObjectsTimeStampField;
-        
-        private XAdESTimeStampType[] individualDataObjectsTimeStampField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DataObjectFormat", Order=0)]
-        public DataObjectFormatType[] DataObjectFormat {
-            get {
-                return this.dataObjectFormatField;
-            }
-            set {
-                this.dataObjectFormatField = value;
-                this.RaisePropertyChanged("DataObjectFormat");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CommitmentTypeIndication", Order=1)]
-        public CommitmentTypeIndicationType[] CommitmentTypeIndication {
-            get {
-                return this.commitmentTypeIndicationField;
-            }
-            set {
-                this.commitmentTypeIndicationField = value;
-                this.RaisePropertyChanged("CommitmentTypeIndication");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("AllDataObjectsTimeStamp", Order=2)]
-        public XAdESTimeStampType[] AllDataObjectsTimeStamp {
-            get {
-                return this.allDataObjectsTimeStampField;
-            }
-            set {
-                this.allDataObjectsTimeStampField = value;
-                this.RaisePropertyChanged("AllDataObjectsTimeStamp");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("IndividualDataObjectsTimeStamp", Order=3)]
-        public XAdESTimeStampType[] IndividualDataObjectsTimeStamp {
-            get {
-                return this.individualDataObjectsTimeStampField;
-            }
-            set {
-                this.individualDataObjectsTimeStampField = value;
-                this.RaisePropertyChanged("IndividualDataObjectsTimeStamp");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SignerRoleType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private AnyType[] claimedRolesField;
-        
-        private EncapsulatedPKIDataType[] certifiedRolesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("ClaimedRole", IsNullable=false)]
-        public AnyType[] ClaimedRoles {
-            get {
-                return this.claimedRolesField;
-            }
-            set {
-                this.claimedRolesField = value;
-                this.RaisePropertyChanged("ClaimedRoles");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("CertifiedRole", IsNullable=false)]
-        public EncapsulatedPKIDataType[] CertifiedRoles {
-            get {
-                return this.certifiedRolesField;
-            }
-            set {
-                this.certifiedRolesField = value;
-                this.RaisePropertyChanged("CertifiedRoles");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SignatureProductionPlaceType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string cityField;
-        
-        private string stateOrProvinceField;
-        
-        private string postalCodeField;
-        
-        private string countryNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string City {
-            get {
-                return this.cityField;
-            }
-            set {
-                this.cityField = value;
-                this.RaisePropertyChanged("City");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string StateOrProvince {
-            get {
-                return this.stateOrProvinceField;
-            }
-            set {
-                this.stateOrProvinceField = value;
-                this.RaisePropertyChanged("StateOrProvince");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string PostalCode {
-            get {
-                return this.postalCodeField;
-            }
-            set {
-                this.postalCodeField = value;
-                this.RaisePropertyChanged("PostalCode");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string CountryName {
-            get {
-                return this.countryNameField;
-            }
-            set {
-                this.countryNameField = value;
-                this.RaisePropertyChanged("CountryName");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SignaturePolicyIdType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private ObjectIdentifierType sigPolicyIdField;
-        
-        private TransformType[] transformsField;
-        
-        private DigestAlgAndValueType sigPolicyHashField;
-        
-        private AnyType[] sigPolicyQualifiersField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public ObjectIdentifierType SigPolicyId {
-            get {
-                return this.sigPolicyIdField;
-            }
-            set {
-                this.sigPolicyIdField = value;
-                this.RaisePropertyChanged("SigPolicyId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://www.w3.org/2000/09/xmldsig#", Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Transform", IsNullable=false)]
-        public TransformType[] Transforms {
-            get {
-                return this.transformsField;
-            }
-            set {
-                this.transformsField = value;
-                this.RaisePropertyChanged("Transforms");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public DigestAlgAndValueType SigPolicyHash {
-            get {
-                return this.sigPolicyHashField;
-            }
-            set {
-                this.sigPolicyHashField = value;
-                this.RaisePropertyChanged("SigPolicyHash");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("SigPolicyQualifier", IsNullable=false)]
-        public AnyType[] SigPolicyQualifiers {
-            get {
-                return this.sigPolicyQualifiersField;
-            }
-            set {
-                this.sigPolicyQualifiersField = value;
-                this.RaisePropertyChanged("SigPolicyQualifiers");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SignaturePolicyIdentifierType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private object itemField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("SignaturePolicyId", typeof(SignaturePolicyIdType), Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("SignaturePolicyImplied", typeof(object), Order=0)]
-        public object Item {
-            get {
-                return this.itemField;
-            }
-            set {
-                this.itemField = value;
-                this.RaisePropertyChanged("Item");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SignedSignaturePropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.DateTime signingTimeField;
-        
-        private bool signingTimeFieldSpecified;
-        
-        private CertIDType[] signingCertificateField;
-        
-        private SignaturePolicyIdentifierType signaturePolicyIdentifierField;
-        
-        private SignatureProductionPlaceType signatureProductionPlaceField;
-        
-        private SignerRoleType signerRoleField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public System.DateTime SigningTime {
-            get {
-                return this.signingTimeField;
-            }
-            set {
-                this.signingTimeField = value;
-                this.RaisePropertyChanged("SigningTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SigningTimeSpecified {
-            get {
-                return this.signingTimeFieldSpecified;
-            }
-            set {
-                this.signingTimeFieldSpecified = value;
-                this.RaisePropertyChanged("SigningTimeSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Cert", IsNullable=false)]
-        public CertIDType[] SigningCertificate {
-            get {
-                return this.signingCertificateField;
-            }
-            set {
-                this.signingCertificateField = value;
-                this.RaisePropertyChanged("SigningCertificate");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public SignaturePolicyIdentifierType SignaturePolicyIdentifier {
-            get {
-                return this.signaturePolicyIdentifierField;
-            }
-            set {
-                this.signaturePolicyIdentifierField = value;
-                this.RaisePropertyChanged("SignaturePolicyIdentifier");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public SignatureProductionPlaceType SignatureProductionPlace {
-            get {
-                return this.signatureProductionPlaceField;
-            }
-            set {
-                this.signatureProductionPlaceField = value;
-                this.RaisePropertyChanged("SignatureProductionPlace");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public SignerRoleType SignerRole {
-            get {
-                return this.signerRoleField;
-            }
-            set {
-                this.signerRoleField = value;
-                this.RaisePropertyChanged("SignerRole");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class SignedPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private SignedSignaturePropertiesType signedSignaturePropertiesField;
-        
-        private SignedDataObjectPropertiesType signedDataObjectPropertiesField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public SignedSignaturePropertiesType SignedSignatureProperties {
-            get {
-                return this.signedSignaturePropertiesField;
-            }
-            set {
-                this.signedSignaturePropertiesField = value;
-                this.RaisePropertyChanged("SignedSignatureProperties");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public SignedDataObjectPropertiesType SignedDataObjectProperties {
-            get {
-                return this.signedDataObjectPropertiesField;
-            }
-            set {
-                this.signedDataObjectPropertiesField = value;
-                this.RaisePropertyChanged("SignedDataObjectProperties");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://uri.etsi.org/01903/v1.3.2#")]
-    public partial class QualifyingPropertiesType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private SignedPropertiesType signedPropertiesField;
-        
-        private UnsignedPropertiesType unsignedPropertiesField;
-        
-        private string targetField;
-        
-        private string idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public SignedPropertiesType SignedProperties {
-            get {
-                return this.signedPropertiesField;
-            }
-            set {
-                this.signedPropertiesField = value;
-                this.RaisePropertyChanged("SignedProperties");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public UnsignedPropertiesType UnsignedProperties {
-            get {
-                return this.unsignedPropertiesField;
-            }
-            set {
-                this.unsignedPropertiesField = value;
-                this.RaisePropertyChanged("UnsignedProperties");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
-        public string Target {
-            get {
-                return this.targetField;
-            }
-            set {
-                this.targetField = value;
-                this.RaisePropertyChanged("Target");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
-        public string Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("Id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/entity")]
-    public partial class REQUEST_INFOType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private REQUEST_HEADERType rEQUEST_HEADERField;
-        
-        private REQUEST_RETURNType rEQUEST_RETURNField;
-        
-        private REQUEST_ERRORType rEQUEST_ERRORField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public REQUEST_HEADERType REQUEST_HEADER {
-            get {
-                return this.rEQUEST_HEADERField;
-            }
-            set {
-                this.rEQUEST_HEADERField = value;
-                this.RaisePropertyChanged("REQUEST_HEADER");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public REQUEST_RETURNType REQUEST_RETURN {
-            get {
-                return this.rEQUEST_RETURNField;
-            }
-            set {
-                this.rEQUEST_RETURNField = value;
-                this.RaisePropertyChanged("REQUEST_RETURN");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public REQUEST_ERRORType REQUEST_ERROR {
-            get {
-                return this.rEQUEST_ERRORField;
-            }
-            set {
-                this.rEQUEST_ERRORField = value;
-                this.RaisePropertyChanged("REQUEST_ERROR");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/entity")]
-    public partial class REQUEST_HEADERType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string sESSION_IDField;
-        
-        private string cLIENT_TXN_IDField;
-        
-        private long iNTL_TXN_IDField;
-        
-        private bool iNTL_TXN_IDFieldSpecified;
-        
-        private long iNTL_PARENT_TXN_IDField;
-        
-        private bool iNTL_PARENT_TXN_IDFieldSpecified;
-        
-        private System.DateTime aCTION_DATEField;
-        
-        private bool aCTION_DATEFieldSpecified;
-        
-        private CHANGE_INFOType cHANGE_INFOField;
-        
-        private string rEASONField;
-        
-        private string aPPLICATION_NAMEField;
-        
-        private string hOSTNAMEField;
-        
-        private string cHANNEL_NAMEField;
-        
-        private string sIMULATION_FLAGField;
-        
-        private string cOMPRESSEDField;
-        
-        private REQUEST_HEADERTypeSIGN_STATUS sIGN_STATUSField;
-        
-        private ATTRIBUTESTYPE[] aTTRIBUTESField;
-        
-        public REQUEST_HEADERType() {
-            this.sIGN_STATUSField = REQUEST_HEADERTypeSIGN_STATUS.SIGNED;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string SESSION_ID {
-            get {
-                return this.sESSION_IDField;
-            }
-            set {
-                this.sESSION_IDField = value;
-                this.RaisePropertyChanged("SESSION_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string CLIENT_TXN_ID {
-            get {
-                return this.cLIENT_TXN_IDField;
-            }
-            set {
-                this.cLIENT_TXN_IDField = value;
-                this.RaisePropertyChanged("CLIENT_TXN_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public long INTL_TXN_ID {
-            get {
-                return this.iNTL_TXN_IDField;
-            }
-            set {
-                this.iNTL_TXN_IDField = value;
-                this.RaisePropertyChanged("INTL_TXN_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool INTL_TXN_IDSpecified {
-            get {
-                return this.iNTL_TXN_IDFieldSpecified;
-            }
-            set {
-                this.iNTL_TXN_IDFieldSpecified = value;
-                this.RaisePropertyChanged("INTL_TXN_IDSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public long INTL_PARENT_TXN_ID {
-            get {
-                return this.iNTL_PARENT_TXN_IDField;
-            }
-            set {
-                this.iNTL_PARENT_TXN_IDField = value;
-                this.RaisePropertyChanged("INTL_PARENT_TXN_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool INTL_PARENT_TXN_IDSpecified {
-            get {
-                return this.iNTL_PARENT_TXN_IDFieldSpecified;
-            }
-            set {
-                this.iNTL_PARENT_TXN_IDFieldSpecified = value;
-                this.RaisePropertyChanged("INTL_PARENT_TXN_IDSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public System.DateTime ACTION_DATE {
-            get {
-                return this.aCTION_DATEField;
-            }
-            set {
-                this.aCTION_DATEField = value;
-                this.RaisePropertyChanged("ACTION_DATE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ACTION_DATESpecified {
-            get {
-                return this.aCTION_DATEFieldSpecified;
-            }
-            set {
-                this.aCTION_DATEFieldSpecified = value;
-                this.RaisePropertyChanged("ACTION_DATESpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public CHANGE_INFOType CHANGE_INFO {
-            get {
-                return this.cHANGE_INFOField;
-            }
-            set {
-                this.cHANGE_INFOField = value;
-                this.RaisePropertyChanged("CHANGE_INFO");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=6)]
-        public string REASON {
-            get {
-                return this.rEASONField;
-            }
-            set {
-                this.rEASONField = value;
-                this.RaisePropertyChanged("REASON");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=7)]
-        public string APPLICATION_NAME {
-            get {
-                return this.aPPLICATION_NAMEField;
-            }
-            set {
-                this.aPPLICATION_NAMEField = value;
-                this.RaisePropertyChanged("APPLICATION_NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=8)]
-        public string HOSTNAME {
-            get {
-                return this.hOSTNAMEField;
-            }
-            set {
-                this.hOSTNAMEField = value;
-                this.RaisePropertyChanged("HOSTNAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=9)]
-        public string CHANNEL_NAME {
-            get {
-                return this.cHANNEL_NAMEField;
-            }
-            set {
-                this.cHANNEL_NAMEField = value;
-                this.RaisePropertyChanged("CHANNEL_NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=10)]
-        public string SIMULATION_FLAG {
-            get {
-                return this.sIMULATION_FLAGField;
-            }
-            set {
-                this.sIMULATION_FLAGField = value;
-                this.RaisePropertyChanged("SIMULATION_FLAG");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=11)]
-        public string COMPRESSED {
-            get {
-                return this.cOMPRESSEDField;
-            }
-            set {
-                this.cOMPRESSEDField = value;
-                this.RaisePropertyChanged("COMPRESSED");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
-        [System.ComponentModel.DefaultValueAttribute(REQUEST_HEADERTypeSIGN_STATUS.SIGNED)]
-        public REQUEST_HEADERTypeSIGN_STATUS SIGN_STATUS {
-            get {
-                return this.sIGN_STATUSField;
-            }
-            set {
-                this.sIGN_STATUSField = value;
-                this.RaisePropertyChanged("SIGN_STATUS");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ATTRIBUTES", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
-        public ATTRIBUTESTYPE[] ATTRIBUTES {
-            get {
-                return this.aTTRIBUTESField;
-            }
-            set {
-                this.aTTRIBUTESField = value;
-                this.RaisePropertyChanged("ATTRIBUTES");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class CHANGE_INFOType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.DateTime cDATEField;
-        
-        private long cPOSITION_IDField;
-        
-        private long cUSER_IDField;
-        
-        private System.DateTime uDATEField;
-        
-        private bool uDATEFieldSpecified;
-        
-        private long uPOSITION_IDField;
-        
-        private bool uPOSITION_IDFieldSpecified;
-        
-        private long uUSER_IDField;
-        
-        private bool uUSER_IDFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
-        public System.DateTime CDATE {
-            get {
-                return this.cDATEField;
-            }
-            set {
-                this.cDATEField = value;
-                this.RaisePropertyChanged("CDATE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public long CPOSITION_ID {
-            get {
-                return this.cPOSITION_IDField;
-            }
-            set {
-                this.cPOSITION_IDField = value;
-                this.RaisePropertyChanged("CPOSITION_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public long CUSER_ID {
-            get {
-                return this.cUSER_IDField;
-            }
-            set {
-                this.cUSER_IDField = value;
-                this.RaisePropertyChanged("CUSER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=3)]
-        public System.DateTime UDATE {
-            get {
-                return this.uDATEField;
-            }
-            set {
-                this.uDATEField = value;
-                this.RaisePropertyChanged("UDATE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UDATESpecified {
-            get {
-                return this.uDATEFieldSpecified;
-            }
-            set {
-                this.uDATEFieldSpecified = value;
-                this.RaisePropertyChanged("UDATESpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public long UPOSITION_ID {
-            get {
-                return this.uPOSITION_IDField;
-            }
-            set {
-                this.uPOSITION_IDField = value;
-                this.RaisePropertyChanged("UPOSITION_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UPOSITION_IDSpecified {
-            get {
-                return this.uPOSITION_IDFieldSpecified;
-            }
-            set {
-                this.uPOSITION_IDFieldSpecified = value;
-                this.RaisePropertyChanged("UPOSITION_IDSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public long UUSER_ID {
-            get {
-                return this.uUSER_IDField;
-            }
-            set {
-                this.uUSER_IDField = value;
-                this.RaisePropertyChanged("UUSER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UUSER_IDSpecified {
-            get {
-                return this.uUSER_IDFieldSpecified;
-            }
-            set {
-                this.uUSER_IDFieldSpecified = value;
-                this.RaisePropertyChanged("UUSER_IDSpecified");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/entity")]
-    public enum REQUEST_HEADERTypeSIGN_STATUS {
-        
-        /// <remarks/>
-        SIGNED,
-        
-        /// <remarks/>
-        SIGN_BY_CLIENTCER_TIFICATE,
-        
-        /// <remarks/>
-        SIGN_BY_ENTEGRATOR_CERTIFICATE,
-        
-        /// <remarks/>
-        NOSIGN,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/entity")]
-    public partial class REQUEST_RETURNType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private long iNTL_TXN_IDField;
-        
-        private string cLIENT_TXN_IDField;
-        
-        private int rETURN_CODEField;
-        
-        private string[] wARNINGSField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public long INTL_TXN_ID {
-            get {
-                return this.iNTL_TXN_IDField;
-            }
-            set {
-                this.iNTL_TXN_IDField = value;
-                this.RaisePropertyChanged("INTL_TXN_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string CLIENT_TXN_ID {
-            get {
-                return this.cLIENT_TXN_IDField;
-            }
-            set {
-                this.cLIENT_TXN_IDField = value;
-                this.RaisePropertyChanged("CLIENT_TXN_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public int RETURN_CODE {
-            get {
-                return this.rETURN_CODEField;
-            }
-            set {
-                this.rETURN_CODEField = value;
-                this.RaisePropertyChanged("RETURN_CODE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("WARNINGS", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string[] WARNINGS {
-            get {
-                return this.wARNINGSField;
-            }
-            set {
-                this.wARNINGSField = value;
-                this.RaisePropertyChanged("WARNINGS");
             }
         }
         
@@ -12316,15 +12316,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12381,15 +12381,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12446,15 +12446,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12511,15 +12511,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12576,15 +12576,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12641,15 +12641,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12706,15 +12706,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12771,15 +12771,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12836,15 +12836,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12901,15 +12901,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -12966,15 +12966,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13031,15 +13031,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13096,15 +13096,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13161,15 +13161,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13226,15 +13226,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13291,15 +13291,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13356,15 +13356,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13421,15 +13421,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13486,15 +13486,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]
@@ -13551,15 +13551,15 @@ namespace izibiz.SERVICES.serviceArchive {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SignaturePropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ManifestType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ValidationDataType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SPUserNoticeType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesReferenceType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(QualifyingPropertiesType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(GenericTimeStampType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(baslikType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaIptalType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(faturaType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITYBaseType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FIND_KEYType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SEARCH_RESULTType))]

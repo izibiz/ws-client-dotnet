@@ -1,5 +1,6 @@
 ﻿using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.DbModels;
+using izibiz.SERVICES.serviceArchive;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,26 @@ namespace izibiz.CONTROLLER.DAL
             return Singl.databaseContextGet.archiveInvoices.Where(arc =>arc.reportFlag== true).ToList();
         }
 
+        public ArchiveInvoices getArchive(string uuid,string profileId)
+        {
+            return Singl.databaseContextGet.archiveInvoices.Where(arc => arc.uuid == uuid).FirstOrDefault();
+        }
+
+
         public void addArchive(ArchiveInvoices archive)
         {
             Singl.databaseContextGet.archiveInvoices.Add(archive);
         }
+
+
+        public void updateArchiveStatus(EARCHIVE_INVOICE archive )
+        {
+            ArchiveInvoices archiveOnDb = Singl.databaseContextGet.archiveInvoices.Where(arc => arc.uuid == archive.HEADER.UUID).FirstOrDefault();
+
+            archiveOnDb.status = archive.HEADER.STATUS_DESC;
+            archiveOnDb.mailStatus = archive.HEADER.EMAIL_STATUS_DESC;
+        }
+
 
 
         public void dbSaveChanges()
