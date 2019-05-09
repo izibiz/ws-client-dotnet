@@ -15,17 +15,18 @@ namespace izibiz.CONTROLLER
 
         public InvoiceType BaseUBL { get; protected set; }
         private List<InvoiceLineType> listInvLine = new List<InvoiceLineType>();
+        private string invoiceType;
 
 
 
-
-        public CreateInvoiceUBL(string profileId, string invoiceTypeCode)
+        public CreateInvoiceUBL(string profileId, string invoiceTypeCode,string invoiceType,string archiveSendingType)
         {
             BaseUBL = new InvoiceType();
 
             createInvoiceHeader(profileId, invoiceTypeCode);
-            createAdditionalDocumentReference();
+            createAdditionalDocumentReference(invoiceType, archiveSendingType);
             createSignature();
+            this.invoiceType = invoiceType;
         }
 
 
@@ -52,10 +53,12 @@ namespace izibiz.CONTROLLER
 
 
 
-        public void createAdditionalDocumentReference()
+        public void createAdditionalDocumentReference(string invoiceType,string archiveSendingType)
         {
-            var idRef = new DocumentReferenceType();
+            List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
 
+
+            var idRef = new DocumentReferenceType();
             idRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
             idRef.IssueDate = BaseUBL.IssueDate;
             idRef.DocumentType = new DocumentTypeType { Value = nameof(EI.DocumentType.XSLT) };
@@ -66,13 +69,26 @@ namespace izibiz.CONTROLLER
             idRef.Attachment.EmbeddedDocumentBinaryObject.encodingCode = "Base64";
             idRef.Attachment.EmbeddedDocumentBinaryObject.filename = BaseUBL.ID.Value.ToString() + ".xslt";
             idRef.Attachment.EmbeddedDocumentBinaryObject.mimeCode = "application/xml";
-            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGibInvoice);
+            if (invoiceType==nameof(EI.Invoice.Invoices))
+            {
+                idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGibInvoice);
+            }
+            else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
+            {
+                idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGibArchive);
 
+                var arcRef = new DocumentReferenceType();
+                arcRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
+                arcRef.IssueDate = BaseUBL.IssueDate;
+                arcRef.DocumentType = new DocumentTypeType { Value = archiveSendingType };
+                arcRef.DocumentTypeCode = new DocumentTypeCodeType { Value = "SendingType" };  //??
 
-            DocumentReferenceType[] DocRefArr = new DocumentReferenceType[1];
+                docRefList.Add(arcRef);
+            }
 
-            DocRefArr[0] = idRef;
-            BaseUBL.AdditionalDocumentReference = DocRefArr;
+   
+            docRefList.Add(idRef);
+            BaseUBL.AdditionalDocumentReference = docRefList.ToArray();
         }
 
 
@@ -141,32 +157,32 @@ namespace izibiz.CONTROLLER
 
 
 
-        public PartyType createParty(string webUrı, string partyName,
-             string streetName, string buldingName, string buldingNumber, string visionName, string cityName,
-            string postalZone, string region, string country, string telephone, string fax, string mail)
+        public PartyType createParty(string partyName,
+             string streetName, string visionName, string cityName,
+           string country, string telephone, string mail)
         {
             return new PartyType
             {
-                WebsiteURI = new WebsiteURIType { Value = webUrı },
+                WebsiteURI = new WebsiteURIType { Value = "" },
 
                 PartyName = new PartyNameType { Name = new NameType1 { Value = partyName } },
 
                 PostalAddress = new AddressType
                 {
                     StreetName = new StreetNameType { Value = streetName },
-                    BuildingName = new BuildingNameType { Value = buldingName },
-                    BuildingNumber = new BuildingNumberType { Value = buldingNumber },
+                    BuildingName = new BuildingNameType { Value = "" },
+                    BuildingNumber = new BuildingNumberType { Value = "" },
                     CitySubdivisionName = new CitySubdivisionNameType { Value = visionName },
                     CityName = new CityNameType { Value = cityName },
-                    PostalZone = new PostalZoneType { Value = postalZone },
-                    Region = new RegionType { Value = region },
+                    PostalZone = new PostalZoneType { Value = "" },
+                    Region = new RegionType { Value = "" },
                     Country = new CountryType { Name = new NameType1 { Value = country } }
                 },
 
                 Contact = new ContactType
                 {
                     Telephone = new TelephoneType { Value = telephone },
-                    Telefax = new TelefaxType { Value = fax },
+                    Telefax = new TelefaxType { Value = "" },
                     ElectronicMail = new ElectronicMailType { Value = mail }
                 },
             };
@@ -447,7 +463,7 @@ namespace izibiz.CONTROLLER
 
             TaxTotalType taxTotal = new TaxTotalType { TaxAmount = new TaxAmountType { Value = 0 } };
 
-            var taxSubtotalNew = new TaxSubtotalType
+            TaxSubtotalType taxSubtotal = new TaxSubtotalType
             {
                 TaxableAmount = new TaxableAmountType { Value = 0 },
                 TaxAmount = new TaxAmountType { Value = 0 },
@@ -475,20 +491,39 @@ namespace izibiz.CONTROLLER
 
                 foreach (var tax in line.TaxTotal.TaxSubtotal)
                 {
-                    taxSubtotalNew.TaxableAmount.currencyID = tax.TaxableAmount.currencyID;
-                    taxSubtotalNew.TaxAmount.currencyID = tax.TaxAmount.currencyID;
-                    taxSubtotalNew.Percent.Value = tax.Percent.Value;
 
-
-                    if (taxSubTotalList.Where(x => x.Percent.Value == tax.Percent.Value).FirstOrDefault() != null)  //percent varsa
+                    if (taxSubTotalList.Where(subtotal => subtotal.Percent.Value == tax.Percent.Value).FirstOrDefault() != null)  //percent varsa
                     {
-                        taxSubtotalNew.TaxableAmount.Value += tax.TaxableAmount.Value;
-                        taxSubtotalNew.TaxAmount.Value += line.TaxTotal.TaxAmount.Value;
+                        taxSubtotal.TaxableAmount.Value += tax.TaxableAmount.Value;
+                        taxSubtotal.TaxAmount.Value += line.TaxTotal.TaxAmount.Value;
                     }
                     else //yoksa ekle
-                    {                      
+                    {
+                        TaxSubtotalType taxSubtotalNew = new TaxSubtotalType
+                        {
+                            TaxableAmount = new TaxableAmountType { Value = 0 },
+                            TaxAmount = new TaxAmountType { Value = 0 },
+                            Percent = new PercentType1 { Value = 0 },
+                            TaxCategory = new TaxCategoryType
+                            {
+                                TaxScheme = new TaxSchemeType
+                                {
+                                    Name = new NameType1 { Value = nameof(EI.TaxType.KDV) },
+                                    TaxTypeCode = new TaxTypeCodeType
+                                    {
+                                        Value = "0015"
+                                    }
+                                }
+                            }
+                        };
+
+                        taxSubtotalNew.TaxableAmount.currencyID = tax.TaxableAmount.currencyID;
+                        taxSubtotalNew.TaxAmount.currencyID = tax.TaxAmount.currencyID;
+                        taxSubtotalNew.Percent.Value = tax.Percent.Value;
+
                         taxSubtotalNew.TaxableAmount.Value = tax.TaxableAmount.Value;
                         taxSubtotalNew.TaxAmount.Value = line.TaxTotal.TaxAmount.Value;
+
 
                         taxSubTotalList.Add(taxSubtotalNew);
                     }

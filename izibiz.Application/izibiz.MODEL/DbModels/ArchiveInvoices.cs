@@ -30,8 +30,7 @@ namespace izibiz.MODEL.DbModels
         public string ID { get; set; }
 
 
-  //      [Column(Name = nameof(EI.Invoice.ID), IsDbGenerated = true, IsPrimaryKey = true, DbType = "NVARCHAR")]
-   //     [Key]
+
         [Column(Name = nameof(EI.Invoice.uuid), DbType = "NVARCHAR")]
         public string uuid { get; set; }
 

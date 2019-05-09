@@ -20,6 +20,7 @@ namespace izibiz.CONTROLLER.Singleton
         private static DatabaseContext databaseContext = null;
         private static InvoiceDal invoiceDal = null;
         private static ArchiveInvoicesDal archiveInvoiceDal = null;
+        private static ArchiveReportsDal archiveReportsDal = null;
         private static IdSerilazeDal idSerilazeDal = null;
         private static UserInformationDal userInformationDal = null;
         private static GibUsersDal gibUsersDal = null;
@@ -82,6 +83,21 @@ namespace izibiz.CONTROLLER.Singleton
                 return archiveInvoiceDal;
             }
         }
+
+
+        public static ArchiveReportsDal ArchiveReportsDalGet
+        {
+            get
+            {
+                if (null == archiveInvoiceDal)
+                {
+                    archiveReportsDal = new ArchiveReportsDal();
+                }
+
+                return archiveReportsDal;
+            }
+        }
+
 
         public static InvoiceDal invoiceDalGet
         {

@@ -23,7 +23,7 @@ namespace izibiz.UI
     {
 
 
-
+        private bool gridIsArchive;
 
 
 
@@ -54,7 +54,7 @@ namespace izibiz.UI
             #region writeAllFormItem
 
             itemArchiveInvoices.Text = Lang.eArchiveInvoices;
-            itemListArchiveReport.Text = Lang.eArchiveReportList;
+            btnFilterArchivesReport.Text = Lang.eArchiveReportList;
             itemArchiveNewCreated.Text = Lang.newInvoice;
             #endregion
 
@@ -65,7 +65,7 @@ namespace izibiz.UI
 
 
 
-        private void dataGridChangeColoumnHeaderText()
+        private void gridArchiveChangeColoumnHeaderText()
         {
             tableArchiveGrid.Columns[EI.Invoice.ID.ToString()].HeaderText = Lang.id;
 
@@ -103,7 +103,7 @@ namespace izibiz.UI
 
 
 
-        private void gridUpdateList(List<ArchiveInvoices> archiveList)
+        private void gridArchiveUpdateList(List<ArchiveInvoices> archiveList)
         {
             tableArchiveGrid.DataSource = null;
 
@@ -125,7 +125,7 @@ namespace izibiz.UI
                     }
                 }
                 tableArchiveGrid.DataSource = archiveList;
-                dataGridChangeColoumnHeaderText();
+                gridArchiveChangeColoumnHeaderText();
 
                 tableArchiveGrid.Columns[nameof(EI.Invoice.draftFlag)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
@@ -141,33 +141,7 @@ namespace izibiz.UI
 
         private void itemListArchiveInvoice_Click(object sender, EventArgs e)
         {
-            pnlArchive.Visible = false;
-            try
-            {
-                //db dekı raporlanmıs arsıv faturaları getır
-                gridUpdateList(Singl.archiveInvoiceDalGet.getArchiveReportList());
-            }
-
-            catch (FaultException<REQUEST_ERRORType> ex)
-            {
-                if (ex.Detail.ERROR_CODE == 2005)
-                {
-                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
-                }
-                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
-            {
-                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.Data.DataException ex)
-            {
-                MessageBox.Show(ex.InnerException.Message.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
+           
         }
 
 
@@ -244,7 +218,7 @@ namespace izibiz.UI
             try
             {
                 //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridUpdateList(Singl.archiveControllerGet.getInvoiceListOnService());
+                gridArchiveUpdateList(Singl.archiveControllerGet.getArchiveListOnService());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -302,7 +276,21 @@ namespace izibiz.UI
         {
             if (e.RowIndex >= 0)
             {
-                pnlArchive.Visible = true;
+                if (gridIsArchive)
+                {
+                    pnlArchive.Visible = true;
+                    pnlArchiveReport.Visible = false;
+                }
+                else
+                {
+                    pnlArchive.Visible = false;
+                    pnlArchiveReport.Visible = true;
+                }
+             
+
+
+
+
             }
         }
 
@@ -442,14 +430,6 @@ namespace izibiz.UI
 
 
 
-        private void itemArchiveNewCreated_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
 
         private void btnSendMail_Click(object sender, EventArgs e)
         {
@@ -542,6 +522,155 @@ namespace izibiz.UI
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void itemArchiveInvoices_Click(object sender, EventArgs e)
+        {
+            gridIsArchive = true;
+            pnlArchive.Visible = false;
+            pnlArchiveReport.Visible = false;
+            try
+            {
+                //db dekı raporlanmıs arsıv faturaları getır
+                gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveList());
+            }
+
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void btnFilterArchivesReport_Click(object sender, EventArgs e)
+        {
+            pnlArchive.Visible = false;
+            try
+            {
+                //db dekı raporlanmıs arsıv faturaları getır
+                gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveReportList());
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void itemGetReportList_Click(object sender, EventArgs e)
+        {
+            gridIsArchive = false;
+            pnlArchive.Visible = false;
+            pnlArchiveReport.Visible = false;
+            try
+            {
+                //db dekı raporlanmıs arsıv faturaları getır
+                gridReportUpdateList(Singl.ArchiveReportsDalGet.getReportList());
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+
+        private void gridReportUpdateList(List<ArchiveReports> archiveReports)
+        {
+            tableArchiveGrid.DataSource = null;
+
+            if (archiveReports.Count == 0)
+            {
+                MessageBox.Show(Lang.noShowInvoice);
+            }
+            else
+            {
+
+                tableArchiveGrid.DataSource = archiveReports;
+                gridReportsChangeColoumnHeaderText();
+            }
+        }
+
+
+
+        private void gridReportsChangeColoumnHeaderText()
+        {
+            tableArchiveGrid.Columns[EI.ArchiveReports.reportNo.ToString()].HeaderText = Lang.reportNo;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.ID.ToString()].HeaderText = Lang.id;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.periodStart.ToString()].HeaderText = Lang.periodStart;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.periodEnd.ToString()].HeaderText = Lang.periodEnd;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.chapter.ToString()].HeaderText = Lang.chapter;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.chapterStart.ToString()].HeaderText = Lang.chapterStart;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.chapterEnd.ToString()].HeaderText = Lang.chapterEnd;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.archiveInvCount.ToString()].HeaderText = Lang.archiveInvCount;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.status.ToString()].HeaderText = Lang.reportState;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.gibSendDate.ToString()].HeaderText = Lang.gibSendDate;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.gibConfirmationDate.ToString()].HeaderText = Lang.gibConfirmationDate;
+
+            tableArchiveGrid.Columns[EI.ArchiveReports.description.ToString()].HeaderText = Lang.description;
+
+        }
+
+
+        private void itemArchiveNewCreated_Click(object sender, EventArgs e)
+        {
+            FrmCreateInvoice frmCreateInvoice = new FrmCreateInvoice(nameof(EI.Invoice.ArchiveInvoices));
+            frmCreateInvoice.Show();
         }
     }
 }

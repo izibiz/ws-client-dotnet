@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInvoice));
             this.menuInvoice = new System.Windows.Forms.MenuStrip();
             this.itemIncomingInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemComingListInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSentInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemSentInvoiceList = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftInvoiceList = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,44 +84,24 @@
             // itemIncomingInvoice
             // 
             this.itemIncomingInvoice.BackColor = System.Drawing.Color.Teal;
-            this.itemIncomingInvoice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemComingListInvoice});
             this.itemIncomingInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.itemIncomingInvoice.Margin = new System.Windows.Forms.Padding(0, 110, 0, 0);
             this.itemIncomingInvoice.Name = "itemIncomingInvoice";
             this.itemIncomingInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.itemIncomingInvoice.Size = new System.Drawing.Size(131, 29);
             this.itemIncomingInvoice.Text = "Gelen Faturalar";
-            // 
-            // itemComingListInvoice
-            // 
-            this.itemComingListInvoice.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.itemComingListInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemComingListInvoice.Name = "itemComingListInvoice";
-            this.itemComingListInvoice.Size = new System.Drawing.Size(186, 24);
-            this.itemComingListInvoice.Text = "E-Fatura Listele";
-            this.itemComingListInvoice.Click += new System.EventHandler(this.itemComingListInvoice_Click);
+            this.itemIncomingInvoice.Click += new System.EventHandler(this.itemIncomingInvoice_Click);
             // 
             // itemSentInvoice
             // 
             this.itemSentInvoice.BackColor = System.Drawing.Color.Teal;
-            this.itemSentInvoice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemSentInvoiceList});
             this.itemSentInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.itemSentInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemSentInvoice.Name = "itemSentInvoice";
             this.itemSentInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.itemSentInvoice.Size = new System.Drawing.Size(131, 29);
             this.itemSentInvoice.Text = " Giden Faturalar";
-            // 
-            // itemSentInvoiceList
-            // 
-            this.itemSentInvoiceList.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.itemSentInvoiceList.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemSentInvoiceList.Name = "itemSentInvoiceList";
-            this.itemSentInvoiceList.Size = new System.Drawing.Size(186, 24);
-            this.itemSentInvoiceList.Text = "E-Fatura Listele";
-            this.itemSentInvoiceList.Click += new System.EventHandler(this.itemSentInvoiceList_Click);
+            this.itemSentInvoice.Click += new System.EventHandler(this.itemSentInvoice_Click);
             // 
             // itemDraftInvoice
             // 
@@ -456,14 +434,14 @@
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1136, 566);
             this.Controls.Add(this.btnHomePage);
-            this.Controls.Add(this.panelSentInv);
-            this.Controls.Add(this.panelIncomingInv);
             this.Controls.Add(this.grpFilter);
             this.Controls.Add(this.btnTakeInv);
             this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.menuInvoice);
             this.Controls.Add(this.panelDraftInv);
+            this.Controls.Add(this.panelSentInv);
+            this.Controls.Add(this.panelIncomingInv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuInvoice;
             this.MaximizeBox = false;
@@ -490,9 +468,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemIncomingInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemSentInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemDraftInvoice;
-        private System.Windows.Forms.ToolStripMenuItem itemComingListInvoice;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ToolStripMenuItem itemSentInvoiceList;
         private System.Windows.Forms.ToolStripMenuItem itemDraftInvoiceList;
         private System.Windows.Forms.Panel panelIncomingInv;
         private System.Windows.Forms.Panel panelSentInv;

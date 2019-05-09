@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ArchiveInvoicesDal.cs" />
+    <Compile Include="DAL\ArchiveReportsDal.cs" />
     <Compile Include="DAL\GibUsersDal.cs" />
     <Compile Include="DAL\IdSerilazeDal.cs" />
     <Compile Include="DAL\InvoiceDal.cs" />

@@ -55,11 +55,9 @@ namespace izibiz.UI
             this.Text = Lang.formInvoice;
             lblTitle.Text = Lang.welcome;
             itemIncomingInvoice.Text = Lang.incomingInvoice;
-            itemComingListInvoice.Text = Lang.listInvoice;
             itemSentInvoice.Text = Lang.sentInvoice;
             itemDraftInvoice.Text = Lang.draftInvoice;
             itemDraftNewInvoice.Text = Lang.newInvoice;
-            itemSentInvoiceList.Text = Lang.listInvoice;
             itemDraftInvoiceList.Text = Lang.listDraftInvoice;
             //panelSentInvoices butonlar
             btnSentInvGetState.Text = Lang.updateState;
@@ -194,10 +192,46 @@ namespace izibiz.UI
             }
         }
 
+        private void itemSentInvoice_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = Lang.sentInvoice;
+            panelSentInv.Visible = false;
+            panelIncomingInv.Visible = false;
+            panelDraftInv.Visible = false;
+            btnSentInvAgainSent.Enabled = false;
+            gridDirection = nameof(EI.InvDirection.OUT);
+            btnTakeInv.Visible = true;
+            grpFilter.Visible = true;
+            try
+            {
+                //db den cekılen lısteyı datagride aktar
+                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+        }
 
 
 
-        private void itemComingListInvoice_Click(object sender, EventArgs e)
+        private void itemIncomingInvoice_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Lang.incomingInvoice;
             panelSentInv.Visible = false;
@@ -234,6 +268,7 @@ namespace izibiz.UI
         }
 
 
+ 
 
 
         private void itemSentInvoiceList_Click(object sender, EventArgs e)
@@ -797,7 +832,7 @@ namespace izibiz.UI
 
         private void itemDraftNewInvoice_Click(object sender, EventArgs e)
         {
-            FrmCreateInvoice frmCreateInvoice = new FrmCreateInvoice();
+            FrmCreateInvoice frmCreateInvoice = new FrmCreateInvoice(nameof(EI.Invoice.Invoices));
             frmCreateInvoice.Show();
         }
 
@@ -877,8 +912,6 @@ namespace izibiz.UI
                 bool isSendWithZip = true;
                 int selectedInvCount = tableGrid.SelectedRows.Count;
 
-
-
                 //zipli gonderme kontrolu
                 if (rdUnzip.Checked) //ikisini de ısaretlememisse zipli gonderılır
                 {
@@ -891,16 +924,9 @@ namespace izibiz.UI
                 {
                     if (row.Cells[nameof(EI.Invoice.receiverVkn)].Value != null && row.Cells[nameof(EI.Invoice.receiverVkn)].Value.ToString() != receiverVkn) //vkn farklı ıse
                     {
-
                         MessageBox.Show("sadece aynı kısıye olan faturaları bırlıkte gonderebılırsınız");
                         valid = false; break;
                     }
-                    //Status note nullsa veya load degılse
-                  /*  else if (row.Cells[nameof(EI.Invoice.stateNote)].Value == null || row.Cells[nameof(EI.Invoice.stateNote)].Value.ToString() != nameof(EI.StatusType.LOAD))
-                    {
-                        MessageBox.Show("faturayı once portala yukleyınız");
-                        valid = false; break;
-                    }*/
                 }
 
                 if (valid) //uymayan fatura durumu yoksa
@@ -1125,6 +1151,10 @@ namespace izibiz.UI
             frmHome.Show();
             this.Dispose();
         }
+
+
+
+     
     }
 
 }

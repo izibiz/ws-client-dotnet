@@ -127,7 +127,6 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.INVOICE_SEARCH_KEY.UUID = uuid;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
-                //daha onceden cektıgımız ıcın mark ınv yapılmıstır o yuzden true
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 if (direction.Equals(nameof(EI.InvDirection.DRAFT))) //direction taslak fatura ıse
@@ -142,7 +141,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
 
 
-                if (invoiceArray.Length != 0)
+                if (invoiceArray != null && invoiceArray.Length != 0)
                 {
                     //getirilen faturanın contentını zipten cıkar , string halınde dondur
                     return Encoding.UTF8.GetString(Compress.UncompressFile(invoiceArray[0].CONTENT.Value));

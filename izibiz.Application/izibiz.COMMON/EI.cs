@@ -154,6 +154,22 @@ namespace izibiz.COMMON
             postalZone
         }
 
+        public enum ArchiveReports
+        {
+          ID,
+          reportNo,
+          periodStart,
+          periodEnd,
+          chapter,
+          chapterStart,
+          chapterEnd,
+          archiveInvCount,
+          status,
+          gibSendDate,
+          gibConfirmationDate,
+          description
+        }
+
 
         public enum InvoiceIdSerial
         {

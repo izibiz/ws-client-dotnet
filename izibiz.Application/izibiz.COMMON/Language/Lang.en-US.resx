@@ -402,4 +402,34 @@
   <data name="mailStatus" xml:space="preserve">
     <value>MAIL STATUS</value>
   </data>
+  <data name="archiveInvCount" xml:space="preserve">
+    <value>ARCHIVE INCOICE COUNT</value>
+  </data>
+  <data name="chapter" xml:space="preserve">
+    <value>CHAPTER</value>
+  </data>
+  <data name="chapterEnd" xml:space="preserve">
+    <value>CHAPTER END</value>
+  </data>
+  <data name="chapterStart" xml:space="preserve">
+    <value>CHAPTER START</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>DESCRIPTION</value>
+  </data>
+  <data name="gibConfirmationDate" xml:space="preserve">
+    <value>GIB CONFIRMATION DATE</value>
+  </data>
+  <data name="gibSendDate" xml:space="preserve">
+    <value>GİB SEND DATE</value>
+  </data>
+  <data name="periodEnd" xml:space="preserve">
+    <value>PERIOD END DATE</value>
+  </data>
+  <data name="periodStart" xml:space="preserve">
+    <value>PERIOD START DATE</value>
+  </data>
+  <data name="reportNo" xml:space="preserve">
+    <value>REPORT NO</value>
+  </data>
 </root>

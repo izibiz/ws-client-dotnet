@@ -40,7 +40,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public List<ArchiveInvoices> getInvoiceListOnService()
+        public List<ArchiveInvoices> getArchiveListOnService()
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -49,14 +49,14 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.LIMIT = 10;
                 req.LIMITSpecified = true;
-                req.PERIOD = "042019";// getThisMonthPeriod();  //bu aya ait faturaları al
+                req.PERIOD = getThisMonthPeriod();  //bu aya ait faturaları al
                 req.REPORT_INCLUDED = true;
                 req.REPORT_FLAG = EI.ActiveOrPasive.Y.ToString();
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
                 req.READ_INCLUDED = false.ToString();
 
-                
+
 
 
                 EARCHIVEINV[] archiveArr = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req).INVOICE;
@@ -67,7 +67,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                     //getirilen faturaları db ye kaydet
                     SaveArchiveArrToDb(archiveArr);
                 }
-                return Singl.archiveInvoiceDalGet.getArchiveReportList();
+                return Singl.archiveInvoiceDalGet.getArchiveList();
             }
         }
 
@@ -79,13 +79,13 @@ namespace izibiz.CONTROLLER.WebServicesController
             foreach (var arc in archiveArr)
             {
                 ArchiveInvoices archive = new ArchiveInvoices();
-               
+
                 //aynı id ve uuid sahıp faturalar gelebıldıgı ıcın unıque row olusturduk
-                archive.rowUnique = arc.HEADER.INVOICE_ID +"/"+ arc.HEADER.UUID +"/"+ arc.HEADER.PROFILE_ID;
+                archive.rowUnique = arc.HEADER.INVOICE_ID + "/" + arc.HEADER.UUID + "/" + arc.HEADER.PROFILE_ID;
 
                 //bu row unıque degerı dbye daha once eklenmemısse
                 //bu kontrolu yapmamızın sebebı markRead calısmamasıdır calıstıgında kontrol kaldrılacaktır
-                if (Singl.databaseContextGet.archiveInvoices.Find(archive.rowUnique)==null)
+                if (Singl.databaseContextGet.archiveInvoices.Find(archive.rowUnique) == null)
                 {
                     archive.ID = arc.HEADER.INVOICE_ID;
                     archive.uuid = arc.HEADER.UUID;
@@ -108,7 +108,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                     //FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
 
                     Singl.archiveInvoiceDalGet.addArchive(archive);
-                }       
+                }
             }
             Singl.archiveInvoiceDalGet.dbSaveChanges();
         }
@@ -128,9 +128,55 @@ namespace izibiz.CONTROLLER.WebServicesController
                 markReq.MARK.value = MarkEArchiveInvoiceRequestMARKValue.READ;
                 markReq.MARK.valueSpecified = true;
 
-              var res=  eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
+                var res = eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
             }
         }
+
+
+
+
+
+        public List<ArchiveReports> getReportListOnService()
+        {
+            using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
+            {
+                var req = new GetEArchiveReportRequest(); //sistemdeki gelen efatura listesi için request parametreleri
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
+
+                req.REPORT_PERIOD = getThisMonthPeriod();  //bu aya ait faturaları al    
+                req.REPORT_STATUS_FLAG = EI.ActiveOrPasive.Y.ToString();
+
+                REPORT[] reportArr = eArchiveInvoicePortClient.GetEArchiveReport(req).REPORT;
+
+                if (reportArr != null && reportArr.Length > 0)
+                {
+                    //getirilen raporları db ye kaydet
+                    SaveReportArrToDb(reportArr);
+                    //READ REPORT YAPCAK MIYIZ
+                }
+                return Singl.ArchiveReportsDalGet.getReportList();
+            }
+        }
+
+
+
+        private void SaveReportArrToDb(REPORT[] reportArr)
+        {
+            foreach (var rep in reportArr)
+            {
+                ArchiveReports report = new ArchiveReports();
+
+                if (Singl.databaseContextGet.archiveInvoices.Find(report.reportNo) == null)
+                {
+                    report.reportNo = rep.REPORT_NO;
+                    report.status = rep.REPORT_STATUS;
+
+                    Singl.ArchiveReportsDalGet.addReport(report);
+                }
+            }
+            Singl.databaseContextGet.SaveChanges();
+        }
+
 
 
         /// <summary>
@@ -162,7 +208,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public string getArchiveContentXml(string uuid,string rowUnique)
+        public string getArchiveContentXml(string uuid, string rowUnique)
         {
             //db den pathı getırdı
             string xmlPath = Singl.archiveInvoiceDalGet.findArchive(rowUnique).folderPath;
@@ -271,17 +317,17 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public bool sendArchiveMail(string uuid,string mails)
+        public bool sendArchiveMail(string uuid, string mails)
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
                 GetEmailEarchiveInvoiceRequest req = new GetEmailEarchiveInvoiceRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
-                req.FATURA_UUID =uuid;
-                req.EMAIL =mails;
+                req.FATURA_UUID = uuid;
+                req.EMAIL = mails;
 
                 var res = eArchiveInvoicePortClient.GetEmailEarchiveInvoice(req);
-                if (res.REQUEST_RETURN !=null && res.REQUEST_RETURN.RETURN_CODE == 0)
+                if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
                 {
                     return true;
                 }

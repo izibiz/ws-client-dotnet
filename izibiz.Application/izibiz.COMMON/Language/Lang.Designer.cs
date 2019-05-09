@@ -115,11 +115,47 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ARSIV FATURA SAYISI.
+        /// </summary>
+        public static string archiveInvCount {
+            get {
+                return ResourceManager.GetString("archiveInvCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OLUSTURULMA TARİHİ.
         /// </summary>
         public static string cDate {
             get {
                 return ResourceManager.GetString("cDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BOLUM.
+        /// </summary>
+        public static string chapter {
+            get {
+                return ResourceManager.GetString("chapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BOLUM BITIS.
+        /// </summary>
+        public static string chapterEnd {
+            get {
+                return ResourceManager.GetString("chapterEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BOLUM BASLANGIC.
+        /// </summary>
+        public static string chapterStart {
+            get {
+                return ResourceManager.GetString("chapterStart", resourceCulture);
             }
         }
         
@@ -147,6 +183,15 @@ namespace izibiz.COMMON.Language {
         public static string dbFault {
             get {
                 return ResourceManager.GetString("dbFault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACIKLAMA.
+        /// </summary>
+        public static string description {
+            get {
+                return ResourceManager.GetString("description", resourceCulture);
             }
         }
         
@@ -349,11 +394,29 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GIB ONAYLANMA TARIHI.
+        /// </summary>
+        public static string gibConfirmationDate {
+            get {
+                return ResourceManager.GetString("gibConfirmationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GİB DURUM ACIKLAMA.
         /// </summary>
         public static string gibSatusDescription {
             get {
                 return ResourceManager.GetString("gibSatusDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GİB GONDERILME TARIHI.
+        /// </summary>
+        public static string gibSendDate {
+            get {
+                return ResourceManager.GetString("gibSendDate", resourceCulture);
             }
         }
         
@@ -565,6 +628,24 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DONEM  BITIS.
+        /// </summary>
+        public static string periodEnd {
+            get {
+                return ResourceManager.GetString("periodEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DONEM  BASLANGIC.
+        /// </summary>
+        public static string periodStart {
+            get {
+                return ResourceManager.GetString("periodStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Önizleme.
         /// </summary>
         public static string preview {
@@ -606,6 +687,15 @@ namespace izibiz.COMMON.Language {
         public static string reject {
             get {
                 return ResourceManager.GetString("reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RAPOR NO.
+        /// </summary>
+        public static string reportNo {
+            get {
+                return ResourceManager.GetString("reportNo", resourceCulture);
             }
         }
         

@@ -405,4 +405,34 @@
   <data name="mailStatus" xml:space="preserve">
     <value>MAIL DURUMU</value>
   </data>
+  <data name="archiveInvCount" xml:space="preserve">
+    <value>ARSIV FATURA SAYISI</value>
+  </data>
+  <data name="chapter" xml:space="preserve">
+    <value>BOLUM</value>
+  </data>
+  <data name="chapterEnd" xml:space="preserve">
+    <value>BOLUM BITIS</value>
+  </data>
+  <data name="chapterStart" xml:space="preserve">
+    <value>BOLUM BASLANGIC</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>ACIKLAMA</value>
+  </data>
+  <data name="gibConfirmationDate" xml:space="preserve">
+    <value>GIB ONAYLANMA TARIHI</value>
+  </data>
+  <data name="gibSendDate" xml:space="preserve">
+    <value>GİB GONDERILME TARIHI</value>
+  </data>
+  <data name="periodEnd" xml:space="preserve">
+    <value>DONEM  BITIS</value>
+  </data>
+  <data name="periodStart" xml:space="preserve">
+    <value>DONEM  BASLANGIC</value>
+  </data>
+  <data name="reportNo" xml:space="preserve">
+    <value>RAPOR NO</value>
+  </data>
 </root>

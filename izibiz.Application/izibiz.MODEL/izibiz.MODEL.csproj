@@ -65,6 +65,7 @@
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Data\SqLiteConfiguration.cs" />
     <Compile Include="DbModels\ArchiveInvoices.cs" />
+    <Compile Include="DbModels\ArchiveReports.cs" />
     <Compile Include="DbModels\GibUsers.cs" />
     <Compile Include="DbModels\InvoiceIdSerial.cs" />
     <Compile Include="DbModels\Invoices.cs" />
