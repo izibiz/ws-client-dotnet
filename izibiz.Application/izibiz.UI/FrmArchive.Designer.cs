@@ -247,6 +247,7 @@
             this.btnTakeArchiveInv.TabIndex = 41;
             this.btnTakeArchiveInv.Text = "fatura al";
             this.btnTakeArchiveInv.UseVisualStyleBackColor = false;
+            this.btnTakeArchiveInv.Visible = false;
             this.btnTakeArchiveInv.Click += new System.EventHandler(this.btnTakeArchiveInv_Click);
             // 
             // btnHomePage

@@ -143,7 +143,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var req = new GetEArchiveReportRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
 
-                req.REPORT_PERIOD = getThisMonthPeriod();  //bu aya ait faturaları al    
+                req.REPORT_PERIOD = "201904"; //bu aya ait faturaları al    
                 req.REPORT_STATUS_FLAG = EI.ActiveOrPasive.Y.ToString();
 
                 REPORT[] reportArr = eArchiveInvoicePortClient.GetEArchiveReport(req).REPORT;

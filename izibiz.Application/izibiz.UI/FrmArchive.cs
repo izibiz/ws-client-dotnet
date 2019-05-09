@@ -23,7 +23,7 @@ namespace izibiz.UI
     {
 
 
-        private bool gridIsArchive;
+        private bool isArchive;
 
 
 
@@ -217,8 +217,15 @@ namespace izibiz.UI
         {
             try
             {
-                //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridArchiveUpdateList(Singl.archiveControllerGet.getArchiveListOnService());
+                if (isArchive)
+                {
+                    //servisten yenı faturaları cek db ye kaydet ve datagridde göster
+                    gridArchiveUpdateList(Singl.archiveControllerGet.getArchiveListOnService());
+                }
+                else
+                {
+                    gridReportUpdateList(Singl.archiveControllerGet.getReportListOnService());
+                }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -276,7 +283,7 @@ namespace izibiz.UI
         {
             if (e.RowIndex >= 0)
             {
-                if (gridIsArchive)
+                if (isArchive)
                 {
                     pnlArchive.Visible = true;
                     pnlArchiveReport.Visible = false;
@@ -526,7 +533,8 @@ namespace izibiz.UI
 
         private void itemArchiveInvoices_Click(object sender, EventArgs e)
         {
-            gridIsArchive = true;
+            isArchive = true;
+            btnTakeArchiveInv.Visible = true;
             pnlArchive.Visible = false;
             pnlArchiveReport.Visible = false;
             try
@@ -589,7 +597,8 @@ namespace izibiz.UI
 
         private void itemGetReportList_Click(object sender, EventArgs e)
         {
-            gridIsArchive = false;
+            isArchive = false;
+            btnTakeArchiveInv.Visible = true;
             pnlArchive.Visible = false;
             pnlArchiveReport.Visible = false;
             try

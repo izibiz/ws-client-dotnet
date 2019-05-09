@@ -289,7 +289,7 @@ namespace izibiz.UI
                     }
                 }
 
-                if (grpPaymentInformation.Visible==true) //ya da grpSendingType
+                if (grpPaymentInformation.Visible==true) //ınternetı sectıyse
                 {
                     foreach (Control item in grpPaymentInformation.Controls) //odeme bılgılerı
                     {
