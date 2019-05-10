@@ -100,36 +100,36 @@
             this.cmbArchiveType = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pnlArchiveInformation = new System.Windows.Forms.Panel();
-            this.grpPaymentInformation = new System.Windows.Forms.GroupBox();
+            this.pnlArchive = new System.Windows.Forms.Panel();
+            this.chkSendMail = new System.Windows.Forms.CheckBox();
             this.grpSendingType = new System.Windows.Forms.GroupBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.datepicDespatchDate = new System.Windows.Forms.DateTimePicker();
+            this.msdDeliveryVkn = new System.Windows.Forms.MaskedTextBox();
+            this.rdTuzel = new System.Windows.Forms.RadioButton();
+            this.rdReal = new System.Windows.Forms.RadioButton();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.rdReal = new System.Windows.Forms.RadioButton();
-            this.rdTuzel = new System.Windows.Forms.RadioButton();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.chkSendMail = new System.Windows.Forms.CheckBox();
-            this.pnlArchive = new System.Windows.Forms.Panel();
+            this.txtCarrierTitle = new System.Windows.Forms.TextBox();
+            this.grpPaymentInformation = new System.Windows.Forms.GroupBox();
+            this.datepicPaymentDate = new System.Windows.Forms.DateTimePicker();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtMediator = new System.Windows.Forms.TextBox();
+            this.cmbPaymentType = new System.Windows.Forms.ComboBox();
             this.grpboxTotal.SuspendLayout();
             this.grpboxRow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).BeginInit();
             this.grpInvInformation.SuspendLayout();
             this.grpReceiver.SuspendLayout();
             this.pnlArchiveInformation.SuspendLayout();
-            this.grpPaymentInformation.SuspendLayout();
-            this.grpSendingType.SuspendLayout();
             this.pnlArchive.SuspendLayout();
+            this.grpSendingType.SuspendLayout();
+            this.grpPaymentInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
@@ -306,7 +306,7 @@
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gridPrice.DefaultCellStyle = dataGridViewCellStyle9;
@@ -324,10 +324,11 @@
             this.gridPrice.RowHeadersVisible = false;
             this.gridPrice.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
             this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.gridPrice.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.gridPrice.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.gridPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridPrice.Size = new System.Drawing.Size(712, 96);
             this.gridPrice.TabIndex = 5;
             this.gridPrice.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridPrice_CellValidating);
@@ -349,6 +350,7 @@
             // 
             // unit
             // 
+            this.unit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.unit.HeaderText = "birim";
             this.unit.Name = "unit";
             // 
@@ -772,35 +774,38 @@
             this.pnlArchiveInformation.TabIndex = 12;
             this.pnlArchiveInformation.Visible = false;
             // 
-            // grpPaymentInformation
+            // pnlArchive
             // 
-            this.grpPaymentInformation.Controls.Add(this.dateTimePicker1);
-            this.grpPaymentInformation.Controls.Add(this.label27);
-            this.grpPaymentInformation.Controls.Add(this.textBox4);
-            this.grpPaymentInformation.Controls.Add(this.label24);
-            this.grpPaymentInformation.Controls.Add(this.label25);
-            this.grpPaymentInformation.Controls.Add(this.label26);
-            this.grpPaymentInformation.Controls.Add(this.textBox2);
-            this.grpPaymentInformation.Controls.Add(this.textBox3);
-            this.grpPaymentInformation.Location = new System.Drawing.Point(230, 3);
-            this.grpPaymentInformation.Name = "grpPaymentInformation";
-            this.grpPaymentInformation.Size = new System.Drawing.Size(262, 138);
-            this.grpPaymentInformation.TabIndex = 12;
-            this.grpPaymentInformation.TabStop = false;
-            this.grpPaymentInformation.Text = "Ödeme Bilgisi";
-            this.grpPaymentInformation.Visible = false;
+            this.pnlArchive.Controls.Add(this.cmbArchiveType);
+            this.pnlArchive.Controls.Add(this.cmbArchiveSendingType);
+            this.pnlArchive.Controls.Add(this.label23);
+            this.pnlArchive.Controls.Add(this.lblArchiveSendingType);
+            this.pnlArchive.Location = new System.Drawing.Point(3, 15);
+            this.pnlArchive.Name = "pnlArchive";
+            this.pnlArchive.Size = new System.Drawing.Size(221, 97);
+            this.pnlArchive.TabIndex = 15;
+            // 
+            // chkSendMail
+            // 
+            this.chkSendMail.AutoSize = true;
+            this.chkSendMail.Location = new System.Drawing.Point(10, 118);
+            this.chkSendMail.Name = "chkSendMail";
+            this.chkSendMail.Size = new System.Drawing.Size(83, 17);
+            this.chkSendMail.TabIndex = 14;
+            this.chkSendMail.Text = "Mail Gönder";
+            this.chkSendMail.UseVisualStyleBackColor = true;
             // 
             // grpSendingType
             // 
-            this.grpSendingType.Controls.Add(this.dateTimePicker2);
-            this.grpSendingType.Controls.Add(this.maskedTextBox1);
+            this.grpSendingType.Controls.Add(this.datepicDespatchDate);
+            this.grpSendingType.Controls.Add(this.msdDeliveryVkn);
             this.grpSendingType.Controls.Add(this.rdTuzel);
             this.grpSendingType.Controls.Add(this.rdReal);
             this.grpSendingType.Controls.Add(this.label28);
             this.grpSendingType.Controls.Add(this.label29);
             this.grpSendingType.Controls.Add(this.label30);
             this.grpSendingType.Controls.Add(this.label31);
-            this.grpSendingType.Controls.Add(this.textBox6);
+            this.grpSendingType.Controls.Add(this.txtCarrierTitle);
             this.grpSendingType.Location = new System.Drawing.Point(498, 3);
             this.grpSendingType.Name = "grpSendingType";
             this.grpSendingType.Size = new System.Drawing.Size(256, 138);
@@ -809,65 +814,44 @@
             this.grpSendingType.Text = "Gönerim Sekli";
             this.grpSendingType.Visible = false;
             // 
-            // label24
+            // datepicDespatchDate
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(15, 79);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(33, 13);
-            this.label24.TabIndex = 15;
-            this.label24.Text = "Tarihi";
+            this.datepicDespatchDate.Location = new System.Drawing.Point(116, 107);
+            this.datepicDespatchDate.Name = "datepicDespatchDate";
+            this.datepicDespatchDate.Size = new System.Drawing.Size(109, 20);
+            this.datepicDespatchDate.TabIndex = 31;
             // 
-            // label25
+            // msdDeliveryVkn
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(15, 48);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(31, 13);
-            this.label25.TabIndex = 16;
-            this.label25.Text = "Aracı";
+            this.msdDeliveryVkn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.msdDeliveryVkn.Location = new System.Drawing.Point(116, 43);
+            this.msdDeliveryVkn.Mask = "0000000000";
+            this.msdDeliveryVkn.Name = "msdDeliveryVkn";
+            this.msdDeliveryVkn.Size = new System.Drawing.Size(109, 20);
+            this.msdDeliveryVkn.TabIndex = 30;
+            this.msdDeliveryVkn.Text = "4840847211";
             // 
-            // label26
+            // rdTuzel
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(15, 21);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(30, 13);
-            this.label26.TabIndex = 17;
-            this.label26.Text = "Sekli";
+            this.rdTuzel.AutoSize = true;
+            this.rdTuzel.Location = new System.Drawing.Point(192, 20);
+            this.rdTuzel.Name = "rdTuzel";
+            this.rdTuzel.Size = new System.Drawing.Size(51, 17);
+            this.rdTuzel.TabIndex = 29;
+            this.rdTuzel.TabStop = true;
+            this.rdTuzel.Text = "Tüzel";
+            this.rdTuzel.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // rdReal
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(109, 20);
-            this.textBox2.TabIndex = 13;
-            this.textBox2.Text = "1";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(126, 18);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(109, 20);
-            this.textBox3.TabIndex = 14;
-            this.textBox3.Text = "1";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(15, 113);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(97, 13);
-            this.label27.TabIndex = 19;
-            this.label27.Text = "internet Satıs Bilgisi";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(126, 110);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(109, 20);
-            this.textBox4.TabIndex = 18;
-            this.textBox4.Text = "1";
+            this.rdReal.AutoSize = true;
+            this.rdReal.Location = new System.Drawing.Point(117, 20);
+            this.rdReal.Name = "rdReal";
+            this.rdReal.Size = new System.Drawing.Size(60, 17);
+            this.rdReal.TabIndex = 28;
+            this.rdReal.TabStop = true;
+            this.rdReal.Text = "Gercek";
+            this.rdReal.UseVisualStyleBackColor = true;
             // 
             // label28
             // 
@@ -905,80 +889,100 @@
             this.label31.TabIndex = 25;
             this.label31.Text = "Tasıyan";
             // 
-            // textBox6
+            // txtCarrierTitle
             // 
-            this.textBox6.Location = new System.Drawing.Point(116, 77);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(109, 20);
-            this.textBox6.TabIndex = 20;
-            this.textBox6.Text = "1";
+            this.txtCarrierTitle.Location = new System.Drawing.Point(116, 77);
+            this.txtCarrierTitle.Name = "txtCarrierTitle";
+            this.txtCarrierTitle.Size = new System.Drawing.Size(109, 20);
+            this.txtCarrierTitle.TabIndex = 20;
+            this.txtCarrierTitle.Text = "1";
             // 
-            // rdReal
+            // grpPaymentInformation
             // 
-            this.rdReal.AutoSize = true;
-            this.rdReal.Location = new System.Drawing.Point(117, 20);
-            this.rdReal.Name = "rdReal";
-            this.rdReal.Size = new System.Drawing.Size(60, 17);
-            this.rdReal.TabIndex = 28;
-            this.rdReal.TabStop = true;
-            this.rdReal.Text = "Gercek";
-            this.rdReal.UseVisualStyleBackColor = true;
+            this.grpPaymentInformation.Controls.Add(this.cmbPaymentType);
+            this.grpPaymentInformation.Controls.Add(this.datepicPaymentDate);
+            this.grpPaymentInformation.Controls.Add(this.label27);
+            this.grpPaymentInformation.Controls.Add(this.textBox4);
+            this.grpPaymentInformation.Controls.Add(this.label24);
+            this.grpPaymentInformation.Controls.Add(this.label25);
+            this.grpPaymentInformation.Controls.Add(this.label26);
+            this.grpPaymentInformation.Controls.Add(this.txtMediator);
+            this.grpPaymentInformation.Location = new System.Drawing.Point(230, 3);
+            this.grpPaymentInformation.Name = "grpPaymentInformation";
+            this.grpPaymentInformation.Size = new System.Drawing.Size(262, 138);
+            this.grpPaymentInformation.TabIndex = 12;
+            this.grpPaymentInformation.TabStop = false;
+            this.grpPaymentInformation.Text = "Ödeme Bilgisi";
+            this.grpPaymentInformation.Visible = false;
             // 
-            // rdTuzel
+            // datepicPaymentDate
             // 
-            this.rdTuzel.AutoSize = true;
-            this.rdTuzel.Location = new System.Drawing.Point(192, 20);
-            this.rdTuzel.Name = "rdTuzel";
-            this.rdTuzel.Size = new System.Drawing.Size(51, 17);
-            this.rdTuzel.TabIndex = 29;
-            this.rdTuzel.TabStop = true;
-            this.rdTuzel.Text = "Tüzel";
-            this.rdTuzel.UseVisualStyleBackColor = true;
+            this.datepicPaymentDate.Location = new System.Drawing.Point(126, 74);
+            this.datepicPaymentDate.Name = "datepicPaymentDate";
+            this.datepicPaymentDate.Size = new System.Drawing.Size(109, 20);
+            this.datepicPaymentDate.TabIndex = 20;
             // 
-            // dateTimePicker1
+            // label27
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(126, 74);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(109, 20);
-            this.dateTimePicker1.TabIndex = 20;
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(15, 113);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(97, 13);
+            this.label27.TabIndex = 19;
+            this.label27.Text = "internet Satıs Bilgisi";
             // 
-            // maskedTextBox1
+            // textBox4
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(116, 43);
-            this.maskedTextBox1.Mask = "00000000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(109, 20);
-            this.maskedTextBox1.TabIndex = 30;
-            this.maskedTextBox1.Text = "4840847211";
+            this.textBox4.Location = new System.Drawing.Point(126, 110);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(109, 20);
+            this.textBox4.TabIndex = 18;
+            this.textBox4.Text = "1";
             // 
-            // dateTimePicker2
+            // label24
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(116, 107);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(109, 20);
-            this.dateTimePicker2.TabIndex = 31;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(15, 79);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(33, 13);
+            this.label24.TabIndex = 15;
+            this.label24.Text = "Tarihi";
             // 
-            // chkSendMail
+            // label25
             // 
-            this.chkSendMail.AutoSize = true;
-            this.chkSendMail.Location = new System.Drawing.Point(10, 118);
-            this.chkSendMail.Name = "chkSendMail";
-            this.chkSendMail.Size = new System.Drawing.Size(83, 17);
-            this.chkSendMail.TabIndex = 14;
-            this.chkSendMail.Text = "Mail Gönder";
-            this.chkSendMail.UseVisualStyleBackColor = true;
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(15, 48);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(31, 13);
+            this.label25.TabIndex = 16;
+            this.label25.Text = "Aracı";
             // 
-            // pnlArchive
+            // label26
             // 
-            this.pnlArchive.Controls.Add(this.cmbArchiveType);
-            this.pnlArchive.Controls.Add(this.cmbArchiveSendingType);
-            this.pnlArchive.Controls.Add(this.label23);
-            this.pnlArchive.Controls.Add(this.lblArchiveSendingType);
-            this.pnlArchive.Location = new System.Drawing.Point(3, 15);
-            this.pnlArchive.Name = "pnlArchive";
-            this.pnlArchive.Size = new System.Drawing.Size(221, 97);
-            this.pnlArchive.TabIndex = 15;
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(15, 21);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(30, 13);
+            this.label26.TabIndex = 17;
+            this.label26.Text = "Sekli";
+            // 
+            // txtMediator
+            // 
+            this.txtMediator.Location = new System.Drawing.Point(126, 45);
+            this.txtMediator.Name = "txtMediator";
+            this.txtMediator.Size = new System.Drawing.Size(109, 20);
+            this.txtMediator.TabIndex = 13;
+            this.txtMediator.Text = "1";
+            // 
+            // cmbPaymentType
+            // 
+            this.cmbPaymentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPaymentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbPaymentType.FormattingEnabled = true;
+            this.cmbPaymentType.Location = new System.Drawing.Point(126, 16);
+            this.cmbPaymentType.Name = "cmbPaymentType";
+            this.cmbPaymentType.Size = new System.Drawing.Size(109, 21);
+            this.cmbPaymentType.TabIndex = 21;
             // 
             // FrmCreateInvoice
             // 
@@ -1006,12 +1010,12 @@
             this.grpReceiver.PerformLayout();
             this.pnlArchiveInformation.ResumeLayout(false);
             this.pnlArchiveInformation.PerformLayout();
-            this.grpPaymentInformation.ResumeLayout(false);
-            this.grpPaymentInformation.PerformLayout();
-            this.grpSendingType.ResumeLayout(false);
-            this.grpSendingType.PerformLayout();
             this.pnlArchive.ResumeLayout(false);
             this.pnlArchive.PerformLayout();
+            this.grpSendingType.ResumeLayout(false);
+            this.grpSendingType.PerformLayout();
+            this.grpPaymentInformation.ResumeLayout(false);
+            this.grpPaymentInformation.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1067,13 +1071,6 @@
         private System.Windows.Forms.ComboBox cmbInvType;
         private System.Windows.Forms.Button btnRemoveRow;
         private System.Windows.Forms.RichTextBox txtNote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewComboBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxPercent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.ComboBox cmbArchiveSendingType;
         private System.Windows.Forms.Label lblArchiveSendingType;
         private System.Windows.Forms.Panel pnlArchiveInformation;
@@ -1086,19 +1083,26 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtMediator;
         private System.Windows.Forms.RadioButton rdTuzel;
         private System.Windows.Forms.RadioButton rdReal;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.TextBox txtCarrierTitle;
+        private System.Windows.Forms.DateTimePicker datepicPaymentDate;
+        private System.Windows.Forms.DateTimePicker datepicDespatchDate;
+        private System.Windows.Forms.MaskedTextBox msdDeliveryVkn;
         private System.Windows.Forms.CheckBox chkSendMail;
         private System.Windows.Forms.Panel pnlArchive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewComboBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxPercent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.ComboBox cmbPaymentType;
     }
 }

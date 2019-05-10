@@ -28,16 +28,6 @@ namespace izibiz.CONTROLLER.WebServicesController
         }
 
 
-        private string getThisMonthPeriod()
-        {
-            string month = DateTime.Now.Month.ToString();
-            if (month.Length == 1)
-            {
-                month = "0" + month;
-            }
-            return month + DateTime.Now.Year.ToString();  //bu aya ait faturaları al
-        }
-
 
 
         public List<ArchiveInvoices> getArchiveListOnService()
@@ -49,9 +39,9 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.LIMIT = 10;
                 req.LIMITSpecified = true;
-                req.PERIOD = getThisMonthPeriod();  //bu aya ait faturaları al
+                req.PERIOD = getThisMonth() + DateTime.Now.Year.ToString();
                 req.REPORT_INCLUDED = true;
-                req.REPORT_FLAG = EI.ActiveOrPasive.Y.ToString();
+                req.REPORT_FLAG = EI.ActiveOrPasive.N.ToString();
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
                 req.READ_INCLUDED = false.ToString();
@@ -84,7 +74,6 @@ namespace izibiz.CONTROLLER.WebServicesController
                 archive.rowUnique = arc.HEADER.INVOICE_ID + "/" + arc.HEADER.UUID + "/" + arc.HEADER.PROFILE_ID;
 
                 //bu row unıque degerı dbye daha once eklenmemısse
-                //bu kontrolu yapmamızın sebebı markRead calısmamasıdır calıstıgında kontrol kaldrılacaktır
                 if (Singl.databaseContextGet.archiveInvoices.Find(archive.rowUnique) == null)
                 {
                     archive.ID = arc.HEADER.INVOICE_ID;
@@ -101,11 +90,10 @@ namespace izibiz.CONTROLLER.WebServicesController
                     archive.status = arc.HEADER.STATUS;
                     archive.statusCode = arc.HEADER.STATUS_CODE;
                     archive.currencyCode = arc.HEADER.CURRENCY_CODE;
-                    archive.reportFlag = true;  //raporluları getırdıgımız ıcın true
                     archive.folderPath = FolderControl.inboxFolderArchive + archive.uuid + "." + nameof(EI.DocumentType.XML);
 
-                    //archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
-                    //FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
+                  //  archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
+               //     FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
 
                     Singl.archiveInvoiceDalGet.addArchive(archive);
                 }
@@ -128,11 +116,20 @@ namespace izibiz.CONTROLLER.WebServicesController
                 markReq.MARK.value = MarkEArchiveInvoiceRequestMARKValue.READ;
                 markReq.MARK.valueSpecified = true;
 
-                var res = eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
+               eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
             }
         }
 
 
+        private string getThisMonth()
+        {
+            string month = DateTime.Now.Month.ToString();
+            if (month.Length == 1)
+            {
+                month = "0" + month;
+            }
+            return month;
+        }
 
 
 
@@ -143,7 +140,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var req = new GetEArchiveReportRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
 
-                req.REPORT_PERIOD = "201904"; //bu aya ait faturaları al    
+                req.REPORT_PERIOD = DateTime.Now.Year.ToString() + getThisMonth();
                 req.REPORT_STATUS_FLAG = EI.ActiveOrPasive.Y.ToString();
 
                 REPORT[] reportArr = eArchiveInvoicePortClient.GetEArchiveReport(req).REPORT;
@@ -169,7 +166,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 if (Singl.databaseContextGet.archiveInvoices.Find(report.reportNo) == null)
                 {
                     report.reportNo = rep.REPORT_NO;
-                    report.status = rep.REPORT_STATUS;
+                    report.status = rep.REPORT_SUB_STATUS;
 
                     Singl.ArchiveReportsDalGet.addReport(report);
                 }
@@ -286,16 +283,15 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public void addContentCancelArcOnCancelContentArr(string uuid, string id, decimal totalMoney)
+        public void addContentCancelArcOnCancelContentArr(string uuid, string id)
         {
             CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent contentCancel = new CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent();
 
             contentCancel.FATURA_UUID = uuid;
             contentCancel.FATURA_ID = id;
             contentCancel.IPTAL_TARIHI = new DateTime();
-            contentCancel.TOPLAM_TUTAR = totalMoney;
             contentCancel.EARSIV_CANCEL_EMAIL = Singl.userInformationDalGet.getUserInformation().mail;
-            contentCancel.UPLOAD_FLAG = FLAG_VALUE.Y;  // tamamen mı ıptal edıcez
+   //         contentCancel.UPLOAD_FLAG = FLAG_VALUE.Y;  // tamamen mı ıptal edıcez
 
             contentCancelList.Add(contentCancel);
         }
@@ -313,6 +309,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 return eArchiveInvoicePortClient.GetEArchiveInvoiceStatus(eArchiveStatus).INVOICE;
             }
         }
+
 
 
 
@@ -335,6 +332,46 @@ namespace izibiz.CONTROLLER.WebServicesController
             }
         }
 
+
+
+        private string getReportSignedXml(string reportNo)
+        {
+            using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
+            {
+                ReadEArchiveReportRequest req = new ReadEArchiveReportRequest();
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
+                req.RAPOR_NO = "d2103e97-a63c-4f1a-9644-138d21da2581";
+
+                var res = eArchiveInvoicePortClient.ReadEArchiveReport(req);
+                if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
+                {
+                    if (res.EARCHIVEREPORT[0] != null && res.EARCHIVEREPORT[0].Value != null)
+                    {
+                        string xmlContent = Encoding.UTF8.GetString(Compress.UncompressFile(res.EARCHIVEREPORT[0].Value));
+                        return xmlContent;
+                    }
+                }
+                return null;
+            }
+        }
+
+
+        public string getArchiveReportXmlOnDisc(string reportNo)
+        {
+            reportNo= "d2103e97-a63c-4f1a-9644-138d21da2581";
+            //db den pathı getırdı
+            string xmlPath = FolderControl.inboxFolderArchiveReport + reportNo + "." + nameof(EI.DocumentType.XML);
+
+            if (!FolderControl.xmlFileIsInFolder(xmlPath)) // xml dosyası verılen pathde bulunmuyorsa
+            {
+                // repor no ya ait servisten raporun ımzalı xmlını  getır
+                return getReportSignedXml(reportNo);
+            }
+            else
+            {
+                return File.ReadAllText(xmlPath);
+            }
+        }
 
 
 

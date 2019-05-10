@@ -55,11 +55,13 @@ namespace izibiz.UI
         {
             localizationItemTextWrite();
             //comboxları ıtem ekle
+            //eger arsıv ıse
             if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
                 pnlArchiveInformation.Visible = true;
                 addItemArchiveSendingType();
                 addItemArchiveType();
+                addItemPaymentType();
             }
             addItemMoneyType();
             addItemScenario(invoiceType);
@@ -77,6 +79,15 @@ namespace izibiz.UI
         }
 
 
+
+
+        private void addItemPaymentType()
+        {
+            cmbPaymentType.Items.Add("KREDIKARTI/BANKAKARTI");
+            cmbPaymentType.Items.Add("EFT/HAVALE");
+            cmbPaymentType.Items.Add("KAPIDAODEME");
+            cmbPaymentType.Items.Add("DIGER");
+        }
 
 
 
@@ -273,7 +284,7 @@ namespace izibiz.UI
             }
             if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsıv ıse
             {
-                foreach (Control item in pnlArchive.Controls)  
+                foreach (Control item in pnlArchive.Controls)
                 {
                     if (!(item is Label)) //label degılse
                     {
@@ -289,7 +300,7 @@ namespace izibiz.UI
                     }
                 }
 
-                if (grpPaymentInformation.Visible==true) //ınternetı sectıyse
+                if (grpPaymentInformation.Visible == true) //ınternetı sectıyse
                 {
                     foreach (Control item in grpPaymentInformation.Controls) //odeme bılgılerı
                     {
@@ -331,18 +342,17 @@ namespace izibiz.UI
                 {
                     //total ve tax total clmları ıcın yapma
                     if (gridPrice.Columns[i].Name != nameof(EI.InvLineGridRowClm.taxAmount) && gridPrice.Columns[i].Name != nameof(EI.InvLineGridRowClm.total))
-                        if (gridPrice.Columns[i].Name != "taxAmount" && gridPrice.Columns[i].Name != "total") //total ve tax total clmları ıcın yapma
+                    {
+                        if (row.Cells[i].Value == null || String.IsNullOrEmpty(row.Cells[i].Value.ToString().Trim()))
                         {
-                            if (row.Cells[i].Value == null || String.IsNullOrEmpty(row.Cells[i].Value.ToString().Trim()))
-                            {
-                                row.Cells[i].Style.BackColor = Color.IndianRed;
-                                valid = false;
-                            }
-                            else
-                            {
-                                row.Cells[i].Style.BackColor = Color.White;
-                            }
+                            row.Cells[i].Style.BackColor = Color.IndianRed;
+                            valid = false;
                         }
+                        else
+                        {
+                            row.Cells[i].Style.BackColor = Color.White;
+                        }
+                    }
                 }
             }
             foreach (Control item in grpboxTotal.Controls)  //grupbox not ve toplam bilgileri
@@ -379,18 +389,44 @@ namespace izibiz.UI
             {
                 if (!(item is Label)) //label degılse
                 {
-                    if (item is ComboBox)
+                    item.Text = "";
+                    item.BackColor = Color.White;
+                }
+            }
+
+            if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsıv ıse
+            {
+                foreach (Control item in pnlArchive.Controls)
+                {
+                    if (!(item is Label)) //label degılse
                     {
-                        item.Text = "";
-                        item.BackColor = Color.White;
-                    }
-                    else
-                    {
+
                         item.Text = "";
                         item.BackColor = Color.White;
                     }
                 }
+
+                if (grpPaymentInformation.Visible == true) //ınternetı sectıyse
+                {
+                    foreach (Control item in grpPaymentInformation.Controls) //odeme bılgılerı
+                    {
+                        if (!(item is Label)) //label degılse
+                        {
+                            item.Text = "";
+                            item.BackColor = Color.White;
+                        }
+                    }
+                    foreach (Control item in grpSendingType.Controls)  //gonderım seklı
+                    {
+                        if (!(item is Label)) //label degılse
+                        {
+                            item.Text = "";
+                            item.BackColor = Color.White;
+                        }
+                    }
+                }
             }
+
             int rowCount = gridPrice.Rows.Count;
             for (int i = 0; i < rowCount; i++) //datagrid butun rowları sıl en son 1 tane row ekle
             {
@@ -460,6 +496,20 @@ namespace izibiz.UI
             }
         }
 
+
+        private string getPaymentCode(string paymentType)
+        {
+            switch (paymentType)
+            {
+                case "KREDIKARTI/BANKAKARTI": return "111";
+                case "EFT/HAVALE": return "222";
+                case "KAPIDAODEME": return "333";
+                default: return "444";
+            }
+        }
+
+
+
         private void getUserInformationOnDb()
         {
             UserInformation user = Singl.userInformationDalGet.getUserInformation();
@@ -505,11 +555,14 @@ namespace izibiz.UI
 
         private bool isValidInvoice()
         {
-            if (cmbInvType.Text == EI.InvoiceTypeCodeValue.IADE.ToString())
+            if (invoiceType == nameof(EI.Invoice.Invoices))
             {
-                if (cmbScenario.Text != nameof(EI.InvoiceProfileid.TEMELFATURA))
+                if (cmbInvType.Text == EI.InvoiceTypeCodeValue.IADE.ToString())
                 {
-                    return false;
+                    if (cmbScenario.Text != nameof(EI.InvoiceProfileid.TEMELFATURA))
+                    {
+                        return false;
+                    }
                 }
             }
             return true;
@@ -520,13 +573,13 @@ namespace izibiz.UI
         private void btnCreateUbl_Click(object sender, EventArgs e)
         {
             try
-            {  //bos eleamn olmaması
+            {
+                //bos eleamn olmaması
                 if (validEmptyComponent())
                 {
                     //iade secılı ıse temel fatura olarak gonderılmesı
                     if (isValidInvoice())
                     {
-
                         //tutar hesapla
                         calculateTotalMoney();
 
@@ -535,11 +588,31 @@ namespace izibiz.UI
 
 
                         ////////UBL OLUSTURMA ISLEMI////////
-                        CreateInvoiceUBL invoice = new CreateInvoiceUBL(cmbScenario.Text, cmbInvType.Text, invoiceType, cmbArchiveSendingType.Text);
+                        CreateInvoiceUBL invoice = new CreateInvoiceUBL(cmbScenario.Text, cmbInvType.Text, invoiceType);
+
+                        //eger ARSIV ıse 
+                        if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
+                        {
+                            invoice.addAdditionalDocumentReferenceForArchive("sendingType", cmbArchiveSendingType.Text);
+
+                            if (cmbArchiveType.Text == "INTERNET")
+                            {
+                                //eger gonderım tıpı ınternet ıse ekstra adınatıonal ref ekle
+                                invoice.addAdditionalDocumentReferenceForArchive("EArchiveType", cmbArchiveType.Text);
+
+                                //DELİVERY BOLUMU EKLE
+                                //carrıer ekle
+                                PartyType carrierParty = invoice.createParty(txtCarrierTitle.Text, "", "", "", "", "", "");
+                                invoice.addPartyIdentification(carrierParty, 1, nameof(EI.VknTckn.VKN), msdDeliveryVkn.Text, "", "", "", "");
+                                invoice.createDelivery(carrierParty, Convert.ToDateTime(datepicDespatchDate.Text));
+
+                                //payment means ekle                   
+                                invoice.createPaymentMeans(getPaymentCode(cmbPaymentType.Text), Convert.ToDateTime(datepicPaymentDate.Text), txtMediator.Text);
+                            }
+                        }
+
                         PartyType supParty;
                         PartyType cusParty;
-
-
                         //SUPPLİER  PARTY OLUSTURULMASI  
                         supParty = invoice.createParty(partyName, streetName, citySubdivisionName, cityName, country, telephone, mail);
                         if (senderVknTc.Length == 10) //sup vkn
@@ -588,12 +661,19 @@ namespace izibiz.UI
                         //olusturdugumuz nesne ubl turune cevrılır
                         var invoiceUbl = invoice.BaseUBL;
                         //xml olustur
-                        string xmlPath = FolderControl.createInvUblToXml(invoiceUbl).ToString();
+                        string xmlPath = FolderControl.createInvUblToXml(invoiceUbl, invoiceType).ToString();
                         //db ye kaydet
-                        Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
-                        Singl.invoiceDalGet.dbSaveChanges();
+                        if (invoiceType == nameof(EI.Invoice.Invoices))
+                        {
+                            Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
+                        }
+                        else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
+                        {
+                            Singl.archiveInvoiceDalGet.insertArchiveFromUbl(invoiceUbl, xmlPath);
+                        }
+                        Singl.databaseContextGet.SaveChanges();
 
-                        MessageBox.Show("taslak faturalara kaydedıldı");
+                        MessageBox.Show(xmlPath + "  faturalar kaydedıldı");
                     }
                     else
                     {

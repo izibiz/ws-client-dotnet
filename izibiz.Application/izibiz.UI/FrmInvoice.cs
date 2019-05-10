@@ -91,8 +91,8 @@ namespace izibiz.UI
             //xml goruntule butonu
             tableGrid.Columns.Add(new DataGridViewImageColumn()
             {
-                Image = Properties.Resources.iconXml,
-                Name = EI.GridBtnClmName.previewXml.ToString(),
+                Image = Properties.Resources.iconHtml,
+                Name = EI.GridBtnClmName.previewHtml.ToString(),
                 HeaderText = Lang.preview,
             });
         }
@@ -748,7 +748,7 @@ namespace izibiz.UI
                         }
                     }
                     //XML göruntule butonuna tıkladıysa
-                    else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewXml)].Index)
+                    else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
                     {
                         string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
                         if (content != null) //servisten veya dıskten getırlebılmısse

@@ -27,6 +27,10 @@ namespace izibiz.MODEL.DbModels
         public int ID { get; set; }
 
 
+        [Column(Name = nameof(EI.ArchiveReports.status), DbType = "NVARCHAR")]
+        public string status { get; set; }
+
+
         [Column(Name = nameof(EI.ArchiveReports.periodStart), DbType = "DATE")]
         public DateTime periodStart { get; set; }
 
@@ -50,10 +54,7 @@ namespace izibiz.MODEL.DbModels
         [Column(Name = nameof(EI.ArchiveReports.archiveInvCount), DbType = "NUMERIC")]
         public int archiveInvCount { get; set; }
 
-
-
-        [Column(Name = nameof(EI.ArchiveReports.status), DbType = "NVARCHAR")]
-        public string status { get; set; }
+    
 
 
         [Column(Name = nameof(EI.ArchiveReports.gibSendDate), DbType = "DATETIME")]

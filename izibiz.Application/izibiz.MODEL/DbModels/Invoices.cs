@@ -27,10 +27,6 @@ namespace izibiz.MODEL.DbModels
         public string ID { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.uuid), IsDbGenerated = true, IsPrimaryKey = true, DbType = "NVARCHAR")]
-        [Key]
-        public string uuid { get; set; }
-
 
         [Column(Name = nameof(EI.Invoice.direction), DbType = "VARCHAR")]
         public string direction { get; set; }
@@ -43,6 +39,11 @@ namespace izibiz.MODEL.DbModels
 
         [Column(Name = nameof(EI.Invoice.draftFlagDesc), DbType = "VARCHAR")]
         public string draftFlagDesc { get; set; }
+
+
+        [Column(Name = nameof(EI.Invoice.cDate), DbType = "NUMERIC")]
+        public DateTime cDate { get; set; }
+
 
 
         [Column(Name = nameof(EI.Invoice.issueDate), DbType = "NUMERIC")]
@@ -69,8 +70,11 @@ namespace izibiz.MODEL.DbModels
         public string receiverVkn { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.cDate), DbType = "NUMERIC")]
-        public DateTime cDate { get; set; }
+
+        [Column(Name = nameof(EI.Invoice.uuid), IsDbGenerated = true, IsPrimaryKey = true, DbType = "NVARCHAR")]
+        [Key]
+        public string uuid { get; set; }
+
 
 
         [Column(Name = nameof(EI.Invoice.envelopeIdentifier), DbType = "NVARCHAR")]

@@ -15,8 +15,10 @@ namespace izibiz.COMMON.FileControl
     {
          static string inboxFolderIn { get; } = "D:\\temp\\GELEN\\";
          static string inboxFolderOut { get; } = "D:\\temp\\GİDEN\\";
-         static string inboxFolderDraft { get; } = "D:\\temp\\TASLAK\\";
+         static string inboxFolderInvoiceDraft { get; } = "D:\\temp\\TASLAK\\";
         public static string inboxFolderArchive { get; } = "D:\\temp\\ARŞİV\\";
+        public static string inboxFolderArchiveReport { get; } = "D:\\temp\\ARSIVRAPOR\\";
+
 
 
 
@@ -39,7 +41,7 @@ namespace izibiz.COMMON.FileControl
             }
             else  //draft
             {
-                return inboxFolderDraft + docName + "." + docType;
+                return inboxFolderInvoiceDraft + docName + "." + docType;
             }
 
         }
@@ -83,20 +85,28 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        public static string createInvUblToXml(InvoiceType createdUBL)
+        public static string createInvUblToXml(InvoiceType createdUBL,string invoiceType)
         {
             //olusturulan xmli diske kaydediyor
-            createInboxIfDoesNotExist(inboxFolderDraft); //dosya yolu yoksa olustur
+            string xmlPath="";
 
-            string inboxFolder = createInvDocPath(createdUBL.UUID.Value, nameof(EI.InvDirection.DRAFT),nameof(EI.DocumentType.XML));
+            if (invoiceType == nameof(EI.Invoice.Invoices))
+            {
+                xmlPath = inboxFolderInvoiceDraft + createdUBL.UUID.Value + "." + nameof(EI.DocumentType.XML);
+            }
+            else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
+            {
+                xmlPath = inboxFolderArchive + createdUBL.UUID.Value + "." + nameof(EI.DocumentType.XML);
+            }
 
+            createInboxIfDoesNotExist(Path.GetDirectoryName(xmlPath)); //dosya yolu yoksa olustur
 
-            using (FileStream stream = new FileStream(inboxFolder, FileMode.Create))
+            using (FileStream stream = new FileStream(xmlPath, FileMode.Create))
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
                 xmlSerializer.Serialize(stream, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
             }
-            return inboxFolder;
+            return xmlPath;
             ////
             ////xmli strıng durunde return edıyoruz contentını dondurmek ıcın /db ye kaydetmek ıcın asagıdakı kodu acarız
             //using (StringWriter textWriter = new StringWriter())
@@ -170,7 +180,7 @@ namespace izibiz.COMMON.FileControl
             }
             else
             {
-                inboxFolder = inboxFolderDraft;
+                inboxFolder = inboxFolderInvoiceDraft;
             }
             createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
             System.IO.File.WriteAllBytes(inboxFolder + fileName + "." + docType, content);

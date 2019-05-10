@@ -35,7 +35,6 @@
             this.itemArchiveNewCreated = new System.Windows.Forms.ToolStripMenuItem();
             this.btnArchiveCancel = new System.Windows.Forms.Button();
             this.btnArchiveGetState = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnSendMail = new System.Windows.Forms.Button();
             this.tableArchiveGrid = new System.Windows.Forms.DataGridView();
             this.btnArchiveView = new System.Windows.Forms.Button();
@@ -45,14 +44,9 @@
             this.btnTakeArchiveInv = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
             this.pnlArchive = new System.Windows.Forms.Panel();
-            this.btnSendSms = new System.Windows.Forms.Button();
             this.btnFilterArchivesReport = new System.Windows.Forms.Button();
             this.pnlArchiveReport = new System.Windows.Forms.Panel();
-            this.btnViewReport = new System.Windows.Forms.Button();
-            this.rdViewReportXml = new System.Windows.Forms.RadioButton();
-            this.rdViewReportHtml = new System.Windows.Forms.RadioButton();
-            this.rdViewReportPdf = new System.Windows.Forms.RadioButton();
-            this.btnDownloadReport = new System.Windows.Forms.Button();
+            this.btnGetSingedXml = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableArchiveGrid)).BeginInit();
             this.pnlArchive.SuspendLayout();
@@ -72,7 +66,7 @@
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
             this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.menuInvoice.Name = "menuInvoice";
-            this.menuInvoice.Size = new System.Drawing.Size(142, 476);
+            this.menuInvoice.Size = new System.Drawing.Size(142, 499);
             this.menuInvoice.TabIndex = 1;
             this.menuInvoice.Text = "menuStrip1";
             // 
@@ -141,21 +135,6 @@
             this.btnArchiveGetState.UseVisualStyleBackColor = false;
             this.btnArchiveGetState.Click += new System.EventHandler(this.btnArchiveGetState_Click);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.CadetBlue;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.button3.FlatAppearance.BorderSize = 2;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(390, 11);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 49);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "rapor detay sorgula";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // btnSendMail
             // 
             this.btnSendMail.BackColor = System.Drawing.Color.CadetBlue;
@@ -164,7 +143,7 @@
             this.btnSendMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendMail.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendMail.Location = new System.Drawing.Point(169, 76);
+            this.btnSendMail.Location = new System.Drawing.Point(24, 67);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(120, 48);
             this.btnSendMail.TabIndex = 30;
@@ -272,7 +251,6 @@
             // 
             // pnlArchive
             // 
-            this.pnlArchive.Controls.Add(this.btnSendSms);
             this.pnlArchive.Controls.Add(this.btnFilterArchivesReport);
             this.pnlArchive.Controls.Add(this.btnArchiveView);
             this.pnlArchive.Controls.Add(this.rdViewXml);
@@ -286,22 +264,6 @@
             this.pnlArchive.Size = new System.Drawing.Size(689, 127);
             this.pnlArchive.TabIndex = 43;
             this.pnlArchive.Visible = false;
-            // 
-            // btnSendSms
-            // 
-            this.btnSendSms.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSendSms.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnSendSms.FlatAppearance.BorderSize = 2;
-            this.btnSendSms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendSms.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSendSms.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendSms.Location = new System.Drawing.Point(23, 76);
-            this.btnSendSms.Name = "btnSendSms";
-            this.btnSendSms.Size = new System.Drawing.Size(120, 48);
-            this.btnSendSms.TabIndex = 41;
-            this.btnSendSms.Text = "sms gonder";
-            this.btnSendSms.UseVisualStyleBackColor = false;
-            this.btnSendSms.Click += new System.EventHandler(this.btnSendSms_Click);
             // 
             // btnFilterArchivesReport
             // 
@@ -321,86 +283,34 @@
             // 
             // pnlArchiveReport
             // 
-            this.pnlArchiveReport.Controls.Add(this.btnDownloadReport);
-            this.pnlArchiveReport.Controls.Add(this.btnViewReport);
-            this.pnlArchiveReport.Controls.Add(this.rdViewReportXml);
-            this.pnlArchiveReport.Controls.Add(this.rdViewReportHtml);
-            this.pnlArchiveReport.Controls.Add(this.rdViewReportPdf);
-            this.pnlArchiveReport.Controls.Add(this.button3);
+            this.pnlArchiveReport.Controls.Add(this.btnGetSingedXml);
             this.pnlArchiveReport.Location = new System.Drawing.Point(291, 156);
             this.pnlArchiveReport.Name = "pnlArchiveReport";
             this.pnlArchiveReport.Size = new System.Drawing.Size(630, 76);
             this.pnlArchiveReport.TabIndex = 45;
             this.pnlArchiveReport.Visible = false;
             // 
-            // btnViewReport
+            // btnGetSingedXml
             // 
-            this.btnViewReport.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnViewReport.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnViewReport.FlatAppearance.BorderSize = 2;
-            this.btnViewReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnViewReport.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnViewReport.Location = new System.Drawing.Point(14, 12);
-            this.btnViewReport.Name = "btnViewReport";
-            this.btnViewReport.Size = new System.Drawing.Size(120, 49);
-            this.btnViewReport.TabIndex = 41;
-            this.btnViewReport.Text = "goruntule";
-            this.btnViewReport.UseVisualStyleBackColor = false;
-            // 
-            // rdViewReportXml
-            // 
-            this.rdViewReportXml.AutoSize = true;
-            this.rdViewReportXml.Location = new System.Drawing.Point(137, 47);
-            this.rdViewReportXml.Name = "rdViewReportXml";
-            this.rdViewReportXml.Size = new System.Drawing.Size(68, 17);
-            this.rdViewReportXml.TabIndex = 44;
-            this.rdViewReportXml.TabStop = true;
-            this.rdViewReportXml.Text = "imzalı xml";
-            this.rdViewReportXml.UseVisualStyleBackColor = true;
-            // 
-            // rdViewReportHtml
-            // 
-            this.rdViewReportHtml.AutoSize = true;
-            this.rdViewReportHtml.Location = new System.Drawing.Point(137, 9);
-            this.rdViewReportHtml.Name = "rdViewReportHtml";
-            this.rdViewReportHtml.Size = new System.Drawing.Size(44, 17);
-            this.rdViewReportHtml.TabIndex = 42;
-            this.rdViewReportHtml.TabStop = true;
-            this.rdViewReportHtml.Text = "html";
-            this.rdViewReportHtml.UseVisualStyleBackColor = true;
-            // 
-            // rdViewReportPdf
-            // 
-            this.rdViewReportPdf.AutoSize = true;
-            this.rdViewReportPdf.Location = new System.Drawing.Point(137, 28);
-            this.rdViewReportPdf.Name = "rdViewReportPdf";
-            this.rdViewReportPdf.Size = new System.Drawing.Size(40, 17);
-            this.rdViewReportPdf.TabIndex = 43;
-            this.rdViewReportPdf.TabStop = true;
-            this.rdViewReportPdf.Text = "pdf";
-            this.rdViewReportPdf.UseVisualStyleBackColor = true;
-            // 
-            // btnDownloadReport
-            // 
-            this.btnDownloadReport.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnDownloadReport.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnDownloadReport.FlatAppearance.BorderSize = 2;
-            this.btnDownloadReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDownloadReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnDownloadReport.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDownloadReport.Location = new System.Drawing.Point(236, 11);
-            this.btnDownloadReport.Name = "btnDownloadReport";
-            this.btnDownloadReport.Size = new System.Drawing.Size(120, 48);
-            this.btnDownloadReport.TabIndex = 45;
-            this.btnDownloadReport.Text = "indir";
-            this.btnDownloadReport.UseVisualStyleBackColor = false;
+            this.btnGetSingedXml.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnGetSingedXml.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnGetSingedXml.FlatAppearance.BorderSize = 2;
+            this.btnGetSingedXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetSingedXml.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGetSingedXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGetSingedXml.Location = new System.Drawing.Point(23, 15);
+            this.btnGetSingedXml.Name = "btnGetSingedXml";
+            this.btnGetSingedXml.Size = new System.Drawing.Size(120, 48);
+            this.btnGetSingedXml.TabIndex = 45;
+            this.btnGetSingedXml.Text = "Imzali Xml Al";
+            this.btnGetSingedXml.UseVisualStyleBackColor = false;
+            this.btnGetSingedXml.Click += new System.EventHandler(this.btnGetSingedXml_Click);
             // 
             // FrmArchive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 476);
+            this.ClientSize = new System.Drawing.Size(1043, 499);
             this.Controls.Add(this.pnlArchiveReport);
             this.Controls.Add(this.btnTakeArchiveInv);
             this.Controls.Add(this.pnlArchive);
@@ -419,7 +329,6 @@
             this.pnlArchive.ResumeLayout(false);
             this.pnlArchive.PerformLayout();
             this.pnlArchiveReport.ResumeLayout(false);
-            this.pnlArchiveReport.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,7 +341,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemArchiveNewCreated;
         private System.Windows.Forms.Button btnArchiveCancel;
         private System.Windows.Forms.Button btnArchiveGetState;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnSendMail;
         private System.Windows.Forms.DataGridView tableArchiveGrid;
         private System.Windows.Forms.Button btnArchiveView;
@@ -442,14 +350,9 @@
         private System.Windows.Forms.Button btnTakeArchiveInv;
         private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.Panel pnlArchive;
-        private System.Windows.Forms.Button btnSendSms;
         private System.Windows.Forms.ToolStripMenuItem itemGetReportList;
         private System.Windows.Forms.Button btnFilterArchivesReport;
         private System.Windows.Forms.Panel pnlArchiveReport;
-        private System.Windows.Forms.Button btnDownloadReport;
-        private System.Windows.Forms.Button btnViewReport;
-        private System.Windows.Forms.RadioButton rdViewReportXml;
-        private System.Windows.Forms.RadioButton rdViewReportHtml;
-        private System.Windows.Forms.RadioButton rdViewReportPdf;
+        private System.Windows.Forms.Button btnGetSingedXml;
     }
 }

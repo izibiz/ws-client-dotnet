@@ -39,10 +39,6 @@ namespace izibiz.MODEL.DbModels
         public decimal totalAmount { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.reportFlag), DbType = "BOOLEAN")]
-        public bool reportFlag { get; set; }
-
-
         [Column(Name = nameof(EI.Invoice.draftFlag), DbType = "BOOLEAN")]
         public bool draftFlag { get; set; }
 

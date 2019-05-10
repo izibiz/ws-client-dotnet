@@ -102,16 +102,16 @@ namespace izibiz.CONTROLLER.DAL
         {
             Invoices draftCreatedInv = new Invoices();
 
-            draftCreatedInv.ID = invoiceUbl.ID.Value.ToString();
-            draftCreatedInv.uuid = invoiceUbl.UUID.Value.ToString();
+            draftCreatedInv.ID = invoiceUbl.ID.Value;
+            draftCreatedInv.uuid = invoiceUbl.UUID.Value;
             draftCreatedInv.direction = EI.InvDirection.DRAFT.ToString();
             draftCreatedInv.draftFlag = EI.ActiveOrPasive.N.ToString();  //load ınv yapmadıklarımız flag N
-            draftCreatedInv.issueDate = Convert.ToDateTime(invoiceUbl.IssueDate.Value);
-            draftCreatedInv.profileid = invoiceUbl.ProfileID.Value.ToString();
-            draftCreatedInv.invoiceType = invoiceUbl.InvoiceTypeCode.Value.ToString();
-            draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value.ToString();
-            draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value.ToString();
-            draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value.ToString();  //sıfırıncı ındexde tc ya da vkn tutuluyor         
+            draftCreatedInv.issueDate = invoiceUbl.IssueDate.Value;
+            draftCreatedInv.profileid = invoiceUbl.ProfileID.Value;
+            draftCreatedInv.invoiceType = invoiceUbl.InvoiceTypeCode.Value;
+            draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value;
+            draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value;
+            draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value;  //sıfırıncı ındexde tc ya da vkn tutuluyor         
             draftCreatedInv.status = "";//simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
             draftCreatedInv.stateNote = nameof(EI.StateNote.CREATED);
             draftCreatedInv.draftFlag = nameof(EI.ActiveOrPasive.N);//bizim olusturdugumuz fatura flag N

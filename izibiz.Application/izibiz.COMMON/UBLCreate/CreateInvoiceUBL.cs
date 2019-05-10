@@ -15,16 +15,18 @@ namespace izibiz.CONTROLLER
 
         public InvoiceType BaseUBL { get; protected set; }
         private List<InvoiceLineType> listInvLine = new List<InvoiceLineType>();
+        List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
+
         private string invoiceType;
 
 
 
-        public CreateInvoiceUBL(string profileId, string invoiceTypeCode,string invoiceType,string archiveSendingType)
+        public CreateInvoiceUBL(string profileId, string invoiceTypeCode, string invoiceType)
         {
             BaseUBL = new InvoiceType();
 
             createInvoiceHeader(profileId, invoiceTypeCode);
-            createAdditionalDocumentReference(invoiceType, archiveSendingType);
+            createAdditionalDocumentReference(invoiceType);
             createSignature();
             this.invoiceType = invoiceType;
         }
@@ -53,10 +55,8 @@ namespace izibiz.CONTROLLER
 
 
 
-        public void createAdditionalDocumentReference(string invoiceType,string archiveSendingType)
+        private void createAdditionalDocumentReference(string invoiceType)
         {
-            List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
-
 
             var idRef = new DocumentReferenceType();
             idRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
@@ -69,28 +69,67 @@ namespace izibiz.CONTROLLER
             idRef.Attachment.EmbeddedDocumentBinaryObject.encodingCode = "Base64";
             idRef.Attachment.EmbeddedDocumentBinaryObject.filename = BaseUBL.ID.Value.ToString() + ".xslt";
             idRef.Attachment.EmbeddedDocumentBinaryObject.mimeCode = "application/xml";
-            if (invoiceType==nameof(EI.Invoice.Invoices))
+            if (invoiceType == nameof(EI.Invoice.Invoices))
             {
                 idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGibInvoice);
             }
             else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
                 idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGibArchive);
-
-                var arcRef = new DocumentReferenceType();
-                arcRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
-                arcRef.IssueDate = BaseUBL.IssueDate;
-                arcRef.DocumentType = new DocumentTypeType { Value = archiveSendingType };
-                arcRef.DocumentTypeCode = new DocumentTypeCodeType { Value = "SendingType" };  //??
-
-                docRefList.Add(arcRef);
             }
 
-   
             docRefList.Add(idRef);
             BaseUBL.AdditionalDocumentReference = docRefList.ToArray();
         }
 
+
+
+
+
+
+        public void addAdditionalDocumentReferenceForArchive(string documentType, string docTypeCode)
+        {
+
+            var arcRef = new DocumentReferenceType();
+            arcRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
+            arcRef.IssueDate = BaseUBL.IssueDate;
+            arcRef.DocumentType = new DocumentTypeType { Value = documentType };
+            arcRef.DocumentTypeCode = new DocumentTypeCodeType { Value = docTypeCode };
+
+            docRefList.Add(arcRef);
+
+            BaseUBL.AdditionalDocumentReference = docRefList.ToArray();
+        }
+
+
+
+        public void createDelivery(PartyType carrierParty,DateTime despatchDate)
+        {
+            var deliveryArr = new[]
+            {
+                new DeliveryType
+                {
+                   CarrierParty=carrierParty,
+                   Despatch= new DespatchType {ActualDespatchDate=new ActualDespatchDateType { Value= despatchDate } }
+                }
+            };
+            BaseUBL.Delivery = deliveryArr;
+        }
+
+
+        public void createPaymentMeans(string paymentMeansCode,DateTime paymentDate,string note)
+        {
+            var paymentMeans = new[]
+            {
+                new PaymentMeansType
+                {
+                    PaymentMeansCode = new PaymentMeansCodeType { Value=paymentMeansCode},
+                    PaymentDueDate = new PaymentDueDateType { Value= paymentDate},
+                    InstructionNote = new InstructionNoteType { Value= note}
+                }
+            };
+            BaseUBL.PaymentMeans = paymentMeans;
+        }
 
 
         public void createSignature()
@@ -144,6 +183,7 @@ namespace izibiz.CONTROLLER
             };
             BaseUBL.AccountingSupplierParty = accountingSupplierParty;
         }
+
 
 
         public void SetCustomerParty(PartyType customerParty)

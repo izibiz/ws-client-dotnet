@@ -82,7 +82,7 @@ namespace izibiz.COMMON
         public enum Invoice
         {
             Invoices,
-            ArchiveInvoices,      
+            ArchiveInvoices,
             ID,
             uuid,
             direction,
@@ -107,7 +107,6 @@ namespace izibiz.COMMON
             draftFlag,
             draftFlagDesc,
             //archive
-            reportFlag,
             senderName,
             statusCode,
             eArchiveType,
@@ -156,18 +155,19 @@ namespace izibiz.COMMON
 
         public enum ArchiveReports
         {
-          ID,
-          reportNo,
-          periodStart,
-          periodEnd,
-          chapter,
-          chapterStart,
-          chapterEnd,
-          archiveInvCount,
-          status,
-          gibSendDate,
-          gibConfirmationDate,
-          description
+            ArchiveReports,
+            ID,
+            reportNo,
+            periodStart,
+            periodEnd,
+            chapter,
+            chapterStart,
+            chapterEnd,
+            archiveInvCount,
+            status,
+            gibSendDate,
+            gibConfirmationDate,
+            description
         }
 
 
@@ -190,7 +190,7 @@ namespace izibiz.COMMON
 
         public enum GridBtnClmName
         {
-            previewXml,
+            previewHtml,
             previewPdf
         }
 
@@ -243,11 +243,11 @@ namespace izibiz.COMMON
 
         public enum StateNote
         {
-            CREATED,         
+            CREATED,
             SENDRESPONSE,
-           LOAD,
-           SEND,
-           CANCEL
+            LOAD,
+            SEND,
+            CANCEL
         }
     }
 }
