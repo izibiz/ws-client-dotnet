@@ -174,7 +174,7 @@
   <data name="fromAlias" xml:space="preserve">
     <value>GÖNDEREN MAİL</value>
   </data>
-  <data name="getInvoice" xml:space="preserve">
+  <data name="takeInvoice" xml:space="preserve">
     <value>Fatura Al</value>
   </data>
   <data name="gibSatusDescription" xml:space="preserve">
@@ -327,9 +327,6 @@
   <data name="selectSeriName" xml:space="preserve">
     <value>Lütfen fatura id için bir seri ön eki seçiniz.</value>
   </data>
-  <data name="sel" xml:space="preserve">
-    <value />
-  </data>
   <data name="successLoad" xml:space="preserve">
     <value>Fatura yükleme işlemi başarılı.</value>
   </data>
@@ -434,5 +431,80 @@
   </data>
   <data name="reportNo" xml:space="preserve">
     <value>RAPOR NO</value>
+  </data>
+  <data name="totalAmount" xml:space="preserve">
+    <value>TOPLAM TUTAR</value>
+  </data>
+  <data name="archiveReport" xml:space="preserve">
+    <value>Arşiv Raporları</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>İptal Et</value>
+  </data>
+  <data name="cantGetContent" xml:space="preserve">
+    <value>Content dıskten sılınmıs ve servısten getırılemedı</value>
+  </data>
+  <data name="draftArchives" xml:space="preserve">
+    <value>Taslak Arşivler</value>
+  </data>
+  <data name="formArchive" xml:space="preserve">
+    <value>İzibiz Masaüstü | E-Arşiv İşlemleri</value>
+  </data>
+  <data name="getGibUserList" xml:space="preserve">
+    <value>Gib Kullanıcı Listesi Al</value>
+  </data>
+  <data name="getRejected" xml:space="preserve">
+    <value>Reddedilenler</value>
+  </data>
+  <data name="getSignedXml" xml:space="preserve">
+    <value>İmzalı Xml Al</value>
+  </data>
+  <data name="getWaitResponse" xml:space="preserve">
+    <value>Yanıt Bekleyenler Al</value>
+  </data>
+  <data name="hasIdArchiveReportSave" xml:space="preserve">
+    <value>Secili arsiv raporları basarıyla Kaydedıldı</value>
+  </data>
+  <data name="hasIdInvoiceSendMail" xml:space="preserve">
+    <value>Nolu faturalara basarıyla maıl gonderıldı</value>
+  </data>
+  <data name="hasNoInvoiceBeforeCanceled" xml:space="preserve">
+    <value>nolu faturalar daha onceden ıptal edılmıs  bunlar ısleme alınmayacak devam etmek istiyor musunuz</value>
+  </data>
+  <data name="homePage" xml:space="preserve">
+    <value>Anasayfa</value>
+  </data>
+  <data name="noGetInvoice" xml:space="preserve">
+    <value>Fatura Getirilemedi</value>
+  </data>
+  <data name="operationFailed" xml:space="preserve">
+    <value>İşlem Başarısız</value>
+  </data>
+  <data name="reportInvoice" xml:space="preserve">
+    <value>Raporlanan Faturalar</value>
+  </data>
+  <data name="selectOnePerson" xml:space="preserve">
+    <value>Sadece aynı kisiye olan faturaları secebılırsınız</value>
+  </data>
+  <data name="sendResponseToInvoice" xml:space="preserve">
+    <value>nolu faturalara yanıt gonderıldı</value>
+  </data>
+  <data name="sendToMail" xml:space="preserve">
+    <value>Maile Gönder</value>
+  </data>
+  <data name="signedXml" xml:space="preserve">
+    <value>imzali Xml</value>
+  </data>
+  <data name="succCancelSelectedInvoice" xml:space="preserve">
+    <value>Secılı faturalar basarıyla iptal edildi</value>
+  </data>
+  <data name="succesful" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="takeSignedXml" xml:space="preserve">
+    <value>İmzalı Xml Al</value>
+  </data>
+  <data name="wantGetUserList" xml:space="preserve">
+    <value>Gönderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu işlem en az 15 dk surer.</value>
   </data>
 </root>

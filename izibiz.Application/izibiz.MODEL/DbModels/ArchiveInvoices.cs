@@ -31,10 +31,6 @@ namespace izibiz.MODEL.DbModels
 
 
 
-        [Column(Name = nameof(EI.Invoice.uuid), DbType = "NVARCHAR")]
-        public string uuid { get; set; }
-
-
         [Column(Name = nameof(EI.Invoice.totalAmount), DbType = "DECIMAL")]
         public decimal totalAmount { get; set; }
 
@@ -42,9 +38,6 @@ namespace izibiz.MODEL.DbModels
         [Column(Name = nameof(EI.Invoice.draftFlag), DbType = "BOOLEAN")]
         public bool draftFlag { get; set; }
 
-
-        [Column(Name = nameof(EI.Invoice.draftFlagDesc), DbType = "VARCHAR")]
-        public string draftFlagDesc { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.issueDate), DbType = "DATETIME")]
@@ -80,21 +73,12 @@ namespace izibiz.MODEL.DbModels
         public string receiverVkn { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.currencyCode), DbType = "VARCHAR")]
-        public string currencyCode { get; set; }
-
-
-
+  
         [Column(Name = nameof(EI.Invoice.stateNote), DbType = "NVARCHAR")]
         public string stateNote { get; set; }
 
 
-
-        [Column(Name = nameof(EI.Invoice.mailStatus), DbType = "NVARCHAR")]
-        public string mailStatus { get; set; }
-
-
-
+    
         [Column(Name = nameof(EI.Invoice.status), DbType = "NVARCHAR")]
         public string status { get; set; }
 
@@ -103,6 +87,17 @@ namespace izibiz.MODEL.DbModels
         [Column(Name = nameof(EI.Invoice.statusCode), DbType = "NVARCHAR")]
         public string statusCode { get; set; }
 
+
+        [Column(Name = nameof(EI.Invoice.uuid), DbType = "NVARCHAR")]
+        public string uuid { get; set; }
+
+        [Column(Name = nameof(EI.Invoice.mailStatus), DbType = "NVARCHAR")]
+        public string mailStatus { get; set; }
+
+
+
+        [Column(Name = nameof(EI.Invoice.currencyCode), DbType = "VARCHAR")]
+        public string currencyCode { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.content), DbType = "NVARCHAR")]

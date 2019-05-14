@@ -35,13 +35,6 @@ namespace izibiz.COMMON
 
 
 
-        public enum InvoiceProfileid
-        {
-            TEMELFATURA,
-            TICARIFATURA,
-            EARSIVFATURA
-        }
-
 
 
         public enum DocumentType
@@ -114,8 +107,17 @@ namespace izibiz.COMMON
             currencyCode,
             totalAmount,
             mailStatus,
-            rowUnique
+            rowUnique,
+            DraftArchive
 
+        }
+
+
+        public enum InvoiceProfileid
+        {
+            TEMELFATURA,
+            TICARIFATURA,
+            EARSIVFATURA
         }
 
 
@@ -247,7 +249,34 @@ namespace izibiz.COMMON
             SENDRESPONSE,
             LOAD,
             SEND,
-            CANCEL
+            CANCEL,
+            IPTAL
         }
+
+
+        public enum ArchiveType
+        {
+            NORMAL,
+            INTERNET,
+        }
+
+
+        public enum ArchiveSendingType
+        {
+            ELEKTRONIK,
+            KAGIT,
+        }
+
+        public enum ArchivePaymentType
+        {
+            KREDIKARTI_BANKAKARTI,
+            EFT_HAVALE,
+            KAPIDAODEME,
+            DIGER
+        }
+
+
+
+
     }
 }

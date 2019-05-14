@@ -124,6 +124,33 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arşiv Raporları.
+        /// </summary>
+        public static string archiveReport {
+            get {
+                return ResourceManager.GetString("archiveReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İptal Et.
+        /// </summary>
+        public static string cancel {
+            get {
+                return ResourceManager.GetString("cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Content dıskten sılınmıs ve servısten getırılemedı.
+        /// </summary>
+        public static string cantGetContent {
+            get {
+                return ResourceManager.GetString("cantGetContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OLUSTURULMA TARİHİ.
         /// </summary>
         public static string cDate {
@@ -201,6 +228,15 @@ namespace izibiz.COMMON.Language {
         public static string downInvSaveFolder {
             get {
                 return ResourceManager.GetString("downInvSaveFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taslak Arşivler.
+        /// </summary>
+        public static string draftArchives {
+            get {
+                return ResourceManager.GetString("draftArchives", resourceCulture);
             }
         }
         
@@ -331,6 +367,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to İzibiz Masaüstü | E-Arşiv İşlemleri.
+        /// </summary>
+        public static string formArchive {
+            get {
+                return ResourceManager.GetString("formArchive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İzibiz Masaüstü | Seri Ön Ek Seçimi.
         /// </summary>
         public static string formDialogSeriName {
@@ -385,11 +430,38 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fatura Al.
+        ///   Looks up a localized string similar to Gib Kullanıcı Listesi Al.
         /// </summary>
-        public static string getInvoice {
+        public static string getGibUserList {
             get {
-                return ResourceManager.GetString("getInvoice", resourceCulture);
+                return ResourceManager.GetString("getGibUserList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reddedilenler.
+        /// </summary>
+        public static string getRejected {
+            get {
+                return ResourceManager.GetString("getRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İmzalı Xml Al.
+        /// </summary>
+        public static string getSignedXml {
+            get {
+                return ResourceManager.GetString("getSignedXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yanıt Bekleyenler Al.
+        /// </summary>
+        public static string getWaitResponse {
+            get {
+                return ResourceManager.GetString("getWaitResponse", resourceCulture);
             }
         }
         
@@ -426,6 +498,42 @@ namespace izibiz.COMMON.Language {
         public static string gibStatusCode {
             get {
                 return ResourceManager.GetString("gibStatusCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secili arsiv raporları basarıyla Kaydedıldı.
+        /// </summary>
+        public static string hasIdArchiveReportSave {
+            get {
+                return ResourceManager.GetString("hasIdArchiveReportSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nolu faturalara basarıyla maıl gonderıldı.
+        /// </summary>
+        public static string hasIdInvoiceSendMail {
+            get {
+                return ResourceManager.GetString("hasIdInvoiceSendMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nolu faturalar daha onceden ıptal edılmıs  bunlar ısleme alınmayacak devam etmek istiyor musunuz.
+        /// </summary>
+        public static string hasNoInvoiceBeforeCanceled {
+            get {
+                return ResourceManager.GetString("hasNoInvoiceBeforeCanceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anasayfa.
+        /// </summary>
+        public static string homePage {
+            get {
+                return ResourceManager.GetString("homePage", resourceCulture);
             }
         }
         
@@ -565,6 +673,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fatura Getirilemedi.
+        /// </summary>
+        public static string noGetInvoice {
+            get {
+                return ResourceManager.GetString("noGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to nolu faturalar uygun degil bu yuzden guncellenmedı.
         /// </summary>
         public static string noInvNotUpdated {
@@ -606,6 +723,15 @@ namespace izibiz.COMMON.Language {
         public static string okey {
             get {
                 return ResourceManager.GetString("okey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İşlem Başarısız.
+        /// </summary>
+        public static string operationFailed {
+            get {
+                return ResourceManager.GetString("operationFailed", resourceCulture);
             }
         }
         
@@ -691,6 +817,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Raporlanan Faturalar.
+        /// </summary>
+        public static string reportInvoice {
+            get {
+                return ResourceManager.GetString("reportInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RAPOR NO.
         /// </summary>
         public static string reportNo {
@@ -709,20 +844,20 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string sel {
-            get {
-                return ResourceManager.GetString("sel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lütfen bir alıcı posta kutusu seçiniz..
         /// </summary>
         public static string selectAlias {
             get {
                 return ResourceManager.GetString("selectAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sadece aynı kisiye olan faturaları secebılırsınız.
+        /// </summary>
+        public static string selectOnePerson {
+            get {
+                return ResourceManager.GetString("selectOnePerson", resourceCulture);
             }
         }
         
@@ -772,6 +907,24 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to nolu faturalara yanıt gonderıldı.
+        /// </summary>
+        public static string sendResponseToInvoice {
+            get {
+                return ResourceManager.GetString("sendResponseToInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maile Gönder.
+        /// </summary>
+        public static string sendToMail {
+            get {
+                return ResourceManager.GetString("sendToMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gönderilen Faturalar.
         /// </summary>
         public static string sentInvoice {
@@ -808,6 +961,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to imzali Xml.
+        /// </summary>
+        public static string signedXml {
+            get {
+                return ResourceManager.GetString("signedXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DURUM.
         /// </summary>
         public static string status {
@@ -835,11 +997,29 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Secılı faturalar basarıyla iptal edildi.
+        /// </summary>
+        public static string succCancelSelectedInvoice {
+            get {
+                return ResourceManager.GetString("succCancelSelectedInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Başarılı Durum Değiştirme.
         /// </summary>
         public static string succesChangeState {
             get {
                 return ResourceManager.GetString("succesChangeState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Başarılı.
+        /// </summary>
+        public static string succesful {
+            get {
+                return ResourceManager.GetString("succesful", resourceCulture);
             }
         }
         
@@ -862,11 +1042,38 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fatura Al.
+        /// </summary>
+        public static string takeInvoice {
+            get {
+                return ResourceManager.GetString("takeInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İmzalı Xml Al.
+        /// </summary>
+        public static string takeSignedXml {
+            get {
+                return ResourceManager.GetString("takeSignedXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ALICI MAİL.
         /// </summary>
         public static string toAlias {
             get {
                 return ResourceManager.GetString("toAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOPLAM TUTAR.
+        /// </summary>
+        public static string totalAmount {
+            get {
+                return ResourceManager.GetString("totalAmount", resourceCulture);
             }
         }
         
@@ -921,6 +1128,15 @@ namespace izibiz.COMMON.Language {
         public static string valueAlreadyAdded {
             get {
                 return ResourceManager.GetString("valueAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gönderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu işlem en az 15 dk surer..
+        /// </summary>
+        public static string wantGetUserList {
+            get {
+                return ResourceManager.GetString("wantGetUserList", resourceCulture);
             }
         }
         

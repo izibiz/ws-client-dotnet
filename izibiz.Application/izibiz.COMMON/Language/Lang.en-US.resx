@@ -174,7 +174,7 @@
   <data name="fromAlias" xml:space="preserve">
     <value>FROM ALIAS</value>
   </data>
-  <data name="getInvoice" xml:space="preserve">
+  <data name="takeInvoice" xml:space="preserve">
     <value>Get Invoice</value>
   </data>
   <data name="gibSatusDescription" xml:space="preserve">
@@ -431,5 +431,80 @@
   </data>
   <data name="reportNo" xml:space="preserve">
     <value>REPORT NO</value>
+  </data>
+  <data name="totalAmount" xml:space="preserve">
+    <value>TOTAL AMOUNT</value>
+  </data>
+  <data name="archiveReport" xml:space="preserve">
+    <value>Archive Report</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cantGetContent" xml:space="preserve">
+    <value>The content deleted on disc and cant take from service.</value>
+  </data>
+  <data name="draftArchives" xml:space="preserve">
+    <value>Draft Archives</value>
+  </data>
+  <data name="formArchive" xml:space="preserve">
+    <value>İzibiz Desktop| E-Archive</value>
+  </data>
+  <data name="getGibUserList" xml:space="preserve">
+    <value>Get Gib User List</value>
+  </data>
+  <data name="getRejected" xml:space="preserve">
+    <value>Get Rejected</value>
+  </data>
+  <data name="getSignedXml" xml:space="preserve">
+    <value>Get Signed Xml</value>
+  </data>
+  <data name="getWaitResponse" xml:space="preserve">
+    <value>Get Wait Response</value>
+  </data>
+  <data name="hasIdArchiveReportSave" xml:space="preserve">
+    <value>Has ıd archivereports succesful save</value>
+  </data>
+  <data name="hasIdInvoiceSendMail" xml:space="preserve">
+    <value>Has ıd ınvoice succesful send mail</value>
+  </data>
+  <data name="hasNoInvoiceBeforeCanceled" xml:space="preserve">
+    <value>The selected ınvoices been Canceled before.There will not in to prosses.Do you want to continue?</value>
+  </data>
+  <data name="homePage" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="noGetInvoice" xml:space="preserve">
+    <value>Cant Get Invoice</value>
+  </data>
+  <data name="operationFailed" xml:space="preserve">
+    <value>Operation Failed</value>
+  </data>
+  <data name="reportInvoice" xml:space="preserve">
+    <value>Invoice On Report</value>
+  </data>
+  <data name="selectOnePerson" xml:space="preserve">
+    <value>Only SelectThe Same Person</value>
+  </data>
+  <data name="sendResponseToInvoice" xml:space="preserve">
+    <value>Send Response Has Invoice Id</value>
+  </data>
+  <data name="sendToMail" xml:space="preserve">
+    <value>Send To Mail</value>
+  </data>
+  <data name="signedXml" xml:space="preserve">
+    <value>Signed Xml</value>
+  </data>
+  <data name="succCancelSelectedInvoice" xml:space="preserve">
+    <value>The selected ınvoices succesfull Canceled</value>
+  </data>
+  <data name="succesfull" xml:space="preserve">
+    <value>Succesfull</value>
+  </data>
+  <data name="takeSignedXml" xml:space="preserve">
+    <value>Take Signed Xml</value>
+  </data>
+  <data name="wantGetUserList" xml:space="preserve">
+    <value>Do you realy want to get sender alias?This prosses takes mınımum 15 mınıutes.</value>
   </data>
 </root>

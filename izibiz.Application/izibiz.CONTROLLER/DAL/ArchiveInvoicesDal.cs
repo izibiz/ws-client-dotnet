@@ -16,17 +16,15 @@ namespace izibiz.CONTROLLER.DAL
     {
         //☻
 
-        public List<ArchiveInvoices> getArchiveList()
+        public List<ArchiveInvoices> getArchiveList(bool reportFlag)
         {
-            return Singl.databaseContextGet.archiveInvoices.ToList();
+            return Singl.databaseContextGet.archiveInvoices.Where(arc=>arc.draftFlag != reportFlag).ToList(); //taslak olmayan raporlanmıstır
+
         }
 
-        public List<ArchiveInvoices> getArchiveReportList()
-        {
-            return Singl.databaseContextGet.archiveInvoices.Where(arc => arc.reportFlag == true).ToList();
-        }
+     
 
-        public ArchiveInvoices getArchive(string uuid, string profileId)
+        public ArchiveInvoices getArchive(string uuid)
         {
             return Singl.databaseContextGet.archiveInvoices.Where(arc => arc.uuid == uuid).FirstOrDefault();
         }
@@ -61,7 +59,6 @@ namespace izibiz.CONTROLLER.DAL
             createdArchive.ID = invoiceUbl.ID.Value;
             createdArchive.uuid = invoiceUbl.UUID.Value;
             createdArchive.totalAmount = invoiceUbl.LegalMonetaryTotal.PayableAmount.Value;
-            createdArchive.reportFlag = false;
             createdArchive.draftFlag = true;
             createdArchive.issueDate = invoiceUbl.IssueDate.Value;
             createdArchive.profileid = invoiceUbl.ProfileID.Value;

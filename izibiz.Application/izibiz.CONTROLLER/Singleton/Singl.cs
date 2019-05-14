@@ -89,7 +89,7 @@ namespace izibiz.CONTROLLER.Singleton
         {
             get
             {
-                if (null == archiveInvoiceDal)
+                if (null == archiveReportsDal)
                 {
                     archiveReportsDal = new ArchiveReportsDal();
                 }

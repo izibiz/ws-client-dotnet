@@ -30,7 +30,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public List<ArchiveInvoices> getArchiveListOnService()
+        public List<ArchiveInvoices> getArchiveListOnService(bool isReport)
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -41,12 +41,17 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.LIMITSpecified = true;
                 req.PERIOD = getThisMonth() + DateTime.Now.Year.ToString();
                 req.REPORT_INCLUDED = true;
-                req.REPORT_FLAG = EI.ActiveOrPasive.N.ToString();
+                if (isReport)
+                {
+                    req.REPORT_FLAG = EI.ActiveOrPasive.Y.ToString();
+                }
+                else
+                {
+                    req.REPORT_FLAG = EI.ActiveOrPasive.N.ToString();
+                }
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
                 req.READ_INCLUDED = false.ToString();
-
-
 
 
                 EARCHIVEINV[] archiveArr = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req).INVOICE;
@@ -57,7 +62,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                     //getirilen faturaları db ye kaydet
                     SaveArchiveArrToDb(archiveArr);
                 }
-                return Singl.archiveInvoiceDalGet.getArchiveList();
+                return Singl.archiveInvoiceDalGet.getArchiveList(isReport);
             }
         }
 
@@ -92,8 +97,8 @@ namespace izibiz.CONTROLLER.WebServicesController
                     archive.currencyCode = arc.HEADER.CURRENCY_CODE;
                     archive.folderPath = FolderControl.inboxFolderArchive + archive.uuid + "." + nameof(EI.DocumentType.XML);
 
-                  //  archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
-               //     FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
+                    //  archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
+                    //     FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
 
                     Singl.archiveInvoiceDalGet.addArchive(archive);
                 }
@@ -116,7 +121,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 markReq.MARK.value = MarkEArchiveInvoiceRequestMARKValue.READ;
                 markReq.MARK.valueSpecified = true;
 
-               eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
+                eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
             }
         }
 
@@ -149,7 +154,6 @@ namespace izibiz.CONTROLLER.WebServicesController
                 {
                     //getirilen raporları db ye kaydet
                     SaveReportArrToDb(reportArr);
-                    //READ REPORT YAPCAK MIYIZ
                 }
                 return Singl.ArchiveReportsDalGet.getReportList();
             }
@@ -189,11 +193,11 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.UUID = uuid;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
-                req.READ_INCLUDED = 1.ToString();  //daha onceden cektıgımız ıcın mark ınv yapılmıstır o yuzden true
+                req.READ_INCLUDED = true.ToString();  //daha onceden cektıgımız ıcın mark ınv yapılmıstır o yuzden true
 
                 EARCHIVEINV[] archiveArray = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req).INVOICE;
 
-                if (archiveArray.Length != 0)
+                if (archiveArray != null && archiveArray.Length != 0 && archiveArray[0].CONTENT != null)
                 {
                     //getirilen faturanın contentını zipten cıkar,string halınde dondur
                     return Encoding.UTF8.GetString(Compress.UncompressFile(archiveArray[0].CONTENT.Value));
@@ -236,23 +240,21 @@ namespace izibiz.CONTROLLER.WebServicesController
                 {
                     req.PROFILE = "EA_CUST_XML_SIGNED";//İmzalı XML indirir
                 }
-                else if (docType == nameof(EI.DocumentType.PDF))
-                {
-                    req.PROFILE = "EA_CUST_PDF_SIGNED";//İmzalı PDF indirir
-                }
 
-                base64Binary[] contentArr = eArchiveInvoicePortClient.ReadFromArchive(req).INVOICE;
-                if (contentArr.Length != 0)
+                var res = eArchiveInvoicePortClient.ReadFromArchive(req);
+                if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
                 {
-                    //contentı yazdır
-
-                    //xml olarak ındırde ıkı kere ziplenmıs bu yuzden ıkı kere cmpres cagırmamız gerewk
-                    if (docType != nameof(EI.DocumentType.PDF))
+                    if (res.INVOICE.Length != 0)
                     {
-                        return Compress.UncompressFile(Compress.UncompressFile(contentArr[0].Value));
-                    }
+                        //contentı yazdır
+                        //xml olarak ındırde ıkı kere ziplenmıs bu yuzden ıkı kere cmpres cagırmamız gerewk
+                        if (docType != nameof(EI.DocumentType.PDF))
+                        {
+                            return Compress.UncompressFile(Compress.UncompressFile(res.INVOICE[0].Value));
+                        }
 
-                    return Compress.UncompressFile(contentArr[0].Value);
+                        return Compress.UncompressFile(res.INVOICE[0].Value);
+                    }
                 }
                 //servisten uuid aıt content getırılemedıyse null doner
                 return null;
@@ -261,7 +263,17 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public bool cancelEarchive()
+
+       
+
+
+
+
+        /// <summary>
+        /// islem basarılıysa null doner, basarısızsa error message doner
+        /// </summary>
+        /// <returns></returns>
+        public string cancelEarchive()
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -274,16 +286,16 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var res = eArchiveInvoicePortClient.CancelEArchiveInvoice(req);
                 if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
                 {
-                    return true;
+                    return null;
                 }
-                return false;
+                return res.ERROR_TYPE.ERROR_SHORT_DES;
             }
         }
 
 
 
 
-        public void addContentCancelArcOnCancelContentArr(string uuid, string id)
+        public void addContentCancelArcOnCancelContentArr(string uuid, string id, bool isDraft)
         {
             CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent contentCancel = new CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent();
 
@@ -291,7 +303,11 @@ namespace izibiz.CONTROLLER.WebServicesController
             contentCancel.FATURA_ID = id;
             contentCancel.IPTAL_TARIHI = new DateTime();
             contentCancel.EARSIV_CANCEL_EMAIL = Singl.userInformationDalGet.getUserInformation().mail;
-   //         contentCancel.UPLOAD_FLAG = FLAG_VALUE.Y;  // tamamen mı ıptal edıcez
+            if (isDraft) //taslak faturaysa
+            {
+                contentCancel.UPLOAD_FLAG = FLAG_VALUE.Y;
+                contentCancel.DELETE_FLAG = EI.ActiveOrPasive.Y.ToString();
+            }
 
             contentCancelList.Add(contentCancel);
         }
@@ -314,7 +330,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public bool sendArchiveMail(string uuid, string mails)
+        public string sendArchiveMail(string uuid, string mails)
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -326,9 +342,9 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var res = eArchiveInvoicePortClient.GetEmailEarchiveInvoice(req);
                 if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
                 {
-                    return true;
+                    return null;
                 }
-                return false;
+                return res.ERROR_TYPE.ERROR_SHORT_DES;
             }
         }
 
@@ -340,7 +356,7 @@ namespace izibiz.CONTROLLER.WebServicesController
             {
                 ReadEArchiveReportRequest req = new ReadEArchiveReportRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
-                req.RAPOR_NO = "d2103e97-a63c-4f1a-9644-138d21da2581";
+                req.RAPOR_NO = reportNo;//"d2103e97-a63c-4f1a-9644-138d21da2581";
 
                 var res = eArchiveInvoicePortClient.ReadEArchiveReport(req);
                 if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
@@ -356,9 +372,9 @@ namespace izibiz.CONTROLLER.WebServicesController
         }
 
 
-        public string getArchiveReportXmlOnDisc(string reportNo)
+        public string getArchiveReportXml(string reportNo)
         {
-            reportNo= "d2103e97-a63c-4f1a-9644-138d21da2581";
+            //        reportNo= "d2103e97-a63c-4f1a-9644-138d21da2581";
             //db den pathı getırdı
             string xmlPath = FolderControl.inboxFolderArchiveReport + reportNo + "." + nameof(EI.DocumentType.XML);
 
@@ -372,6 +388,58 @@ namespace izibiz.CONTROLLER.WebServicesController
                 return File.ReadAllText(xmlPath);
             }
         }
+
+
+
+
+
+
+
+        public string sendEarchive(string[] archiveContentArr, string[] archiveType,string seriName,string mail)
+        {
+            using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
+            {
+                ArchiveInvoiceExtendedRequest sendArchieveInvoiceRequest = new ArchiveInvoiceExtendedRequest(); 
+                sendArchieveInvoiceRequest.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
+
+                ArchiveInvoiceExtendedContentINVOICE_PROPERTIES[] arrContentProps = new ArchiveInvoiceExtendedContentINVOICE_PROPERTIES[archiveContentArr.Length];
+
+                for (int cnt = 0; cnt < archiveContentArr.Length; cnt++)
+                {
+                    EARSIV_PROPERTIES archiveProperties = new EARSIV_PROPERTIES();
+                    archiveProperties.SUB_STATUS = SUB_STATUS_VALUE.NEW;
+                    archiveProperties.SERI = seriName; //burayı dıkkate almıyor neden ?
+                    archiveProperties.EARSIV_EMAIL_FLAG = FLAG_VALUE.Y;
+                    archiveProperties.EARSIV_EMAIL = new string[] {mail }; //db deki kayıtlı maıli 
+                    if (archiveType[cnt] == EARSIV_TYPE_VALUE.NORMAL.ToString())
+                    {
+                        archiveProperties.EARSIV_TYPE = EARSIV_TYPE_VALUE.NORMAL;
+                    }
+                    else
+                    {
+                        archiveProperties.EARSIV_TYPE = EARSIV_TYPE_VALUE.INTERNET;
+                    }
+
+                    ArchiveInvoiceExtendedContentINVOICE_PROPERTIES ContentProps = new ArchiveInvoiceExtendedContentINVOICE_PROPERTIES();
+                    ContentProps.EARSIV_PROPERTIES = archiveProperties;
+                    ContentProps.EARSIV_FLAG = FLAG_VALUE.Y;
+                    ContentProps.INVOICE_CONTENT = new base64Binary { Value = Compress.compressFile(archiveContentArr[cnt]) };
+
+                    arrContentProps[cnt] = ContentProps;
+                }
+
+                sendArchieveInvoiceRequest.ArchiveInvoiceExtendedContent = arrContentProps;
+
+                ArchiveInvoiceExtendedResponse sendInvoiceResponse = eArchiveInvoicePortClient.WriteToArchiveExtended(sendArchieveInvoiceRequest);
+                if (sendInvoiceResponse.ERROR_TYPE != null)
+                {
+                    return sendInvoiceResponse.ERROR_TYPE.ERROR_SHORT_DES;
+                }
+                return null;
+            }
+        }
+
+
 
 
 

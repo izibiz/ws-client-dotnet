@@ -85,7 +85,9 @@
     <Compile Include="EI.cs" />
     <Compile Include="Ubl-Tr\Ubl_Invoice_2_1.cs" />
     <Compile Include="Ubl-Tr\Xslt.cs" />
-    <Compile Include="UBLCreate\CreateInvoiceUBL.cs" />
+    <Compile Include="UBLCreate\ArchiveUBL.cs" />
+    <Compile Include="UBLCreate\BaseInvoiceUBL.cs" />
+    <Compile Include="UBLCreate\InvoiceUBL.cs" />
     <Compile Include="UblSerializer\InvoiceSerializer.cs" />
   </ItemGroup>
   <ItemGroup />

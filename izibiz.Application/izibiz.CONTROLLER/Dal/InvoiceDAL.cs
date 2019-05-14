@@ -38,6 +38,21 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
+
+        public List<Invoices> getWaitResponseInvoiceList(string direction)
+        {
+            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction  && inv.status.Contains(nameof(EI.StatusType.SEND)) &&
+            inv.status.Contains(nameof(EI.SubStatusType.WAIT_APPLICATION_RESPONSE))).ToList();
+        }
+
+
+        public List<Invoices> getRejectedInvoiceList(string direction)
+        {
+            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction && inv.status.Contains(nameof(EI.StatusType.REJECTED)) 
+            && inv.status.Contains(nameof(EI.SubStatusType.SUCCEED))).ToList();
+        }
+
+
         public List<Invoices> getInvoiceListOnFilter(string direction,DateTime startTime,DateTime finishTime)
         {
             return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction 

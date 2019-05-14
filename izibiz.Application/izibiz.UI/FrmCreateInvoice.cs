@@ -16,6 +16,7 @@ using izibiz.CONTROLLER;
 using izibiz.COMMON.FileControl;
 using System.ServiceModel;
 using izibiz.SERVICES.serviceOib;
+using izibiz.COMMON.UBLCreate;
 
 namespace izibiz.UI
 {
@@ -83,26 +84,26 @@ namespace izibiz.UI
 
         private void addItemPaymentType()
         {
-            cmbPaymentType.Items.Add("KREDIKARTI/BANKAKARTI");
-            cmbPaymentType.Items.Add("EFT/HAVALE");
-            cmbPaymentType.Items.Add("KAPIDAODEME");
-            cmbPaymentType.Items.Add("DIGER");
+            cmbPaymentType.Items.Add(nameof(EI.ArchivePaymentType.EFT_HAVALE));
+            cmbPaymentType.Items.Add(nameof(EI.ArchivePaymentType.KAPIDAODEME));
+            cmbPaymentType.Items.Add(nameof(EI.ArchivePaymentType.KREDIKARTI_BANKAKARTI));
+            cmbPaymentType.Items.Add(nameof(EI.ArchivePaymentType.DIGER));
         }
 
 
 
         private void addItemArchiveSendingType()
         {
-            cmbArchiveSendingType.Items.Add("ELEKTRONIK");
-            cmbArchiveSendingType.Items.Add("KAGIT");
+            cmbArchiveSendingType.Items.Add(nameof(EI.ArchiveSendingType.ELEKTRONIK));
+            cmbArchiveSendingType.Items.Add(nameof(EI.ArchiveSendingType.KAGIT));
         }
 
 
 
         private void addItemArchiveType()
         {
-            cmbArchiveType.Items.Add("NORMAL");
-            cmbArchiveType.Items.Add("INTERNET");
+            cmbArchiveType.Items.Add(nameof(EI.ArchiveType.NORMAL));
+            cmbArchiveType.Items.Add(nameof(EI.ArchiveType.INTERNET));
         }
 
 
@@ -125,7 +126,7 @@ namespace izibiz.UI
             }
             else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
-                cmbScenario.Items.Add("E-ARŞİV FATURA");
+                cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.EARSIVFATURA));
             }
         }
 
@@ -145,7 +146,7 @@ namespace izibiz.UI
 
         private void addItemRowUnit()
         {
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.gridPrice.Columns["unit"];
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.gridPrice.Columns[nameof(EI.InvLineGridRowClm.unit)];
             theColumn.Items.Add(nameof(EI.Unit.ADET));
             theColumn.Items.Add(nameof(EI.Unit.KILO));
             theColumn.Items.Add(nameof(EI.Unit.PAKET));
@@ -501,10 +502,10 @@ namespace izibiz.UI
         {
             switch (paymentType)
             {
-                case "KREDIKARTI/BANKAKARTI": return "111";
-                case "EFT/HAVALE": return "222";
-                case "KAPIDAODEME": return "333";
-                default: return "444";
+                case nameof(EI.ArchivePaymentType.KREDIKARTI_BANKAKARTI) : return "48";
+                case nameof(EI.ArchivePaymentType.EFT_HAVALE): return "46";
+                case nameof(EI.ArchivePaymentType.KAPIDAODEME): return "10";
+                default :  return "1";
             }
         }
 
@@ -538,7 +539,7 @@ namespace izibiz.UI
 
         private void cmbArchiveType_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cmbArchiveType.Text == "INTERNET")
+            if (cmbArchiveType.Text == nameof(EI.ArchiveType.INTERNET))
             {
                 grpSendingType.Visible = true;
                 grpPaymentInformation.Visible = true;
@@ -588,17 +589,21 @@ namespace izibiz.UI
 
 
                         ////////UBL OLUSTURMA ISLEMI////////
-                        CreateInvoiceUBL invoice = new CreateInvoiceUBL(cmbScenario.Text, cmbInvType.Text, invoiceType);
+                        BaseInvoiceUBL invoice;
 
-                        //eger ARSIV ıse 
-                        if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
+                        //eger INVOİCE ıse 
+                        if (invoiceType == nameof(EI.Invoice.Invoices))
                         {
-                            invoice.addAdditionalDocumentReferenceForArchive("sendingType", cmbArchiveSendingType.Text);
+                            invoice = new InvoiceUBL(cmbScenario.Text, cmbInvType.Text);
+                        }
+                        else //ARCHİVE İSE
+                        {
+                            invoice = new ArchiveUBL(cmbArchiveSendingType.Text,cmbScenario.Text, cmbInvType.Text);
 
-                            if (cmbArchiveType.Text == "INTERNET")
+                            if (cmbArchiveType.Text == nameof(EI.ArchiveType.INTERNET))
                             {
                                 //eger gonderım tıpı ınternet ıse ekstra adınatıonal ref ekle
-                                invoice.addAdditionalDocumentReferenceForArchive("EArchiveType", cmbArchiveType.Text);
+                                invoice.addAdditionalDocumentReference(nameof(EI.InvoiceProfileid.EARSIVFATURA), cmbArchiveType.Text);
 
                                 //DELİVERY BOLUMU EKLE
                                 //carrıer ekle
@@ -610,6 +615,7 @@ namespace izibiz.UI
                                 invoice.createPaymentMeans(getPaymentCode(cmbPaymentType.Text), Convert.ToDateTime(datepicPaymentDate.Text), txtMediator.Text);
                             }
                         }
+
 
                         PartyType supParty;
                         PartyType cusParty;

@@ -54,27 +54,33 @@ namespace izibiz.UI
             //eleman text yazdır
             this.Text = Lang.formInvoice;
             lblTitle.Text = Lang.welcome;
-            itemIncomingInvoice.Text = Lang.incomingInvoice;
+            btnHomePage.Text = Lang.homePage;
+            itemGetGibUserList.Text = Lang.getGibUserList;
+            btnFilterList.Text = Lang.listFilter;
+            //panelSendInvoices butonlar
             itemSentInvoice.Text = Lang.sentInvoice;
-            itemDraftInvoice.Text = Lang.draftInvoice;
-            itemDraftNewInvoice.Text = Lang.newInvoice;
-            itemDraftInvoiceList.Text = Lang.listDraftInvoice;
-            //panelSentInvoices butonlar
             btnSentInvGetState.Text = Lang.updateState;
             btnSentInvAgainSent.Text = Lang.againSent;
             btnFaultyInvoices.Text = Lang.faulty;
+            btnGetSendSignedInvoice.Text = Lang.getSignedXml;
+            btnGetRejectedSendInv.Text = Lang.getRejected;
             //panelIncomingInvoices butonlar
+            itemIncomingInvoice.Text = Lang.incomingInvoice;
             btnAccept.Text = Lang.accept;
             btnReject.Text = Lang.reject;
-            btnTakeInv.Text = Lang.getInvoice;
+            btnTakeInv.Text = Lang.takeInvoice;
             btnIncomingInvGetState.Text = Lang.updateState;
+            btnGetRejectedIncomingInv.Text = Lang.getRejected;
+            btnWaitResponseGetInv.Text = Lang.getWaitResponse;
             //panelDraftInvoices butonlar
             btnSendDraftInv.Text = Lang.send;
             btnLoadPortal.Text = Lang.loadPortal;
             rdZip.Text = Lang.withZip;
             rdUnzip.Text = Lang.withUnzip;
-            //
-            btnFilterList.Text = Lang.listFilter;
+            itemDraftInvoice.Text = Lang.draftInvoice;
+            itemDraftNewInvoice.Text = Lang.newInvoice;
+            itemDraftInvoiceList.Text = Lang.listDraftInvoice;
+
             #endregion
         }
 
@@ -514,11 +520,11 @@ namespace izibiz.UI
                 if (Singl.invoiceControllerGet.sendInvoiceResponse(state, description) == 0)  //yanıt gonderme basarılıysa
                 {
                     Singl.invoiceDalGet.dbSaveChanges();  //db ye yazılan not kaydedılir
-                    MessageBox.Show(string.Join(Environment.NewLine, verifiredInvList) + Environment.NewLine + "nolu faturalara yanıt gonderıldı");
+                    MessageBox.Show(string.Join(Environment.NewLine, verifiredInvList) + Environment.NewLine + Lang.sendResponseToInvoice);//"nolu faturalara yanıt gonderıldı"
                 }
                 else//yanıt gonderme ıslemı basarısızsa
                 {
-                    MessageBox.Show("yanıt gonderme ıslemı basarısız tektar deneyın");
+                    MessageBox.Show(Lang.operationFailed);//islem basarısız
                 }
             }
         }
@@ -735,6 +741,7 @@ namespace izibiz.UI
                 try
                 {
                     string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                    string id= tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
 
                     //PDF göruntule butonuna tıkladıysa
                     if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewPdf)].Index)
@@ -743,7 +750,7 @@ namespace izibiz.UI
                         byte[] content = Singl.invoiceControllerGet.getInvoiceType(uuid, nameof(EI.DocumentType.PDF), gridDirection);
                         if (content != null)
                         {
-                            string path = FolderControl.saveInvDocContentWithByte(content, gridDirection, uuid, nameof(EI.DocumentType.PDF));
+                            string path = FolderControl.saveInvDocContentWithByte(content, gridDirection, id, nameof(EI.DocumentType.PDF));
                             System.Diagnostics.Process.Start(path);
                         }
                     }
@@ -924,7 +931,7 @@ namespace izibiz.UI
                 {
                     if (row.Cells[nameof(EI.Invoice.receiverVkn)].Value != null && row.Cells[nameof(EI.Invoice.receiverVkn)].Value.ToString() != receiverVkn) //vkn farklı ıse
                     {
-                        MessageBox.Show("sadece aynı kısıye olan faturaları bırlıkte gonderebılırsınız");
+                        MessageBox.Show(Lang.selectOnePerson);//sadece aynı kısıye olan faturaları bırlıkte gonderebılırsınız
                         valid = false; break;
                     }
                 }
@@ -971,7 +978,7 @@ namespace izibiz.UI
                                 //datagrıd listesini guncelle
                                 gridUpdateList(Singl.invoiceDalGet.getInvoiceList(gridDirection));
 
-                                MessageBox.Show("basarılı");
+                                MessageBox.Show(Lang.succesful);//"basarılı"
                             }
                         }
                         frmDialogIdSelectAlias.Dispose();
@@ -985,7 +992,7 @@ namespace izibiz.UI
                 {
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
-                MessageBox.Show("İşlem Basarısız " + ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.operationFailed + ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error); //işlem basarısız
             }
             catch (Exception ex)
             {
@@ -1058,6 +1065,8 @@ namespace izibiz.UI
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+
 
         private void btnTakeInv_Click(object sender, EventArgs e)
         {
@@ -1152,9 +1161,169 @@ namespace izibiz.UI
             this.Dispose();
         }
 
+        private void btnGetSendSignedInvoice_Click(object sender, EventArgs e)
+        {
+           
+            try
+            {
+                //imzali fatura al
+                if (Singl.invoiceControllerGet.getInvoiceSingnedXml(gridDirection))
+                {
+                    MessageBox.Show(Lang.succesful); //succesful
+                }
+                else
+                {
+                    MessageBox.Show(Lang.noGetInvoice);//Getirilecek Fatura Bulunmadı
+                }
+           
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnGetRejectedSendInv_Click(object sender, EventArgs e)
+        {
+            panelSentInv.Visible = false;
+            try
+            {
+                gridUpdateList(Singl.invoiceDalGet.getRejectedInvoiceList(gridDirection));
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnGetRejectedIncomingInv_Click(object sender, EventArgs e)
+        {
+            panelIncomingInv.Visible = false;
+            try
+            {
+                gridUpdateList(Singl.invoiceDalGet.getRejectedInvoiceList(gridDirection));
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnWaitResponseGetInv_Click(object sender, EventArgs e)
+        {
+            panelIncomingInv.Visible = false;
+            try
+            {
+                gridUpdateList(Singl.invoiceDalGet.getWaitResponseInvoiceList(gridDirection));
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
 
-     
+        private void itemGetGibUserList_Click(object sender, EventArgs e)
+        {
+            panelDraftInv.Visible = false;
+            panelIncomingInv.Visible = false;
+            panelSentInv.Visible = false;
+            btnTakeInv.Visible = false;
+            try
+            {
+                //Gönderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu işlem en az 15 dk surer.
+                DialogResult response = MessageBox.Show(Lang.wantGetUserList, Lang.warning, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (response == DialogResult.OK)
+                {
+                    //servisten cek
+                    var userList = Singl.invoiceControllerGet.getGibUserList();
+                    //db ye kaydet
+                    foreach (var user in userList)
+                    {
+                        Singl.gibUsersDalGet.addGibUser(user.ALIAS, user.IDENTIFIER, user.TITLE);
+                    }
+                    Singl.gibUsersDalGet.dbSaveChanges();
+
+                    MessageBox.Show(Lang.succesful);
+                }
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+
+
+
+
     }
 
 }

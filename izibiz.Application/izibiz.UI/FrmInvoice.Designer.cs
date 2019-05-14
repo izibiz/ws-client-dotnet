@@ -35,12 +35,17 @@
             this.itemDraftInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftInvoiceList = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemGetGibUserList = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelIncomingInv = new System.Windows.Forms.Panel();
+            this.btnGetRejectedIncomingInv = new System.Windows.Forms.Button();
+            this.btnWaitResponseGetInv = new System.Windows.Forms.Button();
             this.btnIncomingInvGetState = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
             this.panelSentInv = new System.Windows.Forms.Panel();
+            this.btnGetRejectedSendInv = new System.Windows.Forms.Button();
+            this.btnGetSendSignedInvoice = new System.Windows.Forms.Button();
             this.btnFaultyInvoices = new System.Windows.Forms.Button();
             this.btnSentInvAgainSent = new System.Windows.Forms.Button();
             this.btnSentInvGetState = new System.Windows.Forms.Button();
@@ -73,7 +78,8 @@
             this.menuInvoice.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemIncomingInvoice,
             this.itemSentInvoice,
-            this.itemDraftInvoice});
+            this.itemDraftInvoice,
+            this.itemGetGibUserList});
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
             this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.menuInvoice.Name = "menuInvoice";
@@ -136,6 +142,17 @@
             this.itemDraftNewInvoice.Text = "+Yeni Fatura";
             this.itemDraftNewInvoice.Click += new System.EventHandler(this.itemDraftNewInvoice_Click);
             // 
+            // itemGetGibUserList
+            // 
+            this.itemGetGibUserList.BackColor = System.Drawing.Color.Teal;
+            this.itemGetGibUserList.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemGetGibUserList.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemGetGibUserList.Name = "itemGetGibUserList";
+            this.itemGetGibUserList.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemGetGibUserList.Size = new System.Drawing.Size(131, 29);
+            this.itemGetGibUserList.Text = "Gib List Çek";
+            this.itemGetGibUserList.Click += new System.EventHandler(this.itemGetGibUserList_Click);
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -149,14 +166,48 @@
             // panelIncomingInv
             // 
             this.panelIncomingInv.BackColor = System.Drawing.Color.Transparent;
+            this.panelIncomingInv.Controls.Add(this.btnGetRejectedIncomingInv);
+            this.panelIncomingInv.Controls.Add(this.btnWaitResponseGetInv);
             this.panelIncomingInv.Controls.Add(this.btnIncomingInvGetState);
             this.panelIncomingInv.Controls.Add(this.btnAccept);
             this.panelIncomingInv.Controls.Add(this.btnReject);
-            this.panelIncomingInv.Location = new System.Drawing.Point(328, 36);
+            this.panelIncomingInv.Location = new System.Drawing.Point(316, 36);
             this.panelIncomingInv.Name = "panelIncomingInv";
-            this.panelIncomingInv.Size = new System.Drawing.Size(606, 68);
+            this.panelIncomingInv.Size = new System.Drawing.Size(656, 79);
             this.panelIncomingInv.TabIndex = 14;
             this.panelIncomingInv.Visible = false;
+            // 
+            // btnGetRejectedIncomingInv
+            // 
+            this.btnGetRejectedIncomingInv.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnGetRejectedIncomingInv.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnGetRejectedIncomingInv.FlatAppearance.BorderSize = 2;
+            this.btnGetRejectedIncomingInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetRejectedIncomingInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGetRejectedIncomingInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGetRejectedIncomingInv.Location = new System.Drawing.Point(527, 4);
+            this.btnGetRejectedIncomingInv.Name = "btnGetRejectedIncomingInv";
+            this.btnGetRejectedIncomingInv.Size = new System.Drawing.Size(120, 50);
+            this.btnGetRejectedIncomingInv.TabIndex = 28;
+            this.btnGetRejectedIncomingInv.Text = "Reddedilenler";
+            this.btnGetRejectedIncomingInv.UseVisualStyleBackColor = false;
+            this.btnGetRejectedIncomingInv.Click += new System.EventHandler(this.btnGetRejectedIncomingInv_Click);
+            // 
+            // btnWaitResponseGetInv
+            // 
+            this.btnWaitResponseGetInv.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnWaitResponseGetInv.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnWaitResponseGetInv.FlatAppearance.BorderSize = 2;
+            this.btnWaitResponseGetInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWaitResponseGetInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnWaitResponseGetInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnWaitResponseGetInv.Location = new System.Drawing.Point(399, 4);
+            this.btnWaitResponseGetInv.Name = "btnWaitResponseGetInv";
+            this.btnWaitResponseGetInv.Size = new System.Drawing.Size(120, 49);
+            this.btnWaitResponseGetInv.TabIndex = 27;
+            this.btnWaitResponseGetInv.Text = "Yanıt Bekleyenler";
+            this.btnWaitResponseGetInv.UseVisualStyleBackColor = false;
+            this.btnWaitResponseGetInv.Click += new System.EventHandler(this.btnWaitResponseGetInv_Click);
             // 
             // btnIncomingInvGetState
             // 
@@ -166,9 +217,9 @@
             this.btnIncomingInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIncomingInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnIncomingInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIncomingInvGetState.Location = new System.Drawing.Point(30, 19);
+            this.btnIncomingInvGetState.Location = new System.Drawing.Point(8, 18);
             this.btnIncomingInvGetState.Name = "btnIncomingInvGetState";
-            this.btnIncomingInvGetState.Size = new System.Drawing.Size(139, 35);
+            this.btnIncomingInvGetState.Size = new System.Drawing.Size(125, 35);
             this.btnIncomingInvGetState.TabIndex = 22;
             this.btnIncomingInvGetState.Text = "durum sorgula";
             this.btnIncomingInvGetState.UseVisualStyleBackColor = false;
@@ -182,7 +233,7 @@
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAccept.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAccept.Location = new System.Drawing.Point(216, 19);
+            this.btnAccept.Location = new System.Drawing.Point(141, 18);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(120, 35);
             this.btnAccept.TabIndex = 19;
@@ -198,7 +249,7 @@
             this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReject.Location = new System.Drawing.Point(363, 19);
+            this.btnReject.Location = new System.Drawing.Point(270, 18);
             this.btnReject.Name = "btnReject";
             this.btnReject.Size = new System.Drawing.Size(120, 35);
             this.btnReject.TabIndex = 20;
@@ -209,26 +260,60 @@
             // panelSentInv
             // 
             this.panelSentInv.BackColor = System.Drawing.Color.Transparent;
+            this.panelSentInv.Controls.Add(this.btnGetRejectedSendInv);
+            this.panelSentInv.Controls.Add(this.btnGetSendSignedInvoice);
             this.panelSentInv.Controls.Add(this.btnFaultyInvoices);
             this.panelSentInv.Controls.Add(this.btnSentInvAgainSent);
             this.panelSentInv.Controls.Add(this.btnSentInvGetState);
-            this.panelSentInv.Location = new System.Drawing.Point(328, 36);
+            this.panelSentInv.Location = new System.Drawing.Point(316, 36);
             this.panelSentInv.Name = "panelSentInv";
-            this.panelSentInv.Size = new System.Drawing.Size(603, 69);
+            this.panelSentInv.Size = new System.Drawing.Size(656, 79);
             this.panelSentInv.TabIndex = 18;
             this.panelSentInv.Visible = false;
             // 
+            // btnGetRejectedSendInv
+            // 
+            this.btnGetRejectedSendInv.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnGetRejectedSendInv.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnGetRejectedSendInv.FlatAppearance.BorderSize = 2;
+            this.btnGetRejectedSendInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetRejectedSendInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGetRejectedSendInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGetRejectedSendInv.Location = new System.Drawing.Point(407, 14);
+            this.btnGetRejectedSendInv.Name = "btnGetRejectedSendInv";
+            this.btnGetRejectedSendInv.Size = new System.Drawing.Size(120, 46);
+            this.btnGetRejectedSendInv.TabIndex = 26;
+            this.btnGetRejectedSendInv.Text = "Reddedilenler";
+            this.btnGetRejectedSendInv.UseVisualStyleBackColor = false;
+            this.btnGetRejectedSendInv.Click += new System.EventHandler(this.btnGetRejectedSendInv_Click);
+            // 
+            // btnGetSendSignedInvoice
+            // 
+            this.btnGetSendSignedInvoice.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnGetSendSignedInvoice.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnGetSendSignedInvoice.FlatAppearance.BorderSize = 2;
+            this.btnGetSendSignedInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetSendSignedInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGetSendSignedInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGetSendSignedInvoice.Location = new System.Drawing.Point(270, 25);
+            this.btnGetSendSignedInvoice.Name = "btnGetSendSignedInvoice";
+            this.btnGetSendSignedInvoice.Size = new System.Drawing.Size(131, 35);
+            this.btnGetSendSignedInvoice.TabIndex = 25;
+            this.btnGetSendSignedInvoice.Text = "Imzalı Xml Al";
+            this.btnGetSendSignedInvoice.UseVisualStyleBackColor = false;
+            this.btnGetSendSignedInvoice.Click += new System.EventHandler(this.btnGetSendSignedInvoice_Click);
+            // 
             // btnFaultyInvoices
             // 
-            this.btnFaultyInvoices.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnFaultyInvoices.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnFaultyInvoices.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
             this.btnFaultyInvoices.FlatAppearance.BorderSize = 2;
             this.btnFaultyInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFaultyInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnFaultyInvoices.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFaultyInvoices.Location = new System.Drawing.Point(174, 15);
+            this.btnFaultyInvoices.Location = new System.Drawing.Point(541, 14);
             this.btnFaultyInvoices.Name = "btnFaultyInvoices";
-            this.btnFaultyInvoices.Size = new System.Drawing.Size(120, 35);
+            this.btnFaultyInvoices.Size = new System.Drawing.Size(106, 46);
             this.btnFaultyInvoices.TabIndex = 24;
             this.btnFaultyInvoices.Text = "Hatalılar";
             this.btnFaultyInvoices.UseVisualStyleBackColor = false;
@@ -242,7 +327,7 @@
             this.btnSentInvAgainSent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSentInvAgainSent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSentInvAgainSent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSentInvAgainSent.Location = new System.Drawing.Point(15, 15);
+            this.btnSentInvAgainSent.Location = new System.Drawing.Point(7, 25);
             this.btnSentInvAgainSent.Name = "btnSentInvAgainSent";
             this.btnSentInvAgainSent.Size = new System.Drawing.Size(120, 35);
             this.btnSentInvAgainSent.TabIndex = 23;
@@ -258,9 +343,9 @@
             this.btnSentInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSentInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSentInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSentInvGetState.Location = new System.Drawing.Point(333, 16);
+            this.btnSentInvGetState.Location = new System.Drawing.Point(140, 25);
             this.btnSentInvGetState.Name = "btnSentInvGetState";
-            this.btnSentInvGetState.Size = new System.Drawing.Size(139, 35);
+            this.btnSentInvGetState.Size = new System.Drawing.Size(117, 35);
             this.btnSentInvGetState.TabIndex = 22;
             this.btnSentInvGetState.Text = "Durum sorgula";
             this.btnSentInvGetState.UseVisualStyleBackColor = false;
@@ -274,7 +359,7 @@
             this.btnTakeInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTakeInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnTakeInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeInv.Location = new System.Drawing.Point(202, 57);
+            this.btnTakeInv.Location = new System.Drawing.Point(190, 61);
             this.btnTakeInv.Name = "btnTakeInv";
             this.btnTakeInv.Size = new System.Drawing.Size(120, 35);
             this.btnTakeInv.TabIndex = 25;
@@ -286,11 +371,11 @@
             // tableGrid
             // 
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(176, 176);
+            this.tableGrid.Location = new System.Drawing.Point(176, 291);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(882, 378);
+            this.tableGrid.Size = new System.Drawing.Size(882, 263);
             this.tableGrid.TabIndex = 18;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
             // 
@@ -301,9 +386,9 @@
             this.panelDraftInv.Controls.Add(this.rdZip);
             this.panelDraftInv.Controls.Add(this.btnLoadPortal);
             this.panelDraftInv.Controls.Add(this.btnSendDraftInv);
-            this.panelDraftInv.Location = new System.Drawing.Point(328, 36);
+            this.panelDraftInv.Location = new System.Drawing.Point(316, 36);
             this.panelDraftInv.Name = "panelDraftInv";
-            this.panelDraftInv.Size = new System.Drawing.Size(603, 69);
+            this.panelDraftInv.Size = new System.Drawing.Size(656, 79);
             this.panelDraftInv.TabIndex = 19;
             this.panelDraftInv.Visible = false;
             // 
@@ -400,9 +485,9 @@
             this.grpFilter.Controls.Add(this.btnFilterList);
             this.grpFilter.Controls.Add(this.timeStartFilter);
             this.grpFilter.Controls.Add(this.timeFinishFilter);
-            this.grpFilter.Location = new System.Drawing.Point(949, 29);
+            this.grpFilter.Location = new System.Drawing.Point(980, 29);
             this.grpFilter.Name = "grpFilter";
-            this.grpFilter.Size = new System.Drawing.Size(175, 114);
+            this.grpFilter.Size = new System.Drawing.Size(147, 114);
             this.grpFilter.TabIndex = 29;
             this.grpFilter.TabStop = false;
             this.grpFilter.Visible = false;
@@ -439,9 +524,9 @@
             this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.menuInvoice);
-            this.Controls.Add(this.panelDraftInv);
             this.Controls.Add(this.panelSentInv);
             this.Controls.Add(this.panelIncomingInv);
+            this.Controls.Add(this.panelDraftInv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuInvoice;
             this.MaximizeBox = false;
@@ -491,5 +576,10 @@
         private System.Windows.Forms.RadioButton rdUnzip;
         private System.Windows.Forms.RadioButton rdZip;
         private System.Windows.Forms.Button btnHomePage;
+        private System.Windows.Forms.Button btnGetSendSignedInvoice;
+        private System.Windows.Forms.Button btnGetRejectedIncomingInv;
+        private System.Windows.Forms.Button btnWaitResponseGetInv;
+        private System.Windows.Forms.Button btnGetRejectedSendInv;
+        private System.Windows.Forms.ToolStripMenuItem itemGetGibUserList;
     }
 }

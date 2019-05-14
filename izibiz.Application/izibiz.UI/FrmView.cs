@@ -43,11 +43,10 @@ namespace izibiz.UI
                 { 
                     viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibInvoice, xmlContent);
                 }
-
-
-                //pdf ise
-                //var data=Xml.viewToPdf(Xslt.xsltGib,xmlPath);
-                //viewDoc.DocumentText=(Encoding.ASCII.GetString(data));
+                else if (invoiceType == EI.ArchiveReports.ArchiveReports.ToString())
+                {
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibArchiveReport, xmlContent);
+                }
 
             }
             catch (Exception ex)

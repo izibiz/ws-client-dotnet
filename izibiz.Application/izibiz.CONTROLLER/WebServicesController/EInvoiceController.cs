@@ -59,7 +59,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 }
 
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
-                if (invoiceArray.Length > 0)
+                if (invoiceArray != null || invoiceArray.Length > 0)
                 {
                     invoiceMarkRead(invoiceArray);
                     //getirilen faturaları db ye kaydet
@@ -92,19 +92,16 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
                 invoice.senderAlias = inv.HEADER.FROM;
                 invoice.receiverAlias = inv.HEADER.TO;
-                invoice.folderPath = FolderControl.createInvDocPath(inv.UUID, direction,nameof(EI.DocumentType.XML));
+                invoice.folderPath = FolderControl.createInvDocPath(inv.ID, direction, nameof(EI.DocumentType.XML));
 
                 byte[] unCompressedContent = Compress.UncompressFile(inv.CONTENT.Value);
                 invoice.content = Encoding.UTF8.GetString(unCompressedContent);  //xml db de tututlur
-
+                FolderControl.writeFileOnDiskWithString(invoice.content, invoice.folderPath);
 
                 if (direction == nameof(EI.InvDirection.DRAFT))
                 {
                     invoice.draftFlag = EI.ActiveOrPasive.Y.ToString();  //servisten cektıklerımız flag Y  ☺
                 }
-
-
-                FolderControl.writeFileOnDiskWithString(invoice.content, invoice.folderPath);
 
                 Singl.invoiceDalGet.addInvoice(invoice);
             }
@@ -194,7 +191,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        
+
 
 
         public int sendInvoice(string receiverAlias, bool isWithZip)
@@ -313,7 +310,45 @@ namespace izibiz.CONTROLLER.Web_Services
             }
         }
 
+        /// <summary>
+        /// IMZALI XML DISKE KAYDET
+        /// </summary>
 
+        public bool getInvoiceSingnedXml(string direction)
+        {
+            using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
+            {
+                GetInvoiceRequest req = new GetInvoiceRequest();
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
+                req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
+                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
+                req.INVOICE_SEARCH_KEY.READ_INCLUDED = false;
+                req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
+                req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
+                req.INVOICE_SEARCH_KEY.DIRECTION = direction;
+                if (direction == nameof(EI.InvDirection.DRAFT))
+                {
+                    req.INVOICE_SEARCH_KEY.DIRECTION = nameof(EI.InvDirection.OUT);
+                    req.INVOICE_SEARCH_KEY.DRAFT_FLAG = nameof(EI.ActiveOrPasive.Y);
+                }
+
+                INVOICE[] invoiceArr = eInvoiceOIBPortClient.GetInvoice(req);
+                if (invoiceArr == null || invoiceArr.Length != 0)
+                {
+                    for (int cnt = 0; cnt < invoiceArr.Length; cnt++)
+                    {
+                        FolderControl.saveInvDocContentWithByte(Compress.UncompressFile(invoiceArr[cnt].CONTENT.Value), direction, invoiceArr[cnt].ID, nameof(EI.DocumentType.XML));
+                    }
+                    invoiceMarkRead(invoiceArr);
+                    if (invoiceArr.Length == 100)
+                    {
+                        getInvoiceSingnedXml(direction);
+                    }
+                    return true;
+                }
+                return false;
+            }
+        }
 
 
 
@@ -325,17 +360,22 @@ namespace izibiz.CONTROLLER.Web_Services
             {
                 GetInvoiceWithTypeRequest req = new GetInvoiceWithTypeRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
-                req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.N);
+                req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
                 req.INVOICE_SEARCH_KEY.TYPE = documentType;//XML,PDF 
-                req.INVOICE_SEARCH_KEY.DIRECTION = direction;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
+                req.INVOICE_SEARCH_KEY.DIRECTION = direction;
+                if (direction == nameof(EI.InvDirection.DRAFT))
+                {
+                    req.INVOICE_SEARCH_KEY.DIRECTION = nameof(EI.InvDirection.OUT);
+                    req.INVOICE_SEARCH_KEY.DRAFT_FLAG = nameof(EI.ActiveOrPasive.Y);
+                }
 
                 INVOICE[] invoice = eInvoiceOIBPortClient.GetInvoiceWithType(req);
-                if (invoice.Length != 0)
+                if (invoice == null || invoice.Length != 0)
                 {
                     return Compress.UncompressFile(invoice[0].CONTENT.Value);
                 }
@@ -357,13 +397,13 @@ namespace izibiz.CONTROLLER.Web_Services
             }
             else
             {
-              return  File.ReadAllText(xmlPath);
+                return File.ReadAllText(xmlPath);
             }
         }
 
 
 
-        
+
 
 
 
