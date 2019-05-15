@@ -52,6 +52,7 @@
             this.btnGetStateDraftArchive = new System.Windows.Forms.Button();
             this.btnCancelDraftArchive = new System.Windows.Forms.Button();
             this.btnSendDraftArchive = new System.Windows.Forms.Button();
+            this.btnFilterArchiveReports = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableArchiveGrid)).BeginInit();
             this.pnlArchive.SuspendLayout();
@@ -73,7 +74,7 @@
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
             this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.menuInvoice.Name = "menuInvoice";
-            this.menuInvoice.Size = new System.Drawing.Size(162, 499);
+            this.menuInvoice.Size = new System.Drawing.Size(150, 565);
             this.menuInvoice.TabIndex = 1;
             this.menuInvoice.Text = "menuStrip1";
             // 
@@ -85,8 +86,8 @@
             this.itemArchiveInvoices.Margin = new System.Windows.Forms.Padding(2, 120, 2, 2);
             this.itemArchiveInvoices.Name = "itemArchiveInvoices";
             this.itemArchiveInvoices.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemArchiveInvoices.Size = new System.Drawing.Size(151, 26);
-            this.itemArchiveInvoices.Text = " Raporlanan Faturalar";
+            this.itemArchiveInvoices.Size = new System.Drawing.Size(139, 26);
+            this.itemArchiveInvoices.Text = "Arşiv Faturalar";
             this.itemArchiveInvoices.Click += new System.EventHandler(this.itemArchiveInvoices_Click);
             // 
             // itemDraftArchive
@@ -97,7 +98,7 @@
             this.itemDraftArchive.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
             this.itemDraftArchive.Name = "itemDraftArchive";
             this.itemDraftArchive.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemDraftArchive.Size = new System.Drawing.Size(151, 30);
+            this.itemDraftArchive.Size = new System.Drawing.Size(139, 30);
             this.itemDraftArchive.Text = "Taslak Faturalar";
             this.itemDraftArchive.Click += new System.EventHandler(this.ıtemDraftArchive_Click);
             // 
@@ -108,7 +109,7 @@
             this.itemGetReportList.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
             this.itemGetReportList.Name = "itemGetReportList";
             this.itemGetReportList.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetReportList.Size = new System.Drawing.Size(151, 29);
+            this.itemGetReportList.Size = new System.Drawing.Size(139, 29);
             this.itemGetReportList.Text = "Arsiv Raporları";
             this.itemGetReportList.Click += new System.EventHandler(this.itemGetReportList_Click);
             // 
@@ -119,7 +120,7 @@
             this.itemArchiveNewCreated.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
             this.itemArchiveNewCreated.Name = "itemArchiveNewCreated";
             this.itemArchiveNewCreated.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemArchiveNewCreated.Size = new System.Drawing.Size(151, 29);
+            this.itemArchiveNewCreated.Size = new System.Drawing.Size(139, 29);
             this.itemArchiveNewCreated.Text = "+ Yeni Fatura";
             this.itemArchiveNewCreated.Click += new System.EventHandler(this.itemArchiveNewCreated_Click);
             // 
@@ -177,11 +178,11 @@
             // tableArchiveGrid
             // 
             this.tableArchiveGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableArchiveGrid.Location = new System.Drawing.Point(185, 196);
+            this.tableArchiveGrid.Location = new System.Drawing.Point(185, 347);
             this.tableArchiveGrid.Name = "tableArchiveGrid";
             this.tableArchiveGrid.ReadOnly = true;
             this.tableArchiveGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableArchiveGrid.Size = new System.Drawing.Size(808, 291);
+            this.tableArchiveGrid.Size = new System.Drawing.Size(808, 206);
             this.tableArchiveGrid.TabIndex = 36;
             this.tableArchiveGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableArchiveGrid_CellClick);
             this.tableArchiveGrid.SelectionChanged += new System.EventHandler(this.tableArchiveGrid_SelectionChanged);
@@ -274,6 +275,7 @@
             // 
             // pnlArchive
             // 
+            this.pnlArchive.Controls.Add(this.btnFilterArchiveReports);
             this.pnlArchive.Controls.Add(this.btnGetSignedXmlArchive);
             this.pnlArchive.Controls.Add(this.btnArchiveView);
             this.pnlArchive.Controls.Add(this.btnSendMail);
@@ -282,9 +284,9 @@
             this.pnlArchive.Controls.Add(this.rdViewPdf);
             this.pnlArchive.Controls.Add(this.btnArchiveGetState);
             this.pnlArchive.Controls.Add(this.btnArchiveCancel);
-            this.pnlArchive.Location = new System.Drawing.Point(291, 12);
+            this.pnlArchive.Location = new System.Drawing.Point(291, 100);
             this.pnlArchive.Name = "pnlArchive";
-            this.pnlArchive.Size = new System.Drawing.Size(689, 82);
+            this.pnlArchive.Size = new System.Drawing.Size(689, 153);
             this.pnlArchive.TabIndex = 43;
             this.pnlArchive.Visible = false;
             // 
@@ -334,7 +336,7 @@
             this.pnlDraftArchive.Controls.Add(this.btnGetStateDraftArchive);
             this.pnlDraftArchive.Controls.Add(this.btnCancelDraftArchive);
             this.pnlDraftArchive.Controls.Add(this.btnSendDraftArchive);
-            this.pnlDraftArchive.Location = new System.Drawing.Point(291, 12);
+            this.pnlDraftArchive.Location = new System.Drawing.Point(289, 259);
             this.pnlDraftArchive.Name = "pnlDraftArchive";
             this.pnlDraftArchive.Size = new System.Drawing.Size(689, 82);
             this.pnlDraftArchive.TabIndex = 46;
@@ -348,7 +350,7 @@
             this.btnGetStateDraftArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetStateDraftArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGetStateDraftArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetStateDraftArchive.Location = new System.Drawing.Point(324, 13);
+            this.btnGetStateDraftArchive.Location = new System.Drawing.Point(296, 14);
             this.btnGetStateDraftArchive.Name = "btnGetStateDraftArchive";
             this.btnGetStateDraftArchive.Size = new System.Drawing.Size(120, 47);
             this.btnGetStateDraftArchive.TabIndex = 43;
@@ -391,16 +393,32 @@
             this.btnSendDraftArchive.UseVisualStyleBackColor = false;
             this.btnSendDraftArchive.Click += new System.EventHandler(this.btnSendDraftArchive_Click);
             // 
+            // btnFilterArchiveReports
+            // 
+            this.btnFilterArchiveReports.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnFilterArchiveReports.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnFilterArchiveReports.FlatAppearance.BorderSize = 2;
+            this.btnFilterArchiveReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterArchiveReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFilterArchiveReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFilterArchiveReports.Location = new System.Drawing.Point(12, 89);
+            this.btnFilterArchiveReports.Name = "btnFilterArchiveReports";
+            this.btnFilterArchiveReports.Size = new System.Drawing.Size(128, 47);
+            this.btnFilterArchiveReports.TabIndex = 42;
+            this.btnFilterArchiveReports.Text = "Raporlananlar";
+            this.btnFilterArchiveReports.UseVisualStyleBackColor = false;
+            this.btnFilterArchiveReports.Click += new System.EventHandler(this.btnFilterArchiveReports_Click);
+            // 
             // FrmArchive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 499);
+            this.ClientSize = new System.Drawing.Size(1043, 565);
             this.Controls.Add(this.btnTakeArchiveInv);
-            this.Controls.Add(this.pnlArchive);
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.tableArchiveGrid);
             this.Controls.Add(this.menuInvoice);
+            this.Controls.Add(this.pnlArchive);
             this.Controls.Add(this.pnlDraftArchive);
             this.Controls.Add(this.pnlArchiveReport);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -446,5 +464,6 @@
         private System.Windows.Forms.Button btnCancelDraftArchive;
         private System.Windows.Forms.Button btnGetStateDraftArchive;
         private System.Windows.Forms.Button btnGetSignedXmlArchive;
+        private System.Windows.Forms.Button btnFilterArchiveReports;
     }
 }

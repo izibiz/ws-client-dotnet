@@ -480,8 +480,8 @@
   <data name="operationFailed" xml:space="preserve">
     <value>İşlem Başarısız</value>
   </data>
-  <data name="reportInvoice" xml:space="preserve">
-    <value>Raporlanan Faturalar</value>
+  <data name="getReported" xml:space="preserve">
+    <value>Raporlananlar</value>
   </data>
   <data name="selectOnePerson" xml:space="preserve">
     <value>Sadece aynı kisiye olan faturaları secebılırsınız</value>

@@ -108,7 +108,10 @@ namespace izibiz.COMMON
             totalAmount,
             mailStatus,
             rowUnique,
-            DraftArchive
+            DraftArchive,
+            receiverMail,
+            reportFlag,
+            reportFlagDesc
 
         }
 

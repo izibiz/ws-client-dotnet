@@ -40,6 +40,16 @@ namespace izibiz.MODEL.DbModels
 
 
 
+        [Column(Name = nameof(EI.Invoice.reportFlag), DbType = "BOOLEAN")]
+        public bool reportFlag { get; set; }
+
+
+
+        [Column(Name = nameof(EI.Invoice.reportFlagDesc), DbType = "NVARCHAR")]
+        public string reportFlagDesc { get; set; }
+
+
+
         [Column(Name = nameof(EI.Invoice.issueDate), DbType = "DATETIME")]
         public DateTime issueDate { get; set; }
 
@@ -91,9 +101,15 @@ namespace izibiz.MODEL.DbModels
         [Column(Name = nameof(EI.Invoice.uuid), DbType = "NVARCHAR")]
         public string uuid { get; set; }
 
+
+
         [Column(Name = nameof(EI.Invoice.mailStatus), DbType = "NVARCHAR")]
         public string mailStatus { get; set; }
 
+
+
+        [Column(Name = nameof(EI.Invoice.receiverMail), DbType = "VARCHAR")]
+        public string receiverMail { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.currencyCode), DbType = "VARCHAR")]

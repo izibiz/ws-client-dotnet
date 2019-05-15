@@ -448,6 +448,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Raporlananlar.
+        /// </summary>
+        public static string getReported {
+            get {
+                return ResourceManager.GetString("getReported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İmzalı Xml Al.
         /// </summary>
         public static string getSignedXml {
@@ -813,15 +822,6 @@ namespace izibiz.COMMON.Language {
         public static string reject {
             get {
                 return ResourceManager.GetString("reject", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Raporlanan Faturalar.
-        /// </summary>
-        public static string reportInvoice {
-            get {
-                return ResourceManager.GetString("reportInvoice", resourceCulture);
             }
         }
         

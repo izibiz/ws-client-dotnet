@@ -87,16 +87,19 @@ namespace izibiz.COMMON.FileControl
 
         public static string createInvUblToXml(InvoiceType createdUBL,string invoiceType)
         {
+
+            var xslt = Encoding.UTF8.GetString(createdUBL.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.Value);
+
             //olusturulan xmli diske kaydediyor
             string xmlPath="";
 
             if (invoiceType == nameof(EI.Invoice.Invoices))
             {
-                xmlPath = inboxFolderInvoiceDraft + createdUBL.UUID.Value + "." + nameof(EI.DocumentType.XML);
+                xmlPath = inboxFolderInvoiceDraft + createdUBL.ID.Value + "." + nameof(EI.DocumentType.XML);
             }
             else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
-                xmlPath = inboxFolderArchive + createdUBL.UUID.Value + "." + nameof(EI.DocumentType.XML);
+                xmlPath = inboxFolderArchive + createdUBL.ID.Value + "." + nameof(EI.DocumentType.XML);
             }
 
             createInboxIfDoesNotExist(Path.GetDirectoryName(xmlPath)); //dosya yolu yoksa olustur

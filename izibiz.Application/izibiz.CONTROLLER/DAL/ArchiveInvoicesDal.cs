@@ -16,13 +16,25 @@ namespace izibiz.CONTROLLER.DAL
     {
         //☻
 
-        public List<ArchiveInvoices> getArchiveList(bool reportFlag)
+        public List<ArchiveInvoices> getArchiveList(bool draftFlag)
         {
-            return Singl.databaseContextGet.archiveInvoices.Where(arc=>arc.draftFlag != reportFlag).ToList(); //taslak olmayan raporlanmıstır
+            return Singl.databaseContextGet.archiveInvoices.Where(arc=>arc.draftFlag == draftFlag).ToList(); 
 
         }
 
-     
+
+        public List<string> getArchiveUuidList(bool draftFlag)
+        {
+            return Singl.databaseContextGet.archiveInvoices.Where(arc => arc.draftFlag == draftFlag).Select(arc=>arc.uuid).ToList();
+
+        }
+
+        public List<ArchiveInvoices> getArchiveReportList()
+        {
+            return Singl.databaseContextGet.archiveInvoices.Where(arc => arc.reportFlag == true).ToList();
+        }
+
+
 
         public ArchiveInvoices getArchive(string uuid)
         {
@@ -48,11 +60,17 @@ namespace izibiz.CONTROLLER.DAL
             ArchiveInvoices archiveOnDb = Singl.databaseContextGet.archiveInvoices.Where(arc => arc.uuid == archive.HEADER.UUID).FirstOrDefault();
 
             archiveOnDb.status = archive.HEADER.STATUS_DESC;
+            if(archive.HEADER.REPORT_ID != 0)
+            {
+                archiveOnDb.reportFlag = true;
+            }
             archiveOnDb.mailStatus = archive.HEADER.EMAIL_STATUS_DESC;
         }
 
-        public void insertArchiveFromUbl(InvoiceType invoiceUbl, string xmlPath)
+        public void insertArchiveOnDbFromUbl(InvoiceType invoiceUbl, string xmlPath,bool sendMailWhenReporting)
         {
+            var i = System.Text.Encoding.UTF8.GetString(invoiceUbl.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.Value);
+
             ArchiveInvoices createdArchive = new ArchiveInvoices();
 
             createdArchive.rowUnique = invoiceUbl.ID.Value + invoiceUbl.UUID.Value + invoiceUbl.ProfileID.Value;
@@ -63,13 +81,13 @@ namespace izibiz.CONTROLLER.DAL
             createdArchive.issueDate = invoiceUbl.IssueDate.Value;
             createdArchive.profileid = invoiceUbl.ProfileID.Value;
             createdArchive.invoiceType = invoiceUbl.InvoiceTypeCode.Value;
-            if (invoiceUbl.AdditionalDocumentReference[2] != null)  //ınternet ıse 2.ındexdekı addDocRef vardır
+            if (invoiceUbl.AdditionalDocumentReference.Length== 3)  //ınternet ıse 2.ındexdekı addDocRef vardır
             {
                 createdArchive.eArchiveType = invoiceUbl.AdditionalDocumentReference[2].DocumentTypeCode.Value;
             }
             else
             {
-                createdArchive.eArchiveType = "NORMAL";
+                createdArchive.eArchiveType =nameof(EI.ArchiveType.NORMAL);
             }
             createdArchive.sendingType = invoiceUbl.AdditionalDocumentReference[1].DocumentTypeCode.Value; 
             createdArchive.senderName = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value;
@@ -78,6 +96,10 @@ namespace izibiz.CONTROLLER.DAL
             createdArchive.stateNote = nameof(EI.StateNote.CREATED);
             createdArchive.status = "";
             createdArchive.statusCode ="";
+            if (sendMailWhenReporting) //mail gonder secılı ıse
+            {
+                createdArchive.receiverMail = invoiceUbl.AccountingCustomerParty.Party.Contact.ElectronicMail.Value;
+            }
             createdArchive.content = File.ReadAllText(xmlPath, Encoding.UTF8);
             createdArchive.folderPath = xmlPath;
 

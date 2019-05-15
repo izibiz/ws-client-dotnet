@@ -480,8 +480,8 @@
   <data name="operationFailed" xml:space="preserve">
     <value>Operation Failed</value>
   </data>
-  <data name="reportInvoice" xml:space="preserve">
-    <value>Invoice On Report</value>
+  <data name="getReported" xml:space="preserve">
+    <value>Get Reported</value>
   </data>
   <data name="selectOnePerson" xml:space="preserve">
     <value>Only SelectThe Same Person</value>

@@ -39,7 +39,7 @@ namespace izibiz.CONTROLLER
             BaseUBL.UBLVersionID = new UBLVersionIDType { Value = "2.1" }; //uluslararası fatura standardı 2.1
             BaseUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" }; //fakat GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2 efatura formatını kullanıyor.
             BaseUBL.ProfileID = new ProfileIDType { Value = profileid };
-            BaseUBL.ID = new IDType { Value = DateTime.Now.ToString("MM/dd/yyyy-HH:mm:ss") };//id yi simdilik unıqıe bır deger verıyoruz , load ınv da degıstırılecek
+            BaseUBL.ID = new IDType { Value = DateTime.Now.ToString("MM/dd/yyyy-HH/mm/ss") };//id yi simdilik unıqıe bır deger verıyoruz ,servise gond. degıstırılecek
             BaseUBL.CopyIndicator = new CopyIndicatorType { Value = false };
             BaseUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
             BaseUBL.IssueDate = new IssueDateType { Value = DateTime.Now };
@@ -265,8 +265,6 @@ namespace izibiz.CONTROLLER
             decimal taxableAmount, decimal percent, string itemName, decimal price)
         {
 
-
-
             InvoiceLineType invoiceLine = new InvoiceLineType
             {
 
@@ -355,6 +353,8 @@ namespace izibiz.CONTROLLER
             BaseUBL.TaxTotal = taxTotal;
         }
 
+
+
         //public void addTaxSubtotal(TaxTotalType taxTotal,string currencyCode, decimal taxableAmount, decimal taxAmount, decimal taxRate)
         //{
         //    List<TaxSubtotalType> taxSubTotalList = new List<TaxSubtotalType>();
@@ -442,7 +442,6 @@ namespace izibiz.CONTROLLER
         //        taxTotal.TaxAmount.currencyID = line.TaxTotal.TaxAmount.currencyID;
 
 
-
         //        foreach (var tax in line.TaxTotal.TaxSubtotal)
         //        {
 
@@ -469,9 +468,7 @@ namespace izibiz.CONTROLLER
             List<TaxSubtotalType> taxSubTotalList = new List<TaxSubtotalType>();
 
 
-
             TaxTotalType taxTotal = new TaxTotalType { TaxAmount = new TaxAmountType { Value = 0 } };
-
             TaxSubtotalType taxSubtotal = new TaxSubtotalType
             {
                 TaxableAmount = new TaxableAmountType { Value = 0 },
@@ -490,8 +487,6 @@ namespace izibiz.CONTROLLER
                 }
             };
 
-
-
             foreach (var line in BaseUBL.InvoiceLine)
             {
 
@@ -508,30 +503,23 @@ namespace izibiz.CONTROLLER
                     }
                     else //yoksa ekle
                     {
-                        TaxSubtotalType taxSubtotalNew = new TaxSubtotalType
+                        TaxSubtotalType taxSubtotalNew = new TaxSubtotalType();
+                        taxSubtotalNew.TaxableAmount = new TaxableAmountType { Value = tax.TaxableAmount.Value, currencyID= tax.TaxableAmount.currencyID };
+
+                        taxSubtotalNew.TaxAmount = new TaxAmountType { Value = line.TaxTotal.TaxAmount.Value , currencyID= tax.TaxAmount.currencyID };                            
+                        taxSubtotalNew.Percent = new PercentType1 { Value = tax.Percent.Value };
+                        taxSubtotalNew.TaxCategory = new TaxCategoryType();
+                        if (tax.Percent.Value == 0)
                         {
-                            TaxableAmount = new TaxableAmountType { Value = 0 },
-                            TaxAmount = new TaxAmountType { Value = 0 },
-                            Percent = new PercentType1 { Value = 0 },
-                            TaxCategory = new TaxCategoryType
-                            {
-                                TaxScheme = new TaxSchemeType
-                                {
-                                    Name = new NameType1 { Value = nameof(EI.TaxType.KDV) },
-                                    TaxTypeCode = new TaxTypeCodeType
-                                    {
-                                        Value = "0015"
-                                    }
-                                }
-                            }
-                        };
+                            taxSubtotalNew.TaxCategory.TaxExemptionReasonCode = new TaxExemptionReasonCodeType { Value ="351"};
+                            taxSubtotalNew.TaxCategory.TaxExemptionReason = new  TaxExemptionReasonType { Value = "ReasonTaxExemtion" };//Reson Value hard code basıldı
+                                                                                                                                     //istenırse formdan da alınabılır
+                        }
 
-                        taxSubtotalNew.TaxableAmount.currencyID = tax.TaxableAmount.currencyID;
-                        taxSubtotalNew.TaxAmount.currencyID = tax.TaxAmount.currencyID;
-                        taxSubtotalNew.Percent.Value = tax.Percent.Value;
+                        taxSubtotalNew.TaxCategory.TaxScheme = new TaxSchemeType();
+                        taxSubtotalNew.TaxCategory.TaxScheme.Name = new NameType1 { Value = nameof(EI.TaxType.KDV) };
+                        taxSubtotalNew.TaxCategory.TaxScheme.TaxTypeCode = new TaxTypeCodeType { Value = "0015" };
 
-                        taxSubtotalNew.TaxableAmount.Value = tax.TaxableAmount.Value;
-                        taxSubtotalNew.TaxAmount.Value = line.TaxTotal.TaxAmount.Value;
 
 
                         taxSubTotalList.Add(taxSubtotalNew);

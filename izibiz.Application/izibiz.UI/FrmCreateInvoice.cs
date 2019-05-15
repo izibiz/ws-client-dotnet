@@ -502,10 +502,10 @@ namespace izibiz.UI
         {
             switch (paymentType)
             {
-                case nameof(EI.ArchivePaymentType.KREDIKARTI_BANKAKARTI) : return "48";
+                case nameof(EI.ArchivePaymentType.KREDIKARTI_BANKAKARTI): return "48";
                 case nameof(EI.ArchivePaymentType.EFT_HAVALE): return "46";
                 case nameof(EI.ArchivePaymentType.KAPIDAODEME): return "10";
-                default :  return "1";
+                default: return "1";
             }
         }
 
@@ -598,7 +598,7 @@ namespace izibiz.UI
                         }
                         else //ARCHİVE İSE
                         {
-                            invoice = new ArchiveUBL(cmbArchiveSendingType.Text,cmbScenario.Text, cmbInvType.Text);
+                            invoice = new ArchiveUBL(cmbArchiveSendingType.Text, cmbScenario.Text, cmbInvType.Text);
 
                             if (cmbArchiveType.Text == nameof(EI.ArchiveType.INTERNET))
                             {
@@ -673,9 +673,9 @@ namespace izibiz.UI
                         {
                             Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
                         }
-                        else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
+                        else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsıv ıse
                         {
-                            Singl.archiveInvoiceDalGet.insertArchiveFromUbl(invoiceUbl, xmlPath);
+                            Singl.archiveInvoiceDalGet.insertArchiveOnDbFromUbl(invoiceUbl, xmlPath, chkSendMail.Checked);
                         }
                         Singl.databaseContextGet.SaveChanges();
 
