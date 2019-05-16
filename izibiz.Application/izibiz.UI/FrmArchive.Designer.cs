@@ -80,12 +80,12 @@
             // itemArchiveInvoices
             // 
             this.itemArchiveInvoices.BackColor = System.Drawing.Color.Teal;
-            this.itemArchiveInvoices.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.itemArchiveInvoices.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.itemArchiveInvoices.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.itemArchiveInvoices.Margin = new System.Windows.Forms.Padding(2, 120, 2, 2);
             this.itemArchiveInvoices.Name = "itemArchiveInvoices";
             this.itemArchiveInvoices.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemArchiveInvoices.Size = new System.Drawing.Size(139, 26);
+            this.itemArchiveInvoices.Size = new System.Drawing.Size(139, 29);
             this.itemArchiveInvoices.Text = "Arşiv Faturalar";
             this.itemArchiveInvoices.Click += new System.EventHandler(this.itemArchiveInvoices_Click);
             // 
