@@ -42,9 +42,9 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public ArchiveInvoices findArchive(string rowUnique)
+        public ArchiveInvoices findArchive(string uuid)
         {
-            return Singl.databaseContextGet.archiveInvoices.Find(rowUnique);
+            return Singl.databaseContextGet.archiveInvoices.Find(uuid);
         }
 
 
@@ -72,7 +72,6 @@ namespace izibiz.CONTROLLER.DAL
            
             ArchiveInvoices createdArchive = new ArchiveInvoices();
 
-            createdArchive.rowUnique = invoiceUbl.ID.Value + invoiceUbl.UUID.Value + invoiceUbl.ProfileID.Value;
             createdArchive.ID = invoiceUbl.ID.Value;
             createdArchive.uuid = invoiceUbl.UUID.Value;
             createdArchive.totalAmount = invoiceUbl.LegalMonetaryTotal.PayableAmount.Value;

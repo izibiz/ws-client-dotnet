@@ -107,7 +107,6 @@ namespace izibiz.COMMON
             currencyCode,
             totalAmount,
             mailStatus,
-            rowUnique,
             DraftArchive,
             receiverMail,
             reportFlag,

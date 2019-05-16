@@ -15,7 +15,7 @@ namespace izibiz.CONTROLLER.Model
 
         public string mail;
 
-        public string rowUnique;
+        public string uuid;
 
     }
 }

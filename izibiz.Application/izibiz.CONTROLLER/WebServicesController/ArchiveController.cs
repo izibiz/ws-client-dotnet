@@ -69,11 +69,9 @@ namespace izibiz.CONTROLLER.WebServicesController
             {
                 ArchiveInvoices archive = new ArchiveInvoices();
 
-                //aynı id ve uuid sahıp faturalar gelebıldıgı ıcın unıque row olusturduk
-                archive.rowUnique = arc.HEADER.INVOICE_ID + "/" + arc.HEADER.UUID + "/" + arc.HEADER.PROFILE_ID;
-
+              
                 //bu row unıque degerı dbye daha once eklenmemısse
-                if (Singl.databaseContextGet.archiveInvoices.Find(archive.rowUnique) == null)
+                if (Singl.databaseContextGet.archiveInvoices.Find(archive.uuid) == null)
                 {
                     archive.ID = arc.HEADER.INVOICE_ID;
                     archive.uuid = arc.HEADER.UUID;
@@ -203,10 +201,10 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public string getArchiveContentXml(string uuid, string rowUnique)
+        public string getArchiveContentXml(string uuid)
         {
-            //db den pathı getırdı
-            string xmlPath = Singl.archiveInvoiceDalGet.findArchive(rowUnique).folderPath;
+            //db den pathı getırdı           
+            string xmlPath = Singl.archiveInvoiceDalGet.findArchive(uuid).folderPath;
 
             if (FolderControl.xmlFileIsInFolder(xmlPath)) // xml dosyası verılen pathde bulunuyorsa
             {

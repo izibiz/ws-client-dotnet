@@ -177,11 +177,11 @@
             // tableArchiveGrid
             // 
             this.tableArchiveGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableArchiveGrid.Location = new System.Drawing.Point(223, 343);
+            this.tableArchiveGrid.Location = new System.Drawing.Point(223, 182);
             this.tableArchiveGrid.Name = "tableArchiveGrid";
             this.tableArchiveGrid.ReadOnly = true;
             this.tableArchiveGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableArchiveGrid.Size = new System.Drawing.Size(808, 222);
+            this.tableArchiveGrid.Size = new System.Drawing.Size(808, 371);
             this.tableArchiveGrid.TabIndex = 36;
             this.tableArchiveGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableArchiveGrid_CellClick);
             this.tableArchiveGrid.SelectionChanged += new System.EventHandler(this.tableArchiveGrid_SelectionChanged);
@@ -283,7 +283,7 @@
             this.pnlArchive.Controls.Add(this.rdViewPdf);
             this.pnlArchive.Controls.Add(this.btnArchiveGetState);
             this.pnlArchive.Controls.Add(this.btnArchiveCancel);
-            this.pnlArchive.Location = new System.Drawing.Point(291, 100);
+            this.pnlArchive.Location = new System.Drawing.Point(291, 12);
             this.pnlArchive.Name = "pnlArchive";
             this.pnlArchive.Size = new System.Drawing.Size(689, 136);
             this.pnlArchive.TabIndex = 43;
@@ -326,7 +326,7 @@
             this.pnlArchiveReport.Controls.Add(this.btnGetSingedXml);
             this.pnlArchiveReport.Location = new System.Drawing.Point(291, 12);
             this.pnlArchiveReport.Name = "pnlArchiveReport";
-            this.pnlArchiveReport.Size = new System.Drawing.Size(689, 82);
+            this.pnlArchiveReport.Size = new System.Drawing.Size(689, 136);
             this.pnlArchiveReport.TabIndex = 45;
             this.pnlArchiveReport.Visible = false;
             // 
@@ -350,9 +350,9 @@
             // 
             this.pnlDraftArchive.Controls.Add(this.btnDeleteDraftArchive);
             this.pnlDraftArchive.Controls.Add(this.btnSendDraftArchive);
-            this.pnlDraftArchive.Location = new System.Drawing.Point(289, 241);
+            this.pnlDraftArchive.Location = new System.Drawing.Point(291, 12);
             this.pnlDraftArchive.Name = "pnlDraftArchive";
-            this.pnlDraftArchive.Size = new System.Drawing.Size(689, 82);
+            this.pnlDraftArchive.Size = new System.Drawing.Size(689, 136);
             this.pnlDraftArchive.TabIndex = 46;
             this.pnlDraftArchive.Visible = false;
             // 

@@ -164,7 +164,6 @@ namespace izibiz.UI
                 tableArchiveGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.content)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
-                tableArchiveGrid.Columns[nameof(EI.Invoice.rowUnique)].Visible = false;
 
                 if (gridMenuType == EI.Invoice.DraftArchive.ToString()) //taslak ıse
                 {
@@ -188,7 +187,7 @@ namespace izibiz.UI
 
                 if (rdViewHtml.Checked) //html
                 {
-                    string xmlContent = Singl.archiveControllerGet.getArchiveContentXml(uuid, tableArchiveGrid.SelectedRows[0].Cells[nameof(EI.Invoice.rowUnique)].Value.ToString());
+                    string xmlContent = Singl.archiveControllerGet.getArchiveContentXml(uuid);
                     if (xmlContent != null)
                     {
                         FrmView previewInvoices = new FrmView(xmlContent, nameof(EI.Invoice.ArchiveInvoices));
@@ -363,8 +362,7 @@ namespace izibiz.UI
                             }
                             else  //taslak arsıv ıse
                             {
-                                content = Singl.archiveControllerGet.getArchiveContentXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString(),
-                                    tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.rowUnique)].Value.ToString());
+                                content = Singl.archiveControllerGet.getArchiveContentXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString());
 
                                 if (content != null) //servisten veya dıskten getırlebılmısse
                                 {
@@ -408,7 +406,7 @@ namespace izibiz.UI
         {
             try
             {
-                List<string> validRowUniqueList = new List<string>();
+                List<string> validRowUuidList = new List<string>();
                 List<string> unvalidList = new List<string>();
                 bool inUnreportedArchive=false;
 
@@ -435,7 +433,7 @@ namespace izibiz.UI
                             row.Cells[nameof(EI.Invoice.ID)].Value.ToString());
 
                         //validse RowUnique yı kaydet
-                        validRowUniqueList.Add(row.Cells[nameof(EI.Invoice.rowUnique)].Value.ToString());
+                        validRowUuidList.Add(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
                     }
                 }
 
@@ -459,25 +457,20 @@ namespace izibiz.UI
                 }
 
                 //valid fatura varsa
-                if (validRowUniqueList.Count != 0)
+                if (validRowUuidList.Count != 0)
                 {
                     string responseErrorMesage = Singl.archiveControllerGet.cancelEarchive();
                     if (responseErrorMesage == null) //return code 0 ise ,basarılı ıse
                     {
-                        string succList = "";
 
                         //valid olanları db de status note iptal yap
-                        foreach (string rowUnique in validRowUniqueList)
+                        foreach (string uuid in validRowUuidList)
                         {
-                            Singl.archiveInvoiceDalGet.findArchive(rowUnique).stateNote = EI.StateNote.IPTAL.ToString();
-
-                            List<string> idList = new List<string>();  //rowUniquiden id leri listele
-                            idList.Add(rowUnique.Split('/').First());
-                            succList = string.Join(Environment.NewLine, idList);
+                            Singl.archiveInvoiceDalGet.findArchive(uuid).stateNote = EI.StateNote.IPTAL.ToString();
                         }
 
                         Singl.databaseContextGet.SaveChanges();
-                        MessageBox.Show(succList + Environment.NewLine + Lang.succCancelSelectedInvoice);//secılı arsıv basarıyla iptal edildi
+                        MessageBox.Show(validRowUuidList + Environment.NewLine + Lang.succCancelSelectedInvoice);//secılı arsıv basarıyla iptal edildi
                     }
                     else
                     {
@@ -876,9 +869,9 @@ namespace izibiz.UI
                 //taslak oldugu ıcın SADECE db den faturayı sıl
                 foreach (DataGridViewRow row in tableArchiveGrid.SelectedRows)
                 {
-                    string rowUnique = row.Cells[nameof(EI.Invoice.rowUnique)].Value.ToString();
+                    string uuid = row.Cells[nameof(EI.Invoice.uuid)].Value.ToString();
 
-                    Singl.databaseContextGet.archiveInvoices.Remove(Singl.archiveInvoiceDalGet.findArchive(rowUnique));
+                    Singl.databaseContextGet.archiveInvoices.Remove(Singl.archiveInvoiceDalGet.findArchive(uuid));
                 }
                 Singl.databaseContextGet.SaveChanges();
 
@@ -932,12 +925,12 @@ namespace izibiz.UI
                     {
                         ArchiveContentPropertiesModel archiveContentPropertiesModel = new ArchiveContentPropertiesModel();
 
-                        archiveContentPropertiesModel.rowUnique = tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.rowUnique)].Value.ToString();
+                        archiveContentPropertiesModel.uuid = tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
 
                         archiveContentPropertiesModel.archiveType = tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.eArchiveType)].Value.ToString();
                        
                         //alınan contenttın ıdsını degıstırerek koy
-                        string content = Singl.archiveControllerGet.getArchiveContentXml(tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString(), tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.rowUnique)].Value.ToString());
+                        string content = Singl.archiveControllerGet.getArchiveContentXml(archiveContentPropertiesModel.uuid);
                         archiveContentPropertiesModel.content= XmlControl.xmlChangeIdValue(content, newIdArr[cnt]);
 
                         if (tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.receiverMail)].Value != null) //mail gonderılmek ısstenıyorsa
@@ -960,7 +953,7 @@ namespace izibiz.UI
                         //db de fatura durumunu taslaktan cıkar
                         for (int cnt = 0; cnt < archiveModelArr.Length; cnt++)
                         {
-                            ArchiveInvoices archive = Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].rowUnique);
+                            ArchiveInvoices archive = Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid);
                             archive.ID = newIdArr[cnt];
                             archive.draftFlag = false;
                             archive.stateNote = EI.StateNote.SEND.ToString();
