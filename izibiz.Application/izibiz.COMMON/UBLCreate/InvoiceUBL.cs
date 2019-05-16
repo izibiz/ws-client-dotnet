@@ -37,7 +37,7 @@ namespace izibiz.COMMON.UBLCreate
             idRef.Attachment.EmbeddedDocumentBinaryObject.filename = BaseUBL.ID.Value.ToString() + ".xslt";
             idRef.Attachment.EmbeddedDocumentBinaryObject.mimeCode = "application/xml";
             //invoice olusturuldugunda xslt invoice olarak verılecegı ıcın
-            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGibInvoice);
+            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Convert.FromBase64String(Xslt.xsltGibInvoice);
 
 
 

@@ -333,8 +333,8 @@
   <data name="selectAlias" xml:space="preserve">
     <value>Please select a receiver mailbox.</value>
   </data>
-  <data name="isDraftFlag" xml:space="preserve">
-    <value>IS DRAFT</value>
+  <data name="fromPortal" xml:space="preserve">
+    <value>FROM PORTAL</value>
   </data>
   <data name="listFilter" xml:space="preserve">
     <value>Get Filter</value>
@@ -459,8 +459,8 @@
   <data name="getSignedXml" xml:space="preserve">
     <value>Get Signed Xml</value>
   </data>
-  <data name="getWaitResponse" xml:space="preserve">
-    <value>Get Wait Response</value>
+  <data name="waitResponse" xml:space="preserve">
+    <value>Wait Response</value>
   </data>
   <data name="hasIdArchiveReportSave" xml:space="preserve">
     <value>Has ıd archivereports succesful save</value>
@@ -506,5 +506,8 @@
   </data>
   <data name="wantGetUserList" xml:space="preserve">
     <value>Do you realy want to get sender alias?This prosses takes mınımum 15 mınıutes.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
 </root>

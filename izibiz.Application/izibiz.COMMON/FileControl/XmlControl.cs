@@ -20,8 +20,7 @@ namespace izibiz.COMMON.FileControl
         /// <returns> XML STRING </returns>
         public static string xmlChangeIdValue(string xmlContent, string newInvId)
         {
-        //    newInvId = DateTime.Now.ToString();
-
+     
             XDocument doc = XDocument.Parse(xmlContent);
 
             foreach (XElement element in doc.Descendants()/*.Where(
@@ -45,9 +44,12 @@ namespace izibiz.COMMON.FileControl
                     break;
                 }
             }
-            //      doc.Save(xmlPath);
+            //yenı id eklenmıs xmli diske kaydet
+    //        doc.Save(saveXmlPath);
             return doc.ToString();
         }
+
+      
 
 
         //public static void PdfSharpConvert(String xmlPath)

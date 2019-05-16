@@ -59,7 +59,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 }
 
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
-                if (invoiceArray != null || invoiceArray.Length > 0)
+                if (invoiceArray != null && invoiceArray.Length > 0)
                 {
                     invoiceMarkRead(invoiceArray);
                     //getirilen faturaları db ye kaydet
@@ -335,9 +335,9 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArr = eInvoiceOIBPortClient.GetInvoice(req);
                 if (invoiceArr == null || invoiceArr.Length != 0)
                 {
-                    for (int cnt = 0; cnt < invoiceArr.Length; cnt++)
+                    foreach(var invoice in invoiceArr)
                     {
-                        FolderControl.saveInvDocContentWithByte(Compress.UncompressFile(invoiceArr[cnt].CONTENT.Value), direction, invoiceArr[cnt].ID, nameof(EI.DocumentType.XML));
+                        FolderControl.saveInvDocContentWithByte(Compress.UncompressFile(invoice.CONTENT.Value), direction, invoice.ID, nameof(EI.DocumentType.XML));
                     }
                     invoiceMarkRead(invoiceArr);
                     if (invoiceArr.Length == 100)

@@ -247,7 +247,7 @@ namespace izibiz.UI
                     }
                     else   //phone numver veya tckn degılse
                     {
-                        if (String.IsNullOrEmpty(item.Text.Trim())) //text null veya bos ise
+                        if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
                         {
                             item.BackColor = Color.IndianRed;
                             valid = false;
@@ -633,7 +633,7 @@ namespace izibiz.UI
                         }
                         invoice.SetSupplierParty(supParty);
 
-                        //CUST PARTY OLUSTURULMASI        
+                        //CUST PARTY OLUSTURULMASI  
                         cusParty = invoice.createParty(txtPartyName.Text, txtStreet.Text, txtVision.Text, txtCity.Text, txtCountry.Text, msdPhone.Text, txtMail.Text);
                         if (msdVknTc.Text.Length == 10) //customer vkn
                         {
@@ -643,6 +643,7 @@ namespace izibiz.UI
                         else  //customer tckn
                         {
                             invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
+                            invoice.addPersonOnParty(cusParty,txtCustName.Text,txtCustSurname.Text);
                         }
                         invoice.SetCustomerParty(cusParty);
 

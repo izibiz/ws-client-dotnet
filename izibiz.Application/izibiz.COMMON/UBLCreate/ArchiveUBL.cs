@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Xsl;
 using Ubl_Invoice_2_1;
 
 namespace izibiz.COMMON.UBLCreate
@@ -25,7 +26,6 @@ namespace izibiz.COMMON.UBLCreate
 
         private void addAdinationalDocRefXslt()
         {
-
             var idRef = new DocumentReferenceType();
             idRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
             idRef.IssueDate = BaseUBL.IssueDate;
@@ -37,21 +37,19 @@ namespace izibiz.COMMON.UBLCreate
             idRef.Attachment.EmbeddedDocumentBinaryObject.filename = BaseUBL.ID.Value.ToString() + ".xslt";
             idRef.Attachment.EmbeddedDocumentBinaryObject.mimeCode = "application/xml";
             //invoice olusturuldugunda xslt invoice olarak verılecegı ıcın
-            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Encoding.UTF8.GetBytes(Xslt.xsltGibArchive);
+            idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Convert.FromBase64String(Xslt.xsltGibArchive);
 
             docRefList.Add(idRef);
             BaseUBL.AdditionalDocumentReference = docRefList.ToArray();
         }
 
-
-
+    
         /// <summary>
         /// e-Arşiv UBL de fatura ye ek olarak eklenecek alanların eklenmesi
         /// </summary>
         private void createArhiveUbl( string archiveSendingType)
         {
-
-            addAdditionalDocumentReference("sendingType", archiveSendingType);
+            addAdditionalDocumentReference(archiveSendingType,"SendingType");
         }
 
         

@@ -90,7 +90,6 @@
     <Compile Include="UBLCreate\InvoiceUBL.cs" />
     <Compile Include="UblSerializer\InvoiceSerializer.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

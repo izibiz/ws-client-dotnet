@@ -15,7 +15,7 @@ namespace izibiz.CONTROLLER
 
         public InvoiceType BaseUBL { get; protected set; }
         private List<InvoiceLineType> listInvLine = new List<InvoiceLineType>();
-       public  List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
+        public List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
 
 
 
@@ -52,7 +52,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        
+
 
 
 
@@ -72,7 +72,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        public void createDelivery(PartyType carrierParty,DateTime despatchDate)
+        public void createDelivery(PartyType carrierParty, DateTime despatchDate)
         {
             var deliveryArr = new[]
             {
@@ -86,7 +86,7 @@ namespace izibiz.CONTROLLER
         }
 
 
-        public void createPaymentMeans(string paymentMeansCode,DateTime paymentDate,string note)
+        public void createPaymentMeans(string paymentMeansCode, DateTime paymentDate, string note)
         {
             var paymentMeans = new[]
             {
@@ -170,31 +170,31 @@ namespace izibiz.CONTROLLER
              string streetName, string visionName, string cityName,
            string country, string telephone, string mail)
         {
-            return new PartyType
+            PartyType party = new PartyType();
+
+            party.WebsiteURI = new WebsiteURIType { Value = "izibiz" };
+
+            party.PartyName = new PartyNameType { Name = new NameType1 { Value = partyName } };
+
+            party.PostalAddress = new AddressType
             {
-                WebsiteURI = new WebsiteURIType { Value = "" },
-
-                PartyName = new PartyNameType { Name = new NameType1 { Value = partyName } },
-
-                PostalAddress = new AddressType
-                {
-                    StreetName = new StreetNameType { Value = streetName },
-                    BuildingName = new BuildingNameType { Value = "" },
-                    BuildingNumber = new BuildingNumberType { Value = "" },
-                    CitySubdivisionName = new CitySubdivisionNameType { Value = visionName },
-                    CityName = new CityNameType { Value = cityName },
-                    PostalZone = new PostalZoneType { Value = "" },
-                    Region = new RegionType { Value = "" },
-                    Country = new CountryType { Name = new NameType1 { Value = country } }
-                },
-
-                Contact = new ContactType
-                {
-                    Telephone = new TelephoneType { Value = telephone },
-                    Telefax = new TelefaxType { Value = "" },
-                    ElectronicMail = new ElectronicMailType { Value = mail }
-                },
+                StreetName = new StreetNameType { Value = streetName },
+                BuildingName = new BuildingNameType { Value = "BuildingName" },
+                BuildingNumber = new BuildingNumberType { Value = "BuildingNumber" },
+                CitySubdivisionName = new CitySubdivisionNameType { Value = visionName },
+                CityName = new CityNameType { Value = cityName },
+                PostalZone = new PostalZoneType { Value = "PostalZone" },
+                Region = new RegionType { Value = "Region" },
+                Country = new CountryType { Name = new NameType1 { Value = country } }
             };
+
+            party.Contact = new ContactType();
+            party.Contact.Telephone = new TelephoneType { Value = telephone };
+            party.Contact.Telefax = new TelefaxType { Value = "Telefax" };
+            party.Contact.ElectronicMail = new ElectronicMailType { Value = mail };
+
+
+            return party;
         }
 
 
@@ -504,16 +504,16 @@ namespace izibiz.CONTROLLER
                     else //yoksa ekle
                     {
                         TaxSubtotalType taxSubtotalNew = new TaxSubtotalType();
-                        taxSubtotalNew.TaxableAmount = new TaxableAmountType { Value = tax.TaxableAmount.Value, currencyID= tax.TaxableAmount.currencyID };
+                        taxSubtotalNew.TaxableAmount = new TaxableAmountType { Value = tax.TaxableAmount.Value, currencyID = tax.TaxableAmount.currencyID };
 
-                        taxSubtotalNew.TaxAmount = new TaxAmountType { Value = line.TaxTotal.TaxAmount.Value , currencyID= tax.TaxAmount.currencyID };                            
+                        taxSubtotalNew.TaxAmount = new TaxAmountType { Value = line.TaxTotal.TaxAmount.Value, currencyID = tax.TaxAmount.currencyID };
                         taxSubtotalNew.Percent = new PercentType1 { Value = tax.Percent.Value };
                         taxSubtotalNew.TaxCategory = new TaxCategoryType();
                         if (tax.Percent.Value == 0)
                         {
-                            taxSubtotalNew.TaxCategory.TaxExemptionReasonCode = new TaxExemptionReasonCodeType { Value ="351"};
-                            taxSubtotalNew.TaxCategory.TaxExemptionReason = new  TaxExemptionReasonType { Value = "ReasonTaxExemtion" };//Reson Value hard code basıldı
-                                                                                                                                     //istenırse formdan da alınabılır
+                            taxSubtotalNew.TaxCategory.TaxExemptionReasonCode = new TaxExemptionReasonCodeType { Value = "351" };
+                            taxSubtotalNew.TaxCategory.TaxExemptionReason = new TaxExemptionReasonType { Value = "ReasonTaxExemtion" };//Reson Value hard code basıldı
+                                                                                                                                       //istenırse formdan da alınabılır
                         }
 
                         taxSubtotalNew.TaxCategory.TaxScheme = new TaxSchemeType();

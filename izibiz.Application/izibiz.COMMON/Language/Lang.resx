@@ -333,8 +333,8 @@
   <data name="selectAlias" xml:space="preserve">
     <value>Lütfen bir alıcı posta kutusu seçiniz.</value>
   </data>
-  <data name="isDraftFlag" xml:space="preserve">
-    <value>TASLAK MI</value>
+  <data name="fromPortal" xml:space="preserve">
+    <value>PORTALDEN MI</value>
   </data>
   <data name="listFilter" xml:space="preserve">
     <value>Filtrele</value>
@@ -459,8 +459,8 @@
   <data name="getSignedXml" xml:space="preserve">
     <value>İmzalı Xml Al</value>
   </data>
-  <data name="getWaitResponse" xml:space="preserve">
-    <value>Yanıt Bekleyenler Al</value>
+  <data name="waitResponse" xml:space="preserve">
+    <value>Yanıt Bekleyenler</value>
   </data>
   <data name="hasIdArchiveReportSave" xml:space="preserve">
     <value>Secili arsiv raporları basarıyla Kaydedıldı</value>
@@ -506,5 +506,8 @@
   </data>
   <data name="wantGetUserList" xml:space="preserve">
     <value>Gönderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu işlem en az 15 dk surer.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Sil</value>
   </data>
 </root>

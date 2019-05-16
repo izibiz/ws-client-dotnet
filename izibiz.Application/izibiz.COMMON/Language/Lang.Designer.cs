@@ -214,6 +214,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sil.
+        /// </summary>
+        public static string delete {
+            get {
+                return ResourceManager.GetString("delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ACIKLAMA.
         /// </summary>
         public static string description {
@@ -430,6 +439,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PORTALDEN MI.
+        /// </summary>
+        public static string fromPortal {
+            get {
+                return ResourceManager.GetString("fromPortal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gib Kullanıcı Listesi Al.
         /// </summary>
         public static string getGibUserList {
@@ -462,15 +480,6 @@ namespace izibiz.COMMON.Language {
         public static string getSignedXml {
             get {
                 return ResourceManager.GetString("getSignedXml", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Yanıt Bekleyenler Al.
-        /// </summary>
-        public static string getWaitResponse {
-            get {
-                return ResourceManager.GetString("getWaitResponse", resourceCulture);
             }
         }
         
@@ -570,15 +579,6 @@ namespace izibiz.COMMON.Language {
         public static string invType {
             get {
                 return ResourceManager.GetString("invType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TASLAK MI.
-        /// </summary>
-        public static string isDraftFlag {
-            get {
-                return ResourceManager.GetString("isDraftFlag", resourceCulture);
             }
         }
         
@@ -1128,6 +1128,15 @@ namespace izibiz.COMMON.Language {
         public static string valueAlreadyAdded {
             get {
                 return ResourceManager.GetString("valueAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yanıt Bekleyenler.
+        /// </summary>
+        public static string waitResponse {
+            get {
+                return ResourceManager.GetString("waitResponse", resourceCulture);
             }
         }
         

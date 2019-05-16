@@ -1,6 +1,7 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.InvoiceRequestSection;
+using izibiz.CONTROLLER.Model;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.DbModels;
 using izibiz.SERVICES.serviceArchive;
@@ -21,6 +22,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
         List<CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent> contentCancelList = new List<CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent>();
+        List<ArchiveInvoiceExtendedContentINVOICE_PROPERTIES> contentPropsList = new List<ArchiveInvoiceExtendedContentINVOICE_PROPERTIES>();
 
 
         public ArchiveController()
@@ -45,7 +47,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
                 req.READ_INCLUDED = false.ToString();
-            
+
                 EARCHIVEINV[] archiveArr = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req).INVOICE;
 
                 if (archiveArr != null && archiveArr.Length > 0)
@@ -256,7 +258,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-       
+
 
 
 
@@ -287,7 +289,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public void addContentCancelArcOnCancelContentArr(string uuid, string id)
+        public void addContentCancelArcOnCancelContentArr(bool reportFlag,string uuid, string id)
         {
             CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent contentCancel = new CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent();
 
@@ -295,6 +297,10 @@ namespace izibiz.CONTROLLER.WebServicesController
             contentCancel.FATURA_ID = id;
             contentCancel.IPTAL_TARIHI = new DateTime();
             contentCancel.EARSIV_CANCEL_EMAIL = Singl.userInformationDalGet.getUserInformation().mail;
+            if (!reportFlag)//raporlanmamıssa
+            {
+                contentCancel.DELETE_FLAG = nameof(EI.ActiveOrPasive.Y);
+            }
 
             contentCancelList.Add(contentCancel);
         }
@@ -378,47 +384,49 @@ namespace izibiz.CONTROLLER.WebServicesController
         }
 
 
+        public void addContentPropertiesToList(ArchiveContentPropertiesModel propertiesModel)
+        {
+
+            EARSIV_PROPERTIES archiveProperties = new EARSIV_PROPERTIES();
+            archiveProperties.SUB_STATUS = SUB_STATUS_VALUE.NEW;
+            //  archiveProperties.SERI = seriName; //burayı dıkkate almıyor neden ?
+            if (propertiesModel.mail != null) //null degılse maıl gonderılmek ıstıyoddur,nullsa ıstemıyo
+            {
+                archiveProperties.EARSIV_EMAIL_FLAG = FLAG_VALUE.Y;
+                archiveProperties.EARSIV_EMAIL = new string[] { propertiesModel.mail };
+            }
+            if (propertiesModel.archiveType == EARSIV_TYPE_VALUE.NORMAL.ToString())
+            {
+                archiveProperties.EARSIV_TYPE = EARSIV_TYPE_VALUE.NORMAL;
+            }
+            else
+            {
+                archiveProperties.EARSIV_TYPE = EARSIV_TYPE_VALUE.INTERNET;
+            }
+
+            ArchiveInvoiceExtendedContentINVOICE_PROPERTIES contentProps = new ArchiveInvoiceExtendedContentINVOICE_PROPERTIES();
+            contentProps.EARSIV_PROPERTIES = archiveProperties;
+            contentProps.EARSIV_FLAG = FLAG_VALUE.Y;
+            contentProps.INVOICE_CONTENT = new base64Binary { Value = Compress.compressFile(propertiesModel.content) };
+
+            contentPropsList.Add(contentProps);
+
+        }
 
 
 
 
-
-        public string sendEarchive(string[] archiveContentArr, string[] archiveType,string seriName,string[] mail)
+        public string sendEarchive()
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
-                ArchiveInvoiceExtendedRequest sendArchieveInvoiceRequest = new ArchiveInvoiceExtendedRequest(); 
+                ArchiveInvoiceExtendedRequest sendArchieveInvoiceRequest = new ArchiveInvoiceExtendedRequest();
                 sendArchieveInvoiceRequest.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
+                sendArchieveInvoiceRequest.ArchiveInvoiceExtendedContent = contentPropsList.ToArray();
 
-                ArchiveInvoiceExtendedContentINVOICE_PROPERTIES[] arrContentProps = new ArchiveInvoiceExtendedContentINVOICE_PROPERTIES[archiveContentArr.Length];
+                contentPropsList.Clear();
 
-                for (int cnt = 0; cnt < archiveContentArr.Length; cnt++)
-                {
-                    EARSIV_PROPERTIES archiveProperties = new EARSIV_PROPERTIES();
-                    archiveProperties.SUB_STATUS = SUB_STATUS_VALUE.NEW;
-                  //  archiveProperties.SERI = seriName; //burayı dıkkate almıyor neden ?
-                    archiveProperties.EARSIV_EMAIL_FLAG = FLAG_VALUE.Y;
-                    archiveProperties.EARSIV_EMAIL = new string[] { mail[cnt] } ;
-                    if (archiveType[cnt] == EARSIV_TYPE_VALUE.NORMAL.ToString())
-                    {
-                        archiveProperties.EARSIV_TYPE = EARSIV_TYPE_VALUE.NORMAL;
-                    }
-                    else
-                    {
-                        archiveProperties.EARSIV_TYPE = EARSIV_TYPE_VALUE.INTERNET;
-                    }
-
-                    ArchiveInvoiceExtendedContentINVOICE_PROPERTIES ContentProps = new ArchiveInvoiceExtendedContentINVOICE_PROPERTIES();
-                    ContentProps.EARSIV_PROPERTIES = archiveProperties;
-                    ContentProps.EARSIV_FLAG = FLAG_VALUE.Y;
-                    ContentProps.INVOICE_CONTENT = new base64Binary { Value = Compress.compressFile(archiveContentArr[cnt]) };
-
-                    arrContentProps[cnt] = ContentProps;
-                }
-
-                sendArchieveInvoiceRequest.ArchiveInvoiceExtendedContent = arrContentProps;
-
-                ArchiveInvoiceExtendedResponse sendInvoiceResponse = eArchiveInvoicePortClient.WriteToArchiveExtended(sendArchieveInvoiceRequest);
+               ArchiveInvoiceExtendedResponse sendInvoiceResponse = eArchiveInvoicePortClient.WriteToArchiveExtended(sendArchieveInvoiceRequest);
                 if (sendInvoiceResponse.ERROR_TYPE != null)
                 {
                     return sendInvoiceResponse.ERROR_TYPE.ERROR_SHORT_DES;

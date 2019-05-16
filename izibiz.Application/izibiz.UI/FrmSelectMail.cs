@@ -1,4 +1,5 @@
-﻿using System;
+﻿using izibiz.CONTROLLER.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,16 +15,14 @@ namespace izibiz.UI
     {
 
 
-        public string[] mailArr;
-        string[] idArr;
+     
+       public List<SendMailModel> sendMailModelList;
 
 
-        public FrmSelectMail(string[] idArr)
+        public FrmSelectMail(List<SendMailModel> sendMailModelList)
         {
             InitializeComponent();
-            this.idArr = new string[idArr.Length];
-            mailArr = new string[idArr.Length];
-            this.idArr = idArr;
+            this.sendMailModelList = sendMailModelList;
         }
 
 
@@ -31,9 +30,10 @@ namespace izibiz.UI
         {
             localizationTextWrite();
 
-            for (int cntId=0;cntId<idArr.Length;cntId++)
+            //datagrid tablosuna ıd degerlerını yazıyoruz ve  maıl default olarak bır deger yazıyoruz
+            foreach(var model in sendMailModelList)
             {
-                gridSendMail.Rows.Add(idArr[cntId], "mail@mail.com");
+                gridSendMail.Rows.Add(model.id, "mail@mail.com");
             }
         }
 
@@ -51,10 +51,12 @@ namespace izibiz.UI
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-          
-            for (int cnt=0;cnt<gridSendMail.RowCount;cnt++)
+            //datagırddekı maıl degerlerını model liste aktarıyoruz
+            int cnt = 0;
+            foreach (var model in sendMailModelList)
             {
-                mailArr[cnt]=gridSendMail.Rows[cnt].Cells["clmsendMail"].Value.ToString();
+                model.mail=gridSendMail.Rows[cnt].Cells["clmsendMail"].Value.ToString();
+                cnt++;
             }
 
             this.DialogResult = DialogResult.OK;

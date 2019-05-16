@@ -87,9 +87,7 @@ namespace izibiz.COMMON.FileControl
 
         public static string createInvUblToXml(InvoiceType createdUBL,string invoiceType)
         {
-
-            var xslt = Encoding.UTF8.GetString(createdUBL.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.Value);
-
+     
             //olusturulan xmli diske kaydediyor
             string xmlPath="";
 

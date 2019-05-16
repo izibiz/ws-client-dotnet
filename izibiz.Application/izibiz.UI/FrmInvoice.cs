@@ -71,7 +71,7 @@ namespace izibiz.UI
             btnTakeInv.Text = Lang.takeInvoice;
             btnIncomingInvGetState.Text = Lang.updateState;
             btnGetRejectedIncomingInv.Text = Lang.getRejected;
-            btnWaitResponseGetInv.Text = Lang.getWaitResponse;
+            btnWaitResponseGetInv.Text = Lang.waitResponse;
             //panelDraftInvoices butonlar
             btnSendDraftInv.Text = Lang.send;
             btnLoadPortal.Text = Lang.loadPortal;
@@ -143,7 +143,7 @@ namespace izibiz.UI
             tableGrid.Columns[EI.Invoice.receiverAlias.ToString()].HeaderText = Lang.toAlias;
 
 
-            tableGrid.Columns[EI.Invoice.draftFlagDesc.ToString()].HeaderText = Lang.isDraftFlag;
+            tableGrid.Columns[EI.Invoice.draftFlagDesc.ToString()].HeaderText = Lang.fromPortal;
 
         }
 
@@ -849,6 +849,7 @@ namespace izibiz.UI
         private void btnFaultyInvoices_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Lang.faulty;
+            panelSentInv.Visible = false;
             btnSentInvAgainSent.Enabled = true;
             try
             {
@@ -878,11 +879,13 @@ namespace izibiz.UI
         }
 
 
-        private IdXmlModel createInvListWithNewId(string seriName, bool isSendWithZip)
+        private IdContentModel createInvListWithNewId(string seriName, bool isSendWithZip)
         {
             //verılmek ıstenen ıd on ekıye aıt yenı ıd serıal arr olusturulur
-            string[] newIdArr = InvoiceIdSetSerilaze.createNewInvId(seriName, tableGrid.SelectedRows.Count);
-            string[] xmlWithNewIdArr = new string[tableGrid.SelectedRows.Count];
+            IdContentModel idContent = new IdContentModel();
+            idContent.newIdArr= InvoiceIdSetSerilaze.createNewInvId(seriName, tableGrid.SelectedRows.Count);
+
+            string[] contentArr = new string[idContent.newIdArr.Length];
 
             int cnt = 0;
             foreach (DataGridViewRow row in tableGrid.SelectedRows)
@@ -895,18 +898,15 @@ namespace izibiz.UI
                 //ıd sı degıstırılmıs contentı ,ıstege gore zıpleyıp, ınvoiceliste aktarıyorum
 
                 string xmlContent = Singl.invoiceControllerGet.getInvoiceContentXml(uuidRow, gridDirection);
-                string rowXmlWithNewId = XmlControl.xmlChangeIdValue(xmlContent, newIdArr[cnt]);
-                Singl.invoiceControllerGet.createInvListWithContent(isSendWithZip, rowXmlWithNewId);
+                contentArr[cnt]= XmlControl.xmlChangeIdValue(xmlContent, idContent.newIdArr[cnt]);
 
-                xmlWithNewIdArr[cnt] = rowXmlWithNewId;
+                Singl.invoiceControllerGet.createInvListWithContent(isSendWithZip, contentArr[cnt]);
 
                 cnt++;
             }
-            IdXmlModel idXmlModel = new IdXmlModel();
-            idXmlModel.idArr = newIdArr;
-            idXmlModel.xmlContentArr = xmlWithNewIdArr;
+            idContent.newXmlContentArr = contentArr;
 
-            return idXmlModel;
+            return idContent;
         }
 
 
@@ -947,7 +947,7 @@ namespace izibiz.UI
                         ////gb  sectır
                         if (frmDialogIdSelectAlias.ShowDialog() == DialogResult.OK)
                         {
-                            IdXmlModel idXmlModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue, isSendWithZip);
+                            IdContentModel ıdContentModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue, isSendWithZip);
 
                             //send inv 
                             if (Singl.invoiceControllerGet.sendInvoice(frmDialogIdSelectAlias.selectedValue, isSendWithZip) == 0)
@@ -957,20 +957,19 @@ namespace izibiz.UI
                                     string uuidRow = tableGrid.SelectedRows[rowCnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
 
                                     Invoices invoice = Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.InvDirection.DRAFT));
-                                    invoice.ID = idXmlModel.idArr[rowCnt];
+                                    invoice.ID = ıdContentModel.newIdArr[rowCnt];
                                     invoice.direction = nameof(EI.InvDirection.OUT);
                                     invoice.stateNote = nameof(EI.StatusType.SEND);
-                                    invoice.folderPath = FolderControl.createInvDocPath(uuidRow, nameof(EI.InvDirection.OUT), nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
-                                    invoice.content = idXmlModel.xmlContentArr[rowCnt];
-
                                     //eskı folderPathdekı dosyayı konumdan sıler
                                     FolderControl.deleteFileFromPath(invoice.folderPath);
-                                    //yenı id eklenmıs xmli diske kaydet
-                                    FolderControl.writeFileOnDiskWithString(invoice.content, invoice.folderPath);
+                                    //yenı folderpath ekle
+                                    invoice.folderPath = FolderControl.createInvDocPath(invoice.ID, nameof(EI.InvDirection.OUT), nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
+                                    //yenı folderpath ile yenı id eklenmıs xmli diske kaydet
+                                    FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[rowCnt], invoice.folderPath);
                                 }
 
                                 //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
-                                Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(idXmlModel.idArr[selectedInvCount - 1]);
+                                Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
 
                                 //db guncellemeleri kaydet
                                 Singl.invoiceDalGet.dbSaveChanges();
@@ -1016,7 +1015,7 @@ namespace izibiz.UI
                 FrmDialogSelectItem frmDialogIdSeriName = new FrmDialogSelectItem(true, "");
                 if (frmDialogIdSeriName.ShowDialog() == DialogResult.OK)
                 {
-                    IdXmlModel idXmlModel = createInvListWithNewId(frmDialogIdSeriName.selectedValue, isSendWithZip); //load ınvda  direction degıstırmıyoruz o yuzden false
+                    IdContentModel ıdContentModel = createInvListWithNewId(frmDialogIdSeriName.selectedValue, isSendWithZip); //load ınvda  direction degıstırmıyoruz o yuzden false
 
                     if (Singl.invoiceControllerGet.loadInvoice(isSendWithZip) == 0) //     int returnCode = 0 / basarılıysa
                     {
@@ -1027,18 +1026,21 @@ namespace izibiz.UI
 
                             //db verileri guncelle
                             Invoices invoice = Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.InvDirection.DRAFT));
-                            invoice.ID = idXmlModel.idArr[rowCnt];
+                            invoice.ID = ıdContentModel.newIdArr[rowCnt];
                             invoice.cDate = DateTime.Now;
                             invoice.status = nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED);
                             invoice.gibStatusCode = -1;
                             invoice.stateNote = nameof(EI.StatusType.LOAD);
-                            invoice.content = idXmlModel.xmlContentArr[rowCnt];
-                            //yenı id eklenmıs xmli diske kaydet
-                            FolderControl.writeFileOnDiskWithString(invoice.content, invoice.folderPath);
+                            //eskı folderPathdekı dosyayı konumdan sıler
+                            FolderControl.deleteFileFromPath(invoice.folderPath);
+                            //yenı ıd ile yenı folderpath olustur
+                            invoice.folderPath = FolderControl.createInvDocPath(invoice.ID, nameof(EI.InvDirection.DRAFT), nameof(EI.DocumentType.XML));
+                            //yenı olust. folderpath ıle xml ı dıske kaydet
+                            FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[rowCnt], invoice.folderPath);
                         }
 
                         //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
-                        Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(idXmlModel.idArr[tableGrid.SelectedRows.Count - 1]);
+                        Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
 
                         //eger islem basarılı ise db guncellemeleri kaydet
                         Singl.invoiceDalGet.dbSaveChanges();

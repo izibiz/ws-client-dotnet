@@ -45,14 +45,13 @@
             this.btnTakeArchiveInv = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
             this.pnlArchive = new System.Windows.Forms.Panel();
+            this.btnFilterArchiveReports = new System.Windows.Forms.Button();
             this.btnGetSignedXmlArchive = new System.Windows.Forms.Button();
             this.pnlArchiveReport = new System.Windows.Forms.Panel();
             this.btnGetSingedXml = new System.Windows.Forms.Button();
             this.pnlDraftArchive = new System.Windows.Forms.Panel();
-            this.btnGetStateDraftArchive = new System.Windows.Forms.Button();
-            this.btnCancelDraftArchive = new System.Windows.Forms.Button();
+            this.btnDeleteDraftArchive = new System.Windows.Forms.Button();
             this.btnSendDraftArchive = new System.Windows.Forms.Button();
-            this.btnFilterArchiveReports = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableArchiveGrid)).BeginInit();
             this.pnlArchive.SuspendLayout();
@@ -167,7 +166,7 @@
             this.btnSendMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendMail.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendMail.Location = new System.Drawing.Point(191, 12);
+            this.btnSendMail.Location = new System.Drawing.Point(564, 11);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(120, 48);
             this.btnSendMail.TabIndex = 30;
@@ -178,11 +177,11 @@
             // tableArchiveGrid
             // 
             this.tableArchiveGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableArchiveGrid.Location = new System.Drawing.Point(185, 347);
+            this.tableArchiveGrid.Location = new System.Drawing.Point(223, 343);
             this.tableArchiveGrid.Name = "tableArchiveGrid";
             this.tableArchiveGrid.ReadOnly = true;
             this.tableArchiveGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableArchiveGrid.Size = new System.Drawing.Size(808, 206);
+            this.tableArchiveGrid.Size = new System.Drawing.Size(808, 222);
             this.tableArchiveGrid.TabIndex = 36;
             this.tableArchiveGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableArchiveGrid_CellClick);
             this.tableArchiveGrid.SelectionChanged += new System.EventHandler(this.tableArchiveGrid_SelectionChanged);
@@ -286,9 +285,25 @@
             this.pnlArchive.Controls.Add(this.btnArchiveCancel);
             this.pnlArchive.Location = new System.Drawing.Point(291, 100);
             this.pnlArchive.Name = "pnlArchive";
-            this.pnlArchive.Size = new System.Drawing.Size(689, 153);
+            this.pnlArchive.Size = new System.Drawing.Size(689, 136);
             this.pnlArchive.TabIndex = 43;
             this.pnlArchive.Visible = false;
+            // 
+            // btnFilterArchiveReports
+            // 
+            this.btnFilterArchiveReports.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnFilterArchiveReports.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnFilterArchiveReports.FlatAppearance.BorderSize = 2;
+            this.btnFilterArchiveReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterArchiveReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFilterArchiveReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFilterArchiveReports.Location = new System.Drawing.Point(12, 82);
+            this.btnFilterArchiveReports.Name = "btnFilterArchiveReports";
+            this.btnFilterArchiveReports.Size = new System.Drawing.Size(128, 47);
+            this.btnFilterArchiveReports.TabIndex = 42;
+            this.btnFilterArchiveReports.Text = "Raporlananlar";
+            this.btnFilterArchiveReports.UseVisualStyleBackColor = false;
+            this.btnFilterArchiveReports.Click += new System.EventHandler(this.btnFilterArchiveReports_Click);
             // 
             // btnGetSignedXmlArchive
             // 
@@ -298,7 +313,7 @@
             this.btnGetSignedXmlArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetSignedXmlArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGetSignedXmlArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetSignedXmlArchive.Location = new System.Drawing.Point(564, 10);
+            this.btnGetSignedXmlArchive.Location = new System.Drawing.Point(194, 11);
             this.btnGetSignedXmlArchive.Name = "btnGetSignedXmlArchive";
             this.btnGetSignedXmlArchive.Size = new System.Drawing.Size(112, 49);
             this.btnGetSignedXmlArchive.TabIndex = 41;
@@ -333,49 +348,32 @@
             // 
             // pnlDraftArchive
             // 
-            this.pnlDraftArchive.Controls.Add(this.btnGetStateDraftArchive);
-            this.pnlDraftArchive.Controls.Add(this.btnCancelDraftArchive);
+            this.pnlDraftArchive.Controls.Add(this.btnDeleteDraftArchive);
             this.pnlDraftArchive.Controls.Add(this.btnSendDraftArchive);
-            this.pnlDraftArchive.Location = new System.Drawing.Point(289, 259);
+            this.pnlDraftArchive.Location = new System.Drawing.Point(289, 241);
             this.pnlDraftArchive.Name = "pnlDraftArchive";
             this.pnlDraftArchive.Size = new System.Drawing.Size(689, 82);
             this.pnlDraftArchive.TabIndex = 46;
             this.pnlDraftArchive.Visible = false;
             // 
-            // btnGetStateDraftArchive
+            // btnDeleteDraftArchive
             // 
-            this.btnGetStateDraftArchive.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnGetStateDraftArchive.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnGetStateDraftArchive.FlatAppearance.BorderSize = 2;
-            this.btnGetStateDraftArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGetStateDraftArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGetStateDraftArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetStateDraftArchive.Location = new System.Drawing.Point(296, 14);
-            this.btnGetStateDraftArchive.Name = "btnGetStateDraftArchive";
-            this.btnGetStateDraftArchive.Size = new System.Drawing.Size(120, 47);
-            this.btnGetStateDraftArchive.TabIndex = 43;
-            this.btnGetStateDraftArchive.Text = "durum sorgula";
-            this.btnGetStateDraftArchive.UseVisualStyleBackColor = false;
-            this.btnGetStateDraftArchive.Click += new System.EventHandler(this.btnGetStateDraftArchive_Click);
-            // 
-            // btnCancelDraftArchive
-            // 
-            this.btnCancelDraftArchive.BackColor = System.Drawing.Color.Crimson;
-            this.btnCancelDraftArchive.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnCancelDraftArchive.FlatAppearance.BorderSize = 2;
-            this.btnCancelDraftArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelDraftArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCancelDraftArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelDraftArchive.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelDraftArchive.Image")));
-            this.btnCancelDraftArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelDraftArchive.Location = new System.Drawing.Point(151, 13);
-            this.btnCancelDraftArchive.Name = "btnCancelDraftArchive";
-            this.btnCancelDraftArchive.Size = new System.Drawing.Size(117, 47);
-            this.btnCancelDraftArchive.TabIndex = 42;
-            this.btnCancelDraftArchive.Text = "Iptal ";
-            this.btnCancelDraftArchive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelDraftArchive.UseVisualStyleBackColor = false;
-            this.btnCancelDraftArchive.Click += new System.EventHandler(this.btnCancelDraftArchive_Click);
+            this.btnDeleteDraftArchive.BackColor = System.Drawing.Color.Crimson;
+            this.btnDeleteDraftArchive.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnDeleteDraftArchive.FlatAppearance.BorderSize = 2;
+            this.btnDeleteDraftArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteDraftArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDeleteDraftArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDeleteDraftArchive.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteDraftArchive.Image")));
+            this.btnDeleteDraftArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteDraftArchive.Location = new System.Drawing.Point(151, 13);
+            this.btnDeleteDraftArchive.Name = "btnDeleteDraftArchive";
+            this.btnDeleteDraftArchive.Size = new System.Drawing.Size(117, 47);
+            this.btnDeleteDraftArchive.TabIndex = 42;
+            this.btnDeleteDraftArchive.Text = "Sil";
+            this.btnDeleteDraftArchive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteDraftArchive.UseVisualStyleBackColor = false;
+            this.btnDeleteDraftArchive.Click += new System.EventHandler(this.btnCancelDraftArchive_Click);
             // 
             // btnSendDraftArchive
             // 
@@ -392,22 +390,6 @@
             this.btnSendDraftArchive.Text = "Gönder";
             this.btnSendDraftArchive.UseVisualStyleBackColor = false;
             this.btnSendDraftArchive.Click += new System.EventHandler(this.btnSendDraftArchive_Click);
-            // 
-            // btnFilterArchiveReports
-            // 
-            this.btnFilterArchiveReports.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnFilterArchiveReports.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnFilterArchiveReports.FlatAppearance.BorderSize = 2;
-            this.btnFilterArchiveReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilterArchiveReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnFilterArchiveReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFilterArchiveReports.Location = new System.Drawing.Point(12, 89);
-            this.btnFilterArchiveReports.Name = "btnFilterArchiveReports";
-            this.btnFilterArchiveReports.Size = new System.Drawing.Size(128, 47);
-            this.btnFilterArchiveReports.TabIndex = 42;
-            this.btnFilterArchiveReports.Text = "Raporlananlar";
-            this.btnFilterArchiveReports.UseVisualStyleBackColor = false;
-            this.btnFilterArchiveReports.Click += new System.EventHandler(this.btnFilterArchiveReports_Click);
             // 
             // FrmArchive
             // 
@@ -461,8 +443,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemDraftArchive;
         private System.Windows.Forms.Panel pnlDraftArchive;
         private System.Windows.Forms.Button btnSendDraftArchive;
-        private System.Windows.Forms.Button btnCancelDraftArchive;
-        private System.Windows.Forms.Button btnGetStateDraftArchive;
+        private System.Windows.Forms.Button btnDeleteDraftArchive;
         private System.Windows.Forms.Button btnGetSignedXmlArchive;
         private System.Windows.Forms.Button btnFilterArchiveReports;
     }

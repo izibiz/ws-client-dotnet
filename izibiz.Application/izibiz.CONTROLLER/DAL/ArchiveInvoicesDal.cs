@@ -69,8 +69,7 @@ namespace izibiz.CONTROLLER.DAL
 
         public void insertArchiveOnDbFromUbl(InvoiceType invoiceUbl, string xmlPath,bool sendMailWhenReporting)
         {
-            var i = System.Text.Encoding.UTF8.GetString(invoiceUbl.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.Value);
-
+           
             ArchiveInvoices createdArchive = new ArchiveInvoices();
 
             createdArchive.rowUnique = invoiceUbl.ID.Value + invoiceUbl.UUID.Value + invoiceUbl.ProfileID.Value;
@@ -89,7 +88,7 @@ namespace izibiz.CONTROLLER.DAL
             {
                 createdArchive.eArchiveType =nameof(EI.ArchiveType.NORMAL);
             }
-            createdArchive.sendingType = invoiceUbl.AdditionalDocumentReference[1].DocumentTypeCode.Value; 
+            createdArchive.sendingType = invoiceUbl.AdditionalDocumentReference[1].DocumentType.Value; 
             createdArchive.senderName = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value;
             createdArchive.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value;  //sıfırıncı ındexde tc ya da vkn tutuluyor         
             createdArchive.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value;
