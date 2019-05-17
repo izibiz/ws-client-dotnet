@@ -520,6 +520,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gib Kullanıcı Listesi.
+        /// </summary>
+        public static string gibUserList {
+            get {
+                return ResourceManager.GetString("gibUserList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secili arsiv raporları basarıyla Kaydedıldı.
         /// </summary>
         public static string hasIdArchiveReportSave {
@@ -1056,6 +1065,15 @@ namespace izibiz.COMMON.Language {
         public static string takeSignedXml {
             get {
                 return ResourceManager.GetString("takeSignedXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Başlık.
+        /// </summary>
+        public static string title {
+            get {
+                return ResourceManager.GetString("title", resourceCulture);
             }
         }
         

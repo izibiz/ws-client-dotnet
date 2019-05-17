@@ -55,7 +55,7 @@ namespace izibiz.UI
             this.Text = Lang.formInvoice;
             lblTitle.Text = Lang.welcome;
             btnHomePage.Text = Lang.homePage;
-            itemGetGibUserList.Text = Lang.getGibUserList;
+            itemListGibUserList.Text = Lang.getGibUserList;
             btnFilterList.Text = Lang.listFilter;
             //panelSendInvoices butonlar
             itemSentInvoice.Text = Lang.sentInvoice;
@@ -78,9 +78,11 @@ namespace izibiz.UI
             rdZip.Text = Lang.withZip;
             rdUnzip.Text = Lang.withUnzip;
             itemDraftInvoice.Text = Lang.draftInvoice;
-            itemDraftNewInvoice.Text = Lang.newInvoice;
-            itemDraftInvoiceList.Text = Lang.listDraftInvoice;
-
+            //yenı fatura
+            itemNewInvoice.Text = Lang.newInvoice;
+            //gib users
+            itemListGibUserList.Text = Lang.gibUserList;
+            itemTakeGibUsers.Text = Lang.getGibUserList;
             #endregion
         }
 
@@ -105,7 +107,7 @@ namespace izibiz.UI
 
 
 
-        private void dataGridChangeColoumnHeaderText()
+        private void dataGridChangeColumnHeaderText()
         {
 
             tableGrid.Columns[EI.Invoice.status.ToString()].HeaderText = Lang.status;
@@ -152,7 +154,7 @@ namespace izibiz.UI
 
 
 
-        private void gridUpdateList(List<Invoices> gridListInv)
+        private void gridUpdateInvoiceList(List<Invoices> gridListInv)
         {
             tableGrid.DataSource = null;
 
@@ -180,7 +182,7 @@ namespace izibiz.UI
 
                 addViewButtonToDatagridView();
                 tableGrid.DataSource = gridListInv;
-                dataGridChangeColoumnHeaderText();
+                dataGridChangeColumnHeaderText();
 
                 //gridde taslak faturaları lısletemıyorsak
                 if (!gridDirection.Equals(nameof(EI.InvDirection.DRAFT)))
@@ -198,6 +200,39 @@ namespace izibiz.UI
             }
         }
 
+
+
+        private void gridUpdateGibUserList(List<GibUsers> gridListGibUsers)
+        {
+            tableGrid.DataSource = null;
+            tableGrid.Columns.Clear();
+
+            if (gridListGibUsers.Count == 0)
+            {
+                MessageBox.Show(Lang.noShowInvoice);
+            }
+            else
+            {
+                tableGrid.DataSource = gridListGibUsers;
+                gridChangeGibUsersColumnHeadersText();
+
+            }
+        }
+
+
+
+        private void gridChangeGibUsersColumnHeadersText()
+        {
+
+            tableGrid.Columns[EI.GibUser.aliasPk.ToString()].HeaderText = Lang.toAlias;
+
+            tableGrid.Columns[EI.GibUser.identifier.ToString()].HeaderText = Lang.id;
+
+            tableGrid.Columns[EI.GibUser.title.ToString()].HeaderText = Lang.title;
+        }
+
+
+
         private void itemSentInvoice_Click(object sender, EventArgs e)
         {
             lblTitle.Text = Lang.sentInvoice;
@@ -211,7 +246,7 @@ namespace izibiz.UI
             try
             {
                 //db den cekılen lısteyı datagride aktar
-                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -249,7 +284,7 @@ namespace izibiz.UI
             try
             {
                 //  db den cekılen lısteyı datagride aktar
-                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.IN)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.IN)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -274,7 +309,7 @@ namespace izibiz.UI
         }
 
 
- 
+
 
 
         private void itemSentInvoiceList_Click(object sender, EventArgs e)
@@ -290,7 +325,7 @@ namespace izibiz.UI
             try
             {
                 //db den cekılen lısteyı datagride aktar
-                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -317,7 +352,8 @@ namespace izibiz.UI
 
 
 
-        private void itemDraftInvoiceList_Click(object sender, EventArgs e)
+
+        private void itemDraftInvoice_Click_1(object sender, EventArgs e)
         {
             lblTitle.Text = Lang.draftInvoice;
             panelSentInv.Visible = false;
@@ -329,7 +365,7 @@ namespace izibiz.UI
             try
             {
                 // db den cekılen lısteyı datagride aktar
-                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -354,9 +390,11 @@ namespace izibiz.UI
         }
 
 
-
-
-
+        private void itemNewInvoice_Click(object sender, EventArgs e)
+        {
+            FrmCreateInvoice frmCreateInvoice = new FrmCreateInvoice(nameof(EI.Invoice.Invoices));
+            frmCreateInvoice.Show();
+        }
 
 
 
@@ -648,7 +686,7 @@ namespace izibiz.UI
                 Singl.invoiceDalGet.dbSaveChanges();
 
                 //ınv listesini  db den datagride getir
-                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(direction));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(direction));
 
                 message = string.Join(Environment.NewLine, validList) + Environment.NewLine + Lang.noInvUpdated;//nolu faturalar guncellendı
                 //  MessageBox.Show(string.Join(Environment.NewLine, validList) + Environment.NewLine + Lang.noInvUpdated); //nolu faturalar guncellendı
@@ -741,7 +779,7 @@ namespace izibiz.UI
                 try
                 {
                     string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-                    string id= tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
+                    string id = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
 
                     //PDF göruntule butonuna tıkladıysa
                     if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewPdf)].Index)
@@ -791,7 +829,7 @@ namespace izibiz.UI
             try
             {
                 //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridUpdateList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.IN)));
+                gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.IN)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -854,7 +892,7 @@ namespace izibiz.UI
             try
             {
                 //db den cekılen gıden faturalardan hatalı olanları   datagride aktar
-                gridUpdateList(Singl.invoiceDalGet.getFaultyInvoices());
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getFaultyInvoices());
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -883,7 +921,7 @@ namespace izibiz.UI
         {
             //verılmek ıstenen ıd on ekıye aıt yenı ıd serıal arr olusturulur
             IdContentModel idContent = new IdContentModel();
-            idContent.newIdArr= InvoiceIdSetSerilaze.createNewInvId(seriName, tableGrid.SelectedRows.Count);
+            idContent.newIdArr = InvoiceIdSetSerilaze.createNewInvId(seriName, tableGrid.SelectedRows.Count);
 
             string[] contentArr = new string[idContent.newIdArr.Length];
 
@@ -898,7 +936,7 @@ namespace izibiz.UI
                 //ıd sı degıstırılmıs contentı ,ıstege gore zıpleyıp, ınvoiceliste aktarıyorum
 
                 string xmlContent = Singl.invoiceControllerGet.getInvoiceContentXml(uuidRow, gridDirection);
-                contentArr[cnt]= XmlControl.xmlChangeIdValue(xmlContent, idContent.newIdArr[cnt]);
+                contentArr[cnt] = XmlControl.xmlChangeIdValue(xmlContent, idContent.newIdArr[cnt]);
 
                 Singl.invoiceControllerGet.createInvListWithContent(isSendWithZip, contentArr[cnt]);
 
@@ -975,7 +1013,7 @@ namespace izibiz.UI
                                 Singl.invoiceDalGet.dbSaveChanges();
 
                                 //datagrıd listesini guncelle
-                                gridUpdateList(Singl.invoiceDalGet.getInvoiceList(gridDirection));
+                                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(gridDirection));
 
                                 MessageBox.Show(Lang.succesful);//"basarılı"
                             }
@@ -1046,7 +1084,7 @@ namespace izibiz.UI
                         Singl.invoiceDalGet.dbSaveChanges();
 
                         // db den cekılen taslak faturaları datagrıdde listele
-                        gridUpdateList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
+                        gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
 
                         MessageBox.Show(Lang.successLoad);//"yukleme basarılı"
 
@@ -1075,7 +1113,7 @@ namespace izibiz.UI
             try
             {
                 //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridUpdateList(Singl.invoiceControllerGet.getInvoiceListOnService(gridDirection));
+                gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(gridDirection));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -1098,7 +1136,7 @@ namespace izibiz.UI
             try
             {
                 //servisten tarih aralığına uygun faturaları getır
-                gridUpdateList(Singl.invoiceDalGet.getInvoiceListOnFilter(gridDirection, timeStartFilter.Value.Date, timeFinishFilter.Value.Date));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceListOnFilter(gridDirection, timeStartFilter.Value.Date, timeFinishFilter.Value.Date));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -1119,7 +1157,7 @@ namespace izibiz.UI
         private void btnTakeInvDraft_Click(object sender, EventArgs e)
         {
             //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-            gridUpdateList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.DRAFT)));
+            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.DRAFT)));
         }
 
 
@@ -1127,7 +1165,7 @@ namespace izibiz.UI
         private void btnTakeInvOut_Click(object sender, EventArgs e)
         {
             //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-            gridUpdateList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.OUT)));
+            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.OUT)));
         }
 
         private void btnIncomingInvGetState_Click_1(object sender, EventArgs e)
@@ -1165,7 +1203,7 @@ namespace izibiz.UI
 
         private void btnGetSendSignedInvoice_Click(object sender, EventArgs e)
         {
-           
+
             try
             {
                 //imzali fatura al
@@ -1177,7 +1215,7 @@ namespace izibiz.UI
                 {
                     MessageBox.Show(Lang.noGetInvoice);//Getirilecek Fatura Bulunmadı
                 }
-           
+
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -1203,7 +1241,7 @@ namespace izibiz.UI
             panelSentInv.Visible = false;
             try
             {
-                gridUpdateList(Singl.invoiceDalGet.getRejectedInvoiceList(gridDirection));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getRejectedInvoiceList(gridDirection));
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -1229,7 +1267,7 @@ namespace izibiz.UI
             panelIncomingInv.Visible = false;
             try
             {
-                gridUpdateList(Singl.invoiceDalGet.getRejectedInvoiceList(gridDirection));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getRejectedInvoiceList(gridDirection));
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -1255,7 +1293,7 @@ namespace izibiz.UI
             panelIncomingInv.Visible = false;
             try
             {
-                gridUpdateList(Singl.invoiceDalGet.getWaitResponseInvoiceList(gridDirection));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getWaitResponseInvoiceList(gridDirection));
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -1277,7 +1315,42 @@ namespace izibiz.UI
         }
 
 
-        private void itemGetGibUserList_Click(object sender, EventArgs e)
+
+
+
+
+        private void itemListGibUserList_Click(object sender, EventArgs e)
+        {
+            panelDraftInv.Visible = false;
+            panelIncomingInv.Visible = false;
+            panelSentInv.Visible = false;
+            btnTakeInv.Visible = false;
+            try
+            {
+                gridUpdateGibUserList(Singl.gibUsersDalGet.getGibUserList());
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+    
+
+        private void itemTakeGibUsers_Click(object sender, EventArgs e)
         {
             panelDraftInv.Visible = false;
             panelIncomingInv.Visible = false;
@@ -1320,12 +1393,6 @@ namespace izibiz.UI
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
-
-
-
-
     }
 
 }

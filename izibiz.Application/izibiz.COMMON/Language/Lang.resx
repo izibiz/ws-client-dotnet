@@ -510,4 +510,10 @@
   <data name="delete" xml:space="preserve">
     <value>Sil</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Başlık</value>
+  </data>
+  <data name="gibUserList" xml:space="preserve">
+    <value>Gib Kullanıcı Listesi</value>
+  </data>
 </root>

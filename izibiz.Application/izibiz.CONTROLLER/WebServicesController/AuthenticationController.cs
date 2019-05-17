@@ -55,22 +55,6 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        public void getGibUserList()
-        {
-            using (new OperationContextScope(authenticationPortClient.InnerChannel))
-            {
-                GetGibUserListRequest req = new GetGibUserListRequest();
-
-                req.REQUEST_HEADER = RequestHeader.getRequestHeaderAuth;
-                req.TYPE = GetGibUserListRequestTYPE.XML;
-                req.DOCUMENT_TYPE = nameof(EI.ProductType.INVOICE);
-
-                GetGibUserListResponse getUserListRes = authenticationPortClient.GetGibUserList(req);
-
-                //servısten cekılen verıyı db ye kaydet
-
-            }
-        }
 
 
 

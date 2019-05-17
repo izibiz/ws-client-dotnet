@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace izibiz.UI
 {
-    public partial class FrmSelectMail : Form
+    public partial class FrmWriteMail : Form
     {
 
 
@@ -19,7 +19,7 @@ namespace izibiz.UI
        public List<SendMailModel> sendMailModelList;
 
 
-        public FrmSelectMail(List<SendMailModel> sendMailModelList)
+        public FrmWriteMail(List<SendMailModel> sendMailModelList)
         {
             InitializeComponent();
             this.sendMailModelList = sendMailModelList;

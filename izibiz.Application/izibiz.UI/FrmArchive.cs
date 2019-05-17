@@ -566,7 +566,7 @@ namespace izibiz.UI
                     sendMailModelList.Add(sendMailModel);
                 }
 
-                FrmSelectMail frmSelectMail = new FrmSelectMail(sendMailModelList);
+                FrmWriteMail frmSelectMail = new FrmWriteMail(sendMailModelList);
                 frmSelectMail.ShowDialog();
 
                 if (frmSelectMail.DialogResult == DialogResult.OK)

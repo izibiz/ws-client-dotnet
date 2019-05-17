@@ -442,7 +442,7 @@ C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj
 C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmInvoice.resources
 C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmLogin.resources
 C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmCreateInvoice.resources
-C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmSelectMail.resources
+C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmWriteMail.resources
 C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.FrmView.resources
 C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.Properties.Resources.resources
 C:\Users\gamze.sahin\Desktop\c\ws-client-dotnet\izibiz.Application\izibiz.UI\obj\Debug\izibiz.UI.csproj.GenerateResource.cache

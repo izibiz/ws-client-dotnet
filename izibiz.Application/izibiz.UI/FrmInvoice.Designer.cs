@@ -33,9 +33,8 @@
             this.itemIncomingInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSentInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDraftInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemDraftInvoiceList = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemDraftNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGetGibUserList = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemListGibUserList = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelIncomingInv = new System.Windows.Forms.Panel();
             this.btnGetRejectedIncomingInv = new System.Windows.Forms.Button();
@@ -61,6 +60,7 @@
             this.btnFilterList = new System.Windows.Forms.Button();
             this.grpFilter = new System.Windows.Forms.GroupBox();
             this.btnHomePage = new System.Windows.Forms.Button();
+            this.itemTakeGibUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
@@ -79,7 +79,9 @@
             this.itemIncomingInvoice,
             this.itemSentInvoice,
             this.itemDraftInvoice,
-            this.itemGetGibUserList});
+            this.itemNewInvoice,
+            this.itemListGibUserList,
+            this.itemTakeGibUsers});
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
             this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.menuInvoice.Name = "menuInvoice";
@@ -112,46 +114,35 @@
             // itemDraftInvoice
             // 
             this.itemDraftInvoice.BackColor = System.Drawing.Color.Teal;
-            this.itemDraftInvoice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemDraftInvoiceList,
-            this.itemDraftNewInvoice});
             this.itemDraftInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.itemDraftInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemDraftInvoice.Name = "itemDraftInvoice";
             this.itemDraftInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.itemDraftInvoice.Size = new System.Drawing.Size(131, 29);
             this.itemDraftInvoice.Text = "Taslak Faturalar";
+            this.itemDraftInvoice.Click += new System.EventHandler(this.itemDraftInvoice_Click_1);
             // 
-            // itemDraftInvoiceList
+            // itemNewInvoice
             // 
-            this.itemDraftInvoiceList.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.itemDraftInvoiceList.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemDraftInvoiceList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
-            this.itemDraftInvoiceList.Name = "itemDraftInvoiceList";
-            this.itemDraftInvoiceList.Size = new System.Drawing.Size(219, 24);
-            this.itemDraftInvoiceList.Text = "Taslak Fatura Listele";
-            this.itemDraftInvoiceList.Click += new System.EventHandler(this.itemDraftInvoiceList_Click);
+            this.itemNewInvoice.BackColor = System.Drawing.Color.Teal;
+            this.itemNewInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemNewInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemNewInvoice.Name = "itemNewInvoice";
+            this.itemNewInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemNewInvoice.Size = new System.Drawing.Size(131, 29);
+            this.itemNewInvoice.Text = "Yeni Fatura";
+            this.itemNewInvoice.Click += new System.EventHandler(this.itemNewInvoice_Click);
             // 
-            // itemDraftNewInvoice
+            // itemListGibUserList
             // 
-            this.itemDraftNewInvoice.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.itemDraftNewInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemDraftNewInvoice.Margin = new System.Windows.Forms.Padding(2, 0, 0, 2);
-            this.itemDraftNewInvoice.Name = "itemDraftNewInvoice";
-            this.itemDraftNewInvoice.Size = new System.Drawing.Size(219, 24);
-            this.itemDraftNewInvoice.Text = "+Yeni Fatura";
-            this.itemDraftNewInvoice.Click += new System.EventHandler(this.itemDraftNewInvoice_Click);
-            // 
-            // itemGetGibUserList
-            // 
-            this.itemGetGibUserList.BackColor = System.Drawing.Color.Teal;
-            this.itemGetGibUserList.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemGetGibUserList.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
-            this.itemGetGibUserList.Name = "itemGetGibUserList";
-            this.itemGetGibUserList.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetGibUserList.Size = new System.Drawing.Size(131, 29);
-            this.itemGetGibUserList.Text = "Gib List Çek";
-            this.itemGetGibUserList.Click += new System.EventHandler(this.itemGetGibUserList_Click);
+            this.itemListGibUserList.BackColor = System.Drawing.Color.Teal;
+            this.itemListGibUserList.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemListGibUserList.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemListGibUserList.Name = "itemListGibUserList";
+            this.itemListGibUserList.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemListGibUserList.Size = new System.Drawing.Size(131, 29);
+            this.itemListGibUserList.Text = "Gib User Listele";
+            this.itemListGibUserList.Click += new System.EventHandler(this.itemListGibUserList_Click);
             // 
             // lblTitle
             // 
@@ -371,7 +362,7 @@
             // tableGrid
             // 
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(176, 165);
+            this.tableGrid.Location = new System.Drawing.Point(213, 165);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -512,6 +503,17 @@
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
+            // itemTakeGibUsers
+            // 
+            this.itemTakeGibUsers.BackColor = System.Drawing.Color.Teal;
+            this.itemTakeGibUsers.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemTakeGibUsers.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemTakeGibUsers.Name = "itemTakeGibUsers";
+            this.itemTakeGibUsers.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemTakeGibUsers.Size = new System.Drawing.Size(131, 29);
+            this.itemTakeGibUsers.Text = "Gib User List Al";
+            this.itemTakeGibUsers.Click += new System.EventHandler(this.itemTakeGibUsers_Click);
+            // 
             // FrmInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -554,10 +556,8 @@
         private System.Windows.Forms.ToolStripMenuItem itemSentInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemDraftInvoice;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ToolStripMenuItem itemDraftInvoiceList;
         private System.Windows.Forms.Panel panelIncomingInv;
         private System.Windows.Forms.Panel panelSentInv;
-        private System.Windows.Forms.ToolStripMenuItem itemDraftNewInvoice;
         private System.Windows.Forms.DataGridView tableGrid;
         private System.Windows.Forms.Button btnIncomingInvGetState;
         private System.Windows.Forms.Button btnAccept;
@@ -580,6 +580,8 @@
         private System.Windows.Forms.Button btnGetRejectedIncomingInv;
         private System.Windows.Forms.Button btnWaitResponseGetInv;
         private System.Windows.Forms.Button btnGetRejectedSendInv;
-        private System.Windows.Forms.ToolStripMenuItem itemGetGibUserList;
+        private System.Windows.Forms.ToolStripMenuItem itemListGibUserList;
+        private System.Windows.Forms.ToolStripMenuItem itemNewInvoice;
+        private System.Windows.Forms.ToolStripMenuItem itemTakeGibUsers;
     }
 }

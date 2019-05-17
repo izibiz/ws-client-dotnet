@@ -510,4 +510,10 @@
   <data name="delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="gibUserList" xml:space="preserve">
+    <value>Gib Users List</value>
+  </data>
 </root>

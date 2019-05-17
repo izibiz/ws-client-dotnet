@@ -24,6 +24,12 @@ namespace izibiz.CONTROLLER.DAL
             return listAlias;
         }
 
+        public List<GibUsers> getGibUserList()
+        {
+            return Singl.databaseContextGet.gibUsers.ToList();
+        }
+
+
 
         public void addGibUser(string aliasPk, string identifier, string title)
         {

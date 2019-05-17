@@ -1,6 +1,6 @@
 ﻿namespace izibiz.UI
 {
-    partial class FrmSelectMail
+    partial class FrmWriteMail
     {
         /// <summary>
         /// Required designer variable.
@@ -79,7 +79,7 @@
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(87, 36);
             this.btnOk.TabIndex = 1;
-            this.btnOk.Text = "button1";
+            this.btnOk.Text = "Tamam";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
