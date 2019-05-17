@@ -32,6 +32,8 @@ namespace izibiz.CONTROLLER.DAL
             && inv.uuid == uuid).First();
         }
 
+
+
         public List<Invoices> getInvoiceList(string direction)
         {
             return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction).ToList();
