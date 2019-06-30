@@ -61,7 +61,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
                 if (invoiceArray != null && invoiceArray.Length > 0)
                 {
-                    invoiceMarkRead(invoiceArray);
+           //         invoiceMarkRead(invoiceArray);
                     //getirilen faturaları db ye kaydet
                     SaveInvoiceArrayToDb(invoiceArray, direction);
                 }
@@ -216,6 +216,8 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 invoiceList.Clear();
 
+
+
                 return eInvoiceOIBPortClient.SendInvoice(req).REQUEST_RETURN.RETURN_CODE;
             }
         }
@@ -322,7 +324,8 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
-                req.INVOICE_SEARCH_KEY.READ_INCLUDED = false;
+                req.INVOICE_SEARCH_KEY.LIMIT = 10;//100 de null value error ?
+                req.INVOICE_SEARCH_KEY.READ_INCLUDED = true; //null value error?
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.INVOICE_SEARCH_KEY.DIRECTION = direction;
@@ -340,10 +343,10 @@ namespace izibiz.CONTROLLER.Web_Services
                         FolderControl.saveInvDocContentWithByte(Compress.UncompressFile(invoice.CONTENT.Value), direction, invoice.ID, nameof(EI.DocumentType.XML));
                     }
                     invoiceMarkRead(invoiceArr);
-                    if (invoiceArr.Length == 100)
-                    {
-                        getInvoiceSingnedXml(direction);
-                    }
+                    //if (invoiceArr.Length == 30)
+                    //{
+                    //    getInvoiceSingnedXml(direction);
+                    //}
                     return true;
                 }
                 return false;

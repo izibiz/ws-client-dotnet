@@ -47,7 +47,6 @@ namespace izibiz.UI
             btnInvoice.Text = Lang.eInvoice;
             btnArchive.Text = Lang.eArchive;
             btnIrsaliye.Text = Lang.eDispatch;
-            btnAyarlar.Text = Lang.settings;
             btnMutabakat.Text = Lang.eReconciliation;
             btnSmm.Text = Lang.eFreeJob;
             btnMüstahsil.Text = Lang.eManufacturer;

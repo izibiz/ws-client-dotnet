@@ -35,6 +35,7 @@
             this.itemDraftInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.itemListGibUserList = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemTakeGibUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelIncomingInv = new System.Windows.Forms.Panel();
             this.btnGetRejectedIncomingInv = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.btnFilterList = new System.Windows.Forms.Button();
             this.grpFilter = new System.Windows.Forms.GroupBox();
             this.btnHomePage = new System.Windows.Forms.Button();
-            this.itemTakeGibUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
@@ -143,6 +143,17 @@
             this.itemListGibUserList.Size = new System.Drawing.Size(131, 29);
             this.itemListGibUserList.Text = "Gib User Listele";
             this.itemListGibUserList.Click += new System.EventHandler(this.itemListGibUserList_Click);
+            // 
+            // itemTakeGibUsers
+            // 
+            this.itemTakeGibUsers.BackColor = System.Drawing.Color.Teal;
+            this.itemTakeGibUsers.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemTakeGibUsers.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemTakeGibUsers.Name = "itemTakeGibUsers";
+            this.itemTakeGibUsers.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemTakeGibUsers.Size = new System.Drawing.Size(131, 29);
+            this.itemTakeGibUsers.Text = "Gib User List Al";
+            this.itemTakeGibUsers.Click += new System.EventHandler(this.itemTakeGibUsers_Click);
             // 
             // lblTitle
             // 
@@ -361,6 +372,7 @@
             // 
             // tableGrid
             // 
+            this.tableGrid.BackgroundColor = System.Drawing.Color.MintCream;
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.Location = new System.Drawing.Point(213, 165);
             this.tableGrid.Name = "tableGrid";
@@ -503,17 +515,6 @@
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
-            // itemTakeGibUsers
-            // 
-            this.itemTakeGibUsers.BackColor = System.Drawing.Color.Teal;
-            this.itemTakeGibUsers.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemTakeGibUsers.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
-            this.itemTakeGibUsers.Name = "itemTakeGibUsers";
-            this.itemTakeGibUsers.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemTakeGibUsers.Size = new System.Drawing.Size(131, 29);
-            this.itemTakeGibUsers.Text = "Gib User List Al";
-            this.itemTakeGibUsers.Click += new System.EventHandler(this.itemTakeGibUsers_Click);
-            // 
             // FrmInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -526,9 +527,9 @@
             this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.menuInvoice);
-            this.Controls.Add(this.panelDraftInv);
             this.Controls.Add(this.panelSentInv);
             this.Controls.Add(this.panelIncomingInv);
+            this.Controls.Add(this.panelDraftInv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuInvoice;
             this.MaximizeBox = false;

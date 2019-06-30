@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
-            this.btnAyarlar = new System.Windows.Forms.Button();
             this.btnInvoice = new System.Windows.Forms.Button();
             this.btnSmm = new System.Windows.Forms.Button();
             this.btnArchive = new System.Windows.Forms.Button();
@@ -37,26 +36,6 @@
             this.btnIrsaliye = new System.Windows.Forms.Button();
             this.btnMutabakat = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnAyarlar
-            // 
-            this.btnAyarlar.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnAyarlar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAyarlar.BackgroundImage")));
-            this.btnAyarlar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAyarlar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAyarlar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAyarlar.FlatAppearance.BorderSize = 0;
-            this.btnAyarlar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnAyarlar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAyarlar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnAyarlar.ForeColor = System.Drawing.Color.White;
-            this.btnAyarlar.Location = new System.Drawing.Point(216, 332);
-            this.btnAyarlar.Name = "btnAyarlar";
-            this.btnAyarlar.Size = new System.Drawing.Size(141, 122);
-            this.btnAyarlar.TabIndex = 20;
-            this.btnAyarlar.Text = "Ayarlar";
-            this.btnAyarlar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAyarlar.UseVisualStyleBackColor = false;
             // 
             // btnInvoice
             // 
@@ -71,7 +50,7 @@
             this.btnInvoice.ForeColor = System.Drawing.Color.Snow;
             this.btnInvoice.Location = new System.Drawing.Point(12, 36);
             this.btnInvoice.Name = "btnInvoice";
-            this.btnInvoice.Size = new System.Drawing.Size(141, 125);
+            this.btnInvoice.Size = new System.Drawing.Size(169, 130);
             this.btnInvoice.TabIndex = 26;
             this.btnInvoice.Text = "E-Fatura";
             this.btnInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -88,7 +67,7 @@
             this.btnSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSmm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSmm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSmm.Location = new System.Drawing.Point(420, 191);
+            this.btnSmm.Location = new System.Drawing.Point(370, 49);
             this.btnSmm.Name = "btnSmm";
             this.btnSmm.Size = new System.Drawing.Size(141, 122);
             this.btnSmm.TabIndex = 21;
@@ -107,9 +86,9 @@
             this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnArchive.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnArchive.Location = new System.Drawing.Point(216, 36);
+            this.btnArchive.Location = new System.Drawing.Point(187, 49);
             this.btnArchive.Name = "btnArchive";
-            this.btnArchive.Size = new System.Drawing.Size(141, 125);
+            this.btnArchive.Size = new System.Drawing.Size(126, 117);
             this.btnArchive.TabIndex = 25;
             this.btnArchive.Text = "E-Arşiv";
             this.btnArchive.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -126,9 +105,9 @@
             this.btnMüstahsil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMüstahsil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMüstahsil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnMüstahsil.Location = new System.Drawing.Point(216, 191);
+            this.btnMüstahsil.Location = new System.Drawing.Point(28, 202);
             this.btnMüstahsil.Name = "btnMüstahsil";
-            this.btnMüstahsil.Size = new System.Drawing.Size(141, 122);
+            this.btnMüstahsil.Size = new System.Drawing.Size(129, 110);
             this.btnMüstahsil.TabIndex = 22;
             this.btnMüstahsil.Text = "E-Müstahsil";
             this.btnMüstahsil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -145,7 +124,7 @@
             this.btnIrsaliye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIrsaliye.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnIrsaliye.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnIrsaliye.Location = new System.Drawing.Point(420, 36);
+            this.btnIrsaliye.Location = new System.Drawing.Point(187, 202);
             this.btnIrsaliye.Name = "btnIrsaliye";
             this.btnIrsaliye.Size = new System.Drawing.Size(141, 125);
             this.btnIrsaliye.TabIndex = 24;
@@ -163,7 +142,7 @@
             this.btnMutabakat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMutabakat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMutabakat.ForeColor = System.Drawing.Color.White;
-            this.btnMutabakat.Location = new System.Drawing.Point(12, 191);
+            this.btnMutabakat.Location = new System.Drawing.Point(370, 202);
             this.btnMutabakat.Name = "btnMutabakat";
             this.btnMutabakat.Size = new System.Drawing.Size(141, 122);
             this.btnMutabakat.TabIndex = 23;
@@ -176,8 +155,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(573, 466);
-            this.Controls.Add(this.btnAyarlar);
+            this.ClientSize = new System.Drawing.Size(553, 397);
             this.Controls.Add(this.btnInvoice);
             this.Controls.Add(this.btnSmm);
             this.Controls.Add(this.btnArchive);
@@ -195,8 +173,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAyarlar;
         private System.Windows.Forms.Button btnInvoice;
         private System.Windows.Forms.Button btnSmm;
         private System.Windows.Forms.Button btnArchive;

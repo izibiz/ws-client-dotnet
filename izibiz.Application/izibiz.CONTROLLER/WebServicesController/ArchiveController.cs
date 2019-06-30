@@ -305,7 +305,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public EARCHIVE_INVOICE[] getArchiveStatus(string[] uuidArr)
+        public string getArchiveStatus(string[] uuidArr)
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -313,8 +313,19 @@ namespace izibiz.CONTROLLER.WebServicesController
                 eArchiveStatus.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
                 eArchiveStatus.UUID = uuidArr;
 
-                return eArchiveInvoicePortClient.GetEArchiveInvoiceStatus(eArchiveStatus).INVOICE;
+                var res= eArchiveInvoicePortClient.GetEArchiveInvoiceStatus(eArchiveStatus);
 
+                if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
+                {
+                    foreach (EARCHIVE_INVOICE arc in res.INVOICE)
+                    {
+                        Singl.archiveInvoiceDalGet.updateArchiveStatus(arc);
+                    }
+                    Singl.archiveInvoiceDalGet.dbSaveChanges();
+                    return null;
+                }
+
+               return res.ERROR_TYPE.ERROR_SHORT_DES;           
             }
         }
 

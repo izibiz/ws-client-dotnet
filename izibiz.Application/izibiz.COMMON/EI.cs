@@ -202,7 +202,7 @@ namespace izibiz.COMMON
         {
             SATIS,
             IADE,
-            TEVKİFAT,
+            TEVKIFAT,
             ISTISNA,
             OZELMATRAH,
             IHRACKAYITLI

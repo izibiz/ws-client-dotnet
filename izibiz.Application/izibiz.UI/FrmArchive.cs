@@ -504,29 +504,6 @@ namespace izibiz.UI
 
 
 
-        private bool getArchiveState(List<string> listUuid)
-        {
-
-            EARCHIVE_INVOICE[] statusResArchiveArr = Singl.archiveControllerGet.getArchiveStatus(listUuid.ToArray());
-            if (statusResArchiveArr != null)
-            {
-                foreach (EARCHIVE_INVOICE arc in statusResArchiveArr)
-                {
-                    Singl.archiveInvoiceDalGet.updateArchiveStatus(arc);
-                }
-
-                Singl.archiveInvoiceDalGet.dbSaveChanges();
-                return true;
-                //string message = string.Join(Environment.NewLine, listUuid) + Environment.NewLine + Lang.noInvUpdated; //nolu faturalar guncellendi           
-                //MessageBox.Show(message);
-            }
-            else//basarısızsa false dondur
-            {
-                return false;
-            }
-
-
-        }
 
         private void btnArchiveGetState_Click(object sender, EventArgs e)
         {
@@ -536,13 +513,16 @@ namespace izibiz.UI
                 listUuid.Add(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
             }
 
-            if (getArchiveState(listUuid)) //işlem basarılıysa
+            string resErrorMessage = Singl.archiveControllerGet.getArchiveStatus(listUuid.ToArray());
+            if (resErrorMessage == null)
             {
-                MessageBox.Show(Lang.succesful);          
+                MessageBox.Show(Lang.succesful);
+                //string message = string.Join(Environment.NewLine, listUuid) + Environment.NewLine + Lang.noInvUpdated; //nolu faturalar guncellendi           
+                //MessageBox.Show(message);
             }
-            else
+            else//basarısızsa false dondur
             {
-                MessageBox.Show(Lang.operationFailed);
+                MessageBox.Show(resErrorMessage);
             }
         }
 
@@ -732,27 +712,7 @@ namespace izibiz.UI
         {
             tableArchiveGrid.Columns[EI.ArchiveReports.reportNo.ToString()].HeaderText = Lang.reportNo;
 
-            tableArchiveGrid.Columns[EI.ArchiveReports.ID.ToString()].HeaderText = Lang.id;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.periodStart.ToString()].HeaderText = Lang.periodStart;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.periodEnd.ToString()].HeaderText = Lang.periodEnd;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.chapter.ToString()].HeaderText = Lang.chapter;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.chapterStart.ToString()].HeaderText = Lang.chapterStart;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.chapterEnd.ToString()].HeaderText = Lang.chapterEnd;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.archiveInvCount.ToString()].HeaderText = Lang.archiveInvCount;
-
             tableArchiveGrid.Columns[EI.ArchiveReports.status.ToString()].HeaderText = Lang.reportState;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.gibSendDate.ToString()].HeaderText = Lang.gibSendDate;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.gibConfirmationDate.ToString()].HeaderText = Lang.gibConfirmationDate;
-
-            tableArchiveGrid.Columns[EI.ArchiveReports.description.ToString()].HeaderText = Lang.description;
 
         }
 
@@ -1060,7 +1020,7 @@ namespace izibiz.UI
                 List<string> listUuid = Singl.archiveInvoiceDalGet.getArchiveUuidList(false);
 
                 //guncel durumunu db ye yazdır
-                getArchiveState(listUuid);
+                Singl.archiveControllerGet.getArchiveStatus(listUuid.ToArray());
 
                 //db den report flag true  olanları getır
                 gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveReportList());

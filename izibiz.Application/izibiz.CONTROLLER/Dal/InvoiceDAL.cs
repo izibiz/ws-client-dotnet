@@ -123,7 +123,7 @@ namespace izibiz.CONTROLLER.DAL
             draftCreatedInv.uuid = invoiceUbl.UUID.Value;
             draftCreatedInv.direction = EI.InvDirection.DRAFT.ToString();
             draftCreatedInv.draftFlag = EI.ActiveOrPasive.N.ToString();  //load ınv yapmadıklarımız flag N
-            draftCreatedInv.issueDate = invoiceUbl.IssueDate.Value;
+            draftCreatedInv.cDate = invoiceUbl.IssueDate.Value;
             draftCreatedInv.profileid = invoiceUbl.ProfileID.Value;
             draftCreatedInv.invoiceType = invoiceUbl.InvoiceTypeCode.Value;
             draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value;

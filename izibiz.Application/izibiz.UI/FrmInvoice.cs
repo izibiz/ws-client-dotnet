@@ -527,7 +527,10 @@ namespace izibiz.UI
                         MessageBox.Show((row.Cells[nameof(EI.Invoice.ID)].Value.ToString()) + " " + Lang.warning8Day);
                     }
                 }
-                else if (row.Cells[nameof(EI.Invoice.status)].Value == null || row.Cells[nameof(EI.Invoice.status)].Value.ToString() != EI.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString())//olan varsa
+                else if (row.Cells[nameof(EI.Invoice.status)].Value == null 
+                    ||  !row.Cells[nameof(EI.Invoice.status)].Value.ToString().Contains(EI.SubStatusType.WAIT_APPLICATION_RESPONSE.ToString())  
+                    || (row.Cells[nameof(EI.Invoice.stateNote)].Value != null  && row.Cells[nameof(EI.Invoice.stateNote)].Value.Equals(nameof(EI.StateNote.SENDRESPONSE)))
+                    )    //olan varsa
                 {
                     if (tableGrid.SelectedRows.Count == 1)  //secılı fatura sayısı 1 ise
                     {
@@ -619,7 +622,8 @@ namespace izibiz.UI
             TimeSpan difference = DateTime.Today - dt;
 
             if (difference.Days > 8   //fatura yuklendıkten sonra 8 gun gecmısse
-                 || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1300) || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1215)
+                 || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1300)
+                 || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1215)
                  || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1230)
                  || Convert.ToInt32(row.Cells[nameof(EI.Invoice.gibStatusCode)].Value) < 1100
                  || Convert.ToInt32(row.Cells[nameof(EI.Invoice.gibStatusCode)].Value) > 1200)
@@ -637,33 +641,22 @@ namespace izibiz.UI
 
             List<string> unvalidList = new List<string>();
             List<string> validList = new List<string>();
-            string uuid;
+            string idRow;
             string message;
 
             for (int i = 0; i < tableGrid.SelectedRows.Count; i++)
             {
-                uuid = tableGrid.Rows[i].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                idRow = tableGrid.Rows[i].Cells[nameof(EI.Invoice.ID)].Value.ToString();
                 if (!statusValidCheck(tableGrid.SelectedRows[i])) //selectedrows valid degıl ise
                 {
-                    unvalidList.Add(uuid);
+                    unvalidList.Add(idRow);
                 }
                 else //valid ise modelde guncelle  
                 {
-                    validList.Add(uuid);
+                    validList.Add(idRow);
 
                     //servisten cekılen ınv responsu modelde guncelle 
-                    Singl.invoiceDalGet.updateInvState(uuid, direction, Singl.invoiceControllerGet.getInvoiceStatatus(uuid));
-                }
-                uuid = tableGrid.Rows[i].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-                if (!statusValidCheck(tableGrid.SelectedRows[i])) //selectedrows valid degıl ise
-                {
-                    unvalidList.Add(uuid);
-                }
-                else //valid ise modelde guncelle
-                {
-                    validList.Add(uuid);
-                    //servisten cekılen ınv responsu modelde guncelle 
-                    Singl.invoiceDalGet.updateInvState(uuid, direction, Singl.invoiceControllerGet.getInvoiceStatatus(uuid));
+                    Singl.invoiceDalGet.updateInvState(idRow, direction, Singl.invoiceControllerGet.getInvoiceStatatus(idRow));
                 }
             }
 
@@ -795,7 +788,7 @@ namespace izibiz.UI
                     //XML göruntule butonuna tıkladıysa
                     else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
                     {
-                        string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
+                          string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
                         if (content != null) //servisten veya dıskten getırlebılmısse
                         {
                             FrmView previewInvoices = new FrmView(content, nameof(EI.Invoice.Invoices));

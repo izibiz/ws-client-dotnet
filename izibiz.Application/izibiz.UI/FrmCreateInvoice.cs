@@ -136,7 +136,7 @@ namespace izibiz.UI
         {
             cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.SATIS.ToString());
             cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.IADE.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.TEVKİFAT.ToString());
+            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.TEVKIFAT.ToString());
             cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.ISTISNA.ToString());
             cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.OZELMATRAH.ToString());
             cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.IHRACKAYITLI.ToString());
