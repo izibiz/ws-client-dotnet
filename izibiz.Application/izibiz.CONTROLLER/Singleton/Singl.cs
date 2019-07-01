@@ -17,13 +17,18 @@ namespace izibiz.CONTROLLER.Singleton
         private static AuthenticationController authenticationController = null;
         private static EInvoiceController invoiceController = null;
         private static ArchiveController archiveController = null;
+        private static DespatchAdviceController despatchController = null;
         private static DatabaseContext databaseContext = null;
         private static InvoiceDal invoiceDal = null;
         private static ArchiveInvoicesDal archiveInvoiceDal = null;
         private static ArchiveReportsDal archiveReportsDal = null;
+        private static DespatchAdviceDal despatchAdviceDal= null;
         private static IdSerilazeDal idSerilazeDal = null;
         private static UserInformationDal userInformationDal = null;
         private static GibUsersDal gibUsersDal = null;
+
+
+
 
         private Singl()
         {      
@@ -99,6 +104,22 @@ namespace izibiz.CONTROLLER.Singleton
         }
 
 
+        public static DespatchAdviceDal DespatchAdviceDalGet
+        {
+            get
+            {
+                if (null == archiveReportsDal)
+                {
+                    despatchAdviceDal = new DespatchAdviceDal();
+                }
+
+                return despatchAdviceDal;
+            }
+        }
+
+
+
+
         public static InvoiceDal invoiceDalGet
         {
             get
@@ -162,6 +183,21 @@ namespace izibiz.CONTROLLER.Singleton
                 }
 
                 return invoiceController;
+            }
+        }
+
+
+
+        public static DespatchAdviceController despatchControllerGet
+        {
+            get
+            {
+                if (null == despatchController)
+                {
+                    despatchController = new DespatchAdviceController();
+                }
+
+                return despatchController;
             }
         }
 

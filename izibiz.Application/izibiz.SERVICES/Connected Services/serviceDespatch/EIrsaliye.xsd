@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:hr="http://www.hr-xml.org/3" xmlns:c="http://schemas.i2i.com/ei/common" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns="http://schemas.i2i.com/ei/wsdl" xmlns:e="http://schemas.i2i.com/ei/entity" xmlns:pck="http://www.efatura.gov.tr/package-namespace" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIrsaliyeWS/EIrsaliye?xsd=1" namespace="http://schemas.i2i.com/ei/common" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIrsaliyeWS/EIrsaliye?xsd=2" namespace="http://schemas.i2i.com/ei/entity" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIrsaliyeWS/EIrsaliye?xsd=3" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xsd:element name="RequestFault" type="e:REQUEST_ERRORType" />
+  <xsd:element name="LoadDespatchAdviceRequest" type="LoadDespatchAdviceRequest" />
+  <xsd:complexType name="LoadDespatchAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="DESPATCHADVICE" type="DESPATCHADVICE" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LoadDespatchAdviceResponse" type="LoadDespatchAdviceResponse" />
+  <xsd:complexType name="LoadDespatchAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SendDespatchAdviceRequest" type="SendDespatchAdviceRequest" />
+  <xsd:complexType name="SendDespatchAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SENDER">
+            <xsd:complexType>
+              <xsd:attribute name="vkn" type="xsd:string" use="optional" />
+              <xsd:attribute name="alias" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="RECEIVER">
+            <xsd:complexType>
+              <xsd:attribute name="vkn" type="xsd:string" use="optional" />
+              <xsd:attribute name="alias" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="ID_ASSIGN_FLAG" type="xsd:boolean" />
+          <xsd:element name="ID_ASSIGN_PREFIX" type="xsd:token" />
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="DESPATCHADVICE" type="DESPATCHADVICE" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SendDespatchAdviceResponse" type="SendDespatchAdviceResponse" />
+  <xsd:complexType name="SendDespatchAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetDespatchAdviceRequest" type="GetDespatchAdviceRequest" />
+  <xsd:complexType name="GetDespatchAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element name="SEARCH_KEY">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="LIMIT" type="xsd:int" />
+                <xsd:element minOccurs="0" name="ID" type="xsd:normalizedString" />
+                <xsd:element minOccurs="0" name="UUID" type="xsd:normalizedString" />
+                <xsd:element minOccurs="0" name="FROM" type="xsd:token" />
+                <xsd:element minOccurs="0" name="TO" type="xsd:token" />
+                <xsd:element minOccurs="0" name="START_DATE" type="xsd:date" />
+                <xsd:element minOccurs="0" name="END_DATE" type="xsd:date" />
+                <xsd:element minOccurs="0" name="READ_INCLUDED" type="xsd:boolean" />
+                <xsd:element minOccurs="0" name="DIRECTION" type="xsd:token" />
+                <xsd:element minOccurs="0" name="SENDER" type="xsd:token" />
+                <xsd:element minOccurs="0" name="RECEIVER" type="xsd:token" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" default="N" name="HEADER_ONLY" type="xsd:token" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetDespatchAdviceResponse" type="GetDespatchAdviceResponse" />
+  <xsd:complexType name="GetDespatchAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="DESPATCHADVICE" type="DESPATCHADVICE" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="MarkDespatchAdviceRequest" type="MarkDespatchAdviceRequest" />
+  <xsd:complexType name="MarkDespatchAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="MARK">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="1" maxOccurs="unbounded" name="DESPATCHADVICEINFO" type="DESPATCHADVICEINFO" />
+              </xsd:sequence>
+              <xsd:attribute name="value">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:token">
+                    <xsd:enumeration value="READ" />
+                    <xsd:enumeration value="UNREAD" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MarkDespatchAdviceResponse" type="MarkDespatchAdviceResponse" />
+  <xsd:complexType name="MarkDespatchAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetDespatchAdviceStatusRequest" type="GetDespatchAdviceStatusRequest" />
+  <xsd:complexType name="GetDespatchAdviceStatusRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="UUID" type="xsd:token" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetDespatchAdviceStatusResponse" type="GetDespatchAdviceStatusResponse" />
+  <xsd:complexType name="GetDespatchAdviceStatusResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="DESPATCHADVICE_STATUS" type="DESPATCHADVICEHEADER" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="LoadReceiptAdviceRequest" type="LoadReceiptAdviceRequest" />
+  <xsd:complexType name="LoadReceiptAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="RECEIPTADVICE" type="RECEIPTADVICE" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LoadReceiptAdviceResponse" type="LoadReceiptAdviceResponse" />
+  <xsd:complexType name="LoadReceiptAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SendReceiptAdviceRequest" type="SendReceiptAdviceRequest" />
+  <xsd:complexType name="SendReceiptAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SENDER">
+            <xsd:complexType>
+              <xsd:attribute name="vkn" type="xsd:string" use="optional" />
+              <xsd:attribute name="alias" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="RECEIVER">
+            <xsd:complexType>
+              <xsd:attribute name="vkn" type="xsd:string" use="optional" />
+              <xsd:attribute name="alias" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="ID_ASSIGN_FLAG" type="xsd:boolean" />
+          <xsd:element name="ID_ASSIGN_PREFIX" type="xsd:token" />
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="RECEIPTADVICE" type="RECEIPTADVICE" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SendReceiptAdviceResponse" type="SendReceiptAdviceResponse" />
+  <xsd:complexType name="SendReceiptAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetReceiptAdviceRequest" type="GetReceiptAdviceRequest" />
+  <xsd:complexType name="GetReceiptAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element name="SEARCH_KEY">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="LIMIT" type="xsd:int" />
+                <xsd:element minOccurs="0" name="ID" type="xsd:normalizedString" />
+                <xsd:element minOccurs="0" name="UUID" type="xsd:normalizedString" />
+                <xsd:element minOccurs="0" name="FROM" type="xsd:token" />
+                <xsd:element minOccurs="0" name="TO" type="xsd:token" />
+                <xsd:element minOccurs="0" name="START_DATE" type="xsd:date" />
+                <xsd:element minOccurs="0" name="END_DATE" type="xsd:date" />
+                <xsd:element minOccurs="0" name="READ_INCLUDED" type="xsd:boolean" />
+                <xsd:element minOccurs="0" name="DIRECTION" type="xsd:token" />
+                <xsd:element minOccurs="0" name="SENDER" type="xsd:token" />
+                <xsd:element minOccurs="0" name="RECEIVER" type="xsd:token" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" default="N" name="HEADER_ONLY" type="xsd:token" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetReceiptAdviceResponse" type="GetReceiptAdviceResponse" />
+  <xsd:complexType name="GetReceiptAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="RECEIPTADVICE" type="RECEIPTADVICE" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetReceiptAdviceStatusRequest" type="GetReceiptAdviceStatusRequest" />
+  <xsd:complexType name="GetReceiptAdviceStatusRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="UUID" type="xsd:token" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetReceiptAdviceStatusResponse" type="GetReceiptAdviceStatusResponse" />
+  <xsd:complexType name="GetReceiptAdviceStatusResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="RECEIPTADVICE_STATUS" type="RECEIPTADVICEHEADER" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="MarkReceiptAdviceRequest" type="MarkReceiptAdviceRequest" />
+  <xsd:complexType name="MarkReceiptAdviceRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="MARK">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="1" maxOccurs="unbounded" name="RECEIPTADVICEINFO" type="RECEIPTADVICEINFO" />
+              </xsd:sequence>
+              <xsd:attribute name="value">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:token">
+                    <xsd:enumeration value="READ" />
+                    <xsd:enumeration value="UNREAD" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MarkReceiptAdviceResponse" type="MarkReceiptAdviceResponse" />
+  <xsd:complexType name="MarkReceiptAdviceResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DESPATCHADVICEINFO">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DESPATCHADVICEHEADER" type="DESPATCHADVICEHEADER" />
+    </xsd:sequence>
+    <xsd:attribute name="ID" type="xsd:token" use="optional" />
+    <xsd:attribute name="UUID" type="xsd:token" use="optional" />
+    <xsd:attribute name="DIRECTION" type="xsd:token" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DESPATCHADVICE">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="DESPATCHADVICEINFO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CONTENT" type="xmime:base64Binary" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DESPATCHADVICEHEADER">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UUID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PROFILEID" type="xsd:token" />
+      <xsd:element minOccurs="0" name="ISSUE_DATE" type="xsd:date" />
+      <xsd:element minOccurs="0" name="ISSUE_TIME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ACTUAL_SHIPMENT_DATE" type="xsd:date" />
+      <xsd:element minOccurs="0" name="ACTUAL_SHIPMENT_TIME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TYPE_CODE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DIRECTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SENDER" type="c:PARTINFO" />
+      <xsd:element minOccurs="0" name="RECEIVER" type="c:PARTINFO" />
+      <xsd:element minOccurs="0" name="STATUS" type="xsd:string" />
+      <xsd:element minOccurs="0" name="STATUS_CODE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="STATUS_DESCRIPTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GIB_STATUS_CODE" type="xsd:int" />
+      <xsd:element minOccurs="0" name="GIB_STATUS_DESCRIPTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RESPONSE_CODE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RESPONSE_DESCRIPTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FILENAME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="HASH" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CDATE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="ENVELOPE_IDENTIFIER" type="xsd:token" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RECEIPTADVICEINFO">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RECEIPTADVICEHEADER" type="RECEIPTADVICEHEADER" />
+    </xsd:sequence>
+    <xsd:attribute name="ID" type="xsd:token" use="optional" />
+    <xsd:attribute name="UUID" type="xsd:token" use="optional" />
+    <xsd:attribute name="DIRECTION" type="xsd:token" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="RECEIPTADVICE">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="RECEIPTADVICEINFO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CONTENT" type="xmime:base64Binary" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RECEIPTADVICEHEADER">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ID" type="xsd:normalizedString" />
+      <xsd:element minOccurs="0" name="UUID" type="xsd:normalizedString" />
+      <xsd:element minOccurs="0" name="PROFILEID" type="xsd:token" />
+      <xsd:element minOccurs="0" name="ISSUE_DATE" type="xsd:date" />
+      <xsd:element minOccurs="0" name="ISSUE_TIME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ACTUAL_SHIPMENT_DATE" type="xsd:date" />
+      <xsd:element minOccurs="0" name="ACTUAL_SHIPMENT_TIME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TYPE_CODE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SENDER" type="c:PARTINFO" />
+      <xsd:element minOccurs="0" name="RECEIVER" type="c:PARTINFO" />
+      <xsd:element minOccurs="0" name="DIRECTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="STATUS" type="xsd:string" />
+      <xsd:element minOccurs="0" name="STATUS_DESCRIPTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="STATUS_CODE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GIB_STATUS_CODE" type="xsd:int" />
+      <xsd:element minOccurs="0" name="GIB_STATUS_DESCRIPTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RESPONSE_CODE" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RESPONSE_DESCRIPTION" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FILENAME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="HASH" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CDATE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="ENVELOPE_IDENTIFIER" type="xsd:token" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ENVELOPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="HEADER">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="SENDER" type="xsd:token" />
+            <xsd:element minOccurs="0" name="RECEIVER" type="xsd:token" />
+            <xsd:element minOccurs="0" name="FROM" type="xsd:token" />
+            <xsd:element minOccurs="0" name="TO" type="xsd:token" />
+            <xsd:element minOccurs="0" name="DATE" type="xsd:date" />
+            <xsd:element minOccurs="0" name="STATUS" type="xsd:string" />
+            <xsd:element minOccurs="0" name="STATUS_DESCRIPTION" type="xsd:string" />
+            <xsd:element minOccurs="0" name="GIB_STATUS_CODE" type="xsd:int" />
+            <xsd:element minOccurs="0" name="GIB_STATUS_DESCRIPTION" type="xsd:string" />
+            <xsd:element minOccurs="0" name="TYPE" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CONTENT" type="xmime:base64Binary" />
+    </xsd:sequence>
+    <xsd:attribute name="INSTANCEIDENTIFIER" type="xsd:token" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="USERTYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="USER" />
+      <xsd:enumeration value="ARCHIVE" />
+      <xsd:enumeration value="EARCHIVE" />
+      <xsd:enumeration value="EARCHIVE_ARCHIVE" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SIGNTYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="HSM_CUSTOMER" />
+      <xsd:enumeration value="HSM_ENTEGRATOR" />
+      <xsd:enumeration value="HSM_CLIENT_SIGNED" />
+      <xsd:enumeration value="TOKEN_CUSTOMER" />
+      <xsd:enumeration value="TOKEN_ENTEGRATOR" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="USERCONTENTTYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PROCESSUSER" />
+      <xsd:enumeration value="CANCELUSER" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="USERCONTENT">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xmime:base64Binary">
+        <xsd:attribute name="USERID" type="xsd:string" />
+        <xsd:attribute default="USER" name="USERTYPE" type="USERTYPE" />
+        <xsd:attribute name="SIGNTYPE" type="SIGNTYPE" use="optional" />
+        <xsd:attribute name="TYPE" type="USERCONTENTTYPE" use="optional" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UserRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="USERCONTENT" type="USERCONTENT" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UserResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="USERCONTENT" type="USERCONTENT" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

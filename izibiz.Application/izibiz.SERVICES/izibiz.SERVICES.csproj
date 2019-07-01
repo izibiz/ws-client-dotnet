@@ -60,6 +60,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\serviceDespatch\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\serviceOib\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -260,6 +265,79 @@
     <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.LogoutResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceDespatch\EIrsaliye.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceDespatch\EIrsaliye1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceDespatch\EIrsaliye2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceDespatch\EIrsaliye3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceDespatch\EIrsaliyeService.wsdl" />
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetDespatchAdviceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetDespatchAdviceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetReceiptAdviceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetReceiptAdviceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.LoadDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.LoadDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.LoadReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.LoadReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.MarkDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.MarkDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.MarkReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.MarkReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceOib\EFaturaOIB1.wsdl" />
     <None Include="Connected Services\serviceOib\EFaturaOIB4.xsd">
       <SubType>Designer</SubType>
@@ -395,6 +473,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\serviceArchive\" />
     <WCFMetadataStorage Include="Connected Services\serviceAuth\" />
+    <WCFMetadataStorage Include="Connected Services\serviceDespatch\" />
     <WCFMetadataStorage Include="Connected Services\serviceOib\" />
   </ItemGroup>
   <ItemGroup>
@@ -429,6 +508,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceArchive\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceDespatch\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceDespatch\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceDespatch\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

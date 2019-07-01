@@ -78,6 +78,12 @@
     <Compile Include="FrmArchive.Designer.cs">
       <DependentUpon>FrmArchive.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDespatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDespatch.Designer.cs">
+      <DependentUpon>FrmDespatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDialogSelectItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="FrmArchive.resx">
       <DependentUpon>FrmArchive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDespatch.resx">
+      <DependentUpon>FrmDespatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDialogSelectItem.resx">
       <DependentUpon>FrmDialogSelectItem.cs</DependentUpon>

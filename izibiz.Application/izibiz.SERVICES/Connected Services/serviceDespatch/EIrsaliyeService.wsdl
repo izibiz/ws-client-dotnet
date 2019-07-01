@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.i2i.com/ei/wsdl" xmlns:gib1="http://gib.gov.tr/vedop3/eFatura" name="EIrsaliyeService" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIrsaliyeWS/EIrsaliye?xsd=4" namespace="http://schemas.i2i.com/ei/wsdl" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="LoadDespatchAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:LoadDespatchAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="LoadDespatchAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:LoadDespatchAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendDespatchAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:SendDespatchAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendDespatchAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:SendDespatchAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDespatchAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:GetDespatchAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetDespatchAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:GetDespatchAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDespatchAdviceStatusRequestMessage">
+    <wsdl:part name="request" element="tns:GetDespatchAdviceStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetDespatchAdviceStatusResponseMessage">
+    <wsdl:part name="response" element="tns:GetDespatchAdviceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkDespatchAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:MarkDespatchAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="MarkDespatchAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:MarkDespatchAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadReceiptAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:LoadReceiptAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="LoadReceiptAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:LoadReceiptAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendReceiptAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:SendReceiptAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendReceiptAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:SendReceiptAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiptAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:GetReceiptAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiptAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:GetReceiptAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiptAdviceStatusRequestMessage">
+    <wsdl:part name="request" element="tns:GetReceiptAdviceStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiptAdviceStatusResponseMessage">
+    <wsdl:part name="response" element="tns:GetReceiptAdviceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkReceiptAdviceRequestMessage">
+    <wsdl:part name="request" element="tns:MarkReceiptAdviceRequest" />
+  </wsdl:message>
+  <wsdl:message name="MarkReceiptAdviceResponseMessage">
+    <wsdl:part name="response" element="tns:MarkReceiptAdviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestFaultMessage">
+    <wsdl:part name="parameters" element="tns:RequestFault" />
+  </wsdl:message>
+  <wsdl:portType name="EIrsaliyeServicePort">
+    <wsdl:operation name="LoadDespatchAdvice">
+      <wsdl:input message="tns:LoadDespatchAdviceRequestMessage" />
+      <wsdl:output message="tns:LoadDespatchAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDespatchAdvice">
+      <wsdl:input message="tns:SendDespatchAdviceRequestMessage" />
+      <wsdl:output message="tns:SendDespatchAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDespatchAdvice">
+      <wsdl:input message="tns:GetDespatchAdviceRequestMessage" />
+      <wsdl:output message="tns:GetDespatchAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDespatchAdviceStatus">
+      <wsdl:input message="tns:GetDespatchAdviceStatusRequestMessage" />
+      <wsdl:output message="tns:GetDespatchAdviceStatusResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkDespatchAdvice">
+      <wsdl:input message="tns:MarkDespatchAdviceRequestMessage" />
+      <wsdl:output message="tns:MarkDespatchAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadReceiptAdvice">
+      <wsdl:input message="tns:LoadReceiptAdviceRequestMessage" />
+      <wsdl:output message="tns:LoadReceiptAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendReceiptAdvice">
+      <wsdl:input message="tns:SendReceiptAdviceRequestMessage" />
+      <wsdl:output message="tns:SendReceiptAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptAdvice">
+      <wsdl:input message="tns:GetReceiptAdviceRequestMessage" />
+      <wsdl:output message="tns:GetReceiptAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptAdviceStatus">
+      <wsdl:input message="tns:GetReceiptAdviceStatusRequestMessage" />
+      <wsdl:output message="tns:GetReceiptAdviceStatusResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkReceiptAdvice">
+      <wsdl:input message="tns:MarkReceiptAdviceRequestMessage" />
+      <wsdl:output message="tns:MarkReceiptAdviceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EIrsaliyeServicePortBinding" type="tns:EIrsaliyeServicePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoadDespatchAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendDespatchAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDespatchAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDespatchAdviceStatus">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MarkDespatchAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LoadReceiptAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendReceiptAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptAdviceStatus">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MarkReceiptAdvice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EIrsaliyeWS">
+    <wsdl:port name="EIrsaliyeServicePort" binding="tns:EIrsaliyeServicePortBinding">
+      <soap:address location="https://efaturatest.izibiz.com.tr:443/EIrsaliyeWS/EIrsaliye" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

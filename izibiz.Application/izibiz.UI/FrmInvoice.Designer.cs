@@ -58,9 +58,9 @@
             this.btnSendDraftInv = new System.Windows.Forms.Button();
             this.timeStartFilter = new System.Windows.Forms.DateTimePicker();
             this.timeFinishFilter = new System.Windows.Forms.DateTimePicker();
-            this.btnFilterList = new System.Windows.Forms.Button();
             this.grpFilter = new System.Windows.Forms.GroupBox();
             this.btnHomePage = new System.Windows.Forms.Button();
+            this.btnFilterList = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
@@ -465,24 +465,6 @@
             this.timeFinishFilter.Size = new System.Drawing.Size(107, 20);
             this.timeFinishFilter.TabIndex = 27;
             // 
-            // btnFilterList
-            // 
-            this.btnFilterList.BackColor = System.Drawing.Color.Lavender;
-            this.btnFilterList.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnFilterList.FlatAppearance.BorderSize = 2;
-            this.btnFilterList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilterList.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnFilterList.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnFilterList.Image = ((System.Drawing.Image)(resources.GetObject("btnFilterList.Image")));
-            this.btnFilterList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilterList.Location = new System.Drawing.Point(25, 81);
-            this.btnFilterList.Name = "btnFilterList";
-            this.btnFilterList.Size = new System.Drawing.Size(107, 27);
-            this.btnFilterList.TabIndex = 28;
-            this.btnFilterList.Text = "Filtrele";
-            this.btnFilterList.UseVisualStyleBackColor = false;
-            this.btnFilterList.Click += new System.EventHandler(this.btnFilterList_Click);
-            // 
             // grpFilter
             // 
             this.grpFilter.Controls.Add(this.btnFilterList);
@@ -514,6 +496,24 @@
             this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
+            // 
+            // btnFilterList
+            // 
+            this.btnFilterList.BackColor = System.Drawing.Color.Lavender;
+            this.btnFilterList.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnFilterList.FlatAppearance.BorderSize = 2;
+            this.btnFilterList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterList.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFilterList.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnFilterList.Image = ((System.Drawing.Image)(resources.GetObject("btnFilterList.Image")));
+            this.btnFilterList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilterList.Location = new System.Drawing.Point(25, 81);
+            this.btnFilterList.Name = "btnFilterList";
+            this.btnFilterList.Size = new System.Drawing.Size(107, 27);
+            this.btnFilterList.TabIndex = 28;
+            this.btnFilterList.Text = "Filtrele";
+            this.btnFilterList.UseVisualStyleBackColor = false;
+            this.btnFilterList.Click += new System.EventHandler(this.btnFilterList_Click);
             // 
             // FrmInvoice
             // 

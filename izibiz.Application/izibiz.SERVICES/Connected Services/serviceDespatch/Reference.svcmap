@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f9a766b9-ef30-4aca-8f73-bcb9ca2733bf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://efaturatest.izibiz.com.tr/EIrsaliyeWS/EIrsaliye?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EIrsaliyeService.wsdl" MetadataType="Wsdl" ID="b56fceb6-9ef6-4e67-b14e-2d7ca09474f4" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIrsaliyeWS/EIrsaliye?wsdl" />
+    <MetadataFile FileName="EIrsaliye.xsd" MetadataType="Schema" ID="ccc3c04e-2f61-4192-b07d-5084aab625fe" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIrsaliyeWS/EIrsaliye?xsd=4" />
+    <MetadataFile FileName="EIrsaliye1.xsd" MetadataType="Schema" ID="16aa65ce-d985-42e3-856f-43cdcd95ac6a" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIrsaliyeWS/EIrsaliye?xsd=1" />
+    <MetadataFile FileName="EIrsaliye2.xsd" MetadataType="Schema" ID="6f4ecbb4-e2b3-49cc-95c1-89c84282df1b" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIrsaliyeWS/EIrsaliye?xsd=2" />
+    <MetadataFile FileName="EIrsaliye3.xsd" MetadataType="Schema" ID="0b2bf04d-8fbc-49ba-9bad-3c8104ff5e5a" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/EIrsaliyeWS/EIrsaliye?xsd=3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

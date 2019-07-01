@@ -182,7 +182,7 @@ namespace izibiz.UI
 
                 addViewButtonToDatagridView();
                 tableGrid.DataSource = gridListInv;
-                dataGridChangeColumnHeaderText();
+
 
                 //gridde taslak faturaları lısletemıyorsak
                 if (!gridDirection.Equals(nameof(EI.InvDirection.DRAFT)))
@@ -785,7 +785,7 @@ namespace izibiz.UI
                             System.Diagnostics.Process.Start(path);
                         }
                     }
-                    //XML göruntule butonuna tıkladıysa
+                    //html göruntule butonuna tıkladıysa
                     else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
                     {
                           string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
