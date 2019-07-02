@@ -561,13 +561,7 @@ namespace izibiz.UI
             else//valid fatura varsa 
             {
                 if (Singl.invoiceControllerGet.sendInvoiceResponse(state, description) == 0)  //yanıt gonderme basarılıysa
-                { 
-                    //db ye yazılan not kaydedılir
-                    using (DatabaseContext databaseContext = new DatabaseContext())
-                    {
-                        Singl.invoiceDalGet.dbSaveChanges(databaseContext);
-                    }
-                    
+                {                   
                     MessageBox.Show(string.Join(Environment.NewLine, verifiredInvList) + Environment.NewLine + Lang.sendResponseToInvoice);//"nolu faturalara yanıt gonderıldı"
                 }
                 else//yanıt gonderme ıslemı basarısızsa
@@ -683,13 +677,7 @@ namespace izibiz.UI
                 }
             }
             else//valid fatura varsa 
-            {
-                //db de yapılan degısıklıklerı kaydet
-                //db ye yazılan not kaydedılir
-                using (DatabaseContext databaseContext = new DatabaseContext())
-                {
-                    Singl.invoiceDalGet.dbSaveChanges(databaseContext);
-                }
+            {              
                 //ınv listesini  db den datagride getir
                 gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(direction));
 
@@ -1014,7 +1002,13 @@ namespace izibiz.UI
                                     invoice.ID = ıdContentModel.newIdArr[rowCnt];
                                     invoice.direction = nameof(EI.InvDirection.OUT);
                                     invoice.stateNote = nameof(EI.StatusType.SEND);
+
+                                    Singl.invoiceDalGet.changeInvIdDirectionStateNote();
+
                                     //eskı folderPathdekı dosyayı konumdan sıler
+                                    //get folderpath
+
+
                                     FolderControl.deleteFileFromPath(invoice.folderPath);
                                     //yenı folderpath ekle
                                     invoice.folderPath = FolderControl.createInvDocPath(invoice.ID, nameof(EI.InvDirection.OUT), nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
@@ -1024,12 +1018,6 @@ namespace izibiz.UI
 
                                 //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
                                 Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
-
-                                //db guncellemeleri kaydet
-                                using (DatabaseContext databaseContext = new DatabaseContext())
-                                {
-                                    Singl.invoiceDalGet.dbSaveChanges(databaseContext);
-                                }
 
                                 //datagrıd listesini guncelle
                                 gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(gridDirection));

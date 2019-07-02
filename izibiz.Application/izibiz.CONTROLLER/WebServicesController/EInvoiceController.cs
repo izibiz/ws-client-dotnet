@@ -106,11 +106,6 @@ namespace izibiz.CONTROLLER.Web_Services
                 Singl.invoiceDalGet.addInvoice(invoice);
             }
 
-            using (DatabaseContext databaseContext=new DatabaseContext())
-            {
-                Singl.invoiceDalGet.dbSaveChanges(databaseContext);
-            }
-
         }
 
 

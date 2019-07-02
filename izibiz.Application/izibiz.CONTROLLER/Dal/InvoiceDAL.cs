@@ -19,55 +19,69 @@ namespace izibiz.CONTROLLER.DAL
 
         public List<Invoices> getFaultyInvoices()
         {
-            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == nameof(EI.InvDirection.OUT)
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.invoices.Where(inv => inv.direction == nameof(EI.InvDirection.OUT)
             && inv.status.Contains(nameof(EI.StatusType.LOAD))
             && inv.status.Contains(nameof(EI.SubStatusType.FAILED))).ToList();
+            }
         }
 
 
 
         public Invoices getInvoice(string uuid, string direction)
         {
-            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.invoices.Where(inv => inv.direction == direction
             && inv.uuid == uuid).First();
+            }
         }
 
 
 
         public List<Invoices> getInvoiceList(string direction)
         {
-            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction).ToList();
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.invoices.Where(inv => inv.direction == direction).ToList();
+            }
         }
 
 
 
         public List<Invoices> getWaitResponseInvoiceList(string direction)
         {
-            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction  && inv.status.Contains(nameof(EI.StatusType.SEND)) &&
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.invoices.Where(inv => inv.direction == direction && inv.status.Contains(nameof(EI.StatusType.SEND)) &&
             inv.status.Contains(nameof(EI.SubStatusType.WAIT_APPLICATION_RESPONSE))).ToList();
+            }
         }
 
 
         public List<Invoices> getRejectedInvoiceList(string direction)
         {
-            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction && inv.status.Contains(nameof(EI.StatusType.REJECTED)) 
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.invoices.Where(inv => inv.direction == direction && inv.status.Contains(nameof(EI.StatusType.REJECTED))
             && inv.status.Contains(nameof(EI.SubStatusType.SUCCEED))).ToList();
+            }
         }
 
 
         public List<Invoices> getInvoiceListOnFilter(string direction,DateTime startTime,DateTime finishTime)
         {
-            return Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction 
-            && inv.cDate <= finishTime 
-            && inv.cDate >=  startTime).ToList();
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.invoices.Where(inv => inv.direction == direction
+            && inv.cDate <= finishTime
+            && inv.cDate >= startTime).ToList();
+            }
         }
 
 
-        public void updateIdInv(string uuid, string direction, string newId)
-        {
-            Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction
-            && inv.uuid == uuid).First().ID = newId;
-        }
+      
 
 
 
@@ -90,26 +104,28 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public void changeInvDirection(string uuid, string direction, string newDirection)
-        {
-            Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction
-            && inv.uuid == uuid).First().direction = newDirection;
-        }
-
 
 
         public void addInvoice(Invoices inv)
         {
-            Singl.databaseContextGet.invoices.Add(inv);
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                dbContext.invoices.Add(inv);
+                dbContext.SaveChanges();
+            }
         }
 
 
         public void deleteInvoices(string uuid, string direction)
         {
-            Invoices invoice = Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                Invoices invoice = dbContext.invoices.Where(inv => inv.direction == direction
             && inv.uuid == uuid).First();
 
-            Singl.databaseContextGet.invoices.Remove(invoice);
+                Singl.databaseContextGet.invoices.Remove(invoice);
+                dbContext.SaveChanges();
+            }
         }
 
         public void dbSaveChanges(DatabaseContext databaseContext)
@@ -123,25 +139,29 @@ namespace izibiz.CONTROLLER.DAL
 
         public void insertDraftInvoice(InvoiceType invoiceUbl, string xmlPath)
         {
-            Invoices draftCreatedInv = new Invoices();
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                Invoices draftCreatedInv = new Invoices();
 
-            draftCreatedInv.ID = invoiceUbl.ID.Value;
-            draftCreatedInv.uuid = invoiceUbl.UUID.Value;
-            draftCreatedInv.direction = EI.InvDirection.DRAFT.ToString();
-            draftCreatedInv.draftFlag = EI.ActiveOrPasive.N.ToString();  //load ınv yapmadıklarımız flag N
-            draftCreatedInv.cDate = invoiceUbl.IssueDate.Value;
-            draftCreatedInv.profileid = invoiceUbl.ProfileID.Value;
-            draftCreatedInv.invoiceType = invoiceUbl.InvoiceTypeCode.Value;
-            draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value;
-            draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value;
-            draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value;  //sıfırıncı ındexde tc ya da vkn tutuluyor         
-            draftCreatedInv.status = "";//simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
-            draftCreatedInv.stateNote = nameof(EI.StateNote.CREATED);
-            draftCreatedInv.draftFlag = nameof(EI.ActiveOrPasive.N);//bizim olusturdugumuz fatura flag N
-            draftCreatedInv.content =File.ReadAllText(xmlPath, Encoding.UTF8);
-            draftCreatedInv.folderPath = xmlPath;
+                draftCreatedInv.ID = invoiceUbl.ID.Value;
+                draftCreatedInv.uuid = invoiceUbl.UUID.Value;
+                draftCreatedInv.direction = EI.InvDirection.DRAFT.ToString();
+                draftCreatedInv.draftFlag = EI.ActiveOrPasive.N.ToString();  //load ınv yapmadıklarımız flag N
+                draftCreatedInv.cDate = invoiceUbl.IssueDate.Value;
+                draftCreatedInv.profileid = invoiceUbl.ProfileID.Value;
+                draftCreatedInv.invoiceType = invoiceUbl.InvoiceTypeCode.Value;
+                draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value;
+                draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value;
+                draftCreatedInv.senderVkn = invoiceUbl.AccountingSupplierParty.Party.PartyIdentification.First().ID.Value;  //sıfırıncı ındexde tc ya da vkn tutuluyor         
+                draftCreatedInv.status = "";//simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
+                draftCreatedInv.stateNote = nameof(EI.StateNote.CREATED);
+                draftCreatedInv.draftFlag = nameof(EI.ActiveOrPasive.N);//bizim olusturdugumuz fatura flag N
+                draftCreatedInv.content = File.ReadAllText(xmlPath, Encoding.UTF8);
+                draftCreatedInv.folderPath = xmlPath;
 
-            Singl.databaseContextGet.invoices.Add(draftCreatedInv);
+                dbContext.invoices.Add(draftCreatedInv);
+                dbContext.SaveChanges();
+            }
         }
 
 
