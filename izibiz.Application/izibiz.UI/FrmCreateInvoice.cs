@@ -24,23 +24,14 @@ namespace izibiz.UI
     {
 
         string senderVknTc;
-        string webUrı;
         string partyName;
-        string streetName;
-        string buldingName;
-        string buldingNumber;
-        string citySubdivisionName;
         string cityName;
-        string postalZone;
-        string country;
         string telephone;
-        string fax;
         string mail;
         string sicilNo;
         string firstName;
         string familyName;
-        string taxScheme;
-
+      
 
         private string invoiceType;
 
@@ -515,22 +506,13 @@ namespace izibiz.UI
         {
             UserInformation user = Singl.userInformationDalGet.getUserInformation();
             senderVknTc = user.vknTckn;
-            webUrı = user.webUri;
             partyName = user.partyName;
-            streetName = user.streetName;
-            buldingName = user.buldingName;
-            buldingNumber = user.buldingNumber;
-            citySubdivisionName = user.citySubdivisionName;
             cityName = user.cityName;
-            postalZone = user.postalZone;
-            country = user.country;
             telephone = user.phone;
-            fax = user.fax;
             mail = user.mail;
             sicilNo = user.sicilNo;
             firstName = user.firstName;
             familyName = user.familyName;
-            taxScheme = user.taxScheme;
         }
 
 
@@ -607,7 +589,7 @@ namespace izibiz.UI
 
                                 //DELİVERY BOLUMU EKLE
                                 //carrıer ekle
-                                PartyType carrierParty = invoice.createParty(txtCarrierTitle.Text, "", "", "", "", "", "");
+                                PartyType carrierParty = invoice.createParty(txtCarrierTitle.Text,"", "", "");
                                 invoice.addPartyIdentification(carrierParty, 1, nameof(EI.VknTckn.VKN), msdDeliveryVkn.Text, "", "", "", "");
                                 invoice.createDelivery(carrierParty, Convert.ToDateTime(datepicDespatchDate.Text));
 
@@ -620,11 +602,11 @@ namespace izibiz.UI
                         PartyType supParty;
                         PartyType cusParty;
                         //SUPPLİER  PARTY OLUSTURULMASI  
-                        supParty = invoice.createParty(partyName, streetName, citySubdivisionName, cityName, country, telephone, mail);
+                        supParty = invoice.createParty(partyName, cityName, telephone, mail);
                         if (senderVknTc.Length == 10) //sup vkn
                         {
                             invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
-                            invoice.addPartyTaxSchemeOnParty(supParty, taxScheme);
+                            invoice.addPartyTaxSchemeOnParty(supParty);
                         }
                         else  //sup tckn .. add person metodu eklenır
                         {
@@ -634,11 +616,11 @@ namespace izibiz.UI
                         invoice.SetSupplierParty(supParty);
 
                         //CUST PARTY OLUSTURULMASI  
-                        cusParty = invoice.createParty(txtPartyName.Text, txtStreet.Text, txtVision.Text, txtCity.Text, txtCountry.Text, msdPhone.Text, txtMail.Text);
+                        cusParty = invoice.createParty(txtPartyName.Text, txtCity.Text, msdPhone.Text, txtMail.Text);
                         if (msdVknTc.Text.Length == 10) //customer vkn
                         {
                             invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.VKN), msdVknTc.Text, "", "", "", "");
-                            invoice.addPartyTaxSchemeOnParty(cusParty, txtTaxScheme.Text);
+                            invoice.addPartyTaxSchemeOnParty(cusParty);
                         }
                         else  //customer tckn
                         {

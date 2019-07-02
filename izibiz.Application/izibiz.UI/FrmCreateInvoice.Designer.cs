@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClear = new System.Windows.Forms.Button();
             this.grpboxTotal = new System.Windows.Forms.GroupBox();
             this.txtNote = new System.Windows.Forms.RichTextBox();
@@ -79,24 +79,16 @@
             this.lblCustName = new System.Windows.Forms.Label();
             this.txtCustName = new System.Windows.Forms.TextBox();
             this.txtMail = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtStreet = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtVision = new System.Windows.Forms.TextBox();
             this.msdVknTc = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.msdPhone = new System.Windows.Forms.MaskedTextBox();
-            this.txtCountry = new System.Windows.Forms.TextBox();
             this.txtDistrict = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtTaxScheme = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.btnCreateUbl = new System.Windows.Forms.Button();
             this.lblArchiveSendingType = new System.Windows.Forms.Label();
@@ -171,7 +163,7 @@
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(251, 93);
             this.txtNote.TabIndex = 4;
-            this.txtNote.Text = "1";
+            this.txtNote.Text = "Not";
             // 
             // label19
             // 
@@ -282,20 +274,20 @@
             // 
             this.gridPrice.AllowUserToAddRows = false;
             this.gridPrice.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
-            this.gridPrice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Gray;
+            this.gridPrice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
             this.gridPrice.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridPrice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridPrice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.gridPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPrice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
@@ -306,30 +298,30 @@
             this.taxAmount,
             this.total});
             this.gridPrice.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridPrice.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridPrice.DefaultCellStyle = dataGridViewCellStyle20;
             this.gridPrice.Location = new System.Drawing.Point(6, 19);
             this.gridPrice.MultiSelect = false;
             this.gridPrice.Name = "gridPrice";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridPrice.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrice.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.gridPrice.RowHeadersVisible = false;
             this.gridPrice.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
+            this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle22;
             this.gridPrice.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.gridPrice.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.gridPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -339,16 +331,16 @@
             // 
             // productName
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            this.productName.DefaultCellStyle = dataGridViewCellStyle14;
             this.productName.HeaderText = "ad";
             this.productName.Name = "productName";
             // 
             // quantity
             // 
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle15.Format = "N0";
+            dataGridViewCellStyle15.NullValue = null;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle15;
             this.quantity.HeaderText = "miktar";
             this.quantity.Name = "quantity";
             // 
@@ -360,9 +352,9 @@
             // 
             // unitPrice
             // 
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle16.Format = "C2";
+            dataGridViewCellStyle16.NullValue = null;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle16;
             this.unitPrice.HeaderText = "birim fiyat";
             this.unitPrice.Name = "unitPrice";
             this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -370,26 +362,26 @@
             // 
             // taxPercent
             // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle17.Format = "N2";
+            dataGridViewCellStyle17.NullValue = null;
+            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle17;
             this.taxPercent.HeaderText = "kdv oranı";
             this.taxPercent.Name = "taxPercent";
             // 
             // taxAmount
             // 
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle18.Format = "N2";
+            dataGridViewCellStyle18.NullValue = null;
+            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle18;
             this.taxAmount.HeaderText = "kdv tutarı";
             this.taxAmount.Name = "taxAmount";
             this.taxAmount.ReadOnly = true;
             // 
             // total
             // 
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.total.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle19.Format = "N2";
+            dataGridViewCellStyle19.NullValue = null;
+            this.total.DefaultCellStyle = dataGridViewCellStyle19;
             this.total.HeaderText = "toplam";
             this.total.Name = "total";
             this.total.ReadOnly = true;
@@ -439,7 +431,7 @@
             this.txtPartyName.Name = "txtPartyName";
             this.txtPartyName.Size = new System.Drawing.Size(109, 20);
             this.txtPartyName.TabIndex = 6;
-            this.txtPartyName.Text = "jkhjkh";
+            this.txtPartyName.Text = "Fatura Gonderme";
             // 
             // label1
             // 
@@ -520,24 +512,16 @@
             this.grpReceiver.Controls.Add(this.lblCustName);
             this.grpReceiver.Controls.Add(this.txtCustName);
             this.grpReceiver.Controls.Add(this.txtMail);
-            this.grpReceiver.Controls.Add(this.label22);
-            this.grpReceiver.Controls.Add(this.txtStreet);
-            this.grpReceiver.Controls.Add(this.label21);
-            this.grpReceiver.Controls.Add(this.txtVision);
             this.grpReceiver.Controls.Add(this.msdVknTc);
             this.grpReceiver.Controls.Add(this.label9);
             this.grpReceiver.Controls.Add(this.label8);
-            this.grpReceiver.Controls.Add(this.label7);
             this.grpReceiver.Controls.Add(this.label6);
             this.grpReceiver.Controls.Add(this.label5);
-            this.grpReceiver.Controls.Add(this.label4);
             this.grpReceiver.Controls.Add(this.label3);
             this.grpReceiver.Controls.Add(this.label2);
             this.grpReceiver.Controls.Add(this.msdPhone);
-            this.grpReceiver.Controls.Add(this.txtCountry);
             this.grpReceiver.Controls.Add(this.txtDistrict);
             this.grpReceiver.Controls.Add(this.txtCity);
-            this.grpReceiver.Controls.Add(this.txtTaxScheme);
             this.grpReceiver.Controls.Add(this.txtTitle);
             this.grpReceiver.Location = new System.Drawing.Point(15, 14);
             this.grpReceiver.Name = "grpReceiver";
@@ -561,7 +545,7 @@
             this.txtCustSurname.Name = "txtCustSurname";
             this.txtCustSurname.Size = new System.Drawing.Size(109, 20);
             this.txtCustSurname.TabIndex = 19;
-            this.txtCustSurname.Text = "jhhjk";
+            this.txtCustSurname.Text = "Demir";
             // 
             // lblCustName
             // 
@@ -578,49 +562,15 @@
             this.txtCustName.Name = "txtCustName";
             this.txtCustName.Size = new System.Drawing.Size(109, 20);
             this.txtCustName.TabIndex = 16;
-            this.txtCustName.Text = "khkjhkjh";
+            this.txtCustName.Text = "Ahmet";
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(677, 64);
+            this.txtMail.Location = new System.Drawing.Point(489, 64);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(109, 20);
             this.txtMail.TabIndex = 14;
-            this.txtMail.Text = "jkhkh@gmail.com";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(426, 71);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(36, 13);
-            this.label22.TabIndex = 13;
-            this.label22.Text = "sokak";
-            // 
-            // txtStreet
-            // 
-            this.txtStreet.Location = new System.Drawing.Point(488, 64);
-            this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(109, 20);
-            this.txtStreet.TabIndex = 12;
-            this.txtStreet.Text = "jkkhh";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(426, 35);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(43, 13);
-            this.label21.TabIndex = 11;
-            this.label21.Text = "mahalle";
-            // 
-            // txtVision
-            // 
-            this.txtVision.Location = new System.Drawing.Point(488, 31);
-            this.txtVision.Name = "txtVision";
-            this.txtVision.Size = new System.Drawing.Size(109, 20);
-            this.txtVision.TabIndex = 8;
-            this.txtVision.Text = "jkhk";
+            this.txtMail.Text = "example@gmail.com";
             // 
             // msdVknTc
             // 
@@ -635,7 +585,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(615, 67);
+            this.label9.Location = new System.Drawing.Point(427, 67);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 3;
@@ -644,20 +594,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(615, 31);
+            this.label8.Location = new System.Drawing.Point(427, 31);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 3;
             this.label8.Text = "Telefon";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(232, 108);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Ülke";
             // 
             // label6
             // 
@@ -677,19 +618,10 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "İl";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(605, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Vergi Dairesi";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(422, 108);
+            this.label3.Location = new System.Drawing.Point(228, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 3;
@@ -706,7 +638,7 @@
             // 
             // msdPhone
             // 
-            this.msdPhone.Location = new System.Drawing.Point(677, 28);
+            this.msdPhone.Location = new System.Drawing.Point(489, 28);
             this.msdPhone.Mask = "(999) 000-0000";
             this.msdPhone.Name = "msdPhone";
             this.msdPhone.Size = new System.Drawing.Size(109, 20);
@@ -714,21 +646,13 @@
             this.msdPhone.Text = "1111111111";
             this.msdPhone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // txtCountry
-            // 
-            this.txtCountry.Location = new System.Drawing.Point(294, 101);
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(109, 20);
-            this.txtCountry.TabIndex = 0;
-            this.txtCountry.Text = "kjhkjh";
-            // 
             // txtDistrict
             // 
             this.txtDistrict.Location = new System.Drawing.Point(294, 64);
             this.txtDistrict.Name = "txtDistrict";
             this.txtDistrict.Size = new System.Drawing.Size(109, 20);
             this.txtDistrict.TabIndex = 0;
-            this.txtDistrict.Text = "jhkhk";
+            this.txtDistrict.Text = "Kadıkoy";
             // 
             // txtCity
             // 
@@ -737,23 +661,15 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(109, 20);
             this.txtCity.TabIndex = 0;
-            this.txtCity.Text = "jkhkjh";
-            // 
-            // txtTaxScheme
-            // 
-            this.txtTaxScheme.Location = new System.Drawing.Point(677, 101);
-            this.txtTaxScheme.Name = "txtTaxScheme";
-            this.txtTaxScheme.Size = new System.Drawing.Size(109, 20);
-            this.txtTaxScheme.TabIndex = 0;
-            this.txtTaxScheme.Text = "kjhkjhk";
+            this.txtCity.Text = "İstanbul";
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(488, 105);
+            this.txtTitle.Location = new System.Drawing.Point(294, 101);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(109, 20);
             this.txtTitle.TabIndex = 0;
-            this.txtTitle.Text = "ıjıjı";
+            this.txtTitle.Text = "Tüccar";
             // 
             // btnCreateUbl
             // 
@@ -1086,27 +1002,19 @@
         private System.Windows.Forms.GroupBox grpReceiver;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox msdPhone;
-        private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.TextBox txtDistrict;
         private System.Windows.Forms.TextBox txtCity;
-        private System.Windows.Forms.TextBox txtTaxScheme;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Button btnAddRow;
         private System.Windows.Forms.MaskedTextBox msdVknTc;
         private System.Windows.Forms.GroupBox grpInvInformation;
         private System.Windows.Forms.TextBox txtPartyName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtVision;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtStreet;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Button btnCreateUbl;
         private System.Windows.Forms.DataGridView gridPrice;

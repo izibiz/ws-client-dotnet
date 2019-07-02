@@ -166,9 +166,7 @@ namespace izibiz.CONTROLLER
 
 
 
-        public PartyType createParty(string partyName,
-             string streetName, string visionName, string cityName,
-           string country, string telephone, string mail)
+        public PartyType createParty(string partyName,string cityName,string telephone, string mail)
         {
             PartyType party = new PartyType();
 
@@ -178,14 +176,14 @@ namespace izibiz.CONTROLLER
 
             party.PostalAddress = new AddressType
             {
-                StreetName = new StreetNameType { Value = streetName },
+                StreetName = new StreetNameType { Value = "exampleStreet" },
                 BuildingName = new BuildingNameType { Value = "BuildingName" },
                 BuildingNumber = new BuildingNumberType { Value = "BuildingNumber" },
-                CitySubdivisionName = new CitySubdivisionNameType { Value = visionName },
+                CitySubdivisionName = new CitySubdivisionNameType { Value = "exampleVsion" },
                 CityName = new CityNameType { Value = cityName },
                 PostalZone = new PostalZoneType { Value = "PostalZone" },
                 Region = new RegionType { Value = "Region" },
-                Country = new CountryType { Name = new NameType1 { Value = country } }
+                Country = new CountryType { Name = new NameType1 { Value = "Turkey" } }
             };
 
             party.Contact = new ContactType();
@@ -199,11 +197,11 @@ namespace izibiz.CONTROLLER
 
 
 
-        public void addPartyTaxSchemeOnParty(PartyType party, string taxScheme)
+        public void addPartyTaxSchemeOnParty(PartyType party)
         {
             party.PartyTaxScheme = new PartyTaxSchemeType
             {
-                TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = taxScheme } }
+                TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "exampleTax" } }
             };
         }
 
