@@ -19,8 +19,8 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
             {
                 LIMIT = 10,
                 LIMITSpecified =true,
-                READ_INCLUDED = true,
-                READ_INCLUDEDSpecified = true,              
+                READ_INCLUDED = false,
+                READ_INCLUDEDSpecified = false,              
             };
         }
 

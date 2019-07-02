@@ -15,6 +15,7 @@ using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Xsl;
 using Ubl_Invoice_2_1;
+using izibiz.COMMON.Language;
 
 namespace izibiz.UI
 {
@@ -33,6 +34,7 @@ namespace izibiz.UI
 
         private void PreviewInvoices_Load(object sender, EventArgs e)
         {
+            localizationItemTextWrite();
             try
             {
                 if (invoiceType == EI.Invoice.ArchiveInvoices.ToString())
@@ -40,7 +42,7 @@ namespace izibiz.UI
                     viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibArchive, xmlContent);
                 }
                 else if (invoiceType == EI.Invoice.Invoices.ToString())
-                { 
+                {
                     viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibInvoice, xmlContent);
                 }
                 else if (invoiceType == EI.ArchiveReports.ArchiveReports.ToString())
@@ -56,6 +58,10 @@ namespace izibiz.UI
         }
 
 
+        private void localizationItemTextWrite()
+        {
+            this.Text = Lang.formView;
+        }
 
 
 

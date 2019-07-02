@@ -259,7 +259,7 @@ namespace izibiz.CONTROLLER
         }
 
 
-        public void addInvoiceLine(string invId, string currencyID, string note, string unitCode, decimal quantity, decimal lineExtensionAmount, decimal taxAmount,
+        public void addInvoiceLine(string invId, string currencyID,string unitCode, decimal quantity, decimal lineExtensionAmount, decimal taxAmount,
             decimal taxableAmount, decimal percent, string itemName, decimal price)
         {
 
@@ -267,7 +267,7 @@ namespace izibiz.CONTROLLER
             {
 
                 ID = new IDType { Value = invId },
-                Note = new NoteType[] { new NoteType { Value = note } },
+                Note = new NoteType[] { new NoteType { Value = "Note" } },
                 InvoicedQuantity = new InvoicedQuantityType { unitCode = unitCode, Value = quantity },
                 LineExtensionAmount = new LineExtensionAmountType { currencyID = currencyID, Value = lineExtensionAmount },
                 AllowanceCharge = new[]

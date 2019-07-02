@@ -127,7 +127,7 @@
     <value>Again Sent</value>
   </data>
   <data name="cDate" xml:space="preserve">
-    <value>CREATED DATE</value>
+    <value>Created Date</value>
   </data>
   <data name="chooseLanguage" xml:space="preserve">
     <value>Choose Language</value>
@@ -151,7 +151,7 @@
     <value>E-Manufacturers</value>
   </data>
   <data name="envelopeIdentifier" xml:space="preserve">
-    <value>ENVELOPE ID</value>
+    <value>Envelope Id</value>
   </data>
   <data name="eReconciliation" xml:space="preserve">
     <value>E-Reconciliation</value>
@@ -172,25 +172,25 @@
     <value>İzibiz Desktop | Show  E-İnvoice Status</value>
   </data>
   <data name="fromAlias" xml:space="preserve">
-    <value>FROM ALIAS</value>
+    <value>From Alias</value>
   </data>
   <data name="takeInvoice" xml:space="preserve">
     <value>Get Invoice</value>
   </data>
   <data name="gibSatusDescription" xml:space="preserve">
-    <value>GİB STATUS DESC</value>
+    <value>Gib Send Date</value>
   </data>
   <data name="gibStatusCode" xml:space="preserve">
-    <value>GİB STATUS CODE</value>
+    <value>Gib Status Code</value>
   </data>
   <data name="id" xml:space="preserve">
-    <value>ID</value>
+    <value>Id</value>
   </data>
   <data name="incomingInvoice" xml:space="preserve">
     <value>Incoming Invoice</value>
   </data>
   <data name="issueDate" xml:space="preserve">
-    <value>ISSUE DATE</value>
+    <value>Issue Date</value>
   </data>
   <data name="listDraftInvoice" xml:space="preserve">
     <value>Draft Invoice List</value>
@@ -220,7 +220,7 @@
     <value>Preview</value>
   </data>
   <data name="profileid" xml:space="preserve">
-    <value>PROFILEID</value>
+    <value>Profile Id</value>
   </data>
   <data name="refresh" xml:space="preserve">
     <value>Refresh</value>
@@ -229,7 +229,7 @@
     <value>Reject</value>
   </data>
   <data name="senderVkn" xml:space="preserve">
-    <value>SENDER VKN/TCKN</value>
+    <value>Sender VKN/TCKN</value>
   </data>
   <data name="sentInvoice" xml:space="preserve">
     <value>Sent Invoice</value>
@@ -241,22 +241,22 @@
     <value>Show Password</value>
   </data>
   <data name="status" xml:space="preserve">
-    <value>STATUS</value>
+    <value>Status</value>
   </data>
   <data name="statusDesc" xml:space="preserve">
-    <value>STATUS DESC</value>
+    <value>Status Description</value>
   </data>
   <data name="succesChangeState" xml:space="preserve">
     <value>Successful Change State</value>
   </data>
   <data name="supplier" xml:space="preserve">
-    <value>SUPPLİER</value>
+    <value>Supplier</value>
   </data>
   <data name="toAlias" xml:space="preserve">
-    <value>TO ALIAS</value>
+    <value>To Alias</value>
   </data>
   <data name="type" xml:space="preserve">
-    <value>TYPE</value>
+    <value>Type</value>
   </data>
   <data name="unsuccesChangeState" xml:space="preserve">
     <value>Unsuccessful Change State</value>
@@ -268,7 +268,7 @@
     <value>Username</value>
   </data>
   <data name="uuid" xml:space="preserve">
-    <value>UUID</value>
+    <value>uuid</value>
   </data>
   <data name="warning" xml:space="preserve">
     <value>Warning</value>
@@ -286,7 +286,7 @@
     <value>Please Write  Description</value>
   </data>
   <data name="invType" xml:space="preserve">
-    <value>INVOİCE TYPE</value>
+    <value>Invoice Type</value>
   </data>
   <data name="dbFault" xml:space="preserve">
     <value>There is problem in Database!</value>
@@ -334,7 +334,7 @@
     <value>Please select a receiver mailbox.</value>
   </data>
   <data name="fromPortal" xml:space="preserve">
-    <value>FROM PORTAL</value>
+    <value>From Portal</value>
   </data>
   <data name="listFilter" xml:space="preserve">
     <value>Get Filter</value>
@@ -379,61 +379,61 @@
     <value>E Archive Invoices  Report List</value>
   </data>
   <data name="currencyCode" xml:space="preserve">
-    <value>CURRENCY CODE</value>
+    <value>Currency Code</value>
   </data>
   <data name="eArchiveType" xml:space="preserve">
-    <value>E ARCHIVE TYPE</value>
+    <value>E Archive Type</value>
   </data>
   <data name="reportState" xml:space="preserve">
-    <value>REPORT STATE</value>
+    <value>Report State</value>
   </data>
   <data name="senderName" xml:space="preserve">
-    <value>SENDER NAME</value>
+    <value>Sender Name</value>
   </data>
   <data name="sendingType" xml:space="preserve">
-    <value>SENDING TYPE</value>
+    <value>Sending Type</value>
   </data>
   <data name="statusCode" xml:space="preserve">
-    <value>STATUS CODE</value>
+    <value>Status Code</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
   <data name="mailStatus" xml:space="preserve">
-    <value>MAIL STATUS</value>
+    <value>Mail Status</value>
   </data>
   <data name="archiveInvCount" xml:space="preserve">
-    <value>ARCHIVE INCOICE COUNT</value>
+    <value>Archive Invoice Count</value>
   </data>
   <data name="chapter" xml:space="preserve">
-    <value>CHAPTER</value>
+    <value>Chapter</value>
   </data>
   <data name="chapterEnd" xml:space="preserve">
-    <value>CHAPTER END</value>
+    <value>Chapter End</value>
   </data>
   <data name="chapterStart" xml:space="preserve">
-    <value>CHAPTER START</value>
+    <value>Chapter Start</value>
   </data>
   <data name="description" xml:space="preserve">
-    <value>DESCRIPTION</value>
+    <value>Description</value>
   </data>
   <data name="gibConfirmationDate" xml:space="preserve">
-    <value>GIB CONFIRMATION DATE</value>
+    <value>Gib Confirmation Date</value>
   </data>
   <data name="gibSendDate" xml:space="preserve">
-    <value>GİB SEND DATE</value>
+    <value>Gib Send Date</value>
   </data>
   <data name="periodEnd" xml:space="preserve">
-    <value>PERIOD END DATE</value>
+    <value>Period End Date</value>
   </data>
   <data name="periodStart" xml:space="preserve">
-    <value>PERIOD START DATE</value>
+    <value>Period Start Date</value>
   </data>
   <data name="reportNo" xml:space="preserve">
-    <value>REPORT NO</value>
+    <value>Report No</value>
   </data>
   <data name="totalAmount" xml:space="preserve">
-    <value>TOTAL AMOUNT</value>
+    <value>Total Amount</value>
   </data>
   <data name="archiveReport" xml:space="preserve">
     <value>Archive Report</value>
@@ -515,5 +515,125 @@
   </data>
   <data name="gibUserList" xml:space="preserve">
     <value>Gib Users List</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="district" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="FormCreateInvoice" xml:space="preserve">
+    <value>İzibiz Desktop | E-Invoice Create</value>
+  </data>
+  <data name="invoiceChapter" xml:space="preserve">
+    <value>Invoice Chapter</value>
+  </data>
+  <data name="invoiceInformation" xml:space="preserve">
+    <value>Invoice Information</value>
+  </data>
+  <data name="mail" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="moneyType" xml:space="preserve">
+    <value>Money Type</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="province" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="receiver" xml:space="preserve">
+    <value>Receiver</value>
+  </data>
+  <data name="Scenario" xml:space="preserve">
+    <value>Scenario</value>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="vknTckn" xml:space="preserve">
+    <value>Vkn/Tckn</value>
+  </data>
+  <data name="addRow" xml:space="preserve">
+    <value>Add Row</value>
+  </data>
+  <data name="archiveSendingType" xml:space="preserve">
+    <value>Archive Sending Type</value>
+  </data>
+  <data name="calculatedTax" xml:space="preserve">
+    <value>Calculated Tax</value>
+  </data>
+  <data name="carrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="carrierTitle" xml:space="preserve">
+    <value>Carrier Title</value>
+  </data>
+  <data name="carrierVknTckn" xml:space="preserve">
+    <value>Carrier Vkn/Tckn</value>
+  </data>
+  <data name="clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="formView" xml:space="preserve">
+    <value>İzibiz Desktop | View Html</value>
+  </data>
+  <data name="internetSalesInformation" xml:space="preserve">
+    <value>Internet Sales Information</value>
+  </data>
+  <data name="middleman" xml:space="preserve">
+    <value>Middleman</value>
+  </data>
+  <data name="paidAmount" xml:space="preserve">
+    <value>Amount To Be Paid</value>
+  </data>
+  <data name="paymentInformation" xml:space="preserve">
+    <value>Payment Information</value>
+  </data>
+  <data name="productName" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="real" xml:space="preserve">
+    <value>Real</value>
+  </data>
+  <data name="removeRow" xml:space="preserve">
+    <value>Remove Row</value>
+  </data>
+  <data name="rowInformation" xml:space="preserve">
+    <value>Row Information</value>
+  </data>
+  <data name="ServiceTotalAmount" xml:space="preserve">
+    <value>Service Total Amount</value>
+  </data>
+  <data name="taxAmount" xml:space="preserve">
+    <value>Tax Amount</value>
+  </data>
+  <data name="taxPercent" xml:space="preserve">
+    <value>Tax Percent</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="totalAmountWithTax" xml:space="preserve">
+    <value>Total Amount With Tax</value>
+  </data>
+  <data name="tuzel" xml:space="preserve">
+    <value>Tuzel</value>
+  </data>
+  <data name="unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="unitPrice" xml:space="preserve">
+    <value>Unit Price</value>
   </data>
 </root>

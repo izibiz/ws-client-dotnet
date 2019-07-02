@@ -73,14 +73,20 @@ namespace izibiz.CONTROLLER.DAL
 
         public void updateInvState(string uuid, string direction, GetInvoiceStatusResponseINVOICE_STATUS invStatusResponse)
         {
-            var invoice = Singl.databaseContextGet.invoices.Where(inv => inv.direction == direction
-              && inv.uuid == uuid).First();
+            using (DatabaseContext dbContext=new DatabaseContext())
+            {
+                var invoice = dbContext.invoices.Where(inv => inv.direction == direction
+            && inv.uuid == uuid).First();
 
-            invoice.status = invStatusResponse.STATUS;
-            invoice.cDate = invStatusResponse.CDATE;
-            invoice.envelopeIdentifier = invStatusResponse.ENVELOPE_IDENTIFIER;
-            invoice.gibStatusCode = invStatusResponse.GIB_STATUS_CODE;
-            invoice.gibStatusDescription = invStatusResponse.GIB_STATUS_DESCRIPTION;
+                invoice.status = invStatusResponse.STATUS;
+                invoice.cDate = invStatusResponse.CDATE;
+                invoice.envelopeIdentifier = invStatusResponse.ENVELOPE_IDENTIFIER;
+                invoice.gibStatusCode = invStatusResponse.GIB_STATUS_CODE;
+                invoice.gibStatusDescription = invStatusResponse.GIB_STATUS_DESCRIPTION;
+
+                dbContext.SaveChanges();
+            }
+          
         }
 
 
@@ -106,9 +112,9 @@ namespace izibiz.CONTROLLER.DAL
             Singl.databaseContextGet.invoices.Remove(invoice);
         }
 
-        public void dbSaveChanges()
+        public void dbSaveChanges(DatabaseContext databaseContext)
         {
-            Singl.databaseContextGet.SaveChanges();
+            databaseContext.SaveChanges();
         }
 
 

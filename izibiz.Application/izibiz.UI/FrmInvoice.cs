@@ -18,6 +18,7 @@ using izibiz.MODEL.DbModels;
 using izibiz.CONTROLLER;
 using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.Model;
+using izibiz.MODEL.Data;
 
 namespace izibiz.UI
 {
@@ -390,6 +391,7 @@ namespace izibiz.UI
         }
 
 
+
         private void itemNewInvoice_Click(object sender, EventArgs e)
         {
             FrmCreateInvoice frmCreateInvoice = new FrmCreateInvoice(nameof(EI.Invoice.Invoices));
@@ -559,8 +561,13 @@ namespace izibiz.UI
             else//valid fatura varsa 
             {
                 if (Singl.invoiceControllerGet.sendInvoiceResponse(state, description) == 0)  //yanıt gonderme basarılıysa
-                {
-                    Singl.invoiceDalGet.dbSaveChanges();  //db ye yazılan not kaydedılir
+                { 
+                    //db ye yazılan not kaydedılir
+                    using (DatabaseContext databaseContext = new DatabaseContext())
+                    {
+                        Singl.invoiceDalGet.dbSaveChanges(databaseContext);
+                    }
+                    
                     MessageBox.Show(string.Join(Environment.NewLine, verifiredInvList) + Environment.NewLine + Lang.sendResponseToInvoice);//"nolu faturalara yanıt gonderıldı"
                 }
                 else//yanıt gonderme ıslemı basarısızsa
@@ -625,11 +632,11 @@ namespace izibiz.UI
                  || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1300)
                  || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1215)
                  || row.Cells[nameof(EI.Invoice.gibStatusCode)].Value.Equals(1230)
-                 || Convert.ToInt32(row.Cells[nameof(EI.Invoice.gibStatusCode)].Value) < 1100
+              //   || Convert.ToInt32(row.Cells[nameof(EI.Invoice.gibStatusCode)].Value) < 1100
                  || Convert.ToInt32(row.Cells[nameof(EI.Invoice.gibStatusCode)].Value) > 1200)
 
             {
-                return false;
+                return true; //false
             }
             return true;
         }
@@ -642,11 +649,13 @@ namespace izibiz.UI
             List<string> unvalidList = new List<string>();
             List<string> validList = new List<string>();
             string idRow;
+            string UuidRow;
             string message;
 
             for (int i = 0; i < tableGrid.SelectedRows.Count; i++)
             {
-                idRow = tableGrid.Rows[i].Cells[nameof(EI.Invoice.ID)].Value.ToString();
+                idRow = tableGrid.SelectedRows[i].Cells[nameof(EI.Invoice.ID)].Value.ToString();
+                UuidRow = tableGrid.SelectedRows[i].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
                 if (!statusValidCheck(tableGrid.SelectedRows[i])) //selectedrows valid degıl ise
                 {
                     unvalidList.Add(idRow);
@@ -656,7 +665,7 @@ namespace izibiz.UI
                     validList.Add(idRow);
 
                     //servisten cekılen ınv responsu modelde guncelle 
-                    Singl.invoiceDalGet.updateInvState(idRow, direction, Singl.invoiceControllerGet.getInvoiceStatatus(idRow));
+                    Singl.invoiceDalGet.updateInvState(UuidRow, direction, Singl.invoiceControllerGet.getInvoiceStatatus(UuidRow));
                 }
             }
 
@@ -676,8 +685,11 @@ namespace izibiz.UI
             else//valid fatura varsa 
             {
                 //db de yapılan degısıklıklerı kaydet
-                Singl.invoiceDalGet.dbSaveChanges();
-
+                //db ye yazılan not kaydedılir
+                using (DatabaseContext databaseContext = new DatabaseContext())
+                {
+                    Singl.invoiceDalGet.dbSaveChanges(databaseContext);
+                }
                 //ınv listesini  db den datagride getir
                 gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(direction));
 
@@ -771,12 +783,12 @@ namespace izibiz.UI
 
                 try
                 {
-                    string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-                    string id = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
-
                     //PDF göruntule butonuna tıkladıysa
                     if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewPdf)].Index)
                     {
+                        string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                        string id = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
+
                         //pdf ıcın getınvoicewithtype metodu cagırılcak
                         byte[] content = Singl.invoiceControllerGet.getInvoiceType(uuid, nameof(EI.DocumentType.PDF), gridDirection);
                         if (content != null)
@@ -784,15 +796,26 @@ namespace izibiz.UI
                             string path = FolderControl.saveInvDocContentWithByte(content, gridDirection, id, nameof(EI.DocumentType.PDF));
                             System.Diagnostics.Process.Start(path);
                         }
+                        else
+                        {
+                            MessageBox.Show(Lang.cantGetContent);
+                        }
                     }
                     //html göruntule butonuna tıkladıysa
                     else if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
                     {
-                          string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
+                        string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                        string id = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
+
+                        string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
                         if (content != null) //servisten veya dıskten getırlebılmısse
                         {
                             FrmView previewInvoices = new FrmView(content, nameof(EI.Invoice.Invoices));
                             previewInvoices.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show(Lang.cantGetContent);
                         }
                     }
                 }
@@ -1003,7 +1026,10 @@ namespace izibiz.UI
                                 Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
 
                                 //db guncellemeleri kaydet
-                                Singl.invoiceDalGet.dbSaveChanges();
+                                using (DatabaseContext databaseContext = new DatabaseContext())
+                                {
+                                    Singl.invoiceDalGet.dbSaveChanges(databaseContext);
+                                }
 
                                 //datagrıd listesini guncelle
                                 gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(gridDirection));
@@ -1074,7 +1100,10 @@ namespace izibiz.UI
                         Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
 
                         //eger islem basarılı ise db guncellemeleri kaydet
-                        Singl.invoiceDalGet.dbSaveChanges();
+                        using (DatabaseContext databaseContext = new DatabaseContext())
+                        {
+                            Singl.invoiceDalGet.dbSaveChanges(databaseContext);
+                        }
 
                         // db den cekılen taslak faturaları datagrıdde listele
                         gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
@@ -1200,7 +1229,7 @@ namespace izibiz.UI
             try
             {
                 //imzali fatura al
-                if (Singl.invoiceControllerGet.getInvoiceSingnedXml(gridDirection))
+                if (Singl.invoiceControllerGet.isGetInvoiceSingnedXml(gridDirection))
                 {
                     MessageBox.Show(Lang.succesful); //succesful
                 }
@@ -1386,6 +1415,18 @@ namespace izibiz.UI
                 MessageBox.Show(ex.ToString());
             }
         }
+
+
+
+        private void FrmInvoice_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+
+
+
     }
 
 }

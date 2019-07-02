@@ -86,7 +86,7 @@
             this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnArchive.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnArchive.Location = new System.Drawing.Point(187, 49);
+            this.btnArchive.Location = new System.Drawing.Point(212, 54);
             this.btnArchive.Name = "btnArchive";
             this.btnArchive.Size = new System.Drawing.Size(126, 117);
             this.btnArchive.TabIndex = 25;
@@ -124,9 +124,9 @@
             this.btnIrsaliye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIrsaliye.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnIrsaliye.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnIrsaliye.Location = new System.Drawing.Point(187, 202);
+            this.btnIrsaliye.Location = new System.Drawing.Point(212, 199);
             this.btnIrsaliye.Name = "btnIrsaliye";
-            this.btnIrsaliye.Size = new System.Drawing.Size(141, 125);
+            this.btnIrsaliye.Size = new System.Drawing.Size(126, 125);
             this.btnIrsaliye.TabIndex = 24;
             this.btnIrsaliye.Text = "E-İrsaliye";
             this.btnIrsaliye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -167,6 +167,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmHome";
             this.Text = "FrmHome";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHome_FormClosed);
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.ResumeLayout(false);
 

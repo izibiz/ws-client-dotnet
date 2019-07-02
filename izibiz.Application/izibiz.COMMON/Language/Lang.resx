@@ -127,7 +127,7 @@
     <value>Tekrar Gönder</value>
   </data>
   <data name="cDate" xml:space="preserve">
-    <value>OLUSTURULMA TARİHİ</value>
+    <value>Oluşturma Tarihi</value>
   </data>
   <data name="chooseLanguage" xml:space="preserve">
     <value>Dil Seçimi</value>
@@ -151,7 +151,7 @@
     <value>E-Müstahsil</value>
   </data>
   <data name="envelopeIdentifier" xml:space="preserve">
-    <value>ZARF ID</value>
+    <value>Zarf Id</value>
   </data>
   <data name="eReconciliation" xml:space="preserve">
     <value>E-Mutabakat</value>
@@ -172,25 +172,25 @@
     <value>İzibiz Masaüstü | E-Fatura Durum Görüntüle</value>
   </data>
   <data name="fromAlias" xml:space="preserve">
-    <value>GÖNDEREN MAİL</value>
+    <value>Gönderen Mail</value>
   </data>
   <data name="takeInvoice" xml:space="preserve">
     <value>Fatura Al</value>
   </data>
   <data name="gibSatusDescription" xml:space="preserve">
-    <value>GİB DURUM ACIKLAMA</value>
+    <value>Gib Durum Açıklama</value>
   </data>
   <data name="gibStatusCode" xml:space="preserve">
-    <value>GİB DURUM KOD</value>
+    <value>Gib Durum Kod</value>
   </data>
   <data name="id" xml:space="preserve">
-    <value>ID</value>
+    <value>Id</value>
   </data>
   <data name="incomingInvoice" xml:space="preserve">
     <value>Gelen Faturalar</value>
   </data>
   <data name="issueDate" xml:space="preserve">
-    <value>DUZENLENME TARIH</value>
+    <value>Düzenlenme Tarihi</value>
   </data>
   <data name="listDraftInvoice" xml:space="preserve">
     <value>Taslak Faturalar Listesi</value>
@@ -220,16 +220,16 @@
     <value>Önizleme</value>
   </data>
   <data name="profileid" xml:space="preserve">
-    <value>PROFİL KIMLIK</value>
+    <value>Profil Kimlik</value>
   </data>
   <data name="refresh" xml:space="preserve">
     <value>Yenile</value>
   </data>
   <data name="reject" xml:space="preserve">
-    <value>Red Et</value>
+    <value>Reddet</value>
   </data>
   <data name="senderVkn" xml:space="preserve">
-    <value>GONDEREN VKN/TCKN</value>
+    <value>Gönderen VKN/TCKN</value>
   </data>
   <data name="sentInvoice" xml:space="preserve">
     <value>Gönderilen Faturalar</value>
@@ -241,22 +241,22 @@
     <value>Şifreyi Göster</value>
   </data>
   <data name="status" xml:space="preserve">
-    <value>DURUM</value>
+    <value>Durum</value>
   </data>
   <data name="statusDesc" xml:space="preserve">
-    <value>DURUM ACIKLAMA</value>
+    <value>Durum Açıklama</value>
   </data>
   <data name="succesChangeState" xml:space="preserve">
     <value>Başarılı Durum Değiştirme</value>
   </data>
   <data name="supplier" xml:space="preserve">
-    <value>TEDARIKCI</value>
+    <value>Tedarikçi</value>
   </data>
   <data name="toAlias" xml:space="preserve">
-    <value>ALICI MAİL</value>
+    <value>Alıcı Mail</value>
   </data>
   <data name="type" xml:space="preserve">
-    <value>TIP</value>
+    <value>Tip</value>
   </data>
   <data name="unsuccesChangeState" xml:space="preserve">
     <value>Durum Değiştirme Başarısız</value>
@@ -268,7 +268,7 @@
     <value>Kullanıcı Adı</value>
   </data>
   <data name="uuid" xml:space="preserve">
-    <value>ETTN</value>
+    <value>Ettn</value>
   </data>
   <data name="warning" xml:space="preserve">
     <value>Uyarı</value>
@@ -286,7 +286,7 @@
     <value>Lütfen bir açıklama yazınız</value>
   </data>
   <data name="invType" xml:space="preserve">
-    <value>FATURA TURU</value>
+    <value>Fatura Türü</value>
   </data>
   <data name="dbFault" xml:space="preserve">
     <value>Database tarafında bır sorun cıktı !</value>
@@ -310,7 +310,7 @@
     <value>Gösterilecek hatalı faturanız yok</value>
   </data>
   <data name="receiverVkn" xml:space="preserve">
-    <value>ALICI VKN/TCKN</value>
+    <value>Alıcı VKN/TCKN</value>
   </data>
   <data name="loadPortal" xml:space="preserve">
     <value>Portala Yükle</value>
@@ -334,7 +334,7 @@
     <value>Lütfen bir alıcı posta kutusu seçiniz.</value>
   </data>
   <data name="fromPortal" xml:space="preserve">
-    <value>PORTALDEN MI</value>
+    <value>Portaldan</value>
   </data>
   <data name="listFilter" xml:space="preserve">
     <value>Filtrele</value>
@@ -379,61 +379,61 @@
     <value>E Arşiv Fatura Raporları Listele</value>
   </data>
   <data name="currencyCode" xml:space="preserve">
-    <value>PARA BİRİMİ</value>
+    <value>Para Birimi</value>
   </data>
   <data name="eArchiveType" xml:space="preserve">
-    <value>E ARŞİV TİP</value>
+    <value>E Arşiv Tip</value>
   </data>
   <data name="reportState" xml:space="preserve">
-    <value>RAPORLANMA  DURUMU</value>
+    <value>Raporlanma  Durumu</value>
   </data>
   <data name="senderName" xml:space="preserve">
-    <value>GONDEREN AD</value>
+    <value>Gönderen Ad</value>
   </data>
   <data name="sendingType" xml:space="preserve">
-    <value>GONDERIM TIPI</value>
+    <value>Gönderim Tipi</value>
   </data>
   <data name="statusCode" xml:space="preserve">
-    <value>DURUM KODU</value>
+    <value>Durum Kodu</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Hoşgeldiniz</value>
   </data>
   <data name="mailStatus" xml:space="preserve">
-    <value>MAIL DURUMU</value>
+    <value>Mail Durumu</value>
   </data>
   <data name="archiveInvCount" xml:space="preserve">
-    <value>ARSIV FATURA SAYISI</value>
+    <value>Arşiv Fatura Sayısı</value>
   </data>
   <data name="chapter" xml:space="preserve">
-    <value>BOLUM</value>
+    <value>Bölüm</value>
   </data>
   <data name="chapterEnd" xml:space="preserve">
-    <value>BOLUM BITIS</value>
+    <value>Bölüm Bitiş</value>
   </data>
   <data name="chapterStart" xml:space="preserve">
-    <value>BOLUM BASLANGIC</value>
+    <value>Bölüm Başlangıç</value>
   </data>
   <data name="description" xml:space="preserve">
-    <value>ACIKLAMA</value>
+    <value>Açıklama</value>
   </data>
   <data name="gibConfirmationDate" xml:space="preserve">
-    <value>GIB ONAYLANMA TARIHI</value>
+    <value>Gib Onaylanma Tarihi</value>
   </data>
   <data name="gibSendDate" xml:space="preserve">
-    <value>GİB GONDERILME TARIHI</value>
+    <value>Gib Gönderme Tarihi</value>
   </data>
   <data name="periodEnd" xml:space="preserve">
-    <value>DONEM  BITIS</value>
+    <value>Dönem Bitiş</value>
   </data>
   <data name="periodStart" xml:space="preserve">
-    <value>DONEM  BASLANGIC</value>
+    <value>Dönem Başlangıç</value>
   </data>
   <data name="reportNo" xml:space="preserve">
-    <value>RAPOR NO</value>
+    <value>Rapor No</value>
   </data>
   <data name="totalAmount" xml:space="preserve">
-    <value>TOPLAM TUTAR</value>
+    <value>Toplam Tutar</value>
   </data>
   <data name="archiveReport" xml:space="preserve">
     <value>Arşiv Raporları</value>
@@ -515,5 +515,125 @@
   </data>
   <data name="gibUserList" xml:space="preserve">
     <value>Gib Kullanıcı Listesi</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
+  <data name="district" xml:space="preserve">
+    <value>İlçe</value>
+  </data>
+  <data name="FormCreateInvoice" xml:space="preserve">
+    <value>İzibiz Masaüstü | E-Fatura Oluştur</value>
+  </data>
+  <data name="invoiceChapter" xml:space="preserve">
+    <value>Fatura Başlık</value>
+  </data>
+  <data name="invoiceInformation" xml:space="preserve">
+    <value>Fatura Bilgileri</value>
+  </data>
+  <data name="mail" xml:space="preserve">
+    <value>E posta</value>
+  </data>
+  <data name="moneyType" xml:space="preserve">
+    <value>Para Birimi</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="province" xml:space="preserve">
+    <value>İl</value>
+  </data>
+  <data name="receiver" xml:space="preserve">
+    <value>Alıcı</value>
+  </data>
+  <data name="scenario" xml:space="preserve">
+    <value>Senaryo</value>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Soyad</value>
+  </data>
+  <data name="vknTckn" xml:space="preserve">
+    <value>Vkn/Tckn</value>
+  </data>
+  <data name="addRow" xml:space="preserve">
+    <value>Satır Ekle</value>
+  </data>
+  <data name="archiveSendingType" xml:space="preserve">
+    <value>Arşiv Gönderim Şekli</value>
+  </data>
+  <data name="calculatedTax" xml:space="preserve">
+    <value>Hesaplanan Tutar</value>
+  </data>
+  <data name="carrier" xml:space="preserve">
+    <value>Taşıyıcı</value>
+  </data>
+  <data name="carrierTitle" xml:space="preserve">
+    <value>Taşıyıcı Unvan</value>
+  </data>
+  <data name="carrierVknTckn" xml:space="preserve">
+    <value>Taşıyıcı Vkn/Tckn</value>
+  </data>
+  <data name="clear" xml:space="preserve">
+    <value>Temizle</value>
+  </data>
+  <data name="create" xml:space="preserve">
+    <value>Oluştur</value>
+  </data>
+  <data name="formView" xml:space="preserve">
+    <value>İzibiz Masaüstü | Html Önizleme</value>
+  </data>
+  <data name="internetSalesInformation" xml:space="preserve">
+    <value>İnternet Satış Bilgisi</value>
+  </data>
+  <data name="middleman" xml:space="preserve">
+    <value>Aracı</value>
+  </data>
+  <data name="paidAmount" xml:space="preserve">
+    <value>Ödenecek Tutar</value>
+  </data>
+  <data name="paymentInformation" xml:space="preserve">
+    <value>Ödeme Bilgisi</value>
+  </data>
+  <data name="productName" xml:space="preserve">
+    <value>Ürün Adı</value>
+  </data>
+  <data name="quantity" xml:space="preserve">
+    <value>Miktar</value>
+  </data>
+  <data name="real" xml:space="preserve">
+    <value>Gerçek</value>
+  </data>
+  <data name="removeRow" xml:space="preserve">
+    <value>Satır Sil</value>
+  </data>
+  <data name="rowInformation" xml:space="preserve">
+    <value>Satır Bilgileri</value>
+  </data>
+  <data name="ServiceTotalAmount" xml:space="preserve">
+    <value>Hizmet Toplam Tutar</value>
+  </data>
+  <data name="taxAmount" xml:space="preserve">
+    <value>Kdv Tutarı</value>
+  </data>
+  <data name="taxPercent" xml:space="preserve">
+    <value>Kdv Oranı</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>Toplam</value>
+  </data>
+  <data name="totalAmountWithTax" xml:space="preserve">
+    <value>Vergiler Dahil Toplam Tutar</value>
+  </data>
+  <data name="tuzel" xml:space="preserve">
+    <value>Tüzel</value>
+  </data>
+  <data name="unit" xml:space="preserve">
+    <value>Birim</value>
+  </data>
+  <data name="unitPrice" xml:space="preserve">
+    <value>Birim Miktarı</value>
   </data>
 </root>

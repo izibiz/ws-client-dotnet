@@ -217,6 +217,7 @@
             this.Controls.Add(this.menuInvoice);
             this.Name = "FrmDespatch";
             this.Text = "FrmDespatch";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDespatch_FormClosed);
             this.Load += new System.EventHandler(this.FrmDespatch_Load);
             this.grpFilter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();

@@ -65,11 +65,10 @@ namespace izibiz.UI
 
 
 
-
-
-
-
-
+        private void FrmDespatch_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
 
 
 

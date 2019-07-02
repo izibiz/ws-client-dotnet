@@ -66,5 +66,10 @@ namespace izibiz.UI
             frmArchive.Show();
             this.Hide();
         }
+
+        private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

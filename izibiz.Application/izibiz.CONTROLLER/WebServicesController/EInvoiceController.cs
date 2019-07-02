@@ -13,7 +13,7 @@ using izibiz.COMMON.FileControl;
 using System.IO;
 using izibiz.COMMON.UblSerializer;
 using Ubl_Invoice_2_1;
-
+using izibiz.MODEL.Data;
 
 namespace izibiz.CONTROLLER.Web_Services
 {
@@ -61,7 +61,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
                 if (invoiceArray != null && invoiceArray.Length > 0)
                 {
-           //         invoiceMarkRead(invoiceArray);
+                    invoiceMarkRead(invoiceArray);
                     //getirilen faturaları db ye kaydet
                     SaveInvoiceArrayToDb(invoiceArray, direction);
                 }
@@ -105,7 +105,12 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 Singl.invoiceDalGet.addInvoice(invoice);
             }
-            Singl.invoiceDalGet.dbSaveChanges();
+
+            using (DatabaseContext databaseContext=new DatabaseContext())
+            {
+                Singl.invoiceDalGet.dbSaveChanges(databaseContext);
+            }
+
         }
 
 
@@ -291,7 +296,16 @@ namespace izibiz.CONTROLLER.Web_Services
                     INVOICE = invoice,
                 };
 
-                return eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
+               var status= eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
+                if (status != null)
+                {
+                    return status;
+                }
+                else
+                {
+                    return null;
+                }
+              
             }
         }
 
@@ -316,7 +330,7 @@ namespace izibiz.CONTROLLER.Web_Services
         /// IMZALI XML DISKE KAYDET
         /// </summary>
 
-        public bool getInvoiceSingnedXml(string direction)
+        public bool isGetInvoiceSingnedXml(string direction)
         {
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {

@@ -31,7 +31,7 @@ namespace izibiz.UI
         string sicilNo;
         string firstName;
         string familyName;
-      
+
 
         private string invoiceType;
 
@@ -67,7 +67,62 @@ namespace izibiz.UI
 
         private void localizationItemTextWrite()
         {
-
+            this.Text = Lang.FormCreateInvoice;
+            //alıcı bılgılerı
+            grpReceiver.Text = Lang.receiver;
+            lblVknTckn.Text = Lang.vknTckn;
+            lblName.Text = Lang.name;
+            lblSurname.Text = Lang.surname;
+            lblProvince.Text = Lang.province;
+            lblDistrict.Text = Lang.district;
+            lblTitle.Text = Lang.title;
+            lblPhone.Text = Lang.phone;
+            lblMail.Text = Lang.mail;
+            //fatura bilgileri
+            grpInvInformation.Text = Lang.invoiceInformation;
+            lblScenario.Text = Lang.scenario;
+            lblMoneyType.Text = Lang.moneyType;
+            lblDate.Text = Lang.date;
+            lblInvoiceChapiter.Text = Lang.invoiceChapter;
+            lblType.Text = Lang.type;
+            //
+            lblArchiveSendingType.Text = Lang.archiveSendingType;
+            lblArchiveType.Text = Lang.eArchiveType;
+            chkSendMail.Text = Lang.sendToMail;
+            //odeme Bilgisi
+            grpPaymentInformation.Text = Lang.paymentInformation;
+            lblPaymentType.Text = Lang.type;
+            lblMiddleman.Text = Lang.middleman;
+            lblPaymentDate.Text = Lang.date;
+            lblInternetSalesInformation.Text = Lang.internetSalesInformation;
+            //gönderim şekli
+            grpSendingType.Text = Lang.sendingType;
+            lblCarrier.Text = Lang.carrier;
+            rdReal.Text = Lang.real;
+            rdTuzel.Text = Lang.tuzel;
+            lblCarrierVknTckn.Text = Lang.carrierVknTckn;
+            lblCarrierTitle.Text = Lang.carrierTitle;
+            lblSendingDate.Text = Lang.date;
+            //satır bilgileri
+            grpRowInformation.Text = Lang.rowInformation;
+            gridPrice.Columns[nameof(EI.InvLineGridRowClm.productName)].HeaderText = Lang.productName;
+            gridPrice.Columns[nameof(EI.InvLineGridRowClm.quantity)].HeaderText = Lang.quantity;
+            gridPrice.Columns[nameof(EI.InvLineGridRowClm.unit)].HeaderText = Lang.unit;
+            gridPrice.Columns[nameof(EI.InvLineGridRowClm.unitPrice)].HeaderText = Lang.unitPrice;
+            gridPrice.Columns[nameof(EI.InvLineGridRowClm.taxPercent)].HeaderText = Lang.taxPercent;
+            gridPrice.Columns[nameof(EI.InvLineGridRowClm.taxAmount)].HeaderText = Lang.taxAmount;
+            gridPrice.Columns[nameof(EI.InvLineGridRowClm.total)].HeaderText = Lang.total;
+            btnAddRow.Text = Lang.addRow;
+            btnRemoveRow.Text = Lang.removeRow;
+            //toplam
+            grpTotal.Text = Lang.total;
+            lblServiceAmount.Text = Lang.ServiceTotalAmount;
+            lblCalculatedTaxAmount.Text = Lang.calculatedTax;
+            lblTotalAmountWithTax.Text = Lang.totalAmountWithTax;
+            lblPaidAmount.Text = Lang.paidAmount;
+            //
+            btnClear.Text = Lang.clear;
+            btnCreate.Text = Lang.create;
         }
 
 
@@ -172,10 +227,7 @@ namespace izibiz.UI
             }
             else
             {
-                if (gridPrice.SelectedRows.Count > 0)
-                {
-                    gridPrice.Rows.RemoveAt(gridPrice.SelectedRows[0].Index);
-                }
+                gridPrice.Rows.RemoveAt(gridPrice.Rows[gridPrice.Rows.Count-1].Index);
             }
         }
 
@@ -347,7 +399,7 @@ namespace izibiz.UI
                     }
                 }
             }
-            foreach (Control item in grpboxTotal.Controls)  //grupbox not ve toplam bilgileri
+            foreach (Control item in grpTotal.Controls)  //grupbox not ve toplam bilgileri
             {
                 if (item is RichTextBox) //label degılse
                 {
@@ -428,7 +480,7 @@ namespace izibiz.UI
             gridPrice.Rows.Add();
 
 
-            foreach (Control item in grpboxTotal.Controls)  //grupbox not ve toplam bilgileri
+            foreach (Control item in grpTotal.Controls)  //grupbox not ve toplam bilgileri
             {
                 if (!(item is Label)) //label degılse
                 {
@@ -553,7 +605,7 @@ namespace izibiz.UI
 
 
 
-        private void btnCreateUbl_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -589,7 +641,7 @@ namespace izibiz.UI
 
                                 //DELİVERY BOLUMU EKLE
                                 //carrıer ekle
-                                PartyType carrierParty = invoice.createParty(txtCarrierTitle.Text,"", "", "");
+                                PartyType carrierParty = invoice.createParty(txtCarrierTitle.Text, "", "", "");
                                 invoice.addPartyIdentification(carrierParty, 1, nameof(EI.VknTckn.VKN), msdDeliveryVkn.Text, "", "", "", "");
                                 invoice.createDelivery(carrierParty, Convert.ToDateTime(datepicDespatchDate.Text));
 
@@ -625,7 +677,7 @@ namespace izibiz.UI
                         else  //customer tckn
                         {
                             invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
-                            invoice.addPersonOnParty(cusParty,txtCustName.Text,txtCustSurname.Text);
+                            invoice.addPersonOnParty(cusParty, txtCustName.Text, txtCustSurname.Text);
                         }
                         invoice.SetCustomerParty(cusParty);
 
@@ -635,7 +687,7 @@ namespace izibiz.UI
                         {
                             //Inv Lıne Olusturulması
                             //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılırilerek aktarılır
-                            invoice.addInvoiceLine(row.Index.ToString(), cmbMoneyType.Text, txtNote.Text, getUnitCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString())
+                            invoice.addInvoiceLine(row.Index.ToString(), cmbMoneyType.Text, getUnitCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString())
                                 , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
                                 , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
                                 , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value), row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString()
@@ -651,6 +703,7 @@ namespace izibiz.UI
                         var invoiceUbl = invoice.BaseUBL;
                         //xml olustur
                         string xmlPath = FolderControl.createInvUblToXml(invoiceUbl, invoiceType).ToString();
+                       
                         //db ye kaydet
                         if (invoiceType == nameof(EI.Invoice.Invoices))
                         {

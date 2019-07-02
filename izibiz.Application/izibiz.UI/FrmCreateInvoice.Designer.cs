@@ -28,30 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClear = new System.Windows.Forms.Button();
-            this.grpboxTotal = new System.Windows.Forms.GroupBox();
-            this.txtNote = new System.Windows.Forms.RichTextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.grpTotal = new System.Windows.Forms.GroupBox();
+            this.lblPaidAmount = new System.Windows.Forms.Label();
+            this.lblTotalAmountWithTax = new System.Windows.Forms.Label();
+            this.lblCalculatedTaxAmount = new System.Windows.Forms.Label();
+            this.lblServiceAmount = new System.Windows.Forms.Label();
             this.txtPayableAmount = new System.Windows.Forms.TextBox();
             this.txtTotalAmountWithTax = new System.Windows.Forms.TextBox();
             this.txtTaxAmount = new System.Windows.Forms.TextBox();
             this.txtServiceAmount = new System.Windows.Forms.TextBox();
-            this.grpboxRow = new System.Windows.Forms.GroupBox();
+            this.grpRowInformation = new System.Windows.Forms.GroupBox();
             this.btnRemoveRow = new System.Windows.Forms.Button();
             this.gridPrice = new System.Windows.Forms.DataGridView();
             this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,36 +63,36 @@
             this.grpInvInformation = new System.Windows.Forms.GroupBox();
             this.cmbInvType = new System.Windows.Forms.ComboBox();
             this.txtPartyName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblInvoiceChapiter = new System.Windows.Forms.Label();
+            this.lblMoneyType = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblScenario = new System.Windows.Forms.Label();
             this.cmbMoneyType = new System.Windows.Forms.ComboBox();
             this.cmbScenario = new System.Windows.Forms.ComboBox();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
             this.grpReceiver = new System.Windows.Forms.GroupBox();
-            this.lblCustSurname = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
             this.txtCustSurname = new System.Windows.Forms.TextBox();
-            this.lblCustName = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.txtCustName = new System.Windows.Forms.TextBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.msdVknTc = new System.Windows.Forms.MaskedTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblMail = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblDistrict = new System.Windows.Forms.Label();
+            this.lblProvince = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblVknTckn = new System.Windows.Forms.Label();
             this.msdPhone = new System.Windows.Forms.MaskedTextBox();
             this.txtDistrict = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.btnCreateUbl = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.lblArchiveSendingType = new System.Windows.Forms.Label();
             this.cmbArchiveSendingType = new System.Windows.Forms.ComboBox();
             this.cmbArchiveType = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lblArchiveType = new System.Windows.Forms.Label();
             this.pnlArchiveInformation = new System.Windows.Forms.Panel();
             this.pnlArchive = new System.Windows.Forms.Panel();
             this.chkSendMail = new System.Windows.Forms.CheckBox();
@@ -103,22 +101,22 @@
             this.msdDeliveryVkn = new System.Windows.Forms.MaskedTextBox();
             this.rdTuzel = new System.Windows.Forms.RadioButton();
             this.rdReal = new System.Windows.Forms.RadioButton();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.lblSendingDate = new System.Windows.Forms.Label();
+            this.lblCarrierTitle = new System.Windows.Forms.Label();
+            this.lblCarrierVknTckn = new System.Windows.Forms.Label();
+            this.lblCarrier = new System.Windows.Forms.Label();
             this.txtCarrierTitle = new System.Windows.Forms.TextBox();
             this.grpPaymentInformation = new System.Windows.Forms.GroupBox();
             this.cmbPaymentType = new System.Windows.Forms.ComboBox();
             this.datepicPaymentDate = new System.Windows.Forms.DateTimePicker();
-            this.label27 = new System.Windows.Forms.Label();
+            this.lblInternetSalesInformation = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.lblPaymentDate = new System.Windows.Forms.Label();
+            this.lblMiddleman = new System.Windows.Forms.Label();
+            this.lblPaymentType = new System.Windows.Forms.Label();
             this.txtMediator = new System.Windows.Forms.TextBox();
-            this.grpboxTotal.SuspendLayout();
-            this.grpboxRow.SuspendLayout();
+            this.grpTotal.SuspendLayout();
+            this.grpRowInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).BeginInit();
             this.grpInvInformation.SuspendLayout();
             this.grpReceiver.SuspendLayout();
@@ -130,90 +128,72 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(346, 618);
+            this.btnClear.Location = new System.Drawing.Point(309, 519);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(153, 23);
+            this.btnClear.Size = new System.Drawing.Size(176, 39);
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Temizle";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // grpboxTotal
+            // grpTotal
             // 
-            this.grpboxTotal.Controls.Add(this.txtNote);
-            this.grpboxTotal.Controls.Add(this.label19);
-            this.grpboxTotal.Controls.Add(this.label18);
-            this.grpboxTotal.Controls.Add(this.label17);
-            this.grpboxTotal.Controls.Add(this.label16);
-            this.grpboxTotal.Controls.Add(this.label15);
-            this.grpboxTotal.Controls.Add(this.txtPayableAmount);
-            this.grpboxTotal.Controls.Add(this.txtTotalAmountWithTax);
-            this.grpboxTotal.Controls.Add(this.txtTaxAmount);
-            this.grpboxTotal.Controls.Add(this.txtServiceAmount);
-            this.grpboxTotal.Location = new System.Drawing.Point(2, 453);
-            this.grpboxTotal.Name = "grpboxTotal";
-            this.grpboxTotal.Size = new System.Drawing.Size(1176, 159);
-            this.grpboxTotal.TabIndex = 8;
-            this.grpboxTotal.TabStop = false;
-            this.grpboxTotal.Text = "Toplam ve Not Bilgileri";
+            this.grpTotal.Controls.Add(this.lblPaidAmount);
+            this.grpTotal.Controls.Add(this.lblTotalAmountWithTax);
+            this.grpTotal.Controls.Add(this.lblCalculatedTaxAmount);
+            this.grpTotal.Controls.Add(this.lblServiceAmount);
+            this.grpTotal.Controls.Add(this.txtPayableAmount);
+            this.grpTotal.Controls.Add(this.txtTotalAmountWithTax);
+            this.grpTotal.Controls.Add(this.txtTaxAmount);
+            this.grpTotal.Controls.Add(this.txtServiceAmount);
+            this.grpTotal.Location = new System.Drawing.Point(871, 326);
+            this.grpTotal.Name = "grpTotal";
+            this.grpTotal.Size = new System.Drawing.Size(327, 180);
+            this.grpTotal.TabIndex = 8;
+            this.grpTotal.TabStop = false;
+            this.grpTotal.Text = "Toplam";
             // 
-            // txtNote
+            // lblPaidAmount
             // 
-            this.txtNote.Location = new System.Drawing.Point(72, 28);
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(251, 93);
-            this.txtNote.TabIndex = 4;
-            this.txtNote.Text = "Not";
+            this.lblPaidAmount.AutoSize = true;
+            this.lblPaidAmount.Location = new System.Drawing.Point(29, 138);
+            this.lblPaidAmount.Name = "lblPaidAmount";
+            this.lblPaidAmount.Size = new System.Drawing.Size(85, 13);
+            this.lblPaidAmount.TabIndex = 3;
+            this.lblPaidAmount.Text = "Ödenecek Tutar";
             // 
-            // label19
+            // lblTotalAmountWithTax
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(587, 134);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(85, 13);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Ödenecek Tutar";
+            this.lblTotalAmountWithTax.AutoSize = true;
+            this.lblTotalAmountWithTax.Location = new System.Drawing.Point(29, 99);
+            this.lblTotalAmountWithTax.Name = "lblTotalAmountWithTax";
+            this.lblTotalAmountWithTax.Size = new System.Drawing.Size(135, 13);
+            this.lblTotalAmountWithTax.TabIndex = 3;
+            this.lblTotalAmountWithTax.Text = "Vergiler Dahil Toplam Tutar";
             // 
-            // label18
+            // lblCalculatedTaxAmount
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(587, 95);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(135, 13);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Vergiler Dahil Toplam Tutar";
+            this.lblCalculatedTaxAmount.AutoSize = true;
+            this.lblCalculatedTaxAmount.Location = new System.Drawing.Point(29, 62);
+            this.lblCalculatedTaxAmount.Name = "lblCalculatedTaxAmount";
+            this.lblCalculatedTaxAmount.Size = new System.Drawing.Size(89, 13);
+            this.lblCalculatedTaxAmount.TabIndex = 3;
+            this.lblCalculatedTaxAmount.Text = "Hesaplanan KDV";
             // 
-            // label17
+            // lblServiceAmount
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(587, 58);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 13);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Hesaplanan KDV";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(587, 18);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(129, 13);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Mal/Hizmet Toplam Tutarı";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(30, 28);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(24, 13);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Not";
+            this.lblServiceAmount.AutoSize = true;
+            this.lblServiceAmount.Location = new System.Drawing.Point(29, 22);
+            this.lblServiceAmount.Name = "lblServiceAmount";
+            this.lblServiceAmount.Size = new System.Drawing.Size(129, 13);
+            this.lblServiceAmount.TabIndex = 3;
+            this.lblServiceAmount.Text = "Mal/Hizmet Toplam Tutarı";
             // 
             // txtPayableAmount
             // 
             this.txtPayableAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtPayableAmount.Location = new System.Drawing.Point(747, 131);
+            this.txtPayableAmount.Enabled = false;
+            this.txtPayableAmount.Location = new System.Drawing.Point(189, 135);
             this.txtPayableAmount.Name = "txtPayableAmount";
             this.txtPayableAmount.ReadOnly = true;
             this.txtPayableAmount.Size = new System.Drawing.Size(100, 20);
@@ -222,7 +202,8 @@
             // txtTotalAmountWithTax
             // 
             this.txtTotalAmountWithTax.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtTotalAmountWithTax.Location = new System.Drawing.Point(747, 92);
+            this.txtTotalAmountWithTax.Enabled = false;
+            this.txtTotalAmountWithTax.Location = new System.Drawing.Point(189, 96);
             this.txtTotalAmountWithTax.Name = "txtTotalAmountWithTax";
             this.txtTotalAmountWithTax.ReadOnly = true;
             this.txtTotalAmountWithTax.Size = new System.Drawing.Size(100, 20);
@@ -231,7 +212,8 @@
             // txtTaxAmount
             // 
             this.txtTaxAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtTaxAmount.Location = new System.Drawing.Point(746, 55);
+            this.txtTaxAmount.Enabled = false;
+            this.txtTaxAmount.Location = new System.Drawing.Point(188, 59);
             this.txtTaxAmount.Name = "txtTaxAmount";
             this.txtTaxAmount.ReadOnly = true;
             this.txtTaxAmount.Size = new System.Drawing.Size(100, 20);
@@ -240,29 +222,30 @@
             // txtServiceAmount
             // 
             this.txtServiceAmount.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtServiceAmount.Location = new System.Drawing.Point(746, 15);
+            this.txtServiceAmount.Enabled = false;
+            this.txtServiceAmount.Location = new System.Drawing.Point(188, 19);
             this.txtServiceAmount.Name = "txtServiceAmount";
             this.txtServiceAmount.ReadOnly = true;
             this.txtServiceAmount.Size = new System.Drawing.Size(100, 20);
             this.txtServiceAmount.TabIndex = 1;
             // 
-            // grpboxRow
+            // grpRowInformation
             // 
-            this.grpboxRow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.grpboxRow.CausesValidation = false;
-            this.grpboxRow.Controls.Add(this.btnRemoveRow);
-            this.grpboxRow.Controls.Add(this.gridPrice);
-            this.grpboxRow.Controls.Add(this.btnAddRow);
-            this.grpboxRow.Location = new System.Drawing.Point(12, 326);
-            this.grpboxRow.Name = "grpboxRow";
-            this.grpboxRow.Size = new System.Drawing.Size(1186, 121);
-            this.grpboxRow.TabIndex = 7;
-            this.grpboxRow.TabStop = false;
-            this.grpboxRow.Text = "Satır Bilgileri";
+            this.grpRowInformation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grpRowInformation.CausesValidation = false;
+            this.grpRowInformation.Controls.Add(this.btnRemoveRow);
+            this.grpRowInformation.Controls.Add(this.gridPrice);
+            this.grpRowInformation.Controls.Add(this.btnAddRow);
+            this.grpRowInformation.Location = new System.Drawing.Point(12, 326);
+            this.grpRowInformation.Name = "grpRowInformation";
+            this.grpRowInformation.Size = new System.Drawing.Size(853, 180);
+            this.grpRowInformation.TabIndex = 7;
+            this.grpRowInformation.TabStop = false;
+            this.grpRowInformation.Text = "Satır Bilgileri";
             // 
             // btnRemoveRow
             // 
-            this.btnRemoveRow.Location = new System.Drawing.Point(751, 66);
+            this.btnRemoveRow.Location = new System.Drawing.Point(751, 50);
             this.btnRemoveRow.Name = "btnRemoveRow";
             this.btnRemoveRow.Size = new System.Drawing.Size(91, 23);
             this.btnRemoveRow.TabIndex = 6;
@@ -274,20 +257,20 @@
             // 
             this.gridPrice.AllowUserToAddRows = false;
             this.gridPrice.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Gray;
-            this.gridPrice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Gray;
+            this.gridPrice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
             this.gridPrice.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridPrice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridPrice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.gridPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPrice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
@@ -298,49 +281,49 @@
             this.taxAmount,
             this.total});
             this.gridPrice.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridPrice.DefaultCellStyle = dataGridViewCellStyle20;
-            this.gridPrice.Location = new System.Drawing.Point(6, 19);
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridPrice.DefaultCellStyle = dataGridViewCellStyle31;
+            this.gridPrice.Location = new System.Drawing.Point(15, 21);
             this.gridPrice.MultiSelect = false;
             this.gridPrice.Name = "gridPrice";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridPrice.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrice.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.gridPrice.RowHeadersVisible = false;
             this.gridPrice.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
-            this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.White;
+            this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle33;
             this.gridPrice.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.gridPrice.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.gridPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.gridPrice.Size = new System.Drawing.Size(712, 96);
+            this.gridPrice.Size = new System.Drawing.Size(712, 132);
             this.gridPrice.TabIndex = 5;
             this.gridPrice.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridPrice_CellValidating);
             // 
             // productName
             // 
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            this.productName.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.White;
+            this.productName.DefaultCellStyle = dataGridViewCellStyle25;
             this.productName.HeaderText = "ad";
             this.productName.Name = "productName";
             // 
             // quantity
             // 
-            dataGridViewCellStyle15.Format = "N0";
-            dataGridViewCellStyle15.NullValue = null;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle26.Format = "N0";
+            dataGridViewCellStyle26.NullValue = null;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle26;
             this.quantity.HeaderText = "miktar";
             this.quantity.Name = "quantity";
             // 
@@ -352,9 +335,9 @@
             // 
             // unitPrice
             // 
-            dataGridViewCellStyle16.Format = "C2";
-            dataGridViewCellStyle16.NullValue = null;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle27.Format = "C2";
+            dataGridViewCellStyle27.NullValue = null;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle27;
             this.unitPrice.HeaderText = "birim fiyat";
             this.unitPrice.Name = "unitPrice";
             this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -362,33 +345,33 @@
             // 
             // taxPercent
             // 
-            dataGridViewCellStyle17.Format = "N2";
-            dataGridViewCellStyle17.NullValue = null;
-            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle28.Format = "N2";
+            dataGridViewCellStyle28.NullValue = null;
+            this.taxPercent.DefaultCellStyle = dataGridViewCellStyle28;
             this.taxPercent.HeaderText = "kdv oranı";
             this.taxPercent.Name = "taxPercent";
             // 
             // taxAmount
             // 
-            dataGridViewCellStyle18.Format = "N2";
-            dataGridViewCellStyle18.NullValue = null;
-            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle29.Format = "N2";
+            dataGridViewCellStyle29.NullValue = null;
+            this.taxAmount.DefaultCellStyle = dataGridViewCellStyle29;
             this.taxAmount.HeaderText = "kdv tutarı";
             this.taxAmount.Name = "taxAmount";
             this.taxAmount.ReadOnly = true;
             // 
             // total
             // 
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = null;
-            this.total.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle30.Format = "N2";
+            dataGridViewCellStyle30.NullValue = null;
+            this.total.DefaultCellStyle = dataGridViewCellStyle30;
             this.total.HeaderText = "toplam";
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
             // btnAddRow
             // 
-            this.btnAddRow.Location = new System.Drawing.Point(751, 37);
+            this.btnAddRow.Location = new System.Drawing.Point(751, 21);
             this.btnAddRow.Name = "btnAddRow";
             this.btnAddRow.Size = new System.Drawing.Size(91, 23);
             this.btnAddRow.TabIndex = 3;
@@ -400,11 +383,11 @@
             // 
             this.grpInvInformation.Controls.Add(this.cmbInvType);
             this.grpInvInformation.Controls.Add(this.txtPartyName);
-            this.grpInvInformation.Controls.Add(this.label1);
-            this.grpInvInformation.Controls.Add(this.label13);
-            this.grpInvInformation.Controls.Add(this.label14);
-            this.grpInvInformation.Controls.Add(this.label12);
-            this.grpInvInformation.Controls.Add(this.label11);
+            this.grpInvInformation.Controls.Add(this.lblInvoiceChapiter);
+            this.grpInvInformation.Controls.Add(this.lblMoneyType);
+            this.grpInvInformation.Controls.Add(this.lblType);
+            this.grpInvInformation.Controls.Add(this.lblDate);
+            this.grpInvInformation.Controls.Add(this.lblScenario);
             this.grpInvInformation.Controls.Add(this.cmbMoneyType);
             this.grpInvInformation.Controls.Add(this.cmbScenario);
             this.grpInvInformation.Controls.Add(this.dateTime);
@@ -433,50 +416,50 @@
             this.txtPartyName.TabIndex = 6;
             this.txtPartyName.Text = "Fatura Gonderme";
             // 
-            // label1
+            // lblInvoiceChapiter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Fatura Başlık";
+            this.lblInvoiceChapiter.AutoSize = true;
+            this.lblInvoiceChapiter.Location = new System.Drawing.Point(17, 105);
+            this.lblInvoiceChapiter.Name = "lblInvoiceChapiter";
+            this.lblInvoiceChapiter.Size = new System.Drawing.Size(68, 13);
+            this.lblInvoiceChapiter.TabIndex = 5;
+            this.lblInvoiceChapiter.Text = "Fatura Başlık";
             // 
-            // label13
+            // lblMoneyType
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(232, 67);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 13);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Para Birimi";
+            this.lblMoneyType.AutoSize = true;
+            this.lblMoneyType.Location = new System.Drawing.Point(232, 67);
+            this.lblMoneyType.Name = "lblMoneyType";
+            this.lblMoneyType.Size = new System.Drawing.Size(56, 13);
+            this.lblMoneyType.TabIndex = 3;
+            this.lblMoneyType.Text = "Para Birimi";
             // 
-            // label14
+            // lblType
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(232, 28);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(22, 13);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Tip";
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(232, 28);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(22, 13);
+            this.lblType.TabIndex = 3;
+            this.lblType.Text = "Tip";
             // 
-            // label12
+            // lblDate
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(24, 68);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(31, 13);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Tarih";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(24, 68);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(31, 13);
+            this.lblDate.TabIndex = 3;
+            this.lblDate.Text = "Tarih";
             // 
-            // label11
+            // lblScenario
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(24, 28);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 13);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Senaryo";
+            this.lblScenario.AutoSize = true;
+            this.lblScenario.Location = new System.Drawing.Point(24, 28);
+            this.lblScenario.Name = "lblScenario";
+            this.lblScenario.Size = new System.Drawing.Size(46, 13);
+            this.lblScenario.TabIndex = 3;
+            this.lblScenario.Text = "Senaryo";
             // 
             // cmbMoneyType
             // 
@@ -507,18 +490,18 @@
             // 
             // grpReceiver
             // 
-            this.grpReceiver.Controls.Add(this.lblCustSurname);
+            this.grpReceiver.Controls.Add(this.lblSurname);
             this.grpReceiver.Controls.Add(this.txtCustSurname);
-            this.grpReceiver.Controls.Add(this.lblCustName);
+            this.grpReceiver.Controls.Add(this.lblName);
             this.grpReceiver.Controls.Add(this.txtCustName);
             this.grpReceiver.Controls.Add(this.txtMail);
             this.grpReceiver.Controls.Add(this.msdVknTc);
-            this.grpReceiver.Controls.Add(this.label9);
-            this.grpReceiver.Controls.Add(this.label8);
-            this.grpReceiver.Controls.Add(this.label6);
-            this.grpReceiver.Controls.Add(this.label5);
-            this.grpReceiver.Controls.Add(this.label3);
-            this.grpReceiver.Controls.Add(this.label2);
+            this.grpReceiver.Controls.Add(this.lblMail);
+            this.grpReceiver.Controls.Add(this.lblPhone);
+            this.grpReceiver.Controls.Add(this.lblDistrict);
+            this.grpReceiver.Controls.Add(this.lblProvince);
+            this.grpReceiver.Controls.Add(this.lblTitle);
+            this.grpReceiver.Controls.Add(this.lblVknTckn);
             this.grpReceiver.Controls.Add(this.msdPhone);
             this.grpReceiver.Controls.Add(this.txtDistrict);
             this.grpReceiver.Controls.Add(this.txtCity);
@@ -530,14 +513,14 @@
             this.grpReceiver.TabStop = false;
             this.grpReceiver.Text = "Alıcı";
             // 
-            // lblCustSurname
+            // lblSurname
             // 
-            this.lblCustSurname.AutoSize = true;
-            this.lblCustSurname.Location = new System.Drawing.Point(24, 108);
-            this.lblCustSurname.Name = "lblCustSurname";
-            this.lblCustSurname.Size = new System.Drawing.Size(37, 13);
-            this.lblCustSurname.TabIndex = 20;
-            this.lblCustSurname.Text = "Soyad";
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(24, 108);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(37, 13);
+            this.lblSurname.TabIndex = 20;
+            this.lblSurname.Text = "Soyad";
             // 
             // txtCustSurname
             // 
@@ -547,14 +530,14 @@
             this.txtCustSurname.TabIndex = 19;
             this.txtCustSurname.Text = "Demir";
             // 
-            // lblCustName
+            // lblName
             // 
-            this.lblCustName.AutoSize = true;
-            this.lblCustName.Location = new System.Drawing.Point(24, 71);
-            this.lblCustName.Name = "lblCustName";
-            this.lblCustName.Size = new System.Drawing.Size(23, 13);
-            this.lblCustName.TabIndex = 18;
-            this.lblCustName.Text = "Ad ";
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(24, 71);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(23, 13);
+            this.lblName.TabIndex = 18;
+            this.lblName.Text = "Ad ";
             // 
             // txtCustName
             // 
@@ -582,59 +565,59 @@
             this.msdVknTc.TabIndex = 5;
             this.msdVknTc.Text = "11111111110";
             // 
-            // label9
+            // lblMail
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(427, 67);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "E-Posta";
+            this.lblMail.AutoSize = true;
+            this.lblMail.Location = new System.Drawing.Point(427, 67);
+            this.lblMail.Name = "lblMail";
+            this.lblMail.Size = new System.Drawing.Size(44, 13);
+            this.lblMail.TabIndex = 3;
+            this.lblMail.Text = "E-Posta";
             // 
-            // label8
+            // lblPhone
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(427, 31);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Telefon";
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(427, 31);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(43, 13);
+            this.lblPhone.TabIndex = 3;
+            this.lblPhone.Text = "Telefon";
             // 
-            // label6
+            // lblDistrict
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(232, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "İlçe";
+            this.lblDistrict.AutoSize = true;
+            this.lblDistrict.Location = new System.Drawing.Point(232, 71);
+            this.lblDistrict.Name = "lblDistrict";
+            this.lblDistrict.Size = new System.Drawing.Size(24, 13);
+            this.lblDistrict.TabIndex = 3;
+            this.lblDistrict.Text = "İlçe";
             // 
-            // label5
+            // lblProvince
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(232, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(12, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "İl";
+            this.lblProvince.AutoSize = true;
+            this.lblProvince.Location = new System.Drawing.Point(232, 35);
+            this.lblProvince.Name = "lblProvince";
+            this.lblProvince.Size = new System.Drawing.Size(12, 13);
+            this.lblProvince.TabIndex = 3;
+            this.lblProvince.Text = "İl";
             // 
-            // label3
+            // lblTitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(228, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Ünvanı";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(228, 104);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(41, 13);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.Text = "Ünvanı";
             // 
-            // label2
+            // lblVknTckn
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "VKN/TCKN";
+            this.lblVknTckn.AutoSize = true;
+            this.lblVknTckn.Location = new System.Drawing.Point(24, 34);
+            this.lblVknTckn.Name = "lblVknTckn";
+            this.lblVknTckn.Size = new System.Drawing.Size(63, 13);
+            this.lblVknTckn.TabIndex = 3;
+            this.lblVknTckn.Text = "VKN/TCKN";
             // 
             // msdPhone
             // 
@@ -671,15 +654,15 @@
             this.txtTitle.TabIndex = 0;
             this.txtTitle.Text = "Tüccar";
             // 
-            // btnCreateUbl
+            // btnCreate
             // 
-            this.btnCreateUbl.Location = new System.Drawing.Point(537, 618);
-            this.btnCreateUbl.Name = "btnCreateUbl";
-            this.btnCreateUbl.Size = new System.Drawing.Size(97, 23);
-            this.btnCreateUbl.TabIndex = 10;
-            this.btnCreateUbl.Text = "Olustur";
-            this.btnCreateUbl.UseVisualStyleBackColor = true;
-            this.btnCreateUbl.Click += new System.EventHandler(this.btnCreateUbl_Click);
+            this.btnCreate.Location = new System.Drawing.Point(529, 519);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(132, 39);
+            this.btnCreate.TabIndex = 10;
+            this.btnCreate.Text = "Olustur";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // lblArchiveSendingType
             // 
@@ -711,14 +694,14 @@
             this.cmbArchiveType.TabIndex = 11;
             this.cmbArchiveType.SelectedValueChanged += new System.EventHandler(this.cmbArchiveType_SelectedValueChanged);
             // 
-            // label23
+            // lblArchiveType
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(10, 64);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(50, 13);
-            this.label23.TabIndex = 10;
-            this.label23.Text = "Arşiv Tipi";
+            this.lblArchiveType.AutoSize = true;
+            this.lblArchiveType.Location = new System.Drawing.Point(10, 64);
+            this.lblArchiveType.Name = "lblArchiveType";
+            this.lblArchiveType.Size = new System.Drawing.Size(50, 13);
+            this.lblArchiveType.TabIndex = 10;
+            this.lblArchiveType.Text = "Arşiv Tipi";
             // 
             // pnlArchiveInformation
             // 
@@ -736,7 +719,7 @@
             // 
             this.pnlArchive.Controls.Add(this.cmbArchiveType);
             this.pnlArchive.Controls.Add(this.cmbArchiveSendingType);
-            this.pnlArchive.Controls.Add(this.label23);
+            this.pnlArchive.Controls.Add(this.lblArchiveType);
             this.pnlArchive.Controls.Add(this.lblArchiveSendingType);
             this.pnlArchive.Location = new System.Drawing.Point(3, 15);
             this.pnlArchive.Name = "pnlArchive";
@@ -759,10 +742,10 @@
             this.grpSendingType.Controls.Add(this.msdDeliveryVkn);
             this.grpSendingType.Controls.Add(this.rdTuzel);
             this.grpSendingType.Controls.Add(this.rdReal);
-            this.grpSendingType.Controls.Add(this.label28);
-            this.grpSendingType.Controls.Add(this.label29);
-            this.grpSendingType.Controls.Add(this.label30);
-            this.grpSendingType.Controls.Add(this.label31);
+            this.grpSendingType.Controls.Add(this.lblSendingDate);
+            this.grpSendingType.Controls.Add(this.lblCarrierTitle);
+            this.grpSendingType.Controls.Add(this.lblCarrierVknTckn);
+            this.grpSendingType.Controls.Add(this.lblCarrier);
             this.grpSendingType.Controls.Add(this.txtCarrierTitle);
             this.grpSendingType.Location = new System.Drawing.Point(498, 3);
             this.grpSendingType.Name = "grpSendingType";
@@ -811,41 +794,41 @@
             this.rdReal.Text = "Gercek";
             this.rdReal.UseVisualStyleBackColor = true;
             // 
-            // label28
+            // lblSendingDate
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(12, 113);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(33, 13);
-            this.label28.TabIndex = 27;
-            this.label28.Text = "Tarihi";
+            this.lblSendingDate.AutoSize = true;
+            this.lblSendingDate.Location = new System.Drawing.Point(12, 113);
+            this.lblSendingDate.Name = "lblSendingDate";
+            this.lblSendingDate.Size = new System.Drawing.Size(33, 13);
+            this.lblSendingDate.TabIndex = 27;
+            this.lblSendingDate.Text = "Tarihi";
             // 
-            // label29
+            // lblCarrierTitle
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(12, 79);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(79, 13);
-            this.label29.TabIndex = 23;
-            this.label29.Text = "Tasıyan Unvan";
+            this.lblCarrierTitle.AutoSize = true;
+            this.lblCarrierTitle.Location = new System.Drawing.Point(12, 79);
+            this.lblCarrierTitle.Name = "lblCarrierTitle";
+            this.lblCarrierTitle.Size = new System.Drawing.Size(79, 13);
+            this.lblCarrierTitle.TabIndex = 23;
+            this.lblCarrierTitle.Text = "Tasıyan Unvan";
             // 
-            // label30
+            // lblCarrierVknTckn
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(12, 48);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(96, 13);
-            this.label30.TabIndex = 24;
-            this.label30.Text = "Tasıyan Vkn/Tckn";
+            this.lblCarrierVknTckn.AutoSize = true;
+            this.lblCarrierVknTckn.Location = new System.Drawing.Point(12, 48);
+            this.lblCarrierVknTckn.Name = "lblCarrierVknTckn";
+            this.lblCarrierVknTckn.Size = new System.Drawing.Size(96, 13);
+            this.lblCarrierVknTckn.TabIndex = 24;
+            this.lblCarrierVknTckn.Text = "Tasıyan Vkn/Tckn";
             // 
-            // label31
+            // lblCarrier
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(12, 21);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(44, 13);
-            this.label31.TabIndex = 25;
-            this.label31.Text = "Tasıyan";
+            this.lblCarrier.AutoSize = true;
+            this.lblCarrier.Location = new System.Drawing.Point(12, 21);
+            this.lblCarrier.Name = "lblCarrier";
+            this.lblCarrier.Size = new System.Drawing.Size(44, 13);
+            this.lblCarrier.TabIndex = 25;
+            this.lblCarrier.Text = "Tasıyan";
             // 
             // txtCarrierTitle
             // 
@@ -859,11 +842,11 @@
             // 
             this.grpPaymentInformation.Controls.Add(this.cmbPaymentType);
             this.grpPaymentInformation.Controls.Add(this.datepicPaymentDate);
-            this.grpPaymentInformation.Controls.Add(this.label27);
+            this.grpPaymentInformation.Controls.Add(this.lblInternetSalesInformation);
             this.grpPaymentInformation.Controls.Add(this.textBox4);
-            this.grpPaymentInformation.Controls.Add(this.label24);
-            this.grpPaymentInformation.Controls.Add(this.label25);
-            this.grpPaymentInformation.Controls.Add(this.label26);
+            this.grpPaymentInformation.Controls.Add(this.lblPaymentDate);
+            this.grpPaymentInformation.Controls.Add(this.lblMiddleman);
+            this.grpPaymentInformation.Controls.Add(this.lblPaymentType);
             this.grpPaymentInformation.Controls.Add(this.txtMediator);
             this.grpPaymentInformation.Location = new System.Drawing.Point(230, 3);
             this.grpPaymentInformation.Name = "grpPaymentInformation";
@@ -890,14 +873,14 @@
             this.datepicPaymentDate.Size = new System.Drawing.Size(109, 20);
             this.datepicPaymentDate.TabIndex = 20;
             // 
-            // label27
+            // lblInternetSalesInformation
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(15, 113);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(97, 13);
-            this.label27.TabIndex = 19;
-            this.label27.Text = "internet Satıs Bilgisi";
+            this.lblInternetSalesInformation.AutoSize = true;
+            this.lblInternetSalesInformation.Location = new System.Drawing.Point(15, 113);
+            this.lblInternetSalesInformation.Name = "lblInternetSalesInformation";
+            this.lblInternetSalesInformation.Size = new System.Drawing.Size(97, 13);
+            this.lblInternetSalesInformation.TabIndex = 19;
+            this.lblInternetSalesInformation.Text = "internet Satıs Bilgisi";
             // 
             // textBox4
             // 
@@ -907,32 +890,32 @@
             this.textBox4.TabIndex = 18;
             this.textBox4.Text = "1";
             // 
-            // label24
+            // lblPaymentDate
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(15, 79);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(33, 13);
-            this.label24.TabIndex = 15;
-            this.label24.Text = "Tarihi";
+            this.lblPaymentDate.AutoSize = true;
+            this.lblPaymentDate.Location = new System.Drawing.Point(15, 79);
+            this.lblPaymentDate.Name = "lblPaymentDate";
+            this.lblPaymentDate.Size = new System.Drawing.Size(33, 13);
+            this.lblPaymentDate.TabIndex = 15;
+            this.lblPaymentDate.Text = "Tarihi";
             // 
-            // label25
+            // lblMiddleman
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(15, 48);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(31, 13);
-            this.label25.TabIndex = 16;
-            this.label25.Text = "Aracı";
+            this.lblMiddleman.AutoSize = true;
+            this.lblMiddleman.Location = new System.Drawing.Point(15, 48);
+            this.lblMiddleman.Name = "lblMiddleman";
+            this.lblMiddleman.Size = new System.Drawing.Size(31, 13);
+            this.lblMiddleman.TabIndex = 16;
+            this.lblMiddleman.Text = "Aracı";
             // 
-            // label26
+            // lblPaymentType
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(15, 21);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(30, 13);
-            this.label26.TabIndex = 17;
-            this.label26.Text = "Sekli";
+            this.lblPaymentType.AutoSize = true;
+            this.lblPaymentType.Location = new System.Drawing.Point(15, 21);
+            this.lblPaymentType.Name = "lblPaymentType";
+            this.lblPaymentType.Size = new System.Drawing.Size(30, 13);
+            this.lblPaymentType.TabIndex = 17;
+            this.lblPaymentType.Text = "Sekli";
             // 
             // txtMediator
             // 
@@ -946,21 +929,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1219, 644);
+            this.ClientSize = new System.Drawing.Size(1219, 577);
             this.Controls.Add(this.pnlArchiveInformation);
-            this.Controls.Add(this.btnCreateUbl);
+            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.grpboxTotal);
-            this.Controls.Add(this.grpboxRow);
+            this.Controls.Add(this.grpTotal);
+            this.Controls.Add(this.grpRowInformation);
             this.Controls.Add(this.grpInvInformation);
             this.Controls.Add(this.grpReceiver);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCreateInvoice";
             this.Load += new System.EventHandler(this.FrmCreateInvoice_Load);
-            this.grpboxTotal.ResumeLayout(false);
-            this.grpboxTotal.PerformLayout();
-            this.grpboxRow.ResumeLayout(false);
+            this.grpTotal.ResumeLayout(false);
+            this.grpTotal.PerformLayout();
+            this.grpRowInformation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).EndInit();
             this.grpInvInformation.ResumeLayout(false);
             this.grpInvInformation.PerformLayout();
@@ -981,31 +964,30 @@
         #endregion
 
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.GroupBox grpboxTotal;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox grpTotal;
+        private System.Windows.Forms.Label lblPaidAmount;
+        private System.Windows.Forms.Label lblTotalAmountWithTax;
+        private System.Windows.Forms.Label lblCalculatedTaxAmount;
+        private System.Windows.Forms.Label lblServiceAmount;
         private System.Windows.Forms.TextBox txtPayableAmount;
         private System.Windows.Forms.TextBox txtTotalAmountWithTax;
         private System.Windows.Forms.TextBox txtTaxAmount;
         private System.Windows.Forms.TextBox txtServiceAmount;
-        private System.Windows.Forms.GroupBox grpboxRow;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox grpRowInformation;
+        private System.Windows.Forms.Label lblMoneyType;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblScenario;
         private System.Windows.Forms.ComboBox cmbMoneyType;
         private System.Windows.Forms.ComboBox cmbScenario;
         private System.Windows.Forms.DateTimePicker dateTime;
         private System.Windows.Forms.GroupBox grpReceiver;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMail;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label lblDistrict;
+        private System.Windows.Forms.Label lblProvince;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblVknTckn;
         private System.Windows.Forms.MaskedTextBox msdPhone;
         private System.Windows.Forms.TextBox txtDistrict;
         private System.Windows.Forms.TextBox txtCity;
@@ -1014,32 +996,31 @@
         private System.Windows.Forms.MaskedTextBox msdVknTc;
         private System.Windows.Forms.GroupBox grpInvInformation;
         private System.Windows.Forms.TextBox txtPartyName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblInvoiceChapiter;
         private System.Windows.Forms.TextBox txtMail;
-        private System.Windows.Forms.Button btnCreateUbl;
+        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.DataGridView gridPrice;
         private System.Windows.Forms.ComboBox cmbInvType;
         private System.Windows.Forms.Button btnRemoveRow;
-        private System.Windows.Forms.RichTextBox txtNote;
         private System.Windows.Forms.ComboBox cmbArchiveSendingType;
         private System.Windows.Forms.Label lblArchiveSendingType;
         private System.Windows.Forms.Panel pnlArchiveInformation;
         private System.Windows.Forms.ComboBox cmbArchiveType;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblArchiveType;
         private System.Windows.Forms.GroupBox grpSendingType;
         private System.Windows.Forms.GroupBox grpPaymentInformation;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label lblInternetSalesInformation;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lblPaymentDate;
+        private System.Windows.Forms.Label lblMiddleman;
+        private System.Windows.Forms.Label lblPaymentType;
         private System.Windows.Forms.TextBox txtMediator;
         private System.Windows.Forms.RadioButton rdTuzel;
         private System.Windows.Forms.RadioButton rdReal;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label lblSendingDate;
+        private System.Windows.Forms.Label lblCarrierTitle;
+        private System.Windows.Forms.Label lblCarrierVknTckn;
+        private System.Windows.Forms.Label lblCarrier;
         private System.Windows.Forms.TextBox txtCarrierTitle;
         private System.Windows.Forms.DateTimePicker datepicPaymentDate;
         private System.Windows.Forms.DateTimePicker datepicDespatchDate;
@@ -1054,9 +1035,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn taxAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.ComboBox cmbPaymentType;
-        private System.Windows.Forms.Label lblCustName;
+        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtCustName;
-        private System.Windows.Forms.Label lblCustSurname;
+        private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.TextBox txtCustSurname;
     }
 }

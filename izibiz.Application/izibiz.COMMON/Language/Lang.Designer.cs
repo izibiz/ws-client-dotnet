@@ -97,6 +97,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Satır Ekle.
+        /// </summary>
+        public static string addRow {
+            get {
+                return ResourceManager.GetString("addRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seri Ön Ek Ekle.
         /// </summary>
         public static string addSeriName {
@@ -115,7 +124,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ARSIV FATURA SAYISI.
+        ///   Looks up a localized string similar to Arşiv Fatura Sayısı.
         /// </summary>
         public static string archiveInvCount {
             get {
@@ -129,6 +138,24 @@ namespace izibiz.COMMON.Language {
         public static string archiveReport {
             get {
                 return ResourceManager.GetString("archiveReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arşiv Gönderim Şekli.
+        /// </summary>
+        public static string archiveSendingType {
+            get {
+                return ResourceManager.GetString("archiveSendingType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hesaplanan Tutar.
+        /// </summary>
+        public static string calculatedTax {
+            get {
+                return ResourceManager.GetString("calculatedTax", resourceCulture);
             }
         }
         
@@ -151,7 +178,34 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OLUSTURULMA TARİHİ.
+        ///   Looks up a localized string similar to Taşıyıcı.
+        /// </summary>
+        public static string carrier {
+            get {
+                return ResourceManager.GetString("carrier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taşıyıcı Unvan.
+        /// </summary>
+        public static string carrierTitle {
+            get {
+                return ResourceManager.GetString("carrierTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taşıyıcı Vkn/Tckn.
+        /// </summary>
+        public static string carrierVknTckn {
+            get {
+                return ResourceManager.GetString("carrierVknTckn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oluşturma Tarihi.
         /// </summary>
         public static string cDate {
             get {
@@ -160,7 +214,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BOLUM.
+        ///   Looks up a localized string similar to Bölüm.
         /// </summary>
         public static string chapter {
             get {
@@ -169,7 +223,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BOLUM BITIS.
+        ///   Looks up a localized string similar to Bölüm Bitiş.
         /// </summary>
         public static string chapterEnd {
             get {
@@ -178,7 +232,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BOLUM BASLANGIC.
+        ///   Looks up a localized string similar to Bölüm Başlangıç.
         /// </summary>
         public static string chapterStart {
             get {
@@ -196,11 +250,38 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PARA BİRİMİ.
+        ///   Looks up a localized string similar to Temizle.
+        /// </summary>
+        public static string clear {
+            get {
+                return ResourceManager.GetString("clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oluştur.
+        /// </summary>
+        public static string create {
+            get {
+                return ResourceManager.GetString("create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Para Birimi.
         /// </summary>
         public static string currencyCode {
             get {
                 return ResourceManager.GetString("currencyCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tarih.
+        /// </summary>
+        public static string date {
+            get {
+                return ResourceManager.GetString("date", resourceCulture);
             }
         }
         
@@ -223,11 +304,20 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ACIKLAMA.
+        ///   Looks up a localized string similar to Açıklama.
         /// </summary>
         public static string description {
             get {
                 return ResourceManager.GetString("description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İlçe.
+        /// </summary>
+        public static string district {
+            get {
+                return ResourceManager.GetString("district", resourceCulture);
             }
         }
         
@@ -304,7 +394,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E ARŞİV TİP.
+        ///   Looks up a localized string similar to E Arşiv Tip.
         /// </summary>
         public static string eArchiveType {
             get {
@@ -349,7 +439,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ZARF ID.
+        ///   Looks up a localized string similar to Zarf Id.
         /// </summary>
         public static string envelopeIdentifier {
             get {
@@ -381,6 +471,15 @@ namespace izibiz.COMMON.Language {
         public static string formArchive {
             get {
                 return ResourceManager.GetString("formArchive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İzibiz Masaüstü | E-Fatura Oluştur.
+        /// </summary>
+        public static string FormCreateInvoice {
+            get {
+                return ResourceManager.GetString("FormCreateInvoice", resourceCulture);
             }
         }
         
@@ -421,6 +520,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to İzibiz Masaüstü | Html Önizleme.
+        /// </summary>
+        public static string formView {
+            get {
+                return ResourceManager.GetString("formView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İzibiz Masaüstü | E-Fatura Durum Görüntüle.
         /// </summary>
         public static string frmShowInvoiceStatus {
@@ -430,7 +538,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GÖNDEREN MAİL.
+        ///   Looks up a localized string similar to Gönderen Mail.
         /// </summary>
         public static string fromAlias {
             get {
@@ -439,7 +547,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PORTALDEN MI.
+        ///   Looks up a localized string similar to Portaldan.
         /// </summary>
         public static string fromPortal {
             get {
@@ -484,7 +592,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GIB ONAYLANMA TARIHI.
+        ///   Looks up a localized string similar to Gib Onaylanma Tarihi.
         /// </summary>
         public static string gibConfirmationDate {
             get {
@@ -493,7 +601,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GİB DURUM ACIKLAMA.
+        ///   Looks up a localized string similar to Gib Durum Açıklama.
         /// </summary>
         public static string gibSatusDescription {
             get {
@@ -502,7 +610,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GİB GONDERILME TARIHI.
+        ///   Looks up a localized string similar to Gib Gönderme Tarihi.
         /// </summary>
         public static string gibSendDate {
             get {
@@ -511,7 +619,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GİB DURUM KOD.
+        ///   Looks up a localized string similar to Gib Durum Kod.
         /// </summary>
         public static string gibStatusCode {
             get {
@@ -565,7 +673,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ID.
+        ///   Looks up a localized string similar to Id.
         /// </summary>
         public static string id {
             get {
@@ -583,7 +691,34 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FATURA TURU.
+        ///   Looks up a localized string similar to İnternet Satış Bilgisi.
+        /// </summary>
+        public static string internetSalesInformation {
+            get {
+                return ResourceManager.GetString("internetSalesInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fatura Başlık.
+        /// </summary>
+        public static string invoiceChapter {
+            get {
+                return ResourceManager.GetString("invoiceChapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fatura Bilgileri.
+        /// </summary>
+        public static string invoiceInformation {
+            get {
+                return ResourceManager.GetString("invoiceInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fatura Türü.
         /// </summary>
         public static string invType {
             get {
@@ -592,7 +727,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DUZENLENME TARIH.
+        ///   Looks up a localized string similar to Düzenlenme Tarihi.
         /// </summary>
         public static string issueDate {
             get {
@@ -664,11 +799,47 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MAIL DURUMU.
+        ///   Looks up a localized string similar to E posta.
+        /// </summary>
+        public static string mail {
+            get {
+                return ResourceManager.GetString("mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail Durumu.
         /// </summary>
         public static string mailStatus {
             get {
                 return ResourceManager.GetString("mailStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aracı.
+        /// </summary>
+        public static string middleman {
+            get {
+                return ResourceManager.GetString("middleman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Para Birimi.
+        /// </summary>
+        public static string moneyType {
+            get {
+                return ResourceManager.GetString("moneyType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İsim.
+        /// </summary>
+        public static string name {
+            get {
+                return ResourceManager.GetString("name", resourceCulture);
             }
         }
         
@@ -754,11 +925,29 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ödenecek Tutar.
+        /// </summary>
+        public static string paidAmount {
+            get {
+                return ResourceManager.GetString("paidAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Şifre.
         /// </summary>
         public static string password {
             get {
                 return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ödeme Bilgisi.
+        /// </summary>
+        public static string paymentInformation {
+            get {
+                return ResourceManager.GetString("paymentInformation", resourceCulture);
             }
         }
         
@@ -772,7 +961,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DONEM  BITIS.
+        ///   Looks up a localized string similar to Dönem Bitiş.
         /// </summary>
         public static string periodEnd {
             get {
@@ -781,11 +970,20 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DONEM  BASLANGIC.
+        ///   Looks up a localized string similar to Dönem Başlangıç.
         /// </summary>
         public static string periodStart {
             get {
                 return ResourceManager.GetString("periodStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefon.
+        /// </summary>
+        public static string phone {
+            get {
+                return ResourceManager.GetString("phone", resourceCulture);
             }
         }
         
@@ -799,7 +997,16 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PROFİL KIMLIK.
+        ///   Looks up a localized string similar to Ürün Adı.
+        /// </summary>
+        public static string productName {
+            get {
+                return ResourceManager.GetString("productName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profil Kimlik.
         /// </summary>
         public static string profileid {
             get {
@@ -808,7 +1015,43 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ALICI VKN/TCKN.
+        ///   Looks up a localized string similar to İl.
+        /// </summary>
+        public static string province {
+            get {
+                return ResourceManager.GetString("province", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Miktar.
+        /// </summary>
+        public static string quantity {
+            get {
+                return ResourceManager.GetString("quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gerçek.
+        /// </summary>
+        public static string real {
+            get {
+                return ResourceManager.GetString("real", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alıcı.
+        /// </summary>
+        public static string receiver {
+            get {
+                return ResourceManager.GetString("receiver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alıcı VKN/TCKN.
         /// </summary>
         public static string receiverVkn {
             get {
@@ -826,7 +1069,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Red Et.
+        ///   Looks up a localized string similar to Reddet.
         /// </summary>
         public static string reject {
             get {
@@ -835,7 +1078,16 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RAPOR NO.
+        ///   Looks up a localized string similar to Satır Sil.
+        /// </summary>
+        public static string removeRow {
+            get {
+                return ResourceManager.GetString("removeRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rapor No.
         /// </summary>
         public static string reportNo {
             get {
@@ -844,11 +1096,29 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RAPORLANMA  DURUMU.
+        ///   Looks up a localized string similar to Raporlanma  Durumu.
         /// </summary>
         public static string reportState {
             get {
                 return ResourceManager.GetString("reportState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Satır Bilgileri.
+        /// </summary>
+        public static string rowInformation {
+            get {
+                return ResourceManager.GetString("rowInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senaryo.
+        /// </summary>
+        public static string scenario {
+            get {
+                return ResourceManager.GetString("scenario", resourceCulture);
             }
         }
         
@@ -889,7 +1159,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GONDEREN AD.
+        ///   Looks up a localized string similar to Gönderen Ad.
         /// </summary>
         public static string senderName {
             get {
@@ -898,7 +1168,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GONDEREN VKN/TCKN.
+        ///   Looks up a localized string similar to Gönderen VKN/TCKN.
         /// </summary>
         public static string senderVkn {
             get {
@@ -907,7 +1177,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GONDERIM TIPI.
+        ///   Looks up a localized string similar to Gönderim Tipi.
         /// </summary>
         public static string sendingType {
             get {
@@ -952,6 +1222,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hizmet Toplam Tutar.
+        /// </summary>
+        public static string ServiceTotalAmount {
+            get {
+                return ResourceManager.GetString("ServiceTotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ayarlar.
         /// </summary>
         public static string settings {
@@ -979,7 +1258,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DURUM.
+        ///   Looks up a localized string similar to Durum.
         /// </summary>
         public static string status {
             get {
@@ -988,7 +1267,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DURUM KODU.
+        ///   Looks up a localized string similar to Durum Kodu.
         /// </summary>
         public static string statusCode {
             get {
@@ -997,7 +1276,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DURUM ACIKLAMA.
+        ///   Looks up a localized string similar to Durum Açıklama.
         /// </summary>
         public static string statusDesc {
             get {
@@ -1042,11 +1321,20 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TEDARIKCI.
+        ///   Looks up a localized string similar to Tedarikçi.
         /// </summary>
         public static string supplier {
             get {
                 return ResourceManager.GetString("supplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soyad.
+        /// </summary>
+        public static string surname {
+            get {
+                return ResourceManager.GetString("surname", resourceCulture);
             }
         }
         
@@ -1069,6 +1357,24 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kdv Tutarı.
+        /// </summary>
+        public static string taxAmount {
+            get {
+                return ResourceManager.GetString("taxAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kdv Oranı.
+        /// </summary>
+        public static string taxPercent {
+            get {
+                return ResourceManager.GetString("taxPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Başlık.
         /// </summary>
         public static string title {
@@ -1078,7 +1384,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ALICI MAİL.
+        ///   Looks up a localized string similar to Alıcı Mail.
         /// </summary>
         public static string toAlias {
             get {
@@ -1087,7 +1393,16 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TOPLAM TUTAR.
+        ///   Looks up a localized string similar to Toplam.
+        /// </summary>
+        public static string total {
+            get {
+                return ResourceManager.GetString("total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toplam Tutar.
         /// </summary>
         public static string totalAmount {
             get {
@@ -1096,11 +1411,47 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TIP.
+        ///   Looks up a localized string similar to Vergiler Dahil Toplam Tutar.
+        /// </summary>
+        public static string totalAmountWithTax {
+            get {
+                return ResourceManager.GetString("totalAmountWithTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tüzel.
+        /// </summary>
+        public static string tuzel {
+            get {
+                return ResourceManager.GetString("tuzel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tip.
         /// </summary>
         public static string type {
             get {
                 return ResourceManager.GetString("type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birim.
+        /// </summary>
+        public static string unit {
+            get {
+                return ResourceManager.GetString("unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birim Miktarı.
+        /// </summary>
+        public static string unitPrice {
+            get {
+                return ResourceManager.GetString("unitPrice", resourceCulture);
             }
         }
         
@@ -1132,7 +1483,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ETTN.
+        ///   Looks up a localized string similar to Ettn.
         /// </summary>
         public static string uuid {
             get {
@@ -1146,6 +1497,15 @@ namespace izibiz.COMMON.Language {
         public static string valueAlreadyAdded {
             get {
                 return ResourceManager.GetString("valueAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vkn/Tckn.
+        /// </summary>
+        public static string vknTckn {
+            get {
+                return ResourceManager.GetString("vknTckn", resourceCulture);
             }
         }
         

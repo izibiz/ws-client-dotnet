@@ -59,8 +59,8 @@
             this.timeStartFilter = new System.Windows.Forms.DateTimePicker();
             this.timeFinishFilter = new System.Windows.Forms.DateTimePicker();
             this.grpFilter = new System.Windows.Forms.GroupBox();
-            this.btnHomePage = new System.Windows.Forms.Button();
             this.btnFilterList = new System.Windows.Forms.Button();
+            this.btnHomePage = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
@@ -477,26 +477,6 @@
             this.grpFilter.TabStop = false;
             this.grpFilter.Visible = false;
             // 
-            // btnHomePage
-            // 
-            this.btnHomePage.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnHomePage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHomePage.BackgroundImage")));
-            this.btnHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHomePage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHomePage.FlatAppearance.BorderSize = 0;
-            this.btnHomePage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
-            this.btnHomePage.Location = new System.Drawing.Point(12, 17);
-            this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Size = new System.Drawing.Size(115, 70);
-            this.btnHomePage.TabIndex = 31;
-            this.btnHomePage.Text = "Ana Sayfa";
-            this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHomePage.UseVisualStyleBackColor = false;
-            this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
-            // 
             // btnFilterList
             // 
             this.btnFilterList.BackColor = System.Drawing.Color.Lavender;
@@ -515,12 +495,34 @@
             this.btnFilterList.UseVisualStyleBackColor = false;
             this.btnFilterList.Click += new System.EventHandler(this.btnFilterList_Click);
             // 
+            // btnHomePage
+            // 
+            this.btnHomePage.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnHomePage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHomePage.BackgroundImage")));
+            this.btnHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHomePage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHomePage.FlatAppearance.BorderSize = 0;
+            this.btnHomePage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
+            this.btnHomePage.Location = new System.Drawing.Point(12, 29);
+            this.btnHomePage.Name = "btnHomePage";
+            this.btnHomePage.Size = new System.Drawing.Size(115, 70);
+            this.btnHomePage.TabIndex = 31;
+            this.btnHomePage.Text = "Ana Sayfa";
+            this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHomePage.UseVisualStyleBackColor = false;
+            this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
+            // 
             // FrmInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1136, 566);
+            this.ControlBox = false;
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.grpFilter);
             this.Controls.Add(this.btnTakeInv);
@@ -536,6 +538,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmInvoice";
             this.Text = "FrmInvoice";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmInvoice_FormClosed);
             this.Load += new System.EventHandler(this.FrmInvoice_Load);
             this.menuInvoice.ResumeLayout(false);
             this.menuInvoice.PerformLayout();
