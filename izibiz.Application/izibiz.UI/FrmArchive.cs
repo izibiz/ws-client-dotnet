@@ -466,10 +466,10 @@ namespace izibiz.UI
                         //valid olanları db de status note iptal yap
                         foreach (string uuid in validRowUuidList)
                         {
-                            Singl.archiveInvoiceDalGet.findArchive(uuid).stateNote = EI.StateNote.IPTAL.ToString();
+
+                            Singl.archiveInvoiceDalGet.updateArchiveStateNote(uuid, EI.StateNote.IPTAL.ToString());
                         }
 
-                        Singl.databaseContextGet.SaveChanges();
                         MessageBox.Show(validRowUuidList + Environment.NewLine + Lang.succCancelSelectedInvoice);//secılı arsıv basarıyla iptal edildi
                     }
                     else
@@ -830,15 +830,11 @@ namespace izibiz.UI
                 foreach (DataGridViewRow row in tableArchiveGrid.SelectedRows)
                 {
                     string uuid = row.Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-
-                    Singl.databaseContextGet.archiveInvoices.Remove(Singl.archiveInvoiceDalGet.findArchive(uuid));
-                }
-                Singl.databaseContextGet.SaveChanges();
+                    Singl.archiveInvoiceDalGet.deleteArchive(uuid);
+                }             
 
                 pnlDraftArchive.Visible = false;
                 gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveList(true));
-
-
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -912,22 +908,23 @@ namespace izibiz.UI
                     {
                         //db de fatura durumunu taslaktan cıkar
                         for (int cnt = 0; cnt < archiveModelArr.Length; cnt++)
-                        {
-                            ArchiveInvoices archive = Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid);
-                            archive.ID = newIdArr[cnt];
-                            archive.draftFlag = false;
-                            archive.stateNote = EI.StateNote.SEND.ToString();
-                            //diskten xmli sil
-                            FolderControl.deleteFileFromPath(archive.folderPath);
-                            //path degıstır
-                            archive.folderPath = FolderControl.inboxFolderArchive + archive.ID + "." + nameof(EI.DocumentType.XML);
-                            //yenı kontentı dıske kaydet
-                            FolderControl.writeFileOnDiskWithString(archiveModelArr[cnt].content,archive.folderPath);
+                        {                          
+                            //guncelleme basarılıysa
+                            if (Singl.archiveInvoiceDalGet.updateArchiveIdStateNoteDraftFlag(archiveModelArr[cnt].uuid,
+                                 newIdArr[cnt], EI.StateNote.SEND.ToString(), false) == 1)
+                            {
+                                //diskten xmli sil
+                                FolderControl.deleteFileFromPath(Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid).folderPath);
+                                //path degıstır
+                                string newFolderPath = FolderControl.inboxFolderArchive + newIdArr[cnt] + "." + nameof(EI.DocumentType.XML);
+                                //yenı kontentı dıske kaydet
+                                FolderControl.writeFileOnDiskWithString(archiveModelArr[cnt].content, newFolderPath);
+                            }
                         }
+
                         //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
                         Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(newIdArr.Last());
 
-                        Singl.databaseContextGet.SaveChanges();
                         MessageBox.Show(Lang.succesful);//"Başarılı"
                         gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveList(true));
                     }

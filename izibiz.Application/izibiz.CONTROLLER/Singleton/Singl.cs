@@ -18,7 +18,6 @@ namespace izibiz.CONTROLLER.Singleton
         private static EInvoiceController invoiceController = null;
         private static ArchiveController archiveController = null;
         private static DespatchAdviceController despatchController = null;
-        private static DatabaseContext databaseContext = null;
         private static InvoiceDal invoiceDal = null;
         private static ArchiveInvoicesDal archiveInvoiceDal = null;
         private static ArchiveReportsDal archiveReportsDal = null;
@@ -133,18 +132,7 @@ namespace izibiz.CONTROLLER.Singleton
             }
         }
 
-        public static DatabaseContext databaseContextGet
-        {
-            get
-            {
-                if (null == databaseContext)
-                {
-                    databaseContext = new DatabaseContext();
-                }
-
-                return databaseContext;
-            }
-        }
+   
 
 
         public static ArchiveController archiveControllerGet

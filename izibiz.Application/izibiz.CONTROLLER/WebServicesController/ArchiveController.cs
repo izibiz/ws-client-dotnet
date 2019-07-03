@@ -54,7 +54,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 {
                     archiveMarkRead(archiveArr);
                     //getirilen faturaları db ye kaydet
-                    SaveArchiveArrToDb(archiveArr);
+                    Singl.archiveInvoiceDalGet.addArchiveFromEArchiveAndSaveContentOnDisk(archiveArr);
                 }
                 return Singl.archiveInvoiceDalGet.getArchiveList(false); //db den taslak olmayanları getır
             }
@@ -63,41 +63,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        private void SaveArchiveArrToDb(EARCHIVEINV[] archiveArr)
-        {
-            foreach (var arc in archiveArr)
-            {
-                ArchiveInvoices archive = new ArchiveInvoices();
-
-              
-                //bu row unıque degerı dbye daha once eklenmemısse
-                if (Singl.databaseContextGet.archiveInvoices.Find(archive.uuid) == null)
-                {
-                    archive.ID = arc.HEADER.INVOICE_ID;
-                    archive.uuid = arc.HEADER.UUID;
-                    archive.totalAmount = Convert.ToDecimal(arc.HEADER.PAYABLE_AMOUNT);
-                    archive.issueDate = Convert.ToDateTime(arc.HEADER.ISSUE_DATE);
-                    archive.profileid = arc.HEADER.PROFILE_ID;
-                    archive.invoiceType = arc.HEADER.INVOICE_TYPE;
-                    archive.sendingType = arc.HEADER.SENDING_TYPE;
-                    archive.eArchiveType = arc.HEADER.EARCHIVE_TYPE;
-                    archive.senderName = arc.HEADER.SENDER_NAME;
-                    archive.senderVkn = arc.HEADER.SENDER_IDENTIFIER;
-                    archive.receiverVkn = arc.HEADER.CUSTOMER_IDENTIFIER;
-                    archive.status = arc.HEADER.STATUS;
-                    archive.statusCode = arc.HEADER.STATUS_CODE;
-                    archive.currencyCode = arc.HEADER.CURRENCY_CODE;
-                    archive.folderPath = FolderControl.inboxFolderArchive + archive.uuid + "." + nameof(EI.DocumentType.XML);
-
-                    archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
-                    FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
-
-                    Singl.archiveInvoiceDalGet.addArchive(archive);
-                }
-            }
-            Singl.archiveInvoiceDalGet.dbSaveChanges();
-        }
-
+  
 
 
 
@@ -145,31 +111,13 @@ namespace izibiz.CONTROLLER.WebServicesController
                 if (reportArr != null && reportArr.Length > 0)
                 {
                     //getirilen raporları db ye kaydet
-                    SaveReportArrToDb(reportArr);
+                    Singl.ArchiveReportsDalGet.addArcReportFromReportArr(reportArr);
                 }
                 return Singl.ArchiveReportsDalGet.getReportList();
             }
         }
 
-
-
-        private void SaveReportArrToDb(REPORT[] reportArr)
-        {
-            foreach (var rep in reportArr)
-            {
-                ArchiveReports report = new ArchiveReports();
-
-                if (Singl.databaseContextGet.archiveInvoices.Find(report.reportNo) == null)
-                {
-                    report.reportNo = rep.REPORT_NO;
-                    report.status = rep.REPORT_SUB_STATUS;
-
-                    Singl.ArchiveReportsDalGet.addReport(report);
-                }
-            }
-            Singl.databaseContextGet.SaveChanges();
-        }
-
+        
 
 
         /// <summary>
@@ -321,7 +269,6 @@ namespace izibiz.CONTROLLER.WebServicesController
                     {
                         Singl.archiveInvoiceDalGet.updateArchiveStatus(arc);
                     }
-                    Singl.archiveInvoiceDalGet.dbSaveChanges();
                     return null;
                 }
 

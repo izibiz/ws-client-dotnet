@@ -650,7 +650,6 @@ namespace izibiz.UI
                             }
                         }
 
-
                         PartyType supParty;
                         PartyType cusParty;
                         //SUPPLİER  PARTY OLUSTURULMASI  
@@ -713,7 +712,6 @@ namespace izibiz.UI
                         {
                             Singl.archiveInvoiceDalGet.insertArchiveOnDbFromUbl(invoiceUbl, xmlPath, chkSendMail.Checked);
                         }
-                        Singl.databaseContextGet.SaveChanges();
 
                         MessageBox.Show(xmlPath + "  faturalar kaydedıldı");
                     }

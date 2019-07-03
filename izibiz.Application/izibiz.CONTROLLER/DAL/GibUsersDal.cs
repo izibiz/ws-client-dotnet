@@ -1,5 +1,7 @@
 ﻿using izibiz.CONTROLLER.Singleton;
+using izibiz.MODEL.Data;
 using izibiz.MODEL.DbModels;
+using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +15,16 @@ namespace izibiz.CONTROLLER.DAL
 
         public List<string> getGibUserAliasList(string vknTckn)
         {
-            List<GibUsers> userList = Singl.databaseContextGet.gibUsers.Where(usr => usr.identifier == vknTckn).ToList();
-
             List<string> listAlias = new List<string>();
-            foreach (GibUsers user in userList)
+
+            using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                listAlias.Add(user.aliasPk);
+                List<GibUsers> userList = databaseContext.gibUsers.Where(usr => usr.identifier == vknTckn).ToList();
+         
+                foreach (GibUsers user in userList)
+                {
+                    listAlias.Add(user.aliasPk);
+                }
             }
 
             return listAlias;
@@ -26,26 +32,49 @@ namespace izibiz.CONTROLLER.DAL
 
         public List<GibUsers> getGibUserList()
         {
-            return Singl.databaseContextGet.gibUsers.ToList();
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                return databaseContext.gibUsers.ToList();
+            }
         }
 
+        public void addGibUserList(List<GIBUSER> userList)
+        {
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                GibUsers gibUsers;
+                foreach (var user in userList)
+                {
+                    gibUsers = new GibUsers();
+                    gibUsers.aliasPk = user.ALIAS;
+                    gibUsers.identifier = user.IDENTIFIER;
+                    gibUsers.title = user.TITLE;
 
+                    databaseContext.gibUsers.Add(gibUsers);
+                }
+   
+                databaseContext.SaveChanges();
+            }
+
+        }
 
         public void addGibUser(string aliasPk, string identifier, string title)
         {
-            GibUsers gibUsers = new GibUsers();
-            gibUsers.aliasPk = aliasPk;
-            gibUsers.identifier = identifier;
-            gibUsers.title = title;
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                GibUsers gibUsers = new GibUsers();
+                gibUsers.aliasPk = aliasPk;
+                gibUsers.identifier = identifier;
+                gibUsers.title = title;
 
-            Singl.databaseContextGet.gibUsers.Add(gibUsers);
+                databaseContext.gibUsers.Add(gibUsers);
+                databaseContext.SaveChanges();
+            }
+        
         }
 
 
-        public void dbSaveChanges()
-        {
-            Singl.databaseContextGet.SaveChanges();
-        }
+      
 
     }
 }

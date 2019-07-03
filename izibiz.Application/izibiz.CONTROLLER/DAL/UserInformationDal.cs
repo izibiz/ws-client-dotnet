@@ -1,4 +1,5 @@
 ﻿using izibiz.CONTROLLER.Singleton;
+using izibiz.MODEL.Data;
 using izibiz.MODEL.DbModels;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,11 @@ namespace izibiz.CONTROLLER.DAL
 
         public UserInformation getUserInformation()
         {
-            //db de tek bir kullanıcı kayıtlı oldugundan fırs ıle cagırabılırız
-            return Singl.databaseContextGet.userInformations.First();
+            using(DatabaseContext databaseContext = new DatabaseContext())
+            {
+                //db de tek bir kullanıcı kayıtlı oldugundan fırs ıle cagırabılırız
+                return databaseContext.userInformations.First();
+            }
         }
 
        

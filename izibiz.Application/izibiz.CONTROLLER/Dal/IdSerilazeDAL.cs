@@ -16,21 +16,30 @@ namespace izibiz.CONTROLLER.DAL
 
         public InvoiceIdSerials getLastAddedSeri(string serialName)
         {
-            return Singl.databaseContextGet.invoiceIdSerials.Where(serial => serial.serialName == serialName).First();
+            using(DatabaseContext databaseContext=new DatabaseContext())
+            {
+                return databaseContext.invoiceIdSerials.Where(serial => serial.serialName == serialName).First();
+            }
         }
+
+
+
 
         public void updateLastAddedInvIdSeri(string invNewId)
         {
-            string seriName = invNewId.Remove(3);
-            string year = invNewId.Substring(3, 4);
-            string seriNo = invNewId.Substring(invNewId.Length - 9);
+            using (DatabaseContext databaseContext=new DatabaseContext())
+            {
+                string seriName = invNewId.Remove(3);
+                string year = invNewId.Substring(3, 4);
+                string seriNo = invNewId.Substring(invNewId.Length - 9);
 
+                InvoiceIdSerials invoiceIdSerial = databaseContext.invoiceIdSerials.Where(serial => serial.serialName == seriName).First();
+                invoiceIdSerial.serialName = seriName;
+                invoiceIdSerial.year = year;
+                invoiceIdSerial.seriNo = seriNo;
 
-            InvoiceIdSerials invoiceIdSerial = Singl.databaseContextGet.invoiceIdSerials.Where(serial => serial.serialName == seriName).First();
-            invoiceIdSerial.serialName = seriName;
-            invoiceIdSerial.year = year;
-            invoiceIdSerial.seriNo = seriNo;
-
+                databaseContext.SaveChanges();
+            }
         }
 
         public List<string> getSeriNames()

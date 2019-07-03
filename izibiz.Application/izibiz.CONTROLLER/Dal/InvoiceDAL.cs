@@ -123,18 +123,46 @@ namespace izibiz.CONTROLLER.DAL
                 Invoices invoice = dbContext.invoices.Where(inv => inv.direction == direction
             && inv.uuid == uuid).First();
 
-                Singl.databaseContextGet.invoices.Remove(invoice);
+                dbContext.invoices.Remove(invoice);
                 dbContext.SaveChanges();
             }
         }
 
-        public void dbSaveChanges(DatabaseContext databaseContext)
+     
+        public void updateInvIdDirectionStateNote(string uuid, string direction, string newId,string newDirection,string newFolderPath,string newStateNote)
         {
-            databaseContext.SaveChanges();
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                Invoices invoice = dbContext.invoices.Where(inv => inv.direction == direction
+            && inv.uuid == uuid).First();
+
+                invoice.ID = newId;
+                invoice.direction = newDirection;
+                invoice.folderPath = newFolderPath;
+                invoice.stateNote = newStateNote;
+
+                dbContext.SaveChanges();
+            }
         }
 
+        public void updateInvIdCdateStatusGibCodeStateNote(string uuid, string direction, 
+            string newId, DateTime newCdate,string newStatus,int newGibStatusCode, string newStateNote)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                Invoices invoice = dbContext.invoices.Where(inv => inv.direction == direction
+            && inv.uuid == uuid).First();
 
-      
+                invoice.ID = newId;
+                invoice.cDate = newCdate;
+                invoice.status = newStatus;
+                invoice.gibStatusCode = newGibStatusCode;
+                invoice.stateNote = newStateNote;
+
+                dbContext.SaveChanges();
+            }
+        }
+
 
 
         public void insertDraftInvoice(InvoiceType invoiceUbl, string xmlPath)

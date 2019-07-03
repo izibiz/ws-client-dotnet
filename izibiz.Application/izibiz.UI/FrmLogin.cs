@@ -17,23 +17,23 @@ using System.Net;
 
 namespace izibiz.UI
 {
-   
+
     public partial class FrmLogin : Form
     {
 
         public static string usurname;
         public static string password;
-        int saniye=0;
+        int saniye = 0;
 
-      //   private static RemoteCertificateValidationCallback cert;
- 
+        //   private static RemoteCertificateValidationCallback cert;
+
 
         public FrmLogin()
         {
-         //   ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
-          //  cert = ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+            //   ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            //  cert = ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
 
-     
+
             InitializeComponent();
             txtUsername.Text = "izibiz-test2";
             txtPassword.Text = "izi321";
@@ -112,11 +112,11 @@ namespace izibiz.UI
             {
                 if (String.IsNullOrEmpty(txtUsername.Text.Trim()) || String.IsNullOrEmpty(txtPassword.Text.Trim()))
                 {
-                    MessageBox.Show(Lang.loginBadRequest, Lang.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);                 
+                    MessageBox.Show(Lang.loginBadRequest, Lang.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    if(Singl.authControllerGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
+                    if (Singl.authControllerGet.Login(txtUsername.Text, txtPassword.Text)) //true ise
                     {
                         usurname = txtUsername.Text;
                         password = txtPassword.Text;
@@ -124,8 +124,8 @@ namespace izibiz.UI
                         frmHome.Show();
                         this.Hide();
                         //timer baslat
-                     //   timerGetUserAlias.Start();
-                    }                             
+                        //   timerGetUserAlias.Start();
+                    }
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -148,12 +148,8 @@ namespace izibiz.UI
                 timerGetUserAlias.Stop();
                 MessageBox.Show("8 saatte bir olan rutın user list cekme ıslemı ıslemı yapılıyor bu ıslem bıraz uzun surebılır, Lütfen bekleyınız");
 
-                var userList = Singl.invoiceControllerGet.getGibUserList();
-                foreach (var user in userList)
-                {
-                    Singl.gibUsersDalGet.addGibUser(user.ALIAS, user.IDENTIFIER, user.TITLE);
-                }
-                Singl.gibUsersDalGet.dbSaveChanges();
+                Singl.gibUsersDalGet.addGibUserList(Singl.invoiceControllerGet.getGibUserList());
+
                 saniye = 0;
                 MessageBox.Show("işlem bitmiştir kaldıgınız yerden devam edebılırsınız");
                 timerGetUserAlias.Start();

@@ -1,5 +1,7 @@
 ﻿using izibiz.CONTROLLER.Singleton;
+using izibiz.MODEL.Data;
 using izibiz.MODEL.DbModels;
+using izibiz.SERVICES.serviceArchive;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +15,36 @@ namespace izibiz.CONTROLLER.DAL
 
         public List<ArchiveReports> getReportList()
         {
-            return Singl.databaseContextGet.archiveReports.ToList();
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                return databaseContext.archiveReports.ToList();
+            }
         }
 
 
-        public void addReport(ArchiveReports report)
+        public void addArcReportFromReportArr(REPORT[] reportArr)
         {
-            Singl.databaseContextGet.archiveReports.Add(report);
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                ArchiveReports arcReport;
+
+                foreach (var rep in reportArr)
+                {
+                    arcReport = new ArchiveReports();
+
+                    if (databaseContext.archiveInvoices.Find(arcReport.reportNo) == null)
+                    {
+                        arcReport.reportNo = rep.REPORT_NO;
+                        arcReport.status = rep.REPORT_SUB_STATUS;
+
+                        databaseContext.archiveReports.Add(arcReport);
+                    }
+                }
+                databaseContext.SaveChanges();
+            }
         }
+
+
 
 
     }
