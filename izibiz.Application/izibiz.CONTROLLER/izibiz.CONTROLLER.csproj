@@ -82,6 +82,7 @@
     <Compile Include="WebServicesController\AuthenticationController.cs" />
     <Compile Include="WebServicesController\DespatchAdviceController.cs" />
     <Compile Include="WebServicesController\EInvoiceController.cs" />
+    <Compile Include="WebServicesController\GibUserController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\izibiz.COMMON\izibiz.COMMON.csproj">

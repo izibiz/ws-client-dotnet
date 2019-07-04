@@ -14,6 +14,7 @@ using izibiz.SERVICES.serviceAuth;
 using izibiz.COMMON.Language;
 using System.Net.Security;
 using System.Net;
+using izibiz.COMMON;
 
 namespace izibiz.UI
 {
@@ -148,7 +149,7 @@ namespace izibiz.UI
                 timerGetUserAlias.Stop();
                 MessageBox.Show("8 saatte bir olan rutın user list cekme ıslemı ıslemı yapılıyor bu ıslem bıraz uzun surebılır, Lütfen bekleyınız");
 
-                Singl.gibUsersDalGet.addGibUserList(Singl.invoiceControllerGet.getGibUserList());
+                Singl.gibUsersDalGet.addGibUserList(Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.INVOICE)));
 
                 saniye = 0;
                 MessageBox.Show("işlem bitmiştir kaldıgınız yerden devam edebılırsınız");

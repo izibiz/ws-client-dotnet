@@ -200,7 +200,7 @@ namespace izibiz.UI
                 }
                 else  //html degılse
                 {
-                    if (rdViewXml.Checked) //xml ise
+                    if (rdViewXml.Checked) //imzalı xml ise
                     {
                         docType = EI.DocumentType.XML.ToString();
                     }
@@ -501,29 +501,45 @@ namespace izibiz.UI
             }
         }
 
-
+    
 
 
 
         private void btnArchiveGetState_Click(object sender, EventArgs e)
         {
             List<string> listUuid = new List<string>();
+            List<string> unvalidListId = new List<string>();
             foreach (DataGridViewRow row in tableArchiveGrid.SelectedRows)
             {
-                listUuid.Add(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
+                if (row.Cells[nameof(EI.Invoice.statusCode)].Value.Equals(200)) //raporlanmıs fatura ıse
+                {
+                    listUuid.Add(row.Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                }
+                else  //raporlanmamıs ıse
+                {
+                    listUuid.Add(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
+                }
             }
 
-            string resErrorMessage = Singl.archiveControllerGet.getArchiveStatus(listUuid.ToArray());
-            if (resErrorMessage == null)
-            {
-                MessageBox.Show(Lang.succesful);
-                //string message = string.Join(Environment.NewLine, listUuid) + Environment.NewLine + Lang.noInvUpdated; //nolu faturalar guncellendi           
-                //MessageBox.Show(message);
+            if (unvalidListId.Count > 0)  //uygun olmayan fatura varsa
+            {     
+                MessageBox.Show(string.Join(Environment.NewLine, listUuid) + Environment.NewLine + "raporlandıgı için durum sorgulaması yapılamaz");
             }
-            else//basarısızsa false dondur
+            if (listUuid.Count > 0) //uygun fatura varsa
             {
-                MessageBox.Show(resErrorMessage);
-            }
+                string resErrorMessage = Singl.archiveControllerGet.getArchiveStatusAndSaveDb(listUuid.ToArray());
+          
+                if (resErrorMessage == null)
+                {
+                    MessageBox.Show(Lang.succesful);
+                    //string message = string.Join(Environment.NewLine, listUuid) + Environment.NewLine + Lang.noInvUpdated; //nolu faturalar guncellendi           
+                    //MessageBox.Show(message);
+                }
+                else//basarısızsa false dondur
+                {
+                    MessageBox.Show(resErrorMessage);
+                }
+            }          
         }
 
 
@@ -693,6 +709,7 @@ namespace izibiz.UI
         private void gridReportUpdateList(List<ArchiveReports> archiveReports)
         {
             tableArchiveGrid.DataSource = null;
+            tableArchiveGrid.Columns.Clear();
 
             if (archiveReports.Count == 0)
             {
@@ -1017,7 +1034,7 @@ namespace izibiz.UI
                 List<string> listUuid = Singl.archiveInvoiceDalGet.getArchiveUuidList(false);
 
                 //guncel durumunu db ye yazdır
-                Singl.archiveControllerGet.getArchiveStatus(listUuid.ToArray());
+                Singl.archiveControllerGet.getArchiveStatusAndSaveDb(listUuid.ToArray());
 
                 //db den report flag true  olanları getır
                 gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveReportList());

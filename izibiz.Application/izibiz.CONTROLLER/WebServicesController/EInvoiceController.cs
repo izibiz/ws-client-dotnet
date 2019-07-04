@@ -291,35 +291,12 @@ namespace izibiz.CONTROLLER.Web_Services
                     INVOICE = invoice,
                 };
 
-               var status= eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
-                if (status != null)
-                {
-                    return status;
-                }
-                else
-                {
-                    return null;
-                }
-              
+                 return eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
             }
         }
 
+       
 
-
-
-        public List<GIBUSER> getGibUserList()
-        {
-            using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
-            {
-                GetUserListRequest req = new GetUserListRequest();
-
-                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
-                req.DOCUMENT_TYPE = nameof(EI.ProductType.INVOICE);
-                GetUserListResponse response = eInvoiceOIBPortClient.GetUserList(req);
-
-                return response.Items.ToList();
-            }
-        }
 
         /// <summary>
         /// IMZALI XML DISKE KAYDET

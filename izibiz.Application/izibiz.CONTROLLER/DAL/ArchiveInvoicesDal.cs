@@ -22,7 +22,7 @@ namespace izibiz.CONTROLLER.DAL
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                return databaseContext.archiveInvoices.Where(arc => arc.draftFlag == draftFlag).ToList();
+                return databaseContext.archiveInvoices.Where(arc => arc.draftFlag == draftFlag).OrderByDescending(arc => arc.issueDate).ToList();
             }
         }
 
@@ -39,7 +39,7 @@ namespace izibiz.CONTROLLER.DAL
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                return databaseContext.archiveInvoices.Where(arc => arc.reportFlag == true).ToList();
+                return databaseContext.archiveInvoices.Where(arc => arc.reportFlag == true).OrderByDescending(arc => arc.issueDate).ToList();
             }
         }
 
@@ -61,6 +61,7 @@ namespace izibiz.CONTROLLER.DAL
                 return databaseContext.archiveInvoices.Find(uuid);
             }
         }
+
 
 
         public void addArchive(ArchiveInvoices archive)
@@ -152,20 +153,29 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public void updateArchiveStatus(EARCHIVE_INVOICE archive)
+        public bool updateArchiveStatus(EARCHIVE_INVOICE[] arrArchive)
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                ArchiveInvoices archiveOnDb = databaseContext.archiveInvoices.Where(arc => arc.uuid == archive.HEADER.UUID).FirstOrDefault();
+                ArchiveInvoices archiveOnDb;
 
-                archiveOnDb.status = archive.HEADER.STATUS_DESC;
-                if (archive.HEADER.REPORT_ID != 0)
+                foreach (EARCHIVE_INVOICE archive in arrArchive)
                 {
-                    archiveOnDb.reportFlag = true;
-                }
-                archiveOnDb.mailStatus = archive.HEADER.EMAIL_STATUS_DESC;
+                    archiveOnDb = databaseContext.archiveInvoices.Where(arc => arc.uuid == archive.HEADER.UUID).FirstOrDefault();
+                    archiveOnDb.status = archive.HEADER.STATUS_DESC;
 
-                databaseContext.SaveChanges();
+                    if (archive.HEADER.REPORT_ID != 0)
+                    {
+                        archiveOnDb.reportFlag = true;
+                    }
+                    archiveOnDb.mailStatus = archive.HEADER.EMAIL_STATUS_DESC;
+                }
+                if (arrArchive.Length.Equals(databaseContext.SaveChanges())) //arr sayısı ıle ıslenen sayı esıtse
+                {
+                    return true;
+                }
+
+                return false;
             }
         }
 

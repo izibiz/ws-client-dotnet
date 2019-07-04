@@ -1,5 +1,6 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
+using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.InvoiceRequestSection;
 using izibiz.CONTROLLER.Model;
 using izibiz.CONTROLLER.Singleton;
@@ -63,7 +64,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-  
+
 
 
 
@@ -117,7 +118,7 @@ namespace izibiz.CONTROLLER.WebServicesController
             }
         }
 
-        
+
 
 
         /// <summary>
@@ -235,7 +236,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public void addContentCancelArcOnCancelContentArr(bool reportFlag,string uuid, string id)
+        public void addContentCancelArcOnCancelContentArr(bool reportFlag, string uuid, string id)
         {
             CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent contentCancel = new CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent();
 
@@ -253,7 +254,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public string getArchiveStatus(string[] uuidArr)
+        public string getArchiveStatusAndSaveDb(string[] uuidArr)
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -261,18 +262,18 @@ namespace izibiz.CONTROLLER.WebServicesController
                 eArchiveStatus.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
                 eArchiveStatus.UUID = uuidArr;
 
-                var res= eArchiveInvoicePortClient.GetEArchiveInvoiceStatus(eArchiveStatus);
+                var res = eArchiveInvoicePortClient.GetEArchiveInvoiceStatus(eArchiveStatus);
 
                 if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
                 {
-                    foreach (EARCHIVE_INVOICE arc in res.INVOICE)
+                    if (Singl.archiveInvoiceDalGet.updateArchiveStatus(res.INVOICE))
                     {
-                        Singl.archiveInvoiceDalGet.updateArchiveStatus(arc);
+                        return Lang.cannotSaveDb;//"Db ye kayıt basarısız"
                     }
                     return null;
                 }
 
-               return res.ERROR_TYPE.ERROR_SHORT_DES;           
+                return res.ERROR_TYPE.ERROR_SHORT_DES;
             }
         }
 
@@ -382,7 +383,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                 contentPropsList.Clear();
 
-               ArchiveInvoiceExtendedResponse sendInvoiceResponse = eArchiveInvoicePortClient.WriteToArchiveExtended(sendArchieveInvoiceRequest);
+                ArchiveInvoiceExtendedResponse sendInvoiceResponse = eArchiveInvoicePortClient.WriteToArchiveExtended(sendArchieveInvoiceRequest);
                 if (sendInvoiceResponse.ERROR_TYPE != null)
                 {
                     return sendInvoiceResponse.ERROR_TYPE.ERROR_SHORT_DES;

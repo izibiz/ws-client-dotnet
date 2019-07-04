@@ -636,4 +636,7 @@
   <data name="unitPrice" xml:space="preserve">
     <value>Unit Price</value>
   </data>
+  <data name="cannotSaveDb" xml:space="preserve">
+    <value>Cannot save Datebase</value>
+  </data>
 </root>

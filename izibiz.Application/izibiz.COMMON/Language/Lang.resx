@@ -636,4 +636,7 @@
   <data name="unitPrice" xml:space="preserve">
     <value>Birim Miktarı</value>
   </data>
+  <data name="cannotSaveDb" xml:space="preserve">
+    <value>Databaseye ye kayıt basarısız</value>
+  </data>
 </root>

@@ -621,7 +621,6 @@ namespace izibiz.UI
                         //kullanıcı bılgılerı getır              
                         getUserInformationOnDb();
 
-
                         ////////UBL OLUSTURMA ISLEMI////////
                         BaseInvoiceUBL invoice;
 

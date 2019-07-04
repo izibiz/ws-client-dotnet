@@ -67,9 +67,19 @@ namespace izibiz.UI
             this.Hide();
         }
 
+
         private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+
+
+        private void btnIrsaliye_Click(object sender, EventArgs e)
+        {
+            FrmDespatch frmDespatch = new FrmDespatch();
+            frmDespatch.Show();
+            this.Hide();
         }
     }
 }

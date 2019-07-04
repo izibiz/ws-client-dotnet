@@ -16,6 +16,9 @@ namespace izibiz.UI
     public partial class FrmDespatch : Form
     {
 
+        private string despactDirection;
+
+
 
 
         public FrmDespatch()
@@ -64,11 +67,70 @@ namespace izibiz.UI
         }
 
 
-
         private void FrmDespatch_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
+        private void selectPanelVisibilty(bool panelIncoming, bool panelSend, bool panelDraft)
+        {
+            pnlIncomingDespatch.Visible = panelIncoming;
+            pnlSendDespatch.Visible = panelSend;
+            pnlDraftDespatch.Visible = panelDraft;
+        }
+
+
+
+
+        private void itemIncomingInvoice_Click(object sender, EventArgs e)
+        {
+            despactDirection = EI.InvDirection.IN.ToString();
+            lblText.Text = despactDirection;
+            btnTakeDespatch.Visible = true;
+            selectPanelVisibilty(false, false, false);
+
+
+        }
+
+        private void itemSentInvoice_Click(object sender, EventArgs e)
+        {
+            despactDirection = EI.InvDirection.OUT.ToString();
+            lblText.Text = despactDirection;
+            btnTakeDespatch.Visible = true;
+            selectPanelVisibilty(false, false, false);
+
+
+        }
+
+        private void itemDraftInvoice_Click(object sender, EventArgs e)
+        {
+            despactDirection = EI.InvDirection.DRAFT.ToString();
+            lblText.Text = despactDirection;
+            btnTakeDespatch.Visible = true;
+            selectPanelVisibilty(false, false, false);
+
+
+        }
+
+        private void itemTakeGibUsers_Click(object sender, EventArgs e)
+        {
+            despactDirection = EI.GibUser.GibUsers.ToString();
+            btnTakeDespatch.Visible = false;
+            selectPanelVisibilty(false, false, false);
+
+        }
+
+
+
+        private void itemListGibUserList_Click(object sender, EventArgs e)
+        {
+            despactDirection = EI.GibUser.GibUsers.ToString();
+            btnTakeDespatch.Visible = false;
+            selectPanelVisibilty(false, false, false);
+
+        }
+
+
 
 
 

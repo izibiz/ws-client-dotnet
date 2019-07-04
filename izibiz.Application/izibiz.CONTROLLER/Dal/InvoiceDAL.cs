@@ -23,7 +23,7 @@ namespace izibiz.CONTROLLER.DAL
             {
                 return dbContext.invoices.Where(inv => inv.direction == nameof(EI.InvDirection.OUT)
             && inv.status.Contains(nameof(EI.StatusType.LOAD))
-            && inv.status.Contains(nameof(EI.SubStatusType.FAILED))).ToList();
+            && inv.status.Contains(nameof(EI.SubStatusType.FAILED))).OrderByDescending(inv => inv.cDate).ToList();
             }
         }
 
@@ -44,7 +44,7 @@ namespace izibiz.CONTROLLER.DAL
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                return dbContext.invoices.Where(inv => inv.direction == direction).ToList();
+                return dbContext.invoices.Where(inv => inv.direction == direction).OrderByDescending(inv => inv.cDate).ToList();
             }
         }
 
@@ -55,9 +55,10 @@ namespace izibiz.CONTROLLER.DAL
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 return dbContext.invoices.Where(inv => inv.direction == direction && inv.status.Contains(nameof(EI.StatusType.SEND)) &&
-            inv.status.Contains(nameof(EI.SubStatusType.WAIT_APPLICATION_RESPONSE))).ToList();
+            inv.status.Contains(nameof(EI.SubStatusType.WAIT_APPLICATION_RESPONSE))).OrderByDescending(inv => inv.cDate).ToList();
             }
         }
+
 
 
         public List<Invoices> getRejectedInvoiceList(string direction)
@@ -65,9 +66,10 @@ namespace izibiz.CONTROLLER.DAL
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 return dbContext.invoices.Where(inv => inv.direction == direction && inv.status.Contains(nameof(EI.StatusType.REJECTED))
-            && inv.status.Contains(nameof(EI.SubStatusType.SUCCEED))).ToList();
+            && inv.status.Contains(nameof(EI.SubStatusType.SUCCEED))).OrderByDescending(inv => inv.cDate).ToList();
             }
         }
+
 
 
         public List<Invoices> getInvoiceListOnFilter(string direction,DateTime startTime,DateTime finishTime)
@@ -76,7 +78,7 @@ namespace izibiz.CONTROLLER.DAL
             {
                 return dbContext.invoices.Where(inv => inv.direction == direction
             && inv.cDate <= finishTime
-            && inv.cDate >= startTime).ToList();
+            && inv.cDate >= startTime).OrderByDescending(inv => inv.cDate).ToList();
             }
         }
 
@@ -85,12 +87,12 @@ namespace izibiz.CONTROLLER.DAL
 
 
 
-        public void updateInvState(string uuid, string direction, GetInvoiceStatusResponseINVOICE_STATUS invStatusResponse)
+        public bool updateInvState(string direction, GetInvoiceStatusResponseINVOICE_STATUS invStatusResponse)
         {
             using (DatabaseContext dbContext=new DatabaseContext())
             {
                 var invoice = dbContext.invoices.Where(inv => inv.direction == direction
-            && inv.uuid == uuid).First();
+            && inv.uuid == invStatusResponse.UUID).First();
 
                 invoice.status = invStatusResponse.STATUS;
                 invoice.cDate = invStatusResponse.CDATE;
@@ -98,7 +100,11 @@ namespace izibiz.CONTROLLER.DAL
                 invoice.gibStatusCode = invStatusResponse.GIB_STATUS_CODE;
                 invoice.gibStatusDescription = invStatusResponse.GIB_STATUS_DESCRIPTION;
 
-                dbContext.SaveChanges();
+                if (dbContext.SaveChanges().Equals(1))
+                {
+                    return true;
+                }
+                return false;
             }
           
         }

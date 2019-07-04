@@ -169,6 +169,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Databaseye ye kayıt basarısız.
+        /// </summary>
+        public static string cannotSaveDb {
+            get {
+                return ResourceManager.GetString("cannotSaveDb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content dıskten sılınmıs ve servısten getırılemedı.
         /// </summary>
         public static string cantGetContent {

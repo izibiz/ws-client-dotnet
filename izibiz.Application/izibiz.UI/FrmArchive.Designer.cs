@@ -249,6 +249,7 @@
             this.btnTakeArchiveInv.TabIndex = 41;
             this.btnTakeArchiveInv.Text = "fatura al";
             this.btnTakeArchiveInv.UseVisualStyleBackColor = false;
+            this.btnTakeArchiveInv.Visible = false;
             this.btnTakeArchiveInv.Click += new System.EventHandler(this.btnTakeArchiveInv_Click);
             // 
             // btnHomePage
@@ -400,9 +401,9 @@
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.tableArchiveGrid);
             this.Controls.Add(this.menuInvoice);
+            this.Controls.Add(this.pnlArchive);
             this.Controls.Add(this.pnlDraftArchive);
             this.Controls.Add(this.pnlArchiveReport);
-            this.Controls.Add(this.pnlArchive);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;

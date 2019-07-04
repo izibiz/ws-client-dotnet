@@ -67,7 +67,7 @@
             this.btnSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSmm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSmm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSmm.Location = new System.Drawing.Point(370, 49);
+            this.btnSmm.Location = new System.Drawing.Point(197, 202);
             this.btnSmm.Name = "btnSmm";
             this.btnSmm.Size = new System.Drawing.Size(141, 122);
             this.btnSmm.TabIndex = 21;
@@ -124,13 +124,14 @@
             this.btnIrsaliye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIrsaliye.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnIrsaliye.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnIrsaliye.Location = new System.Drawing.Point(212, 199);
+            this.btnIrsaliye.Location = new System.Drawing.Point(385, 54);
             this.btnIrsaliye.Name = "btnIrsaliye";
             this.btnIrsaliye.Size = new System.Drawing.Size(126, 125);
             this.btnIrsaliye.TabIndex = 24;
             this.btnIrsaliye.Text = "E-İrsaliye";
             this.btnIrsaliye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnIrsaliye.UseVisualStyleBackColor = false;
+            this.btnIrsaliye.Click += new System.EventHandler(this.btnIrsaliye_Click);
             // 
             // btnMutabakat
             // 
