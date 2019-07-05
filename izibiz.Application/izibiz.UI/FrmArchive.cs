@@ -97,7 +97,7 @@ namespace izibiz.UI
 
             tableArchiveGrid.Columns[EI.Invoice.issueDate.ToString()].HeaderText = Lang.issueDate;
 
-            tableArchiveGrid.Columns[EI.Invoice.profileid.ToString()].HeaderText = Lang.profileid;
+            tableArchiveGrid.Columns[EI.Invoice.profileId.ToString()].HeaderText = Lang.profileid;
 
             tableArchiveGrid.Columns[EI.Invoice.invoiceType.ToString()].HeaderText = Lang.type;
 
@@ -162,7 +162,6 @@ namespace izibiz.UI
                 tableArchiveGrid.Columns[nameof(EI.Invoice.reportFlag)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.draftFlag)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
-                tableArchiveGrid.Columns[nameof(EI.Invoice.content)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
 
                 if (gridMenuType == EI.Invoice.DraftArchive.ToString()) //taslak ıse

@@ -12,7 +12,7 @@ namespace izibiz.COMMON
     {
 
 
-        public enum InvDirection
+        public enum Direction
         {
             IN,
             OUT,
@@ -72,6 +72,31 @@ namespace izibiz.COMMON
 
 
 
+        public enum Despatch
+        {
+            DespatchAdvices,
+            ID,
+            uuid,
+            direction,
+            issueDate,
+            profileId,
+            senderVkn,
+            cDate,
+            envelopeIdentifier,
+            stateNote,
+            status,
+            gibStatusCode,
+            gibStatusDescription,
+            folderPath,
+            statusCode,
+            issueTime,
+            shipmentDate,
+            shipmentTime,
+            typeCode,
+        }
+
+
+
         public enum Invoice
         {
             Invoices,
@@ -80,7 +105,7 @@ namespace izibiz.COMMON
             uuid,
             direction,
             issueDate,
-            profileid,
+            profileId,
             invoiceType,
             suplier,
             senderVkn,
@@ -95,7 +120,6 @@ namespace izibiz.COMMON
             gibStatusDescription,
             senderAlias,
             receiverAlias,
-            content,
             folderPath,
             draftFlag,
             draftFlagDesc,

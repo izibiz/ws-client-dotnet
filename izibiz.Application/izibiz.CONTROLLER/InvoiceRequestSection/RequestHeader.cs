@@ -17,6 +17,7 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
 
         public static SERVICES.serviceAuth.REQUEST_HEADERType getRequestHeaderAuth;
         public static SERVICES.serviceOib.REQUEST_HEADERType getRequestHeaderOib;
+        public static SERVICES.serviceDespatch.REQUEST_HEADERType getRequestHeaderDespatch;
         public static SERVICES.serviceArchive.REQUEST_HEADERType getRequestHeaderArchive;
 
 
@@ -62,7 +63,15 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
         }
 
 
-
+        public static void createRequestHeaderDespatch()
+        {
+            getRequestHeaderDespatch = new SERVICES.serviceDespatch.REQUEST_HEADERType() 
+            {
+                SESSION_ID = AuthenticationController.sesionID,
+                APPLICATION_NAME = "izibiz.Application",
+                COMPRESSED = EI.ActiveOrPasive.Y.ToString()
+            };
+        }
 
 
 

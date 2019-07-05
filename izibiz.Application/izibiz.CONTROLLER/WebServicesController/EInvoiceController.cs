@@ -45,12 +45,12 @@ namespace izibiz.CONTROLLER.Web_Services
                 var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
+                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoice;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
-                if (direction.Equals(nameof(EI.InvDirection.DRAFT))) //direction taslak fatura ıse
+                if (direction.Equals(nameof(EI.Direction.DRAFT))) //direction taslak fatura ıse
                 {
-                    req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.OUT.ToString();
+                    req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.OUT.ToString();
                     req.INVOICE_SEARCH_KEY.DRAFT_FLAG = EI.ActiveOrPasive.Y.ToString();
                 }
                 else
@@ -72,15 +72,16 @@ namespace izibiz.CONTROLLER.Web_Services
 
         private void SaveInvoiceArrayToDb(INVOICE[] invoiceArray, string direction)
         {
+            Invoices invoice;
             foreach (var inv in invoiceArray)
             {
-                Invoices invoice = new Invoices();
+                invoice = new Invoices();
 
                 invoice.ID = inv.ID;
                 invoice.uuid = inv.UUID;
                 invoice.direction = direction;
                 invoice.issueDate = inv.HEADER.ISSUE_DATE;
-                invoice.profileid = inv.HEADER.PROFILEID;
+                invoice.profileId = inv.HEADER.PROFILEID;
                 invoice.invoiceType = inv.HEADER.INVOICE_TYPE_CODE;
                 invoice.suplier = inv.HEADER.SUPPLIER;
                 invoice.senderVkn = inv.HEADER.SENDER;
@@ -95,10 +96,9 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.folderPath = FolderControl.createInvDocPath(inv.ID, direction, nameof(EI.DocumentType.XML));
 
                 byte[] unCompressedContent = Compress.UncompressFile(inv.CONTENT.Value);
-                invoice.content = Encoding.UTF8.GetString(unCompressedContent);  //xml db de tututlur
-                FolderControl.writeFileOnDiskWithString(invoice.content, invoice.folderPath);
+                FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(unCompressedContent), invoice.folderPath);
 
-                if (direction == nameof(EI.InvDirection.DRAFT))
+                if (direction == nameof(EI.Direction.DRAFT))
                 {
                     invoice.draftFlag = EI.ActiveOrPasive.Y.ToString();  //servisten cektıklerımız flag Y  ☺
                 }
@@ -120,15 +120,15 @@ namespace izibiz.CONTROLLER.Web_Services
                 GetInvoiceRequest req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
+                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoice;
                 req.INVOICE_SEARCH_KEY.UUID = uuid;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
-                if (direction.Equals(nameof(EI.InvDirection.DRAFT))) //direction taslak fatura ıse
+                if (direction.Equals(nameof(EI.Direction.DRAFT))) //direction taslak fatura ıse
                 {
-                    req.INVOICE_SEARCH_KEY.DIRECTION = EI.InvDirection.OUT.ToString();
+                    req.INVOICE_SEARCH_KEY.DIRECTION = EI.Direction.OUT.ToString();
                     req.INVOICE_SEARCH_KEY.DRAFT_FLAG = EI.ActiveOrPasive.Y.ToString();
                 }
                 else
@@ -309,15 +309,15 @@ namespace izibiz.CONTROLLER.Web_Services
                 GetInvoiceRequest req = new GetInvoiceRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceRequest;
+                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoice;
                 req.INVOICE_SEARCH_KEY.LIMIT = 10;//100 de null value error ?
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true; //null value error?
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.INVOICE_SEARCH_KEY.DIRECTION = direction;
-                if (direction == nameof(EI.InvDirection.DRAFT))
+                if (direction == nameof(EI.Direction.DRAFT))
                 {
-                    req.INVOICE_SEARCH_KEY.DIRECTION = nameof(EI.InvDirection.OUT);
+                    req.INVOICE_SEARCH_KEY.DIRECTION = nameof(EI.Direction.OUT);
                     req.INVOICE_SEARCH_KEY.DRAFT_FLAG = nameof(EI.ActiveOrPasive.Y);
                 }
 
@@ -350,16 +350,16 @@ namespace izibiz.CONTROLLER.Web_Services
                 GetInvoiceWithTypeRequest req = new GetInvoiceWithTypeRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithTypeRequest;
+                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithType;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;
                 req.INVOICE_SEARCH_KEY.TYPE = documentType;//XML,PDF 
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.INVOICE_SEARCH_KEY.DIRECTION = direction;
-                if (direction == nameof(EI.InvDirection.DRAFT))
+                if (direction == nameof(EI.Direction.DRAFT))
                 {
-                    req.INVOICE_SEARCH_KEY.DIRECTION = nameof(EI.InvDirection.OUT);
+                    req.INVOICE_SEARCH_KEY.DIRECTION = nameof(EI.Direction.OUT);
                     req.INVOICE_SEARCH_KEY.DRAFT_FLAG = nameof(EI.ActiveOrPasive.Y);
                 }
 

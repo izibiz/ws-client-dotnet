@@ -31,11 +31,11 @@ namespace izibiz.COMMON.FileControl
 
         public static string createInvDocPath(string docName, string direction, string docType)
         {
-            if (direction.Equals(nameof(EI.InvDirection.IN)))
+            if (direction.Equals(nameof(EI.Direction.IN)))
             {
                 return inboxFolderIn + docName + "." + docType;
             }
-            else if (direction.Equals(nameof(EI.InvDirection.OUT)))
+            else if (direction.Equals(nameof(EI.Direction.OUT)))
             {
                 return inboxFolderOut + docName + "." + docType;
             }
@@ -171,11 +171,11 @@ namespace izibiz.COMMON.FileControl
         public static string saveInvDocContentWithByte(byte[] content, string invDirection, string fileName, string docType)
         {
             string inboxFolder;
-            if (invDirection == nameof(EI.InvDirection.IN))
+            if (invDirection == nameof(EI.Direction.IN))
             {
                 inboxFolder = inboxFolderIn;
             }
-            else if (invDirection == nameof(EI.InvDirection.OUT))
+            else if (invDirection == nameof(EI.Direction.OUT))
             {
                 inboxFolder = inboxFolderOut;
             }

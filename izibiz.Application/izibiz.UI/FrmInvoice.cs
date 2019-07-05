@@ -127,7 +127,7 @@ namespace izibiz.UI
 
             tableGrid.Columns[EI.Invoice.issueDate.ToString()].HeaderText = Lang.issueDate;
 
-            tableGrid.Columns[EI.Invoice.profileid.ToString()].HeaderText = Lang.profileid;
+            tableGrid.Columns[EI.Invoice.profileId.ToString()].HeaderText = Lang.profileid;
 
             tableGrid.Columns[EI.Invoice.invoiceType.ToString()].HeaderText = Lang.type;
 
@@ -186,7 +186,7 @@ namespace izibiz.UI
                 dataGridChangeColumnHeaderText();
 
                 //gridde taslak faturaları lısletemıyorsak
-                if (!gridDirection.Equals(nameof(EI.InvDirection.DRAFT)))
+                if (!gridDirection.Equals(nameof(EI.Direction.DRAFT)))
                 {
                     tableGrid.Columns[nameof(EI.Invoice.draftFlagDesc)].Visible = false;
                 }
@@ -195,7 +195,6 @@ namespace izibiz.UI
                 tableGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
                 tableGrid.Columns[nameof(EI.Invoice.status)].Visible = false;
                 tableGrid.Columns[nameof(EI.Invoice.gibStatusDescription)].Visible = false;
-                tableGrid.Columns[nameof(EI.Invoice.content)].Visible = false;
                 tableGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
 
 
@@ -241,13 +240,13 @@ namespace izibiz.UI
             panelIncomingInv.Visible = false;
             panelDraftInv.Visible = false;
             btnSentInvAgainSent.Enabled = false;
-            gridDirection = nameof(EI.InvDirection.OUT);
+            gridDirection = nameof(EI.Direction.OUT);
             btnTakeInv.Visible = true;
             grpFilter.Visible = true;
             try
             {
                 //db den cekılen lısteyı datagride aktar
-                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.OUT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -279,13 +278,13 @@ namespace izibiz.UI
             panelSentInv.Visible = false;
             panelIncomingInv.Visible = false;
             panelDraftInv.Visible = false;
-            gridDirection = nameof(EI.InvDirection.IN);
+            gridDirection = nameof(EI.Direction.IN);
             btnTakeInv.Visible = true;
             grpFilter.Visible = true;
             try
             {
                 //  db den cekılen lısteyı datagride aktar
-                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.IN)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.IN)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -320,13 +319,13 @@ namespace izibiz.UI
             panelIncomingInv.Visible = false;
             panelDraftInv.Visible = false;
             btnSentInvAgainSent.Enabled = false;
-            gridDirection = nameof(EI.InvDirection.OUT);
+            gridDirection = nameof(EI.Direction.OUT);
             btnTakeInv.Visible = true;
             grpFilter.Visible = true;
             try
             {
                 //db den cekılen lısteyı datagride aktar
-                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.OUT)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.OUT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -360,13 +359,13 @@ namespace izibiz.UI
             panelSentInv.Visible = false;
             panelIncomingInv.Visible = false;
             panelDraftInv.Visible = false;
-            gridDirection = nameof(EI.InvDirection.DRAFT);
+            gridDirection = nameof(EI.Direction.DRAFT);
             btnTakeInv.Visible = true;
             grpFilter.Visible = true;
             try
             {
                 // db den cekılen lısteyı datagride aktar
-                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.DRAFT)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -515,7 +514,7 @@ namespace izibiz.UI
                 DateTime dt = DateTime.Parse(row.Cells[nameof(EI.Invoice.cDate)].Value.ToString());
                 TimeSpan fark = DateTime.Today - dt;
 
-                if (row.Cells[nameof(EI.Invoice.profileid)].Value == null || row.Cells[nameof(EI.Invoice.profileid)].Value.ToString() == EI.InvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
+                if (row.Cells[nameof(EI.Invoice.profileId)].Value == null || row.Cells[nameof(EI.Invoice.profileId)].Value.ToString() == EI.InvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
                 {
                     if (tableGrid.SelectedRows.Count == 1)  //secılı fatura sayısı 1 ise
                     {
@@ -545,7 +544,7 @@ namespace izibiz.UI
 
                     //uygun olan ınv u controllerdakı dakı Inv listesine aktarıyoruz
                     Singl.invoiceControllerGet.createInvListWithUuid(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
-                    Singl.invoiceDalGet.getInvoice(rowUuid, nameof(EI.InvDirection.IN)).stateNote = nameof(EI.StateNote.SENDRESPONSE);//db ye cevap gonderıldı dıye not edılır
+                    Singl.invoiceDalGet.getInvoice(rowUuid, nameof(EI.Direction.IN)).stateNote = nameof(EI.StateNote.SENDRESPONSE);//db ye cevap gonderıldı dıye not edılır
                     description.Add(desc);
                     verifiredInvList.Add(rowUuid);
                 }
@@ -587,6 +586,10 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -608,6 +611,10 @@ namespace izibiz.UI
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -701,7 +708,7 @@ namespace izibiz.UI
         {
             try
             {
-                string message = showStateInvoice(EI.InvDirection.IN.ToString());
+                string message = showStateInvoice(EI.Direction.IN.ToString());
                 MessageBox.Show(message);
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -730,7 +737,7 @@ namespace izibiz.UI
             try
             {
                 btnSentInvAgainSent.Enabled = false;
-                string message = showStateInvoice(EI.InvDirection.OUT.ToString());
+                string message = showStateInvoice(EI.Direction.OUT.ToString());
                 MessageBox.Show(message);
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -767,15 +774,15 @@ namespace izibiz.UI
                     {
 
                         #region panelVisiblity
-                        if (gridDirection == nameof(EI.InvDirection.IN))//gelen faturalara tıklandıysa
+                        if (gridDirection == nameof(EI.Direction.IN))//gelen faturalara tıklandıysa
                         {
                             panelIncomingInv.Visible = true;
                         }
-                        else if (gridDirection == nameof(EI.InvDirection.OUT))//giden faturalar
+                        else if (gridDirection == nameof(EI.Direction.OUT))//giden faturalar
                         {
                             panelSentInv.Visible = true;
                         }
-                        else if (gridDirection == nameof(EI.InvDirection.DRAFT))//taslak faturalar
+                        else if (gridDirection == nameof(EI.Direction.DRAFT))//taslak faturalar
                         {
                             panelDraftInv.Visible = true;
                         }
@@ -846,7 +853,7 @@ namespace izibiz.UI
             try
             {
                 //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.IN)));
+                gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.Direction.IN)));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -883,6 +890,10 @@ namespace izibiz.UI
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -1015,15 +1026,15 @@ namespace izibiz.UI
                                     string uuidRow = tableGrid.SelectedRows[rowCnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
 
                                     //eskı folderPathdekı dosyayı konumdan sıler
-                                    FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.InvDirection.DRAFT)).folderPath);
+                                    FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
 
                                     //yenı folderpath olustur
-                                    string newFolderPath = FolderControl.createInvDocPath(ıdContentModel.newIdArr[rowCnt], nameof(EI.InvDirection.OUT),
+                                    string newFolderPath = FolderControl.createInvDocPath(ıdContentModel.newIdArr[rowCnt], nameof(EI.Direction.OUT),
                                         nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
 
                                     //db de yenı id,direction,folderpath,statenote guncellenır
-                                    Singl.invoiceDalGet.updateInvIdDirectionStateNote(uuidRow, nameof(EI.InvDirection.DRAFT),
-                                       ıdContentModel.newIdArr[rowCnt], nameof(EI.InvDirection.OUT), newFolderPath, nameof(EI.StatusType.SEND));
+                                    Singl.invoiceDalGet.updateInvIdDirectionStateNote(uuidRow, nameof(EI.Direction.DRAFT),
+                                       ıdContentModel.newIdArr[rowCnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND));
 
 
                                     //yenı folderpath ile yenı id eklenmıs xmli diske kaydet
@@ -1051,6 +1062,10 @@ namespace izibiz.UI
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(Lang.operationFailed + ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error); //işlem basarısız
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -1084,18 +1099,18 @@ namespace izibiz.UI
                             string uuidRow = tableGrid.SelectedRows[rowCnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
 
                             //db verileri guncelle
-                            Singl.invoiceDalGet.updateInvIdCdateStatusGibCodeStateNote(uuidRow, nameof(EI.InvDirection.DRAFT),
+                            Singl.invoiceDalGet.updateInvIdCdateStatusGibCodeStateNote(uuidRow, nameof(EI.Direction.DRAFT),
                               ıdContentModel.newIdArr[rowCnt], DateTime.Now, nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED),
                                -1, nameof(EI.StatusType.LOAD));
 
                             //yenı ıd ile yenı folderpath olustur
-                            string newFolderPath = FolderControl.createInvDocPath(ıdContentModel.newIdArr[rowCnt], nameof(EI.InvDirection.DRAFT), nameof(EI.DocumentType.XML));
+                            string newFolderPath = FolderControl.createInvDocPath(ıdContentModel.newIdArr[rowCnt], nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
 
                             //yenı olust. folderpath ıle xml ı dıske kaydet
                             FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[rowCnt], newFolderPath);
 
                             //eskı folderPathdekı dosyayı konumdan sıler
-                            FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.InvDirection.DRAFT)).folderPath);
+                            FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
 
                         }
 
@@ -1103,7 +1118,7 @@ namespace izibiz.UI
                         Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
 
                         // db den cekılen taslak faturaları datagrıdde listele
-                        gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.InvDirection.DRAFT)));
+                        gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.DRAFT)));
 
                         MessageBox.Show(Lang.successLoad);//"yukleme basarılı"
 
@@ -1118,6 +1133,10 @@ namespace izibiz.UI
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -1142,6 +1161,10 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -1165,6 +1188,10 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -1176,7 +1203,7 @@ namespace izibiz.UI
         private void btnTakeInvDraft_Click(object sender, EventArgs e)
         {
             //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.DRAFT)));
+            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.Direction.DRAFT)));
         }
 
 
@@ -1184,7 +1211,7 @@ namespace izibiz.UI
         private void btnTakeInvOut_Click(object sender, EventArgs e)
         {
             //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.InvDirection.OUT)));
+            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.Direction.OUT)));
         }
 
         private void btnIncomingInvGetState_Click_1(object sender, EventArgs e)
@@ -1192,7 +1219,7 @@ namespace izibiz.UI
             try
             {
                 btnSentInvAgainSent.Enabled = false;
-                string message = showStateInvoice(EI.InvDirection.IN.ToString());
+                string message = showStateInvoice(EI.Direction.IN.ToString());
                 MessageBox.Show(message);
             }
             catch (FaultException<REQUEST_ERRORType> ex)

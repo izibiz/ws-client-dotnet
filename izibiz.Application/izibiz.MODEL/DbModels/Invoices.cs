@@ -50,8 +50,8 @@ namespace izibiz.MODEL.DbModels
         public DateTime issueDate { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.profileid), DbType = "NVARCHAR")]
-        public string profileid { get; set; }
+        [Column(Name = nameof(EI.Invoice.profileId), DbType = "NVARCHAR")]
+        public string profileId { get; set; }
 
 
         [Column(Name = nameof(EI.Invoice.invoiceType), DbType = "NVARCHAR")]
@@ -107,8 +107,7 @@ namespace izibiz.MODEL.DbModels
         public string receiverAlias { get; set; }
 
 
-        [Column(Name = nameof(EI.Invoice.content), DbType = "NVARCHAR")]
-        public string content { get; set; }
+
 
         [Column(Name = nameof(EI.Invoice.folderPath), DbType = "NVARCHAR")]
         public string folderPath { get; set; }

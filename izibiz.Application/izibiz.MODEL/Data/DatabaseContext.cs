@@ -41,6 +41,8 @@ namespace izibiz.MODEL.Data
 
         public DbSet<ArchiveReports> archiveReports { get; set; }
 
+        public DbSet<DespatchAdvices> despatchAdvices { get; set; }
+
         public DbSet<InvoiceIdSerials> invoiceIdSerials { get; set; }
 
         public DbSet<UserInformation> userInformations { get; set; }

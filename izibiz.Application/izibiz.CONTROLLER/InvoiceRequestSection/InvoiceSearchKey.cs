@@ -4,18 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using izibiz.SERVICES.serviceOib;
+using izibiz.SERVICES.serviceDespatch;
 
 namespace izibiz.CONTROLLER.InvoiceRequestSection
 {
    public class InvoiceSearchKey
     {
-        public static GetInvoiceRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoiceRequest;
-        public static GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoiceWithTypeRequest;
+
+        public static GetInvoiceRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoice;
+        public static GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoiceWithType;
+        public static GetDespatchAdviceRequestSEARCH_KEY invoiceSearchKeyGetDespatch;
+
 
 
         public static void createInvoiceSearchKeyGetInvoiceRequest()
         {
-            invoiceSearchKeyGetInvoiceRequest = new GetInvoiceRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
+            invoiceSearchKeyGetInvoice = new GetInvoiceRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
             {
                 LIMIT = 10,
                 LIMITSpecified =true,
@@ -27,7 +31,7 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
 
         public static void createinvoiceSearchKeyGetInvoiceWithTypeRequest()
         {
-            invoiceSearchKeyGetInvoiceWithTypeRequest = new GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
+            invoiceSearchKeyGetInvoiceWithType = new GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
             {
                 LIMIT = 10,
                 LIMITSpecified = true,
@@ -35,6 +39,19 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
                 READ_INCLUDEDSpecified = false,          
             };
         }
+
+
+        public static void createDespatchSearchKey()
+        {
+            invoiceSearchKeyGetDespatch = new GetDespatchAdviceRequestSEARCH_KEY() //default degerler ısterse degısebılır
+            {
+                LIMIT = 10,
+                LIMITSpecified = true,
+                READ_INCLUDED = false,
+                READ_INCLUDEDSpecified = false,
+            };
+        }
+
 
     }
 }

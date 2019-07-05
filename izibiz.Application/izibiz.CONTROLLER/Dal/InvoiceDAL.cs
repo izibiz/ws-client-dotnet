@@ -21,7 +21,7 @@ namespace izibiz.CONTROLLER.DAL
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                return dbContext.invoices.Where(inv => inv.direction == nameof(EI.InvDirection.OUT)
+                return dbContext.invoices.Where(inv => inv.direction == nameof(EI.Direction.OUT)
             && inv.status.Contains(nameof(EI.StatusType.LOAD))
             && inv.status.Contains(nameof(EI.SubStatusType.FAILED))).OrderByDescending(inv => inv.cDate).ToList();
             }
@@ -179,10 +179,10 @@ namespace izibiz.CONTROLLER.DAL
 
                 draftCreatedInv.ID = invoiceUbl.ID.Value;
                 draftCreatedInv.uuid = invoiceUbl.UUID.Value;
-                draftCreatedInv.direction = EI.InvDirection.DRAFT.ToString();
+                draftCreatedInv.direction = EI.Direction.DRAFT.ToString();
                 draftCreatedInv.draftFlag = EI.ActiveOrPasive.N.ToString();  //load ınv yapmadıklarımız flag N
                 draftCreatedInv.cDate = invoiceUbl.IssueDate.Value;
-                draftCreatedInv.profileid = invoiceUbl.ProfileID.Value;
+                draftCreatedInv.profileId = invoiceUbl.ProfileID.Value;
                 draftCreatedInv.invoiceType = invoiceUbl.InvoiceTypeCode.Value;
                 draftCreatedInv.suplier = invoiceUbl.AccountingSupplierParty.Party.PartyName.Name.Value;
                 draftCreatedInv.receiverVkn = invoiceUbl.AccountingCustomerParty.Party.PartyIdentification.First().ID.Value;
@@ -190,7 +190,6 @@ namespace izibiz.CONTROLLER.DAL
                 draftCreatedInv.status = "";//simdilik bos deger atıyoruz load ınv yaparken guncellenecektır
                 draftCreatedInv.stateNote = nameof(EI.StateNote.CREATED);
                 draftCreatedInv.draftFlag = nameof(EI.ActiveOrPasive.N);//bizim olusturdugumuz fatura flag N
-                draftCreatedInv.content = File.ReadAllText(xmlPath, Encoding.UTF8);
                 draftCreatedInv.folderPath = xmlPath;
 
                 dbContext.invoices.Add(draftCreatedInv);

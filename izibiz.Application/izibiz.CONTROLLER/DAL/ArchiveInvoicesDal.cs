@@ -75,7 +75,7 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public void addArchiveFromEArchiveAndSaveContentOnDisk(EARCHIVEINV[] archiveArr)
+        public int addArchiveFromEArchiveAndSaveContentOnDisk(EARCHIVEINV[] archiveArr)
         {
             ArchiveInvoices archive;
 
@@ -92,7 +92,7 @@ namespace izibiz.CONTROLLER.DAL
                         archive.uuid = arc.HEADER.UUID;
                         archive.totalAmount = Convert.ToDecimal(arc.HEADER.PAYABLE_AMOUNT);
                         archive.issueDate = Convert.ToDateTime(arc.HEADER.ISSUE_DATE);
-                        archive.profileid = arc.HEADER.PROFILE_ID;
+                        archive.profileId = arc.HEADER.PROFILE_ID;
                         archive.invoiceType = arc.HEADER.INVOICE_TYPE;
                         archive.sendingType = arc.HEADER.SENDING_TYPE;
                         archive.eArchiveType = arc.HEADER.EARCHIVE_TYPE;
@@ -102,15 +102,14 @@ namespace izibiz.CONTROLLER.DAL
                         archive.status = arc.HEADER.STATUS;
                         archive.statusCode = arc.HEADER.STATUS_CODE;
                         archive.currencyCode = arc.HEADER.CURRENCY_CODE;
-
                         archive.folderPath = FolderControl.inboxFolderArchive + archive.uuid + "." + nameof(EI.DocumentType.XML);
-                        archive.content = Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value));
-                        FolderControl.writeFileOnDiskWithString(archive.content, archive.folderPath);
+
+                        FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value)), archive.folderPath);
 
                         databaseContext.archiveInvoices.Add(archive);
                     }
                 }
-                databaseContext.SaveChanges();
+               return databaseContext.SaveChanges();
             }
         }
 
@@ -192,7 +191,7 @@ namespace izibiz.CONTROLLER.DAL
                 createdArchive.totalAmount = invoiceUbl.LegalMonetaryTotal.PayableAmount.Value;
                 createdArchive.draftFlag = true;
                 createdArchive.issueDate = invoiceUbl.IssueDate.Value;
-                createdArchive.profileid = invoiceUbl.ProfileID.Value;
+                createdArchive.profileId = invoiceUbl.ProfileID.Value;
                 createdArchive.invoiceType = invoiceUbl.InvoiceTypeCode.Value;
                 if (invoiceUbl.AdditionalDocumentReference.Length == 3)  //ınternet ıse 2.ındexdekı addDocRef vardır
                 {
@@ -213,7 +212,6 @@ namespace izibiz.CONTROLLER.DAL
                 {
                     createdArchive.receiverMail = invoiceUbl.AccountingCustomerParty.Party.Contact.ElectronicMail.Value;
                 }
-                createdArchive.content = File.ReadAllText(xmlPath, Encoding.UTF8);
                 createdArchive.folderPath = xmlPath;
 
                 databaseContext.archiveInvoices.Add(createdArchive);

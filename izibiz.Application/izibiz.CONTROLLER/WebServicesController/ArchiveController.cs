@@ -56,6 +56,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                     archiveMarkRead(archiveArr);
                     //getirilen faturaları db ye kaydet
                     Singl.archiveInvoiceDalGet.addArchiveFromEArchiveAndSaveContentOnDisk(archiveArr);
+           
                 }
                 return Singl.archiveInvoiceDalGet.getArchiveList(false); //db den taslak olmayanları getır
             }
@@ -175,7 +176,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 ArchiveInvoiceReadRequest req = new ArchiveInvoiceReadRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
                 req.INVOICEID = uuid;
-                req.PORTAL_DIRECTION = nameof(EI.InvDirection.OUT);
+                req.PORTAL_DIRECTION = nameof(EI.Direction.OUT);
                 req.PROFILE = docType;
                 if (docType == nameof(EI.DocumentType.XML))
                 {
