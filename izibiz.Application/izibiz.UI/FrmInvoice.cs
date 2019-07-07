@@ -945,16 +945,13 @@ namespace izibiz.UI
         }
 
 
-        private IdContentModel createInvListWithNewId(string seriName, bool isSendWithZip)
+        private IdArrContentArrModel createInvListWithNewId(string serialName, bool isSendWithZip)
         {
-            string RES = "FAIL";
-            RES.Equals("FAIL");
-            "FAIL".Equals(RES);
             //verılmek ıstenen ıd on ekıye aıt yenı ıd serıal arr olusturulur
-            IdContentModel idContent = new IdContentModel();
-            idContent.newIdArr = InvoiceIdSetSerilaze.createNewInvId(seriName, tableGrid.SelectedRows.Count);
+            IdArrContentArrModel idArrContentArr = new IdArrContentArrModel();
+            idArrContentArr.newIdArr = InvoiceIdSetSerilaze.createNewInvId(serialName, tableGrid.SelectedRows.Count);
 
-            string[] contentArr = new string[idContent.newIdArr.Length];
+            idArrContentArr.newXmlContentArr = new string[idArrContentArr.newIdArr.Length];
 
             int cnt = 0;
             foreach (DataGridViewRow row in tableGrid.SelectedRows)
@@ -967,15 +964,14 @@ namespace izibiz.UI
                 //ıd sı degıstırılmıs contentı ,ıstege gore zıpleyıp, ınvoiceliste aktarıyorum
 
                 string xmlContent = Singl.invoiceControllerGet.getInvoiceContentXml(uuidRow, gridDirection);
-                contentArr[cnt] = XmlControl.xmlChangeIdValue(xmlContent, idContent.newIdArr[cnt]);
+                idArrContentArr.newXmlContentArr[cnt] = XmlControl.xmlChangeIdValue(xmlContent, idArrContentArr.newIdArr[cnt]);
 
-                Singl.invoiceControllerGet.createInvListWithContent(isSendWithZip, contentArr[cnt]);
+               Singl.invoiceControllerGet.createInvListWithContent(isSendWithZip, idArrContentArr.newXmlContentArr[cnt]);
 
                 cnt++;
             }
-            idContent.newXmlContentArr = contentArr;
 
-            return idContent;
+            return idArrContentArr;
         }
 
 
@@ -1016,29 +1012,34 @@ namespace izibiz.UI
                         ////gb  sectır
                         if (frmDialogIdSelectAlias.ShowDialog() == DialogResult.OK)
                         {
-                            IdContentModel ıdContentModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue, isSendWithZip);
+                            IdArrContentArrModel ıdContentModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue, isSendWithZip);
 
                             //send inv 
                             if (Singl.invoiceControllerGet.sendInvoice(frmDialogIdSelectAlias.selectedValue, isSendWithZip) == 0)
                             {
-                                for (int rowCnt = 0; rowCnt < selectedInvCount; rowCnt++)
+                                for (int cnt = 0; cnt < selectedInvCount; cnt++)
                                 {
-                                    string uuidRow = tableGrid.SelectedRows[rowCnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-
-                                    //eskı folderPathdekı dosyayı konumdan sıler
-                                    FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
-
+                                    string uuidRow = tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                                   
                                     //yenı folderpath olustur
-                                    string newFolderPath = FolderControl.createInvDocPath(ıdContentModel.newIdArr[rowCnt], nameof(EI.Direction.OUT),
+                                    string newFolderPath = FolderControl.createInvoiceDocPath(ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT),
                                         nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
 
                                     //db de yenı id,direction,folderpath,statenote guncellenır
-                                    Singl.invoiceDalGet.updateInvIdDirectionStateNote(uuidRow, nameof(EI.Direction.DRAFT),
-                                       ıdContentModel.newIdArr[rowCnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND));
+                                  if(Singl.invoiceDalGet.updateInvIdDirectionFolderPathStateNote(uuidRow, nameof(EI.Direction.DRAFT),
+                                       ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND)) == 1)
+                                    {
+                                        //eskı folderPathdekı dosyayı konumdan sıler
+                                        FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
 
-
-                                    //yenı folderpath ile yenı id eklenmıs xmli diske kaydet
-                                    FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[rowCnt], newFolderPath);
+                                        //yenı folderpath ile yenı id eklenmıs xmli diske kaydet
+                                        FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[cnt], newFolderPath);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Güncel bilgileri Db ye kaydetme işlemi basarısız,İşlemi tekrar gerceklestırınız" + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                                        return;
+                                    }
                                 }
 
                                 //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
@@ -1089,39 +1090,42 @@ namespace izibiz.UI
                 FrmDialogSelectItem frmDialogIdSeriName = new FrmDialogSelectItem(true, "");
                 if (frmDialogIdSeriName.ShowDialog() == DialogResult.OK)
                 {
-                    IdContentModel ıdContentModel = createInvListWithNewId(frmDialogIdSeriName.selectedValue, isSendWithZip); //load ınvda  direction degıstırmıyoruz o yuzden false
-
+                    IdArrContentArrModel idArrContentArrModel = createInvListWithNewId(frmDialogIdSeriName.selectedValue, isSendWithZip); //load ınvda  direction degıstırmıyoruz o yuzden false
+                    //serviste gonderılecek ınvoıcelist createInvListWithNewId fonksıyonu tarafından olustuurluyor ve global degıskene aktarılıyor bu yuzden content parametresı gondermıypruz
                     if (Singl.invoiceControllerGet.loadInvoice(isSendWithZip) == 0) //     int returnCode = 0 / basarılıysa
                     {
 
                         for (int rowCnt = 0; rowCnt < tableGrid.SelectedRows.Count; rowCnt++)
                         {
                             string uuidRow = tableGrid.SelectedRows[rowCnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                      
+                            //yenı ıd ile yenı folderpath olustur
+                            string newFolderPath = FolderControl.createInvoiceDocPath(idArrContentArrModel.newIdArr[rowCnt], nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
 
                             //db verileri guncelle
-                            Singl.invoiceDalGet.updateInvIdCdateStatusGibCodeStateNote(uuidRow, nameof(EI.Direction.DRAFT),
-                              ıdContentModel.newIdArr[rowCnt], DateTime.Now, nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED),
-                               -1, nameof(EI.StatusType.LOAD));
+                           if(Singl.invoiceDalGet.updateInvIdCdateStatusGibCodeStateNoteFolderPath(uuidRow, nameof(EI.Direction.DRAFT),
+                              idArrContentArrModel.newIdArr[rowCnt], DateTime.Now, nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED),
+                               -1, nameof(EI.StatusType.LOAD), newFolderPath) == 1)
+                            {
+                                //yenı olust. folderpath ıle xml ı dıske kaydet
+                                FolderControl.writeFileOnDiskWithString(idArrContentArrModel.newXmlContentArr[rowCnt], newFolderPath);
 
-                            //yenı ıd ile yenı folderpath olustur
-                            string newFolderPath = FolderControl.createInvDocPath(ıdContentModel.newIdArr[rowCnt], nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
-
-                            //yenı olust. folderpath ıle xml ı dıske kaydet
-                            FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[rowCnt], newFolderPath);
-
-                            //eskı folderPathdekı dosyayı konumdan sıler
-                            FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
-
+                                //eskı folderPathdekı dosyayı konumdan sıler
+                                FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Güncel bilgileri Db ye kaydetme işlemi basarısız,İşlemi tekrar gerceklestırınız" + tableGrid.SelectedRows[rowCnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                                return;
+                            }
                         }
-
                         //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
-                        Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
+                        Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(idArrContentArrModel.newIdArr.Last());
 
                         // db den cekılen taslak faturaları datagrıdde listele
                         gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.DRAFT)));
 
                         MessageBox.Show(Lang.successLoad);//"yukleme basarılı"
-
                     }
                     frmDialogIdSeriName.Dispose();
                 }

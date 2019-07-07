@@ -78,6 +78,7 @@ namespace izibiz.COMMON
             ID,
             uuid,
             direction,
+            draftFlag,
             issueDate,
             profileId,
             senderVkn,

@@ -24,7 +24,9 @@ namespace izibiz.MODEL.DbModels
         public string direction { get; set; }
 
 
-        
+        [Column(Name = nameof(EI.Despatch.draftFlag), DbType = "BOOLEAN")]
+        public bool draftFlag { get; set; }
+
 
         [Column(Name = nameof(EI.Despatch.cDate), DbType = "NUMERIC")]
         public DateTime cDate { get; set; }

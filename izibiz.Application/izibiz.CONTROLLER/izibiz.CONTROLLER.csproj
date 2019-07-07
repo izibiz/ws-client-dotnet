@@ -71,7 +71,7 @@
     <Compile Include="InvoiceIdSetSerilaze.cs" />
     <Compile Include="InvoiceRequestSection\InvoiceSearchKey.cs" />
     <Compile Include="Model\ArchiveContentPropertiesModel.cs" />
-    <Compile Include="Model\IdContentModel.cs" />
+    <Compile Include="Model\IdArrContentArrModel.cs" />
     <Compile Include="Model\SendMailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InvoiceRequestSection\RequestHeader.cs" />

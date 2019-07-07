@@ -138,7 +138,7 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public int updateArchiveIdStateNoteDraftFlag(string uuid, string newId, string newStateNote, bool draftFlag)
+        public int updateArchiveIdStateNoteDraftFlagFolderPath(string uuid, string newId, string newStateNote, bool draftFlag,string folderPath)
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
@@ -146,8 +146,9 @@ namespace izibiz.CONTROLLER.DAL
                 archive.ID = newId;
                 archive.stateNote = newStateNote;
                 archive.draftFlag = draftFlag;
+                archive.folderPath = folderPath;
 
-               return databaseContext.SaveChanges();
+                return databaseContext.SaveChanges();
             }
         }
 

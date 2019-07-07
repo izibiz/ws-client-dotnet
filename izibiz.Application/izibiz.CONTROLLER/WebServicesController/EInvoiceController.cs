@@ -93,7 +93,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
                 invoice.senderAlias = inv.HEADER.FROM;
                 invoice.receiverAlias = inv.HEADER.TO;
-                invoice.folderPath = FolderControl.createInvDocPath(inv.ID, direction, nameof(EI.DocumentType.XML));
+                invoice.folderPath = FolderControl.createInvoiceDocPath(inv.ID, direction, nameof(EI.DocumentType.XML));
 
                 byte[] unCompressedContent = Compress.UncompressFile(inv.CONTENT.Value);
                 FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(unCompressedContent), invoice.folderPath);

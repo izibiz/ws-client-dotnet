@@ -924,17 +924,23 @@ namespace izibiz.UI
                     {
                         //db de fatura durumunu taslaktan cıkar
                         for (int cnt = 0; cnt < archiveModelArr.Length; cnt++)
-                        {                          
+                        {             
+                            //path degıstır
+                            string newFolderPath = FolderControl.inboxFolderArchive + newIdArr[cnt] + "." + nameof(EI.DocumentType.XML);
+                    
                             //guncelleme basarılıysa
-                            if (Singl.archiveInvoiceDalGet.updateArchiveIdStateNoteDraftFlag(archiveModelArr[cnt].uuid,
-                                 newIdArr[cnt], EI.StateNote.SEND.ToString(), false) == 1)
+                            if (Singl.archiveInvoiceDalGet.updateArchiveIdStateNoteDraftFlagFolderPath(archiveModelArr[cnt].uuid,
+                                 newIdArr[cnt], EI.StateNote.SEND.ToString(), false, newFolderPath) == 1)
                             {
                                 //diskten xmli sil
                                 FolderControl.deleteFileFromPath(Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid).folderPath);
-                                //path degıstır
-                                string newFolderPath = FolderControl.inboxFolderArchive + newIdArr[cnt] + "." + nameof(EI.DocumentType.XML);
                                 //yenı kontentı dıske kaydet
                                 FolderControl.writeFileOnDiskWithString(archiveModelArr[cnt].content, newFolderPath);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Db ye kaydetme işlemi basarısız,İşlemi tekrar gerceklestırınız" + tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                                return;
                             }
                         }
 

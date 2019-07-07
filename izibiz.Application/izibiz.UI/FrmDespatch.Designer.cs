@@ -37,23 +37,23 @@
             this.btnTakeDespatch = new System.Windows.Forms.Button();
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.menuInvoice = new System.Windows.Forms.MenuStrip();
-            this.itemIncomingInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemSentInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemDraftInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemNewInvoice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemIncomingDespatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemSentDespatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDraftDespatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemNewDespatch = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTakeGibUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.itemListGibUserList = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlIncomingDespatch = new System.Windows.Forms.Panel();
             this.btnAnswerDespatch = new System.Windows.Forms.Button();
-            this.btnIncomingInvGetState = new System.Windows.Forms.Button();
+            this.btnIncomingDespatchGetStatus = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
             this.pnlSendDespatch = new System.Windows.Forms.Panel();
-            this.btnSendMail = new System.Windows.Forms.Button();
-            this.btnSendInvGetState = new System.Windows.Forms.Button();
+            this.btnSendDespatchGetStatus = new System.Windows.Forms.Button();
             this.pnlDraftDespatch = new System.Windows.Forms.Panel();
+            this.btnDraftDespatchGetStatus = new System.Windows.Forms.Button();
+            this.btnLoadDespatch = new System.Windows.Forms.Button();
             this.btnCancelDespatch = new System.Windows.Forms.Button();
             this.btnSendDespatch = new System.Windows.Forms.Button();
-            this.btnLoadDespatch = new System.Windows.Forms.Button();
             this.grpFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.menuInvoice.SuspendLayout();
@@ -78,6 +78,7 @@
             this.btnFilterList.TabIndex = 28;
             this.btnFilterList.Text = "Filtrele";
             this.btnFilterList.UseVisualStyleBackColor = false;
+            this.btnFilterList.Click += new System.EventHandler(this.btnFilterList_Click);
             // 
             // grpFilter
             // 
@@ -148,12 +149,13 @@
             this.tableGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.GridColor = System.Drawing.SystemColors.Control;
-            this.tableGrid.Location = new System.Drawing.Point(243, 364);
+            this.tableGrid.Location = new System.Drawing.Point(243, 302);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(905, 188);
+            this.tableGrid.Size = new System.Drawing.Size(905, 294);
             this.tableGrid.TabIndex = 35;
+            this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
             // 
             // menuInvoice
             // 
@@ -162,10 +164,10 @@
             this.menuInvoice.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.menuInvoice.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuInvoice.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemIncomingInvoice,
-            this.itemSentInvoice,
-            this.itemDraftInvoice,
-            this.itemNewInvoice,
+            this.itemIncomingDespatch,
+            this.itemSentDespatch,
+            this.itemDraftDespatch,
+            this.itemNewDespatch,
             this.itemTakeGibUsers,
             this.itemListGibUserList});
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
@@ -175,48 +177,48 @@
             this.menuInvoice.TabIndex = 32;
             this.menuInvoice.Text = "menuStrip1";
             // 
-            // itemIncomingInvoice
+            // itemIncomingDespatch
             // 
-            this.itemIncomingInvoice.BackColor = System.Drawing.Color.Teal;
-            this.itemIncomingInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemIncomingInvoice.Margin = new System.Windows.Forms.Padding(0, 110, 0, 0);
-            this.itemIncomingInvoice.Name = "itemIncomingInvoice";
-            this.itemIncomingInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemIncomingInvoice.Size = new System.Drawing.Size(128, 29);
-            this.itemIncomingInvoice.Text = "Gelen İrsaliye";
-            this.itemIncomingInvoice.Click += new System.EventHandler(this.itemIncomingInvoice_Click);
+            this.itemIncomingDespatch.BackColor = System.Drawing.Color.Teal;
+            this.itemIncomingDespatch.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemIncomingDespatch.Margin = new System.Windows.Forms.Padding(0, 110, 0, 0);
+            this.itemIncomingDespatch.Name = "itemIncomingDespatch";
+            this.itemIncomingDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemIncomingDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemIncomingDespatch.Text = "Gelen İrsaliye";
+            this.itemIncomingDespatch.Click += new System.EventHandler(this.itemIncomingInvoice_Click);
             // 
-            // itemSentInvoice
+            // itemSentDespatch
             // 
-            this.itemSentInvoice.BackColor = System.Drawing.Color.Teal;
-            this.itemSentInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemSentInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
-            this.itemSentInvoice.Name = "itemSentInvoice";
-            this.itemSentInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemSentInvoice.Size = new System.Drawing.Size(128, 29);
-            this.itemSentInvoice.Text = " Giden İrsaliye";
-            this.itemSentInvoice.Click += new System.EventHandler(this.itemSentInvoice_Click);
+            this.itemSentDespatch.BackColor = System.Drawing.Color.Teal;
+            this.itemSentDespatch.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemSentDespatch.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemSentDespatch.Name = "itemSentDespatch";
+            this.itemSentDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemSentDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemSentDespatch.Text = " Giden İrsaliye";
+            this.itemSentDespatch.Click += new System.EventHandler(this.itemSentInvoice_Click);
             // 
-            // itemDraftInvoice
+            // itemDraftDespatch
             // 
-            this.itemDraftInvoice.BackColor = System.Drawing.Color.Teal;
-            this.itemDraftInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemDraftInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
-            this.itemDraftInvoice.Name = "itemDraftInvoice";
-            this.itemDraftInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemDraftInvoice.Size = new System.Drawing.Size(128, 29);
-            this.itemDraftInvoice.Text = "Taslak İrsaliye";
-            this.itemDraftInvoice.Click += new System.EventHandler(this.itemDraftInvoice_Click);
+            this.itemDraftDespatch.BackColor = System.Drawing.Color.Teal;
+            this.itemDraftDespatch.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemDraftDespatch.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemDraftDespatch.Name = "itemDraftDespatch";
+            this.itemDraftDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemDraftDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemDraftDespatch.Text = "Taslak İrsaliye";
+            this.itemDraftDespatch.Click += new System.EventHandler(this.itemDraftInvoice_Click);
             // 
-            // itemNewInvoice
+            // itemNewDespatch
             // 
-            this.itemNewInvoice.BackColor = System.Drawing.Color.Teal;
-            this.itemNewInvoice.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemNewInvoice.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
-            this.itemNewInvoice.Name = "itemNewInvoice";
-            this.itemNewInvoice.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemNewInvoice.Size = new System.Drawing.Size(128, 29);
-            this.itemNewInvoice.Text = "Yeni İrsaliye";
+            this.itemNewDespatch.BackColor = System.Drawing.Color.Teal;
+            this.itemNewDespatch.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.itemNewDespatch.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.itemNewDespatch.Name = "itemNewDespatch";
+            this.itemNewDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemNewDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemNewDespatch.Text = "Yeni İrsaliye";
             // 
             // itemTakeGibUsers
             // 
@@ -225,6 +227,7 @@
             this.itemTakeGibUsers.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemTakeGibUsers.Name = "itemTakeGibUsers";
             this.itemTakeGibUsers.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.itemTakeGibUsers.ShowShortcutKeys = false;
             this.itemTakeGibUsers.Size = new System.Drawing.Size(128, 29);
             this.itemTakeGibUsers.Text = "Gib User List Al";
             this.itemTakeGibUsers.Click += new System.EventHandler(this.itemTakeGibUsers_Click);
@@ -243,10 +246,10 @@
             // pnlIncomingDespatch
             // 
             this.pnlIncomingDespatch.Controls.Add(this.btnAnswerDespatch);
-            this.pnlIncomingDespatch.Controls.Add(this.btnIncomingInvGetState);
-            this.pnlIncomingDespatch.Location = new System.Drawing.Point(337, 37);
+            this.pnlIncomingDespatch.Controls.Add(this.btnIncomingDespatchGetStatus);
+            this.pnlIncomingDespatch.Location = new System.Drawing.Point(337, 62);
             this.pnlIncomingDespatch.Name = "pnlIncomingDespatch";
-            this.pnlIncomingDespatch.Size = new System.Drawing.Size(646, 103);
+            this.pnlIncomingDespatch.Size = new System.Drawing.Size(646, 71);
             this.pnlIncomingDespatch.TabIndex = 41;
             this.pnlIncomingDespatch.Visible = false;
             // 
@@ -258,27 +261,28 @@
             this.btnAnswerDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnswerDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAnswerDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAnswerDespatch.Location = new System.Drawing.Point(155, 25);
+            this.btnAnswerDespatch.Location = new System.Drawing.Point(155, 20);
             this.btnAnswerDespatch.Name = "btnAnswerDespatch";
             this.btnAnswerDespatch.Size = new System.Drawing.Size(117, 35);
             this.btnAnswerDespatch.TabIndex = 24;
             this.btnAnswerDespatch.Text = "Yanıt Ver";
             this.btnAnswerDespatch.UseVisualStyleBackColor = false;
             // 
-            // btnIncomingInvGetState
+            // btnIncomingDespatchGetStatus
             // 
-            this.btnIncomingInvGetState.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnIncomingInvGetState.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnIncomingInvGetState.FlatAppearance.BorderSize = 2;
-            this.btnIncomingInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncomingInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnIncomingInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIncomingInvGetState.Location = new System.Drawing.Point(18, 25);
-            this.btnIncomingInvGetState.Name = "btnIncomingInvGetState";
-            this.btnIncomingInvGetState.Size = new System.Drawing.Size(117, 35);
-            this.btnIncomingInvGetState.TabIndex = 23;
-            this.btnIncomingInvGetState.Text = "Durum sorgula";
-            this.btnIncomingInvGetState.UseVisualStyleBackColor = false;
+            this.btnIncomingDespatchGetStatus.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnIncomingDespatchGetStatus.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnIncomingDespatchGetStatus.FlatAppearance.BorderSize = 2;
+            this.btnIncomingDespatchGetStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIncomingDespatchGetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnIncomingDespatchGetStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnIncomingDespatchGetStatus.Location = new System.Drawing.Point(18, 20);
+            this.btnIncomingDespatchGetStatus.Name = "btnIncomingDespatchGetStatus";
+            this.btnIncomingDespatchGetStatus.Size = new System.Drawing.Size(117, 35);
+            this.btnIncomingDespatchGetStatus.TabIndex = 23;
+            this.btnIncomingDespatchGetStatus.Text = "Durum sorgula";
+            this.btnIncomingDespatchGetStatus.UseVisualStyleBackColor = false;
+            this.btnIncomingDespatchGetStatus.Click += new System.EventHandler(this.btnIncomingDespatchGetStatus_Click);
             // 
             // lblText
             // 
@@ -292,64 +296,82 @@
             // 
             // pnlSendDespatch
             // 
-            this.pnlSendDespatch.Controls.Add(this.btnSendMail);
-            this.pnlSendDespatch.Controls.Add(this.btnSendInvGetState);
+            this.pnlSendDespatch.Controls.Add(this.btnSendDespatchGetStatus);
             this.pnlSendDespatch.Location = new System.Drawing.Point(337, 146);
             this.pnlSendDespatch.Name = "pnlSendDespatch";
-            this.pnlSendDespatch.Size = new System.Drawing.Size(646, 103);
+            this.pnlSendDespatch.Size = new System.Drawing.Size(646, 70);
             this.pnlSendDespatch.TabIndex = 42;
             this.pnlSendDespatch.Visible = false;
             // 
-            // btnSendMail
+            // btnSendDespatchGetStatus
             // 
-            this.btnSendMail.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSendMail.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnSendMail.FlatAppearance.BorderSize = 2;
-            this.btnSendMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSendMail.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendMail.Location = new System.Drawing.Point(155, 33);
-            this.btnSendMail.Name = "btnSendMail";
-            this.btnSendMail.Size = new System.Drawing.Size(117, 35);
-            this.btnSendMail.TabIndex = 25;
-            this.btnSendMail.Text = "E mail Gönder";
-            this.btnSendMail.UseVisualStyleBackColor = false;
-            // 
-            // btnSendInvGetState
-            // 
-            this.btnSendInvGetState.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSendInvGetState.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnSendInvGetState.FlatAppearance.BorderSize = 2;
-            this.btnSendInvGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendInvGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSendInvGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendInvGetState.Location = new System.Drawing.Point(18, 33);
-            this.btnSendInvGetState.Name = "btnSendInvGetState";
-            this.btnSendInvGetState.Size = new System.Drawing.Size(117, 35);
-            this.btnSendInvGetState.TabIndex = 24;
-            this.btnSendInvGetState.Text = "Durum sorgula";
-            this.btnSendInvGetState.UseVisualStyleBackColor = false;
+            this.btnSendDespatchGetStatus.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnSendDespatchGetStatus.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSendDespatchGetStatus.FlatAppearance.BorderSize = 2;
+            this.btnSendDespatchGetStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendDespatchGetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSendDespatchGetStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSendDespatchGetStatus.Location = new System.Drawing.Point(18, 17);
+            this.btnSendDespatchGetStatus.Name = "btnSendDespatchGetStatus";
+            this.btnSendDespatchGetStatus.Size = new System.Drawing.Size(117, 35);
+            this.btnSendDespatchGetStatus.TabIndex = 24;
+            this.btnSendDespatchGetStatus.Text = "Durum sorgula";
+            this.btnSendDespatchGetStatus.UseVisualStyleBackColor = false;
+            this.btnSendDespatchGetStatus.Click += new System.EventHandler(this.btnSendDespatchGetStatus_Click);
             // 
             // pnlDraftDespatch
             // 
+            this.pnlDraftDespatch.Controls.Add(this.btnDraftDespatchGetStatus);
             this.pnlDraftDespatch.Controls.Add(this.btnLoadDespatch);
             this.pnlDraftDespatch.Controls.Add(this.btnCancelDespatch);
             this.pnlDraftDespatch.Controls.Add(this.btnSendDespatch);
-            this.pnlDraftDespatch.Location = new System.Drawing.Point(337, 255);
+            this.pnlDraftDespatch.Location = new System.Drawing.Point(337, 222);
             this.pnlDraftDespatch.Name = "pnlDraftDespatch";
-            this.pnlDraftDespatch.Size = new System.Drawing.Size(646, 103);
+            this.pnlDraftDespatch.Size = new System.Drawing.Size(646, 74);
             this.pnlDraftDespatch.TabIndex = 42;
             this.pnlDraftDespatch.Visible = false;
             // 
+            // btnDraftDespatchGetStatus
+            // 
+            this.btnDraftDespatchGetStatus.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnDraftDespatchGetStatus.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnDraftDespatchGetStatus.FlatAppearance.BorderSize = 2;
+            this.btnDraftDespatchGetStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDraftDespatchGetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDraftDespatchGetStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDraftDespatchGetStatus.Location = new System.Drawing.Point(18, 22);
+            this.btnDraftDespatchGetStatus.Name = "btnDraftDespatchGetStatus";
+            this.btnDraftDespatchGetStatus.Size = new System.Drawing.Size(117, 35);
+            this.btnDraftDespatchGetStatus.TabIndex = 28;
+            this.btnDraftDespatchGetStatus.Text = "Durum sorgula";
+            this.btnDraftDespatchGetStatus.UseVisualStyleBackColor = false;
+            this.btnDraftDespatchGetStatus.Click += new System.EventHandler(this.btnDraftDespatchGetStatus_Click);
+            // 
+            // btnLoadDespatch
+            // 
+            this.btnLoadDespatch.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnLoadDespatch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnLoadDespatch.FlatAppearance.BorderSize = 2;
+            this.btnLoadDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnLoadDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLoadDespatch.Location = new System.Drawing.Point(292, 22);
+            this.btnLoadDespatch.Name = "btnLoadDespatch";
+            this.btnLoadDespatch.Size = new System.Drawing.Size(117, 35);
+            this.btnLoadDespatch.TabIndex = 27;
+            this.btnLoadDespatch.Text = "Portala Yükle";
+            this.btnLoadDespatch.UseVisualStyleBackColor = false;
+            this.btnLoadDespatch.Click += new System.EventHandler(this.btnLoadDespatch_Click);
+            // 
             // btnCancelDespatch
             // 
-            this.btnCancelDespatch.BackColor = System.Drawing.Color.Maroon;
-            this.btnCancelDespatch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnCancelDespatch.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancelDespatch.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
             this.btnCancelDespatch.FlatAppearance.BorderSize = 2;
             this.btnCancelDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCancelDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelDespatch.Location = new System.Drawing.Point(292, 28);
+            this.btnCancelDespatch.Location = new System.Drawing.Point(429, 22);
             this.btnCancelDespatch.Name = "btnCancelDespatch";
             this.btnCancelDespatch.Size = new System.Drawing.Size(117, 35);
             this.btnCancelDespatch.TabIndex = 26;
@@ -364,27 +386,12 @@
             this.btnSendDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendDespatch.Location = new System.Drawing.Point(18, 28);
+            this.btnSendDespatch.Location = new System.Drawing.Point(155, 22);
             this.btnSendDespatch.Name = "btnSendDespatch";
             this.btnSendDespatch.Size = new System.Drawing.Size(117, 35);
             this.btnSendDespatch.TabIndex = 25;
             this.btnSendDespatch.Text = "Gönder";
             this.btnSendDespatch.UseVisualStyleBackColor = false;
-            // 
-            // btnLoadDespatch
-            // 
-            this.btnLoadDespatch.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnLoadDespatch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnLoadDespatch.FlatAppearance.BorderSize = 2;
-            this.btnLoadDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnLoadDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLoadDespatch.Location = new System.Drawing.Point(155, 28);
-            this.btnLoadDespatch.Name = "btnLoadDespatch";
-            this.btnLoadDespatch.Size = new System.Drawing.Size(117, 35);
-            this.btnLoadDespatch.TabIndex = 27;
-            this.btnLoadDespatch.Text = "Portala Yükle";
-            this.btnLoadDespatch.UseVisualStyleBackColor = false;
             // 
             // FrmDespatch
             // 
@@ -426,22 +433,22 @@
         private System.Windows.Forms.Button btnTakeDespatch;
         private System.Windows.Forms.DataGridView tableGrid;
         private System.Windows.Forms.MenuStrip menuInvoice;
-        private System.Windows.Forms.ToolStripMenuItem itemIncomingInvoice;
-        private System.Windows.Forms.ToolStripMenuItem itemSentInvoice;
-        private System.Windows.Forms.ToolStripMenuItem itemDraftInvoice;
-        private System.Windows.Forms.ToolStripMenuItem itemNewInvoice;
+        private System.Windows.Forms.ToolStripMenuItem itemIncomingDespatch;
+        private System.Windows.Forms.ToolStripMenuItem itemSentDespatch;
+        private System.Windows.Forms.ToolStripMenuItem itemDraftDespatch;
+        private System.Windows.Forms.ToolStripMenuItem itemNewDespatch;
         private System.Windows.Forms.Panel pnlIncomingDespatch;
         private System.Windows.Forms.Label lblText;
         private System.Windows.Forms.Panel pnlSendDespatch;
         private System.Windows.Forms.Panel pnlDraftDespatch;
-        private System.Windows.Forms.Button btnIncomingInvGetState;
-        private System.Windows.Forms.Button btnSendInvGetState;
+        private System.Windows.Forms.Button btnIncomingDespatchGetStatus;
+        private System.Windows.Forms.Button btnSendDespatchGetStatus;
         private System.Windows.Forms.Button btnAnswerDespatch;
-        private System.Windows.Forms.Button btnSendMail;
         private System.Windows.Forms.Button btnCancelDespatch;
         private System.Windows.Forms.Button btnSendDespatch;
         private System.Windows.Forms.ToolStripMenuItem itemTakeGibUsers;
         private System.Windows.Forms.ToolStripMenuItem itemListGibUserList;
         private System.Windows.Forms.Button btnLoadDespatch;
+        private System.Windows.Forms.Button btnDraftDespatchGetStatus;
     }
 }

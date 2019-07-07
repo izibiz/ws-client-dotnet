@@ -135,7 +135,7 @@ namespace izibiz.CONTROLLER.DAL
         }
 
      
-        public void updateInvIdDirectionStateNote(string uuid, string direction, string newId,string newDirection,string newFolderPath,string newStateNote)
+        public int updateInvIdDirectionFolderPathStateNote(string uuid, string direction, string newId,string newDirection,string newFolderPath,string newStateNote)
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
@@ -147,12 +147,12 @@ namespace izibiz.CONTROLLER.DAL
                 invoice.folderPath = newFolderPath;
                 invoice.stateNote = newStateNote;
 
-                dbContext.SaveChanges();
+             return   dbContext.SaveChanges();
             }
         }
 
-        public void updateInvIdCdateStatusGibCodeStateNote(string uuid, string direction, 
-            string newId, DateTime newCdate,string newStatus,int newGibStatusCode, string newStateNote)
+        public int  updateInvIdCdateStatusGibCodeStateNoteFolderPath(string uuid, string direction, 
+            string newId, DateTime newCdate,string newStatus,int newGibStatusCode, string newStateNote,string newFolderPath)
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
@@ -164,8 +164,9 @@ namespace izibiz.CONTROLLER.DAL
                 invoice.status = newStatus;
                 invoice.gibStatusCode = newGibStatusCode;
                 invoice.stateNote = newStateNote;
+                invoice.folderPath = newFolderPath;
 
-                dbContext.SaveChanges();
+             return   dbContext.SaveChanges();
             }
         }
 

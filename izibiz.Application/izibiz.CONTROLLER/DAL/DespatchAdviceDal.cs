@@ -17,7 +17,7 @@ namespace izibiz.CONTROLLER.DAL
     {
 
 
-        public int addDespatchFromDespatchAdviceAndSaveContentOnDisk(DESPATCHADVICE[] despatchArr,string direction)
+        public int addDespatchFromServiceAndSaveContentOnDisk(DESPATCHADVICE[] despatchArr, string direction)
         {
             DespatchAdvices despatchAdvice;
 
@@ -60,9 +60,90 @@ namespace izibiz.CONTROLLER.DAL
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                return dbContext.despatchAdvices.Where(despatch => despatch.direction == direction).ToList();
+                return dbContext.despatchAdvices.Where(despatch => despatch.direction == direction).OrderByDescending(despatch => despatch.cDate).ToList();
             }
         }
+
+
+
+        public DespatchAdvices getDespatch(string uuid, string direction)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.despatchAdvices.Where(despatch => despatch.direction == direction && despatch.uuid == uuid).FirstOrDefault();
+            }
+        }
+
+
+
+
+        public int addDespatchStatusFromService(DESPATCHADVICEHEADER[] despatchHeaderArr, string direction)
+        {
+            DespatchAdvices despatchAdvice;
+
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                foreach (var despatchHeader in despatchHeaderArr)
+                {
+                    if (despatchHeader.DIRECTION.Equals(direction))  //bir uuid ye ait iki direction  olabilir ... iki status degerı donebılır
+                    {
+                        despatchAdvice = databaseContext.despatchAdvices.Where(despatch => despatch.direction == direction
+                && despatch.uuid == despatchHeader.UUID).FirstOrDefault();
+
+                        despatchAdvice.status = despatchHeader.STATUS;
+                        despatchAdvice.statusCode = despatchHeader.STATUS_CODE;
+                        despatchAdvice.gibStatusCode = despatchHeader.GIB_STATUS_CODE;
+                        despatchAdvice.gibStatusDescription = despatchHeader.GIB_STATUS_DESCRIPTION;
+
+                    }
+                }
+                return databaseContext.SaveChanges();
+            }
+        }
+
+
+
+
+
+        public int updateDespatchIdCdateStatusGibCodeStateNoteFolderPath(string uuid, string direction,
+     string newId, DateTime newCdate, string newStatus, int newGibStatusCode, string newStateNote, string newFolderPath)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                DespatchAdvices despatchAdvice = dbContext.despatchAdvices.Where(despatch => despatch.direction == direction
+            && despatch.uuid == uuid).First();
+
+                despatchAdvice.ID = newId;
+                despatchAdvice.cDate = newCdate;
+                despatchAdvice.status = newStatus;
+                despatchAdvice.gibStatusCode = newGibStatusCode;
+                despatchAdvice.stateNote = newStateNote;
+                despatchAdvice.folderPath = newFolderPath;
+
+                return dbContext.SaveChanges();
+            }
+        }
+
+
+
+        public List<DespatchAdvices> getDespatchListOnFilter(string direction, DateTime startTime, DateTime finishTime)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                return dbContext.despatchAdvices.Where(despatch => despatch.direction == direction
+            && despatch.cDate <= finishTime
+            && despatch.cDate >= startTime).OrderByDescending(inv => inv.cDate).ToList();
+            }
+
+        }
+
+
+
+
+
+
+
+
 
 
 
