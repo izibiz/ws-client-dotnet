@@ -82,6 +82,7 @@ namespace izibiz.COMMON
             issueDate,
             profileId,
             senderVkn,
+            receiverVkn,
             cDate,
             envelopeIdentifier,
             stateNote,
@@ -214,7 +215,8 @@ namespace izibiz.COMMON
             GibUsers,
             aliasPk,
             identifier,
-            title
+            title,
+            productType
         }
 
         public enum GridBtnClmName

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d2707d11-6183-491f-8812-66d356aee72d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2e142041-7dcf-49d1-a22c-a74c90d3020c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="https://efaturatest.izibiz.com.tr/AuthenticationWS?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AuthenticationService.wsdl" MetadataType="Wsdl" ID="3e09ba56-2d55-4895-a61d-76f60f7fc622" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?wsdl" />
-    <MetadataFile FileName="AuthenticationWS.xsd" MetadataType="Schema" ID="d2d48845-e386-438f-8604-75d4ed55b4b4" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=4" />
-    <MetadataFile FileName="AuthenticationWS1.xsd" MetadataType="Schema" ID="a0d47f2e-600d-4353-8d8f-ab8e39aeab46" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=3" />
-    <MetadataFile FileName="AuthenticationWS2.xsd" MetadataType="Schema" ID="bb620f0a-45a6-4c9c-92a6-0848b1c47bba" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=1" />
-    <MetadataFile FileName="AuthenticationWS3.xsd" MetadataType="Schema" ID="f41e94c3-b776-4276-8fea-6a1dc5ef88de" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=2" />
+    <MetadataFile FileName="AuthenticationService.wsdl" MetadataType="Wsdl" ID="74d497b2-d224-4183-a025-4c812c7fcc62" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?wsdl" />
+    <MetadataFile FileName="AuthenticationWS.xsd" MetadataType="Schema" ID="dfeaa64e-d15f-4849-b1dc-c5d3de7c0a83" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=4" />
+    <MetadataFile FileName="AuthenticationWS1.xsd" MetadataType="Schema" ID="8774135a-95bf-4117-83a0-3b0665c42922" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=3" />
+    <MetadataFile FileName="AuthenticationWS2.xsd" MetadataType="Schema" ID="b1923537-9fa5-45a8-bd73-6e96ef666694" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=1" />
+    <MetadataFile FileName="AuthenticationWS3.xsd" MetadataType="Schema" ID="e5d4d954-42d9-4d7b-97d7-30d02957f4c6" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/AuthenticationWS?xsd=2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -340,8 +340,10 @@
   <xsd:complexType name="GetEArchiveReportRequest">
     <xsd:sequence>
       <xsd:element name="REQUEST_HEADER" type="e:REQUEST_HEADERType" />
-      <xsd:element minOccurs="1" name="REPORT_PERIOD" type="xsd:string" />
+      <xsd:element minOccurs="0" name="REPORT_PERIOD" type="xsd:string" />
       <xsd:element minOccurs="0" maxOccurs="1" default="N" name="REPORT_STATUS_FLAG" type="xsd:string" />
+      <xsd:element minOccurs="0" name="START_DATE" type="xsd:date" />
+      <xsd:element minOccurs="0" name="END_DATE" type="xsd:date" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:element name="GetEArchiveReportResponse" type="GetEArchiveReportResponse" />

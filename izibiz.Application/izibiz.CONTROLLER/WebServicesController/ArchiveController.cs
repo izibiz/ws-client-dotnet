@@ -4,7 +4,7 @@ using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.InvoiceRequestSection;
 using izibiz.CONTROLLER.Model;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceArchive;
 using System;
 using System.Collections.Generic;
@@ -28,6 +28,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
         public ArchiveController()
         {
+            RequestHeader.createRequestHeaderArchive();
         }
 
 

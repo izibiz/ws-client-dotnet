@@ -14,7 +14,7 @@ using izibiz.SERVICES.serviceOib;
 using Microsoft.VisualBasic;
 using izibiz.COMMON;
 using izibiz.COMMON.Language;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.CONTROLLER;
 using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.Model;
@@ -1377,9 +1377,10 @@ namespace izibiz.UI
             panelSentInv.Visible = false;
             btnTakeInv.Visible = false;
             gridDirection = EI.GibUser.GibUsers.ToString();
+
             try
             {
-                gridUpdateGibUserList(Singl.gibUsersDalGet.getGibUserList());
+                gridUpdateGibUserList(Singl.gibUsersDalGet.getGibUserList(nameof(EI.ProductType.INVOICE)));
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -1417,10 +1418,10 @@ namespace izibiz.UI
                 if (response == DialogResult.OK)
                 {
                     //servisten cek
-                    var userList = Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.INVOICE));
+                   /* var userList = */Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.INVOICE));
 
-                    //db ye kaydet listeyi
-                    Singl.gibUsersDalGet.addGibUserList(userList);
+                    ////db ye kaydet listeyi
+                    //Singl.gibUsersDalGet.addGibUserList(userList);
 
                     MessageBox.Show(Lang.succesful);
                 }

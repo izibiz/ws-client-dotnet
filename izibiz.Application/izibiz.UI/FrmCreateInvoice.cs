@@ -1,4 +1,4 @@
-﻿using izibiz.MODEL.DbModels;
+﻿using izibiz.MODEL.DbTablesModels;
 using izibiz.COMMON.Language;
 using System;
 using System.Collections.Generic;

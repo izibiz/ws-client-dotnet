@@ -124,8 +124,7 @@ namespace izibiz.UI
                         FrmHome frmHome = new FrmHome();
                         frmHome.Show();
                         this.Hide();
-                        //timer baslat
-                        //   timerGetUserAlias.Start();
+                        
                     }
                 }
             }
@@ -140,24 +139,7 @@ namespace izibiz.UI
         }
 
 
-
-
-        private void timerGetUserAlias_Tick(object sender, EventArgs e)
-        {
-            if (saniye == 28800) //8 saat olduysa get user lıstı db ye yazdır
-            {
-                timerGetUserAlias.Stop();
-                MessageBox.Show("8 saatte bir olan rutın user list cekme ıslemı ıslemı yapılıyor bu ıslem bıraz uzun surebılır, Lütfen bekleyınız");
-
-                Singl.gibUsersDalGet.addGibUserList(Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.INVOICE)));
-
-                saniye = 0;
-                MessageBox.Show("işlem bitmiştir kaldıgınız yerden devam edebılırsınız");
-                timerGetUserAlias.Start();
-            }
-            saniye++;
-        }
-
+        
 
 
 

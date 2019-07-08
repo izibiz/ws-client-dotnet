@@ -1,6 +1,7 @@
 ﻿using izibiz.COMMON;
+using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.InvoiceRequestSection;
-using izibiz.SERVICES.serviceOib;
+using izibiz.SERVICES.serviceAuth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,25 +14,41 @@ namespace izibiz.CONTROLLER.WebServicesController
     public class GibUserController
     {
 
-        private EFaturaOIBPortClient eInvoiceOIBPortClient = new EFaturaOIBPortClient();
+        private AuthenticationServicePortClient authenticationPortClient = new AuthenticationServicePortClient();
 
 
-
-
-
-        public List<GIBUSER> getGibUserList(string ProductType)
+        public GibUserController()
         {
-            using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
+            RequestHeader.createrequestHeaderAuth();
+        }
+
+
+        public void getGibUserList(string ProductType)
+        {
+            using (new OperationContextScope(authenticationPortClient.InnerChannel))
             {
-                GetUserListRequest req = new GetUserListRequest();
-
-                req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
+                GetGibUserListRequest req = new GetGibUserListRequest();
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderAuth;
                 req.DOCUMENT_TYPE = ProductType;
-                GetUserListResponse response = eInvoiceOIBPortClient.GetUserList(req);
+                req.REGISTER_TIME_START = DateTime.Now;
+                GetGibUserListResponse response = authenticationPortClient.GetGibUserList(req);
 
-                return response.Items.ToList();
+                base64Binary content = (base64Binary)response.Item;
+
+                if (content.Value != null)
+                {
+                    byte[] unCompressedContent = Compress.UncompressFile(content.Value);
+                    string f = Encoding.UTF8.GetString(unCompressedContent);
+              //      System.IO.File.WriteAllText("D:\\Y",f);
+                    int i = 0;
+                }
+
+
+
             }
         }
+
+
 
 
 

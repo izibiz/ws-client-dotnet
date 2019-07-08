@@ -2,7 +2,7 @@
 using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceArchive;
 using System;
 using System.Collections.Generic;
@@ -102,7 +102,7 @@ namespace izibiz.CONTROLLER.DAL
                         archive.status = arc.HEADER.STATUS;
                         archive.statusCode = arc.HEADER.STATUS_CODE;
                         archive.currencyCode = arc.HEADER.CURRENCY_CODE;
-                        archive.folderPath = FolderControl.inboxFolderArchive + archive.uuid + "." + nameof(EI.DocumentType.XML);
+                        archive.folderPath = FolderControl.inboxFolderArchive + archive.ID + "." + nameof(EI.DocumentType.XML);
 
                         FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value)), archive.folderPath);
 

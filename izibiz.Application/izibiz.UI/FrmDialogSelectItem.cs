@@ -35,7 +35,7 @@ namespace izibiz.UI
                     btnAddSeriName.Text = Lang.add;
                     linkLblAddSeriName.Visible = true;
                 }
-                else //alias sectiriceksek
+                else //alias ...posta kutusu sectiriceksek
                 {
                     lblInformation.Text = Lang.selectAlias;
                     cmbSeriNames.DataSource = Singl.gibUsersDalGet.getGibUserAliasList(vknTckn);

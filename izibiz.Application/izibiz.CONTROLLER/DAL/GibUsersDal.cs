@@ -1,6 +1,6 @@
 ﻿using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
@@ -30,11 +30,11 @@ namespace izibiz.CONTROLLER.DAL
             return listAlias;
         }
 
-        public List<GibUsers> getGibUserList()
+        public List<GibUsers> getGibUserList(string productType)
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                return databaseContext.gibUsers.ToList();
+                return databaseContext.gibUsers.Where(gibUser => gibUser.productType== productType).ToList();
             }
         }
 

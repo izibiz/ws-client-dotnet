@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="FileControl\Compress.cs" />
     <Compile Include="FileControl\FolderControl.cs" />
     <Compile Include="FileControl\XmlControl.cs" />

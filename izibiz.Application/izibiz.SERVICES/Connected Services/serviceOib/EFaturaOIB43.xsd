@@ -88,27 +88,4 @@
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-  <xsd:complexType name="PARTINFO">
-    <xsd:attribute name="VKN" type="xsd:normalizedString" />
-    <xsd:attribute name="IDENTIFIER" type="xsd:normalizedString" />
-  </xsd:complexType>
-  <xsd:simpleType name="FLAG_VALUE">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Y" />
-      <xsd:enumeration value="N" />
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="CONTENT_TYPE">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="XML" />
-      <xsd:enumeration value="PDF" />
-      <xsd:enumeration value="HTML" />
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:complexType name="CUSTOMER">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="IDENTIFIER" type="xsd:string" />
-      <xsd:element minOccurs="0" name="NAME" type="xsd:string" />
-    </xsd:sequence>
-  </xsd:complexType>
 </xsd:schema>

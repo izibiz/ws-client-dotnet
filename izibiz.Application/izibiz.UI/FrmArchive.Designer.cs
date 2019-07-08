@@ -401,9 +401,9 @@
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.tableArchiveGrid);
             this.Controls.Add(this.menuInvoice);
+            this.Controls.Add(this.pnlArchive);
             this.Controls.Add(this.pnlDraftArchive);
             this.Controls.Add(this.pnlArchiveReport);
-            this.Controls.Add(this.pnlArchive);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
