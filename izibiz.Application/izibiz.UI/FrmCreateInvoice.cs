@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 using izibiz.COMMON;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.CONTROLLER;
@@ -167,12 +167,12 @@ namespace izibiz.UI
         {
             if (invoiceType == nameof(EI.Invoice.Invoices))
             {
-                cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.TEMELFATURA));
-                cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.TICARIFATURA));
+                cmbScenario.Items.Add(nameof(EI.Profileid.TEMELFATURA));
+                cmbScenario.Items.Add(nameof(EI.Profileid.TICARIFATURA));
             }
             else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
-                cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.EARSIVFATURA));
+                cmbScenario.Items.Add(nameof(EI.Profileid.EARSIVFATURA));
             }
         }
 
@@ -180,12 +180,12 @@ namespace izibiz.UI
 
         private void addItemType()
         {
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.SATIS.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.IADE.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.TEVKIFAT.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.ISTISNA.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.OZELMATRAH.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.IHRACKAYITLI.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.SATIS.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.IADE.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.TEVKIFAT.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.ISTISNA.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.OZELMATRAH.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.IHRACKAYITLI.ToString());
         }
 
 
@@ -592,9 +592,9 @@ namespace izibiz.UI
         {
             if (invoiceType == nameof(EI.Invoice.Invoices))
             {
-                if (cmbInvType.Text == EI.InvoiceTypeCodeValue.IADE.ToString())
+                if (cmbInvType.Text == EI.TypeCodeValue.IADE.ToString())
                 {
-                    if (cmbScenario.Text != nameof(EI.InvoiceProfileid.TEMELFATURA))
+                    if (cmbScenario.Text != nameof(EI.Profileid.TEMELFATURA))
                     {
                         return false;
                     }
@@ -636,7 +636,7 @@ namespace izibiz.UI
                             if (cmbArchiveType.Text == nameof(EI.ArchiveType.INTERNET))
                             {
                                 //eger gonderım tıpı ınternet ıse ekstra adınatıonal ref ekle
-                                invoice.addAdditionalDocumentReference(nameof(EI.InvoiceProfileid.EARSIVFATURA), cmbArchiveType.Text);
+                                invoice.addAdditionalDocumentReference(nameof(EI.Profileid.EARSIVFATURA), cmbArchiveType.Text);
 
                                 //DELİVERY BOLUMU EKLE
                                 //carrıer ekle

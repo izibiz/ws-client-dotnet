@@ -1,4 +1,5 @@
-﻿using izibiz.CONTROLLER.Singleton;
+﻿using izibiz.CONTROLLER.Model;
+using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
 using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceOib;
@@ -38,22 +39,23 @@ namespace izibiz.CONTROLLER.DAL
             }
         }
 
-        public void addGibUserList(List<GIBUSER> userList)
+        public int addGibUserList(GibUserListXmlModel userList)
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                GibUsers gibUsers;
-                foreach (var user in userList)
+                GibUsers gibUser;
+                foreach (var user in userList.Items)
                 {
-                    gibUsers = new GibUsers();
-                    gibUsers.aliasPk = user.ALIAS;
-                    gibUsers.identifier = user.IDENTIFIER;
-                    gibUsers.title = user.TITLE;
+                    gibUser = new GibUsers();
+                    gibUser.aliasPk = user.alias;
+                    gibUser.identifier = user.identifier;
+                    gibUser.title = user.title;
+                    gibUser.productType = user.documentTpye;
 
-                    databaseContext.gibUsers.Add(gibUsers);
+                    databaseContext.gibUsers.Add(gibUser);           
                 }
    
-                databaseContext.SaveChanges();
+              return  databaseContext.SaveChanges();
             }
 
         }

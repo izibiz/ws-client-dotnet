@@ -12,7 +12,7 @@ using izibiz.CONTROLLER.InvoiceRequestSection;
 using izibiz.COMMON.FileControl;
 using System.IO;
 using izibiz.COMMON.UblSerializer;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 using izibiz.MODEL.Data;
 
 namespace izibiz.CONTROLLER.Web_Services

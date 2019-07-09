@@ -59,6 +59,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ArchiveInvoicesDal.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="InvoiceIdSetSerilaze.cs" />
     <Compile Include="InvoiceRequestSection\InvoiceSearchKey.cs" />
     <Compile Include="Model\ArchiveContentPropertiesModel.cs" />
+    <Compile Include="Model\GibUserListXmlModel.cs" />
     <Compile Include="Model\IdArrContentArrModel.cs" />
     <Compile Include="Model\IdFolderPathModel.cs" />
     <Compile Include="Model\SendMailModel.cs" />

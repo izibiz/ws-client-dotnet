@@ -13,7 +13,12 @@ namespace izibiz.MODEL.DbTablesModels
     public class GibUsers
     {
 
-        [Key]
+         [Key]
+        [Column(Name = "id", DbType = "INTEGER")]
+        public int id { get; set; }
+
+
+
         [Column(Name =nameof(EI.GibUser.aliasPk), DbType = "VARCHAR")]
         public string aliasPk { get; set; }
 

@@ -53,7 +53,6 @@
             this.pnlDraftDespatch = new System.Windows.Forms.Panel();
             this.btnDraftDespatchGetStatus = new System.Windows.Forms.Button();
             this.btnLoadDespatch = new System.Windows.Forms.Button();
-            this.btnCancelDespatch = new System.Windows.Forms.Button();
             this.btnSendDespatch = new System.Windows.Forms.Button();
             this.grpFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
@@ -220,6 +219,7 @@
             this.itemNewDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.itemNewDespatch.Size = new System.Drawing.Size(128, 29);
             this.itemNewDespatch.Text = "Yeni İrsaliye";
+            this.itemNewDespatch.Click += new System.EventHandler(this.itemNewDespatch_Click);
             // 
             // itemGetListGibUserList
             // 
@@ -239,7 +239,6 @@
             this.itemTakeGibUsers.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemTakeGibUsers.Name = "itemTakeGibUsers";
             this.itemTakeGibUsers.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemTakeGibUsers.ShowShortcutKeys = false;
             this.itemTakeGibUsers.Size = new System.Drawing.Size(128, 29);
             this.itemTakeGibUsers.Text = "Gib User List Al";
             this.itemTakeGibUsers.Click += new System.EventHandler(this.itemTakeGibUsers_Click);
@@ -342,7 +341,6 @@
             // 
             this.pnlDraftDespatch.Controls.Add(this.btnDraftDespatchGetStatus);
             this.pnlDraftDespatch.Controls.Add(this.btnLoadDespatch);
-            this.pnlDraftDespatch.Controls.Add(this.btnCancelDespatch);
             this.pnlDraftDespatch.Controls.Add(this.btnSendDespatch);
             this.pnlDraftDespatch.Location = new System.Drawing.Point(337, 222);
             this.pnlDraftDespatch.Name = "pnlDraftDespatch";
@@ -381,21 +379,6 @@
             this.btnLoadDespatch.Text = "Portala Yükle";
             this.btnLoadDespatch.UseVisualStyleBackColor = false;
             this.btnLoadDespatch.Click += new System.EventHandler(this.btnLoadDespatch_Click);
-            // 
-            // btnCancelDespatch
-            // 
-            this.btnCancelDespatch.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancelDespatch.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnCancelDespatch.FlatAppearance.BorderSize = 2;
-            this.btnCancelDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCancelDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelDespatch.Location = new System.Drawing.Point(426, 22);
-            this.btnCancelDespatch.Name = "btnCancelDespatch";
-            this.btnCancelDespatch.Size = new System.Drawing.Size(117, 35);
-            this.btnCancelDespatch.TabIndex = 26;
-            this.btnCancelDespatch.Text = "İptal Et";
-            this.btnCancelDespatch.UseVisualStyleBackColor = false;
             // 
             // btnSendDespatch
             // 
@@ -463,7 +446,6 @@
         private System.Windows.Forms.Panel pnlDraftDespatch;
         private System.Windows.Forms.Button btnInDespatchGetStatus;
         private System.Windows.Forms.Button btnOutDespatchGetStatus;
-        private System.Windows.Forms.Button btnCancelDespatch;
         private System.Windows.Forms.Button btnSendDespatch;
         private System.Windows.Forms.ToolStripMenuItem itemTakeGibUsers;
         private System.Windows.Forms.ToolStripMenuItem itemGetListGibUserList;

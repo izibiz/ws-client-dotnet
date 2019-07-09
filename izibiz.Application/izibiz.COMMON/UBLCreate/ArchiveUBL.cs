@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Xsl;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 
 namespace izibiz.COMMON.UBLCreate
 {

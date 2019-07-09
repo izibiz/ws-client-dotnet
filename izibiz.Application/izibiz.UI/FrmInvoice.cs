@@ -514,7 +514,7 @@ namespace izibiz.UI
                 DateTime dt = DateTime.Parse(row.Cells[nameof(EI.Invoice.cDate)].Value.ToString());
                 TimeSpan fark = DateTime.Today - dt;
 
-                if (row.Cells[nameof(EI.Invoice.profileId)].Value == null || row.Cells[nameof(EI.Invoice.profileId)].Value.ToString() == EI.InvoiceProfileid.TEMELFATURA.ToString())//temel faturaysa
+                if (row.Cells[nameof(EI.Invoice.profileId)].Value == null || row.Cells[nameof(EI.Invoice.profileId)].Value.ToString() == EI.Profileid.TEMELFATURA.ToString())//temel faturaysa
                 {
                     if (tableGrid.SelectedRows.Count == 1)  //secılı fatura sayısı 1 ise
                     {
@@ -1418,12 +1418,15 @@ namespace izibiz.UI
                 if (response == DialogResult.OK)
                 {
                     //servisten cek
-                   /* var userList = */Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.INVOICE));
-
-                    ////db ye kaydet listeyi
-                    //Singl.gibUsersDalGet.addGibUserList(userList);
-
-                    MessageBox.Show(Lang.succesful);
+                    string errorMessage = Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.INVOICE));
+                    if (errorMessage != null)
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(Lang.succesful);
+                    }
                 }
 
             }

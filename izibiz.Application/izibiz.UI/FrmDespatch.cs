@@ -120,12 +120,15 @@ namespace izibiz.UI
             gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
         }
 
+
+
+
+
         private void itemTakeGibUsers_Click(object sender, EventArgs e)
         {
             despactDirection = EI.GibUser.GibUsers.ToString();
             btnTakeDespatch.Visible = false;
             selectPanelVisibilty(false, false, false);
-
 
             try
             {
@@ -135,19 +138,18 @@ namespace izibiz.UI
                 if (response == DialogResult.OK)
                 {
                     //servisten cek
-                    //    var userList = Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.DESPATCHADVICE));
-                    //if (userList == null)
-                    //{
-                    //    MessageBox.Show("işlem basarısız");
-                    //}
-                    //else
-                    //{
-                    //    //db ye kaydet listeyi
-                    //    Singl.gibUsersDalGet.addGibUserList(userList);
-
-                    //    MessageBox.Show(Lang.succesful);
-                    //}     
+                    string  errorMessage = Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.DESPATCHADVICE));
+                    if (errorMessage != null)
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(Lang.succesful);
+                    }
                 }
+
+
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -158,9 +160,9 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException  ex)
             {
-                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message+Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -461,24 +463,22 @@ namespace izibiz.UI
                         }
                         #endregion
 
-
-                        ////html göruntule butonuna tıkladıysa
-                        //if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
-                        //{
-                        //    string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-                        //    string id = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
-
-                        //    string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
-                        //    if (content != null) //servisten veya dıskten getırlebılmısse
-                        //    {
-                        //        FrmView previewInvoices = new FrmView(content, nameof(EI.Invoice.Invoices));
-                        //        previewInvoices.ShowDialog();
-                        //    }
-                        //    else
-                        //    {
-                        //        MessageBox.Show(Lang.cantGetContent);
-                        //    }
-                        //}
+                        //html göruntule butonuna tıkladıysa
+                        if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
+                        {
+                            string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                          
+                            string content = Singl.despatchControllerGet.getDespatchContentXml(uuid, despactDirection);
+                            if (content != null) //servisten veya dıskten getırlebılmısse
+                            {
+                                FrmView previewInvoices = new FrmView(content, nameof(EI.Despatch.DespatchAdvices));
+                                previewInvoices.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show(Lang.cantGetContent);
+                            }
+                        }
                     }
                 }
             }
@@ -895,6 +895,21 @@ namespace izibiz.UI
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+
+
+
+        private void itemNewDespatch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+
+
 
 
 

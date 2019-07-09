@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 
 namespace izibiz.CONTROLLER.DAL
 {
