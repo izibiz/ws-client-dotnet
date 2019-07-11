@@ -13,7 +13,7 @@ namespace izibiz.CONTROLLER
     public class BaseInvoiceUBL
     {
 
-        public InvoiceType BaseUBL { get; protected set; }
+        public InvoiceType baseInvoiceUBL { get; protected set; }
         private List<InvoiceLineType> listInvLine = new List<InvoiceLineType>();
         public List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
 
@@ -23,7 +23,7 @@ namespace izibiz.CONTROLLER
 
         public BaseInvoiceUBL(string profileId, string invoiceTypeCode)
         {
-            BaseUBL = new InvoiceType();
+            baseInvoiceUBL = new InvoiceType();
 
             createInvoiceHeader(profileId, invoiceTypeCode);
             createSignature();
@@ -36,16 +36,16 @@ namespace izibiz.CONTROLLER
         public void createInvoiceHeader(string profileid, string invTypeCode)
         {
 
-            BaseUBL.UBLVersionID = new UBLVersionIDType { Value = "2.1" }; //uluslararası fatura standardı 2.1
-            BaseUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" }; //fakat GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2 efatura formatını kullanıyor.
-            BaseUBL.ProfileID = new ProfileIDType { Value = profileid };
-            BaseUBL.ID = new IDType { Value = DateTime.Now.ToString("MM/dd/yyyy-HH/mm/ss") };//id yi simdilik unıqıe bır deger verıyoruz ,servise gond. degıstırılecek
-            BaseUBL.CopyIndicator = new CopyIndicatorType { Value = false };
-            BaseUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
-            BaseUBL.IssueDate = new IssueDateType { Value = DateTime.Now };
-            BaseUBL.IssueTime = new IssueTimeType { Value = DateTime.Now };
-            BaseUBL.InvoiceTypeCode = new InvoiceTypeCodeType { Value = invTypeCode };
-            BaseUBL.DocumentCurrencyCode = new DocumentCurrencyCodeType { Value = "TRY" };
+            baseInvoiceUBL.UBLVersionID = new UBLVersionIDType { Value = "2.1" }; //uluslararası fatura standardı 2.1
+            baseInvoiceUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" }; //fakat GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2 efatura formatını kullanıyor.
+            baseInvoiceUBL.ProfileID = new ProfileIDType { Value = profileid };
+            baseInvoiceUBL.ID = new IDType { Value = DateTime.Now.ToString("MM/dd/yyyy-HH/mm/ss") };//id yi simdilik unıqıe bır deger verıyoruz ,servise gond. degıstırılecek
+            baseInvoiceUBL.CopyIndicator = new CopyIndicatorType { Value = false };
+            baseInvoiceUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
+            baseInvoiceUBL.IssueDate = new IssueDateType { Value = DateTime.Now };
+            baseInvoiceUBL.IssueTime = new IssueTimeType { Value = DateTime.Now };
+            baseInvoiceUBL.InvoiceTypeCode = new InvoiceTypeCodeType { Value = invTypeCode };
+            baseInvoiceUBL.DocumentCurrencyCode = new DocumentCurrencyCodeType { Value = "TRY" };
 
         }
 
@@ -61,13 +61,13 @@ namespace izibiz.CONTROLLER
 
             var arcRef = new DocumentReferenceType();
             arcRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
-            arcRef.IssueDate = BaseUBL.IssueDate;
+            arcRef.IssueDate = baseInvoiceUBL.IssueDate;
             arcRef.DocumentType = new DocumentTypeType { Value = documentType };
             arcRef.DocumentTypeCode = new DocumentTypeCodeType { Value = docTypeCode };
 
             docRefList.Add(arcRef);
 
-            BaseUBL.AdditionalDocumentReference = docRefList.ToArray();
+            baseInvoiceUBL.AdditionalDocumentReference = docRefList.ToArray();
         }
 
 
@@ -82,7 +82,7 @@ namespace izibiz.CONTROLLER
                    Despatch= new DespatchType {ActualDespatchDate=new ActualDespatchDateType { Value= despatchDate } }
                 }
             };
-            BaseUBL.Delivery = deliveryArr;
+            baseInvoiceUBL.Delivery = deliveryArr;
         }
 
 
@@ -97,7 +97,7 @@ namespace izibiz.CONTROLLER
                     InstructionNote = new InstructionNoteType { Value= note}
                 }
             };
-            BaseUBL.PaymentMeans = paymentMeans;
+            baseInvoiceUBL.PaymentMeans = paymentMeans;
         }
 
 
@@ -140,7 +140,7 @@ namespace izibiz.CONTROLLER
                 }
             };
 
-            BaseUBL.Signature = signature;
+            baseInvoiceUBL.Signature = signature;
         }
 
 
@@ -150,7 +150,7 @@ namespace izibiz.CONTROLLER
             {
                 Party = supplierParty
             };
-            BaseUBL.AccountingSupplierParty = accountingSupplierParty;
+            baseInvoiceUBL.AccountingSupplierParty = accountingSupplierParty;
         }
 
 
@@ -161,7 +161,7 @@ namespace izibiz.CONTROLLER
             {
                 Party = customerParty
             };
-            BaseUBL.AccountingCustomerParty = accountingCustomerParty;
+            baseInvoiceUBL.AccountingCustomerParty = accountingCustomerParty;
         }
 
 
@@ -254,8 +254,8 @@ namespace izibiz.CONTROLLER
 
         public void setInvLines()
         {
-            BaseUBL.InvoiceLine = listInvLine.ToArray();
-            BaseUBL.LineCountNumeric = new LineCountNumericType { Value = listInvLine.Count };
+            baseInvoiceUBL.InvoiceLine = listInvLine.ToArray();
+            baseInvoiceUBL.LineCountNumeric = new LineCountNumericType { Value = listInvLine.Count };
         }
 
 
@@ -348,7 +348,7 @@ namespace izibiz.CONTROLLER
 
         public void setTaxTotal(TaxTotalType[] taxTotal)
         {
-            BaseUBL.TaxTotal = taxTotal;
+            baseInvoiceUBL.TaxTotal = taxTotal;
         }
 
 
@@ -485,7 +485,7 @@ namespace izibiz.CONTROLLER
                 }
             };
 
-            foreach (var line in BaseUBL.InvoiceLine)
+            foreach (var line in baseInvoiceUBL.InvoiceLine)
             {
 
                 taxTotal.TaxAmount.Value += line.TaxTotal.TaxAmount.Value;
@@ -547,7 +547,7 @@ namespace izibiz.CONTROLLER
                 PayableAmount = new PayableAmountType { Value = 0 }
             };
 
-            foreach (var line in BaseUBL.InvoiceLine)
+            foreach (var line in baseInvoiceUBL.InvoiceLine)
             {
 
                 foreach (var allowance in line.AllowanceCharge)
@@ -583,12 +583,12 @@ namespace izibiz.CONTROLLER
 
         public void SetLegalMonetaryTotal(MonetaryTotalType legalMonetoryTotal)
         {
-            BaseUBL.LegalMonetaryTotal = legalMonetoryTotal;
+            baseInvoiceUBL.LegalMonetaryTotal = legalMonetoryTotal;
         }
 
         public virtual void SetAllowanceCharge(AllowanceChargeType[] allowenceCharges)
         {
-            BaseUBL.AllowanceCharge = allowenceCharges;
+            baseInvoiceUBL.AllowanceCharge = allowenceCharges;
         }
 
 
@@ -601,7 +601,7 @@ namespace izibiz.CONTROLLER
                 ChargeIndicator = new ChargeIndicatorType { Value = false },
 
             };
-            foreach (var item in BaseUBL.InvoiceLine)
+            foreach (var item in baseInvoiceUBL.InvoiceLine)
             {
                 foreach (var iskonto in item.AllowanceCharge)
                 {

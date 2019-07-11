@@ -698,7 +698,7 @@ namespace izibiz.UI
                         invoice.SetAllowanceCharge(invoice.CalculateAllowanceCharges());
 
                         //olusturdugumuz nesne ubl turune cevrılır
-                        var invoiceUbl = invoice.BaseUBL;
+                        var invoiceUbl = invoice.baseInvoiceUBL;
                         //xml olustur
                         string xmlPath = FolderControl.createInvUblToXml(invoiceUbl, invoiceType).ToString();
                        

@@ -90,6 +90,7 @@
     <Compile Include="Ubl-Tr\Xslt.cs" />
     <Compile Include="UBLCreate\ArchiveUBL.cs" />
     <Compile Include="UBLCreate\BaseInvoiceUBL.cs" />
+    <Compile Include="UBLCreate\DespatchAdviceUbl.cs" />
     <Compile Include="UBLCreate\InvoiceUBL.cs" />
     <Compile Include="UblSerializer\InvoiceSerializer.cs" />
   </ItemGroup>
