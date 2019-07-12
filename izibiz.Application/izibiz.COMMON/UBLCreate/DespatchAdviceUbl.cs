@@ -1,4 +1,5 @@
-﻿using System;
+﻿using izibiz.COMMON.Ubl_Tr;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,21 +13,21 @@ namespace izibiz.COMMON.UBLCreate
     {
 
 
-        private DespatchAdviceType baseDespatchUbl { get;}
+        private DespatchAdviceType baseDespatchUbl { get; }
 
 
 
-        public DespatchAdviceUbl(int lineCount, DateTime despatchDate, DateTime despatchTime,string orderId, DateTime orderDate)
+        public DespatchAdviceUbl(int lineCount, DateTime despatchDate, DateTime despatchTime, string orderId, DateTime orderDate)
         {
-            createDespatchHeader(despatchDate, despatchTime,lineCount);
-            createOrderReference(orderId,orderDate);
-            createDocumentReference(despatchDate);
+            createDespatchHeader(despatchDate, despatchTime, lineCount);
+            createOrderReference(orderId, orderDate);
+            createDocumentReference();
             createSignature();
 
         }
 
 
-        
+
 
         /// <summary>
         ///  Sevk irsaliyesi (Despatch Advice) UBL'inin ilk alanlarını oluşturma
@@ -66,7 +67,7 @@ namespace izibiz.COMMON.UBLCreate
         /// fazla OrderReference alanı oluşturulabilir.
         /// </summary>
         /// <returns>OrderReference Alanı</returns>
-        public void createOrderReference(string orderId,DateTime orderDate)
+        public void createOrderReference(string orderId, DateTime orderDate)
         {
             baseDespatchUbl.OrderReference = new[]  //Sipariş Bilgileri                 
             {
@@ -84,44 +85,28 @@ namespace izibiz.COMMON.UBLCreate
         /// Birden fazla DocumentReference alanı oluşturulabilir.
         /// </summary>
         /// <returns>AdditionalDocumentReference Alanı</returns>
-        public void createDocumentReference(DateTime despatchDate)
+        public void createDocumentReference()
         {
-            baseDespatchUbl.AdditionalDocumentReference = new[]  //İrsaliye ile ilgili Diğer Dokümanlara Ait Bilgiler 
-             {
-                 //Fatura ID otomatik oluşacak ise bu alanı göndermelisiniz.
-                  new DocumentReferenceType
-                  {
-                       ID=new IDType {Value= Guid.NewGuid().ToString() },
-                       IssueDate=new IssueDateType {Value=DateTime.Now },
-                       DocumentTypeCode=new DocumentTypeCodeType {Value="CUST_DES_ID" }
-                  },
+            baseDespatchUbl.AdditionalDocumentReference = new[]
+            {
                 new DocumentReferenceType
                 {
-                    ID = new IDType { Value = Guid.NewGuid().ToString() },
-                    IssueDate = new IssueDateType { Value = despatchDate },
-                    DocumentType = new DocumentTypeType { Value = "Katalog" },
-                    DocumentDescription = new[]
+                    ID= new IDType { Value = Guid.NewGuid().ToString() },
+                    IssueDate = baseDespatchUbl.IssueDate,
+                    DocumentType = new DocumentTypeType { Value = nameof(EI.DocumentType.XSLT) },
+                    Attachment = new AttachmentType
                     {
-                       new DocumentDescriptionType
+                       EmbeddedDocumentBinaryObject= new EmbeddedDocumentBinaryObjectType
                        {
-                           Value= "Katalog Belgesi"
-                       }
-                    }
-                },
-                new DocumentReferenceType
-                {
-                    ID = new IDType { Value = Guid.NewGuid().ToString() },
-                    IssueDate = new IssueDateType { Value = DateTime.Now },
-                    DocumentType = new DocumentTypeType { Value = "Kontrat" },
-                    DocumentDescription = new[]
-                    {
-                       new DocumentDescriptionType
-                       {
-                           Value= "Kontrat Belgesi"
+                            characterSetCode = "UTF-8",
+                            encodingCode = "Base64",
+                            filename = baseDespatchUbl.ID.Value.ToString() + ".xslt",
+                            mimeCode = "application/xml",
+                            Value = Convert.FromBase64String(Xslt.xsltGibDespatch)
                        }
                     }
                 }
-             };
+            };
         }
 
 
@@ -131,56 +116,42 @@ namespace izibiz.COMMON.UBLCreate
         /// <returns>Signature alanı</returns>
         public void createSignature()
         {
-
             baseDespatchUbl.Signature = new[]  //Elektronik Mali Mühür ve/veya Elektronik İmza ile Bunlara Ait Sertifika Bilgileri
+            {
+                new SignatureType
                 {
-                   new SignatureType
-                   {
-                    ID = new IDType { schemeID = "VKN_TCKN", Value = "3880718497" },
+                    ID = new IDType { schemeID = "VKN_TCKN", Value = "4840847211" },
                     SignatoryParty = new PartyType
                     {
-                        WebsiteURI = new WebsiteURIType { Value = "www.FITsolutions.com.tr" },
+                        WebsiteURI = new WebsiteURIType { Value = "www.izibiz.com.tr" },
                         PartyIdentification = new[]
                         {
                             new PartyIdentificationType
-                           {
-                              ID = new IDType { schemeID = "VKN", Value = "3880718497" }
-                           }
-                     },
-                        PartyName=new PartyNameType
-                        {
-                            Name=new NameType1 {Value="FIT DANIŞMANLIK VE TEKNOLOJİ BİLİŞİM HİZMETLERİ A.Ş." }
+                            {
+                                ID = new IDType { schemeID = "VKN", Value = "4840847211" }
+                            }
                         },
-
-                       PostalAddress = new AddressType
+                        PostalAddress = new AddressType
                         {
-                            Room=new RoomType {Value="34" },
-                            StreetName = new StreetNameType { Value = "Öz Sokak" },
-                            BuildingName = new BuildingNameType { Value = "Gold Plaza" },
-                            BuildingNumber=new BuildingNumberType {Value="19" },
-                            CitySubdivisionName = new CitySubdivisionNameType { Value = "Altayçeşme Mahellesi" },
+                            StreetName = new StreetNameType { Value = "DAVUT PAŞA" },
+                            BuildingName = new BuildingNameType { Value = "C1" },
+                            BuildingNumber = new BuildingNumberType { Value = "402" },
+                            CitySubdivisionName = new CitySubdivisionNameType { Value = "MAHALL" },
                             CityName = new CityNameType { Value = "İSTANBUL" },
-                            PostalZone = new PostalZoneType { Value = "34843" },
-                            Region=new RegionType {Value="Marmara" },
-                            Country = new CountryType { Name = new NameType1 { Value = "TÜRKİYE" } }
+                            PostalZone = new PostalZoneType { Value = "34100" },
+                            Region = new RegionType { Value = "Marmara" },
+                            Country = new CountryType { Name = new NameType1 { Value = "TR" } }
                         },
-                       Contact=new ContactType
-                       {
-                           ElectronicMail=new ElectronicMailType {Value="muhasebe@FITcons.com" },
-                           Telefax=new TelefaxType {Value="0(216) 445 92 87" },
-                           Telephone=new TelephoneType {Value="0(216) 445 93 79" }
-                       }
                     },
-
                     DigitalSignatureAttachment = new AttachmentType
                     {
                         ExternalReference = new ExternalReferenceType
                         {
-                            URI = new URIType { Value = "#Signature" }
+                            URI = new URIType { Value = "#Signature_DMY20190711153821v" }
                         }
                     }
-                },
-              };
+                }
+            };
         }
 
 

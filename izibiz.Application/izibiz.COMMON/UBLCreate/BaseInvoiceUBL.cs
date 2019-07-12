@@ -169,11 +169,8 @@ namespace izibiz.CONTROLLER
         public PartyType createParty(string partyName,string cityName,string telephone, string mail)
         {
             PartyType party = new PartyType();
-
             party.WebsiteURI = new WebsiteURIType { Value = "izibiz" };
-
             party.PartyName = new PartyNameType { Name = new NameType1 { Value = partyName } };
-
             party.PostalAddress = new AddressType
             {
                 StreetName = new StreetNameType { Value = "exampleStreet" },
@@ -190,7 +187,6 @@ namespace izibiz.CONTROLLER
             party.Contact.Telephone = new TelephoneType { Value = telephone };
             party.Contact.Telefax = new TelefaxType { Value = "Telefax" };
             party.Contact.ElectronicMail = new ElectronicMailType { Value = mail };
-
 
             return party;
         }
@@ -226,7 +222,7 @@ namespace izibiz.CONTROLLER
             for (int i = 0; i < paramCount; i++)
             {
                 PartyIdentificationType partyIdentification = new PartyIdentificationType();
-                switch (i)
+                switch (i) //en fazla 2 degerını alabılır... 3 deger yazılabılır
                 {
                     case 0:
                         partyIdentification.ID = new IDType();

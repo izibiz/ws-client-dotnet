@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreateDespatch = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.grpReceiver = new System.Windows.Forms.GroupBox();
+            this.lblDistrict = new System.Windows.Forms.Label();
+            this.lblProvince = new System.Windows.Forms.Label();
+            this.txtDistrict = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
             this.lblSurname = new System.Windows.Forms.Label();
             this.txtCustSurname = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
@@ -48,23 +52,25 @@
             this.lblMail = new System.Windows.Forms.Label();
             this.lblVknTckn = new System.Windows.Forms.Label();
             this.grpDespatchInformation = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateTimeDespatchDate = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbDespatchTime = new System.Windows.Forms.ComboBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.cmbScenario = new System.Windows.Forms.ComboBox();
+            this.lblMoneyType = new System.Windows.Forms.Label();
+            this.cmbMoneyType = new System.Windows.Forms.ComboBox();
             this.cmbConsignmentTime = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimeConsignmentDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblMoneyType = new System.Windows.Forms.Label();
-            this.cmbMoneyType = new System.Windows.Forms.ComboBox();
+            this.cmbDespatchTime = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimeDespatchDate = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.grpOrderInformation = new System.Windows.Forms.GroupBox();
-            this.txtOrderNumber = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.dateTimeOrderDate = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
+            this.txtOrderId = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.grpCarrierInformation = new System.Windows.Forms.GroupBox();
             this.msdCarrierTc = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -73,17 +79,11 @@
             this.grpRowInformation = new System.Windows.Forms.GroupBox();
             this.btnRemoveRow = new System.Windows.Forms.Button();
             this.gridPrice = new System.Windows.Forms.DataGridView();
-            this.btnAddRow = new System.Windows.Forms.Button();
             this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblDistrict = new System.Windows.Forms.Label();
-            this.lblProvince = new System.Windows.Forms.Label();
-            this.txtDistrict = new System.Windows.Forms.TextBox();
-            this.txtCity = new System.Windows.Forms.TextBox();
-            this.cmbScenario = new System.Windows.Forms.ComboBox();
-            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.btnAddRow = new System.Windows.Forms.Button();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.grpReceiver.SuspendLayout();
@@ -134,6 +134,41 @@
             this.grpReceiver.TabIndex = 6;
             this.grpReceiver.TabStop = false;
             this.grpReceiver.Text = "Alıcı";
+            // 
+            // lblDistrict
+            // 
+            this.lblDistrict.AutoSize = true;
+            this.lblDistrict.Location = new System.Drawing.Point(236, 108);
+            this.lblDistrict.Name = "lblDistrict";
+            this.lblDistrict.Size = new System.Drawing.Size(24, 13);
+            this.lblDistrict.TabIndex = 23;
+            this.lblDistrict.Text = "İlçe";
+            // 
+            // lblProvince
+            // 
+            this.lblProvince.AutoSize = true;
+            this.lblProvince.Location = new System.Drawing.Point(236, 72);
+            this.lblProvince.Name = "lblProvince";
+            this.lblProvince.Size = new System.Drawing.Size(12, 13);
+            this.lblProvince.TabIndex = 24;
+            this.lblProvince.Text = "İl";
+            // 
+            // txtDistrict
+            // 
+            this.txtDistrict.Location = new System.Drawing.Point(298, 101);
+            this.txtDistrict.Name = "txtDistrict";
+            this.txtDistrict.Size = new System.Drawing.Size(109, 20);
+            this.txtDistrict.TabIndex = 21;
+            this.txtDistrict.Text = "Kadıkoy";
+            // 
+            // txtCity
+            // 
+            this.txtCity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCity.Location = new System.Drawing.Point(298, 65);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(109, 20);
+            this.txtCity.TabIndex = 22;
+            this.txtCity.Text = "İstanbul";
             // 
             // lblSurname
             // 
@@ -228,59 +263,40 @@
             this.grpDespatchInformation.TabStop = false;
             this.grpDespatchInformation.Text = "İrsaliye Bilgileri";
             // 
-            // label1
+            // cmbType
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 114);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "İrsaliye Tarih";
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(97, 71);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(121, 21);
+            this.cmbType.TabIndex = 32;
             // 
-            // label2
+            // cmbScenario
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Tip";
+            this.cmbScenario.FormattingEnabled = true;
+            this.cmbScenario.Location = new System.Drawing.Point(97, 34);
+            this.cmbScenario.Name = "cmbScenario";
+            this.cmbScenario.Size = new System.Drawing.Size(121, 21);
+            this.cmbScenario.TabIndex = 31;
             // 
-            // label4
+            // lblMoneyType
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Senaryo";
+            this.lblMoneyType.AutoSize = true;
+            this.lblMoneyType.Location = new System.Drawing.Point(21, 267);
+            this.lblMoneyType.Name = "lblMoneyType";
+            this.lblMoneyType.Size = new System.Drawing.Size(56, 13);
+            this.lblMoneyType.TabIndex = 30;
+            this.lblMoneyType.Text = "Para Birimi";
             // 
-            // dateTimeDespatchDate
+            // cmbMoneyType
             // 
-            this.dateTimeDespatchDate.Location = new System.Drawing.Point(97, 108);
-            this.dateTimeDespatchDate.Name = "dateTimeDespatchDate";
-            this.dateTimeDespatchDate.Size = new System.Drawing.Size(108, 20);
-            this.dateTimeDespatchDate.TabIndex = 22;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 151);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "İrsaliye Saat";
-            // 
-            // cmbDespatchTime
-            // 
-            this.cmbDespatchTime.FormattingEnabled = true;
-            this.cmbDespatchTime.Items.AddRange(new object[] {
-            "00:00",
-            "01:00"});
-            this.cmbDespatchTime.Location = new System.Drawing.Point(97, 151);
-            this.cmbDespatchTime.Name = "cmbDespatchTime";
-            this.cmbDespatchTime.Size = new System.Drawing.Size(108, 21);
-            this.cmbDespatchTime.TabIndex = 24;
+            this.cmbMoneyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMoneyType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbMoneyType.FormattingEnabled = true;
+            this.cmbMoneyType.Location = new System.Drawing.Point(95, 264);
+            this.cmbMoneyType.Name = "cmbMoneyType";
+            this.cmbMoneyType.Size = new System.Drawing.Size(109, 21);
+            this.cmbMoneyType.TabIndex = 29;
             // 
             // cmbConsignmentTime
             // 
@@ -318,30 +334,65 @@
             this.label7.TabIndex = 25;
             this.label7.Text = "Sevk Tarih";
             // 
-            // lblMoneyType
+            // cmbDespatchTime
             // 
-            this.lblMoneyType.AutoSize = true;
-            this.lblMoneyType.Location = new System.Drawing.Point(21, 267);
-            this.lblMoneyType.Name = "lblMoneyType";
-            this.lblMoneyType.Size = new System.Drawing.Size(56, 13);
-            this.lblMoneyType.TabIndex = 30;
-            this.lblMoneyType.Text = "Para Birimi";
+            this.cmbDespatchTime.FormattingEnabled = true;
+            this.cmbDespatchTime.Items.AddRange(new object[] {
+            "00:00",
+            "01:00"});
+            this.cmbDespatchTime.Location = new System.Drawing.Point(97, 151);
+            this.cmbDespatchTime.Name = "cmbDespatchTime";
+            this.cmbDespatchTime.Size = new System.Drawing.Size(108, 21);
+            this.cmbDespatchTime.TabIndex = 24;
             // 
-            // cmbMoneyType
+            // label5
             // 
-            this.cmbMoneyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMoneyType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbMoneyType.FormattingEnabled = true;
-            this.cmbMoneyType.Location = new System.Drawing.Point(95, 264);
-            this.cmbMoneyType.Name = "cmbMoneyType";
-            this.cmbMoneyType.Size = new System.Drawing.Size(109, 21);
-            this.cmbMoneyType.TabIndex = 29;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 151);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "İrsaliye Saat";
+            // 
+            // dateTimeDespatchDate
+            // 
+            this.dateTimeDespatchDate.Location = new System.Drawing.Point(97, 108);
+            this.dateTimeDespatchDate.Name = "dateTimeDespatchDate";
+            this.dateTimeDespatchDate.Size = new System.Drawing.Size(108, 20);
+            this.dateTimeDespatchDate.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "İrsaliye Tarih";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Tip";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Senaryo";
             // 
             // grpOrderInformation
             // 
             this.grpOrderInformation.Controls.Add(this.dateTimeOrderDate);
             this.grpOrderInformation.Controls.Add(this.label14);
-            this.grpOrderInformation.Controls.Add(this.txtOrderNumber);
+            this.grpOrderInformation.Controls.Add(this.txtOrderId);
             this.grpOrderInformation.Controls.Add(this.label13);
             this.grpOrderInformation.Location = new System.Drawing.Point(406, 208);
             this.grpOrderInformation.Name = "grpOrderInformation";
@@ -349,23 +400,6 @@
             this.grpOrderInformation.TabIndex = 8;
             this.grpOrderInformation.TabStop = false;
             this.grpOrderInformation.Text = "Siparis Bilgileri";
-            // 
-            // txtOrderNumber
-            // 
-            this.txtOrderNumber.Location = new System.Drawing.Point(122, 31);
-            this.txtOrderNumber.Name = "txtOrderNumber";
-            this.txtOrderNumber.Size = new System.Drawing.Size(109, 20);
-            this.txtOrderNumber.TabIndex = 21;
-            this.txtOrderNumber.Text = "Ahmet";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(24, 34);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 13);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Sipariş Numarası";
             // 
             // dateTimeOrderDate
             // 
@@ -382,6 +416,23 @@
             this.label14.Size = new System.Drawing.Size(65, 13);
             this.label14.TabIndex = 31;
             this.label14.Text = "Sipariş Tarih";
+            // 
+            // txtOrderId
+            // 
+            this.txtOrderId.Location = new System.Drawing.Point(122, 31);
+            this.txtOrderId.Name = "txtOrderId";
+            this.txtOrderId.Size = new System.Drawing.Size(109, 20);
+            this.txtOrderId.TabIndex = 21;
+            this.txtOrderId.Text = "Ahmet";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(24, 34);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Sipariş Numarası";
             // 
             // grpCarrierInformation
             // 
@@ -460,20 +511,20 @@
             // 
             this.gridPrice.AllowUserToAddRows = false;
             this.gridPrice.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Gray;
-            this.gridPrice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
+            this.gridPrice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridPrice.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridPrice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridPrice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPrice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
@@ -481,58 +532,48 @@
             this.timeUnit,
             this.unitPrice});
             this.gridPrice.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridPrice.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.gridPrice.Location = new System.Drawing.Point(15, 21);
             this.gridPrice.MultiSelect = false;
             this.gridPrice.Name = "gridPrice";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridPrice.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrice.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridPrice.RowHeadersVisible = false;
             this.gridPrice.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            this.gridPrice.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.gridPrice.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.gridPrice.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.gridPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridPrice.Size = new System.Drawing.Size(443, 99);
             this.gridPrice.TabIndex = 5;
             // 
-            // btnAddRow
-            // 
-            this.btnAddRow.Location = new System.Drawing.Point(463, 28);
-            this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(91, 23);
-            this.btnAddRow.TabIndex = 3;
-            this.btnAddRow.Text = "Satır Ekle";
-            this.btnAddRow.UseVisualStyleBackColor = true;
-            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
-            // 
             // productName
             // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            this.productName.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.productName.DefaultCellStyle = dataGridViewCellStyle3;
             this.productName.HeaderText = "ad";
             this.productName.Name = "productName";
             // 
             // quantity
             // 
-            dataGridViewCellStyle12.Format = "N0";
-            dataGridViewCellStyle12.NullValue = null;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
             this.quantity.HeaderText = "miktar";
             this.quantity.Name = "quantity";
             // 
@@ -544,64 +585,23 @@
             // 
             // unitPrice
             // 
-            dataGridViewCellStyle13.Format = "C2";
-            dataGridViewCellStyle13.NullValue = null;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle5;
             this.unitPrice.HeaderText = "birim fiyat";
             this.unitPrice.Name = "unitPrice";
             this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // lblDistrict
+            // btnAddRow
             // 
-            this.lblDistrict.AutoSize = true;
-            this.lblDistrict.Location = new System.Drawing.Point(236, 108);
-            this.lblDistrict.Name = "lblDistrict";
-            this.lblDistrict.Size = new System.Drawing.Size(24, 13);
-            this.lblDistrict.TabIndex = 23;
-            this.lblDistrict.Text = "İlçe";
-            // 
-            // lblProvince
-            // 
-            this.lblProvince.AutoSize = true;
-            this.lblProvince.Location = new System.Drawing.Point(236, 72);
-            this.lblProvince.Name = "lblProvince";
-            this.lblProvince.Size = new System.Drawing.Size(12, 13);
-            this.lblProvince.TabIndex = 24;
-            this.lblProvince.Text = "İl";
-            // 
-            // txtDistrict
-            // 
-            this.txtDistrict.Location = new System.Drawing.Point(298, 101);
-            this.txtDistrict.Name = "txtDistrict";
-            this.txtDistrict.Size = new System.Drawing.Size(109, 20);
-            this.txtDistrict.TabIndex = 21;
-            this.txtDistrict.Text = "Kadıkoy";
-            // 
-            // txtCity
-            // 
-            this.txtCity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtCity.Location = new System.Drawing.Point(298, 65);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(109, 20);
-            this.txtCity.TabIndex = 22;
-            this.txtCity.Text = "İstanbul";
-            // 
-            // cmbScenario
-            // 
-            this.cmbScenario.FormattingEnabled = true;
-            this.cmbScenario.Location = new System.Drawing.Point(97, 34);
-            this.cmbScenario.Name = "cmbScenario";
-            this.cmbScenario.Size = new System.Drawing.Size(121, 21);
-            this.cmbScenario.TabIndex = 31;
-            // 
-            // cmbType
-            // 
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(97, 71);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(121, 21);
-            this.cmbType.TabIndex = 32;
+            this.btnAddRow.Location = new System.Drawing.Point(463, 28);
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.Size = new System.Drawing.Size(91, 23);
+            this.btnAddRow.TabIndex = 3;
+            this.btnAddRow.Text = "Satır Ekle";
+            this.btnAddRow.UseVisualStyleBackColor = true;
+            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
             // 
             // txtTotalAmount
             // 
@@ -683,7 +683,7 @@
         private System.Windows.Forms.GroupBox grpOrderInformation;
         private System.Windows.Forms.DateTimePicker dateTimeOrderDate;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtOrderNumber;
+        private System.Windows.Forms.TextBox txtOrderId;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox grpCarrierInformation;
         private System.Windows.Forms.MaskedTextBox msdCarrierTc;

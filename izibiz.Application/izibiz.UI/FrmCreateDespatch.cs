@@ -14,6 +14,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UblDespatchAdvice;
 
 namespace izibiz.UI
 {
@@ -301,55 +302,42 @@ namespace izibiz.UI
                     getUserInformationOnDb();
 
                     //////////UBL OLUSTURMA ISLEMI////////
-                    DespatchAdviceUbl despatch = new DespatchAdviceUbl();
-
-                    despatch.
-
-                    
-
-
-                    //eger gonderım tıpı ınternet ıse ekstra adınatıonal ref ekle
-                    despatch.addAdditionalDocumentReference(nameof(EI.Profileid.EARSIVFATURA), cmbArchiveType.Text);
-
-                    //DELİVERY BOLUMU EKLE
-                    //carrıer ekle
-                    PartyType carrierParty = despatch.createParty(txtCarrierTitle.Text, "", "", "");
-                    despatch.addPartyIdentification(carrierParty, 1, nameof(EI.VknTckn.VKN), msdDeliveryVkn.Text, "", "", "", "");
-                    despatch.createDelivery(carrierParty, Convert.ToDateTime(datepicDespatchDate.Text));
-
-                    //payment means ekle                   
-                    despatch.createPaymentMeans(getPaymentCode(cmbPaymentType.Text), Convert.ToDateTime(datepicPaymentDate.Text), txtMediator.Text);
-
+                    DespatchAdviceUbl despatch = new DespatchAdviceUbl(gridPrice.RowCount,dateTimeDespatchDate.Value.Date,Convert.ToDateTime(cmbDespatchTime.Text),
+                        txtOrderId.Text,dateTimeOrderDate.Value.Date);
 
 
                     PartyType supParty;
                     PartyType cusParty;
+                    string partyIdentificationSchemaType;
+
                     //SUPPLİER  PARTY OLUSTURULMASI  
                     supParty = despatch.createParty(partyName, cityName, telephone, mail);
                     if (senderVknTc.Length == 10) //sup vkn
                     {
-                        despatch.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
+                        partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
                         despatch.addPartyTaxSchemeOnParty(supParty);
                     }
                     else  //sup tckn .. add person metodu eklenır
                     {
-                        despatch.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
+                        partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
                         despatch.addPersonOnParty(supParty, firstName, familyName);
                     }
+                    despatch.addPartyIdentification(supParty, 2, partyIdentificationSchemaType, senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
                     despatch.SetSupplierParty(supParty);
 
                     //CUST PARTY OLUSTURULMASI  
                     cusParty = despatch.createParty(txtPartyName.Text, txtCity.Text, msdPhone.Text, txtMail.Text);
                     if (msdVknTc.Text.Length == 10) //customer vkn
                     {
-                        despatch.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.VKN), msdVknTc.Text, "", "", "", "");
+                        partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
                         despatch.addPartyTaxSchemeOnParty(cusParty);
                     }
                     else  //customer tckn
                     {
-                        despatch.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
+                        partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
                         despatch.addPersonOnParty(cusParty, txtCustName.Text, txtCustSurname.Text);
                     }
+                    despatch.addPartyIdentification(cusParty, 1, partyIdentificationSchemaType, msdVknTc.Text, "", "", "", "");
                     despatch.SetCustomerParty(cusParty);
 
 

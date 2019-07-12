@@ -651,32 +651,36 @@ namespace izibiz.UI
 
                         PartyType supParty;
                         PartyType cusParty;
+                        string partyIdentificationSchemaType;
+                      
                         //SUPPLİER  PARTY OLUSTURULMASI  
                         supParty = invoice.createParty(partyName, cityName, telephone, mail);
                         if (senderVknTc.Length == 10) //sup vkn
                         {
-                            invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
                             invoice.addPartyTaxSchemeOnParty(supParty);
                         }
                         else  //sup tckn .. add person metodu eklenır
                         {
-                            invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
                             invoice.addPersonOnParty(supParty, firstName, familyName);
                         }
+                        invoice.addPartyIdentification(supParty, 2, partyIdentificationSchemaType, senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
                         invoice.SetSupplierParty(supParty);
 
                         //CUST PARTY OLUSTURULMASI  
                         cusParty = invoice.createParty(txtPartyName.Text, txtCity.Text, msdPhone.Text, txtMail.Text);
                         if (msdVknTc.Text.Length == 10) //customer vkn
                         {
-                            invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.VKN), msdVknTc.Text, "", "", "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
                             invoice.addPartyTaxSchemeOnParty(cusParty);
                         }
                         else  //customer tckn
                         {
-                            invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
                             invoice.addPersonOnParty(cusParty, txtCustName.Text, txtCustSurname.Text);
                         }
+                        invoice.addPartyIdentification(cusParty, 1, partyIdentificationSchemaType, msdVknTc.Text, "", "", "", "");
                         invoice.SetCustomerParty(cusParty);
 
 
