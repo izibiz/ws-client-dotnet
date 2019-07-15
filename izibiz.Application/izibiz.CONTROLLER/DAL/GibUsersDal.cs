@@ -1,6 +1,7 @@
-﻿using izibiz.CONTROLLER.Singleton;
+﻿using izibiz.CONTROLLER.Model;
+using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
@@ -30,30 +31,31 @@ namespace izibiz.CONTROLLER.DAL
             return listAlias;
         }
 
-        public List<GibUsers> getGibUserList()
+        public List<GibUsers> getGibUserList(string productType)
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                return databaseContext.gibUsers.ToList();
+                return databaseContext.gibUsers.Where(gibUser => gibUser.productType== productType).ToList();
             }
         }
 
-        public void addGibUserList(List<GIBUSER> userList)
+        public int addGibUserList(GibUserListXmlModel userList)
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-                GibUsers gibUsers;
-                foreach (var user in userList)
+                GibUsers gibUser;
+                foreach (var user in userList.Items)
                 {
-                    gibUsers = new GibUsers();
-                    gibUsers.aliasPk = user.ALIAS;
-                    gibUsers.identifier = user.IDENTIFIER;
-                    gibUsers.title = user.TITLE;
+                    gibUser = new GibUsers();
+                    gibUser.aliasPk = user.alias;
+                    gibUser.identifier = user.identifier;
+                    gibUser.title = user.title;
+                    gibUser.productType = user.documentTpye;
 
-                    databaseContext.gibUsers.Add(gibUsers);
+                    databaseContext.gibUsers.Add(gibUser);           
                 }
    
-                databaseContext.SaveChanges();
+              return  databaseContext.SaveChanges();
             }
 
         }

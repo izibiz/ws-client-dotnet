@@ -484,7 +484,7 @@
     <value>Raporlananlar</value>
   </data>
   <data name="selectOnePerson" xml:space="preserve">
-    <value>Sadece aynı kisiye olan faturaları secebılırsınız</value>
+    <value>Sadece aynı kisiye olanları secebılırsınız</value>
   </data>
   <data name="sendResponseToInvoice" xml:space="preserve">
     <value>nolu faturalara yanıt gonderıldı</value>

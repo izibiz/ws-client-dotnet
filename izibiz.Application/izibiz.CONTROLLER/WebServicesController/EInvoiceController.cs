@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceOib;
 using izibiz.COMMON;
 using izibiz.CONTROLLER.Singleton;
@@ -12,7 +12,7 @@ using izibiz.CONTROLLER.InvoiceRequestSection;
 using izibiz.COMMON.FileControl;
 using System.IO;
 using izibiz.COMMON.UblSerializer;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 using izibiz.MODEL.Data;
 
 namespace izibiz.CONTROLLER.Web_Services
@@ -34,6 +34,7 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             InvoiceSearchKey.createInvoiceSearchKeyGetInvoiceRequest();
             InvoiceSearchKey.createinvoiceSearchKeyGetInvoiceWithTypeRequest();
+            RequestHeader.createRequestHeaderOib();
         }
 
 
@@ -215,8 +216,6 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.INVOICE = invoiceList.ToArray();
 
                 invoiceList.Clear();
-
-
 
                 return eInvoiceOIBPortClient.SendInvoice(req).REQUEST_RETURN.RETURN_CODE;
             }

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using izibiz.SERVICES.serviceDespatch;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using System.ServiceModel;
 using System.Data.Entity.Validation;
 using izibiz.COMMON.FileControl;
@@ -90,7 +90,7 @@ namespace izibiz.UI
 
 
 
-        private void itemIncomingInvoice_Click(object sender, EventArgs e)
+        private void itemInDespatch_Click(object sender, EventArgs e)
         {
             despactDirection = EI.Direction.IN.ToString();
             lblText.Text = despactDirection;
@@ -100,7 +100,7 @@ namespace izibiz.UI
             gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
         }
 
-        private void itemSentInvoice_Click(object sender, EventArgs e)
+        private void itemOutDespatch_Click(object sender, EventArgs e)
         {
             despactDirection = EI.Direction.OUT.ToString();
             lblText.Text = despactDirection;
@@ -110,7 +110,7 @@ namespace izibiz.UI
             gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
         }
 
-        private void itemDraftInvoice_Click(object sender, EventArgs e)
+        private void itemDraftDespatch_Click(object sender, EventArgs e)
         {
             despactDirection = EI.Direction.DRAFT.ToString();
             lblText.Text = despactDirection;
@@ -120,21 +120,86 @@ namespace izibiz.UI
             gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
         }
 
+
+
+
+
         private void itemTakeGibUsers_Click(object sender, EventArgs e)
         {
             despactDirection = EI.GibUser.GibUsers.ToString();
             btnTakeDespatch.Visible = false;
             selectPanelVisibilty(false, false, false);
 
+            try
+            {
+                //Gönderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu işlem en az 15 dk surer.
+                DialogResult response = MessageBox.Show(Lang.wantGetUserList, Lang.warning, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (response == DialogResult.OK)
+                {
+                    //servisten cek
+                    string  errorMessage = Singl.GibUserControllerGet.getGibUserList(nameof(EI.ProductType.DESPATCHADVICE));
+                    if (errorMessage != null)
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(Lang.succesful);
+                    }
+                }
+
+
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException  ex)
+            {
+                MessageBox.Show(ex.Message+Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
 
 
-        private void itemListGibUserList_Click(object sender, EventArgs e)
+        private void itemGetListGibUserList_Click(object sender, EventArgs e)
         {
             despactDirection = EI.GibUser.GibUsers.ToString();
             btnTakeDespatch.Visible = false;
             selectPanelVisibilty(false, false, false);
+
+            try
+            {
+                gridUpdateGibUserList(Singl.gibUsersDalGet.getGibUserList(nameof(EI.ProductType.DESPATCHADVICE)));
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
 
         }
 
@@ -267,6 +332,22 @@ namespace izibiz.UI
         }
 
 
+
+
+        private void gridChangeGibUsersColumnHeadersText()
+        {
+
+            tableGrid.Columns[EI.GibUser.aliasPk.ToString()].HeaderText = Lang.toAlias;
+
+            tableGrid.Columns[EI.GibUser.identifier.ToString()].HeaderText = Lang.id;
+
+            tableGrid.Columns[EI.GibUser.title.ToString()].HeaderText = Lang.title;
+        }
+
+
+
+
+
         private void gridUpdateDespatchList(List<DespatchAdvices> gridListDespatch)
         {
             tableGrid.DataSource = null;
@@ -296,7 +377,21 @@ namespace izibiz.UI
 
 
 
+        private void gridUpdateGibUserList(List<GibUsers> gridListGibUsers)
+        {
+            tableGrid.DataSource = null;
+            tableGrid.Columns.Clear();
 
+            if (gridListGibUsers.Count == 0)
+            {
+                MessageBox.Show(Lang.noShowInvoice);
+            }
+            else
+            {
+                tableGrid.DataSource = gridListGibUsers;
+                gridChangeGibUsersColumnHeadersText();
+            }
+        }
 
 
 
@@ -368,24 +463,22 @@ namespace izibiz.UI
                         }
                         #endregion
 
-
-                        ////html göruntule butonuna tıkladıysa
-                        //if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
-                        //{
-                        //    string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
-                        //    string id = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.ID)].Value.ToString();
-
-                        //    string content = Singl.invoiceControllerGet.getInvoiceContentXml(uuid, gridDirection);
-                        //    if (content != null) //servisten veya dıskten getırlebılmısse
-                        //    {
-                        //        FrmView previewInvoices = new FrmView(content, nameof(EI.Invoice.Invoices));
-                        //        previewInvoices.ShowDialog();
-                        //    }
-                        //    else
-                        //    {
-                        //        MessageBox.Show(Lang.cantGetContent);
-                        //    }
-                        //}
+                        //html göruntule butonuna tıkladıysa
+                        if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
+                        {
+                            string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
+                          
+                            string content = Singl.despatchControllerGet.getDespatchContentXml(uuid, despactDirection);
+                            if (content != null) //servisten veya dıskten getırlebılmısse
+                            {
+                                FrmView previewInvoices = new FrmView(content, nameof(EI.Despatch.DespatchAdvices));
+                                previewInvoices.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show(Lang.cantGetContent);
+                            }
+                        }
                     }
                 }
             }
@@ -412,14 +505,14 @@ namespace izibiz.UI
 
 
 
-        private void btnIncomingDespatchGetStatus_Click(object sender, EventArgs e)
+        private void btnInDespatchGetStatus_Click(object sender, EventArgs e)
         {
             getDespatchStatus();
         }
 
 
 
-        private void btnSendDespatchGetStatus_Click(object sender, EventArgs e)
+        private void btnOutDespatchGetStatus_Click(object sender, EventArgs e)
         {
             getDespatchStatus();
         }
@@ -543,7 +636,7 @@ namespace izibiz.UI
                 string xmlContent = Singl.despatchControllerGet.getDespatchContentXml(uuidRow, despactDirection);
                 if (xmlContent == null) //content gerılemedıyse
                 {
-                    MessageBox.Show("content getırılemedı  " + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                    MessageBox.Show("content getırılemedı  " + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Despatch.ID)].Value.ToString());
                     return null;
                 }
 
@@ -591,7 +684,7 @@ namespace izibiz.UI
                                 string newFolderPath = FolderControl.createDespatchDocPath(idArrContentArrModel.newIdArr[cnt], nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
 
                                 //db verileri guncelle
-                                if(Singl.DespatchAdviceDalGet.updateDespatchIdCdateStatusGibCodeStateNoteFolderPath(uuidRow, nameof(EI.Direction.DRAFT),
+                                if (Singl.DespatchAdviceDalGet.updateDespatchIdCdateStatusGibCodeStateNoteFolderPath(uuidRow, nameof(EI.Direction.DRAFT),
                                   idArrContentArrModel.newIdArr[cnt], DateTime.Now, nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED),
                                    -1, nameof(EI.StatusType.LOAD), newFolderPath) == 1)
                                 {
@@ -637,6 +730,182 @@ namespace izibiz.UI
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+
+
+
+        private void btnSendDespatch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool valid = true;
+
+
+                //aynı kısıye gıdecek faturalar secılı mı kontrolu
+                string receiverVkn = tableGrid.SelectedRows[0].Cells[nameof(EI.Despatch.receiverVkn)].Value.ToString();
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {
+                    if (row.Cells[nameof(EI.Despatch.receiverVkn)].Value != null && row.Cells[nameof(EI.Despatch.receiverVkn)].Value.ToString() != receiverVkn) //vkn farklı ıse
+                    {
+                        MessageBox.Show(Lang.selectOnePerson);//sadece aynı kısıye olan faturaları bırlıkte gonderebılırsınız
+                        valid = false; break;
+                    }
+                }
+
+                if (valid) //uymayan irsaliye durumu yoksa
+                {
+                    //db den getırılen serı Namelerı comboboxda sectır
+                    FrmDialogSelectItem frmDialogSelectSeriName = new FrmDialogSelectItem(true, "");
+                    if (frmDialogSelectSeriName.ShowDialog() == DialogResult.OK)
+                    {
+
+                        FrmDialogSelectItem frmDialogIdSelectAlias = new FrmDialogSelectItem(false, receiverVkn);
+                        ////gb  sectır
+                        if (frmDialogIdSelectAlias.ShowDialog() == DialogResult.OK)
+                        {
+                            IdArrContentArrModel ıdContentModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue);
+
+                            //send despatch 
+                            string errorMessage = Singl.despatchControllerGet.sendDespatch(frmDialogIdSelectAlias.selectedValue);
+                            if (errorMessage != null)
+                            {
+                                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                for (int cnt = 0; cnt < tableGrid.SelectedRows.Count; cnt++)
+                                {
+                                    string uuidRow = tableGrid.SelectedRows[cnt].Cells[nameof(EI.Despatch.uuid)].Value.ToString();
+
+                                    //yenı folderpath olustur
+                                    string newFolderPath = FolderControl.createDespatchDocPath(ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT),
+                                        nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
+
+                                    //db de yenı id,direction,folderpath,statenote guncellenır
+                                    if (Singl.DespatchAdviceDalGet.updateDespatchIdDirectionFolderPathStateNote(uuidRow, nameof(EI.Direction.DRAFT),
+                                         ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND)) == 1)
+                                    {
+                                        //eskı folderPathdekı dosyayı konumdan sıler
+                                        FolderControl.deleteFileFromPath(Singl.DespatchAdviceDalGet.getDespatch(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
+
+                                        //yenı folderpath ile yenı id eklenmıs xmli diske kaydet
+                                        FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[cnt], newFolderPath);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Güncel bilgileri Db ye kaydetme işlemi basarısız,İşlemi tekrar gerceklestırınız" + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                                        return;
+                                    }
+                                }
+
+                                //db ye, en son olusturulan yenı ınv id serisinin son itemi ıle serı no ve yıl guncelle
+                                Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ıdContentModel.newIdArr.Last());
+
+                                //datagrıd listesini guncelle
+                                gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
+
+                                MessageBox.Show(Lang.succesful);//"basarılı"
+                            }
+                        }
+                        frmDialogIdSelectAlias.Dispose();
+                    }
+                    frmDialogSelectSeriName.Dispose();
+                }
+            }
+
+
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(Lang.operationFailed + ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error); //işlem basarısız
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnInDespatchGetXml_Click(object sender, EventArgs e)
+        {
+            getXmlDespatch();
+        }
+
+        private void btnOutDespatchGetXml_Click(object sender, EventArgs e)
+        {
+            getXmlDespatch();
+        }
+
+
+        private void getXmlDespatch()
+        {
+            try
+            {
+               List<IdFolderPathModel> idFolderList=new List<IdFolderPathModel>();
+                IdFolderPathModel idFolder;
+
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {
+                    string content = Singl.despatchControllerGet.getDespatchContentFromService(row.Cells[nameof(EI.Despatch.uuid)].Value.ToString(), despactDirection);
+                    if (content != null)
+                    {
+                        FolderControl.writeFileOnDiskWithString(content,row.Cells[nameof(EI.Despatch.folderPath)].Value.ToString());
+
+                        idFolder = new IdFolderPathModel();
+                        idFolder.folderPath = row.Cells[nameof(EI.Despatch.folderPath)].Value.ToString();
+                        idFolder.id = row.Cells[nameof(EI.Despatch.ID)].Value.ToString();
+                        idFolderList.Add(idFolder);
+                    }
+                }
+
+                if (idFolderList.Count > 0)
+                {
+                    MessageBox.Show(string.Join(Environment.NewLine, idFolderList) + Environment.NewLine + "Kaydedildi");//Seçili arsivler getirilemedi
+                }
+                else
+                {
+                    MessageBox.Show("işlem Basarısız", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+
+
+
+        private void itemNewDespatch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
 
 
 

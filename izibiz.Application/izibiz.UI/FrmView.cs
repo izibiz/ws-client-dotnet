@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Xsl;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 using izibiz.COMMON.Language;
 
 namespace izibiz.UI
@@ -48,6 +48,10 @@ namespace izibiz.UI
                 else if (invoiceType == EI.ArchiveReports.ArchiveReports.ToString())
                 {
                     viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibArchiveReport, xmlContent);
+                }
+                else if (invoiceType == EI.Despatch.DespatchAdvices.ToString())
+                {
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibDespatch, xmlContent);
                 }
 
             }

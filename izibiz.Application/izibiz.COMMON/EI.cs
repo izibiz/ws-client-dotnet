@@ -82,6 +82,7 @@ namespace izibiz.COMMON
             issueDate,
             profileId,
             senderVkn,
+            receiverVkn,
             cDate,
             envelopeIdentifier,
             stateNote,
@@ -140,12 +141,15 @@ namespace izibiz.COMMON
         }
 
 
-        public enum InvoiceProfileid
+        public enum Profileid
         {
             TEMELFATURA,
             TICARIFATURA,
-            EARSIVFATURA
+            EARSIVFATURA,
+            TEMELIRSALIYE
         }
+
+      
 
 
         public enum InvLineGridRowClm
@@ -214,7 +218,8 @@ namespace izibiz.COMMON
             GibUsers,
             aliasPk,
             identifier,
-            title
+            title,
+            productType
         }
 
         public enum GridBtnClmName
@@ -223,14 +228,15 @@ namespace izibiz.COMMON
             previewPdf
         }
 
-        public enum InvoiceTypeCodeValue
+        public enum TypeCodeValue
         {
             SATIS,
             IADE,
             TEVKIFAT,
             ISTISNA,
             OZELMATRAH,
-            IHRACKAYITLI
+            IHRACKAYITLI,
+            SEVK
         }
 
         public enum Unit

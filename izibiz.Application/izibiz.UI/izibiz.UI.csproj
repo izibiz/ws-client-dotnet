@@ -78,6 +78,12 @@
     <Compile Include="FrmArchive.Designer.cs">
       <DependentUpon>FrmArchive.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateDespatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateDespatch.Designer.cs">
+      <DependentUpon>FrmCreateDespatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDespatch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </Compile>
     <EmbeddedResource Include="FrmArchive.resx">
       <DependentUpon>FrmArchive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateDespatch.resx">
+      <DependentUpon>FrmCreateDespatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDespatch.resx">
       <DependentUpon>FrmDespatch.cs</DependentUpon>

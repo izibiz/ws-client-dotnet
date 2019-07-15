@@ -16,7 +16,7 @@ namespace izibiz.CONTROLLER.Web_Services
     {
 
         AuthenticationServicePortClient authenticationPortClient;
- 
+
         public static string sesionID;
 
 
@@ -25,7 +25,7 @@ namespace izibiz.CONTROLLER.Web_Services
             authenticationPortClient = new AuthenticationServicePortClient();
         }
 
-     
+
 
 
 
@@ -33,7 +33,12 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             var req = new LoginRequest
             {
-                REQUEST_HEADER = RequestHeader.getRequestHeaderAuth,
+                REQUEST_HEADER = new REQUEST_HEADERType
+                {
+                    SESSION_ID = "-1",
+                    APPLICATION_NAME = "izibiz.Application",
+                    COMPRESSED = EI.ActiveOrPasive.Y.ToString()
+                },
                 USER_NAME = usurname,
                 PASSWORD = password
             };
@@ -42,8 +47,6 @@ namespace izibiz.CONTROLLER.Web_Services
             if (loginRes.ERROR_TYPE == null)
             {
                 sesionID = loginRes.SESSION_ID;
-                RequestHeader.createRequestHeaderOib();
-                RequestHeader.createRequestHeaderArchive();
                 return true;
             }
             else

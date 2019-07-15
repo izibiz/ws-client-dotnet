@@ -179,98 +179,6 @@ namespace izibiz.SERVICES.serviceOib {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class CUSTOMER : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string iDENTIFIERField;
-        
-        private string nAMEField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string IDENTIFIER {
-            get {
-                return this.iDENTIFIERField;
-            }
-            set {
-                this.iDENTIFIERField = value;
-                this.RaisePropertyChanged("IDENTIFIER");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string NAME {
-            get {
-                return this.nAMEField;
-            }
-            set {
-                this.nAMEField = value;
-                this.RaisePropertyChanged("NAME");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class PARTINFO : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string vKNField;
-        
-        private string iDENTIFIERField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="normalizedString")]
-        public string VKN {
-            get {
-                return this.vKNField;
-            }
-            set {
-                this.vKNField = value;
-                this.RaisePropertyChanged("VKN");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="normalizedString")]
-        public string IDENTIFIER {
-            get {
-                return this.iDENTIFIERField;
-            }
-            set {
-                this.iDENTIFIERField = value;
-                this.RaisePropertyChanged("IDENTIFIER");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
     public partial class LOV_VALUEType : object, System.ComponentModel.INotifyPropertyChanged {
         
         private long lOV_IDField;
@@ -1435,8 +1343,6 @@ namespace izibiz.SERVICES.serviceOib {
         
         private string gIB_STATUS_DESCRIPTIONField;
         
-        private string dIRECTIONField;
-        
         private string rESPONSE_CODEField;
         
         private string rESPONSE_DESCRIPTIONField;
@@ -1645,18 +1551,6 @@ namespace izibiz.SERVICES.serviceOib {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
-        public string DIRECTION {
-            get {
-                return this.dIRECTIONField;
-            }
-            set {
-                this.dIRECTIONField = value;
-                this.RaisePropertyChanged("DIRECTION");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
         public string RESPONSE_CODE {
             get {
                 return this.rESPONSE_CODEField;
@@ -1668,7 +1562,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
         public string RESPONSE_DESCRIPTION {
             get {
                 return this.rESPONSE_DESCRIPTIONField;
@@ -1680,7 +1574,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
         public string FILENAME {
             get {
                 return this.fILENAMEField;
@@ -1692,7 +1586,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
         public string HASH {
             get {
                 return this.hASHField;
@@ -1704,7 +1598,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=19)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
         public System.DateTime CDATE {
             get {
                 return this.cDATEField;
@@ -1728,7 +1622,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=20)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=19)]
         public string ENVELOPE_IDENTIFIER {
             get {
                 return this.eNVELOPE_IDENTIFIERField;
@@ -1868,8 +1762,6 @@ namespace izibiz.SERVICES.serviceOib {
         
         private USERTYPE uSERTYPEField;
         
-        private bool uSERTYPEFieldSpecified;
-        
         private SIGNTYPE sIGNTYPEField;
         
         private bool sIGNTYPEFieldSpecified;
@@ -1879,6 +1771,10 @@ namespace izibiz.SERVICES.serviceOib {
         private bool tYPEFieldSpecified;
         
         private string aLIAS_TYPEField;
+        
+        public USERCONTENT() {
+            this.uSERTYPEField = USERTYPE.USER;
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -1894,6 +1790,7 @@ namespace izibiz.SERVICES.serviceOib {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute(USERTYPE.USER)]
         public USERTYPE USERTYPE {
             get {
                 return this.uSERTYPEField;
@@ -1901,18 +1798,6 @@ namespace izibiz.SERVICES.serviceOib {
             set {
                 this.uSERTYPEField = value;
                 this.RaisePropertyChanged("USERTYPE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool USERTYPESpecified {
-            get {
-                return this.uSERTYPEFieldSpecified;
-            }
-            set {
-                this.uSERTYPEFieldSpecified = value;
-                this.RaisePropertyChanged("USERTYPESpecified");
             }
         }
         
@@ -2009,9 +1894,6 @@ namespace izibiz.SERVICES.serviceOib {
         
         /// <remarks/>
         CHANGECUSTOMER,
-        
-        /// <remarks/>
-        ZREPORT,
     }
     
     /// <remarks/>
@@ -3718,12 +3600,6 @@ namespace izibiz.SERVICES.serviceOib {
         
         private INVOICE[] iNVOICEField;
         
-        private FLAG_VALUE vALIDATION_FLAGField;
-        
-        public LoadInvoiceRequest() {
-            this.vALIDATION_FLAGField = FLAG_VALUE.Y;
-        }
-        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("INVOICE", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public INVOICE[] INVOICE {
@@ -3735,32 +3611,6 @@ namespace izibiz.SERVICES.serviceOib {
                 this.RaisePropertyChanged("INVOICE");
             }
         }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        [System.ComponentModel.DefaultValueAttribute(FLAG_VALUE.Y)]
-        public FLAG_VALUE VALIDATION_FLAG {
-            get {
-                return this.vALIDATION_FLAGField;
-            }
-            set {
-                this.vALIDATION_FLAGField = value;
-                this.RaisePropertyChanged("VALIDATION_FLAG");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public enum FLAG_VALUE {
-        
-        /// <remarks/>
-        Y,
-        
-        /// <remarks/>
-        N,
     }
     
     /// <remarks/>
@@ -4272,10 +4122,6 @@ namespace izibiz.SERVICES.serviceOib {
         
         private string toField;
         
-        private DATE_TYPE dATE_TYPEField;
-        
-        private bool dATE_TYPEFieldSpecified;
-        
         private System.DateTime sTART_DATEField;
         
         private bool sTART_DATEFieldSpecified;
@@ -4369,31 +4215,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public DATE_TYPE DATE_TYPE {
-            get {
-                return this.dATE_TYPEField;
-            }
-            set {
-                this.dATE_TYPEField = value;
-                this.RaisePropertyChanged("DATE_TYPE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DATE_TYPESpecified {
-            get {
-                return this.dATE_TYPEFieldSpecified;
-            }
-            set {
-                this.dATE_TYPEFieldSpecified = value;
-                this.RaisePropertyChanged("DATE_TYPESpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=5)]
         public System.DateTime START_DATE {
             get {
                 return this.sTART_DATEField;
@@ -4417,7 +4239,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=6)]
         public System.DateTime END_DATE {
             get {
                 return this.eND_DATEField;
@@ -4441,7 +4263,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public bool READ_INCLUDED {
             get {
                 return this.rEAD_INCLUDEDField;
@@ -4465,7 +4287,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=8)]
         public string DIRECTION {
             get {
                 return this.dIRECTIONField;
@@ -4477,7 +4299,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=9)]
         public string SENDER {
             get {
                 return this.sENDERField;
@@ -4489,7 +4311,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=10)]
         public string RECEIVER {
             get {
                 return this.rECEIVERField;
@@ -4501,7 +4323,7 @@ namespace izibiz.SERVICES.serviceOib {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
         public string DRAFT_FLAG {
             get {
                 return this.dRAFT_FLAGField;
@@ -4520,19 +4342,6 @@ namespace izibiz.SERVICES.serviceOib {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public enum DATE_TYPE {
-        
-        /// <remarks/>
-        ISSUE,
-        
-        /// <remarks/>
-        CREATE,
     }
     
     /// <remarks/>
@@ -4755,8 +4564,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -4786,8 +4593,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -4817,8 +4622,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -4848,8 +4651,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -4879,8 +4680,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -4910,8 +4709,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -4941,8 +4738,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -4972,8 +4767,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5003,8 +4796,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5034,8 +4825,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5065,8 +4854,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5096,8 +4883,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5127,8 +4912,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5158,8 +4941,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5189,8 +4970,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5220,8 +4999,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5251,8 +5028,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5282,8 +5057,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5313,8 +5086,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5344,8 +5115,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]
@@ -5375,8 +5144,6 @@ namespace izibiz.SERVICES.serviceOib {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceOib.REQUEST_ERRORType), Action="", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CUSTOMER))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PARTINFO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LOV_VALUEType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST_INFOType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(getAppRespResponseType))]

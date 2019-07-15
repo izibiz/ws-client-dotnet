@@ -1141,7 +1141,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sadece aynı kisiye olan faturaları secebılırsınız.
+        ///   Looks up a localized string similar to Sadece aynı kisiye olanları secebılırsınız.
         /// </summary>
         public static string selectOnePerson {
             get {

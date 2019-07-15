@@ -1,4 +1,4 @@
-﻿using izibiz.MODEL.DbModels;
+﻿using izibiz.MODEL.DbTablesModels;
 using izibiz.COMMON.Language;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 using izibiz.COMMON;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.CONTROLLER;
@@ -167,12 +167,12 @@ namespace izibiz.UI
         {
             if (invoiceType == nameof(EI.Invoice.Invoices))
             {
-                cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.TEMELFATURA));
-                cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.TICARIFATURA));
+                cmbScenario.Items.Add(nameof(EI.Profileid.TEMELFATURA));
+                cmbScenario.Items.Add(nameof(EI.Profileid.TICARIFATURA));
             }
             else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
-                cmbScenario.Items.Add(nameof(EI.InvoiceProfileid.EARSIVFATURA));
+                cmbScenario.Items.Add(nameof(EI.Profileid.EARSIVFATURA));
             }
         }
 
@@ -180,12 +180,12 @@ namespace izibiz.UI
 
         private void addItemType()
         {
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.SATIS.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.IADE.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.TEVKIFAT.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.ISTISNA.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.OZELMATRAH.ToString());
-            cmbInvType.Items.Add(EI.InvoiceTypeCodeValue.IHRACKAYITLI.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.SATIS.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.IADE.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.TEVKIFAT.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.ISTISNA.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.OZELMATRAH.ToString());
+            cmbInvType.Items.Add(EI.TypeCodeValue.IHRACKAYITLI.ToString());
         }
 
 
@@ -592,9 +592,9 @@ namespace izibiz.UI
         {
             if (invoiceType == nameof(EI.Invoice.Invoices))
             {
-                if (cmbInvType.Text == EI.InvoiceTypeCodeValue.IADE.ToString())
+                if (cmbInvType.Text == EI.TypeCodeValue.IADE.ToString())
                 {
-                    if (cmbScenario.Text != nameof(EI.InvoiceProfileid.TEMELFATURA))
+                    if (cmbScenario.Text != nameof(EI.Profileid.TEMELFATURA))
                     {
                         return false;
                     }
@@ -636,7 +636,7 @@ namespace izibiz.UI
                             if (cmbArchiveType.Text == nameof(EI.ArchiveType.INTERNET))
                             {
                                 //eger gonderım tıpı ınternet ıse ekstra adınatıonal ref ekle
-                                invoice.addAdditionalDocumentReference(nameof(EI.InvoiceProfileid.EARSIVFATURA), cmbArchiveType.Text);
+                                invoice.addAdditionalDocumentReference(nameof(EI.Profileid.EARSIVFATURA), cmbArchiveType.Text);
 
                                 //DELİVERY BOLUMU EKLE
                                 //carrıer ekle
@@ -651,32 +651,36 @@ namespace izibiz.UI
 
                         PartyType supParty;
                         PartyType cusParty;
+                        string partyIdentificationSchemaType;
+                      
                         //SUPPLİER  PARTY OLUSTURULMASI  
                         supParty = invoice.createParty(partyName, cityName, telephone, mail);
                         if (senderVknTc.Length == 10) //sup vkn
                         {
-                            invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.VKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
                             invoice.addPartyTaxSchemeOnParty(supParty);
                         }
                         else  //sup tckn .. add person metodu eklenır
                         {
-                            invoice.addPartyIdentification(supParty, 2, nameof(EI.VknTckn.TCKN), senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
                             invoice.addPersonOnParty(supParty, firstName, familyName);
                         }
+                        invoice.addPartyIdentification(supParty, 2, partyIdentificationSchemaType, senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
                         invoice.SetSupplierParty(supParty);
 
                         //CUST PARTY OLUSTURULMASI  
                         cusParty = invoice.createParty(txtPartyName.Text, txtCity.Text, msdPhone.Text, txtMail.Text);
                         if (msdVknTc.Text.Length == 10) //customer vkn
                         {
-                            invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.VKN), msdVknTc.Text, "", "", "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
                             invoice.addPartyTaxSchemeOnParty(cusParty);
                         }
                         else  //customer tckn
                         {
-                            invoice.addPartyIdentification(cusParty, 1, nameof(EI.VknTckn.TCKN), msdVknTc.Text, "", "", "", "");
+                            partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
                             invoice.addPersonOnParty(cusParty, txtCustName.Text, txtCustSurname.Text);
                         }
+                        invoice.addPartyIdentification(cusParty, 1, partyIdentificationSchemaType, msdVknTc.Text, "", "", "", "");
                         invoice.SetCustomerParty(cusParty);
 
 
@@ -698,7 +702,7 @@ namespace izibiz.UI
                         invoice.SetAllowanceCharge(invoice.CalculateAllowanceCharges());
 
                         //olusturdugumuz nesne ubl turune cevrılır
-                        var invoiceUbl = invoice.BaseUBL;
+                        var invoiceUbl = invoice.baseInvoiceUBL;
                         //xml olustur
                         string xmlPath = FolderControl.createInvUblToXml(invoiceUbl, invoiceType).ToString();
                        

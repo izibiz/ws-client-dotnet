@@ -23,7 +23,6 @@
             <xsd:element minOccurs="0" name="STATUS_DESCRIPTION" type="xsd:string" />
             <xsd:element minOccurs="0" name="GIB_STATUS_CODE" type="xsd:int" />
             <xsd:element minOccurs="0" name="GIB_STATUS_DESCRIPTION" type="xsd:string" />
-            <xsd:element minOccurs="0" name="DIRECTION" type="xsd:string" />
             <xsd:element minOccurs="0" name="RESPONSE_CODE" type="xsd:string" />
             <xsd:element minOccurs="0" name="RESPONSE_DESCRIPTION" type="xsd:string" />
             <xsd:element minOccurs="0" name="FILENAME" type="xsd:string" />
@@ -72,7 +71,6 @@
       <xsd:enumeration value="SERBEST_MESLEK" />
       <xsd:enumeration value="MUSTAHSIL" />
       <xsd:enumeration value="CHANGECUSTOMER" />
-      <xsd:enumeration value="ZREPORT" />
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="SIGNTYPE">
@@ -88,12 +86,6 @@
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="PROCESSUSER" />
       <xsd:enumeration value="CANCELUSER" />
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="DATE_TYPE">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="ISSUE" />
-      <xsd:enumeration value="CREATE" />
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:element name="LoginRequest" type="LoginRequest" />
@@ -130,7 +122,7 @@
     <xsd:complexContent mixed="false">
       <xsd:extension base="xmime:base64Binary">
         <xsd:attribute name="USERID" type="xsd:string" />
-        <xsd:attribute name="USERTYPE" type="USERTYPE" />
+        <xsd:attribute default="USER" name="USERTYPE" type="USERTYPE" />
         <xsd:attribute name="SIGNTYPE" type="SIGNTYPE" use="optional" />
         <xsd:attribute name="TYPE" type="USERCONTENTTYPE" use="optional" />
         <xsd:attribute name="ALIAS_TYPE" type="xsd:string" />
@@ -200,7 +192,6 @@
                 <xsd:element minOccurs="0" name="UUID" type="xsd:normalizedString" />
                 <xsd:element minOccurs="0" name="FROM" type="xsd:token" />
                 <xsd:element minOccurs="0" name="TO" type="xsd:token" />
-                <xsd:element minOccurs="0" name="DATE_TYPE" type="DATE_TYPE" />
                 <xsd:element minOccurs="0" name="START_DATE" type="xsd:date" />
                 <xsd:element minOccurs="0" name="END_DATE" type="xsd:date" />
                 <xsd:element minOccurs="0" name="READ_INCLUDED" type="xsd:boolean" />
@@ -447,7 +438,6 @@
       <xsd:extension base="e:REQUEST">
         <xsd:sequence>
           <xsd:element minOccurs="1" maxOccurs="unbounded" name="INVOICE" type="INVOICE" />
-          <xsd:element minOccurs="0" default="Y" name="VALIDATION_FLAG" type="c:FLAG_VALUE" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

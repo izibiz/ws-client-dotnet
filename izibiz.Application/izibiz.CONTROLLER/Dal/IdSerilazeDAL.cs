@@ -1,6 +1,6 @@
 ﻿using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

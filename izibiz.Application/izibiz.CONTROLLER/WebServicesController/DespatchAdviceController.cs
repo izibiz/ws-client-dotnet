@@ -2,7 +2,7 @@
 using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.InvoiceRequestSection;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceDespatch;
 using System;
 using System.Collections.Generic;
@@ -100,6 +100,8 @@ namespace izibiz.CONTROLLER.WebServicesController
             }
         }
 
+
+
         private string despatchMarkRead(DESPATCHADVICE[] despatchArr)
         {
             using (new OperationContextScope(eDespatchPortClient.InnerChannel))
@@ -131,7 +133,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                 MarkDespatchAdviceResponse markResponse = eDespatchPortClient.MarkDespatchAdvice(markReq);
 
-                if (markResponse.REQUEST_RETURN == null && markResponse.ERROR_TYPE != null) //hata varsa
+                if (markResponse.REQUEST_RETURN == null || markResponse.ERROR_TYPE != null) //hata varsa
                 {
                     return markResponse.ERROR_TYPE.ERROR_SHORT_DES;//hatayı don
                 }
@@ -216,11 +218,11 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderDespatch;
                 req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.N);//ziplenmeden gonderılır
                 req.DESPATCHADVICE = despatchList.ToArray();
-             
+
                 LoadDespatchAdviceResponse response = eDespatchPortClient.LoadDespatchAdvice(req);
                 despatchList.Clear();
 
-                if (response.ERROR_TYPE != null && response.REQUEST_RETURN ==null)  //işlem basarısızsa
+                if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //işlem basarısızsa
                 {
                     return response.ERROR_TYPE.ERROR_SHORT_DES;
                 }
@@ -230,7 +232,30 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
+        public string sendDespatch(string receiverAlias)
+        {
+            using (new OperationContextScope(eDespatchPortClient.InnerChannel))
+            {
+                var req = new SendDespatchAdviceRequest();
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderDespatch;
+                req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
 
+                req.SENDER = new SendDespatchAdviceRequestSENDER();
+                req.RECEIVER = new SendDespatchAdviceRequestRECEIVER();
+                req.RECEIVER.alias = receiverAlias;
+
+                req.DESPATCHADVICE = despatchList.ToArray();
+
+                despatchList.Clear();
+                var response = eDespatchPortClient.SendDespatchAdvice(req);
+
+                if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0 )  //işlem basarısızsa
+                {
+                    return response.ERROR_TYPE.ERROR_SHORT_DES;
+                }
+                return null;//işlem basarılıysa null don
+            }
+        }
 
 
 

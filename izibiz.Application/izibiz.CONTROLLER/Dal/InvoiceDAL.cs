@@ -1,7 +1,7 @@
 ﻿using izibiz.COMMON;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ubl_Invoice_2_1;
+using UblInvoice;
 
 namespace izibiz.CONTROLLER.DAL
 {

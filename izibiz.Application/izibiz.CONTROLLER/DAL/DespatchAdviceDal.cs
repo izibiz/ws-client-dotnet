@@ -1,7 +1,7 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbModels;
+using izibiz.MODEL.DbTablesModels;
 using izibiz.SERVICES.serviceDespatch;
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,7 @@ namespace izibiz.CONTROLLER.DAL
                     despatchAdvice.status = despatch.DESPATCHADVICEHEADER.STATUS;
                     despatchAdvice.gibStatusCode = despatch.DESPATCHADVICEHEADER.GIB_STATUS_CODE;
                     despatchAdvice.gibStatusDescription = despatch.DESPATCHADVICEHEADER.GIB_STATUS_DESCRIPTION;
-                    despatchAdvice.folderPath = FolderControl.inboxFolderArchive + despatchAdvice.uuid + "." + nameof(EI.DocumentType.XML);
+                    despatchAdvice.folderPath = FolderControl.createDespatchDocPath(despatch.ID, direction,nameof(EI.DocumentType.XML));
                     despatchAdvice.issueTime = despatch.DESPATCHADVICEHEADER.ISSUE_TIME;
                     despatchAdvice.shipmentDate = despatch.DESPATCHADVICEHEADER.ACTUAL_SHIPMENT_DATE;
                     despatchAdvice.shipmentTime = despatch.DESPATCHADVICEHEADER.ACTUAL_SHIPMENT_TIME;
@@ -119,6 +119,22 @@ namespace izibiz.CONTROLLER.DAL
                 despatchAdvice.gibStatusCode = newGibStatusCode;
                 despatchAdvice.stateNote = newStateNote;
                 despatchAdvice.folderPath = newFolderPath;
+
+                return dbContext.SaveChanges();
+            }
+        }
+
+        public int updateDespatchIdDirectionFolderPathStateNote(string uuid, string direction, string newId, string newDirection, string newFolderPath, string newStateNote)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                DespatchAdvices despatchAdvice = dbContext.despatchAdvices.Where(despatch => despatch.direction == direction
+            && despatch.uuid == uuid).First();
+
+                despatchAdvice.ID = newId;
+                despatchAdvice.direction = newDirection;
+                despatchAdvice.folderPath = newFolderPath;
+                despatchAdvice.stateNote = newStateNote;
 
                 return dbContext.SaveChanges();
             }
