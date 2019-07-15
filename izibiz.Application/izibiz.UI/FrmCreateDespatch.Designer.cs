@@ -72,7 +72,7 @@
             this.txtOrderId = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.grpCarrierInformation = new System.Windows.Forms.GroupBox();
-            this.msdCarrierTc = new System.Windows.Forms.MaskedTextBox();
+            this.msdCarrierTcVkn = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCarrierTitle = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -86,17 +86,27 @@
             this.btnAddRow = new System.Windows.Forms.Button();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPartyName = new System.Windows.Forms.TextBox();
+            this.txtPlate = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.grpChauffeurInformation = new System.Windows.Forms.GroupBox();
+            this.txtDriverName = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.msdDriverTc = new System.Windows.Forms.MaskedTextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.grpReceiver.SuspendLayout();
             this.grpDespatchInformation.SuspendLayout();
             this.grpOrderInformation.SuspendLayout();
             this.grpCarrierInformation.SuspendLayout();
             this.grpRowInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).BeginInit();
+            this.grpChauffeurInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCreateDespatch
             // 
-            this.btnCreateDespatch.Location = new System.Drawing.Point(475, 726);
+            this.btnCreateDespatch.Location = new System.Drawing.Point(469, 704);
             this.btnCreateDespatch.Name = "btnCreateDespatch";
             this.btnCreateDespatch.Size = new System.Drawing.Size(222, 47);
             this.btnCreateDespatch.TabIndex = 0;
@@ -106,7 +116,7 @@
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(188, 726);
+            this.btnClean.Location = new System.Drawing.Point(188, 704);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(188, 47);
             this.btnClean.TabIndex = 1;
@@ -116,6 +126,8 @@
             // 
             // grpReceiver
             // 
+            this.grpReceiver.Controls.Add(this.label8);
+            this.grpReceiver.Controls.Add(this.txtPartyName);
             this.grpReceiver.Controls.Add(this.lblDistrict);
             this.grpReceiver.Controls.Add(this.lblProvince);
             this.grpReceiver.Controls.Add(this.txtDistrict);
@@ -130,7 +142,7 @@
             this.grpReceiver.Controls.Add(this.lblVknTckn);
             this.grpReceiver.Location = new System.Drawing.Point(12, 32);
             this.grpReceiver.Name = "grpReceiver";
-            this.grpReceiver.Size = new System.Drawing.Size(558, 141);
+            this.grpReceiver.Size = new System.Drawing.Size(652, 141);
             this.grpReceiver.TabIndex = 6;
             this.grpReceiver.TabStop = false;
             this.grpReceiver.Text = "Alıcı";
@@ -396,7 +408,7 @@
             this.grpOrderInformation.Controls.Add(this.label13);
             this.grpOrderInformation.Location = new System.Drawing.Point(406, 208);
             this.grpOrderInformation.Name = "grpOrderInformation";
-            this.grpOrderInformation.Size = new System.Drawing.Size(452, 151);
+            this.grpOrderInformation.Size = new System.Drawing.Size(452, 84);
             this.grpOrderInformation.TabIndex = 8;
             this.grpOrderInformation.TabStop = false;
             this.grpOrderInformation.Text = "Siparis Bilgileri";
@@ -436,35 +448,37 @@
             // 
             // grpCarrierInformation
             // 
-            this.grpCarrierInformation.Controls.Add(this.msdCarrierTc);
+            this.grpCarrierInformation.Controls.Add(this.txtPlate);
+            this.grpCarrierInformation.Controls.Add(this.label11);
+            this.grpCarrierInformation.Controls.Add(this.msdCarrierTcVkn);
             this.grpCarrierInformation.Controls.Add(this.label9);
             this.grpCarrierInformation.Controls.Add(this.txtCarrierTitle);
             this.grpCarrierInformation.Controls.Add(this.label10);
-            this.grpCarrierInformation.Location = new System.Drawing.Point(406, 365);
+            this.grpCarrierInformation.Location = new System.Drawing.Point(406, 411);
             this.grpCarrierInformation.Name = "grpCarrierInformation";
-            this.grpCarrierInformation.Size = new System.Drawing.Size(452, 146);
+            this.grpCarrierInformation.Size = new System.Drawing.Size(452, 100);
             this.grpCarrierInformation.TabIndex = 10;
             this.grpCarrierInformation.TabStop = false;
-            this.grpCarrierInformation.Text = "Taşıyıcı ve Tutar Bilgileri";
+            this.grpCarrierInformation.Text = "Taşıyıcı  Bilgileri";
             // 
-            // msdCarrierTc
+            // msdCarrierTcVkn
             // 
-            this.msdCarrierTc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.msdCarrierTc.Location = new System.Drawing.Point(313, 31);
-            this.msdCarrierTc.Mask = "00000000000";
-            this.msdCarrierTc.Name = "msdCarrierTc";
-            this.msdCarrierTc.Size = new System.Drawing.Size(109, 20);
-            this.msdCarrierTc.TabIndex = 32;
-            this.msdCarrierTc.Text = "11111111110";
+            this.msdCarrierTcVkn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.msdCarrierTcVkn.Location = new System.Drawing.Point(313, 31);
+            this.msdCarrierTcVkn.Mask = "00000000000";
+            this.msdCarrierTcVkn.Name = "msdCarrierTcVkn";
+            this.msdCarrierTcVkn.Size = new System.Drawing.Size(109, 20);
+            this.msdCarrierTcVkn.TabIndex = 32;
+            this.msdCarrierTcVkn.Text = "11111111110";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(254, 34);
+            this.label9.Location = new System.Drawing.Point(244, 34);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(21, 13);
+            this.label9.Size = new System.Drawing.Size(63, 13);
             this.label9.TabIndex = 31;
-            this.label9.Text = "TC";
+            this.label9.Text = "VKN/TCKN";
             // 
             // txtCarrierTitle
             // 
@@ -620,11 +634,95 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "Toplam Tutar";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(435, 34);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Kurum Adı";
+            // 
+            // txtPartyName
+            // 
+            this.txtPartyName.Location = new System.Drawing.Point(503, 31);
+            this.txtPartyName.Name = "txtPartyName";
+            this.txtPartyName.Size = new System.Drawing.Size(109, 20);
+            this.txtPartyName.TabIndex = 25;
+            this.txtPartyName.Text = "İzibiz";
+            // 
+            // txtPlate
+            // 
+            this.txtPlate.Location = new System.Drawing.Point(122, 71);
+            this.txtPlate.Name = "txtPlate";
+            this.txtPlate.Size = new System.Drawing.Size(109, 20);
+            this.txtPlate.TabIndex = 34;
+            this.txtPlate.Text = "34 tr 123";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(24, 74);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 13);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Plaka";
+            // 
+            // grpChauffeurInformation
+            // 
+            this.grpChauffeurInformation.Controls.Add(this.msdDriverTc);
+            this.grpChauffeurInformation.Controls.Add(this.label16);
+            this.grpChauffeurInformation.Controls.Add(this.txtDriverName);
+            this.grpChauffeurInformation.Controls.Add(this.label15);
+            this.grpChauffeurInformation.Location = new System.Drawing.Point(406, 316);
+            this.grpChauffeurInformation.Name = "grpChauffeurInformation";
+            this.grpChauffeurInformation.Size = new System.Drawing.Size(452, 84);
+            this.grpChauffeurInformation.TabIndex = 24;
+            this.grpChauffeurInformation.TabStop = false;
+            this.grpChauffeurInformation.Text = "Şoför Bilgileri";
+            // 
+            // txtDriverName
+            // 
+            this.txtDriverName.Location = new System.Drawing.Point(122, 31);
+            this.txtDriverName.Name = "txtDriverName";
+            this.txtDriverName.Size = new System.Drawing.Size(109, 20);
+            this.txtDriverName.TabIndex = 21;
+            this.txtDriverName.Text = "Ahmet veli";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(24, 34);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Adı Soyadı";
+            // 
+            // msdDriverTc
+            // 
+            this.msdDriverTc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.msdDriverTc.Location = new System.Drawing.Point(302, 31);
+            this.msdDriverTc.Mask = "00000000000";
+            this.msdDriverTc.Name = "msdDriverTc";
+            this.msdDriverTc.Size = new System.Drawing.Size(109, 20);
+            this.msdDriverTc.TabIndex = 34;
+            this.msdDriverTc.Text = "11111111110";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(260, 34);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(21, 13);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "TC";
+            // 
             // FrmCreateDespatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 797);
+            this.ClientSize = new System.Drawing.Size(927, 749);
+            this.Controls.Add(this.grpChauffeurInformation);
             this.Controls.Add(this.txtTotalAmount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.grpRowInformation);
@@ -649,6 +747,8 @@
             this.grpCarrierInformation.PerformLayout();
             this.grpRowInformation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPrice)).EndInit();
+            this.grpChauffeurInformation.ResumeLayout(false);
+            this.grpChauffeurInformation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -686,7 +786,7 @@
         private System.Windows.Forms.TextBox txtOrderId;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox grpCarrierInformation;
-        private System.Windows.Forms.MaskedTextBox msdCarrierTc;
+        private System.Windows.Forms.MaskedTextBox msdCarrierTcVkn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCarrierTitle;
         private System.Windows.Forms.Label label10;
@@ -706,5 +806,14 @@
         private System.Windows.Forms.ComboBox cmbScenario;
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtPartyName;
+        private System.Windows.Forms.TextBox txtPlate;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox grpChauffeurInformation;
+        private System.Windows.Forms.MaskedTextBox msdDriverTc;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtDriverName;
+        private System.Windows.Forms.Label label15;
     }
 }

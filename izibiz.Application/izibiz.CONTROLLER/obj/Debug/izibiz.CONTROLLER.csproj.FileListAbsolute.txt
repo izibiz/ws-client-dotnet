@@ -338,7 +338,6 @@ C:\Users\gamze.sahin\Desktop\gitİzi\ws-client-dotnet\izibiz.Application\izibiz.
 C:\Users\gamze.sahin\Desktop\gitİzi\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.csproj.CopyComplete
 C:\Users\gamze.sahin\Desktop\gitİzi\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.dll
 C:\Users\gamze.sahin\Desktop\gitİzi\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\obj\Debug\izibiz.CONTROLLER.pdb
-C:\Users\gamze\Desktop\gitİzibiz\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\EntityFramework.xml
 C:\Users\gamze.sahin\Desktop\gitizi\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.CONTROLLER.dll.config
 C:\Users\gamze.sahin\Desktop\gitizi\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.CONTROLLER.dll
 C:\Users\gamze.sahin\Desktop\gitizi\ws-client-dotnet\izibiz.Application\izibiz.CONTROLLER\bin\Debug\izibiz.CONTROLLER.pdb

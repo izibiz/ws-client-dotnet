@@ -13,7 +13,7 @@ namespace izibiz.COMMON.UBLCreate
     {
 
 
-        private DespatchAdviceType baseDespatchUbl { get; }
+        public DespatchAdviceType baseDespatchUbl { get; }
 
 
 
@@ -155,196 +155,298 @@ namespace izibiz.COMMON.UBLCreate
         }
 
 
-        /// <summary>
-        ///  Sevk irsaliyesi (Despatch Advice) UBL'inin DespatchSupplierParty alanını oluşturma
-        /// </summary>
-        /// <returns>DespatchSupplierParty Alanı</returns>
-        public SupplierPartyType GetSupplierParty(string vknTckn, string parametre)
+
+        public PartyType createParty(string partyName, string cityName, string telephone, string mail)
         {
-            var despatchSupplierParty = new SupplierPartyType  //Sevk İrsaliyesindeki Malların Sevkiyatını Sağlayan Tarafın Bilgileri
+            PartyType party = new PartyType();
+            party.WebsiteURI = new WebsiteURIType { Value = "izibiz" };
+            party.PartyName = new PartyNameType { Name = new NameType1 { Value = partyName } };
+            party.PostalAddress = new AddressType
             {
-                Party = new PartyType
-                {
-                    WebsiteURI = new WebsiteURIType { Value = "web sitesi" },
-                    PartyIdentification = new[]
-                   {
-                        new PartyIdentificationType
-                        {
-                            ID= new IDType {schemeID=parametre,Value=vknTckn }
-                        }
-                   },
-                    // Sevkiyatı sağlayan tarafın VKN si yazılırsa bu alan kullanılmak zorundadır.
-                    PartyName = new PartyNameType
-                    {
-                        Name = new NameType1 { Value = "Kurum Adı" }
-                    },
-                    PostalAddress = new AddressType
-                    {
-                        ID = new IDType { Value = "123" },
-                        StreetName = new StreetNameType { Value = "Cadde" },
-                        BuildingName = new BuildingNameType { Value = "Bina" },
-                        BuildingNumber = new BuildingNumberType { Value = "Bina No" },
-                        CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
-                        CityName = new CityNameType { Value = "Sehir" },
-                        PostalZone = new PostalZoneType { Value = "Posta Kodu" },
-                        Country = new CountryType { Name = new NameType1 { Value = "Ülke" } }
-                    },
-                    PhysicalLocation = new LocationType1
-                    {
-                        ID = new IDType { Value = "Depo Şube" },
-                        Address = new AddressType
-                        {
-                            ID = new IDType { Value = "12345" },
-                            StreetName = new StreetNameType { Value = "Cadde" },
-                            BuildingName = new BuildingNameType { Value = "Bina" },
-                            BuildingNumber = new BuildingNumberType { Value = "Bina no" },
-                            CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
-                            CityName = new CityNameType { Value = "Sehir" },
-                            PostalZone = new PostalZoneType { Value = "Posta Kodu" },
-                            Country = new CountryType
-                            {
-                                Name = new NameType1 { Value = "Ülke" }
-                            }
-                        }
-                    },
-                    PartyTaxScheme = new PartyTaxSchemeType
-                    {
-                        TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "Vergi Dairesi" } }
-                    },
-                    Contact = new ContactType
-                    {
-                        Telephone = new TelephoneType { Value = "Telefon" },
-                        Telefax = new TelefaxType { Value = "Fax" },
-                        ElectronicMail = new ElectronicMailType { Value = "Mail" }
-                    },
-                    // Sevkiyatı sağlayan tarafın TCKN si yazılırsa bu alan kullanılmak zorundadır.
-                    Person = new PersonType
-                    {
-                        FirstName = new FirstNameType { Value = "İsim" },
-                        FamilyName = new FamilyNameType { Value = "Soyisim" },
-                    }
-                }
-
+                StreetName = new StreetNameType { Value = "exampleStreet" },
+                BuildingName = new BuildingNameType { Value = "BuildingName" },
+                BuildingNumber = new BuildingNumberType { Value = "BuildingNumber" },
+                CitySubdivisionName = new CitySubdivisionNameType { Value = "exampleVsion" },
+                CityName = new CityNameType { Value = cityName },
+                PostalZone = new PostalZoneType { Value = "PostalZone" },
+                Region = new RegionType { Value = "Region" },
+                Country = new CountryType { Name = new NameType1 { Value = "Turkey" } }
             };
-            return despatchSupplierParty;
 
+            party.Contact = new ContactType();
+            party.Contact.Telephone = new TelephoneType { Value = telephone };
+            party.Contact.Telefax = new TelefaxType { Value = "Telefax" };
+            party.Contact.ElectronicMail = new ElectronicMailType { Value = mail };
+
+            return party;
         }
 
 
-        /// <summary>
-        ///  Sevk irsaliyesi (Despatch Advice) UBL'inin DeliveryCustomerParty alanını oluşturma
-        /// </summary>
-        /// <returns>DeliveryCustomerParty Alanı</returns>
-        public CustomerPartyType GetCustomerParty(string vknTckn, string parametre)
-        {
-            var deliveryCustomerParty = new CustomerPartyType  //Sevk İrsaliyesindeki Malların Sevkiyatını Teslim Alan Tarafın Bilgileri
-            {
-                Party = new PartyType
-                {
-                    WebsiteURI = new WebsiteURIType { Value = "web sitesi" },
-                    PartyIdentification = new[]
-                  {
-                        new PartyIdentificationType
-                        {
-                            ID= new IDType {schemeID=parametre,Value=vknTckn }
-                        },
-                        new PartyIdentificationType
-                        {
-                            ID=new IDType {schemeID="MUSTERINO",Value="1123" }
-                        }
-                  },
-                    // Sevkiyatı alan tarafın VKN si yazılırsa bu alan kullanılmak zorundadır.
-                    PartyName = new PartyNameType
-                    {
-                        Name = new NameType1 { Value = "Kurum Adı" }
-                    },
-                    PostalAddress = new AddressType
-                    {
-                        ID = new IDType { Value = "123" },
-                        StreetName = new StreetNameType { Value = "Cadde" },
-                        BuildingName = new BuildingNameType { Value = "Bina" },
-                        BuildingNumber = new BuildingNumberType { Value = "Bina No" },
-                        CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
-                        CityName = new CityNameType { Value = "Şehir" },
-                        PostalZone = new PostalZoneType { Value = "Posta Kodu" },
-                        Country = new CountryType { Name = new NameType1 { Value = "Ülke" } }
-                    },
-                    PhysicalLocation = new LocationType1
-                    {
-                        ID = new IDType { Value = "Depo Şube" },
-                        Address = new AddressType
-                        {
-                            ID = new IDType { Value = "111" },
-                            StreetName = new StreetNameType { Value = "Cadde" },
-                            BuildingName = new BuildingNameType { Value = "Bina" },
-                            BuildingNumber = new BuildingNumberType { Value = "Bina no" },
-                            CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
-                            CityName = new CityNameType { Value = "Sehir" },
-                            PostalZone = new PostalZoneType { Value = "Posta Kodu" },
-                            Country = new CountryType
-                            {
-                                Name = new NameType1 { Value = "Ülke" }
-                            }
-                        }
-                    },
-                    PartyTaxScheme = new PartyTaxSchemeType
-                    {
-                        TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "Vergi Dairesi" } }
-                    },
-                    Contact = new ContactType
-                    {
-                        Telephone = new TelephoneType { Value = "Telefon" },
-                        Telefax = new TelefaxType { Value = "Fax" },
-                        ElectronicMail = new ElectronicMailType { Value = "Mail" }
-                    },
-                    // Sevkiyatı alan tarafın TCKN si yazılırsa bu alan kullanılmak zorundadır.
-                    Person = new PersonType
-                    {
-                        FirstName = new FirstNameType { Value = "İsim" },
-                        FamilyName = new FamilyNameType { Value = "Soyisim" },
-                    }
-                }
-            };
-            return deliveryCustomerParty;
 
+        ///// <summary>
+        /////  Sevk irsaliyesi (Despatch Advice) UBL'inin DespatchSupplierParty alanını oluşturma
+        ///// </summary>
+        ///// <returns>DespatchSupplierParty Alanı</returns>
+        //public SupplierPartyType GetSupplierParty(string vknTckn, string parametre)
+        //{
+        //    var despatchSupplierParty = new SupplierPartyType  //Sevk İrsaliyesindeki Malların Sevkiyatını Sağlayan Tarafın Bilgileri
+        //    {
+        //        Party = new PartyType
+        //        {
+        //            WebsiteURI = new WebsiteURIType { Value = "web sitesi" },
+        //            PartyIdentification = new[]
+        //           {
+        //                new PartyIdentificationType
+        //                {
+        //                    ID= new IDType {schemeID=parametre,Value=vknTckn }
+        //                }
+        //           },
+        //            // Sevkiyatı sağlayan tarafın VKN si yazılırsa bu alan kullanılmak zorundadır.
+        //            PartyName = new PartyNameType
+        //            {
+        //                Name = new NameType1 { Value = "Kurum Adı" }
+        //            },
+        //            PostalAddress = new AddressType
+        //            {
+        //                ID = new IDType { Value = "123" },
+        //                StreetName = new StreetNameType { Value = "Cadde" },
+        //                BuildingName = new BuildingNameType { Value = "Bina" },
+        //                BuildingNumber = new BuildingNumberType { Value = "Bina No" },
+        //                CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
+        //                CityName = new CityNameType { Value = "Sehir" },
+        //                PostalZone = new PostalZoneType { Value = "Posta Kodu" },
+        //                Country = new CountryType { Name = new NameType1 { Value = "Ülke" } }
+        //            },
+        //            PhysicalLocation = new LocationType1
+        //            {
+        //                ID = new IDType { Value = "Depo Şube" },
+        //                Address = new AddressType
+        //                {
+        //                    ID = new IDType { Value = "12345" },
+        //                    StreetName = new StreetNameType { Value = "Cadde" },
+        //                    BuildingName = new BuildingNameType { Value = "Bina" },
+        //                    BuildingNumber = new BuildingNumberType { Value = "Bina no" },
+        //                    CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
+        //                    CityName = new CityNameType { Value = "Sehir" },
+        //                    PostalZone = new PostalZoneType { Value = "Posta Kodu" },
+        //                    Country = new CountryType
+        //                    {
+        //                        Name = new NameType1 { Value = "Ülke" }
+        //                    }
+        //                }
+        //            },
+        //            PartyTaxScheme = new PartyTaxSchemeType
+        //            {
+        //                TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "Vergi Dairesi" } }
+        //            },
+        //            Contact = new ContactType
+        //            {
+        //                Telephone = new TelephoneType { Value = "Telefon" },
+        //                Telefax = new TelefaxType { Value = "Fax" },
+        //                ElectronicMail = new ElectronicMailType { Value = "Mail" }
+        //            },
+        //            // Sevkiyatı sağlayan tarafın TCKN si yazılırsa bu alan kullanılmak zorundadır.
+        //            Person = new PersonType
+        //            {
+        //                FirstName = new FirstNameType { Value = "İsim" },
+        //                FamilyName = new FamilyNameType { Value = "Soyisim" },
+        //            }
+        //        }
+        //    };
+        //    return despatchSupplierParty;
+        //}
+
+
+        ///// <summary>
+        /////  Sevk irsaliyesi (Despatch Advice) UBL'inin DeliveryCustomerParty alanını oluşturma
+        ///// </summary>
+        ///// <returns>DeliveryCustomerParty Alanı</returns>
+        //public CustomerPartyType GetCustomerParty(string vknTckn, string parametre)
+        //{
+        //    var deliveryCustomerParty = new CustomerPartyType  //Sevk İrsaliyesindeki Malların Sevkiyatını Teslim Alan Tarafın Bilgileri
+        //    {
+        //        Party = new PartyType
+        //        {
+        //            WebsiteURI = new WebsiteURIType { Value = "web sitesi" },
+        //            PartyIdentification = new[]
+        //          {
+        //                new PartyIdentificationType
+        //                {
+        //                    ID= new IDType {schemeID=parametre,Value=vknTckn }
+        //                },
+        //                new PartyIdentificationType
+        //                {
+        //                    ID=new IDType {schemeID="MUSTERINO",Value="1123" }
+        //                }
+        //          },
+        //            // Sevkiyatı alan tarafın VKN si yazılırsa bu alan kullanılmak zorundadır.
+        //            PartyName = new PartyNameType
+        //            {
+        //                Name = new NameType1 { Value = "Kurum Adı" }
+        //            },
+        //            PostalAddress = new AddressType
+        //            {
+        //                ID = new IDType { Value = "123" },
+        //                StreetName = new StreetNameType { Value = "Cadde" },
+        //                BuildingName = new BuildingNameType { Value = "Bina" },
+        //                BuildingNumber = new BuildingNumberType { Value = "Bina No" },
+        //                CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
+        //                CityName = new CityNameType { Value = "Şehir" },
+        //                PostalZone = new PostalZoneType { Value = "Posta Kodu" },
+        //                Country = new CountryType { Name = new NameType1 { Value = "Ülke" } }
+        //            },
+        //            PhysicalLocation = new LocationType1
+        //            {
+        //                ID = new IDType { Value = "Depo Şube" },
+        //                Address = new AddressType
+        //                {
+        //                    ID = new IDType { Value = "111" },
+        //                    StreetName = new StreetNameType { Value = "Cadde" },
+        //                    BuildingName = new BuildingNameType { Value = "Bina" },
+        //                    BuildingNumber = new BuildingNumberType { Value = "Bina no" },
+        //                    CitySubdivisionName = new CitySubdivisionNameType { Value = "İlçe/Semt" },
+        //                    CityName = new CityNameType { Value = "Sehir" },
+        //                    PostalZone = new PostalZoneType { Value = "Posta Kodu" },
+        //                    Country = new CountryType
+        //                    {
+        //                        Name = new NameType1 { Value = "Ülke" }
+        //                    }
+        //                }
+        //            },
+        //            PartyTaxScheme = new PartyTaxSchemeType
+        //            {
+        //                TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "Vergi Dairesi" } }
+        //            },
+        //            Contact = new ContactType
+        //            {
+        //                Telephone = new TelephoneType { Value = "Telefon" },
+        //                Telefax = new TelefaxType { Value = "Fax" },
+        //                ElectronicMail = new ElectronicMailType { Value = "Mail" }
+        //            },
+        //            // Sevkiyatı alan tarafın TCKN si yazılırsa bu alan kullanılmak zorundadır.
+        //            Person = new PersonType
+        //            {
+        //                FirstName = new FirstNameType { Value = "İsim" },
+        //                FamilyName = new FamilyNameType { Value = "Soyisim" },
+        //            }
+        //        }
+        //    };
+        //    return deliveryCustomerParty;
+        //}
+
+
+
+        public void SetSupplierParty(PartyType supplierParty)
+        {
+            var despatchSupplierParty = new SupplierPartyType //göndericinin fatura üzerindeki bilgileri
+            {
+                Party = supplierParty
+            };
+            baseDespatchUbl.DespatchSupplierParty = despatchSupplierParty;
         }
+
+
+
+        public void SetCustomerParty(PartyType customerParty)
+        {
+            var despatchCustomerParty = new CustomerPartyType //Alıcının fatura üzerindeki bilgileri
+            {
+                Party = customerParty
+            };
+            baseDespatchUbl.DeliveryCustomerParty = despatchCustomerParty;
+        }
+
+
+
+
+
+
+        public void addPartyTaxSchemeOnParty(PartyType party)
+        {
+            party.PartyTaxScheme = new PartyTaxSchemeType
+            {
+                TaxScheme = new TaxSchemeType { Name = new NameType1 { Value = "exampleTax" } }
+            };
+        }
+
+
+
+
+        public void addPersonOnParty(PartyType party, string firstName, string familyName)
+        {
+            party.Person = new PersonType
+            {
+                FirstName = new FirstNameType { Value = firstName },
+                FamilyName = new FamilyNameType { Value = familyName }
+            };
+        }
+
+
+
+
+        public void addPartyIdentification(PartyType party, int paramCount, string param1, string param1Value,
+            string param2, string param2Value, string param3, string param3Value)
+        {
+            PartyIdentificationType[] partyIdentificationArr = new PartyIdentificationType[paramCount];
+            for (int i = 0; i < paramCount; i++)
+            {
+                PartyIdentificationType partyIdentification = new PartyIdentificationType();
+                switch (i) //en fazla 2 degerını alabılır... 3 deger yazılabılır
+                {
+                    case 0:
+                        partyIdentification.ID = new IDType();
+                        partyIdentification.ID.schemeID = param1;
+                        partyIdentification.ID.Value = param1Value; break;
+
+                    case 1:
+                        partyIdentification.ID = new IDType();
+                        partyIdentification.ID.schemeID = param2;
+                        partyIdentification.ID.Value = param2Value; break;
+
+                    case 2:
+                        partyIdentification.ID = new IDType();
+                        partyIdentification.ID.schemeID = param3;
+                        partyIdentification.ID.Value = param3Value; break;
+                }
+                partyIdentificationArr[i] = partyIdentification;
+            }
+            party.PartyIdentification = partyIdentificationArr;
+        }
+
+
+
+
 
 
         /// <summary>
         ///  Sevk irsaliyesi (Despatch Advice) UBL'inin Shipment alanını oluşturma
         /// </summary>
         /// <returns>Shipment Alanı</returns>
-        public ShipmentType GetShipment(int kalemSayisi)
+        public void createShipment(decimal  totalAmount,string plate,string orderId, string driverName,string driverTc,DateTime consignmentDate,DateTime consignmentTime,
+            string partyShemeType, string carrierVknTckn)
+
         {
             var shipment = new ShipmentType //Gönderi Hakkındaki Bilgiler
             {
-                ID = new IDType { Value = "" },  // Kargo numarası girilir.
-                GoodsItem = new[] { new GoodsItemType { ValueAmount = new ValueAmountType { currencyID = "TRY", Value = 20000 * kalemSayisi } } },
+                ID = new IDType { Value = orderId},  // Kargo numarası girilir.
+                GoodsItem = new[] { new GoodsItemType { ValueAmount = new ValueAmountType { currencyID = "TRY", Value = totalAmount } } },
                 ShipmentStage = new[]  // Gönderinin hangi aşamada olduğu bilgisi girilir. Ayrıca taşıyıcı (plaka, şoför) gibi detay bilgiler girilir.
                    {
                     new ShipmentStageType
                     {
                         TransportMeans=new TransportMeansType { RoadTransport=new RoadTransportType //Taşımada kullanılan vasıta hakkında bilgi girilir
                          {
-                            LicensePlateID =new LicensePlateIDType {schemeID="PLAKA", Value="06DR4077" } // Plaka numarası girilir. 
+                            LicensePlateID =new LicensePlateIDType {schemeID="PLAKA", Value=plate } //  Plaka numarası girilir. 
                          }
                         },
-
                      DriverPerson =new[]  // Şoför bilgileri girilir
                         {
                             new PersonType
                             {
-                                FirstName=new FirstNameType {Value="Mehmet" },
-                                FamilyName=new FamilyNameType {Value="Öztürk" },
+                                FirstName=new FirstNameType {Value=driverName },
+                                FamilyName=new FamilyNameType {Value="" },
                                 Title=new TitleType {Value="Şoför" },
-                                NationalityID=new NationalityIDType {Value="14922266699" }
-                            },
-                            new PersonType
-                            {
-                                FirstName=new FirstNameType {Value="Mustafa" },
-                                FamilyName=new FamilyNameType {Value="Öztürk" },
-                                Title=new TitleType {Value="Şoför" },
-                                NationalityID=new NationalityIDType {Value="14922266600" }
+                                NationalityID=new NationalityIDType {Value=driverTc }
                             }
                         }
                 }
@@ -357,7 +459,7 @@ namespace izibiz.COMMON.UBLCreate
                            {
                             new PartyIdentificationType
                             {
-                                ID=new IDType { schemeID="VKN", Value="1234567801" }
+                                ID=new IDType { schemeID=partyShemeType, Value=carrierVknTckn }
                             }
                            },
                         PartyName = new PartyNameType
@@ -370,12 +472,11 @@ namespace izibiz.COMMON.UBLCreate
                             CityName = new CityNameType { Value = "Şehir" },
                             Country = new CountryType { Name = new NameType1 { Value = "Ülke" } }
                         }
-
                     },
                     Despatch = new DespatchType
                     {
-                        ActualDespatchDate = new ActualDespatchDateType { Value = DateTime.Now }, //Gerçekleşen gönderim tarihi girilir. (Fiili Sevk Tarihi) 
-                        ActualDespatchTime = new ActualDespatchTimeType { Value = DateTime.Now } //Gerçekleşen gönderim zamanı girilir. (Fiili Sevk Zamanı) 
+                        ActualDespatchDate = new ActualDespatchDateType { Value = consignmentDate }, //Gerçekleşen gönderim tarihi girilir. (Fiili Sevk Tarihi) 
+                        ActualDespatchTime = new ActualDespatchTimeType { Value = consignmentTime } //Gerçekleşen gönderim zamanı girilir. (Fiili Sevk Zamanı) 
                     }
                 },
                 TransportHandlingUnit = new[]  //Taşıma üniteleri bilgisi girilir
@@ -384,21 +485,15 @@ namespace izibiz.COMMON.UBLCreate
                     {
                         TransportEquipment=new[]
                         {
-
                             new TransportEquipmentType
                             {
-                                ID=new IDType {schemeID="DORSEPLAKA",Value="06DR4088" }
-                            },
-                             new TransportEquipmentType
-                            {
-                                ID=new IDType {schemeID="DORSEPLAKA",Value="06DR4099" }
+                                ID=new IDType {schemeID="DORSEPLAKA",Value="06DR4088" }  
                             }
                          }
                      }
-                      }
+                }
             };
-            return shipment;
-
+            baseDespatchUbl.Shipment = shipment;
         }
 
 
@@ -409,7 +504,6 @@ namespace izibiz.COMMON.UBLCreate
         /// <returns>DespatchLine Listesi</returns>
         public DespatchLineType[] GetDespatchLine(int kalemSayisi)
         {
-
 
             List<DespatchLineType> list = new List<DespatchLineType>();
 

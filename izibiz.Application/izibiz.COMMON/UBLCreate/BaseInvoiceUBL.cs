@@ -514,8 +514,6 @@ namespace izibiz.CONTROLLER
                         taxSubtotalNew.TaxCategory.TaxScheme.Name = new NameType1 { Value = nameof(EI.TaxType.KDV) };
                         taxSubtotalNew.TaxCategory.TaxScheme.TaxTypeCode = new TaxTypeCodeType { Value = "0015" };
 
-
-
                         taxSubTotalList.Add(taxSubtotalNew);
                     }
                 }

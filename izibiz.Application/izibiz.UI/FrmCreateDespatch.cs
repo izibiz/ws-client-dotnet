@@ -1,4 +1,5 @@
 ﻿using izibiz.COMMON;
+using izibiz.COMMON.FileControl;
 using izibiz.COMMON.Language;
 using izibiz.COMMON.UBLCreate;
 using izibiz.CONTROLLER.Singleton;
@@ -302,44 +303,57 @@ namespace izibiz.UI
                     getUserInformationOnDb();
 
                     //////////UBL OLUSTURMA ISLEMI////////
-                    DespatchAdviceUbl despatch = new DespatchAdviceUbl(gridPrice.RowCount,dateTimeDespatchDate.Value.Date,Convert.ToDateTime(cmbDespatchTime.Text),
-                        txtOrderId.Text,dateTimeOrderDate.Value.Date);
+                    DespatchAdviceUbl despatch = new DespatchAdviceUbl(gridPrice.RowCount, dateTimeDespatchDate.Value.Date, Convert.ToDateTime(cmbDespatchTime.Text),
+                        txtOrderId.Text, dateTimeOrderDate.Value.Date);
 
 
                     PartyType supParty;
                     PartyType cusParty;
-                    string partyIdentificationSchemaType;
+                    string schemaType;
 
                     //SUPPLİER  PARTY OLUSTURULMASI  
                     supParty = despatch.createParty(partyName, cityName, telephone, mail);
                     if (senderVknTc.Length == 10) //sup vkn
                     {
-                        partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
+                        schemaType = nameof(EI.VknTckn.VKN);
                         despatch.addPartyTaxSchemeOnParty(supParty);
                     }
                     else  //sup tckn .. add person metodu eklenır
                     {
-                        partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
+                        schemaType = nameof(EI.VknTckn.TCKN);
                         despatch.addPersonOnParty(supParty, firstName, familyName);
                     }
-                    despatch.addPartyIdentification(supParty, 2, partyIdentificationSchemaType, senderVknTc, nameof(EI.Mersis.MERSISNO), sicilNo, "", "");
+                    despatch.addPartyIdentification(supParty, 1, schemaType, senderVknTc, "", "", "", "");
                     despatch.SetSupplierParty(supParty);
 
                     //CUST PARTY OLUSTURULMASI  
-                    cusParty = despatch.createParty(txtPartyName.Text, txtCity.Text, msdPhone.Text, txtMail.Text);
+                    cusParty = despatch.createParty(txtPartyName.Text, txtCity.Text, "", txtMail.Text);
                     if (msdVknTc.Text.Length == 10) //customer vkn
                     {
-                        partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
+                        schemaType = nameof(EI.VknTckn.VKN);
                         despatch.addPartyTaxSchemeOnParty(cusParty);
                     }
                     else  //customer tckn
                     {
-                        partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
+                        schemaType = nameof(EI.VknTckn.TCKN);
                         despatch.addPersonOnParty(cusParty, txtCustName.Text, txtCustSurname.Text);
                     }
-                    despatch.addPartyIdentification(cusParty, 1, partyIdentificationSchemaType, msdVknTc.Text, "", "", "", "");
+                    despatch.addPartyIdentification(cusParty, 2, schemaType, msdVknTc.Text, "MUSTERINO", "1234", "", "");  //?????
                     despatch.SetCustomerParty(cusParty);
 
+                    //SHİPMENT 
+                    if (msdCarrierTcVkn.Text.Length == 10)
+                    {
+                        schemaType = nameof(EI.VknTckn.VKN);
+                    }
+                    else
+                    {
+                        schemaType = nameof(EI.VknTckn.TCKN);
+                    }
+                    despatch.createShipment(gridPrice.Rows.Count,txtPlate.Text,txtOrderId.Text,txtDriverName.Text,msdDriverTc.Text,dateTimeConsignmentDate.Value.Date,Convert.ToDateTime(cmbConsignmentTime.Text,
+                      schemaType,msdCarrierTcVkn));
+
+                  
 
                     //INV LINE OLUSTURULMASI
                     foreach (DataGridViewRow row in gridPrice.Rows)
@@ -352,29 +366,21 @@ namespace izibiz.UI
                             , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value), row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString()
                             , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value));
                     }
-
                     despatch.setInvLines();
-                    despatch.setTaxTotal(despatch.invoiceTaxTotal());
-                    despatch.SetLegalMonetaryTotal(despatch.CalculateLegalMonetaryTotal());
-                    despatch.SetAllowanceCharge(despatch.CalculateAllowanceCharges());
+
+
 
                     //olusturdugumuz nesne ubl turune cevrılır
-                    var invoiceUbl = despatch.BaseUBL;
+                    var despatchUbl = despatch.baseDespatchUbl;
+                 
                     //xml olustur
-                    string xmlPath = FolderControl.createInvUblToXml(invoiceUbl, invoiceType).ToString();
+                    string xmlPath = FolderControl.createInvUblToXml(despatchUbl, invoiceType).ToString();
 
                     //db ye kaydet
-                    if (invoiceType == nameof(EI.Invoice.Invoices))
-                    {
-                        Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
-                    }
-                    else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsıv ıse
-                    {
-                        Singl.archiveInvoiceDalGet.insertArchiveOnDbFromUbl(invoiceUbl, xmlPath, chkSendMail.Checked);
-                    }
+                    Singl.DespatchAdviceDalGet.insertDraftInvoice(despatchUbl, xmlPath);
 
-                    MessageBox.Show(xmlPath + "  faturalar kaydedıldı");
 
+                    MessageBox.Show(xmlPath + "  irsaliye kaydedıldı");
                 }
                 else  //bos eleman varsa
                 {
