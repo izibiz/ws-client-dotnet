@@ -268,6 +268,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to İşlem yapmak istediğiniz faturanın bulunduğu satırın uzerıne tıklayınız..
+        /// </summary>
+        public static string clickRowInvoice {
+            get {
+                return ResourceManager.GetString("clickRowInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oluştur.
         /// </summary>
         public static string create {

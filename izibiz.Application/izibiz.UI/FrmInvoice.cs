@@ -162,6 +162,7 @@ namespace izibiz.UI
             if (gridListInv.Count == 0)
             {
                 MessageBox.Show(Lang.noShowInvoice);
+                lblInformation.Visible = false;
             }
             else
             {
@@ -197,7 +198,8 @@ namespace izibiz.UI
                 tableGrid.Columns[nameof(EI.Invoice.gibStatusDescription)].Visible = false;
                 tableGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
 
-
+                lblInformation.Text = Lang.clickRowInvoice;
+                lblInformation.Visible = true;
             }
         }
 

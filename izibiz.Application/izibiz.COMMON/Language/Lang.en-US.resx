@@ -642,4 +642,7 @@
   <data name="dontEmpty" xml:space="preserve">
     <value>Please Do not Empty</value>
   </data>
+  <data name="clickRowInvoice" xml:space="preserve">
+    <value>Click on the line where the invoice you want to trade is located.</value>
+  </data>
 </root>

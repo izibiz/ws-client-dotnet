@@ -642,4 +642,7 @@
   <data name="dontEmpty" xml:space="preserve">
     <value>Boş bırakmayınız lütfen</value>
   </data>
+  <data name="clickRowInvoice" xml:space="preserve">
+    <value>İşlem yapmak istediğiniz faturanın bulunduğu satırın uzerıne tıklayınız.</value>
+  </data>
 </root>

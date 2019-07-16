@@ -61,6 +61,7 @@
             this.grpFilter = new System.Windows.Forms.GroupBox();
             this.btnFilterList = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
+            this.lblInformation = new System.Windows.Forms.Label();
             this.menuInvoice.SuspendLayout();
             this.panelIncomingInv.SuspendLayout();
             this.panelSentInv.SuspendLayout();
@@ -515,6 +516,16 @@
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
+            // lblInformation
+            // 
+            this.lblInformation.AutoSize = true;
+            this.lblInformation.Location = new System.Drawing.Point(316, 129);
+            this.lblInformation.Name = "lblInformation";
+            this.lblInformation.Size = new System.Drawing.Size(35, 13);
+            this.lblInformation.TabIndex = 32;
+            this.lblInformation.Text = "label1";
+            this.lblInformation.Visible = false;
+            // 
             // FrmInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,6 +534,7 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1136, 566);
             this.ControlBox = false;
+            this.Controls.Add(this.lblInformation);
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.grpFilter);
             this.Controls.Add(this.btnTakeInv);
@@ -587,5 +599,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemListGibUserList;
         private System.Windows.Forms.ToolStripMenuItem itemNewInvoice;
         private System.Windows.Forms.ToolStripMenuItem itemTakeGibUsers;
+        private System.Windows.Forms.Label lblInformation;
     }
 }
