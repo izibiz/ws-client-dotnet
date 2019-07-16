@@ -615,7 +615,7 @@ namespace izibiz.COMMON.UBLCreate
                         }
                     }
                 };
-                despatchLine.Add(despatchLine);
+                despatchLines.Add(despatchLine);
             
         }
 

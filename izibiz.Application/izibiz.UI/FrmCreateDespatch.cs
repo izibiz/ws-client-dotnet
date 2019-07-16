@@ -350,37 +350,36 @@ namespace izibiz.UI
                     {
                         schemaType = nameof(EI.VknTckn.TCKN);
                     }
-                    despatch.createShipment(gridPrice.Rows.Count,txtPlate.Text,txtOrderId.Text,txtDriverName.Text,msdDriverTc.Text,dateTimeConsignmentDate.Value.Date,Convert.ToDateTime(cmbConsignmentTime.Text,
-                      schemaType,msdCarrierTcVkn));
+                    despatch.createShipment(gridPrice.Rows.Count,txtPlate.Text,txtOrderId.Text,txtDriverName.Text,msdDriverTc.Text,dateTimeConsignmentDate.Value.Date,Convert.ToDateTime(cmbConsignmentTime.Text),schemaType,msdCarrierTcVkn.Text);
 
                   
 
-                    //INV LINE OLUSTURULMASI
-                    foreach (DataGridViewRow row in gridPrice.Rows)
-                    {
-                        //Inv Lıne Olusturulması
-                        //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılırilerek aktarılır
-                        despatch.addInvoiceLine(row.Index.ToString(), cmbMoneyType.Text, getUnitCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString())
-                            , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
-                            , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
-                            , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value), row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString()
-                            , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value));
-                    }
-                    despatch.setInvLines();
+                    ////INV LINE OLUSTURULMASI
+                    //foreach (DataGridViewRow row in gridPrice.Rows)
+                    //{
+                    //    //Inv Lıne Olusturulması
+                    //    //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılırilerek aktarılır
+                    //    despatch.addInvoiceLine(row.Index.ToString(), cmbMoneyType.Text, getUnitCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString())
+                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
+                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
+                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value), row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString()
+                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value));
+                    //}
+                    //despatch.setInvLines();
 
 
 
-                    //olusturdugumuz nesne ubl turune cevrılır
-                    var despatchUbl = despatch.baseDespatchUbl;
+                    ////olusturdugumuz nesne ubl turune cevrılır
+                    //var despatchUbl = despatch.baseDespatchUbl;
                  
-                    //xml olustur
-                    string xmlPath = FolderControl.createInvUblToXml(despatchUbl, invoiceType).ToString();
+                    ////xml olustur
+                    //string xmlPath = FolderControl.createInvUblToXml(despatchUbl, invoiceType).ToString();
 
-                    //db ye kaydet
-                    Singl.DespatchAdviceDalGet.insertDraftInvoice(despatchUbl, xmlPath);
+                    ////db ye kaydet
+                    //Singl.DespatchAdviceDalGet.insertDraftInvoice(despatchUbl, xmlPath);
 
 
-                    MessageBox.Show(xmlPath + "  irsaliye kaydedıldı");
+                    //MessageBox.Show(xmlPath + "  irsaliye kaydedıldı");
                 }
                 else  //bos eleman varsa
                 {
