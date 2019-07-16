@@ -704,19 +704,26 @@ namespace izibiz.UI
                         //olusturdugumuz nesne ubl turune cevrılır
                         var invoiceUbl = invoice.baseInvoiceUBL;
                         //xml olustur
-                        string xmlPath = FolderControl.createInvUblToXml(invoiceUbl, invoiceType).ToString();
+                        string xmlPath = FolderControl.writeDiscInvoiceConvertUblToXml(invoiceUbl, invoiceType).ToString();
                        
-                        //db ye kaydet
-                        if (invoiceType == nameof(EI.Invoice.Invoices))
+                        if(xmlPath != null)
                         {
-                            Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
-                        }
-                        else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsıv ıse
-                        {
-                            Singl.archiveInvoiceDalGet.insertArchiveOnDbFromUbl(invoiceUbl, xmlPath, chkSendMail.Checked);
-                        }
+                            //db ye kaydet
+                            if (invoiceType == nameof(EI.Invoice.Invoices))
+                            {
+                                Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
+                            }
+                            else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsıv ıse
+                            {
+                                Singl.archiveInvoiceDalGet.insertArchiveOnDbFromUbl(invoiceUbl, xmlPath, chkSendMail.Checked);
+                            }
 
-                        MessageBox.Show(xmlPath + "  faturalar kaydedıldı");
+                            MessageBox.Show(xmlPath + "  faturalar kaydedıldı");
+                        }
+                        else
+                        {
+                            MessageBox.Show("işlem basarısız");
+                        }
                     }
                     else
                     {

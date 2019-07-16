@@ -120,7 +120,6 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                 for (int i = 0; i < despatchArr.Length; i++)
                 {
-
                     despatchAdviceInfo = new DESPATCHADVICEINFO();
                     despatchAdviceInfo.DESPATCHADVICEHEADER = despatchArr[i].DESPATCHADVICEHEADER;
                     despatchAdviceInfo.UUID = despatchArr[i].UUID;

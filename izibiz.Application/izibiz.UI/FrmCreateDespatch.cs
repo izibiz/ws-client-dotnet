@@ -47,7 +47,9 @@ namespace izibiz.UI
             addItemMoneyType();
             addItemScenario();
             addItemType();
-
+            addItemRowUnit();
+            //datagride 1 row ekle
+            gridPrice.Rows.Add();
         }
 
 
@@ -70,6 +72,30 @@ namespace izibiz.UI
         }
 
 
+        private void addItemRowUnit()
+        {
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.gridPrice.Columns[nameof(EI.InvLineGridRowClm.timeUnit)];
+            theColumn.Items.Add(nameof(EI.Unit.GUN));
+            theColumn.Items.Add(nameof(EI.Unit.HAFTA));
+            theColumn.Items.Add(nameof(EI.Unit.AY));
+            theColumn.Items.Add(nameof(EI.Unit.YIL));
+        }
+
+
+
+        private string getUnitTimeCode(string unitName)
+        {
+            switch (unitName)
+            {
+                case nameof(EI.Unit.ADET): return "C62";
+                case nameof(EI.Unit.GRAM): return "GRM";
+                case nameof(EI.Unit.KILO): return "KGM";
+                case nameof(EI.Unit.PAKET): return "PA";
+                default: return "";
+            }
+        }
+
+
         private void getUserInformationOnDb()
         {
             UserInformation user = Singl.userInformationDalGet.getUserInformation();
@@ -83,6 +109,8 @@ namespace izibiz.UI
             familyName = user.familyName;
         }
 
+
+
         private void btnAddRow_Click(object sender, EventArgs e)
         {
             if (gridPrice.Rows.Count == 10)
@@ -95,6 +123,8 @@ namespace izibiz.UI
                 gridPrice.Rows.Add(row);
             }
         }
+
+
 
         private void btnRemoveRow_Click(object sender, EventArgs e)
         {
@@ -164,10 +194,11 @@ namespace izibiz.UI
         }
 
 
+
+
         private void calculateTotalAmount()
         {
             decimal total = 0;
-
 
             foreach (DataGridViewRow row in gridPrice.Rows)
             {
@@ -352,34 +383,42 @@ namespace izibiz.UI
                     }
                     despatch.createShipment(gridPrice.Rows.Count,txtPlate.Text,txtOrderId.Text,txtDriverName.Text,msdDriverTc.Text,dateTimeConsignmentDate.Value.Date,Convert.ToDateTime(cmbConsignmentTime.Text),schemaType,msdCarrierTcVkn.Text);
 
-                  
 
-                    ////INV LINE OLUSTURULMASI
-                    //foreach (DataGridViewRow row in gridPrice.Rows)
-                    //{
-                    //    //Inv Lıne Olusturulması
-                    //    //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılırilerek aktarılır
-                    //    despatch.addInvoiceLine(row.Index.ToString(), cmbMoneyType.Text, getUnitCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString())
-                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
-                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
-                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value), row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString()
-                    //        , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value));
-                    //}
-                    //despatch.setInvLines();
+                    //INV LINE OLUSTURULMASI
+                    foreach (DataGridViewRow row in gridPrice.Rows)
+                    {
+                        //Inv Lıne Olusturulması
+                        //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılırilerek aktarılır
+                        despatch.addDespatchLine((row.Index+1).ToString(),getUnitTimeCode(row.Cells[nameof(EI.InvLineGridRowClm.timeUnit)].Value.ToString()),Convert.ToInt32(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value),
+                            row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString(),Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value),cmbMoneyType.Text);
+                    }
+
+                    despatch.setDespatchLines();
 
 
+                    //olusturdugumuz nesne ubl turune cevrılır
+                    var despatchUbl = despatch.baseDespatchUbl;
 
-                    ////olusturdugumuz nesne ubl turune cevrılır
-                    //var despatchUbl = despatch.baseDespatchUbl;
+                    //xml olusturup dıske yazdır
+                    string xmlPath = FolderControl.writeDiscDespatchConvertUblToXml(despatchUbl);
                  
-                    ////xml olustur
-                    //string xmlPath = FolderControl.createInvUblToXml(despatchUbl, invoiceType).ToString();
-
-                    ////db ye kaydet
-                    //Singl.DespatchAdviceDalGet.insertDraftInvoice(despatchUbl, xmlPath);
-
-
-                    //MessageBox.Show(xmlPath + "  irsaliye kaydedıldı");
+                    //xml olusturup yazdırma basarılı mı
+                    if (xmlPath != null)
+                    {
+                        //db ye kaydet
+                        if (Singl.DespatchAdviceDalGet.insertDespatchOnDbFromUbl(despatchUbl, xmlPath) == 1)
+                        {
+                            MessageBox.Show(xmlPath + "  irsaliye kaydedıldı");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Db ye kaydetme başarısız");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("işlem basarısız");
+                    }
                 }
                 else  //bos eleman varsa
                 {

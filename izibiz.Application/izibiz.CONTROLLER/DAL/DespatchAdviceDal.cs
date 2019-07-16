@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UblDespatchAdvice;
 
 namespace izibiz.CONTROLLER.DAL
 {
@@ -153,10 +154,41 @@ namespace izibiz.CONTROLLER.DAL
 
         }
 
+        
 
 
+        public int insertDespatchOnDbFromUbl(DespatchAdviceType despatchUbl, string xmlPath)
+        {
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                DespatchAdvices createdDespatch = new DespatchAdvices();
+
+                createdDespatch.ID = despatchUbl.ID.Value;
+                createdDespatch.uuid = despatchUbl.UUID.Value;
+                createdDespatch.direction = EI.Direction.DRAFT.ToString();
+                createdDespatch.draftFlag = true; //biz olusturduk servısten cekmedıgımız ıcın true
+                createdDespatch.issueDate = despatchUbl.IssueDate.Value;
+                createdDespatch.profileId = despatchUbl.ProfileID.Value;
+                createdDespatch.senderVkn = despatchUbl.DespatchSupplierParty.Party.PartyIdentification.First().ID.Value;  //sıfırıncı ındexde tc ya da vkn tutuluyor         
+                createdDespatch.receiverVkn = despatchUbl.DeliveryCustomerParty.Party.PartyIdentification.First().ID.Value;
+                createdDespatch.cDate = despatchUbl.IssueDate.Value;
+                createdDespatch.envelopeIdentifier = "";
+                createdDespatch.stateNote = nameof(EI.StateNote.CREATED);              
+                createdDespatch.status = "";
+                createdDespatch.gibStatusCode = 0;
+                createdDespatch.gibStatusDescription = "";
+                createdDespatch.statusCode = "";
+                createdDespatch.folderPath = xmlPath;
+                createdDespatch.typeCode = "";
+                createdDespatch.shipmentDate = despatchUbl.Shipment.Delivery.Despatch.ActualDespatchDate.Value;
+                createdDespatch.shipmentTime = despatchUbl.Shipment.Delivery.Despatch.ActualDespatchTime.Value.ToString();
 
 
+                databaseContext.despatchAdvices.Add(createdDespatch);
+
+             return   databaseContext.SaveChanges();
+            }
+        }
 
 
 

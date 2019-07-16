@@ -901,7 +901,8 @@ namespace izibiz.UI
 
         private void itemNewDespatch_Click(object sender, EventArgs e)
         {
-
+            FrmCreateDespatch frmCreateDespatch = new FrmCreateDespatch();
+            frmCreateDespatch.Show();
         }
 
 

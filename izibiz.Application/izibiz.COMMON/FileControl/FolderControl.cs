@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using UblDespatchAdvice;
 using UblInvoice;
 
 namespace izibiz.COMMON.FileControl
@@ -103,7 +104,7 @@ namespace izibiz.COMMON.FileControl
 
 
 
-        public static string createInvUblToXml(InvoiceType createdUBL,string invoiceType)
+        public static string writeDiscInvoiceConvertUblToXml(InvoiceType createdUBL,string invoiceType)
         {
      
             //olusturulan xmli diske kaydediyor
@@ -127,7 +128,7 @@ namespace izibiz.COMMON.FileControl
             }
             return xmlPath;
             ////
-            ////xmli strıng durunde return edıyoruz contentını dondurmek ıcın /db ye kaydetmek ıcın asagıdakı kodu acarız
+            ////xmli strıng durunde return edıyoruz contentını dondurmek ıcın  asagıdakı kodu acarız
             //using (StringWriter textWriter = new StringWriter())
             //{
             //    XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
@@ -138,6 +139,31 @@ namespace izibiz.COMMON.FileControl
         }
 
 
+    
+        public static string writeDiscDespatchConvertUblToXml(DespatchAdviceType createdUBL)
+        {
+
+            //olusturulan xmli diske kaydediyor
+            string xmlPath = FolderControl.createDespatchDocPath(createdUBL.ID.Value, nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
+
+            createInboxIfDoesNotExist(Path.GetDirectoryName(xmlPath)); //dosya yolu yoksa olustur
+
+            using (FileStream stream = new FileStream(xmlPath, FileMode.Create))
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
+                xmlSerializer.Serialize(stream, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
+            }
+            return xmlPath;
+            ////
+            ////xmli strıng durunde return edıyoruz contentını dondurmek ıcın  asagıdakı kodu acarız
+            //using (StringWriter textWriter = new StringWriter())
+            //{
+            //    XmlSerializer xmlSerializer = new XmlSerializer(createdUBL.GetType());
+
+            //    xmlSerializer.Serialize(textWriter, createdUBL, InvoiceSerializer.GetXmlSerializerNamespace());
+            //    return textWriter.ToString();
+            //}
+        }
 
 
         public static void writeFileOnDiskWithByte(byte[] fileDocContent, string filePath)

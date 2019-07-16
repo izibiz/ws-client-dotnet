@@ -160,7 +160,8 @@ namespace izibiz.COMMON
             unitPrice,
             taxPercent,
             taxAmount,
-            total
+            total,
+            timeUnit
         }
 
 
@@ -244,7 +245,11 @@ namespace izibiz.COMMON
             ADET,
             KILO,
             GRAM,
-            PAKET
+            PAKET,
+            GUN,
+            AY,
+            YIL,
+            HAFTA
         }
 
         public enum CurrencyCode

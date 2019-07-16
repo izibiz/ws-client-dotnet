@@ -20,6 +20,8 @@ namespace izibiz.COMMON.UBLCreate
 
         public DespatchAdviceUbl(int lineCount, DateTime despatchDate, DateTime despatchTime, string orderId, DateTime orderDate)
         {
+            baseDespatchUbl = new DespatchAdviceType();
+
             createDespatchHeader(despatchDate, despatchTime, lineCount);
             createOrderReference(orderId, orderDate);
             createDocumentReference();
@@ -36,11 +38,14 @@ namespace izibiz.COMMON.UBLCreate
         /// <returns>UBL'in Alanları</returns>
         public void createDespatchHeader(DateTime despatchDate, DateTime despatchTime, int lineNumber)
         {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<xml />");
 
             baseDespatchUbl.UBLExtensions = new[]  //UBL Dijital İmza Düğümü
                 {
                     new UBLExtensionType  //burayı sor content
                     {
+                        ExtensionContent=doc.DocumentElement
                     }
                 };
             baseDespatchUbl.UBLVersionID = new UBLVersionIDType { Value = "2.1" };  // uluslararası fatura standardı 2.1
@@ -423,13 +428,13 @@ namespace izibiz.COMMON.UBLCreate
         ///  Sevk irsaliyesi (Despatch Advice) UBL'inin Shipment alanını oluşturma
         /// </summary>
         /// <returns>Shipment Alanı</returns>
-        public void createShipment(decimal  totalAmount,string plate,string orderId, string driverName,string driverTc,DateTime consignmentDate,DateTime consignmentTime,
+        public void createShipment(decimal totalAmount, string plate, string orderId, string driverName, string driverTc, DateTime consignmentDate, DateTime consignmentTime,
             string partyShemeType, string carrierVknTckn)
 
         {
             var shipment = new ShipmentType //Gönderi Hakkındaki Bilgiler
             {
-                ID = new IDType { Value = orderId},  // Kargo numarası girilir.
+                ID = new IDType { Value = orderId },  // Kargo numarası girilir.
                 GoodsItem = new[] { new GoodsItemType { ValueAmount = new ValueAmountType { currencyID = "TRY", Value = totalAmount } } },
                 ShipmentStage = new[]  // Gönderinin hangi aşamada olduğu bilgisi girilir. Ayrıca taşıyıcı (plaka, şoför) gibi detay bilgiler girilir.
                    {
@@ -488,7 +493,7 @@ namespace izibiz.COMMON.UBLCreate
                         {
                             new TransportEquipmentType
                             {
-                                ID=new IDType {schemeID="DORSEPLAKA",Value="06DR4088" }  
+                                ID=new IDType {schemeID="DORSEPLAKA",Value="06DR4088" }
                             }
                          }
                      }
@@ -565,27 +570,26 @@ namespace izibiz.COMMON.UBLCreate
 
 
 
-        public void addDespatchLine(string indexCount,string unitCode,int quantity,string itemName)
+        public void addDespatchLine(string indexCount, string unitCode, int quantity, string itemName,decimal unitPrice,string currencyType)
         {
 
-           
-                DespatchLineType despatchLine = new DespatchLineType()  //Sevk İrsaliyesindeki Kalemlerin Bilgileri
-                {
+            DespatchLineType despatchLine = new DespatchLineType()  //Sevk İrsaliyesindeki Kalemlerin Bilgileri
+            {
 
-                    ID = new IDType { Value = indexCount },  //İrsaliye kalemi numarası girilir. 
-                    Note = new[] { new NoteType { Value = "" } },  // Kalem ile ilgili açıklama girilir. 
-                    DeliveredQuantity = new DeliveredQuantityType { unitCode = unitCode, Value = quantity },  // Gönderimi gerçekleştirilen mal adedi girilir.
-                    OrderLineReference = new OrderLineReferenceType { LineID = new LineIDType { Value = indexCount } }, //Siparişin kalemlerine referans atmak için kullanılır. 
-                    Item = new ItemType  //Mal / hizmet bilgisi girilir.
+                ID = new IDType { Value = indexCount },  //İrsaliye kalemi numarası girilir. 
+                Note = new[] { new NoteType { Value = "" } },  // Kalem ile ilgili açıklama girilir. 
+                DeliveredQuantity = new DeliveredQuantityType { unitCode = unitCode, Value = quantity },  // Gönderimi gerçekleştirilen mal adedi girilir.
+                OrderLineReference = new OrderLineReferenceType { LineID = new LineIDType { Value = indexCount } }, //Siparişin kalemlerine referans atmak için kullanılır. 
+                Item = new ItemType  //Mal / hizmet bilgisi girilir.
+                {
+                    Name = new NameType1 { Value = itemName }, //Mal/hizmet adı serbest metin olarak girilir
+                    SellersItemIdentification = new ItemIdentificationType
                     {
-                        Name = new NameType1 { Value = itemName }, //Mal/hizmet adı serbest metin olarak girilir
-                        SellersItemIdentification = new ItemIdentificationType
-                        {
-                            ID = new IDType { Value = "PNC1234" } //Satıcının mal/hizmete verdiği tanımlama bilgisi girilir.
-                        }
-                    },
-                    Shipment = new[]
-                    {
+                        ID = new IDType { Value = "PNC1234" } //Satıcının mal/hizmete verdiği tanımlama bilgisi girilir.
+                    }
+                },
+                Shipment = new[]
+                {
                         new ShipmentType
                         {
                             ID= new IDType {Value="" },
@@ -599,14 +603,14 @@ namespace izibiz.COMMON.UBLCreate
                                        {
                                             ID= new IDType {Value="" },
                                             InvoicedQuantity=new InvoicedQuantityType {Value=quantity },
-                                            LineExtensionAmount=new LineExtensionAmountType { currencyID="TRY", Value=quantity*2000 },
+                                            LineExtensionAmount=new LineExtensionAmountType { currencyID=currencyType, Value=quantity*unitPrice },
                                             Item=new ItemType
                                             {
-                                                Name=new NameType1 {Value="Notebook Bilgisayar" }
+                                                Name=new NameType1 {Value="" }
                                             },
                                             Price=new PriceType
                                             {
-                                                PriceAmount=new PriceAmountType {currencyID="TRY",Value=2000 }
+                                                PriceAmount=new PriceAmountType {currencyID=currencyType,Value=unitPrice }
                                             }
                                        }
                                     }
@@ -614,14 +618,13 @@ namespace izibiz.COMMON.UBLCreate
                             }
                         }
                     }
-                };
-                despatchLines.Add(despatchLine);
-            
+            };
+            despatchLines.Add(despatchLine);
         }
 
 
 
-        public void setDespatchLine()
+        public void setDespatchLines()
         {
             baseDespatchUbl.DespatchLine = despatchLines.ToArray();
         }
