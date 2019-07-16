@@ -639,4 +639,7 @@
   <data name="cannotSaveDb" xml:space="preserve">
     <value>Databaseye ye kayıt basarısız</value>
   </data>
+  <data name="dontEmpty" xml:space="preserve">
+    <value>Boş bırakmayınız lütfen</value>
+  </data>
 </root>

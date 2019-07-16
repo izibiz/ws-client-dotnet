@@ -331,6 +331,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Boş bırakmayınız lütfen.
+        /// </summary>
+        public static string dontEmpty {
+            get {
+                return ResourceManager.GetString("dontEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gelen faturalar &apos;D:\\temp\\GELEN\\&apos; klasorune kaydedılmıstır.
         /// </summary>
         public static string downInvSaveFolder {

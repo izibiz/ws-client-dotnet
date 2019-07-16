@@ -639,4 +639,7 @@
   <data name="cannotSaveDb" xml:space="preserve">
     <value>Cannot save Datebase</value>
   </data>
+  <data name="dontEmpty" xml:space="preserve">
+    <value>Please Do not Empty</value>
+  </data>
 </root>

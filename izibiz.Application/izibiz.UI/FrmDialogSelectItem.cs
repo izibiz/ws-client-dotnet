@@ -89,9 +89,16 @@ namespace izibiz.UI
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            selectedValue = cmbSeriNames.Text;
-            this.Close();
+            if (String.IsNullOrEmpty(cmbSeriNames.Text))
+            {
+                MessageBox.Show(Lang.dontEmpty);
+            }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
+                selectedValue = cmbSeriNames.Text;
+                this.Close();
+            }
         }
 
 
