@@ -338,7 +338,7 @@ namespace izibiz.UI
                         schemaType = nameof(EI.VknTckn.TCKN);
                         despatch.addPersonOnParty(cusParty, txtCustName.Text, txtCustSurname.Text);
                     }
-                    despatch.addPartyIdentification(cusParty, 2, schemaType, msdVknTc.Text, "MUSTERINO", "1234", "", "");  //?????
+                    despatch.addPartyIdentification(cusParty, 1, schemaType, msdVknTc.Text, "", "", "", "");  
                     despatch.SetCustomerParty(cusParty);
 
                     //SHİPMENT 

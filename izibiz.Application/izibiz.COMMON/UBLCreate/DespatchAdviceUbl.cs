@@ -14,6 +14,7 @@ namespace izibiz.COMMON.UBLCreate
 
 
         public DespatchAdviceType baseDespatchUbl { get; }
+        private List<DespatchLineType> despatchLines = new List<DespatchLineType>();
 
 
 
@@ -497,33 +498,90 @@ namespace izibiz.COMMON.UBLCreate
         }
 
 
-        /// <summary>
-        ///  Sevk irsaliyesi (Despatch Advice) UBL'inin DespatchLine alanlarını oluşturma.Birden fazla 
-        /// DespatchLine alanı oluşturulabilir.
-        /// </summary>
-        /// <returns>DespatchLine Listesi</returns>
-        public DespatchLineType[] GetDespatchLine(int kalemSayisi)
+        ///// <summary>
+        /////  Sevk irsaliyesi (Despatch Advice) UBL'inin DespatchLine alanlarını oluşturma.Birden fazla 
+        ///// DespatchLine alanı oluşturulabilir.
+        ///// </summary>
+        ///// <returns>DespatchLine Listesi</returns>
+        //public DespatchLineType[] GetDespatchLine(int kalemSayisi)
+        //{
+
+        //    List<DespatchLineType> list = new List<DespatchLineType>();
+
+        //    for (int i = 1; i <= kalemSayisi; i++)
+        //    {
+
+        //        DespatchLineType despatchLine = new DespatchLineType()  //Sevk İrsaliyesindeki Kalemlerin Bilgileri
+        //        {
+
+        //            ID = new IDType { Value = i.ToString() },  //İrsaliye kalemi numarası girilir. 
+        //            Note = new[] { new NoteType { Value = "" } },  // Kalem ile ilgili açıklama girilir. 
+        //            DeliveredQuantity = new DeliveredQuantityType { unitCode = "C62", Value = 10 },  // Gönderimi gerçekleştirilen mal adedi girilir.
+        //            OrderLineReference = new OrderLineReferenceType { LineID = new LineIDType { Value = i.ToString() } }, //Siparişin kalemlerine referans atmak için kullanılır. 
+        //            Item = new ItemType  //Mal / hizmet bilgisi girilir.
+        //            {
+        //                Name = new NameType1 { Value = "Notebook Bilgisayar" }, //Mal/hizmet adı serbest metin olarak girilir
+        //                SellersItemIdentification = new ItemIdentificationType
+        //                {
+        //                    ID = new IDType { Value = "PNC1234" } //Satıcının mal/hizmete verdiği tanımlama bilgisi girilir.
+
+        //                }
+        //            },
+        //            Shipment = new[]
+        //            {
+        //                new ShipmentType
+        //                {
+        //                    ID= new IDType {Value="" },
+        //                    GoodsItem=new[]
+        //                    {
+        //                        new GoodsItemType
+        //                        {
+        //                            InvoiceLine=new[]
+        //                            {
+        //                               new InvoiceLineType
+        //                               {
+        //                                    ID= new IDType {Value="" },
+        //                                    InvoicedQuantity=new InvoicedQuantityType {Value=0 },
+        //                                    LineExtensionAmount=new LineExtensionAmountType { currencyID="TRY", Value=10*2000 },
+        //                                    Item=new ItemType
+        //                                    {
+        //                                        Name=new NameType1 {Value="Notebook Bilgisayar" }
+        //                                    },
+        //                                    Price=new PriceType
+        //                                    {
+        //                                        PriceAmount=new PriceAmountType {currencyID="TRY",Value=2000 }
+        //                                    }
+        //                               }
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        };
+        //        list.Add(despatchLine);
+        //    }
+        //    return list.ToArray();
+        //}
+
+
+
+        public void addDespatchLine(string indexCount,string unitCode,int quantity,string itemName)
         {
 
-            List<DespatchLineType> list = new List<DespatchLineType>();
-
-            for (int i = 1; i <= kalemSayisi; i++)
-            {
-
+           
                 DespatchLineType despatchLine = new DespatchLineType()  //Sevk İrsaliyesindeki Kalemlerin Bilgileri
                 {
 
-                    ID = new IDType { Value = i.ToString() },  //İrsaliye kalemi numarası girilir. 
+                    ID = new IDType { Value = indexCount },  //İrsaliye kalemi numarası girilir. 
                     Note = new[] { new NoteType { Value = "" } },  // Kalem ile ilgili açıklama girilir. 
-                    DeliveredQuantity = new DeliveredQuantityType { unitCode = "C62", Value = 10 },  // Gönderimi gerçekleştirilen mal adedi girilir.
-                    OrderLineReference = new OrderLineReferenceType { LineID = new LineIDType { Value = i.ToString() } }, //Siparişin kalemlerine referans atmak için kullanılır. 
+                    DeliveredQuantity = new DeliveredQuantityType { unitCode = unitCode, Value = quantity },  // Gönderimi gerçekleştirilen mal adedi girilir.
+                    OrderLineReference = new OrderLineReferenceType { LineID = new LineIDType { Value = indexCount } }, //Siparişin kalemlerine referans atmak için kullanılır. 
                     Item = new ItemType  //Mal / hizmet bilgisi girilir.
                     {
-                        Name = new NameType1 { Value = "Notebook Bilgisayar" }, //Mal/hizmet adı serbest metin olarak girilir
+                        Name = new NameType1 { Value = itemName }, //Mal/hizmet adı serbest metin olarak girilir
                         SellersItemIdentification = new ItemIdentificationType
                         {
                             ID = new IDType { Value = "PNC1234" } //Satıcının mal/hizmete verdiği tanımlama bilgisi girilir.
-
                         }
                     },
                     Shipment = new[]
@@ -540,8 +598,8 @@ namespace izibiz.COMMON.UBLCreate
                                        new InvoiceLineType
                                        {
                                             ID= new IDType {Value="" },
-                                            InvoicedQuantity=new InvoicedQuantityType {Value=0 },
-                                            LineExtensionAmount=new LineExtensionAmountType { currencyID="TRY", Value=10*2000 },
+                                            InvoicedQuantity=new InvoicedQuantityType {Value=quantity },
+                                            LineExtensionAmount=new LineExtensionAmountType { currencyID="TRY", Value=quantity*2000 },
                                             Item=new ItemType
                                             {
                                                 Name=new NameType1 {Value="Notebook Bilgisayar" }
@@ -554,19 +612,20 @@ namespace izibiz.COMMON.UBLCreate
                                     }
                                 }
                             }
-
                         }
                     }
-
                 };
-
-
-                list.Add(despatchLine);
-            }
-
-            return list.ToArray();
-
+                despatchLine.Add(despatchLine);
+            
         }
+
+
+
+        public void setDespatchLine()
+        {
+            baseDespatchUbl.DespatchLine = despatchLines.ToArray();
+        }
+
 
 
 
