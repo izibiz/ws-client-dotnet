@@ -53,11 +53,11 @@ namespace izibiz.CONTROLLER.WebServicesController
                 {
                     if (response.DESPATCHADVICE != null && response.DESPATCHADVICE.Length > 0) //getırılen ırsalıye varsa
                     {
-                        //string markErrorMessage = despatchMarkRead(response.DESPATCHADVICE); //mark despatch yapıldı
-                        //if (markErrorMessage != null) //mark despatch dan donen error message varsa
-                        //{
-                        //    return markErrorMessage;
-                        //}
+                        string markErrorMessage = despatchMarkRead(response.DESPATCHADVICE); //mark despatch yapıldı
+                        if (markErrorMessage != null) //mark despatch dan donen error message varsa
+                        {
+                            return markErrorMessage;
+                        }
                         //getirilen faturaları db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
                         if (Singl.DespatchAdviceDalGet.addDespatchFromServiceAndSaveContentOnDisk(response.DESPATCHADVICE, direction) != response.DESPATCHADVICE.Length)
                         {

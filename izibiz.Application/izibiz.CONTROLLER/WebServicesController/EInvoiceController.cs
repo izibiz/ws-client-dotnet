@@ -155,16 +155,25 @@ namespace izibiz.CONTROLLER.Web_Services
         {
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
-                var markReq = new MarkInvoiceRequest() //sistemdeki gelen efatura listesi için request parametreleri
+                var markReq = new MarkInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
+
+                markReq.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
+                markReq.MARK = new MarkInvoiceRequestMARK();
+
+                List<INVOICE> listInvoiceMark = new List<INVOICE>();
+                for (int i = 0; i < invoiceList.Length; i++)
                 {
-                    REQUEST_HEADER = RequestHeader.getRequestHeaderOib,
-                    MARK = new MarkInvoiceRequestMARK()
-                    {
-                        INVOICE = invoiceList,
-                        value = MarkInvoiceRequestMARKValue.READ,
-                        valueSpecified = true
-                    }
-                };
+                    INVOICE inv = new INVOICE();
+                    inv.ID = invoiceList[i].ID;
+                    inv.UUID = invoiceList[i].UUID;
+
+                    listInvoiceMark.Add(inv);
+                }
+
+                markReq.MARK.INVOICE = listInvoiceMark.ToArray();
+                markReq.MARK.value = MarkInvoiceRequestMARKValue.READ;
+                markReq.MARK.valueSpecified = true;
+
                 MarkInvoiceResponse markRes = eInvoiceOIBPortClient.MarkInvoice(markReq);
             }
         }
@@ -290,11 +299,11 @@ namespace izibiz.CONTROLLER.Web_Services
                     INVOICE = invoice,
                 };
 
-                 return eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
+                return eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
             }
         }
 
-       
+
 
 
         /// <summary>
@@ -323,7 +332,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArr = eInvoiceOIBPortClient.GetInvoice(req);
                 if (invoiceArr == null || invoiceArr.Length != 0)
                 {
-                    foreach(var invoice in invoiceArr)
+                    foreach (var invoice in invoiceArr)
                     {
                         FolderControl.saveInvDocContentWithByte(Compress.UncompressFile(invoice.CONTENT.Value), direction, invoice.ID, nameof(EI.DocumentType.XML));
                     }
