@@ -683,6 +683,9 @@ namespace izibiz.UI
                                 //yenı ıd ile yenı folderpath olustur
                                 string newFolderPath = FolderControl.createDespatchDocPath(idArrContentArrModel.newIdArr[cnt], nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
 
+                                string oldFolderPath = Singl.DespatchAdviceDalGet.getDespatch(uuidRow, nameof(EI.Direction.DRAFT)).folderPath;
+
+
                                 //db verileri guncelle
                                 if (Singl.DespatchAdviceDalGet.updateDespatchIdCdateStatusGibCodeStateNoteFolderPath(uuidRow, nameof(EI.Direction.DRAFT),
                                   idArrContentArrModel.newIdArr[cnt], DateTime.Now, nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED),
@@ -692,7 +695,7 @@ namespace izibiz.UI
                                     FolderControl.writeFileOnDiskWithString(idArrContentArrModel.newXmlContentArr[cnt], newFolderPath);
 
                                     //eskı folderPathdekı dosyayı konumdan sıler
-                                    FolderControl.deleteFileFromPath(tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.folderPath)].Value.ToString());
+                                    FolderControl.deleteFileFromPath(oldFolderPath);
                                 }
                                 else
                                 {
@@ -777,16 +780,20 @@ namespace izibiz.UI
                                 {
                                     string uuidRow = tableGrid.SelectedRows[cnt].Cells[nameof(EI.Despatch.uuid)].Value.ToString();
 
+                                    string oldFolderPath = Singl.DespatchAdviceDalGet.getDespatch(uuidRow, nameof(EI.Direction.DRAFT)).folderPath;
+
                                     //yenı folderpath olustur
                                     string newFolderPath = FolderControl.createDespatchDocPath(ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT),
                                         nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
+
+
 
                                     //db de yenı id,direction,folderpath,statenote guncellenır
                                     if (Singl.DespatchAdviceDalGet.updateDespatchIdDirectionFolderPathStateNote(uuidRow, nameof(EI.Direction.DRAFT),
                                          ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND)) == 1)
                                     {
                                         //eskı folderPathdekı dosyayı konumdan sıler
-                                        FolderControl.deleteFileFromPath(Singl.DespatchAdviceDalGet.getDespatch(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
+                                        FolderControl.deleteFileFromPath(oldFolderPath);
 
                                         //yenı folderpath ile yenı id eklenmıs xmli diske kaydet
                                         FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[cnt], newFolderPath);

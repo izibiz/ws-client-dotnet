@@ -924,7 +924,10 @@ namespace izibiz.UI
                     {
                         //db de fatura durumunu taslaktan cıkar
                         for (int cnt = 0; cnt < archiveModelArr.Length; cnt++)
-                        {             
+                        {
+                           
+                            string oldFolderPath = Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid).folderPath;
+
                             //path degıstır
                             string newFolderPath = FolderControl.inboxFolderArchive + newIdArr[cnt] + "." + nameof(EI.DocumentType.XML);
                     
@@ -933,7 +936,8 @@ namespace izibiz.UI
                                  newIdArr[cnt], EI.StateNote.SEND.ToString(), false, newFolderPath) == 1)
                             {
                                 //diskten xmli sil
-                                FolderControl.deleteFileFromPath(Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid).folderPath);
+                                FolderControl.deleteFileFromPath(oldFolderPath);
+                               
                                 //yenı kontentı dıske kaydet
                                 FolderControl.writeFileOnDiskWithString(archiveModelArr[cnt].content, newFolderPath);
                             }

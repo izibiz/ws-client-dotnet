@@ -91,7 +91,7 @@ namespace izibiz.UI
                 case nameof(EI.Unit.GRAM): return "GRM";
                 case nameof(EI.Unit.KILO): return "KGM";
                 case nameof(EI.Unit.PAKET): return "PA";
-                default: return "";
+                default: return "C62";
             }
         }
 

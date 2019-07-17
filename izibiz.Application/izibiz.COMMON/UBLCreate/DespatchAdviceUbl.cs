@@ -38,16 +38,7 @@ namespace izibiz.COMMON.UBLCreate
         /// <returns>UBL'in Alanları</returns>
         public void createDespatchHeader(DateTime despatchDate, DateTime despatchTime, int lineNumber)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml("<xml />");
-
-            baseDespatchUbl.UBLExtensions = new[]  //UBL Dijital İmza Düğümü
-                {
-                    new UBLExtensionType  //burayı sor content
-                    {
-                        ExtensionContent=doc.DocumentElement
-                    }
-                };
+          
             baseDespatchUbl.UBLVersionID = new UBLVersionIDType { Value = "2.1" };  // uluslararası fatura standardı 2.1
             baseDespatchUbl.CustomizationID = new CustomizationIDType { Value = "TR1.2.1" };// GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2.1 eİrsaliye formatını kullanıyor.
             baseDespatchUbl.ProfileID = new ProfileIDType { Value = "TEMELIRSALIYE" }; //tek Senaryo var

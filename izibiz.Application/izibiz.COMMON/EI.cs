@@ -183,7 +183,8 @@ namespace izibiz.COMMON
             streetName,
             buldingName,
             buldingNumber,
-            postalZone
+            postalZone,
+            aliasGb
         }
 
         public enum ArchiveReports

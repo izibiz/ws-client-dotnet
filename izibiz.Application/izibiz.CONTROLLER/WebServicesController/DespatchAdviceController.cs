@@ -250,10 +250,12 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var req = new SendDespatchAdviceRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderDespatch;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-
                 req.SENDER = new SendDespatchAdviceRequestSENDER();
-                //req.SENDER.alias = "urn:mail:defaultpk@toyotatr.com";
-                //req.SENDER.vkn = "8590258508";
+
+               var sender= Singl.userInformationDalGet.getUserInformation();
+                req.SENDER.alias = sender.aliasGb;  //kullanıcnın ..gb adresı ben ızıbızınkını verdım
+                req.SENDER.vkn =sender.vknTckn;//vknsı
+
                 req.RECEIVER = new SendDespatchAdviceRequestRECEIVER();
                 req.RECEIVER.alias = receiverAlias;
                 req.RECEIVER.vkn = receiverVkn;

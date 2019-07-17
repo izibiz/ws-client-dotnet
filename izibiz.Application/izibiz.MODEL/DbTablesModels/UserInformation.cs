@@ -92,6 +92,9 @@ namespace izibiz.MODEL.DbTablesModels
         public string postalZone { get; set; }
 
 
+        [Column(Name = nameof(EI.UserInformation.aliasGb), DbType = "NVARCHAR")]
+        public string aliasGb { get; set; }
+
 
 
     }
