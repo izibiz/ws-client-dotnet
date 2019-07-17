@@ -14,14 +14,14 @@ namespace izibiz.COMMON.FileControl
 {
     public class FolderControl
     {
-         static string inboxInvoiceFolderIn { get; } = "D:\\temp\\INVOICE\\GELEN\\";
-         static string inboxInvoiceFolderOut { get; } = "D:\\temp\\INVOICE\\GİDEN\\";
-         static string inboxInvoiceFolderDraft { get; } = "D:\\temp\\INVOICE\\TASLAK\\";
-        public static string inboxFolderArchive { get; } = "D:\\temp\\ARŞİV\\";
-        public static string inboxFolderArchiveReport { get; } = "D:\\temp\\ARSIVRAPOR\\";
-        static string inboxDespatchFolderIn { get; } = "D:\\temp\\DESPATCH\\GELEN\\";
-        static string inboxDespatchFolderOut { get; } = "D:\\temp\\DESPATCH\\GİDEN\\";
-        static string inboxDespatchFolderDraft { get; } = "D:\\temp\\DESPATCH\\TASLAK\\";
+         static string inboxInvoiceFolderIn { get; } = "C:\\temp\\INVOICE\\GELEN\\";
+         static string inboxInvoiceFolderOut { get; } = "C:\\temp\\INVOICE\\GİDEN\\";
+         static string inboxInvoiceFolderDraft { get; } = "C:\\temp\\INVOICE\\TASLAK\\";
+        public static string inboxFolderArchive { get; } = "C:\\temp\\ARŞİV\\";
+        public static string inboxFolderArchiveReport { get; } = "C:\\temp\\ARSIVRAPOR\\";
+        static string inboxDespatchFolderIn { get; } = "C:\\temp\\DESPATCH\\GELEN\\";
+        static string inboxDespatchFolderOut { get; } = "C:\\temp\\DESPATCH\\GİDEN\\";
+        static string inboxDespatchFolderDraft { get; } = "C:\\temp\\DESPATCH\\TASLAK\\";
 
 
 

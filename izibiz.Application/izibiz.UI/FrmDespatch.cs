@@ -355,7 +355,7 @@ namespace izibiz.UI
 
             if (gridListDespatch.Count == 0)
             {
-                MessageBox.Show(Lang.noShowInvoice);
+                MessageBox.Show("Getirilecek irsaliye bulunamadı");
             }
             else
             {
@@ -640,7 +640,7 @@ namespace izibiz.UI
                     return null;
                 }
 
-                idArrContentArr.newXmlContentArr[cnt] = XmlControl.xmlChangeIdValue(xmlContent, idArrContentArr.newIdArr[cnt]);
+                idArrContentArr.newXmlContentArr[cnt] = XmlControl.xmlDespatchChangeIdValue(xmlContent, idArrContentArr.newIdArr[cnt]);
 
                 Singl.despatchControllerGet.createDespatchListWithContent(idArrContentArr.newXmlContentArr[cnt]);
 
@@ -766,7 +766,7 @@ namespace izibiz.UI
                             IdArrContentArrModel ıdContentModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue);
 
                             //send despatch 
-                            string errorMessage = Singl.despatchControllerGet.sendDespatch(frmDialogIdSelectAlias.selectedValue);
+                            string errorMessage = Singl.despatchControllerGet.sendDespatch(frmDialogIdSelectAlias.selectedValue,receiverVkn);
                             if (errorMessage != null)
                             {
                                 MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -847,26 +847,21 @@ namespace izibiz.UI
         {
             try
             {
-               List<IdFolderPathModel> idFolderList=new List<IdFolderPathModel>();
-                IdFolderPathModel idFolder;
-
+               List<string> idList=new List<string>();
+            
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    string content = Singl.despatchControllerGet.getDespatchContentFromService(row.Cells[nameof(EI.Despatch.uuid)].Value.ToString(), despactDirection);
+                    string content = Singl.despatchControllerGet.getDespatchXmlContentFromService(row.Cells[nameof(EI.Despatch.uuid)].Value.ToString(), despactDirection);
                     if (content != null)
                     {
                         FolderControl.writeFileOnDiskWithString(content,row.Cells[nameof(EI.Despatch.folderPath)].Value.ToString());
-
-                        idFolder = new IdFolderPathModel();
-                        idFolder.folderPath = row.Cells[nameof(EI.Despatch.folderPath)].Value.ToString();
-                        idFolder.id = row.Cells[nameof(EI.Despatch.ID)].Value.ToString();
-                        idFolderList.Add(idFolder);
+                        idList.Add(row.Cells[nameof(EI.Despatch.ID)].Value.ToString());
                     }
                 }
 
-                if (idFolderList.Count > 0)
+                if (idList.Count > 0)
                 {
-                    MessageBox.Show(string.Join(Environment.NewLine, idFolderList) + Environment.NewLine + "Kaydedildi");//Seçili arsivler getirilemedi
+                    MessageBox.Show(string.Join(Environment.NewLine, idList) + Environment.NewLine + "Kaydedildi");//Seçili arsivler getirilemedi
                 }
                 else
                 {
@@ -905,13 +900,12 @@ namespace izibiz.UI
             frmCreateDespatch.Show();
         }
 
-
-
-
-
-
-
-
+        private void BtnHomePage_Click(object sender, EventArgs e)
+        {
+            FrmHome frmHome = new FrmHome();
+            frmHome.Show();
+            this.Dispose();
+        }
 
 
 

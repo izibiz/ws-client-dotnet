@@ -337,10 +337,11 @@ namespace izibiz.CONTROLLER.Web_Services
                         FolderControl.saveInvDocContentWithByte(Compress.UncompressFile(invoice.CONTENT.Value), direction, invoice.ID, nameof(EI.DocumentType.XML));
                     }
                     invoiceMarkRead(invoiceArr);
-                    //if (invoiceArr.Length == 30)
-                    //{
-                    //    getInvoiceSingnedXml(direction);
-                    //}
+
+                    if (invoiceArr.Length == 100) //butun okunmamısları almak ıcın ... limit 100 vermıstık
+                    {
+                        isGetInvoiceSingnedXml(direction);
+                    }
                     return true;
                 }
                 return false;

@@ -966,7 +966,7 @@ namespace izibiz.UI
                 //ıd sı degıstırılmıs contentı ,ıstege gore zıpleyıp, ınvoiceliste aktarıyorum
 
                 string xmlContent = Singl.invoiceControllerGet.getInvoiceContentXml(uuidRow, gridDirection);
-                idArrContentArr.newXmlContentArr[cnt] = XmlControl.xmlChangeIdValue(xmlContent, idArrContentArr.newIdArr[cnt]);
+                idArrContentArr.newXmlContentArr[cnt] = XmlControl.xmlInvoiceChangeIdValue(xmlContent, idArrContentArr.newIdArr[cnt]);
 
                Singl.invoiceControllerGet.createInvListWithContent(isSendWithZip, idArrContentArr.newXmlContentArr[cnt]);
 
@@ -1027,12 +1027,15 @@ namespace izibiz.UI
                                     string newFolderPath = FolderControl.createInvoiceDocPath(ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT),
                                         nameof(EI.DocumentType.XML)); // yenı path db ye yazılır
 
+                                    string oldFolderPath = Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath;
+
+
                                     //db de yenı id,direction,folderpath,statenote guncellenır
-                                  if(Singl.invoiceDalGet.updateInvIdDirectionFolderPathStateNote(uuidRow, nameof(EI.Direction.DRAFT),
+                                  if (Singl.invoiceDalGet.updateInvIdDirectionFolderPathStateNote(uuidRow, nameof(EI.Direction.DRAFT),
                                        ıdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND)) == 1)
                                     {
                                         //eskı folderPathdekı dosyayı konumdan sıler
-                                        FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
+                                        FolderControl.deleteFileFromPath(oldFolderPath);
 
                                         //yenı folderpath ile yenı id eklenmıs xmli diske kaydet
                                         FolderControl.writeFileOnDiskWithString(ıdContentModel.newXmlContentArr[cnt], newFolderPath);
@@ -1103,9 +1106,10 @@ namespace izibiz.UI
                       
                             //yenı ıd ile yenı folderpath olustur
                             string newFolderPath = FolderControl.createInvoiceDocPath(idArrContentArrModel.newIdArr[rowCnt], nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
+                            string oldFolderPath = Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath;
 
                             //db verileri guncelle
-                           if(Singl.invoiceDalGet.updateInvIdCdateStatusGibCodeStateNoteFolderPath(uuidRow, nameof(EI.Direction.DRAFT),
+                           if (Singl.invoiceDalGet.updateInvIdCdateStatusGibCodeStateNoteFolderPath(uuidRow, nameof(EI.Direction.DRAFT),
                               idArrContentArrModel.newIdArr[rowCnt], DateTime.Now, nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED),
                                -1, nameof(EI.StatusType.LOAD), newFolderPath) == 1)
                             {
@@ -1113,7 +1117,7 @@ namespace izibiz.UI
                                 FolderControl.writeFileOnDiskWithString(idArrContentArrModel.newXmlContentArr[rowCnt], newFolderPath);
 
                                 //eskı folderPathdekı dosyayı konumdan sıler
-                                FolderControl.deleteFileFromPath(Singl.invoiceDalGet.getInvoice(uuidRow, nameof(EI.Direction.DRAFT)).folderPath);
+                                FolderControl.deleteFileFromPath(oldFolderPath);
                             }
                             else
                             {
@@ -1440,7 +1444,7 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
                 MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

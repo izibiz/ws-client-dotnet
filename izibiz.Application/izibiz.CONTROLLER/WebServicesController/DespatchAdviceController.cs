@@ -66,7 +66,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                         return null; //hiçbir hata yoksa null don
                     }
-                    return "Servisten Getirilecek İrsaliye Bulunamadı";
+                    return null;//irsaliye sayısı 0 ancak hata yok
                 }
             }
         }
@@ -74,7 +74,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public string getDespatchContentFromService(string uuid, string direction)
+        public string getDespatchXmlContentFromService(string uuid, string direction)
         {
             using (new OperationContextScope(eDespatchPortClient.InnerChannel))
             {
@@ -172,7 +172,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                         return null; //hiçbir hata yoksa null don
                     }
-                    return "Servisten Getirilecek İrsaliye Durumu Bulunamadı";
+                    return null;//durum getirilemedi ancak hata yok
                 }
             }
         }
@@ -188,7 +188,7 @@ namespace izibiz.CONTROLLER.WebServicesController
             if (!FolderControl.xmlFileIsInFolder(xmlPath)) // xml dosyası verılen pathde bulunmuyorsa
             {
                 //servisten, gonderilen uuıd ye aıt faturanın contentını getır
-                return getDespatchContentFromService(uuid, direction);
+                return getDespatchXmlContentFromService(uuid, direction);
             }
             else
             {
@@ -200,7 +200,8 @@ namespace izibiz.CONTROLLER.WebServicesController
         {
             DESPATCHADVICE despatch = new DESPATCHADVICE();
             base64Binary contentByte = new base64Binary();
-            contentByte.Value = Encoding.UTF8.GetBytes(xmlStr);
+          //  contentByte.Value = Encoding.UTF8.GetBytes(xmlStr);
+            contentByte.Value = Compress.compressFile(xmlStr);//ziplenerek
 
             despatch.CONTENT = contentByte;
 
@@ -215,7 +216,7 @@ namespace izibiz.CONTROLLER.WebServicesController
             {
                 LoadDespatchAdviceRequest req = new LoadDespatchAdviceRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderDespatch;
-                req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.N);//ziplenmeden gonderılır
+                req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
                 req.DESPATCHADVICE = despatchList.ToArray();
 
                 LoadDespatchAdviceResponse response = eDespatchPortClient.LoadDespatchAdvice(req);
@@ -223,7 +224,18 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                 if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //işlem basarısızsa
                 {
-                    return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    if (response.ERROR_TYPE.ERROR_SHORT_DES != null)//bazen hata olsa da short desc null olabılıyor 
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else if (response.ERROR_TYPE.ERROR_LONG_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else
+                    {
+                        return "servis tarafında bır hata olustu";
+                    }
                 }
                 return null;//işlem basarılıysa null don
             }
@@ -231,7 +243,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public string sendDespatch(string receiverAlias)
+        public string sendDespatch(string receiverAlias,string receiverVkn)
         {
             using (new OperationContextScope(eDespatchPortClient.InnerChannel))
             {
@@ -240,8 +252,11 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
 
                 req.SENDER = new SendDespatchAdviceRequestSENDER();
+                //req.SENDER.alias = "urn:mail:defaultpk@toyotatr.com";
+                //req.SENDER.vkn = "8590258508";
                 req.RECEIVER = new SendDespatchAdviceRequestRECEIVER();
                 req.RECEIVER.alias = receiverAlias;
+                req.RECEIVER.vkn = receiverVkn;
 
                 req.DESPATCHADVICE = despatchList.ToArray();
 
@@ -250,7 +265,19 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                 if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0 )  //işlem basarısızsa
                 {
-                    return response.ERROR_TYPE.ERROR_SHORT_DES;
+
+                    if (response.ERROR_TYPE.ERROR_SHORT_DES != null)//bazen hata olsa da short desc null olabılıyor 
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else if (response.ERROR_TYPE.ERROR_LONG_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else
+                    {
+                        return "servis tarafında bır hata olustu";
+                    }
                 }
                 return null;//işlem basarılıysa null don
             }

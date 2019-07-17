@@ -74,7 +74,7 @@ namespace izibiz.UI
 
         private void addItemRowUnit()
         {
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.gridPrice.Columns[nameof(EI.InvLineGridRowClm.timeUnit)];
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.gridPrice.Columns[nameof(EI.InvLineGridRowClm.unit)];
             theColumn.Items.Add(nameof(EI.Unit.GUN));
             theColumn.Items.Add(nameof(EI.Unit.HAFTA));
             theColumn.Items.Add(nameof(EI.Unit.AY));
@@ -178,6 +178,14 @@ namespace izibiz.UI
                     item.BackColor = Color.White;
                 }
             }
+            foreach (Control item in grpChauffeurInformation.Controls)
+            {
+                if (!(item is Label)) //label degılse
+                {
+                    item.Text = "";
+                    item.BackColor = Color.White;
+                }
+            }
             //toplam tutar
             txtTotalAmount.Text = "";
             txtTotalAmount.BackColor = Color.White;
@@ -250,6 +258,7 @@ namespace izibiz.UI
                     }
                 }
             }
+
             foreach (Control item in grpDespatchInformation.Controls)
             {
                 if (!(item is Label)) //label degılse
@@ -267,7 +276,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpOrderInformation.Controls)  //grupbox not ve toplam bilgileri
             {
-                if (item is RichTextBox) //label degılse
+                if (!(item is Label)) //label degılse
                 {
                     if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                     {
@@ -280,9 +289,42 @@ namespace izibiz.UI
                     }
                 }
             }
+
+            foreach (Control item in grpChauffeurInformation.Controls)  //grupbox sofor bilgileri
+            {
+                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ıse
+                {
+                    if (item.Name == "msdDriverTc")  //tckn
+                    {
+                        if (item.Text.Replace(" ", String.Empty).Length < 11) // 11 dan kucukse
+                        {
+                            item.BackColor = Color.IndianRed;
+                            valid = false;
+                        }
+                        else //validse
+                        {
+                            item.BackColor = Color.White;
+                        }
+                    }
+                    else   // tckn degılse
+                    {
+                        if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
+                        {
+                            item.BackColor = Color.IndianRed;
+                            valid = false;
+                        }
+                        else
+                        {
+                            item.BackColor = Color.White;
+                        }
+                    }
+                }
+            }
+          
+           
             foreach (Control item in grpCarrierInformation.Controls)  //grupbox not ve toplam bilgileri
             {
-                if (item is RichTextBox) //label degılse
+                if (!(item is Label)) //label degılse
                 {
                     if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                     {
@@ -389,7 +431,7 @@ namespace izibiz.UI
                     {
                         //Inv Lıne Olusturulması
                         //unıt code get fonk cagırılarak secılen bırımın unıt codu getırılırilerek aktarılır
-                        despatch.addDespatchLine((row.Index+1).ToString(),getUnitTimeCode(row.Cells[nameof(EI.InvLineGridRowClm.timeUnit)].Value.ToString()),Convert.ToInt32(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value),
+                        despatch.addDespatchLine((row.Index+1).ToString(),getUnitTimeCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString()),Convert.ToInt32(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value),
                             row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString(),Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value),cmbMoneyType.Text);
                     }
 

@@ -505,7 +505,7 @@
     <value>Take Signed Xml</value>
   </data>
   <data name="wantGetUserList" xml:space="preserve">
-    <value>Do you realy want to get sender alias?This prosses takes mınımum 15 mınıutes.</value>
+    <value>Do you realy want to get sender alias?</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>Delete</value>

@@ -903,7 +903,7 @@ namespace izibiz.UI
                        
                         //alınan contenttın ıdsını degıstırerek koy
                         string content = Singl.archiveControllerGet.getArchiveContentXml(archiveContentPropertiesModel.uuid);
-                        archiveContentPropertiesModel.content= XmlControl.xmlChangeIdValue(content, newIdArr[cnt]);
+                        archiveContentPropertiesModel.content= XmlControl.xmlInvoiceChangeIdValue(content, newIdArr[cnt]);
 
                         if (tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.receiverMail)].Value != null) //mail gonderılmek ısstenıyorsa
                         {

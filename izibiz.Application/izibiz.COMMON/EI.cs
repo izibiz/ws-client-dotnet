@@ -161,7 +161,6 @@ namespace izibiz.COMMON
             taxPercent,
             taxAmount,
             total,
-            timeUnit
         }
 
 

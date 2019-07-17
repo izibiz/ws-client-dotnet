@@ -18,7 +18,7 @@ namespace izibiz.COMMON.FileControl
         /// VERİLEN  XMLIN ICINDEKI ID YI DEGISTIRIR,  XML PATH DONER
         /// </summary>
         /// <returns> XML STRING </returns>
-        public static string xmlChangeIdValue(string xmlContent, string newInvId)
+        public static string xmlInvoiceChangeIdValue(string xmlContent, string newInvId)
         {
      
             XDocument doc = XDocument.Parse(xmlContent);
@@ -50,7 +50,32 @@ namespace izibiz.COMMON.FileControl
         }
 
 
-       
+
+        public static string xmlDespatchChangeIdValue(string xmlContent, string newInvId)
+        {
+
+            XDocument doc = XDocument.Parse(xmlContent);
+
+            foreach (XElement element in doc.Descendants())
+            {
+                if (element.Name.LocalName.ToString().Equals("ID")
+                   && element.Parent.Name.LocalName.ToString().Equals("DespatchAdvice"))
+                {
+                    element.Value = newInvId;
+
+                }
+                else if (element.Name.LocalName.ToString().Equals("EmbeddedDocumentBinaryObject")
+                       && element.Parent.Name.LocalName.ToString().Equals("Attachment"))
+                {
+                    element.LastAttribute.Value = newInvId + ".xslt";//yanı fileName
+                    break;
+                }
+            }
+            //yenı id eklenmıs xmli diske kaydet
+            //        doc.Save(saveXmlPath);
+            return doc.ToString();
+        }
+
 
 
 

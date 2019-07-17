@@ -58,7 +58,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                         //serilaze islemı
                         GibUserListXmlModel gibUserList = XmlSerilazer.Deserialize<GibUserListXmlModel>(xmlInputData);
                         //db ye ekleme
-                        if (Singl.gibUsersDalGet.addGibUserList(gibUserList) != gibUserList.Items.Count)//db ye kayıt basarısızsa
+                        if (Singl.gibUsersDalGet.addGibUserList(gibUserList) != 30/*gibUserList.Items.Count*/)//db ye kayıt basarısızsa
                         {
                             return "DB ye kayıt basarısız";
                         }

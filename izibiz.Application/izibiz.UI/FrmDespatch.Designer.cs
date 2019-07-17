@@ -72,9 +72,10 @@
             this.btnFilterList.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnFilterList.Image = ((System.Drawing.Image)(resources.GetObject("btnFilterList.Image")));
             this.btnFilterList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilterList.Location = new System.Drawing.Point(25, 81);
+            this.btnFilterList.Location = new System.Drawing.Point(33, 100);
+            this.btnFilterList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFilterList.Name = "btnFilterList";
-            this.btnFilterList.Size = new System.Drawing.Size(107, 27);
+            this.btnFilterList.Size = new System.Drawing.Size(143, 33);
             this.btnFilterList.TabIndex = 28;
             this.btnFilterList.Text = "Filtrele";
             this.btnFilterList.UseVisualStyleBackColor = false;
@@ -85,9 +86,11 @@
             this.grpFilter.Controls.Add(this.btnFilterList);
             this.grpFilter.Controls.Add(this.timeStartFilter);
             this.grpFilter.Controls.Add(this.timeFinishFilter);
-            this.grpFilter.Location = new System.Drawing.Point(1033, 29);
+            this.grpFilter.Location = new System.Drawing.Point(1377, 36);
+            this.grpFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpFilter.Name = "grpFilter";
-            this.grpFilter.Size = new System.Drawing.Size(147, 114);
+            this.grpFilter.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpFilter.Size = new System.Drawing.Size(196, 140);
             this.grpFilter.TabIndex = 39;
             this.grpFilter.TabStop = false;
             this.grpFilter.Visible = false;
@@ -95,17 +98,19 @@
             // timeStartFilter
             // 
             this.timeStartFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.timeStartFilter.Location = new System.Drawing.Point(25, 11);
+            this.timeStartFilter.Location = new System.Drawing.Point(33, 14);
+            this.timeStartFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.timeStartFilter.Name = "timeStartFilter";
-            this.timeStartFilter.Size = new System.Drawing.Size(107, 20);
+            this.timeStartFilter.Size = new System.Drawing.Size(141, 22);
             this.timeStartFilter.TabIndex = 26;
             // 
             // timeFinishFilter
             // 
             this.timeFinishFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.timeFinishFilter.Location = new System.Drawing.Point(25, 45);
+            this.timeFinishFilter.Location = new System.Drawing.Point(33, 55);
+            this.timeFinishFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.timeFinishFilter.Name = "timeFinishFilter";
-            this.timeFinishFilter.Size = new System.Drawing.Size(107, 20);
+            this.timeFinishFilter.Size = new System.Drawing.Size(141, 22);
             this.timeFinishFilter.TabIndex = 27;
             // 
             // btnHomePage
@@ -119,13 +124,15 @@
             this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
-            this.btnHomePage.Location = new System.Drawing.Point(9, 22);
+            this.btnHomePage.Location = new System.Drawing.Point(12, 27);
+            this.btnHomePage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Size = new System.Drawing.Size(115, 70);
+            this.btnHomePage.Size = new System.Drawing.Size(153, 86);
             this.btnHomePage.TabIndex = 40;
             this.btnHomePage.Text = "Ana Sayfa";
             this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHomePage.UseVisualStyleBackColor = false;
+            this.btnHomePage.Click += new System.EventHandler(this.BtnHomePage_Click);
             // 
             // btnTakeDespatch
             // 
@@ -135,9 +142,10 @@
             this.btnTakeDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTakeDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnTakeDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeDespatch.Location = new System.Drawing.Point(211, 62);
+            this.btnTakeDespatch.Location = new System.Drawing.Point(281, 76);
+            this.btnTakeDespatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTakeDespatch.Name = "btnTakeDespatch";
-            this.btnTakeDespatch.Size = new System.Drawing.Size(120, 35);
+            this.btnTakeDespatch.Size = new System.Drawing.Size(160, 43);
             this.btnTakeDespatch.TabIndex = 38;
             this.btnTakeDespatch.Text = "İrsaliye al";
             this.btnTakeDespatch.UseVisualStyleBackColor = false;
@@ -149,11 +157,13 @@
             this.tableGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.GridColor = System.Drawing.SystemColors.Control;
-            this.tableGrid.Location = new System.Drawing.Point(243, 302);
+            this.tableGrid.Location = new System.Drawing.Point(324, 372);
+            this.tableGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
+            this.tableGrid.RowHeadersWidth = 51;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(905, 294);
+            this.tableGrid.Size = new System.Drawing.Size(1207, 362);
             this.tableGrid.TabIndex = 35;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellClick);
             // 
@@ -163,6 +173,7 @@
             this.menuInvoice.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuInvoice.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.menuInvoice.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            this.menuInvoice.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuInvoice.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemInDespatch,
             this.itemOutDespatch,
@@ -171,9 +182,10 @@
             this.itemGetListGibUserList,
             this.itemTakeGibUsers});
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
-            this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 27, 0);
             this.menuInvoice.Name = "menuInvoice";
-            this.menuInvoice.Size = new System.Drawing.Size(135, 608);
+            this.menuInvoice.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuInvoice.Size = new System.Drawing.Size(166, 748);
             this.menuInvoice.TabIndex = 32;
             this.menuInvoice.Text = "menuStrip1";
             // 
@@ -184,7 +196,7 @@
             this.itemInDespatch.Margin = new System.Windows.Forms.Padding(0, 110, 0, 0);
             this.itemInDespatch.Name = "itemInDespatch";
             this.itemInDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemInDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemInDespatch.Size = new System.Drawing.Size(157, 34);
             this.itemInDespatch.Text = "Gelen İrsaliye";
             this.itemInDespatch.Click += new System.EventHandler(this.itemInDespatch_Click);
             // 
@@ -195,7 +207,7 @@
             this.itemOutDespatch.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemOutDespatch.Name = "itemOutDespatch";
             this.itemOutDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemOutDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemOutDespatch.Size = new System.Drawing.Size(157, 34);
             this.itemOutDespatch.Text = " Giden İrsaliye";
             this.itemOutDespatch.Click += new System.EventHandler(this.itemOutDespatch_Click);
             // 
@@ -206,7 +218,7 @@
             this.itemDraftDespatch.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemDraftDespatch.Name = "itemDraftDespatch";
             this.itemDraftDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemDraftDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemDraftDespatch.Size = new System.Drawing.Size(157, 34);
             this.itemDraftDespatch.Text = "Taslak İrsaliye";
             this.itemDraftDespatch.Click += new System.EventHandler(this.itemDraftDespatch_Click);
             // 
@@ -217,7 +229,7 @@
             this.itemNewDespatch.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemNewDespatch.Name = "itemNewDespatch";
             this.itemNewDespatch.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemNewDespatch.Size = new System.Drawing.Size(128, 29);
+            this.itemNewDespatch.Size = new System.Drawing.Size(157, 34);
             this.itemNewDespatch.Text = "Yeni İrsaliye";
             this.itemNewDespatch.Click += new System.EventHandler(this.itemNewDespatch_Click);
             // 
@@ -228,7 +240,7 @@
             this.itemGetListGibUserList.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemGetListGibUserList.Name = "itemGetListGibUserList";
             this.itemGetListGibUserList.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetListGibUserList.Size = new System.Drawing.Size(128, 29);
+            this.itemGetListGibUserList.Size = new System.Drawing.Size(157, 34);
             this.itemGetListGibUserList.Text = "Gib User Listele";
             this.itemGetListGibUserList.Click += new System.EventHandler(this.itemGetListGibUserList_Click);
             // 
@@ -239,7 +251,7 @@
             this.itemTakeGibUsers.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemTakeGibUsers.Name = "itemTakeGibUsers";
             this.itemTakeGibUsers.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemTakeGibUsers.Size = new System.Drawing.Size(128, 29);
+            this.itemTakeGibUsers.Size = new System.Drawing.Size(157, 34);
             this.itemTakeGibUsers.Text = "Gib User List Al";
             this.itemTakeGibUsers.Click += new System.EventHandler(this.itemTakeGibUsers_Click);
             // 
@@ -247,9 +259,10 @@
             // 
             this.pnlIncomingDespatch.Controls.Add(this.btnInDespatchGetXml);
             this.pnlIncomingDespatch.Controls.Add(this.btnInDespatchGetStatus);
-            this.pnlIncomingDespatch.Location = new System.Drawing.Point(337, 62);
+            this.pnlIncomingDespatch.Location = new System.Drawing.Point(449, 76);
+            this.pnlIncomingDespatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlIncomingDespatch.Name = "pnlIncomingDespatch";
-            this.pnlIncomingDespatch.Size = new System.Drawing.Size(646, 71);
+            this.pnlIncomingDespatch.Size = new System.Drawing.Size(861, 87);
             this.pnlIncomingDespatch.TabIndex = 41;
             this.pnlIncomingDespatch.Visible = false;
             // 
@@ -261,9 +274,10 @@
             this.btnInDespatchGetXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInDespatchGetXml.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnInDespatchGetXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnInDespatchGetXml.Location = new System.Drawing.Point(155, 20);
+            this.btnInDespatchGetXml.Location = new System.Drawing.Point(207, 25);
+            this.btnInDespatchGetXml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInDespatchGetXml.Name = "btnInDespatchGetXml";
-            this.btnInDespatchGetXml.Size = new System.Drawing.Size(117, 35);
+            this.btnInDespatchGetXml.Size = new System.Drawing.Size(156, 43);
             this.btnInDespatchGetXml.TabIndex = 30;
             this.btnInDespatchGetXml.Text = "Xml İndir";
             this.btnInDespatchGetXml.UseVisualStyleBackColor = false;
@@ -277,9 +291,10 @@
             this.btnInDespatchGetStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInDespatchGetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnInDespatchGetStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnInDespatchGetStatus.Location = new System.Drawing.Point(18, 20);
+            this.btnInDespatchGetStatus.Location = new System.Drawing.Point(24, 25);
+            this.btnInDespatchGetStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInDespatchGetStatus.Name = "btnInDespatchGetStatus";
-            this.btnInDespatchGetStatus.Size = new System.Drawing.Size(117, 35);
+            this.btnInDespatchGetStatus.Size = new System.Drawing.Size(156, 43);
             this.btnInDespatchGetStatus.TabIndex = 23;
             this.btnInDespatchGetStatus.Text = "Durum sorgula";
             this.btnInDespatchGetStatus.UseVisualStyleBackColor = false;
@@ -289,9 +304,10 @@
             // 
             this.lblText.AutoSize = true;
             this.lblText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblText.Location = new System.Drawing.Point(569, 9);
+            this.lblText.Location = new System.Drawing.Point(759, 11);
+            this.lblText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(113, 25);
+            this.lblText.Size = new System.Drawing.Size(145, 29);
             this.lblText.TabIndex = 42;
             this.lblText.Text = "Hosgeldınız";
             // 
@@ -299,9 +315,10 @@
             // 
             this.pnlSendDespatch.Controls.Add(this.btnOutDespatchGetXml);
             this.pnlSendDespatch.Controls.Add(this.btnOutDespatchGetStatus);
-            this.pnlSendDespatch.Location = new System.Drawing.Point(337, 146);
+            this.pnlSendDespatch.Location = new System.Drawing.Point(449, 180);
+            this.pnlSendDespatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlSendDespatch.Name = "pnlSendDespatch";
-            this.pnlSendDespatch.Size = new System.Drawing.Size(646, 70);
+            this.pnlSendDespatch.Size = new System.Drawing.Size(861, 86);
             this.pnlSendDespatch.TabIndex = 42;
             this.pnlSendDespatch.Visible = false;
             // 
@@ -313,9 +330,10 @@
             this.btnOutDespatchGetXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOutDespatchGetXml.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnOutDespatchGetXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnOutDespatchGetXml.Location = new System.Drawing.Point(155, 17);
+            this.btnOutDespatchGetXml.Location = new System.Drawing.Point(207, 21);
+            this.btnOutDespatchGetXml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOutDespatchGetXml.Name = "btnOutDespatchGetXml";
-            this.btnOutDespatchGetXml.Size = new System.Drawing.Size(117, 35);
+            this.btnOutDespatchGetXml.Size = new System.Drawing.Size(156, 43);
             this.btnOutDespatchGetXml.TabIndex = 30;
             this.btnOutDespatchGetXml.Text = "Xml İndir";
             this.btnOutDespatchGetXml.UseVisualStyleBackColor = false;
@@ -329,9 +347,10 @@
             this.btnOutDespatchGetStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOutDespatchGetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnOutDespatchGetStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnOutDespatchGetStatus.Location = new System.Drawing.Point(18, 17);
+            this.btnOutDespatchGetStatus.Location = new System.Drawing.Point(24, 21);
+            this.btnOutDespatchGetStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOutDespatchGetStatus.Name = "btnOutDespatchGetStatus";
-            this.btnOutDespatchGetStatus.Size = new System.Drawing.Size(117, 35);
+            this.btnOutDespatchGetStatus.Size = new System.Drawing.Size(156, 43);
             this.btnOutDespatchGetStatus.TabIndex = 24;
             this.btnOutDespatchGetStatus.Text = "Durum sorgula";
             this.btnOutDespatchGetStatus.UseVisualStyleBackColor = false;
@@ -342,9 +361,10 @@
             this.pnlDraftDespatch.Controls.Add(this.btnDraftDespatchGetStatus);
             this.pnlDraftDespatch.Controls.Add(this.btnLoadDespatch);
             this.pnlDraftDespatch.Controls.Add(this.btnSendDespatch);
-            this.pnlDraftDespatch.Location = new System.Drawing.Point(337, 222);
+            this.pnlDraftDespatch.Location = new System.Drawing.Point(449, 273);
+            this.pnlDraftDespatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlDraftDespatch.Name = "pnlDraftDespatch";
-            this.pnlDraftDespatch.Size = new System.Drawing.Size(740, 74);
+            this.pnlDraftDespatch.Size = new System.Drawing.Size(987, 91);
             this.pnlDraftDespatch.TabIndex = 42;
             this.pnlDraftDespatch.Visible = false;
             // 
@@ -356,9 +376,10 @@
             this.btnDraftDespatchGetStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDraftDespatchGetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnDraftDespatchGetStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDraftDespatchGetStatus.Location = new System.Drawing.Point(18, 22);
+            this.btnDraftDespatchGetStatus.Location = new System.Drawing.Point(24, 27);
+            this.btnDraftDespatchGetStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDraftDespatchGetStatus.Name = "btnDraftDespatchGetStatus";
-            this.btnDraftDespatchGetStatus.Size = new System.Drawing.Size(117, 35);
+            this.btnDraftDespatchGetStatus.Size = new System.Drawing.Size(156, 43);
             this.btnDraftDespatchGetStatus.TabIndex = 28;
             this.btnDraftDespatchGetStatus.Text = "Durum sorgula";
             this.btnDraftDespatchGetStatus.UseVisualStyleBackColor = false;
@@ -372,9 +393,10 @@
             this.btnLoadDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLoadDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLoadDespatch.Location = new System.Drawing.Point(292, 22);
+            this.btnLoadDespatch.Location = new System.Drawing.Point(389, 27);
+            this.btnLoadDespatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLoadDespatch.Name = "btnLoadDespatch";
-            this.btnLoadDespatch.Size = new System.Drawing.Size(117, 35);
+            this.btnLoadDespatch.Size = new System.Drawing.Size(156, 43);
             this.btnLoadDespatch.TabIndex = 27;
             this.btnLoadDespatch.Text = "Portala Yükle";
             this.btnLoadDespatch.UseVisualStyleBackColor = false;
@@ -388,9 +410,10 @@
             this.btnSendDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendDespatch.Location = new System.Drawing.Point(155, 22);
+            this.btnSendDespatch.Location = new System.Drawing.Point(207, 27);
+            this.btnSendDespatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSendDespatch.Name = "btnSendDespatch";
-            this.btnSendDespatch.Size = new System.Drawing.Size(117, 35);
+            this.btnSendDespatch.Size = new System.Drawing.Size(156, 43);
             this.btnSendDespatch.TabIndex = 25;
             this.btnSendDespatch.Text = "Gönder";
             this.btnSendDespatch.UseVisualStyleBackColor = false;
@@ -398,9 +421,9 @@
             // 
             // FrmDespatch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1233, 608);
+            this.ClientSize = new System.Drawing.Size(1644, 748);
             this.Controls.Add(this.pnlSendDespatch);
             this.Controls.Add(this.pnlDraftDespatch);
             this.Controls.Add(this.lblText);
@@ -410,6 +433,7 @@
             this.Controls.Add(this.btnTakeDespatch);
             this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.menuInvoice);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmDespatch";
             this.Text = "FrmDespatch";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDespatch_FormClosed);

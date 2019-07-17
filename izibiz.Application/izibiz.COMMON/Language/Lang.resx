@@ -505,7 +505,7 @@
     <value>İmzalı Xml Al</value>
   </data>
   <data name="wantGetUserList" xml:space="preserve">
-    <value>Gönderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu işlem en az 15 dk surer.</value>
+    <value>Gönderici posta kutusu bilgilerini cekmek istiyor musunuz?</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>Sil</value>
