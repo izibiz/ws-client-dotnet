@@ -253,7 +253,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.SENDER = new SendDespatchAdviceRequestSENDER();
 
                var sender= Singl.userInformationDalGet.getUserInformation();
-                req.SENDER.alias = sender.aliasGb;  //kullanıcnın ..gb adresı ben ızıbızınkını verdım
+                req.SENDER.alias = sender.aliasGb;  //kullanıcnın ..gb adresı ben ızıbızın adresini verdım
                 req.SENDER.vkn =sender.vknTckn;//vknsı
 
                 req.RECEIVER = new SendDespatchAdviceRequestRECEIVER();

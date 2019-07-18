@@ -83,6 +83,10 @@
             this.grpRowInformation = new System.Windows.Forms.GroupBox();
             this.btnRemoveRow = new System.Windows.Forms.Button();
             this.gridPrice = new System.Windows.Forms.DataGridView();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddRow = new System.Windows.Forms.Button();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -91,10 +95,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtDriverName = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpReceiver.SuspendLayout();
             this.grpDespatchInformation.SuspendLayout();
             this.grpOrderInformation.SuspendLayout();
@@ -107,7 +107,7 @@
             // btnCreateDespatch
             // 
             this.btnCreateDespatch.Location = new System.Drawing.Point(1003, 777);
-            this.btnCreateDespatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateDespatch.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateDespatch.Name = "btnCreateDespatch";
             this.btnCreateDespatch.Size = new System.Drawing.Size(157, 57);
             this.btnCreateDespatch.TabIndex = 0;
@@ -118,7 +118,7 @@
             // btnClean
             // 
             this.btnClean.Location = new System.Drawing.Point(815, 777);
-            this.btnClean.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClean.Margin = new System.Windows.Forms.Padding(4);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(152, 57);
             this.btnClean.TabIndex = 1;
@@ -143,9 +143,9 @@
             this.grpReceiver.Controls.Add(this.lblMail);
             this.grpReceiver.Controls.Add(this.lblVknTckn);
             this.grpReceiver.Location = new System.Drawing.Point(16, 39);
-            this.grpReceiver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpReceiver.Margin = new System.Windows.Forms.Padding(4);
             this.grpReceiver.Name = "grpReceiver";
-            this.grpReceiver.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpReceiver.Padding = new System.Windows.Forms.Padding(4);
             this.grpReceiver.Size = new System.Drawing.Size(869, 174);
             this.grpReceiver.TabIndex = 6;
             this.grpReceiver.TabStop = false;
@@ -164,7 +164,7 @@
             // txtPartyName
             // 
             this.txtPartyName.Location = new System.Drawing.Point(671, 38);
-            this.txtPartyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPartyName.Margin = new System.Windows.Forms.Padding(4);
             this.txtPartyName.Name = "txtPartyName";
             this.txtPartyName.Size = new System.Drawing.Size(144, 22);
             this.txtPartyName.TabIndex = 25;
@@ -193,7 +193,7 @@
             // txtDistrict
             // 
             this.txtDistrict.Location = new System.Drawing.Point(397, 124);
-            this.txtDistrict.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDistrict.Margin = new System.Windows.Forms.Padding(4);
             this.txtDistrict.Name = "txtDistrict";
             this.txtDistrict.Size = new System.Drawing.Size(144, 22);
             this.txtDistrict.TabIndex = 21;
@@ -203,7 +203,7 @@
             // 
             this.txtCity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCity.Location = new System.Drawing.Point(397, 80);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(144, 22);
             this.txtCity.TabIndex = 22;
@@ -222,7 +222,7 @@
             // txtCustSurname
             // 
             this.txtCustSurname.Location = new System.Drawing.Point(128, 129);
-            this.txtCustSurname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustSurname.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustSurname.Name = "txtCustSurname";
             this.txtCustSurname.Size = new System.Drawing.Size(144, 22);
             this.txtCustSurname.TabIndex = 19;
@@ -241,7 +241,7 @@
             // txtCustName
             // 
             this.txtCustName.Location = new System.Drawing.Point(128, 84);
-            this.txtCustName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustName.Name = "txtCustName";
             this.txtCustName.Size = new System.Drawing.Size(144, 22);
             this.txtCustName.TabIndex = 16;
@@ -250,7 +250,7 @@
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(397, 38);
-            this.txtMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMail.Margin = new System.Windows.Forms.Padding(4);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(144, 22);
             this.txtMail.TabIndex = 14;
@@ -260,12 +260,12 @@
             // 
             this.msdVknTc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.msdVknTc.Location = new System.Drawing.Point(128, 38);
-            this.msdVknTc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.msdVknTc.Margin = new System.Windows.Forms.Padding(4);
             this.msdVknTc.Mask = "00000000000";
             this.msdVknTc.Name = "msdVknTc";
             this.msdVknTc.Size = new System.Drawing.Size(144, 23);
             this.msdVknTc.TabIndex = 5;
-            this.msdVknTc.Text = "11111111110";
+            this.msdVknTc.Text = "4840847211";
             // 
             // lblMail
             // 
@@ -304,9 +304,9 @@
             this.grpDespatchInformation.Controls.Add(this.label2);
             this.grpDespatchInformation.Controls.Add(this.label4);
             this.grpDespatchInformation.Location = new System.Drawing.Point(16, 256);
-            this.grpDespatchInformation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDespatchInformation.Margin = new System.Windows.Forms.Padding(4);
             this.grpDespatchInformation.Name = "grpDespatchInformation";
-            this.grpDespatchInformation.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDespatchInformation.Padding = new System.Windows.Forms.Padding(4);
             this.grpDespatchInformation.Size = new System.Drawing.Size(485, 373);
             this.grpDespatchInformation.TabIndex = 7;
             this.grpDespatchInformation.TabStop = false;
@@ -318,7 +318,7 @@
             this.cmbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbType.FormattingEnabled = true;
             this.cmbType.Location = new System.Drawing.Point(129, 87);
-            this.cmbType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(160, 24);
             this.cmbType.TabIndex = 32;
@@ -329,7 +329,7 @@
             this.cmbScenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbScenario.FormattingEnabled = true;
             this.cmbScenario.Location = new System.Drawing.Point(129, 42);
-            this.cmbScenario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbScenario.Margin = new System.Windows.Forms.Padding(4);
             this.cmbScenario.Name = "cmbScenario";
             this.cmbScenario.Size = new System.Drawing.Size(160, 24);
             this.cmbScenario.TabIndex = 31;
@@ -350,7 +350,7 @@
             this.cmbMoneyType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMoneyType.FormattingEnabled = true;
             this.cmbMoneyType.Location = new System.Drawing.Point(127, 325);
-            this.cmbMoneyType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMoneyType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMoneyType.Name = "cmbMoneyType";
             this.cmbMoneyType.Size = new System.Drawing.Size(144, 24);
             this.cmbMoneyType.TabIndex = 29;
@@ -367,7 +367,7 @@
             "01:00",
             "02:00"});
             this.cmbConsignmentTime.Location = new System.Drawing.Point(128, 279);
-            this.cmbConsignmentTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbConsignmentTime.Margin = new System.Windows.Forms.Padding(4);
             this.cmbConsignmentTime.Name = "cmbConsignmentTime";
             this.cmbConsignmentTime.Size = new System.Drawing.Size(144, 28);
             this.cmbConsignmentTime.TabIndex = 28;
@@ -385,7 +385,7 @@
             // dateTimeConsignmentDate
             // 
             this.dateTimeConsignmentDate.Location = new System.Drawing.Point(128, 226);
-            this.dateTimeConsignmentDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeConsignmentDate.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeConsignmentDate.Name = "dateTimeConsignmentDate";
             this.dateTimeConsignmentDate.Size = new System.Drawing.Size(143, 22);
             this.dateTimeConsignmentDate.TabIndex = 26;
@@ -409,7 +409,7 @@
             "00:00",
             "01:00"});
             this.cmbDespatchTime.Location = new System.Drawing.Point(129, 186);
-            this.cmbDespatchTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDespatchTime.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDespatchTime.Name = "cmbDespatchTime";
             this.cmbDespatchTime.Size = new System.Drawing.Size(143, 24);
             this.cmbDespatchTime.TabIndex = 24;
@@ -427,7 +427,7 @@
             // dateTimeDespatchDate
             // 
             this.dateTimeDespatchDate.Location = new System.Drawing.Point(129, 133);
-            this.dateTimeDespatchDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeDespatchDate.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeDespatchDate.Name = "dateTimeDespatchDate";
             this.dateTimeDespatchDate.Size = new System.Drawing.Size(143, 22);
             this.dateTimeDespatchDate.TabIndex = 22;
@@ -469,9 +469,9 @@
             this.grpOrderInformation.Controls.Add(this.txtOrderId);
             this.grpOrderInformation.Controls.Add(this.label13);
             this.grpOrderInformation.Location = new System.Drawing.Point(541, 256);
-            this.grpOrderInformation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpOrderInformation.Margin = new System.Windows.Forms.Padding(4);
             this.grpOrderInformation.Name = "grpOrderInformation";
-            this.grpOrderInformation.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpOrderInformation.Padding = new System.Windows.Forms.Padding(4);
             this.grpOrderInformation.Size = new System.Drawing.Size(603, 103);
             this.grpOrderInformation.TabIndex = 8;
             this.grpOrderInformation.TabStop = false;
@@ -480,7 +480,7 @@
             // dateTimeOrderDate
             // 
             this.dateTimeOrderDate.Location = new System.Drawing.Point(440, 34);
-            this.dateTimeOrderDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeOrderDate.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeOrderDate.Name = "dateTimeOrderDate";
             this.dateTimeOrderDate.Size = new System.Drawing.Size(143, 22);
             this.dateTimeOrderDate.TabIndex = 32;
@@ -498,7 +498,7 @@
             // txtOrderId
             // 
             this.txtOrderId.Location = new System.Drawing.Point(163, 38);
-            this.txtOrderId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOrderId.Margin = new System.Windows.Forms.Padding(4);
             this.txtOrderId.Name = "txtOrderId";
             this.txtOrderId.Size = new System.Drawing.Size(144, 22);
             this.txtOrderId.TabIndex = 21;
@@ -523,9 +523,9 @@
             this.grpCarrierInformation.Controls.Add(this.txtCarrierTitle);
             this.grpCarrierInformation.Controls.Add(this.label10);
             this.grpCarrierInformation.Location = new System.Drawing.Point(541, 506);
-            this.grpCarrierInformation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpCarrierInformation.Margin = new System.Windows.Forms.Padding(4);
             this.grpCarrierInformation.Name = "grpCarrierInformation";
-            this.grpCarrierInformation.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpCarrierInformation.Padding = new System.Windows.Forms.Padding(4);
             this.grpCarrierInformation.Size = new System.Drawing.Size(603, 123);
             this.grpCarrierInformation.TabIndex = 10;
             this.grpCarrierInformation.TabStop = false;
@@ -534,7 +534,7 @@
             // txtPlate
             // 
             this.txtPlate.Location = new System.Drawing.Point(163, 87);
-            this.txtPlate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPlate.Margin = new System.Windows.Forms.Padding(4);
             this.txtPlate.Name = "txtPlate";
             this.txtPlate.Size = new System.Drawing.Size(144, 22);
             this.txtPlate.TabIndex = 34;
@@ -554,7 +554,7 @@
             // 
             this.msdCarrierTcVkn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.msdCarrierTcVkn.Location = new System.Drawing.Point(417, 38);
-            this.msdCarrierTcVkn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.msdCarrierTcVkn.Margin = new System.Windows.Forms.Padding(4);
             this.msdCarrierTcVkn.Mask = "00000000000";
             this.msdCarrierTcVkn.Name = "msdCarrierTcVkn";
             this.msdCarrierTcVkn.Size = new System.Drawing.Size(144, 23);
@@ -574,7 +574,7 @@
             // txtCarrierTitle
             // 
             this.txtCarrierTitle.Location = new System.Drawing.Point(163, 38);
-            this.txtCarrierTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCarrierTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtCarrierTitle.Name = "txtCarrierTitle";
             this.txtCarrierTitle.Size = new System.Drawing.Size(144, 22);
             this.txtCarrierTitle.TabIndex = 21;
@@ -598,9 +598,9 @@
             this.grpRowInformation.Controls.Add(this.gridPrice);
             this.grpRowInformation.Controls.Add(this.btnAddRow);
             this.grpRowInformation.Location = new System.Drawing.Point(16, 647);
-            this.grpRowInformation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpRowInformation.Margin = new System.Windows.Forms.Padding(4);
             this.grpRowInformation.Name = "grpRowInformation";
-            this.grpRowInformation.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpRowInformation.Padding = new System.Windows.Forms.Padding(4);
             this.grpRowInformation.Size = new System.Drawing.Size(777, 186);
             this.grpRowInformation.TabIndex = 11;
             this.grpRowInformation.TabStop = false;
@@ -609,7 +609,7 @@
             // btnRemoveRow
             // 
             this.btnRemoveRow.Location = new System.Drawing.Point(617, 70);
-            this.btnRemoveRow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemoveRow.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveRow.Name = "btnRemoveRow";
             this.btnRemoveRow.Size = new System.Drawing.Size(121, 28);
             this.btnRemoveRow.TabIndex = 6;
@@ -651,7 +651,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gridPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.gridPrice.Location = new System.Drawing.Point(20, 26);
-            this.gridPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridPrice.Margin = new System.Windows.Forms.Padding(4);
             this.gridPrice.MultiSelect = false;
             this.gridPrice.Name = "gridPrice";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -673,91 +673,6 @@
             this.gridPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridPrice.Size = new System.Drawing.Size(591, 122);
             this.gridPrice.TabIndex = 5;
-            // 
-            // btnAddRow
-            // 
-            this.btnAddRow.Location = new System.Drawing.Point(617, 34);
-            this.btnAddRow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(121, 28);
-            this.btnAddRow.TabIndex = 3;
-            this.btnAddRow.Text = "Satır Ekle";
-            this.btnAddRow.UseVisualStyleBackColor = true;
-            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
-            // 
-            // txtTotalAmount
-            // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(980, 673);
-            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtTotalAmount.Name = "txtTotalAmount";
-            this.txtTotalAmount.Size = new System.Drawing.Size(144, 22);
-            this.txtTotalAmount.TabIndex = 23;
-            this.txtTotalAmount.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(849, 677);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 17);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Toplam Tutar";
-            // 
-            // grpChauffeurInformation
-            // 
-            this.grpChauffeurInformation.Controls.Add(this.msdDriverTc);
-            this.grpChauffeurInformation.Controls.Add(this.label16);
-            this.grpChauffeurInformation.Controls.Add(this.txtDriverName);
-            this.grpChauffeurInformation.Controls.Add(this.label15);
-            this.grpChauffeurInformation.Location = new System.Drawing.Point(541, 389);
-            this.grpChauffeurInformation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpChauffeurInformation.Name = "grpChauffeurInformation";
-            this.grpChauffeurInformation.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpChauffeurInformation.Size = new System.Drawing.Size(603, 103);
-            this.grpChauffeurInformation.TabIndex = 24;
-            this.grpChauffeurInformation.TabStop = false;
-            this.grpChauffeurInformation.Text = "Şoför Bilgileri";
-            // 
-            // msdDriverTc
-            // 
-            this.msdDriverTc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.msdDriverTc.Location = new System.Drawing.Point(403, 38);
-            this.msdDriverTc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.msdDriverTc.Mask = "00000000000";
-            this.msdDriverTc.Name = "msdDriverTc";
-            this.msdDriverTc.Size = new System.Drawing.Size(144, 23);
-            this.msdDriverTc.TabIndex = 34;
-            this.msdDriverTc.Text = "11111111110";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(347, 42);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(26, 17);
-            this.label16.TabIndex = 33;
-            this.label16.Text = "TC";
-            // 
-            // txtDriverName
-            // 
-            this.txtDriverName.Location = new System.Drawing.Point(163, 38);
-            this.txtDriverName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtDriverName.Name = "txtDriverName";
-            this.txtDriverName.Size = new System.Drawing.Size(144, 22);
-            this.txtDriverName.TabIndex = 21;
-            this.txtDriverName.Text = "Ahmet veli";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(32, 42);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 17);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Adı Soyadı";
             // 
             // productName
             // 
@@ -798,6 +713,91 @@
             this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.unitPrice.Width = 125;
             // 
+            // btnAddRow
+            // 
+            this.btnAddRow.Location = new System.Drawing.Point(617, 34);
+            this.btnAddRow.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.Size = new System.Drawing.Size(121, 28);
+            this.btnAddRow.TabIndex = 3;
+            this.btnAddRow.Text = "Satır Ekle";
+            this.btnAddRow.UseVisualStyleBackColor = true;
+            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
+            // 
+            // txtTotalAmount
+            // 
+            this.txtTotalAmount.Location = new System.Drawing.Point(980, 673);
+            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotalAmount.Name = "txtTotalAmount";
+            this.txtTotalAmount.Size = new System.Drawing.Size(144, 22);
+            this.txtTotalAmount.TabIndex = 23;
+            this.txtTotalAmount.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(849, 677);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 17);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Toplam Tutar";
+            // 
+            // grpChauffeurInformation
+            // 
+            this.grpChauffeurInformation.Controls.Add(this.msdDriverTc);
+            this.grpChauffeurInformation.Controls.Add(this.label16);
+            this.grpChauffeurInformation.Controls.Add(this.txtDriverName);
+            this.grpChauffeurInformation.Controls.Add(this.label15);
+            this.grpChauffeurInformation.Location = new System.Drawing.Point(541, 389);
+            this.grpChauffeurInformation.Margin = new System.Windows.Forms.Padding(4);
+            this.grpChauffeurInformation.Name = "grpChauffeurInformation";
+            this.grpChauffeurInformation.Padding = new System.Windows.Forms.Padding(4);
+            this.grpChauffeurInformation.Size = new System.Drawing.Size(603, 103);
+            this.grpChauffeurInformation.TabIndex = 24;
+            this.grpChauffeurInformation.TabStop = false;
+            this.grpChauffeurInformation.Text = "Şoför Bilgileri";
+            // 
+            // msdDriverTc
+            // 
+            this.msdDriverTc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.msdDriverTc.Location = new System.Drawing.Point(403, 38);
+            this.msdDriverTc.Margin = new System.Windows.Forms.Padding(4);
+            this.msdDriverTc.Mask = "00000000000";
+            this.msdDriverTc.Name = "msdDriverTc";
+            this.msdDriverTc.Size = new System.Drawing.Size(144, 23);
+            this.msdDriverTc.TabIndex = 34;
+            this.msdDriverTc.Text = "11111111110";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(347, 42);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(26, 17);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "TC";
+            // 
+            // txtDriverName
+            // 
+            this.txtDriverName.Location = new System.Drawing.Point(163, 38);
+            this.txtDriverName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDriverName.Name = "txtDriverName";
+            this.txtDriverName.Size = new System.Drawing.Size(144, 22);
+            this.txtDriverName.TabIndex = 21;
+            this.txtDriverName.Text = "Ahmet veli";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(32, 42);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(75, 17);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Adı Soyadı";
+            // 
             // FrmCreateDespatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -813,7 +813,7 @@
             this.Controls.Add(this.grpReceiver);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.btnCreateDespatch);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCreateDespatch";
