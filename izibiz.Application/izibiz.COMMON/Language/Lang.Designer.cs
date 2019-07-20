@@ -19,7 +19,7 @@ namespace izibiz.COMMON.Language {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Lang {
@@ -90,9 +90,9 @@ namespace izibiz.COMMON.Language {
         /// <summary>
         ///   Looks up a localized string similar to Ekleme Başarılı.
         /// </summary>
-        public static string addedsucc {
+        public static string addedSucc {
             get {
-                return ResourceManager.GetString("addedsucc", resourceCulture);
+                return ResourceManager.GetString("addedSucc", resourceCulture);
             }
         }
         
@@ -1240,7 +1240,7 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to seri name; sayı olamaz, bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz.
+        ///   Looks up a localized string similar to seri name; bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz.
         /// </summary>
         public static string seriNameControl {
             get {

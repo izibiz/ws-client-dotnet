@@ -114,18 +114,17 @@ namespace izibiz.UI
         {
             try
             {
-                int number = 0;
-                if (msdAddSeriName.Text != null && msdAddSeriName.Text.Length == 3
-                    && !int.TryParse(msdAddSeriName.Text, out number) && !msdAddSeriName.Text.Any(char.IsLower))
+
+                if (msdAddSeriName.Text != null && msdAddSeriName.Text.Length == 3 && !msdAddSeriName.Text.Any(char.IsLower))
                 {
                     idSerilazeDal.addSeriName(msdAddSeriName.Text);
                     idSerilazeDal.dbSaveChanges();
                     cmbSeriNames.DataSource = idSerilazeDal.getSeriNames();
-                    MessageBox.Show(Lang.addedsucc);
+                    MessageBox.Show(Lang.addedSucc);
                 }
                 else
                 {
-                    MessageBox.Show(Lang.seriNameControl);//seri name; sayı olamaz, bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz
+                    MessageBox.Show(Lang.seriNameControl);//seri name;  bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex) //oib req error

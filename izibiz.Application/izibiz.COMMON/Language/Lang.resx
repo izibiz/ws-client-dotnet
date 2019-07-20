@@ -352,7 +352,7 @@
     <value>Seri Ön Ek Ekle</value>
   </data>
   <data name="seriNameControl" xml:space="preserve">
-    <value>seri name; sayı olamaz, bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz</value>
+    <value>seri name; bos olamaz,karakter sayısı 3 den kucuk veya kucuk harf olamaz</value>
   </data>
   <data name="withUnzip" xml:space="preserve">
     <value>With Unzip</value>
@@ -360,7 +360,7 @@
   <data name="withZip" xml:space="preserve">
     <value>With Zip</value>
   </data>
-  <data name="addedsucc" xml:space="preserve">
+  <data name="addedSucc" xml:space="preserve">
     <value>Ekleme Başarılı</value>
   </data>
   <data name="valueAlreadyAdded" xml:space="preserve">

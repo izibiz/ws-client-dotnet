@@ -352,7 +352,7 @@
     <value>Add Seri Name</value>
   </data>
   <data name="seriNameControl" xml:space="preserve">
-    <value>serial name; cannot be a number, cannot be empty, the number of characters cannot be less than 3 or lowercase</value>
+    <value>serial name; cannot be empty, the number of characters cannot be less than 3 or lowercase</value>
   </data>
   <data name="withUnzip" xml:space="preserve">
     <value>With Unzip</value>
