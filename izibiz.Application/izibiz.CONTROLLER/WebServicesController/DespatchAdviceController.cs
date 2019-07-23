@@ -21,7 +21,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
         private EIrsaliyeServicePortClient eDespatchPortClient = new EIrsaliyeServicePortClient();
 
-        List<DESPATCHADVICE> despatchList = new List<DESPATCHADVICE>();
+        private List<DESPATCHADVICE> despatchList = new List<DESPATCHADVICE>();
 
 
 
@@ -72,7 +72,10 @@ namespace izibiz.CONTROLLER.WebServicesController
         }
 
 
-
+        /// <summary>
+        /// basarılısa ırsalıye contentı doner, basarısızsa null
+        /// </summary>
+        /// <returns></returns>
 
         public string getDespatchXmlContentFromService(string uuid, string direction)
         {
@@ -200,7 +203,7 @@ namespace izibiz.CONTROLLER.WebServicesController
         {
             DESPATCHADVICE despatch = new DESPATCHADVICE();
             base64Binary contentByte = new base64Binary();
-          //  contentByte.Value = Encoding.UTF8.GetBytes(xmlStr);
+            //  contentByte.Value = Encoding.UTF8.GetBytes(xmlStr);
             contentByte.Value = Compress.compressFile(xmlStr);//ziplenerek
 
             despatch.CONTENT = contentByte;
@@ -243,7 +246,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public string sendDespatch(string receiverAlias,string receiverVkn)
+        public string sendDespatch(string receiverAlias, string receiverVkn)
         {
             using (new OperationContextScope(eDespatchPortClient.InnerChannel))
             {
@@ -252,9 +255,9 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.SENDER = new SendDespatchAdviceRequestSENDER();
 
-               var sender= Singl.userInformationDalGet.getUserInformation();
+                var sender = Singl.userInformationDalGet.getUserInformation();
                 req.SENDER.alias = sender.aliasGb;  //kullanıcnın ..gb adresı ben ızıbızın adresini verdım
-                req.SENDER.vkn =sender.vknTckn;//vknsı
+                req.SENDER.vkn = sender.vknTckn;//vknsı
 
                 req.RECEIVER = new SendDespatchAdviceRequestRECEIVER();
                 req.RECEIVER.alias = receiverAlias;
@@ -265,7 +268,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 despatchList.Clear();
                 var response = eDespatchPortClient.SendDespatchAdvice(req);
 
-                if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0 )  //işlem basarısızsa
+                if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //işlem basarısızsa
                 {
 
                     if (response.ERROR_TYPE.ERROR_SHORT_DES != null)//bazen hata olsa da short desc null olabılıyor 

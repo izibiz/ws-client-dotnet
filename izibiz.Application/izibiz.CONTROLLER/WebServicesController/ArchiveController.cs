@@ -22,8 +22,8 @@ namespace izibiz.CONTROLLER.WebServicesController
         private SERVICES.serviceArchive.EFaturaArchivePortClient eArchiveInvoicePortClient = new SERVICES.serviceArchive.EFaturaArchivePortClient();
 
 
-        List<CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent> contentCancelList = new List<CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent>();
-        List<ArchiveInvoiceExtendedContentINVOICE_PROPERTIES> contentPropsList = new List<ArchiveInvoiceExtendedContentINVOICE_PROPERTIES>();
+        private List<CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent> contentCancelList = new List<CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent>();
+        private List<ArchiveInvoiceExtendedContentINVOICE_PROPERTIES> contentPropsList = new List<ArchiveInvoiceExtendedContentINVOICE_PROPERTIES>();
 
 
         public ArchiveController()
@@ -32,9 +32,10 @@ namespace izibiz.CONTROLLER.WebServicesController
         }
 
 
-
-
-        public List<ArchiveInvoices> getArchiveListOnService()
+        /// <summary>
+        /// error mesaj varsa doner yoksa null donup getırılen lısteyı db ye kaydeder
+        /// </summary>
+        public string getArchiveListOnServiceAndSaveDb()
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -50,16 +51,31 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
                 req.READ_INCLUDED = false.ToString();
 
-                EARCHIVEINV[] archiveArr = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req).INVOICE;
+                var response = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req);
 
-                if (archiveArr != null && archiveArr.Length > 0)
+                if (response.ERROR_TYPE != null)  //error message varsa
                 {
-                    archiveMarkRead(archiveArr);
-                    //getirilen faturaları db ye kaydet
-                    Singl.archiveInvoiceDalGet.addArchiveFromEArchiveAndSaveContentOnDisk(archiveArr);
-           
+                    return response.ERROR_TYPE.ERROR_SHORT_DES;
                 }
-                return Singl.archiveInvoiceDalGet.getArchiveList(false); //db den taslak olmayanları getır
+                else //servisten irsalıye getırme islemi basarılıysa
+                {
+                    if (response.INVOICE != null && response.INVOICE.Length > 0) //getırılen arsiv varsa
+                    {
+                        string markErrorMessage = archiveMarkRead(response.INVOICE); //mark arsiv yapıldı
+                        if (markErrorMessage != null) //mark despatch dan donen error message varsa
+                        {
+                            return markErrorMessage;
+                        }
+                        //getirilen faturaları db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
+                        if (Singl.archiveInvoiceDalGet.addArchiveToDbAndSaveContentOnDisk(response.INVOICE) != response.INVOICE.Length)
+                        {
+                            return "DataBase'e kaydetme işlemi başarısız";
+                        }
+
+                        return null; //hiçbir hata yoksa null don
+                    }
+                    return null;//irsaliye sayısı 0 ancak hata yok
+                }
             }
         }
 
@@ -70,7 +86,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        private void archiveMarkRead(EARCHIVEINV[] ArchiveArr)
+        private string archiveMarkRead(EARCHIVEINV[] ArchiveArr)
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
@@ -82,7 +98,13 @@ namespace izibiz.CONTROLLER.WebServicesController
                 markReq.MARK.value = MarkEArchiveInvoiceRequestMARKValue.READ;
                 markReq.MARK.valueSpecified = true;
 
-                eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
+                var markResponse = eArchiveInvoicePortClient.MarkEArchiveInvoice(markReq);
+
+                if (markResponse.REQUEST_RETURN == null || markResponse.ERROR_TYPE != null) //hata varsa
+                {
+                    return markResponse.ERROR_TYPE.ERROR_SHORT_DES;//hatayı don
+                }
+                return null; //basarılıysa null don
             }
         }
 
@@ -99,24 +121,36 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-        public List<ArchiveReports> getReportListOnService()
+        public string getReportListOnServiceAndSaveDb()
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
                 var req = new GetEArchiveReportRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
-
                 req.REPORT_PERIOD = DateTime.Now.Year.ToString() + getThisMonth();
                 req.REPORT_STATUS_FLAG = EI.ActiveOrPasive.Y.ToString();
 
-                REPORT[] reportArr = eArchiveInvoicePortClient.GetEArchiveReport(req).REPORT;
+                var response = eArchiveInvoicePortClient.GetEArchiveReport(req);
 
-                if (reportArr != null && reportArr.Length > 0)
+                if (response.ERROR_TYPE != null)  //error message varsa
                 {
-                    //getirilen raporları db ye kaydet
-                    Singl.ArchiveReportsDalGet.addArcReportFromReportArr(reportArr);
+                    return response.ERROR_TYPE.ERROR_SHORT_DES;
                 }
-                return Singl.ArchiveReportsDalGet.getReportList();
+                else //servisten irsalıye getırme islemi basarılıysa
+                {
+                    if (response.REPORT != null && response.REPORT.Length > 0) //getırılen arsiv varsa
+                    {
+
+                        //getirilen faturaları db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
+                        if (Singl.ArchiveReportsDalGet.addArcReportFromReportArr(response.REPORT) != response.REPORT.Length)
+                        {
+                            return "DataBase'e kaydetme işlemi başarısız";
+                        }
+
+                        return null; //hiçbir hata yoksa null don
+                    }
+                    return null;//irsaliye sayısı 0 ancak hata yok
+                }
             }
         }
 
@@ -237,7 +271,6 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
-
         public void addContentCancelArcOnCancelContentArr(bool reportFlag, string uuid, string id)
         {
             CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent contentCancel = new CancelEArchiveInvoiceRequestCancelEArsivInvoiceContent();
@@ -256,6 +289,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
 
 
+
         public string getArchiveStatusAndSaveDb(string[] uuidArr)
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
@@ -264,18 +298,31 @@ namespace izibiz.CONTROLLER.WebServicesController
                 eArchiveStatus.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
                 eArchiveStatus.UUID = uuidArr;
 
-                var res = eArchiveInvoicePortClient.GetEArchiveInvoiceStatus(eArchiveStatus);
+                var response = eArchiveInvoicePortClient.GetEArchiveInvoiceStatus(eArchiveStatus);
 
-                if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
+                if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //işlem basarısızsa
                 {
-                    if (Singl.archiveInvoiceDalGet.updateArchiveStatus(res.INVOICE))
+                    if (response.ERROR_TYPE.ERROR_SHORT_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else if (response.ERROR_TYPE.ERROR_LONG_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else
+                    {
+                        return "servis tarafında bır hata olustu";
+                    }
+                }
+                else //serviste hata yoksa
+                {
+                    if (Singl.archiveInvoiceDalGet.updateArchiveStatus(response.INVOICE))
                     {
                         return Lang.cannotSaveDb;//"Db ye kayıt basarısız"
                     }
                     return null;
                 }
-
-                return res.ERROR_TYPE.ERROR_SHORT_DES;
             }
         }
 
@@ -292,16 +339,34 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.FATURA_UUID = uuid;
                 req.EMAIL = mails;
 
-                var res = eArchiveInvoicePortClient.GetEmailEarchiveInvoice(req);
-                if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
+                var response = eArchiveInvoicePortClient.GetEmailEarchiveInvoice(req);
+
+                if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //işlem basarısızsa
+                {
+                    if (response.ERROR_TYPE.ERROR_SHORT_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else if (response.ERROR_TYPE.ERROR_LONG_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else
+                    {
+                        return "servis tarafında bır hata olustu";
+                    }
+                }
+                else
                 {
                     return null;
                 }
-                return res.ERROR_TYPE.ERROR_SHORT_DES;
             }
         }
 
-
+        /// <summary>
+        /// basarılıysa xml contnent doner ,basarısızsa null
+        /// </summary>
+        /// <returns></returns>
 
         private string getReportSignedXml(string reportNo)
         {
@@ -309,7 +374,7 @@ namespace izibiz.CONTROLLER.WebServicesController
             {
                 ReadEArchiveReportRequest req = new ReadEArchiveReportRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
-                req.RAPOR_NO = reportNo;//"d2103e97-a63c-4f1a-9644-138d21da2581";
+                req.RAPOR_NO = reportNo;
 
                 var res = eArchiveInvoicePortClient.ReadEArchiveReport(req);
                 if (res.REQUEST_RETURN != null && res.REQUEST_RETURN.RETURN_CODE == 0)
@@ -325,9 +390,13 @@ namespace izibiz.CONTROLLER.WebServicesController
         }
 
 
+
+        /// <summary>
+        /// diskten xmlı alır
+        /// </summary>
+        /// <returns></returns>
         public string getArchiveReportXml(string reportNo)
         {
-            //        reportNo= "d2103e97-a63c-4f1a-9644-138d21da2581";
             //db den pathı getırdı
             string xmlPath = FolderControl.inboxFolderArchiveReport + reportNo + "." + nameof(EI.DocumentType.XML);
 
@@ -385,12 +454,27 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                 contentPropsList.Clear();
 
-                ArchiveInvoiceExtendedResponse sendInvoiceResponse = eArchiveInvoicePortClient.WriteToArchiveExtended(sendArchieveInvoiceRequest);
-                if (sendInvoiceResponse.ERROR_TYPE != null)
+                ArchiveInvoiceExtendedResponse response = eArchiveInvoicePortClient.WriteToArchiveExtended(sendArchieveInvoiceRequest);
+
+                if (response.ERROR_TYPE != null || response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //işlem basarısızsa
                 {
-                    return sendInvoiceResponse.ERROR_TYPE.ERROR_SHORT_DES;
+                    if (response.ERROR_TYPE.ERROR_SHORT_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else if (response.ERROR_TYPE.ERROR_LONG_DES != null)
+                    {
+                        return response.ERROR_TYPE.ERROR_SHORT_DES;
+                    }
+                    else
+                    {
+                        return "servis tarafında bır hata olustu";
+                    }
                 }
-                return null;
+                else
+                {
+                    return null;
+                }
             }
         }
 

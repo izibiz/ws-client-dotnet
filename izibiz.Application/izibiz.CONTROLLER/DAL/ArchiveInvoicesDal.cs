@@ -75,7 +75,7 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public int addArchiveFromEArchiveAndSaveContentOnDisk(EARCHIVEINV[] archiveArr)
+        public int addArchiveToDbAndSaveContentOnDisk(EARCHIVEINV[] archiveArr)
         {
             ArchiveInvoices archive;
 
