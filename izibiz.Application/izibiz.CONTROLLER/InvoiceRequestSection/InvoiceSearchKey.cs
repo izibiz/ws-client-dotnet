@@ -21,7 +21,7 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
         {
             invoiceSearchKeyGetInvoice = new GetInvoiceRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
             {
-                LIMIT = 100,
+                LIMIT = 10,
                 LIMITSpecified =true,
                 READ_INCLUDED = true,
                 READ_INCLUDEDSpecified = true,              
@@ -33,7 +33,7 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
         {
             invoiceSearchKeyGetInvoiceWithType = new GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY() //default degerler ısterse degısebılır
             {
-                LIMIT = 100,
+                LIMIT = 10,
                 LIMITSpecified = true,
                 READ_INCLUDED = true,
                 READ_INCLUDEDSpecified = true,          

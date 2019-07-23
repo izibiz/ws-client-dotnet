@@ -71,7 +71,7 @@ namespace izibiz.CONTROLLER.Web_Services
                         return markErrorMessage;
                     }
                     //getirilen faturaları db ye kaydet
-                    if (Singl.invoiceDalGet.addInvoiceToDbAndSaveContentOnDisk(invoiceArray, direction) == invoiceArray.Length)
+                    if (Singl.invoiceDalGet.addInvoiceToDbAndSaveContentOnDisk(invoiceArray, direction) != invoiceArray.Length)
                     {
                         return "DataBase'e kaydetme işlemi başarısız";
                     }
