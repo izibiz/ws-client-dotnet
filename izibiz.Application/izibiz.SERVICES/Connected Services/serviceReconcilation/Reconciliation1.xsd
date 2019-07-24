@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:hr="http://www.hr-xml.org/3" xmlns:c="http://schemas.i2i.com/ei/common" xmlns="http://schemas.izibiz.com/ei/wsdl/reconciliation" xmlns:e="http://schemas.i2i.com/ei/entity" xmlns:pck="http://www.efatura.gov.tr/package-namespace" targetNamespace="http://schemas.izibiz.com/ei/wsdl/reconciliation" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/Reconciliation?xsd=1" namespace="http://schemas.i2i.com/ei/common" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/Reconciliation?xsd=2" namespace="http://schemas.i2i.com/ei/entity" />
+  <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/Reconciliation?xsd=3" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xsd:complexType name="OIBOperation">
+    <xsd:sequence>
+      <xsd:element name="RequestFaultResponse" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="RequestFault" type="RequestFaultType" />
+  <xsd:complexType name="RequestFaultType">
+    <xsd:sequence>
+      <xsd:element name="RequestFaultResponse" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SendReconciliationRequest" type="SendReconciliationRequest" />
+  <xsd:complexType name="SendReconciliationRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="RECONCILIATION">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="1" name="TYPE" type="RECONCILIATION_TYPE" />
+                <xsd:element minOccurs="1" name="UUID" type="xsd:string" />
+                <xsd:element minOccurs="1" name="CUSTOMER_IDENTIFIER" type="xsd:normalizedString" />
+                <xsd:element minOccurs="1" name="COMMERCIAL_NAME" type="xsd:normalizedString" />
+                <xsd:element minOccurs="0" name="TAX_OFFICE" type="xsd:normalizedString" />
+                <xsd:element minOccurs="1" name="CUSTOMER_ADDRESS" type="xsd:string" />
+                <xsd:element minOccurs="0" name="TELEPHONE_NO" type="xsd:normalizedString" />
+                <xsd:element minOccurs="0" name="FAX_NO" type="xsd:normalizedString" />
+                <xsd:element minOccurs="1" name="EMAIL" type="xsd:normalizedString" />
+                <xsd:element minOccurs="1" name="CURRENCY_CODE" type="CURRENCY_CODE" />
+                <xsd:element minOccurs="0" name="BABS_ACCOUNTING_PERIOD" type="xsd:normalizedString" />
+                <xsd:element minOccurs="0" name="BA_DOCUMENT_COUNT" type="xsd:int" />
+                <xsd:element minOccurs="0" name="BA_DOCUMENT_AMOUNT" type="xsd:decimal" />
+                <xsd:element minOccurs="0" name="BS_DOCUMENT_COUNT" type="xsd:int" />
+                <xsd:element minOccurs="0" name="BS_DOCUMENT_AMOUNT" type="xsd:decimal" />
+                <xsd:element minOccurs="0" name="CM_DATE" type="xsd:string" />
+                <xsd:element minOccurs="0" name="CM_AMOUNT_TYPE" type="CM_TYPE" />
+                <xsd:element minOccurs="0" name="CM_AMOUNT" type="xsd:decimal" />
+                <xsd:element minOccurs="0" name="NOTE" type="xsd:normalizedString" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SendReconciliationResponse" type="SendReconciliationResponse" />
+  <xsd:complexType name="SendReconciliationResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetReconciliationStatusRequest" type="GetReconciliationStatusRequest" />
+  <xsd:complexType name="GetReconciliationStatusRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element name="RECONCILIATION_SEARCHING">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="1" maxOccurs="unbounded" name="UUID" type="xsd:normalizedString" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetReconciliationStatusResponse" type="GetReconciliationStatusResponse" />
+  <xsd:complexType name="GetReconciliationStatusResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="RECONCILIATION_STATUS" type="RECONCILIATION_STATUS" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SendMailReconciliationRequest" type="SendMailReconciliationRequest" />
+  <xsd:complexType name="SendMailReconciliationRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="e:REQUEST">
+        <xsd:sequence>
+          <xsd:element name="MAIL_SEARCHING">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="1" maxOccurs="unbounded" name="UUID" type="xsd:normalizedString" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SendMailReconciliationResponse" type="SendMailReconciliationResponse" />
+  <xsd:complexType name="SendMailReconciliationResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RECONCILIATION_STATUS">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="RECONCILIATION">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="TYPE" type="RECONCILIATION_TYPE" />
+            <xsd:element name="UUID" type="xsd:normalizedString" />
+            <xsd:element minOccurs="1" name="CUSTOMER_IDENTIFIER" type="xsd:normalizedString" />
+            <xsd:element minOccurs="1" name="COMMERCIAL_NAME" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="BABS_ACCOUNTING_PERIOD" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="CM_DATE" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="CM_AMOUNT_TYPE" type="xsd:normalizedString" />
+            <xsd:element minOccurs="1" name="STATUS" type="xsd:normalizedString" />
+            <xsd:element minOccurs="1" name="STATUS_CODE" type="xsd:normalizedString" />
+            <xsd:element minOccurs="1" name="CREATE_DATE" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="EMAIL" type="EMAIL" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EMAIL">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="EMAIL_STATUS">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="STATUS" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="STATUS_CODE" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="SEND_DATE" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="EMAIL_EVENTS">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EVENT" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="DIAG" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="IP_ADDRESS" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="COUNTRY" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="REGION" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="CITY" type="xsd:normalizedString" />
+            <xsd:element minOccurs="0" name="EVENT_DATE" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="CM_TYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="A" />
+      <xsd:enumeration value="B" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RECONCILIATION_TYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="EM" />
+      <xsd:enumeration value="CM" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CURRENCY_CODE">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="TRY" />
+      <xsd:enumeration value="USD" />
+      <xsd:enumeration value="EUR" />
+      <xsd:enumeration value="GBP" />
+      <xsd:enumeration value="CAD" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

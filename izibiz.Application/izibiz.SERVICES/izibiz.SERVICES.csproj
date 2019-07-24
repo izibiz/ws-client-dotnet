@@ -70,6 +70,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\serviceReconcilation\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -468,6 +473,37 @@
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.SendInvoiceResponseWithServerSignResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.GetReconciliationStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.RECONCILIATION_STATUSRECONCILIATION.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.SendMailReconciliationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.SendMailReconciliationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.SendReconciliationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.SendReconciliationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\Reconciliation.wsdl" />
+    <None Include="Connected Services\serviceReconcilation\Reconciliation.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\Reconciliation1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\Reconciliation2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\Reconciliation3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -475,6 +511,7 @@
     <WCFMetadataStorage Include="Connected Services\serviceAuth\" />
     <WCFMetadataStorage Include="Connected Services\serviceDespatch\" />
     <WCFMetadataStorage Include="Connected Services\serviceOib\" />
+    <WCFMetadataStorage Include="Connected Services\serviceReconcilation\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceOib\configuration91.svcinfo" />
@@ -520,6 +557,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceAuth\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceReconcilation\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceReconcilation\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceReconcilation\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

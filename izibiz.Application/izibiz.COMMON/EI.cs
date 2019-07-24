@@ -141,6 +141,26 @@ namespace izibiz.COMMON
         }
 
 
+        public enum Reconcilation
+        {
+            Reconcilations,
+            uuid,
+            type,
+            customerID,
+            period,
+            cmDate,
+            status,
+            createDate,
+            email,
+            emailStatusCode,
+            emailStatusDesc,
+            emailStatusDate,
+            isSend
+
+        }
+
+
+
         public enum Profileid
         {
             TEMELFATURA,

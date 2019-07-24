@@ -70,6 +70,7 @@
     <Compile Include="DbTablesModels\GibUsers.cs" />
     <Compile Include="DbTablesModels\InvoiceIdSerial.cs" />
     <Compile Include="DbTablesModels\Invoices.cs" />
+    <Compile Include="DbTablesModels\Reconcilations.cs" />
     <Compile Include="DbTablesModels\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

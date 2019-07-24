@@ -121,14 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnFilterList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAGZJREFUOE9joAlImV/dlzCv/EfqgqpeqBBukFrZfzetsv8/Mk6cW/F/4blVYBpd
-        DhmD9EKNQQUwFyQvqCTsgqEFsAYutkDEhdEDF2cg4gKDPHBJSn3IABaIxKY+ZIwSiEM19TEwAADV8Jzl
-        EXrgyQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="btnHomePage.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -160,7 +152,4 @@
         jBdfoSnwtwDnFuUAJgcx+c/TeO48lsGy+NwePt9LzWyiPejp+R/smH3fN9GOugAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
 </root>
