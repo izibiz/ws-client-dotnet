@@ -52,6 +52,11 @@ namespace izibiz.MODEL.DbTablesModels
 
 
 
+        [Column(Name = nameof(EI.Reconcilation.statusCode), DbType = "NVARCHAR")]
+        public string statusCode { get; set; }
+
+
+
         [Column(Name = nameof(EI.Reconcilation.createDate), DbType = "DATETIME")]
         public DateTime createDate { get; set; }
 
@@ -68,17 +73,46 @@ namespace izibiz.MODEL.DbTablesModels
 
 
         [Column(Name = nameof(EI.Reconcilation.emailStatusDesc), DbType = "NVARCHAR")]
-        public DateTime emailStatusDesc { get; set; }
+        public string emailStatusDesc { get; set; }
 
 
 
         [Column(Name = nameof(EI.Reconcilation.emailStatusDate), DbType = "DATETIME")]
-        public string statusCode { get; set; }
+        public DateTime emailStatusDate { get; set; }
 
 
         [Column(Name = nameof(EI.Reconcilation.isSend), DbType = "BOOLEAN")]
         public bool isSend { get; set; }
 
+
+        [Column(Name = nameof(EI.Reconcilation.baDocPiece), DbType = "INTEGER")]
+        public int baDocPiece { get; set; }
+
+
+        [Column(Name = nameof(EI.Reconcilation.bsDocPiece), DbType = "INTEGER")]
+        public int bsDocPiece { get; set; }
+
+
+        [Column(Name = nameof(EI.Reconcilation.baDocAmount), DbType = "DECIMAL")]
+        public decimal baDocAmount { get; set; }
+
+
+        [Column(Name = nameof(EI.Reconcilation.bsDocAmount), DbType = "DECIMAL")]
+        public decimal bsDocAmount { get; set; }
+
+
+        [Column(Name = nameof(EI.Reconcilation.customerTitle), DbType = "NVARCHAR")]
+        public string customerTitle { get; set; }
+
+
+
+        [Column(Name = nameof(EI.Reconcilation.currentAmount), DbType = "DECIMAL")]
+        public decimal currentAmount { get; set; }
+
+
+
+        [Column(Name = nameof(EI.Reconcilation.accountType), DbType = "NVARCHAR")]
+        public string accountType { get; set; }
 
 
 

@@ -144,18 +144,28 @@ namespace izibiz.COMMON
         public enum Reconcilation
         {
             Reconcilations,
+            BaBsDoc,
+            CurrentReconcilation,
             uuid,
             type,
             customerID,
             period,
             cmDate,
             status,
+            statusCode,
             createDate,
             email,
             emailStatusCode,
             emailStatusDesc,
             emailStatusDate,
-            isSend
+            isSend,
+            customerTitle,
+            baDocPiece,
+            bsDocPiece,
+            baDocAmount,
+            bsDocAmount,
+            currentAmount,
+            accountType
 
         }
 

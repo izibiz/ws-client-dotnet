@@ -106,6 +106,8 @@ namespace izibiz.CONTROLLER.DAL
 
                         FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value)), archive.folderPath);
 
+                    
+
                         databaseContext.archiveInvoices.Add(archive);
                     }
                 }

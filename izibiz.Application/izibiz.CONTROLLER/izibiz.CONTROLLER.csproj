@@ -68,6 +68,7 @@
     <Compile Include="DAL\GibUsersDal.cs" />
     <Compile Include="DAL\IdSerilazeDal.cs" />
     <Compile Include="DAL\InvoiceDal.cs" />
+    <Compile Include="DAL\ReconcilationDal.cs" />
     <Compile Include="DAL\UserInformationDal.cs" />
     <Compile Include="InvoiceIdSetSerilaze.cs" />
     <Compile Include="InvoiceRequestSection\InvoiceSearchKey.cs" />

@@ -31,34 +31,34 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbReconcilationSenario = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtReceiverTitle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPeriod = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtBsAmount = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtBaAmount = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pnlBaBsDocPiece = new System.Windows.Forms.Panel();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nmBsDocPiece = new System.Windows.Forms.NumericUpDown();
+            this.nmBaDocPiece = new System.Windows.Forms.NumericUpDown();
             this.pnlCurrentPiece = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateReconcilation = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbAccountType = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtCurrentAmount = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.msdReceiverVkn = new System.Windows.Forms.MaskedTextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.pnlPartner = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMail = new System.Windows.Forms.TextBox();
             this.pnlBaBsDocPiece.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmBsDocPiece)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmBaDocPiece)).BeginInit();
             this.pnlCurrentPiece.SuspendLayout();
             this.pnlPartner.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,9 @@
             // 
             // cmbReconcilationSenario
             // 
+            this.cmbReconcilationSenario.BackColor = System.Drawing.SystemColors.HighlightText;
             this.cmbReconcilationSenario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbReconcilationSenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbReconcilationSenario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cmbReconcilationSenario.FormattingEnabled = true;
             this.cmbReconcilationSenario.Items.AddRange(new object[] {
@@ -97,13 +99,13 @@
             this.cmbReconcilationSenario.TabIndex = 2;
             this.cmbReconcilationSenario.SelectedValueChanged += new System.EventHandler(this.CmbReconcilationSenario_SelectedValueChanged);
             // 
-            // textBox1
+            // txtReceiverTitle
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(169, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(196, 30);
-            this.textBox1.TabIndex = 3;
+            this.txtReceiverTitle.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReceiverTitle.Location = new System.Drawing.Point(169, 21);
+            this.txtReceiverTitle.Name = "txtReceiverTitle";
+            this.txtReceiverTitle.Size = new System.Drawing.Size(196, 30);
+            this.txtReceiverTitle.TabIndex = 3;
             // 
             // label3
             // 
@@ -163,13 +165,13 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "Alıcı Vkn/Tckn";
             // 
-            // textBox9
+            // txtBsAmount
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(214, 239);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(196, 30);
-            this.textBox9.TabIndex = 25;
+            this.txtBsAmount.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBsAmount.Location = new System.Drawing.Point(214, 239);
+            this.txtBsAmount.Name = "txtBsAmount";
+            this.txtBsAmount.Size = new System.Drawing.Size(196, 30);
+            this.txtBsAmount.TabIndex = 25;
             // 
             // label10
             // 
@@ -181,13 +183,13 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "BS Döküman tutarı";
             // 
-            // textBox10
+            // txtBaAmount
             // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(214, 181);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(196, 30);
-            this.textBox10.TabIndex = 23;
+            this.txtBaAmount.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBaAmount.Location = new System.Drawing.Point(214, 181);
+            this.txtBaAmount.Name = "txtBaAmount";
+            this.txtBaAmount.Size = new System.Drawing.Size(196, 30);
+            this.txtBaAmount.TabIndex = 23;
             // 
             // label11
             // 
@@ -201,13 +203,13 @@
             // 
             // pnlBaBsDocPiece
             // 
-            this.pnlBaBsDocPiece.Controls.Add(this.numericUpDown3);
-            this.pnlBaBsDocPiece.Controls.Add(this.numericUpDown2);
+            this.pnlBaBsDocPiece.Controls.Add(this.nmBsDocPiece);
+            this.pnlBaBsDocPiece.Controls.Add(this.nmBaDocPiece);
             this.pnlBaBsDocPiece.Controls.Add(this.label3);
-            this.pnlBaBsDocPiece.Controls.Add(this.textBox9);
+            this.pnlBaBsDocPiece.Controls.Add(this.txtBsAmount);
             this.pnlBaBsDocPiece.Controls.Add(this.label10);
             this.pnlBaBsDocPiece.Controls.Add(this.label5);
-            this.pnlBaBsDocPiece.Controls.Add(this.textBox10);
+            this.pnlBaBsDocPiece.Controls.Add(this.txtBaAmount);
             this.pnlBaBsDocPiece.Controls.Add(this.txtPeriod);
             this.pnlBaBsDocPiece.Controls.Add(this.label11);
             this.pnlBaBsDocPiece.Controls.Add(this.label4);
@@ -217,34 +219,34 @@
             this.pnlBaBsDocPiece.TabIndex = 26;
             this.pnlBaBsDocPiece.Visible = false;
             // 
-            // numericUpDown3
+            // nmBsDocPiece
             // 
-            this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown3.Increment = new decimal(new int[] {
+            this.nmBsDocPiece.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.nmBsDocPiece.Increment = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown3.Location = new System.Drawing.Point(214, 80);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(196, 27);
-            this.numericUpDown3.TabIndex = 28;
+            this.nmBsDocPiece.Location = new System.Drawing.Point(214, 80);
+            this.nmBsDocPiece.Name = "nmBsDocPiece";
+            this.nmBsDocPiece.Size = new System.Drawing.Size(196, 27);
+            this.nmBsDocPiece.TabIndex = 28;
             // 
-            // numericUpDown2
+            // nmBaDocPiece
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown2.Location = new System.Drawing.Point(214, 27);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(196, 27);
-            this.numericUpDown2.TabIndex = 27;
+            this.nmBaDocPiece.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.nmBaDocPiece.Location = new System.Drawing.Point(214, 27);
+            this.nmBaDocPiece.Name = "nmBaDocPiece";
+            this.nmBaDocPiece.Size = new System.Drawing.Size(196, 27);
+            this.nmBaDocPiece.TabIndex = 27;
             // 
             // pnlCurrentPiece
             // 
-            this.pnlCurrentPiece.Controls.Add(this.dateTimePicker1);
+            this.pnlCurrentPiece.Controls.Add(this.dateReconcilation);
             this.pnlCurrentPiece.Controls.Add(this.label15);
-            this.pnlCurrentPiece.Controls.Add(this.comboBox3);
+            this.pnlCurrentPiece.Controls.Add(this.cmbAccountType);
             this.pnlCurrentPiece.Controls.Add(this.label12);
-            this.pnlCurrentPiece.Controls.Add(this.textBox4);
+            this.pnlCurrentPiece.Controls.Add(this.txtCurrentAmount);
             this.pnlCurrentPiece.Controls.Add(this.label14);
             this.pnlCurrentPiece.Location = new System.Drawing.Point(500, 227);
             this.pnlCurrentPiece.Name = "pnlCurrentPiece";
@@ -252,13 +254,13 @@
             this.pnlCurrentPiece.TabIndex = 27;
             this.pnlCurrentPiece.Visible = false;
             // 
-            // dateTimePicker1
+            // dateReconcilation
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(181, 146);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(160, 27);
-            this.dateTimePicker1.TabIndex = 25;
+            this.dateReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dateReconcilation.Location = new System.Drawing.Point(181, 146);
+            this.dateReconcilation.Name = "dateReconcilation";
+            this.dateReconcilation.Size = new System.Drawing.Size(160, 27);
+            this.dateReconcilation.TabIndex = 25;
             // 
             // label15
             // 
@@ -270,17 +272,19 @@
             this.label15.TabIndex = 24;
             this.label15.Text = "Mutabakat Tarih";
             // 
-            // comboBox3
+            // cmbAccountType
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cmbAccountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAccountType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbAccountType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmbAccountType.FormattingEnabled = true;
+            this.cmbAccountType.Items.AddRange(new object[] {
             "Alacaklı",
             "Borclu"});
-            this.comboBox3.Location = new System.Drawing.Point(181, 81);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(160, 28);
-            this.comboBox3.TabIndex = 23;
+            this.cmbAccountType.Location = new System.Drawing.Point(181, 81);
+            this.cmbAccountType.Name = "cmbAccountType";
+            this.cmbAccountType.Size = new System.Drawing.Size(160, 28);
+            this.cmbAccountType.TabIndex = 23;
             // 
             // label12
             // 
@@ -292,13 +296,13 @@
             this.label12.TabIndex = 20;
             this.label12.Text = "Hesap Tipi";
             // 
-            // textBox4
+            // txtCurrentAmount
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(181, 25);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(160, 30);
-            this.textBox4.TabIndex = 19;
+            this.txtCurrentAmount.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentAmount.Location = new System.Drawing.Point(181, 25);
+            this.txtCurrentAmount.Name = "txtCurrentAmount";
+            this.txtCurrentAmount.Size = new System.Drawing.Size(160, 30);
+            this.txtCurrentAmount.TabIndex = 19;
             // 
             // label14
             // 
@@ -310,14 +314,14 @@
             this.label14.TabIndex = 18;
             this.label14.Text = "Cari Bakiye";
             // 
-            // maskedTextBox1
+            // msdReceiverVkn
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(169, 80);
-            this.maskedTextBox1.Mask = "99999999999";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(196, 27);
-            this.maskedTextBox1.TabIndex = 28;
+            this.msdReceiverVkn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.msdReceiverVkn.Location = new System.Drawing.Point(169, 80);
+            this.msdReceiverVkn.Mask = "99999999999";
+            this.msdReceiverVkn.Name = "msdReceiverVkn";
+            this.msdReceiverVkn.Size = new System.Drawing.Size(196, 27);
+            this.msdReceiverVkn.TabIndex = 28;
             // 
             // btnCreate
             // 
@@ -329,13 +333,14 @@
             this.btnCreate.TabIndex = 30;
             this.btnCreate.Text = "Olustur";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // pnlPartner
             // 
-            this.pnlPartner.Controls.Add(this.textBox2);
+            this.pnlPartner.Controls.Add(this.txtMail);
             this.pnlPartner.Controls.Add(this.label2);
-            this.pnlPartner.Controls.Add(this.textBox1);
-            this.pnlPartner.Controls.Add(this.maskedTextBox1);
+            this.pnlPartner.Controls.Add(this.txtReceiverTitle);
+            this.pnlPartner.Controls.Add(this.msdReceiverVkn);
             this.pnlPartner.Controls.Add(this.label9);
             this.pnlPartner.Controls.Add(this.label8);
             this.pnlPartner.Location = new System.Drawing.Point(886, 227);
@@ -343,13 +348,13 @@
             this.pnlPartner.Size = new System.Drawing.Size(378, 236);
             this.pnlPartner.TabIndex = 31;
             // 
-            // textBox2
+            // txtMail
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(169, 131);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(196, 30);
-            this.textBox2.TabIndex = 29;
+            this.txtMail.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMail.Location = new System.Drawing.Point(169, 131);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(196, 30);
+            this.txtMail.TabIndex = 29;
             // 
             // FrmCreateReconcilation
             // 
@@ -369,8 +374,8 @@
             this.Load += new System.EventHandler(this.FrmCreateReconcilation_Load);
             this.pnlBaBsDocPiece.ResumeLayout(false);
             this.pnlBaBsDocPiece.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmBsDocPiece)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmBaDocPiece)).EndInit();
             this.pnlCurrentPiece.ResumeLayout(false);
             this.pnlCurrentPiece.PerformLayout();
             this.pnlPartner.ResumeLayout(false);
@@ -385,30 +390,30 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbReconcilationSenario;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtReceiverTitle;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPeriod;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtBsAmount;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtBaAmount;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnlBaBsDocPiece;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nmBsDocPiece;
+        private System.Windows.Forms.NumericUpDown nmBaDocPiece;
         private System.Windows.Forms.Panel pnlCurrentPiece;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateReconcilation;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbAccountType;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtCurrentAmount;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox msdReceiverVkn;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Panel pnlPartner;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMail;
     }
 }

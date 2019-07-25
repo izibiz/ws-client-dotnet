@@ -34,7 +34,6 @@
             this.lblText = new System.Windows.Forms.Label();
             this.itemNewReconcilation = new System.Windows.Forms.ToolStripMenuItem();
             this.itemBaBsReconsilations = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnTakeDespatch = new System.Windows.Forms.Button();
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.menuInvoice = new System.Windows.Forms.MenuStrip();
             this.itemCurrentReconcilations = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +60,7 @@
             this.btnGetStatusReconcilation.TabIndex = 28;
             this.btnGetStatusReconcilation.Text = "Durum sorgula";
             this.btnGetStatusReconcilation.UseVisualStyleBackColor = false;
+            this.btnGetStatusReconcilation.Click += new System.EventHandler(this.BtnGetStatusReconcilation_Click);
             // 
             // btnSendReconzilation
             // 
@@ -109,23 +109,7 @@
             this.itemBaBsReconsilations.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.itemBaBsReconsilations.Size = new System.Drawing.Size(179, 34);
             this.itemBaBsReconsilations.Text = "BA/BS Mutabakat";
-            // 
-            // btnTakeDespatch
-            // 
-            this.btnTakeDespatch.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeDespatch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeDespatch.FlatAppearance.BorderSize = 2;
-            this.btnTakeDespatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeDespatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeDespatch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeDespatch.Location = new System.Drawing.Point(196, 85);
-            this.btnTakeDespatch.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTakeDespatch.Name = "btnTakeDespatch";
-            this.btnTakeDespatch.Size = new System.Drawing.Size(160, 43);
-            this.btnTakeDespatch.TabIndex = 45;
-            this.btnTakeDespatch.Text = "Mutabakat al";
-            this.btnTakeDespatch.UseVisualStyleBackColor = false;
-            this.btnTakeDespatch.Visible = false;
+            this.itemBaBsReconsilations.Click += new System.EventHandler(this.İtemBaBsReconsilations_Click);
             // 
             // tableGrid
             // 
@@ -169,6 +153,7 @@
             this.itemCurrentReconcilations.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.itemCurrentReconcilations.Size = new System.Drawing.Size(179, 34);
             this.itemCurrentReconcilations.Text = "Cari Mutabakat";
+            this.itemCurrentReconcilations.Click += new System.EventHandler(this.İtemCurrentReconcilations_Click);
             // 
             // pnlDraftDespatch
             // 
@@ -225,7 +210,6 @@
             this.ClientSize = new System.Drawing.Size(1295, 762);
             this.ControlBox = false;
             this.Controls.Add(this.lblText);
-            this.Controls.Add(this.btnTakeDespatch);
             this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.pnlDraftDespatch);
             this.Controls.Add(this.btnHomePage);
@@ -249,7 +233,6 @@
         private System.Windows.Forms.Label lblText;
         private System.Windows.Forms.ToolStripMenuItem itemNewReconcilation;
         private System.Windows.Forms.ToolStripMenuItem itemBaBsReconsilations;
-        private System.Windows.Forms.Button btnTakeDespatch;
         private System.Windows.Forms.DataGridView tableGrid;
         private System.Windows.Forms.MenuStrip menuInvoice;
         private System.Windows.Forms.Panel pnlDraftDespatch;

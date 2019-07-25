@@ -26,7 +26,7 @@ namespace izibiz.CONTROLLER.Singleton
         private static IdSerilazeDal idSerilazeDal = null;
         private static UserInformationDal userInformationDal = null;
         private static GibUsersDal gibUsersDal = null;
-
+        private static ReconcilationDal reconcilationDal = null;
 
 
 
@@ -35,6 +35,19 @@ namespace izibiz.CONTROLLER.Singleton
         }
 
 
+
+        public static ReconcilationDal reconcilationDalGet
+        {
+            get
+            {
+                if (null == reconcilationDal)
+                {
+                    reconcilationDal = new ReconcilationDal();
+                }
+
+                return reconcilationDal;
+            }
+        }
 
         public static GibUsersDal gibUsersDalGet
         {
