@@ -42,14 +42,12 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var req = new GetEArchiveInvoiceListRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-                req.LIMIT = 10;
-                req.LIMITSpecified = true;
                 req.PERIOD = getThisMonth() + DateTime.Now.Year.ToString();
                 req.REPORT_INCLUDED = true;
                 req.REPORT_FLAG = EI.ActiveOrPasive.Y.ToString(); //raporlananaları alıyor
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
-                req.READ_INCLUDED = false.ToString();
+
 
                 var response = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req);
 

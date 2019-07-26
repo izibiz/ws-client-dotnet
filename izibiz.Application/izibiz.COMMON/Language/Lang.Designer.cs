@@ -19,7 +19,7 @@ namespace izibiz.COMMON.Language {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Lang {
@@ -66,6 +66,15 @@ namespace izibiz.COMMON.Language {
         public static string accept {
             get {
                 return ResourceManager.GetString("accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hesap Tipi.
+        /// </summary>
+        public static string accountType {
+            get {
+                return ResourceManager.GetString("accountType", resourceCulture);
             }
         }
         
@@ -147,6 +156,42 @@ namespace izibiz.COMMON.Language {
         public static string archiveSendingType {
             get {
                 return ResourceManager.GetString("archiveSendingType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ba Döküman tutarı.
+        /// </summary>
+        public static string baDocAmount {
+            get {
+                return ResourceManager.GetString("baDocAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ba Döküman Adeti.
+        /// </summary>
+        public static string baDocPiece {
+            get {
+                return ResourceManager.GetString("baDocPiece", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bs Döküman Tutarı.
+        /// </summary>
+        public static string bsDocAmount {
+            get {
+                return ResourceManager.GetString("bsDocAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bs Döküman Adeti.
+        /// </summary>
+        public static string bsDocPiece {
+            get {
+                return ResourceManager.GetString("bsDocPiece", resourceCulture);
             }
         }
         
@@ -277,6 +322,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cari Mutabakat Tarihi.
+        /// </summary>
+        public static string cmDate {
+            get {
+                return ResourceManager.GetString("cmDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oluştur.
         /// </summary>
         public static string create {
@@ -286,11 +340,29 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oluşturma Tarihi.
+        /// </summary>
+        public static string createDate {
+            get {
+                return ResourceManager.GetString("createDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Para Birimi.
         /// </summary>
         public static string currencyCode {
             get {
                 return ResourceManager.GetString("currencyCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mevcut Tutar.
+        /// </summary>
+        public static string currentAmount {
+            get {
+                return ResourceManager.GetString("currentAmount", resourceCulture);
             }
         }
         
@@ -754,6 +826,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gönderildi Mi.
+        /// </summary>
+        public static string isSend {
+            get {
+                return ResourceManager.GetString("isSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Düzenlenme Tarihi.
         /// </summary>
         public static string issueDate {
@@ -840,6 +921,15 @@ namespace izibiz.COMMON.Language {
         public static string mailStatus {
             get {
                 return ResourceManager.GetString("mailStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail Durum kodu.
+        /// </summary>
+        public static string mailStatusCode {
+            get {
+                return ResourceManager.GetString("mailStatusCode", resourceCulture);
             }
         }
         
@@ -984,6 +1074,15 @@ namespace izibiz.COMMON.Language {
         public static string pdfDownload {
             get {
                 return ResourceManager.GetString("pdfDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dönem.
+        /// </summary>
+        public static string period {
+            get {
+                return ResourceManager.GetString("period", resourceCulture);
             }
         }
         

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDespatch));
             this.grpFilter = new System.Windows.Forms.GroupBox();
+            this.btnFilterList = new System.Windows.Forms.Button();
             this.timeStartFilter = new System.Windows.Forms.DateTimePicker();
             this.timeFinishFilter = new System.Windows.Forms.DateTimePicker();
             this.btnTakeDespatch = new System.Windows.Forms.Button();
@@ -52,8 +53,8 @@
             this.btnDraftDespatchGetStatus = new System.Windows.Forms.Button();
             this.btnLoadDespatch = new System.Windows.Forms.Button();
             this.btnSendDespatch = new System.Windows.Forms.Button();
-            this.btnFilterList = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.menuInvoice.SuspendLayout();
@@ -75,6 +76,25 @@
             this.grpFilter.TabIndex = 39;
             this.grpFilter.TabStop = false;
             this.grpFilter.Visible = false;
+            // 
+            // btnFilterList
+            // 
+            this.btnFilterList.BackColor = System.Drawing.Color.Lavender;
+            this.btnFilterList.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnFilterList.FlatAppearance.BorderSize = 2;
+            this.btnFilterList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterList.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFilterList.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnFilterList.Image = ((System.Drawing.Image)(resources.GetObject("btnFilterList.Image")));
+            this.btnFilterList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilterList.Location = new System.Drawing.Point(33, 100);
+            this.btnFilterList.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFilterList.Name = "btnFilterList";
+            this.btnFilterList.Size = new System.Drawing.Size(143, 33);
+            this.btnFilterList.TabIndex = 28;
+            this.btnFilterList.Text = "Filtrele";
+            this.btnFilterList.UseVisualStyleBackColor = false;
+            this.btnFilterList.Click += new System.EventHandler(this.btnFilterList_Click);
             // 
             // timeStartFilter
             // 
@@ -379,25 +399,6 @@
             this.btnSendDespatch.UseVisualStyleBackColor = false;
             this.btnSendDespatch.Click += new System.EventHandler(this.btnSendDespatch_Click);
             // 
-            // btnFilterList
-            // 
-            this.btnFilterList.BackColor = System.Drawing.Color.Lavender;
-            this.btnFilterList.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnFilterList.FlatAppearance.BorderSize = 2;
-            this.btnFilterList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilterList.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnFilterList.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnFilterList.Image = ((System.Drawing.Image)(resources.GetObject("btnFilterList.Image")));
-            this.btnFilterList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilterList.Location = new System.Drawing.Point(33, 100);
-            this.btnFilterList.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFilterList.Name = "btnFilterList";
-            this.btnFilterList.Size = new System.Drawing.Size(143, 33);
-            this.btnFilterList.TabIndex = 28;
-            this.btnFilterList.Text = "Filtrele";
-            this.btnFilterList.UseVisualStyleBackColor = false;
-            this.btnFilterList.Click += new System.EventHandler(this.btnFilterList_Click);
-            // 
             // btnHomePage
             // 
             this.btnHomePage.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -419,11 +420,22 @@
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.BtnHomePage_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(429, 208);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(383, 20);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
+            // 
             // FrmDespatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1644, 748);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlSendDespatch);
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.pnlIncomingDespatch);
@@ -477,5 +489,6 @@
         private System.Windows.Forms.Button btnDraftDespatchGetStatus;
         private System.Windows.Forms.Button btnInDespatchGetXml;
         private System.Windows.Forms.Button btnOutDespatchGetXml;
+        private System.Windows.Forms.Label label1;
     }
 }

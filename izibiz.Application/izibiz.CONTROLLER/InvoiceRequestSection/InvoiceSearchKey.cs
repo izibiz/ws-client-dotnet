@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using izibiz.SERVICES.serviceOib;
 using izibiz.SERVICES.serviceDespatch;
 
+
 namespace izibiz.CONTROLLER.InvoiceRequestSection
 {
    public class InvoiceSearchKey
@@ -14,7 +15,7 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
         public static GetInvoiceRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoice;
         public static GetInvoiceWithTypeRequestINVOICE_SEARCH_KEY invoiceSearchKeyGetInvoiceWithType;
         public static GetDespatchAdviceRequestSEARCH_KEY invoiceSearchKeyGetDespatch;
-
+      
 
 
         public static void createInvoiceSearchKeyGetInvoiceRequest()

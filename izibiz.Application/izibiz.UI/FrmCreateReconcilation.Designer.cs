@@ -106,6 +106,7 @@
             this.txtReceiverTitle.Name = "txtReceiverTitle";
             this.txtReceiverTitle.Size = new System.Drawing.Size(196, 30);
             this.txtReceiverTitle.TabIndex = 3;
+            this.txtReceiverTitle.Text = "unvan";
             // 
             // label3
             // 
@@ -124,6 +125,7 @@
             this.txtPeriod.Name = "txtPeriod";
             this.txtPeriod.Size = new System.Drawing.Size(196, 30);
             this.txtPeriod.TabIndex = 9;
+            this.txtPeriod.Text = "201908";
             // 
             // label4
             // 
@@ -172,6 +174,7 @@
             this.txtBsAmount.Name = "txtBsAmount";
             this.txtBsAmount.Size = new System.Drawing.Size(196, 30);
             this.txtBsAmount.TabIndex = 25;
+            this.txtBsAmount.Text = "22";
             // 
             // label10
             // 
@@ -190,6 +193,7 @@
             this.txtBaAmount.Name = "txtBaAmount";
             this.txtBaAmount.Size = new System.Drawing.Size(196, 30);
             this.txtBaAmount.TabIndex = 23;
+            this.txtBaAmount.Text = "21";
             // 
             // label11
             // 
@@ -231,6 +235,11 @@
             this.nmBsDocPiece.Name = "nmBsDocPiece";
             this.nmBsDocPiece.Size = new System.Drawing.Size(196, 27);
             this.nmBsDocPiece.TabIndex = 28;
+            this.nmBsDocPiece.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // nmBaDocPiece
             // 
@@ -239,6 +248,11 @@
             this.nmBaDocPiece.Name = "nmBaDocPiece";
             this.nmBaDocPiece.Size = new System.Drawing.Size(196, 27);
             this.nmBaDocPiece.TabIndex = 27;
+            this.nmBaDocPiece.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // pnlCurrentPiece
             // 
@@ -256,11 +270,15 @@
             // 
             // dateReconcilation
             // 
+            this.dateReconcilation.CustomFormat = "dd.MM.yyyy";
             this.dateReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dateReconcilation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateReconcilation.Location = new System.Drawing.Point(181, 146);
+            this.dateReconcilation.MaxDate = new System.DateTime(2019, 7, 26, 0, 0, 0, 0);
             this.dateReconcilation.Name = "dateReconcilation";
             this.dateReconcilation.Size = new System.Drawing.Size(160, 27);
             this.dateReconcilation.TabIndex = 25;
+            this.dateReconcilation.Value = new System.DateTime(2019, 7, 26, 0, 0, 0, 0);
             // 
             // label15
             // 
@@ -303,6 +321,7 @@
             this.txtCurrentAmount.Name = "txtCurrentAmount";
             this.txtCurrentAmount.Size = new System.Drawing.Size(160, 30);
             this.txtCurrentAmount.TabIndex = 19;
+            this.txtCurrentAmount.Text = "12";
             // 
             // label14
             // 
@@ -355,6 +374,7 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(196, 30);
             this.txtMail.TabIndex = 29;
+            this.txtMail.Text = "gamze@gmail.com";
             // 
             // FrmCreateReconcilation
             // 

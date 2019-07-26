@@ -27,12 +27,48 @@ namespace izibiz.CONTROLLER.DAL
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
-              return  databaseContext.reconcilations.Where(rec => rec.type == reconcilationType).ToList();
+                return databaseContext.reconcilations.Where(rec => rec.type == reconcilationType).ToList();
             }
         }
 
 
 
+        public Boolean updateReconcilationSendStatus(List<string> uuidArr, bool sendStatus)
+        {
+            bool succes=true;
+
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                foreach (string uuid in uuidArr)
+                {
+                    Reconcilations reconcilation = databaseContext.reconcilations.Find(uuid);
+                    if (reconcilation != null)
+                    {
+                        reconcilation.isSend = sendStatus;
+
+                        if (databaseContext.SaveChanges() != 1)
+                        {
+                            succes = false;
+                        }
+                    }
+                    else
+                    {
+                        succes = false;
+                    }
+                }
+                return succes;
+            }
+        }
+
+
+
+        public Reconcilations FindReconcilationWithUuid(string uuid)
+        {
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                return databaseContext.reconcilations.Find(uuid);
+            }
+        }
 
 
 

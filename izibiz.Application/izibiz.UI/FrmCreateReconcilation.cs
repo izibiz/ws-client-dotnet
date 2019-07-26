@@ -34,14 +34,14 @@ namespace izibiz.UI
         {
             if (cmbReconcilationSenario.SelectedItem.ToString() == "BA/BS Mutabakat")
             {
-                reconcilationType = EI.Reconcilation.BaBsDoc.ToString();
+                reconcilationType = EI.Reconcilation.EM.ToString();
                 pnlBaBsDocPiece.Visible = true;
                 pnlCurrentPiece.Visible = false;
                 btnCreate.Enabled = true;
             }
             else
             {
-                reconcilationType = EI.Reconcilation.CurrentReconcilation.ToString();
+                reconcilationType = EI.Reconcilation.CM.ToString();
                 pnlCurrentPiece.Visible = true;
                 pnlBaBsDocPiece.Visible = false;
                 btnCreate.Enabled = true;
@@ -79,7 +79,7 @@ namespace izibiz.UI
 
                     else   // maskedbox degılse
                     {
-                        if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
+                        if (item.Text.Replace(" ", String.Empty).Length ==  0) //text null veya bos ise
                         {
                             item.BackColor = Color.IndianRed;
                             valid = false;
@@ -92,14 +92,14 @@ namespace izibiz.UI
                 }
             }
 
-            if (reconcilationType==EI.Reconcilation.BaBsDoc.ToString())
+            if (reconcilationType==EI.Reconcilation.EM.ToString())
             {
                 foreach (Control item in pnlBaBsDocPiece.Controls)  //grupbox alıcı bilgileri
                 {
                     if (item is TextBox) //texbox  ıse
                     {
 
-                        if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
+                        if (item.Text.Replace(" ", String.Empty).Length ==0) //text null veya bos ise
                         {
                             item.BackColor = Color.IndianRed;
                             valid = false;
@@ -118,7 +118,7 @@ namespace izibiz.UI
                 {
                     if (item is TextBox) //texbox  ıse
                     {
-                        if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
+                        if (item.Text.Replace(" ", String.Empty).Length == 0) //text null veya bos ise
                         {
                             item.BackColor = Color.IndianRed;
                             valid = false;
@@ -148,14 +148,23 @@ namespace izibiz.UI
 
                     reconcilation.uuid = Guid.NewGuid().ToString();
                     reconcilation.customerTitle = txtReceiverTitle.Text;
+                    reconcilation.customerID = msdReceiverVkn.Text;
                     reconcilation.email = txtMail.Text;
                     reconcilation.type = reconcilationType;
+                    reconcilation.createDate =DateTime.Now;
 
-                    if (reconcilationType.Equals(EI.Reconcilation.CurrentReconcilation))//carı mutabakt
+                    if (reconcilationType.Equals(EI.Reconcilation.CM.ToString()))//carı mutabakt
                     {
                         reconcilation.currentAmount = Convert.ToDecimal(txtCurrentAmount.Text);
-                        reconcilation.accountType = cmbAccountType.Text;
-                        reconcilation.createDate = dateReconcilation.Value;
+                        if (cmbAccountType.SelectedIndex == 0)//alacak
+                        {
+                            reconcilation.accountType = EI.ReconcilationAmountType.ALACAK.ToString();
+                        }
+                        else//borclu
+                        {
+                            reconcilation.accountType = EI.ReconcilationAmountType.BORC.ToString();
+                        }
+                        reconcilation.cmDate =dateReconcilation.Value;
                     }
                     else //ba bs mutabakat
                     {

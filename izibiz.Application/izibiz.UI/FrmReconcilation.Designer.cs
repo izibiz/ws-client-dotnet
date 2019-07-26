@@ -30,19 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReconcilation));
             this.btnGetStatusReconcilation = new System.Windows.Forms.Button();
-            this.btnSendReconzilation = new System.Windows.Forms.Button();
+            this.btnSendReconcilation = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
             this.itemNewReconcilation = new System.Windows.Forms.ToolStripMenuItem();
             this.itemBaBsReconsilations = new System.Windows.Forms.ToolStripMenuItem();
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.menuInvoice = new System.Windows.Forms.MenuStrip();
             this.itemCurrentReconcilations = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlDraftDespatch = new System.Windows.Forms.Panel();
+            this.pnlReconcilationButton = new System.Windows.Forms.Panel();
             this.btnSendMailReconcilation = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.menuInvoice.SuspendLayout();
-            this.pnlDraftDespatch.SuspendLayout();
+            this.pnlReconcilationButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetStatusReconcilation
@@ -53,7 +54,7 @@
             this.btnGetStatusReconcilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetStatusReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGetStatusReconcilation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetStatusReconcilation.Location = new System.Drawing.Point(24, 27);
+            this.btnGetStatusReconcilation.Location = new System.Drawing.Point(410, 29);
             this.btnGetStatusReconcilation.Margin = new System.Windows.Forms.Padding(4);
             this.btnGetStatusReconcilation.Name = "btnGetStatusReconcilation";
             this.btnGetStatusReconcilation.Size = new System.Drawing.Size(156, 43);
@@ -62,21 +63,22 @@
             this.btnGetStatusReconcilation.UseVisualStyleBackColor = false;
             this.btnGetStatusReconcilation.Click += new System.EventHandler(this.BtnGetStatusReconcilation_Click);
             // 
-            // btnSendReconzilation
+            // btnSendReconcilation
             // 
-            this.btnSendReconzilation.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSendReconzilation.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnSendReconzilation.FlatAppearance.BorderSize = 2;
-            this.btnSendReconzilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendReconzilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSendReconzilation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendReconzilation.Location = new System.Drawing.Point(207, 27);
-            this.btnSendReconzilation.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSendReconzilation.Name = "btnSendReconzilation";
-            this.btnSendReconzilation.Size = new System.Drawing.Size(156, 43);
-            this.btnSendReconzilation.TabIndex = 25;
-            this.btnSendReconzilation.Text = "Gönder";
-            this.btnSendReconzilation.UseVisualStyleBackColor = false;
+            this.btnSendReconcilation.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnSendReconcilation.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSendReconcilation.FlatAppearance.BorderSize = 2;
+            this.btnSendReconcilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSendReconcilation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSendReconcilation.Location = new System.Drawing.Point(26, 29);
+            this.btnSendReconcilation.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSendReconcilation.Name = "btnSendReconcilation";
+            this.btnSendReconcilation.Size = new System.Drawing.Size(156, 43);
+            this.btnSendReconcilation.TabIndex = 25;
+            this.btnSendReconcilation.Text = "Gönder";
+            this.btnSendReconcilation.UseVisualStyleBackColor = false;
+            this.btnSendReconcilation.Click += new System.EventHandler(this.BtnSendReconcilation_Click);
             // 
             // lblText
             // 
@@ -124,6 +126,7 @@
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tableGrid.Size = new System.Drawing.Size(995, 449);
             this.tableGrid.TabIndex = 44;
+            this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellContentClick);
             // 
             // menuInvoice
             // 
@@ -155,17 +158,17 @@
             this.itemCurrentReconcilations.Text = "Cari Mutabakat";
             this.itemCurrentReconcilations.Click += new System.EventHandler(this.İtemCurrentReconcilations_Click);
             // 
-            // pnlDraftDespatch
+            // pnlReconcilationButton
             // 
-            this.pnlDraftDespatch.Controls.Add(this.btnGetStatusReconcilation);
-            this.pnlDraftDespatch.Controls.Add(this.btnSendMailReconcilation);
-            this.pnlDraftDespatch.Controls.Add(this.btnSendReconzilation);
-            this.pnlDraftDespatch.Location = new System.Drawing.Point(364, 76);
-            this.pnlDraftDespatch.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlDraftDespatch.Name = "pnlDraftDespatch";
-            this.pnlDraftDespatch.Size = new System.Drawing.Size(861, 104);
-            this.pnlDraftDespatch.TabIndex = 51;
-            this.pnlDraftDespatch.Visible = false;
+            this.pnlReconcilationButton.Controls.Add(this.btnGetStatusReconcilation);
+            this.pnlReconcilationButton.Controls.Add(this.btnSendMailReconcilation);
+            this.pnlReconcilationButton.Controls.Add(this.btnSendReconcilation);
+            this.pnlReconcilationButton.Enabled = false;
+            this.pnlReconcilationButton.Location = new System.Drawing.Point(364, 76);
+            this.pnlReconcilationButton.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlReconcilationButton.Name = "pnlReconcilationButton";
+            this.pnlReconcilationButton.Size = new System.Drawing.Size(861, 104);
+            this.pnlReconcilationButton.TabIndex = 51;
             // 
             // btnSendMailReconcilation
             // 
@@ -175,7 +178,7 @@
             this.btnSendMailReconcilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMailReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendMailReconcilation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendMailReconcilation.Location = new System.Drawing.Point(389, 27);
+            this.btnSendMailReconcilation.Location = new System.Drawing.Point(208, 29);
             this.btnSendMailReconcilation.Margin = new System.Windows.Forms.Padding(4);
             this.btnSendMailReconcilation.Name = "btnSendMailReconcilation";
             this.btnSendMailReconcilation.Size = new System.Drawing.Size(156, 43);
@@ -203,25 +206,37 @@
             this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHomePage.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(364, 188);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(383, 20);
+            this.label1.TabIndex = 52;
+            this.label1.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
+            // 
             // FrmReconcilation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 762);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.tableGrid);
-            this.Controls.Add(this.pnlDraftDespatch);
+            this.Controls.Add(this.pnlReconcilationButton);
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.menuInvoice);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmReconcilation";
             this.Text = "FrmReconcilation";
+            this.Load += new System.EventHandler(this.FrmReconcilation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
             this.menuInvoice.ResumeLayout(false);
             this.menuInvoice.PerformLayout();
-            this.pnlDraftDespatch.ResumeLayout(false);
+            this.pnlReconcilationButton.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,15 +244,16 @@
 
         #endregion
         private System.Windows.Forms.Button btnGetStatusReconcilation;
-        private System.Windows.Forms.Button btnSendReconzilation;
+        private System.Windows.Forms.Button btnSendReconcilation;
         private System.Windows.Forms.Label lblText;
         private System.Windows.Forms.ToolStripMenuItem itemNewReconcilation;
         private System.Windows.Forms.ToolStripMenuItem itemBaBsReconsilations;
         private System.Windows.Forms.DataGridView tableGrid;
         private System.Windows.Forms.MenuStrip menuInvoice;
-        private System.Windows.Forms.Panel pnlDraftDespatch;
+        private System.Windows.Forms.Panel pnlReconcilationButton;
         private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.ToolStripMenuItem itemCurrentReconcilations;
         private System.Windows.Forms.Button btnSendMailReconcilation;
+        private System.Windows.Forms.Label label1;
     }
 }

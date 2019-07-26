@@ -645,4 +645,37 @@
   <data name="clickRowInvoice" xml:space="preserve">
     <value>İşlem yapmak istediğiniz faturanın bulunduğu satırın uzerıne tıklayınız.</value>
   </data>
+  <data name="accountType" xml:space="preserve">
+    <value>Hesap Tipi</value>
+  </data>
+  <data name="baDocAmount" xml:space="preserve">
+    <value>Ba Döküman tutarı</value>
+  </data>
+  <data name="baDocPiece" xml:space="preserve">
+    <value>Ba Döküman Adeti</value>
+  </data>
+  <data name="bsDocAmount" xml:space="preserve">
+    <value>Bs Döküman Tutarı</value>
+  </data>
+  <data name="bsDocPiece" xml:space="preserve">
+    <value>Bs Döküman Adeti</value>
+  </data>
+  <data name="cmDate" xml:space="preserve">
+    <value>Cari Mutabakat Tarihi</value>
+  </data>
+  <data name="createDate" xml:space="preserve">
+    <value>Oluşturma Tarihi</value>
+  </data>
+  <data name="currentAmount" xml:space="preserve">
+    <value>Mevcut Tutar</value>
+  </data>
+  <data name="isSend" xml:space="preserve">
+    <value>Gönderildi Mi</value>
+  </data>
+  <data name="mailStatusCode" xml:space="preserve">
+    <value>Mail Durum kodu</value>
+  </data>
+  <data name="period" xml:space="preserve">
+    <value>Dönem</value>
+  </data>
 </root>
