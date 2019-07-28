@@ -19,6 +19,7 @@ namespace izibiz.CONTROLLER.Singleton
         private static ArchiveController archiveController = null;
         private static DespatchAdviceController despatchController = null;
         private static GibUserController gibUserController = null;
+        private static ReconcilationController reconcilationController = null;
         private static InvoiceDal invoiceDal = null;
         private static ArchiveInvoicesDal archiveInvoiceDal = null;
         private static ArchiveReportsDal archiveReportsDal = null;
@@ -26,7 +27,7 @@ namespace izibiz.CONTROLLER.Singleton
         private static IdSerilazeDal idSerilazeDal = null;
         private static UserInformationDal userInformationDal = null;
         private static GibUsersDal gibUsersDal = null;
-
+        private static ReconcilationDal reconcilationDal = null;
 
 
 
@@ -35,6 +36,19 @@ namespace izibiz.CONTROLLER.Singleton
         }
 
 
+
+        public static ReconcilationDal reconcilationDalGet
+        {
+            get
+            {
+                if (null == reconcilationDal)
+                {
+                    reconcilationDal = new ReconcilationDal();
+                }
+
+                return reconcilationDal;
+            }
+        }
 
         public static GibUsersDal gibUsersDalGet
         {
@@ -133,7 +147,18 @@ namespace izibiz.CONTROLLER.Singleton
             }
         }
 
-   
+        public static ReconcilationController reconcilationControllerGet
+        {
+            get
+            {
+                if (null == reconcilationController)
+                {
+                    reconcilationController = new ReconcilationController();
+                }
+
+                return reconcilationController;
+            }
+        }
 
 
         public static ArchiveController archiveControllerGet

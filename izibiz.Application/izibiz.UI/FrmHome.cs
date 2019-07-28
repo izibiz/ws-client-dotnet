@@ -81,5 +81,12 @@ namespace izibiz.UI
             frmDespatch.Show();
             this.Hide();
         }
+
+        private void BtnMutabakat_Click(object sender, EventArgs e)
+        {
+            FrmReconcilation frmReconsilation = new FrmReconcilation();
+            frmReconsilation.Show();
+            this.Hide();
+        }
     }
 }

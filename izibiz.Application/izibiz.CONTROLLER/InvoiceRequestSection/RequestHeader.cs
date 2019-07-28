@@ -19,6 +19,7 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
         public static SERVICES.serviceOib.REQUEST_HEADERType getRequestHeaderOib;
         public static SERVICES.serviceDespatch.REQUEST_HEADERType getRequestHeaderDespatch;
         public static SERVICES.serviceArchive.REQUEST_HEADERType getRequestHeaderArchive;
+        public static SERVICES.serviceReconcilation.REQUEST_HEADERType getRequestHeaderReconcilation;
 
 
 
@@ -69,7 +70,15 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
             };
         }
 
-
+        public static void createRequestHeaderReconcilation()
+        {
+            getRequestHeaderReconcilation = new SERVICES.serviceReconcilation.REQUEST_HEADERType()
+            {
+                SESSION_ID = AuthenticationController.sesionID,
+                APPLICATION_NAME = "izibiz.Application",
+                COMPRESSED = EI.ActiveOrPasive.Y.ToString()
+            };
+        }
 
     }
 }

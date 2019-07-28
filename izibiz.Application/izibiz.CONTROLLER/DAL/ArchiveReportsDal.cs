@@ -22,7 +22,7 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public void addArcReportFromReportArr(REPORT[] reportArr)
+        public int addArcReportFromReportArr(REPORT[] reportArr)
         {
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
@@ -40,7 +40,7 @@ namespace izibiz.CONTROLLER.DAL
                         databaseContext.archiveReports.Add(arcReport);
                     }
                 }
-                databaseContext.SaveChanges();
+               return databaseContext.SaveChanges();
             }
         }
 

@@ -251,12 +251,32 @@ namespace izibiz.UI
             {
                 if (gridMenuType == nameof(EI.Invoice.ArchiveInvoices))
                 {
-                    //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                    gridArchiveUpdateList(Singl.archiveControllerGet.getArchiveListOnService());
+                    //servisten yenı faturaları cek db ye kaydet.. hata var mı
+                    string errorMessage = Singl.archiveControllerGet.getArchiveListOnServiceAndSaveDb();
+
+                    if (errorMessage == null)//islem basarılı sekılde kaydedılmısse
+                    {
+                        gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveList(false));
+                    }
+                    else //islem basarızsa
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else if (gridMenuType == nameof(EI.ArchiveReports.ArchiveReports))
-                {
-                    gridReportUpdateList(Singl.archiveControllerGet.getReportListOnService());
+                { 
+                    
+                    //servisten yenı faturaları cek db ye kaydet.. hata var mı
+                    string errorMessage = Singl.archiveControllerGet.getReportListOnServiceAndSaveDb();
+
+                    if (errorMessage == null)//islem basarılı sekılde kaydedılmısse
+                    {
+                        gridReportUpdateList(Singl.ArchiveReportsDalGet.getReportList());
+                    }
+                    else //islem basarızsa
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex)

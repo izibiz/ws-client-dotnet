@@ -1,4 +1,5 @@
 ﻿using izibiz.COMMON;
+using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
 using izibiz.MODEL.DbTablesModels;
@@ -112,12 +113,46 @@ namespace izibiz.CONTROLLER.DAL
 
 
 
-        public void addInvoice(Invoices inv)
+        public int addInvoiceToDbAndSaveContentOnDisk(INVOICE[] invoiceArray, string direction)
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                dbContext.invoices.Add(inv);
-                dbContext.SaveChanges();
+
+                Invoices invoice;
+                foreach (var inv in invoiceArray)
+                {
+                    invoice = new Invoices();
+
+                    invoice.ID = inv.ID;
+                    invoice.uuid = inv.UUID;
+                    invoice.direction = direction;
+                    invoice.issueDate = inv.HEADER.ISSUE_DATE;
+                    invoice.profileId = inv.HEADER.PROFILEID;
+                    invoice.invoiceType = inv.HEADER.INVOICE_TYPE_CODE;
+                    invoice.suplier = inv.HEADER.SUPPLIER;
+                    invoice.senderVkn = inv.HEADER.SENDER;
+                    invoice.receiverVkn = inv.HEADER.RECEIVER;
+                    invoice.cDate = inv.HEADER.CDATE;
+                    invoice.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
+                    invoice.status = inv.HEADER.STATUS;
+                    invoice.gibStatusCode = inv.HEADER.GIB_STATUS_CODE;
+                    invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
+                    invoice.senderAlias = inv.HEADER.FROM;
+                    invoice.receiverAlias = inv.HEADER.TO;
+                    invoice.folderPath = FolderControl.createInvoiceDocPath(inv.ID, direction, nameof(EI.DocumentType.XML));
+
+                    byte[] unCompressedContent = Compress.UncompressFile(inv.CONTENT.Value);
+                    FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(unCompressedContent), invoice.folderPath);
+
+                    if (direction == nameof(EI.Direction.DRAFT))
+                    {
+                        invoice.draftFlag = EI.ActiveOrPasive.Y.ToString();  //servisten cektıklerımız flag Y  ☺
+                    }
+
+                    dbContext.invoices.Add(invoice);
+                }
+              var i= dbContext.SaveChanges();
+                return i;
             }
         }
 

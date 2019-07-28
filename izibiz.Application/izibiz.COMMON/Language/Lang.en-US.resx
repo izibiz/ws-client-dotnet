@@ -645,4 +645,37 @@
   <data name="clickRowInvoice" xml:space="preserve">
     <value>Click on the line where the invoice you want to trade is located.</value>
   </data>
+  <data name="accountType" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="baDocAmount" xml:space="preserve">
+    <value>Ba Document Amount</value>
+  </data>
+  <data name="baDocPiece" xml:space="preserve">
+    <value>Ba Document Piece</value>
+  </data>
+  <data name="bsDocAmount" xml:space="preserve">
+    <value>Bs Document Amount</value>
+  </data>
+  <data name="bsDocPiece" xml:space="preserve">
+    <value>Bs Document Piece</value>
+  </data>
+  <data name="cmDate" xml:space="preserve">
+    <value>Current Reconcilation Date</value>
+  </data>
+  <data name="createDate" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="currentAmount" xml:space="preserve">
+    <value>Current Amount</value>
+  </data>
+  <data name="isSend" xml:space="preserve">
+    <value>Is Send</value>
+  </data>
+  <data name="mailStatusCode" xml:space="preserve">
+    <value>Mail Status Code</value>
+  </data>
+  <data name="period" xml:space="preserve">
+    <value>Period</value>
+  </data>
 </root>

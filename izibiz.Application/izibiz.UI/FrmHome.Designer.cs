@@ -48,9 +48,10 @@
             this.btnInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnInvoice.ForeColor = System.Drawing.Color.Snow;
-            this.btnInvoice.Location = new System.Drawing.Point(12, 36);
+            this.btnInvoice.Location = new System.Drawing.Point(16, 44);
+            this.btnInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.btnInvoice.Name = "btnInvoice";
-            this.btnInvoice.Size = new System.Drawing.Size(169, 130);
+            this.btnInvoice.Size = new System.Drawing.Size(225, 160);
             this.btnInvoice.TabIndex = 26;
             this.btnInvoice.Text = "E-Fatura";
             this.btnInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -67,9 +68,10 @@
             this.btnSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSmm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSmm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSmm.Location = new System.Drawing.Point(197, 202);
+            this.btnSmm.Location = new System.Drawing.Point(263, 256);
+            this.btnSmm.Margin = new System.Windows.Forms.Padding(4);
             this.btnSmm.Name = "btnSmm";
-            this.btnSmm.Size = new System.Drawing.Size(141, 122);
+            this.btnSmm.Size = new System.Drawing.Size(188, 150);
             this.btnSmm.TabIndex = 21;
             this.btnSmm.Text = "E-Serbest Meslek";
             this.btnSmm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -86,9 +88,10 @@
             this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnArchive.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnArchive.Location = new System.Drawing.Point(212, 54);
+            this.btnArchive.Location = new System.Drawing.Point(283, 66);
+            this.btnArchive.Margin = new System.Windows.Forms.Padding(4);
             this.btnArchive.Name = "btnArchive";
-            this.btnArchive.Size = new System.Drawing.Size(126, 117);
+            this.btnArchive.Size = new System.Drawing.Size(168, 144);
             this.btnArchive.TabIndex = 25;
             this.btnArchive.Text = "E-Arşiv";
             this.btnArchive.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -105,9 +108,10 @@
             this.btnMüstahsil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMüstahsil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMüstahsil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnMüstahsil.Location = new System.Drawing.Point(28, 202);
+            this.btnMüstahsil.Location = new System.Drawing.Point(509, 271);
+            this.btnMüstahsil.Margin = new System.Windows.Forms.Padding(4);
             this.btnMüstahsil.Name = "btnMüstahsil";
-            this.btnMüstahsil.Size = new System.Drawing.Size(129, 110);
+            this.btnMüstahsil.Size = new System.Drawing.Size(172, 135);
             this.btnMüstahsil.TabIndex = 22;
             this.btnMüstahsil.Text = "E-Müstahsil";
             this.btnMüstahsil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -124,9 +128,10 @@
             this.btnIrsaliye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIrsaliye.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnIrsaliye.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnIrsaliye.Location = new System.Drawing.Point(385, 54);
+            this.btnIrsaliye.Location = new System.Drawing.Point(513, 66);
+            this.btnIrsaliye.Margin = new System.Windows.Forms.Padding(4);
             this.btnIrsaliye.Name = "btnIrsaliye";
-            this.btnIrsaliye.Size = new System.Drawing.Size(126, 125);
+            this.btnIrsaliye.Size = new System.Drawing.Size(168, 154);
             this.btnIrsaliye.TabIndex = 24;
             this.btnIrsaliye.Text = "E-İrsaliye";
             this.btnIrsaliye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -143,20 +148,22 @@
             this.btnMutabakat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMutabakat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMutabakat.ForeColor = System.Drawing.Color.White;
-            this.btnMutabakat.Location = new System.Drawing.Point(370, 202);
+            this.btnMutabakat.Location = new System.Drawing.Point(16, 256);
+            this.btnMutabakat.Margin = new System.Windows.Forms.Padding(4);
             this.btnMutabakat.Name = "btnMutabakat";
-            this.btnMutabakat.Size = new System.Drawing.Size(141, 122);
+            this.btnMutabakat.Size = new System.Drawing.Size(188, 150);
             this.btnMutabakat.TabIndex = 23;
             this.btnMutabakat.Text = "E-Mutabakat";
             this.btnMutabakat.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMutabakat.UseVisualStyleBackColor = true;
+            this.btnMutabakat.Click += new System.EventHandler(this.BtnMutabakat_Click);
             // 
             // FrmHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(553, 397);
+            this.ClientSize = new System.Drawing.Size(737, 459);
             this.Controls.Add(this.btnInvoice);
             this.Controls.Add(this.btnSmm);
             this.Controls.Add(this.btnArchive);
@@ -164,6 +171,7 @@
             this.Controls.Add(this.btnIrsaliye);
             this.Controls.Add(this.btnMutabakat);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmHome";

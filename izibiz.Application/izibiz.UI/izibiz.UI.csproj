@@ -120,6 +120,18 @@
     <Compile Include="FrmCreateInvoice.Designer.cs">
       <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateReconcilation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateReconcilation.Designer.cs">
+      <DependentUpon>FrmCreateReconcilation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReconcilation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReconcilation.Designer.cs">
+      <DependentUpon>FrmReconcilation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWriteMail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateInvoice.resx">
       <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateReconcilation.resx">
+      <DependentUpon>FrmCreateReconcilation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReconcilation.resx">
+      <DependentUpon>FrmReconcilation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWriteMail.resx">
       <DependentUpon>FrmWriteMail.cs</DependentUpon>

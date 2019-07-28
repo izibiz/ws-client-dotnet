@@ -854,8 +854,18 @@ namespace izibiz.UI
         {
             try
             {
-                //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.Direction.IN)));
+   
+                //servisten yenı irsaliyeleri cek db ye kaydet ve datagridde göster            
+                string errorMessage = Singl.invoiceControllerGet.getInvoiceOnServiceAndSaveDb(nameof(EI.Direction.IN));
+
+                if (errorMessage == null)//islem basarılı sekılde kaydedılmısse
+                {
+                    gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.IN)));
+                }
+                else //islem basarızsa
+                {
+                    MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -1160,8 +1170,18 @@ namespace izibiz.UI
         {
             try
             {
-                //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-                gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(gridDirection));
+               
+                //servisten yenı irsaliyeleri cek db ye kaydet ve datagridde göster            
+                string errorMessage = Singl.invoiceControllerGet.getInvoiceOnServiceAndSaveDb(gridDirection);
+
+                if (errorMessage == null)//islem basarılı sekılde kaydedılmısse
+                {
+                    gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(gridDirection));
+                }
+                else //islem basarızsa
+                {
+                    MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -1171,9 +1191,9 @@ namespace izibiz.UI
                 }
                 MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
-                MessageBox.Show(Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex+"   "+Lang.dbFault, "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -1212,16 +1232,36 @@ namespace izibiz.UI
 
         private void btnTakeInvDraft_Click(object sender, EventArgs e)
         {
-            //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.Direction.DRAFT)));
+
+            //servisten yenı irsaliyeleri cek db ye kaydet ve datagridde göster            
+            string errorMessage = Singl.invoiceControllerGet.getInvoiceOnServiceAndSaveDb(nameof(EI.Direction.DRAFT));
+
+            if (errorMessage == null)//islem basarılı sekılde kaydedılmısse
+            {
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.DRAFT)));
+            }
+            else //islem basarızsa
+            {
+                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
 
         private void btnTakeInvOut_Click(object sender, EventArgs e)
         {
-            //servisten yenı faturaları cek db ye kaydet ve datagridde göster
-            gridUpdateInvoiceList(Singl.invoiceControllerGet.getInvoiceListOnService(nameof(EI.Direction.OUT)));
+            
+            //servisten yenı irsaliyeleri cek db ye kaydet ve datagridde göster            
+            string errorMessage = Singl.invoiceControllerGet.getInvoiceOnServiceAndSaveDb(nameof(EI.Direction.OUT));
+
+            if (errorMessage == null)//islem basarılı sekılde kaydedılmısse
+            {
+                gridUpdateInvoiceList(Singl.invoiceDalGet.getInvoiceList(nameof(EI.Direction.OUT)));
+            }
+            else //islem basarızsa
+            {
+                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnIncomingInvGetState_Click_1(object sender, EventArgs e)

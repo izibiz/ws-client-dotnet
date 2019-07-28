@@ -75,7 +75,7 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
-        public int addArchiveFromEArchiveAndSaveContentOnDisk(EARCHIVEINV[] archiveArr)
+        public int addArchiveToDbAndSaveContentOnDisk(EARCHIVEINV[] archiveArr)
         {
             ArchiveInvoices archive;
 
@@ -105,6 +105,8 @@ namespace izibiz.CONTROLLER.DAL
                         archive.folderPath = FolderControl.inboxFolderArchive + archive.ID + "." + nameof(EI.DocumentType.XML);
 
                         FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(Compress.UncompressFile(arc.CONTENT.Value)), archive.folderPath);
+
+                    
 
                         databaseContext.archiveInvoices.Add(archive);
                     }

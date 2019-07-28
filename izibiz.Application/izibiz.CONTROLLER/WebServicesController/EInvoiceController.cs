@@ -38,8 +38,11 @@ namespace izibiz.CONTROLLER.Web_Services
         }
 
 
-
-        public List<Invoices> getInvoiceListOnService(string direction)
+        /// <summary>
+        /// servisten getInvoice ardından mark ınvoıce ve db ye kaydetme ıslemını yapar
+        /// </summary>
+        /// 
+        public string getInvoiceOnServiceAndSaveDb(string direction)
         {
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
@@ -62,57 +65,28 @@ namespace izibiz.CONTROLLER.Web_Services
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
                 if (invoiceArray != null && invoiceArray.Length > 0)
                 {
-                    invoiceMarkRead(invoiceArray);
+                    string markErrorMessage = invoiceMarkRead(invoiceArray);
+                    if (markErrorMessage != null) //mark despatch dan donen error message varsa
+                    {
+                        return markErrorMessage;
+                    }
                     //getirilen faturaları db ye kaydet
-                    SaveInvoiceArrayToDb(invoiceArray, direction);
+                    if (Singl.invoiceDalGet.addInvoiceToDbAndSaveContentOnDisk(invoiceArray, direction) != invoiceArray.Length)
+                    {
+                        return "DataBase'e kaydetme işlemi başarısız";
+                    }
+                    return null;
                 }
-                return Singl.invoiceDalGet.getInvoiceList(direction);
+                return "servisten getirilecek fatura bulunamdı";
             }
         }
 
 
-        private void SaveInvoiceArrayToDb(INVOICE[] invoiceArray, string direction)
-        {
-            Invoices invoice;
-            foreach (var inv in invoiceArray)
-            {
-                invoice = new Invoices();
-
-                invoice.ID = inv.ID;
-                invoice.uuid = inv.UUID;
-                invoice.direction = direction;
-                invoice.issueDate = inv.HEADER.ISSUE_DATE;
-                invoice.profileId = inv.HEADER.PROFILEID;
-                invoice.invoiceType = inv.HEADER.INVOICE_TYPE_CODE;
-                invoice.suplier = inv.HEADER.SUPPLIER;
-                invoice.senderVkn = inv.HEADER.SENDER;
-                invoice.receiverVkn = inv.HEADER.RECEIVER;
-                invoice.cDate = inv.HEADER.CDATE;
-                invoice.envelopeIdentifier = inv.HEADER.ENVELOPE_IDENTIFIER;
-                invoice.status = inv.HEADER.STATUS;
-                invoice.gibStatusCode = inv.HEADER.GIB_STATUS_CODE;
-                invoice.gibStatusDescription = inv.HEADER.GIB_STATUS_DESCRIPTION;
-                invoice.senderAlias = inv.HEADER.FROM;
-                invoice.receiverAlias = inv.HEADER.TO;
-                invoice.folderPath = FolderControl.createInvoiceDocPath(inv.ID, direction, nameof(EI.DocumentType.XML));
-
-                byte[] unCompressedContent = Compress.UncompressFile(inv.CONTENT.Value);
-                FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(unCompressedContent), invoice.folderPath);
-
-                if (direction == nameof(EI.Direction.DRAFT))
-                {
-                    invoice.draftFlag = EI.ActiveOrPasive.Y.ToString();  //servisten cektıklerımız flag Y  ☺
-                }
-
-                Singl.invoiceDalGet.addInvoice(invoice);
-            }
-
-        }
 
 
 
         /// <summary>
-        /// EGER DİSKE YAZDIGIM XML DOSYASI SILINMIS ISE SILINEN INVOICESIN CONTENTINI DISKE YAZMAK ICIN TEKRAR CAGIRIRIM
+        /// basarılıysa ınvoice content doner basarısızsa null doner 
         /// </summary>
         public string getInvoiceWithUuidOnService(string uuid, string direction)
         {
@@ -151,7 +125,7 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-        private void invoiceMarkRead(INVOICE[] invoiceList)
+        private string invoiceMarkRead(INVOICE[] invoiceList)
         {
             using (new OperationContextScope(eInvoiceOIBPortClient.InnerChannel))
             {
@@ -175,6 +149,15 @@ namespace izibiz.CONTROLLER.Web_Services
                 markReq.MARK.valueSpecified = true;
 
                 MarkInvoiceResponse markRes = eInvoiceOIBPortClient.MarkInvoice(markReq);
+
+                if (markRes.REQUEST_RETURN != null && markRes.REQUEST_RETURN.RETURN_CODE == 0)//basarılıysa
+                {
+                    return null;
+                }
+                else
+                {
+                    return "mark ınvoice basarısız";
+                }
             }
         }
 
@@ -226,7 +209,12 @@ namespace izibiz.CONTROLLER.Web_Services
 
                 invoiceList.Clear();
 
-                return eInvoiceOIBPortClient.SendInvoice(req).REQUEST_RETURN.RETURN_CODE;
+                var res = eInvoiceOIBPortClient.SendInvoice(req);
+                if (res.REQUEST_RETURN != null)
+                {
+                    return res.REQUEST_RETURN.RETURN_CODE;
+                }
+                return -1;
             }
         }
 
@@ -249,8 +237,12 @@ namespace izibiz.CONTROLLER.Web_Services
                 }
                 req.INVOICE = invoiceList.ToArray();
                 invoiceList.Clear();
-
-                return eInvoiceOIBPortClient.LoadInvoice(req).REQUEST_RETURN.RETURN_CODE;
+                var res = eInvoiceOIBPortClient.LoadInvoice(req);
+                if (res.REQUEST_RETURN != null)
+                {
+                    return res.REQUEST_RETURN.RETURN_CODE;
+                }
+                return -1;
             }
         }
 
@@ -269,7 +261,12 @@ namespace izibiz.CONTROLLER.Web_Services
                 };
                 invoiceList.Clear();
 
-                return eInvoiceOIBPortClient.SendInvoiceResponseWithServerSign(req).REQUEST_RETURN.RETURN_CODE;
+                var res= eInvoiceOIBPortClient.SendInvoiceResponseWithServerSign(req);
+                if (res.REQUEST_RETURN != null)
+                {
+                    return res.REQUEST_RETURN.RETURN_CODE;
+                }
+                return -1;
             }
         }
 
@@ -284,8 +281,9 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-
-
+        /// <summary>
+        /// islem basarılıysa status doner degılse null doner
+        /// </summary>
         public GetInvoiceStatusResponseINVOICE_STATUS getInvoiceStatatus(string invoiceUuid)
         {
             INVOICE invoice = new INVOICE();
@@ -299,7 +297,7 @@ namespace izibiz.CONTROLLER.Web_Services
                     INVOICE = invoice,
                 };
 
-                return eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
+              return eInvoiceOIBPortClient.GetInvoiceStatus(req).INVOICE_STATUS;
             }
         }
 
@@ -335,7 +333,7 @@ namespace izibiz.CONTROLLER.Web_Services
                     {
                         FolderControl.saveInvDocContentWithByte(Compress.UncompressFile(invoice.CONTENT.Value), direction, invoice.ID, nameof(EI.DocumentType.XML));
                     }
-                    invoiceMarkRead(invoiceArr);
+                    //db ye kaydetmedıgım ıcın aldıgım faturaları mark ınv yapmadım
 
                     if (invoiceArr.Length == 100) //butun okunmamısları almak ıcın ... limit 100 vermıstık
                     {
@@ -349,7 +347,9 @@ namespace izibiz.CONTROLLER.Web_Services
 
 
 
-
+        /// <summary>
+        /// basarılıysa ınv content doner degılse null
+        /// </summary>
 
         public byte[] getInvoiceType(string invoiceUuid, string documentType, string direction)
         {

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.izibiz.com/ei/wsdl/reconciliation" name="Reconciliation" targetNamespace="http://schemas.izibiz.com/ei/wsdl/reconciliation" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/Reconciliation?xsd=4" namespace="http://schemas.izibiz.com/ei/wsdl/reconciliation" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SendReconciliationRequestMessage">
+    <wsdl:part name="request" element="tns:SendReconciliationRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendReconciliationResponseMessage">
+    <wsdl:part name="response" element="tns:SendReconciliationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReconciliationStatusRequestMessage">
+    <wsdl:part name="request" element="tns:GetReconciliationStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetReconciliationStatusResponseMessage">
+    <wsdl:part name="response" element="tns:GetReconciliationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailReconciliationRequestMessage">
+    <wsdl:part name="request" element="tns:SendMailReconciliationRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendMailReconciliationResponseMessage">
+    <wsdl:part name="response" element="tns:SendMailReconciliationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestFaultMessage">
+    <wsdl:part name="parameters" element="tns:RequestFault" />
+  </wsdl:message>
+  <wsdl:portType name="ReconciliationPort">
+    <wsdl:operation name="SendReconciliation">
+      <wsdl:input message="tns:SendReconciliationRequestMessage" />
+      <wsdl:output message="tns:SendReconciliationResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReconciliationStatus">
+      <wsdl:input message="tns:GetReconciliationStatusRequestMessage" />
+      <wsdl:output message="tns:GetReconciliationStatusResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMailReconciliation">
+      <wsdl:input message="tns:SendMailReconciliationRequestMessage" />
+      <wsdl:output message="tns:SendMailReconciliationResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReconciliationPortBinding" type="tns:ReconciliationPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendReconciliation">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetReconciliationStatus">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailReconciliation">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Reconciliation">
+    <wsdl:port name="ReconciliationPort" binding="tns:ReconciliationPortBinding">
+      <soap:address location="https://efaturatest.izibiz.com.tr:443/Reconciliation" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -139,6 +139,41 @@ namespace izibiz.COMMON
             reportFlagDesc
 
         }
+        public enum ReconcilationAmountType
+        {
+            ALACAK,
+            BORC
+        }
+
+
+        public enum Reconcilation
+        {
+            Reconcilations,
+            EM,
+            CM,
+            uuid,
+            type,
+            customerID,
+            period,
+            cmDate,
+            status,
+            statusCode,
+            createDate,
+            email,
+            emailStatusCode,
+            emailStatusDesc,
+            emailStatusDate,
+            isSend,
+            customerTitle,
+            baDocPiece,
+            bsDocPiece,
+            baDocAmount,
+            bsDocAmount,
+            currentAmount,
+            accountType
+
+        }
+
 
 
         public enum Profileid

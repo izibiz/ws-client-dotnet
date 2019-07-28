@@ -5,7 +5,7 @@ using System.Text;
 
 namespace izibiz.COMMON.FileControl
 {
-   public static class Compress
+    public static class Compress
     {
         private static void CopyTo(Stream src, Stream dest)
         {
@@ -20,23 +20,23 @@ namespace izibiz.COMMON.FileControl
         }
 
 
-        public static string Unzip(byte[] bytes)
-        {
-            using (var msi = new MemoryStream(bytes))
-            using (var mso = new MemoryStream())
-            {
-                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
-                {
-                    //gs.CopyTo(mso);
-                    CopyTo(gs, mso);
-                }
+        //public static string Unzip(byte[] bytes)
+        //{
+        //    using (var msi = new MemoryStream(bytes))
+        //    using (var mso = new MemoryStream())
+        //    {
+        //        using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+        //        {
+        //            //gs.CopyTo(mso);
+        //            CopyTo(gs, mso);
+        //        }
 
-                return Encoding.UTF8.GetString(mso.ToArray());
-            }
-        }
+        //        return Encoding.UTF8.GetString(mso.ToArray());
+        //    }
+        //}
 
 
-            public static byte[] UncompressFile(byte[] docData)
+        public static byte[] UncompressFile(byte[] docData)
         {
             byte[] zipsizData = { };
             MemoryStream zippedStream = new MemoryStream(docData);
@@ -78,7 +78,7 @@ namespace izibiz.COMMON.FileControl
 
         //public static byte[] compressContent(string xmlPath)
         //{
-            
+
         //    String zipPaht = @"D:\temp\TASLAK\aaanew.zip";  //buffer gorevı gorur
 
         //    using (ZipArchive newFile = ZipFile.Open(zipPaht, ZipArchiveMode.Create))
