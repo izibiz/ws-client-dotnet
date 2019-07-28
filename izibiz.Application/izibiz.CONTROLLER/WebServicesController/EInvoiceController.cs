@@ -318,8 +318,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
                 req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoice;
-                req.INVOICE_SEARCH_KEY.LIMIT = 10;//100 de null value error ?
-                req.INVOICE_SEARCH_KEY.READ_INCLUDED = true; //null value error?
+                req.INVOICE_SEARCH_KEY.READ_INCLUDED = true; //okunmusları da al
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.INVOICE_SEARCH_KEY.DIRECTION = direction;

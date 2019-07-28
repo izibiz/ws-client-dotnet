@@ -85,7 +85,7 @@ namespace izibiz.CONTROLLER.DAL
                 {
                      archive = new ArchiveInvoices();
 
-                    //bu row unıque degerı dbye daha once eklenmemısse
+                    //bu row uuid degerı dbye daha once eklenmemısse
                     if (databaseContext.archiveInvoices.Find(archive.uuid) == null)
                     {
                         archive.ID = arc.HEADER.INVOICE_ID;

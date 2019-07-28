@@ -55,7 +55,11 @@ namespace izibiz.UI
             }
             #region writeAllFormItem
             //eleman text yazdır
+            //panel gelen irsaliye
 
+            //panel giden irsaliye
+
+            //panel taslak irsaliye
             #endregion
         }
 
@@ -356,6 +360,7 @@ namespace izibiz.UI
             if (gridListDespatch.Count == 0)
             {
                 MessageBox.Show("Getirilecek irsaliye bulunamadı");
+                lblRowClickInf.Visible = false;
             }
             else
             {
@@ -372,6 +377,9 @@ namespace izibiz.UI
                 {
                     tableGrid.Columns[EI.Despatch.draftFlag.ToString()].Visible = false;
                 }
+
+                lblRowClickInf.Text = Lang.clickRowInvoice;
+                lblRowClickInf.Visible = true;
             }
         }
 
