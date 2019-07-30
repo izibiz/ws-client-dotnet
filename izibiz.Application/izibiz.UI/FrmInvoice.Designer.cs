@@ -523,9 +523,9 @@
             this.lblInformation.AutoSize = true;
             this.lblInformation.Location = new System.Drawing.Point(316, 129);
             this.lblInformation.Name = "lblInformation";
-            this.lblInformation.Size = new System.Drawing.Size(35, 13);
+            this.lblInformation.Size = new System.Drawing.Size(239, 13);
             this.lblInformation.TabIndex = 32;
-            this.lblInformation.Text = "label1";
+            this.lblInformation.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
             this.lblInformation.Visible = false;
             // 
             // FrmInvoice

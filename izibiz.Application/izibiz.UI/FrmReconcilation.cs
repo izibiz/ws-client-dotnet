@@ -13,6 +13,7 @@ using izibiz.SERVICES.serviceReconcilation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace izibiz.UI
 {
@@ -27,6 +28,46 @@ namespace izibiz.UI
         {
             InitializeComponent();
         }
+
+
+        private void FrmReconcilation_Load(object sender, EventArgs e)
+        {
+            localizationItemTextWrite();
+        }
+
+
+
+
+        private void localizationItemTextWrite()
+        {
+            //dil secimini sorgula
+            if (Settings.Default.language == "English")
+            {
+                Lang.Culture = new CultureInfo("en-US");
+            }
+            else
+            {
+                Lang.Culture = new CultureInfo("");
+            }
+            #region writeAllFormItem
+            //eleman text yazdır
+
+            this.Name = Lang.formReconcilation;
+            lblInf.Text = Lang.rowClickForProses;
+            btnHomePage.Text = Lang.homePage;
+            lblWelcome.Text = Lang.welcome;
+            itemCMReconcilations.Text = Lang.cmReconcilations;
+            itemEMReconsilations.Text = Lang.emReconcilations;
+            itemNewReconcilation.Text = Lang.newReconcilation;
+
+            //panel butonlar
+            btnSendReconcilation.Text = Lang.send;
+            btnSendMailReconcilation.Text = Lang.sendToMail;
+            btnGetStatusReconcilation.Text = Lang.updateState;
+            #endregion
+
+        }
+
 
 
 
@@ -122,7 +163,7 @@ namespace izibiz.UI
 
             if (gridListReconcilation.Count == 0)
             {
-                MessageBox.Show("Getirilecek Mutabakat bulunamadı");
+                MessageBox.Show(Lang.noReconcilation);//"Getirilecek Mutabakat bulunamadı"
             }
             else
             {
@@ -239,7 +280,38 @@ namespace izibiz.UI
             try
             {
 
+                List<string> uuidList = new List<string>();
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {
+                    uuidList.Add(row.Cells[nameof(EI.Reconcilation.uuid)].Value.ToString());
+                }
 
+
+                if (uuidList.Count > 0) //gonderilerecek faturalar varsa
+                {
+                    var status = Singl.reconcilationControllerGet.getStatusReconcilation(uuidList.ToArray());
+
+                    if (status != null)
+                    {
+                        MessageBox.Show(Lang.succGetStatus);//"Servisten durum sorgulama işlemi basarılı"
+
+                        //db ye durumu gönderildi olarak guncelle
+                        if (Singl.reconcilationDalGet.updateStatusReconcilation(status))
+
+                            MessageBox.Show(Lang.succSaveStatus);//"Db ye  durum kaydetme basarılı"
+
+                        // guncel durumunu gostermek ıcın tabloyu yenıleyelım
+                        gridUpdateDespatchList(Singl.reconcilationDalGet.getReconcilationsWithType(reconcilationType));
+                    }
+                    else
+                    {
+                        MessageBox.Show(Lang.unSuccSaveStatus);//"Db ye mutaabakın  durumunu kaydetme basarısız"
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(Lang.unsuccesChangeState, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//"Servisten durum sorgulama işlemi basarısız"
+                }
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
@@ -302,7 +374,7 @@ namespace izibiz.UI
 
                 if (beforeSendList.Count > 0) //onceden gonderılmıs olanlar
                 {
-                    MessageBox.Show(string.Join(Environment.NewLine, beforeSendList) + Environment.NewLine + "bu mutabaklar daha once gonderılmıs tekrar gonderemezsınız");
+                    MessageBox.Show(string.Join(Environment.NewLine, beforeSendList) + Environment.NewLine +Lang.hasIdReconBeforeSending);//nolu mutabak daha once gonderılmıs tekrar gonderemezsınız
                 }
 
                 if (validUuidList.Count > 0) //gonderilerecek faturalar varsa
@@ -310,19 +382,23 @@ namespace izibiz.UI
                     string errorMessage = Singl.reconcilationControllerGet.sendReconcilation();
                     if (errorMessage == null)
                     {
-                        MessageBox.Show("Servise yukleme işlemi basarılı");
+                        MessageBox.Show(Lang.successLoad);//"Servise yukleme işlemi basarılı"
                         //db ye durumu gönderildi olarak guncelle
-                        if (Singl.reconcilationDalGet.updateReconcilationSendStatus(validUuidList, true))
+                        if (Singl.reconcilationDalGet.updateReconcilationIsSend(validUuidList, true))
                         {
-                            MessageBox.Show("Db ye mutaabakın gonderılme durumunu kaydetme basarılı");
-                          
+                            MessageBox.Show(Lang.succSaveStatus);//"Db ye mutaabakın gonderılme durumunu kaydetme basarılı"
+
                             //isSend in guncel durumunu gostermek ıcın tabloyu yenıleyelım
                             gridUpdateDespatchList(Singl.reconcilationDalGet.getReconcilationsWithType(reconcilationType));
                         }
                         else
                         {
-                            MessageBox.Show("Db ye mutaabakın gonderılme durumunu kaydetme basarısız");
+                            MessageBox.Show(Lang.unSuccSaveStatus);//"Db ye mutaabakın gonderılme durumunu kaydetme basarısız"
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -356,9 +432,56 @@ namespace izibiz.UI
             pnlReconcilationButton.Enabled = true;
         }
 
-        private void FrmReconcilation_Load(object sender, EventArgs e)
-        {
 
+
+        private void btnSendMailReconcilation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                List<string> uuidList = new List<string>();
+                foreach (DataGridViewRow row in tableGrid.SelectedRows)
+                {
+                    uuidList.Add(row.Cells[nameof(EI.Reconcilation.uuid)].Value.ToString());
+                }
+
+                
+                if (uuidList.Count > 0) //gonderilerecek faturalar varsa
+                {
+                    string errorMessage = Singl.reconcilationControllerGet.sendMailReconcilation(uuidList.ToArray());
+
+                    if (errorMessage == null)
+                    {
+                        MessageBox.Show(Lang.succSendMail);//"mail gönderme işlemi basarılı"
+                    }
+                    else
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (FaultException<REQUEST_ERRORType> ex)
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
+
+
     }
 }

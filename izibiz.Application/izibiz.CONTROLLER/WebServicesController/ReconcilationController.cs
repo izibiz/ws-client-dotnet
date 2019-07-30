@@ -56,31 +56,7 @@ namespace izibiz.CONTROLLER.WebServicesController
             }
         }
 
-
-
-        public string sendReconcilation()
-        {
-            using (new OperationContextScope(reconcilationPortClient.InnerChannel))
-            {
-                var req = new SendReconciliationRequest();
-
-                req.REQUEST_HEADER = RequestHeader.getRequestHeaderReconcilation;
-                req.RECONCILIATION = sendReconciliationRequestRECONCILIATIONs.ToArray();
-
-                sendReconciliationRequestRECONCILIATIONs.Clear();
-
-                var response = reconcilationPortClient.SendReconciliation(req);
-
-                if (response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //basarısızsa
-                {
-                    return "islem basarısız";
-                }
-                else //basarılıysa
-                {
-                    return null;//irsaliye sayısı 0 ancak hata yok
-                }
-            }
-        }
+        
 
 
         /// <summary>
@@ -143,6 +119,59 @@ namespace izibiz.CONTROLLER.WebServicesController
             sendReconciliationRequestRECONCILIATIONs.Add(sendReconciliation);
         }
 
+
+
+
+        /// <summary>
+        /// basarılıysa status doner basarısızsa null
+        /// </summary>
+        public RECONCILIATION_STATUSRECONCILIATION[][] getStatusReconcilation(string[] uuids)
+        {
+            using (new OperationContextScope(reconcilationPortClient.InnerChannel))
+            {
+                var req = new GetReconciliationStatusRequest();
+
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderReconcilation;
+                req.RECONCILIATION_SEARCHING = uuids;
+
+
+                 RECONCILIATION_STATUSRECONCILIATION[][] reconcilationsStatus = reconcilationPortClient.GetReconciliationStatus(req);
+
+                if (reconcilationsStatus==null || reconcilationsStatus.First() == null || reconcilationsStatus.Length == 0)  //basarısızsa
+                {
+                    return null;
+                }
+                else //basarılıysa
+                {
+                    return reconcilationsStatus;
+                }
+            }
+        }
+
+
+
+
+        public string sendMailReconcilation(string[] uuids)
+        {
+            using (new OperationContextScope(reconcilationPortClient.InnerChannel))
+            {
+                var req = new SendMailReconciliationRequest();
+
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderReconcilation;
+                req.MAIL_SEARCHING = uuids;
+
+
+                var response = reconcilationPortClient.SendMailReconciliation(req);
+                if (response.REQUEST_RETURN == null || response.REQUEST_RETURN.RETURN_CODE != 0)  //basarısızsa
+                {
+                    return "islem basarısız";
+                }
+                else //basarılıysa
+                {
+                    return null;//irsaliye sayısı 0 ancak hata yok
+                }
+            }
+        }
 
 
     }

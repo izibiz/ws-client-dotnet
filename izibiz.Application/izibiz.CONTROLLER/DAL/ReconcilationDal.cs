@@ -1,5 +1,7 @@
-﻿using izibiz.MODEL.Data;
+﻿using izibiz.COMMON;
+using izibiz.MODEL.Data;
 using izibiz.MODEL.DbTablesModels;
+using izibiz.SERVICES.serviceReconcilation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +35,9 @@ namespace izibiz.CONTROLLER.DAL
 
 
 
-        public Boolean updateReconcilationSendStatus(List<string> uuidArr, bool sendStatus)
+        public Boolean updateReconcilationIsSend(List<string> uuidArr, bool isSend)
         {
-            bool succes=true;
+            bool succes = true;
 
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
@@ -44,7 +46,7 @@ namespace izibiz.CONTROLLER.DAL
                     Reconcilations reconcilation = databaseContext.reconcilations.Find(uuid);
                     if (reconcilation != null)
                     {
-                        reconcilation.isSend = sendStatus;
+                        reconcilation.isSend = isSend;
 
                         if (databaseContext.SaveChanges() != 1)
                         {
@@ -71,6 +73,39 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
+        public Boolean updateStatusReconcilation(RECONCILIATION_STATUSRECONCILIATION[][] statusList)
+        {
+            bool succes = true;
+
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+
+                foreach (var status in statusList)
+                {
+                    foreach (var state in status)
+                    {
+
+                        Reconcilations reconcilation = databaseContext.reconcilations.Find(state.UUID);
+                        if (reconcilation != null)
+                        {
+                            reconcilation.status = state.STATUS;
+                            reconcilation.statusCode = state.STATUS_CODE;
+                            reconcilation.createDate = state.CREATE_DATE;
+
+                            if (databaseContext.SaveChanges() != 1)
+                            {
+                                succes = false;
+                            }
+                        }
+                        else
+                        {
+                            succes = false;
+                        }
+                    }
+                }
+                return succes;
+            }
+        }
 
 
 

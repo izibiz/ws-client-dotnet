@@ -328,7 +328,7 @@
     <value>Please select a serial prefix for the invoice id.</value>
   </data>
   <data name="successLoad" xml:space="preserve">
-    <value>The bill loading process is successful.</value>
+    <value>Loading process is successful.</value>
   </data>
   <data name="selectAlias" xml:space="preserve">
     <value>Please select a receiver mailbox.</value>
@@ -677,5 +677,38 @@
   </data>
   <data name="period" xml:space="preserve">
     <value>Period</value>
+  </data>
+  <data name="cmReconcilations" xml:space="preserve">
+    <value>Current Reconsilations</value>
+  </data>
+  <data name="emReconcilations" xml:space="preserve">
+    <value>BA BS Reconsilations</value>
+  </data>
+  <data name="formReconcilation" xml:space="preserve">
+    <value>İzibiz Desktop | Reconcilation</value>
+  </data>
+  <data name="newReconcilation" xml:space="preserve">
+    <value>New Reconcilation</value>
+  </data>
+  <data name="hasIdReconBeforeSending" xml:space="preserve">
+    <value>has ıd reconcilation is before sent, cant again send</value>
+  </data>
+  <data name="noReconcilation" xml:space="preserve">
+    <value>No reconciliation to show</value>
+  </data>
+  <data name="rowClickForProses" xml:space="preserve">
+    <value>Click on a data from the table to proceed</value>
+  </data>
+  <data name="succGetStatus" xml:space="preserve">
+    <value>Succes get status</value>
+  </data>
+  <data name="succSaveStatus" xml:space="preserve">
+    <value>Succes save status on db</value>
+  </data>
+  <data name="succSendMail" xml:space="preserve">
+    <value>Succes send mail proses</value>
+  </data>
+  <data name="unSuccSaveStatus" xml:space="preserve">
+    <value>Unsucces save status on db</value>
   </data>
 </root>

@@ -19,7 +19,7 @@ namespace izibiz.COMMON.Language {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Lang {
@@ -331,6 +331,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cari Mutabakatlar.
+        /// </summary>
+        public static string cmReconcilations {
+            get {
+                return ResourceManager.GetString("cmReconcilations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oluştur.
         /// </summary>
         public static string create {
@@ -538,6 +547,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BA BS Mutabakatlar.
+        /// </summary>
+        public static string emReconcilations {
+            get {
+                return ResourceManager.GetString("emReconcilations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zarf Id.
         /// </summary>
         public static string envelopeIdentifier {
@@ -615,6 +633,15 @@ namespace izibiz.COMMON.Language {
         public static string formLoginPage {
             get {
                 return ResourceManager.GetString("formLoginPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İzibiz Desktop | Reconcilation.
+        /// </summary>
+        public static string formReconcilation {
+            get {
+                return ResourceManager.GetString("formReconcilation", resourceCulture);
             }
         }
         
@@ -750,6 +777,15 @@ namespace izibiz.COMMON.Language {
         public static string hasIdInvoiceSendMail {
             get {
                 return ResourceManager.GetString("hasIdInvoiceSendMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nolu mutabak daha once gonderılmıs tekrar gonderemezsınız.
+        /// </summary>
+        public static string hasIdReconBeforeSending {
+            get {
+                return ResourceManager.GetString("hasIdReconBeforeSending", resourceCulture);
             }
         }
         
@@ -970,6 +1006,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yeni Mutabakat.
+        /// </summary>
+        public static string newReconcilation {
+            get {
+                return ResourceManager.GetString("newReconcilation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hayır.
         /// </summary>
         public static string no {
@@ -1002,6 +1047,15 @@ namespace izibiz.COMMON.Language {
         public static string noInvUpdated {
             get {
                 return ResourceManager.GetString("noInvUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gosterilecek mutabakat bulanamadı.
+        /// </summary>
+        public static string noReconcilation {
+            get {
+                return ResourceManager.GetString("noReconcilation", resourceCulture);
             }
         }
         
@@ -1231,6 +1285,15 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to islem yapabılmek ıcın tablodan bir veriye  tıklayınız.
+        /// </summary>
+        public static string rowClickForProses {
+            get {
+                return ResourceManager.GetString("rowClickForProses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Satır Bilgileri.
         /// </summary>
         public static string rowInformation {
@@ -1438,11 +1501,38 @@ namespace izibiz.COMMON.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fatura yükleme işlemi başarılı..
+        ///   Looks up a localized string similar to Yükleme işlemi başarılı..
         /// </summary>
         public static string successLoad {
             get {
                 return ResourceManager.GetString("successLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Servisten durum sorgulama işlemi basarılı.
+        /// </summary>
+        public static string succGetStatus {
+            get {
+                return ResourceManager.GetString("succGetStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Db ye  durum kaydetme basarılı.
+        /// </summary>
+        public static string succSaveStatus {
+            get {
+                return ResourceManager.GetString("succSaveStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mail gönderme işlemi basarılı.
+        /// </summary>
+        public static string succSendMail {
+            get {
+                return ResourceManager.GetString("succSendMail", resourceCulture);
             }
         }
         
@@ -1587,6 +1677,15 @@ namespace izibiz.COMMON.Language {
         public static string unsuccesChangeState {
             get {
                 return ResourceManager.GetString("unsuccesChangeState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Db ye  durum kaydetme basarısız.
+        /// </summary>
+        public static string unSuccSaveStatus {
+            get {
+                return ResourceManager.GetString("unSuccSaveStatus", resourceCulture);
             }
         }
         

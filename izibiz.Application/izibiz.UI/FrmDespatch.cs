@@ -84,6 +84,8 @@ namespace izibiz.UI
             Application.Exit();
         }
 
+
+
         private void selectPanelVisibilty(bool panelIncoming, bool panelSend, bool panelDraft)
         {
             pnlIncomingDespatch.Visible = panelIncoming;
@@ -104,6 +106,8 @@ namespace izibiz.UI
             gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
         }
 
+
+
         private void itemOutDespatch_Click(object sender, EventArgs e)
         {
             despactDirection = EI.Direction.OUT.ToString();
@@ -113,6 +117,8 @@ namespace izibiz.UI
 
             gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
         }
+
+
 
         private void itemDraftDespatch_Click(object sender, EventArgs e)
         {
@@ -152,9 +158,6 @@ namespace izibiz.UI
                         MessageBox.Show(Lang.succesful);
                     }
                 }
-
-
-
             }
             catch (FaultException<REQUEST_ERRORType> ex)
             {
@@ -360,7 +363,7 @@ namespace izibiz.UI
             if (gridListDespatch.Count == 0)
             {
                 MessageBox.Show("Getirilecek irsaliye bulunamadı");
-                lblRowClickInf.Visible = false;
+                lblRowClickInfo.Visible = false;
             }
             else
             {
@@ -378,8 +381,8 @@ namespace izibiz.UI
                     tableGrid.Columns[EI.Despatch.draftFlag.ToString()].Visible = false;
                 }
 
-                lblRowClickInf.Text = Lang.clickRowInvoice;
-                lblRowClickInf.Visible = true;
+                lblRowClickInfo.Text = Lang.clickRowInvoice;
+                lblRowClickInfo.Visible = true;
             }
         }
 

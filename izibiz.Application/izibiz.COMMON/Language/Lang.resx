@@ -328,7 +328,7 @@
     <value>Lütfen fatura id için bir seri ön eki seçiniz.</value>
   </data>
   <data name="successLoad" xml:space="preserve">
-    <value>Fatura yükleme işlemi başarılı.</value>
+    <value>Yükleme işlemi başarılı.</value>
   </data>
   <data name="selectAlias" xml:space="preserve">
     <value>Lütfen bir alıcı posta kutusu seçiniz.</value>
@@ -677,5 +677,38 @@
   </data>
   <data name="period" xml:space="preserve">
     <value>Dönem</value>
+  </data>
+  <data name="cmReconcilations" xml:space="preserve">
+    <value>Cari Mutabakatlar</value>
+  </data>
+  <data name="emReconcilations" xml:space="preserve">
+    <value>BA BS Mutabakatlar</value>
+  </data>
+  <data name="formReconcilation" xml:space="preserve">
+    <value>İzibiz Desktop | Reconcilation</value>
+  </data>
+  <data name="hasIdReconBeforeSending" xml:space="preserve">
+    <value>nolu mutabak daha once gonderılmıs tekrar gonderemezsınız</value>
+  </data>
+  <data name="newReconcilation" xml:space="preserve">
+    <value>Yeni Mutabakat</value>
+  </data>
+  <data name="noReconcilation" xml:space="preserve">
+    <value>Gosterilecek mutabakat bulanamadı</value>
+  </data>
+  <data name="rowClickForProses" xml:space="preserve">
+    <value>islem yapabılmek ıcın tablodan bir veriye  tıklayınız</value>
+  </data>
+  <data name="succGetStatus" xml:space="preserve">
+    <value>Servisten durum sorgulama işlemi basarılı</value>
+  </data>
+  <data name="succSaveStatus" xml:space="preserve">
+    <value>Db ye  durum kaydetme basarılı</value>
+  </data>
+  <data name="succSendMail" xml:space="preserve">
+    <value>mail gönderme işlemi basarılı</value>
+  </data>
+  <data name="unSuccSaveStatus" xml:space="preserve">
+    <value>Db ye  durum kaydetme basarısız</value>
   </data>
 </root>

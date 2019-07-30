@@ -32,6 +32,11 @@ namespace izibiz.MODEL.DbTablesModels
 
 
 
+        [Column(Name = nameof(EI.Reconcilation.isSend), DbType = "BOOLEAN")]
+        public bool isSend { get; set; }
+
+
+
         [Column(Name = nameof(EI.Reconcilation.customerID), DbType = "NVARCHAR")]
         public string customerID { get; set; }
 
@@ -80,9 +85,6 @@ namespace izibiz.MODEL.DbTablesModels
         [Column(Name = nameof(EI.Reconcilation.emailStatusDate), DbType = "DATETIME")]
         public DateTime emailStatusDate { get; set; }
 
-
-        [Column(Name = nameof(EI.Reconcilation.isSend), DbType = "BOOLEAN")]
-        public bool isSend { get; set; }
 
 
         [Column(Name = nameof(EI.Reconcilation.baDocPiece), DbType = "INTEGER")]
