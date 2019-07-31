@@ -111,7 +111,7 @@
             this.btnCreateDespatch.Name = "btnCreateDespatch";
             this.btnCreateDespatch.Size = new System.Drawing.Size(157, 57);
             this.btnCreateDespatch.TabIndex = 0;
-            this.btnCreateDespatch.Text = "olustur";
+            this.btnCreateDespatch.Text = "Kaydet";
             this.btnCreateDespatch.UseVisualStyleBackColor = true;
             this.btnCreateDespatch.Click += new System.EventHandler(this.btnCreateDespatch_Click);
             // 

@@ -82,7 +82,7 @@ namespace izibiz.UI
         {
             bool valid = true;
 
-            foreach (Control item in pnlPartner.Controls)  
+            foreach (Control item in pnlPartner.Controls)
             {
                 if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ıse
                 {
@@ -101,7 +101,7 @@ namespace izibiz.UI
 
                     else   // maskedbox degılse
                     {
-                        if (item.Text.Replace(" ", String.Empty).Length ==  0) //text null veya bos ise
+                        if (item.Text.Replace(" ", String.Empty).Length == 0) //text null veya bos ise
                         {
                             item.BackColor = Color.IndianRed;
                             valid = false;
@@ -114,14 +114,14 @@ namespace izibiz.UI
                 }
             }
 
-            if (reconcilationType==EI.Reconcilation.EM.ToString())
+            if (reconcilationType == EI.Reconcilation.EM.ToString())
             {
                 foreach (Control item in pnlBaBsDocPiece.Controls)  //grupbox alıcı bilgileri
                 {
                     if (item is TextBox) //texbox  ıse
                     {
 
-                        if (item.Text.Replace(" ", String.Empty).Length ==0) //text null veya bos ise
+                        if (item.Text.Replace(" ", String.Empty).Length == 0) //text null veya bos ise
                         {
                             item.BackColor = Color.IndianRed;
                             valid = false;
@@ -173,7 +173,7 @@ namespace izibiz.UI
                     reconcilation.customerID = msdReceiverVkn.Text;
                     reconcilation.email = txtMail.Text;
                     reconcilation.type = reconcilationType;
-                    reconcilation.createDate =DateTime.Now;
+                    reconcilation.createDate = DateTime.Now;
 
                     if (reconcilationType.Equals(EI.Reconcilation.CM.ToString()))//carı mutabakt
                     {
@@ -186,7 +186,7 @@ namespace izibiz.UI
                         {
                             reconcilation.accountType = EI.ReconcilationAmountType.BORC.ToString();
                         }
-                        reconcilation.cmDate =dateReconcilation.Value;
+                        reconcilation.cmDate = dateReconcilation.Value;
                     }
                     else //ba bs mutabakat
                     {
@@ -224,14 +224,61 @@ namespace izibiz.UI
             }
         }
 
+        private bool isCount(string docCount)
+        {
+            try
+            {
+                int count = Convert.ToInt32(docCount);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
+        private bool docCountControl(string docCount)
+        {
+            if (!isCount(docCount))
+            {
+                MessageBox.Show("document tutarı alanı sayı olmalı");
+                return false;
+            }
+            else
+            {
+                if (Convert.ToInt32(docCount) < 5000)
+                {
+                    MessageBox.Show("document tutarı alanı 5000 den buyuk olmalı");
+                    return false;
+                }
+            }
+            return true;
+        }
 
+        private void TxtBaAmount_Leave(object sender, EventArgs e)
+        {
+            if (docCountControl(txtBaAmount.Text))
+            {
+                btnCreate.Enabled = true;
+            }
+            else
+            {
+                btnCreate.Enabled = false;
+            }
 
+        }
 
-
-
-
-
+        private void TxtBsAmount_Leave(object sender, EventArgs e)
+        {
+            if (docCountControl(txtBsAmount.Text))
+            {
+                btnCreate.Enabled = true;
+            }
+            else
+            {
+                btnCreate.Enabled = false;
+            }
+        }
     }
 }

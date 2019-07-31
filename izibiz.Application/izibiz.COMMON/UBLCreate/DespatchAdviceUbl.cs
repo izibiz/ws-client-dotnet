@@ -42,7 +42,7 @@ namespace izibiz.COMMON.UBLCreate
             baseDespatchUbl.UBLVersionID = new UBLVersionIDType { Value = "2.1" };  // uluslararası fatura standardı 2.1
             baseDespatchUbl.CustomizationID = new CustomizationIDType { Value = "TR1.2.1" };// GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2.1 eİrsaliye formatını kullanıyor.
             baseDespatchUbl.ProfileID = new ProfileIDType { Value = "TEMELIRSALIYE" }; //tek Senaryo var
-            baseDespatchUbl.ID = new IDType { Value = DateTime.Now.ToString("MM/dd/yyyy-HH/mm/ss") };   //Sevk irsaliyesine Ait Numara  
+            baseDespatchUbl.ID = new IDType { Value = DateTime.Now.ToString("MM-dd-yyyy-HH-mm-ss") };   //Sevk irsaliyesine Ait Numara  
             baseDespatchUbl.CopyIndicator = new CopyIndicatorType { Value = false }; // Sevk İrsaliyesinin Asıl veya Suret Bilgisi 
             baseDespatchUbl.UUID = new UUIDType { Value = Guid.NewGuid().ToString() }; //Sevk İrsaliyesinin Evrensel Tekliğini Sağlayan Numara 
             baseDespatchUbl.IssueDate = new IssueDateType { Value = despatchDate };  //Sevk İrsaliyesinin Düzenleme Tarihi

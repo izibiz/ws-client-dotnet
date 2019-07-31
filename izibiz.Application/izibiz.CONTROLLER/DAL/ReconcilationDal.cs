@@ -80,17 +80,24 @@ namespace izibiz.CONTROLLER.DAL
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
 
-                foreach (var status in statusList)
+                foreach (var reconcilationStates in statusList)
                 {
-                    foreach (var state in status)
+                    foreach (var reconcilationState in reconcilationStates)
                     {
 
-                        Reconcilations reconcilation = databaseContext.reconcilations.Find(state.UUID);
+                        Reconcilations reconcilation = databaseContext.reconcilations.Find(reconcilationState.UUID);
                         if (reconcilation != null)
                         {
-                            reconcilation.status = state.STATUS;
-                            reconcilation.statusCode = state.STATUS_CODE;
-                            reconcilation.createDate = state.CREATE_DATE;
+                            reconcilation.status = reconcilationState.STATUS;
+                            reconcilation.statusCode = reconcilationState.STATUS_CODE;
+                            reconcilation.createDate = reconcilationState.CREATE_DATE;
+
+                            reconcilation.emailStatusCode = reconcilationState.EMAIL.First().EMAIL_STATUS.First().STATUS_CODE;//emailde kullanıcının yaptıgı butun email loayları emaıl arrayının ıcınde bırden
+                                                                                                                              //cok emaılstatus bulunabılır ben son yapılan emaıl durumunu cektıgım ıcın
+                                                                                                                              //first() dıyorum(en son yapılan degısıklık en basa gelır)
+                            reconcilation.emailStatus = reconcilationState.EMAIL.First().EMAIL_STATUS.First().STATUS;
+                            reconcilation.emailStatusDate = reconcilationState.EMAIL.First().EMAIL_STATUS.First().SEND_DATE;
+
 
                             if (databaseContext.SaveChanges() != 1)
                             {

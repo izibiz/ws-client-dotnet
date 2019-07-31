@@ -53,12 +53,8 @@ namespace izibiz.CONTROLLER.DAL
                     gibUser.title = user.title;
                     gibUser.productType = user.documentTpye;
 
-                  //  databaseContext.gibUsers.Add(gibUser);
+                   databaseContext.gibUsers.Add(gibUser);
                  
-                    if (user.identifier == "4840847211")
-                    {
-                        databaseContext.gibUsers.Add(gibUser);
-                    }
                 }
    
               return  databaseContext.SaveChanges();

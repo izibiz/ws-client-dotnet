@@ -161,7 +161,7 @@ namespace izibiz.COMMON
             createDate,
             email,
             emailStatusCode,
-            emailStatusDesc,
+            emailStatus,
             emailStatusDate,
             isSend,
             customerTitle,

@@ -54,9 +54,10 @@
             this.btnGetStatusReconcilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetStatusReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGetStatusReconcilation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetStatusReconcilation.Location = new System.Drawing.Point(308, 24);
+            this.btnGetStatusReconcilation.Location = new System.Drawing.Point(411, 30);
+            this.btnGetStatusReconcilation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGetStatusReconcilation.Name = "btnGetStatusReconcilation";
-            this.btnGetStatusReconcilation.Size = new System.Drawing.Size(117, 35);
+            this.btnGetStatusReconcilation.Size = new System.Drawing.Size(156, 43);
             this.btnGetStatusReconcilation.TabIndex = 28;
             this.btnGetStatusReconcilation.Text = "Durum sorgula";
             this.btnGetStatusReconcilation.UseVisualStyleBackColor = false;
@@ -70,9 +71,10 @@
             this.btnSendReconcilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendReconcilation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendReconcilation.Location = new System.Drawing.Point(20, 24);
+            this.btnSendReconcilation.Location = new System.Drawing.Point(27, 30);
+            this.btnSendReconcilation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSendReconcilation.Name = "btnSendReconcilation";
-            this.btnSendReconcilation.Size = new System.Drawing.Size(117, 35);
+            this.btnSendReconcilation.Size = new System.Drawing.Size(156, 43);
             this.btnSendReconcilation.TabIndex = 25;
             this.btnSendReconcilation.Text = "Gönder";
             this.btnSendReconcilation.UseVisualStyleBackColor = false;
@@ -82,9 +84,10 @@
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblWelcome.Location = new System.Drawing.Point(506, 9);
+            this.lblWelcome.Location = new System.Drawing.Point(675, 11);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(113, 25);
+            this.lblWelcome.Size = new System.Drawing.Size(145, 29);
             this.lblWelcome.TabIndex = 50;
             this.lblWelcome.Text = "Hosgeldınız";
             // 
@@ -95,7 +98,7 @@
             this.itemNewReconcilation.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemNewReconcilation.Name = "itemNewReconcilation";
             this.itemNewReconcilation.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemNewReconcilation.Size = new System.Drawing.Size(145, 29);
+            this.itemNewReconcilation.Size = new System.Drawing.Size(179, 34);
             this.itemNewReconcilation.Text = "Yeni Mutabakat";
             this.itemNewReconcilation.Click += new System.EventHandler(this.İtemNewReconcilation_Click);
             // 
@@ -106,7 +109,7 @@
             this.itemEMReconsilations.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.itemEMReconsilations.Name = "itemEMReconsilations";
             this.itemEMReconsilations.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemEMReconsilations.Size = new System.Drawing.Size(145, 29);
+            this.itemEMReconsilations.Size = new System.Drawing.Size(179, 34);
             this.itemEMReconsilations.Text = "BA/BS Mutabakat";
             this.itemEMReconsilations.Click += new System.EventHandler(this.İtemBaBsReconsilations_Click);
             // 
@@ -115,12 +118,13 @@
             this.tableGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.GridColor = System.Drawing.SystemColors.Control;
-            this.tableGrid.Location = new System.Drawing.Point(188, 177);
+            this.tableGrid.Location = new System.Drawing.Point(251, 218);
+            this.tableGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.RowHeadersWidth = 51;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(746, 365);
+            this.tableGrid.Size = new System.Drawing.Size(995, 449);
             this.tableGrid.TabIndex = 44;
             this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellContentClick);
             // 
@@ -136,9 +140,10 @@
             this.itemEMReconsilations,
             this.itemNewReconcilation});
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
-            this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 27, 0);
             this.menuInvoice.Name = "menuInvoice";
-            this.menuInvoice.Size = new System.Drawing.Size(152, 609);
+            this.menuInvoice.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuInvoice.Size = new System.Drawing.Size(188, 750);
             this.menuInvoice.TabIndex = 43;
             this.menuInvoice.Text = "menuStrip1";
             // 
@@ -149,7 +154,7 @@
             this.itemCMReconcilations.Margin = new System.Windows.Forms.Padding(0, 140, 0, 0);
             this.itemCMReconcilations.Name = "itemCMReconcilations";
             this.itemCMReconcilations.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemCMReconcilations.Size = new System.Drawing.Size(145, 29);
+            this.itemCMReconcilations.Size = new System.Drawing.Size(179, 34);
             this.itemCMReconcilations.Text = "Cari Mutabakat";
             this.itemCMReconcilations.Click += new System.EventHandler(this.İtemCurrentReconcilations_Click);
             // 
@@ -159,9 +164,10 @@
             this.pnlReconcilationButton.Controls.Add(this.btnSendMailReconcilation);
             this.pnlReconcilationButton.Controls.Add(this.btnSendReconcilation);
             this.pnlReconcilationButton.Enabled = false;
-            this.pnlReconcilationButton.Location = new System.Drawing.Point(273, 62);
+            this.pnlReconcilationButton.Location = new System.Drawing.Point(364, 76);
+            this.pnlReconcilationButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlReconcilationButton.Name = "pnlReconcilationButton";
-            this.pnlReconcilationButton.Size = new System.Drawing.Size(646, 84);
+            this.pnlReconcilationButton.Size = new System.Drawing.Size(861, 103);
             this.pnlReconcilationButton.TabIndex = 51;
             // 
             // btnSendMailReconcilation
@@ -172,9 +178,10 @@
             this.btnSendMailReconcilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMailReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendMailReconcilation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendMailReconcilation.Location = new System.Drawing.Point(156, 24);
+            this.btnSendMailReconcilation.Location = new System.Drawing.Point(208, 30);
+            this.btnSendMailReconcilation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSendMailReconcilation.Name = "btnSendMailReconcilation";
-            this.btnSendMailReconcilation.Size = new System.Drawing.Size(117, 35);
+            this.btnSendMailReconcilation.Size = new System.Drawing.Size(156, 43);
             this.btnSendMailReconcilation.TabIndex = 27;
             this.btnSendMailReconcilation.Text = "Mail Gönder";
             this.btnSendMailReconcilation.UseVisualStyleBackColor = false;
@@ -191,30 +198,31 @@
             this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
-            this.btnHomePage.Location = new System.Drawing.Point(10, 20);
+            this.btnHomePage.Location = new System.Drawing.Point(13, 25);
+            this.btnHomePage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Size = new System.Drawing.Size(115, 70);
+            this.btnHomePage.Size = new System.Drawing.Size(153, 86);
             this.btnHomePage.TabIndex = 47;
             this.btnHomePage.Text = "Ana Sayfa";
             this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHomePage.UseVisualStyleBackColor = false;
+            this.btnHomePage.Click += new System.EventHandler(this.BtnHomePage_Click);
             // 
             // lblInf
             // 
             this.lblInf.AutoSize = true;
             this.lblInf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblInf.Location = new System.Drawing.Point(273, 153);
-            this.lblInf.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInf.Location = new System.Drawing.Point(364, 188);
             this.lblInf.Name = "lblInf";
-            this.lblInf.Size = new System.Drawing.Size(322, 17);
+            this.lblInf.Size = new System.Drawing.Size(383, 20);
             this.lblInf.TabIndex = 52;
             this.lblInf.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
             // 
             // FrmReconcilation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 609);
+            this.ClientSize = new System.Drawing.Size(1295, 750);
             this.ControlBox = false;
             this.Controls.Add(this.lblInf);
             this.Controls.Add(this.lblWelcome);
@@ -222,7 +230,7 @@
             this.Controls.Add(this.pnlReconcilationButton);
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.menuInvoice);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmReconcilation";

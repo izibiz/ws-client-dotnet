@@ -85,7 +85,7 @@ namespace izibiz.UI
             tableGrid.Columns[EI.Reconcilation.cmDate.ToString()].HeaderText = Lang.cmDate;
             tableGrid.Columns[EI.Reconcilation.email.ToString()].HeaderText = Lang.mail;
             tableGrid.Columns[EI.Reconcilation.emailStatusCode.ToString()].HeaderText = Lang.mailStatusCode;
-            tableGrid.Columns[EI.Reconcilation.emailStatusDesc.ToString()].HeaderText = Lang.mailStatus;
+            tableGrid.Columns[EI.Reconcilation.emailStatus.ToString()].HeaderText = Lang.mailStatus;
             tableGrid.Columns[EI.Reconcilation.isSend.ToString()].HeaderText = Lang.isSend;
             tableGrid.Columns[EI.Reconcilation.baDocPiece.ToString()].HeaderText = Lang.baDocPiece;
             tableGrid.Columns[EI.Reconcilation.bsDocPiece.ToString()].HeaderText = Lang.bsDocPiece;
@@ -155,6 +155,20 @@ namespace izibiz.UI
         }
 
 
+        private string reconcilationTypeWrite(string recType)
+        {
+
+            if (recType.Equals(EI.Reconcilation.EM.ToString()))
+            {
+                return "ALACAK";
+            }
+            else if (recType.Equals(EI.Reconcilation.CM.ToString()))
+            {
+                return "BORC";
+            }
+            return "bilinmiyor";
+        }
+
 
 
         private void gridUpdateDespatchList(List<Reconcilations> gridListReconcilation)
@@ -170,7 +184,8 @@ namespace izibiz.UI
                 foreach (Reconcilations reconcilation in gridListReconcilation)
                 {
                     reconcilation.status = reconcilationStatusDescWrite(reconcilation.statusCode);
-                    reconcilation.emailStatusDesc = reconcilationMailStatusDescWrite(reconcilation.emailStatusCode);
+                    reconcilation.emailStatus = reconcilationMailStatusDescWrite(reconcilation.emailStatusCode);
+                    reconcilation.type = reconcilationTypeWrite(reconcilation.type);
                 }
 
                 tableGrid.DataSource = gridListReconcilation;
@@ -374,7 +389,7 @@ namespace izibiz.UI
 
                 if (beforeSendList.Count > 0) //onceden gonderılmıs olanlar
                 {
-                    MessageBox.Show(string.Join(Environment.NewLine, beforeSendList) + Environment.NewLine +Lang.hasIdReconBeforeSending);//nolu mutabak daha once gonderılmıs tekrar gonderemezsınız
+                    MessageBox.Show(string.Join(Environment.NewLine, beforeSendList) + Environment.NewLine + Lang.hasIdReconBeforeSending);//nolu mutabak daha once gonderılmıs tekrar gonderemezsınız
                 }
 
                 if (validUuidList.Count > 0) //gonderilerecek faturalar varsa
@@ -445,7 +460,7 @@ namespace izibiz.UI
                     uuidList.Add(row.Cells[nameof(EI.Reconcilation.uuid)].Value.ToString());
                 }
 
-                
+
                 if (uuidList.Count > 0) //gonderilerecek faturalar varsa
                 {
                     string errorMessage = Singl.reconcilationControllerGet.sendMailReconcilation(uuidList.ToArray());
@@ -481,6 +496,14 @@ namespace izibiz.UI
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void BtnHomePage_Click(object sender, EventArgs e)
+        {
+            FrmHome frmHome = new FrmHome();
+            frmHome.Show();
+            this.Dispose();
+        }
+
 
 
     }

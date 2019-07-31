@@ -42,6 +42,11 @@ namespace izibiz.MODEL.DbTablesModels
 
 
 
+        [Column(Name = nameof(EI.Reconcilation.customerTitle), DbType = "NVARCHAR")]
+        public string customerTitle { get; set; }
+
+
+
         [Column(Name = nameof(EI.Reconcilation.period), DbType = "NVARCHAR")]
         public string period { get; set; }
 
@@ -77,8 +82,8 @@ namespace izibiz.MODEL.DbTablesModels
 
 
 
-        [Column(Name = nameof(EI.Reconcilation.emailStatusDesc), DbType = "NVARCHAR")]
-        public string emailStatusDesc { get; set; }
+        [Column(Name = nameof(EI.Reconcilation.emailStatus), DbType = "NVARCHAR")]
+        public string emailStatus { get; set; }
 
 
 
@@ -101,10 +106,6 @@ namespace izibiz.MODEL.DbTablesModels
 
         [Column(Name = nameof(EI.Reconcilation.bsDocAmount), DbType = "DECIMAL")]
         public decimal bsDocAmount { get; set; }
-
-
-        [Column(Name = nameof(EI.Reconcilation.customerTitle), DbType = "NVARCHAR")]
-        public string customerTitle { get; set; }
 
 
 
