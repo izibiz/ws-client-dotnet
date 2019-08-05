@@ -4,11 +4,11 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceOib;
 using izibiz.COMMON;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.CONTROLLER.InvoiceRequestSection;
+using izibiz.CONTROLLER.RequestSection;
 using izibiz.COMMON.FileControl;
 using System.IO;
 using izibiz.COMMON.UblSerializer;
@@ -32,8 +32,8 @@ namespace izibiz.CONTROLLER.Web_Services
 
         public EInvoiceController()
         {
-            InvoiceSearchKey.createInvoiceSearchKeyGetInvoiceRequest();
-            InvoiceSearchKey.createinvoiceSearchKeyGetInvoiceWithTypeRequest();
+            SearchKey.createInvoiceSearchKey();
+            SearchKey.createInvoiceSearchKeyGetInvoiceWithType();
             RequestHeader.createRequestHeaderOib();
         }
 
@@ -49,7 +49,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 var req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoice;
+                req.INVOICE_SEARCH_KEY = SearchKey.getSearchKeyInvoice;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
 
                 if (direction.Equals(nameof(EI.Direction.DRAFT))) //direction taslak fatura ıse
@@ -95,7 +95,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 GetInvoiceRequest req = new GetInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoice;
+                req.INVOICE_SEARCH_KEY = SearchKey.getSearchKeyInvoice;
                 req.INVOICE_SEARCH_KEY.UUID = uuid;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
@@ -111,7 +111,6 @@ namespace izibiz.CONTROLLER.Web_Services
                     req.INVOICE_SEARCH_KEY.DIRECTION = direction;
                 }
                 INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
-
 
                 if (invoiceArray != null && invoiceArray.Length != 0)
                 {
@@ -315,7 +314,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 GetInvoiceRequest req = new GetInvoiceRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoice;
+                req.INVOICE_SEARCH_KEY = SearchKey.getSearchKeyInvoice;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true; //okunmusları da al
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
@@ -358,7 +357,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 GetInvoiceWithTypeRequest req = new GetInvoiceWithTypeRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderOib;
                 req.REQUEST_HEADER.COMPRESSED = nameof(EI.ActiveOrPasive.Y);
-                req.INVOICE_SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetInvoiceWithType;
+                req.INVOICE_SEARCH_KEY = SearchKey.getSearchKeyInvoiceWithType;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDED = true;
                 req.INVOICE_SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.INVOICE_SEARCH_KEY.UUID = invoiceUuid;

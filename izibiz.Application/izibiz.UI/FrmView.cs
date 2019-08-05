@@ -53,6 +53,14 @@ namespace izibiz.UI
                 {
                     viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibDespatch, xmlContent);
                 }
+                else if (invoiceType == EI.SelfEmploymentReceipt.SelfEmploymentReceipts.ToString())
+                {
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibSmm, xmlContent);
+                }
+                else if (invoiceType == EI.SmmReports.SmmReports.ToString())
+                {
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibSmmReport, xmlContent);
+                }
 
             }
             catch (Exception ex)

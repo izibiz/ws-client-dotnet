@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace izibiz.MODEL.DbTablesModels
+namespace izibiz.MODEL.Entities
 {
 
 

@@ -16,7 +16,7 @@ using izibiz.COMMON;
 
 
 
-namespace izibiz.MODEL.DbTablesModels
+namespace izibiz.MODEL.Entities
 {
 
     [Table(Name = nameof(EI.Invoice.Invoices))]

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="aa6b4e4d-632e-40de-ab65-4de23fadd1be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://efaturatest.izibiz.com.tr/SmmWS?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SmmWS.xsd" MetadataType="Schema" ID="6951b2ec-8567-461d-b15a-920baa94f123" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/SmmWS?xsd=1" />
+    <MetadataFile FileName="SmmWS1.xsd" MetadataType="Schema" ID="ffb5fd5e-b596-4287-976c-cd6104140df6" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/SmmWS?xsd=3" />
+    <MetadataFile FileName="SmmWS2.xsd" MetadataType="Schema" ID="ca63fb98-1091-4bb5-969e-d0c7be027353" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/SmmWS?xsd=2" />
+    <MetadataFile FileName="SmmService.wsdl" MetadataType="Wsdl" ID="785cbcee-68a6-4c0e-a578-7d4315ba1d09" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/SmmWS?wsdl" />
+    <MetadataFile FileName="SmmWS3.xsd" MetadataType="Schema" ID="ceaaa48d-f36f-4ad4-8aab-1ff523437313" SourceId="1" SourceUrl="https://efaturatest.izibiz.com.tr/SmmWS?xsd=4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

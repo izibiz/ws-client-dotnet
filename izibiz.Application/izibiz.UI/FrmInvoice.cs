@@ -14,7 +14,7 @@ using izibiz.SERVICES.serviceOib;
 using Microsoft.VisualBasic;
 using izibiz.COMMON;
 using izibiz.COMMON.Language;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.CONTROLLER;
 using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.Model;

@@ -69,16 +69,17 @@
     <Compile Include="DAL\IdSerilazeDal.cs" />
     <Compile Include="DAL\InvoiceDal.cs" />
     <Compile Include="DAL\ReconcilationDal.cs" />
+    <Compile Include="DAL\SmmDal.cs" />
     <Compile Include="DAL\UserInformationDal.cs" />
     <Compile Include="InvoiceIdSetSerilaze.cs" />
-    <Compile Include="InvoiceRequestSection\InvoiceSearchKey.cs" />
+    <Compile Include="RequestSection\SearchKey.cs" />
     <Compile Include="Model\ArchiveContentPropertiesModel.cs" />
     <Compile Include="Model\GibUserListXmlModel.cs" />
     <Compile Include="Model\IdArrContentArrModel.cs" />
     <Compile Include="Model\IdFolderPathModel.cs" />
     <Compile Include="Model\SendMailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InvoiceRequestSection\RequestHeader.cs" />
+    <Compile Include="RequestSection\RequestHeader.cs" />
     <Compile Include="Singleton\Singl.cs">
       <Generator>public</Generator>
     </Compile>
@@ -88,6 +89,7 @@
     <Compile Include="WebServicesController\EInvoiceController.cs" />
     <Compile Include="WebServicesController\GibUserController.cs" />
     <Compile Include="WebServicesController\ReconcilationController.cs" />
+    <Compile Include="WebServicesController\SmmController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\izibiz.COMMON\izibiz.COMMON.csproj">

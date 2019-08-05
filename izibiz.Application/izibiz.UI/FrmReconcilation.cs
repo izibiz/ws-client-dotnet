@@ -1,7 +1,7 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

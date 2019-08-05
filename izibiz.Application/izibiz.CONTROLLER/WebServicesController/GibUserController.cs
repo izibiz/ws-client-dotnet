@@ -1,6 +1,6 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
-using izibiz.CONTROLLER.InvoiceRequestSection;
+using izibiz.CONTROLLER.RequestSection;
 using izibiz.CONTROLLER.Model;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.SERVICES.serviceAuth;
@@ -23,7 +23,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
         public GibUserController()
         {
-            RequestHeader.createrequestHeaderAuth();
+            RequestHeader.createRequestHeaderAuth();
         }
 
 

@@ -39,7 +39,7 @@ namespace izibiz.CONTROLLER
             baseInvoiceUBL.UBLVersionID = new UBLVersionIDType { Value = "2.1" }; //uluslararası fatura standardı 2.1
             baseInvoiceUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" }; //fakat GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2 efatura formatını kullanıyor.
             baseInvoiceUBL.ProfileID = new ProfileIDType { Value = profileid };
-            baseInvoiceUBL.ID = new IDType { Value = DateTime.Now.ToString("MM/dd/yyyy-HH/mm/ss") };//id yi simdilik unıqıe bır deger verıyoruz ,servise gond. degıstırılecek
+            baseInvoiceUBL.ID = new IDType { Value = DateTime.Now.ToString("MM-dd-yyyy-HH-mm-ss") };//id yi simdilik unıqıe bır deger verıyoruz ,servise gond. degıstırılecek
             baseInvoiceUBL.CopyIndicator = new CopyIndicatorType { Value = false };
             baseInvoiceUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
             baseInvoiceUBL.IssueDate = new IssueDateType { Value = DateTime.Now };

@@ -1,7 +1,7 @@
 ﻿using izibiz.CONTROLLER.Model;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceOib;
 using System;
 using System.Collections.Generic;

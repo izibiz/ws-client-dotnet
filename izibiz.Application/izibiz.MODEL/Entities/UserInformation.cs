@@ -11,7 +11,7 @@ using System.Diagnostics;
 using izibiz.COMMON;
 using System.ComponentModel.DataAnnotations;
 
-namespace izibiz.MODEL.DbTablesModels
+namespace izibiz.MODEL.Entities
 {
 
     [Table(Name = nameof(EI.UserInformation.UserInformation))]

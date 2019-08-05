@@ -1,8 +1,8 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
-using izibiz.CONTROLLER.InvoiceRequestSection;
+using izibiz.CONTROLLER.RequestSection;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceDespatch;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
         public DespatchAdviceController()
         {
-            InvoiceSearchKey.createDespatchSearchKey();
+            SearchKey.createDespatchSearchKey();
             RequestHeader.createRequestHeaderDespatch();
         }
 
@@ -39,7 +39,7 @@ namespace izibiz.CONTROLLER.WebServicesController
             {
                 GetDespatchAdviceRequest req = new GetDespatchAdviceRequest();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderDespatch;
-                req.SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetDespatch;
+                req.SEARCH_KEY = SearchKey.getSearchKeyDespatch;
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.SEARCH_KEY.DIRECTION = direction;
 
@@ -84,7 +84,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 GetDespatchAdviceRequest req = new GetDespatchAdviceRequest();
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderDespatch;
-                req.SEARCH_KEY = InvoiceSearchKey.invoiceSearchKeyGetDespatch;
+                req.SEARCH_KEY = SearchKey.getSearchKeyDespatch;
                 req.SEARCH_KEY.READ_INCLUDED = true;  //okunmus olabilir
                 req.SEARCH_KEY.READ_INCLUDEDSpecified = true;
                 req.SEARCH_KEY.UUID = uuid;

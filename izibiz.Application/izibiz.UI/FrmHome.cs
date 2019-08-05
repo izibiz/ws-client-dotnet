@@ -49,7 +49,6 @@ namespace izibiz.UI
             btnIrsaliye.Text = Lang.eDispatch;
             btnMutabakat.Text = Lang.eReconciliation;
             btnSmm.Text = Lang.eFreeJob;
-            btnMüstahsil.Text = Lang.eManufacturer;
             #endregion
         }
 
@@ -86,6 +85,13 @@ namespace izibiz.UI
         {
             FrmReconcilation frmReconsilation = new FrmReconcilation();
             frmReconsilation.Show();
+            this.Hide();
+        }
+
+        private void BtnSmm_Click(object sender, EventArgs e)
+        {
+            FrmSelfEmployment frmSelfEmployment = new FrmSelfEmployment();
+            frmSelfEmployment.Show();
             this.Hide();
         }
     }

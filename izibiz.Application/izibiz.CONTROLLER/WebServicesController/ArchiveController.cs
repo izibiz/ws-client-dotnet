@@ -1,10 +1,10 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.COMMON.Language;
-using izibiz.CONTROLLER.InvoiceRequestSection;
+using izibiz.CONTROLLER.RequestSection;
 using izibiz.CONTROLLER.Model;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceArchive;
 using System;
 using System.Collections.Generic;
@@ -44,10 +44,10 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER.COMPRESSED = EI.ActiveOrPasive.Y.ToString();
                 req.PERIOD = getThisMonth() + DateTime.Now.Year.ToString();
                 req.REPORT_INCLUDED = true;
+                req.LIMIT = 100;
                 req.REPORT_FLAG = EI.ActiveOrPasive.Y.ToString(); //raporlananaları alıyor
                 req.HEADER_ONLY = EI.ActiveOrPasive.N.ToString();
                 req.CONTENT_TYPE = EI.DocumentType.XML.ToString();
-
 
                 var response = eArchiveInvoicePortClient.GetEArchiveInvoiceList(req);
 
@@ -55,24 +55,28 @@ namespace izibiz.CONTROLLER.WebServicesController
                 {
                     return response.ERROR_TYPE.ERROR_SHORT_DES;
                 }
-                else //servisten irsalıye getırme islemi basarılıysa
+                else //servisten arsıv getırme islemi basarılıysa
                 {
                     if (response.INVOICE != null && response.INVOICE.Length > 0) //getırılen arsiv varsa
                     {
-                        string markErrorMessage = archiveMarkRead(response.INVOICE); //mark arsiv yapıldı
-                        if (markErrorMessage != null) //mark despatch dan donen error message varsa
+                        var archiveArrContentNotNull = response.INVOICE.Where(arc => arc.CONTENT != null).ToArray();
+                        if(archiveArrContentNotNull.Length > 0)
                         {
-                            return markErrorMessage;
-                        }
-                        //getirilen faturaları db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
-                        if (Singl.archiveInvoiceDalGet.addArchiveToDbAndSaveContentOnDisk(response.INVOICE) != response.INVOICE.Length)
-                        {
-                            return "DataBase'e kaydetme işlemi başarısız";
+                            string markErrorMessage = archiveMarkRead(archiveArrContentNotNull); //mark arsiv yapıldı
+                            if (markErrorMessage != null) //mark arsıv dan donen error message varsa
+                            {
+                                return markErrorMessage;
+                            }
+                            //getirilen faturaları db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
+                            if (Singl.archiveInvoiceDalGet.addArchiveToDbAndSaveContentOnDisk(archiveArrContentNotNull) != archiveArrContentNotNull.Length)
+                            {
+                                return "DataBase'e kaydetme işlemi başarısız";
+                            }
                         }
 
                         return null; //hiçbir hata yoksa null don
                     }
-                    return null;//irsaliye sayısı 0 ancak hata yok
+                    return null;//arsıv sayısı 0 ancak hata yok
                 }
             }
         }
@@ -88,11 +92,22 @@ namespace izibiz.CONTROLLER.WebServicesController
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
-                var markReq = new MarkEArchiveInvoiceRequest(); //sistemdeki gelen efatura listesi için request parametreleri
+                var markReq = new MarkEArchiveInvoiceRequest(); //sistemdeki gelen arsıv listesi için request parametreleri
 
                 markReq.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
                 markReq.MARK = new MarkEArchiveInvoiceRequestMARK();
-                markReq.MARK.EARCHIVE_INVOICE = ArchiveArr;
+
+                List<EARCHIVEINV> listArchiveMark = new List<EARCHIVEINV>();
+                for (int i = 0; i < ArchiveArr.Length; i++)
+                {
+                    EARCHIVEINV arc = new EARCHIVEINV();
+                    arc.HEADER.INVOICE_ID = ArchiveArr[i].HEADER.INVOICE_ID;
+                    arc.HEADER.UUID = ArchiveArr[i].HEADER.UUID;
+
+                    listArchiveMark.Add(arc);
+                }
+
+                markReq.MARK.EARCHIVE_INVOICE = listArchiveMark.ToArray();
                 markReq.MARK.value = MarkEArchiveInvoiceRequestMARKValue.READ;
                 markReq.MARK.valueSpecified = true;
 
@@ -123,7 +138,7 @@ namespace izibiz.CONTROLLER.WebServicesController
         {
             using (new OperationContextScope(eArchiveInvoicePortClient.InnerChannel))
             {
-                var req = new GetEArchiveReportRequest(); //sistemdeki gelen efatura listesi için request parametreleri
+                var req = new GetEArchiveReportRequest(); //sistemdeki gelen arsıv listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderArchive;
                 req.REPORT_PERIOD = DateTime.Now.Year.ToString() + getThisMonth();
                 req.REPORT_STATUS_FLAG = EI.ActiveOrPasive.Y.ToString();
@@ -139,7 +154,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                     if (response.REPORT != null && response.REPORT.Length > 0) //getırılen arsiv varsa
                     {
 
-                        //getirilen faturaları db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
+                        //getirilen arsıvlerı db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
                         if (Singl.ArchiveReportsDalGet.addArcReportFromReportArr(response.REPORT) != response.REPORT.Length)
                         {
                             return "DataBase'e kaydetme işlemi başarısız";
@@ -147,7 +162,7 @@ namespace izibiz.CONTROLLER.WebServicesController
 
                         return null; //hiçbir hata yoksa null don
                     }
-                    return null;//irsaliye sayısı 0 ancak hata yok
+                    return null;//arsıv sayısı 0 ancak hata yok
                 }
             }
         }
@@ -396,7 +411,7 @@ namespace izibiz.CONTROLLER.WebServicesController
         public string getArchiveReportXml(string reportNo)
         {
             //db den pathı getırdı
-            string xmlPath = FolderControl.inboxFolderArchiveReport + reportNo + "." + nameof(EI.DocumentType.XML);
+            string xmlPath = FolderControl.archiveFolderReportPath + reportNo + "." + nameof(EI.DocumentType.XML);
 
             if (!FolderControl.xmlFileIsInFolder(xmlPath)) // xml dosyası verılen pathde bulunmuyorsa
             {

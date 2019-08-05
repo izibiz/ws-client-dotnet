@@ -174,6 +174,32 @@ namespace izibiz.COMMON
 
         }
 
+        public enum SelfEmploymentReceipt
+        {
+            SelfEmploymentReceipts, 
+            draftSmm,
+            uuid,
+            smmID,
+            isDraft,
+            customerTitle,
+            customerID,
+            profileID,
+            status,
+            statusCode,
+            statusDesc,
+            CDate,
+            issueDate,
+            email,
+            emailStatusCode,
+            emailStatusDate,
+            folderPath
+        }
+
+        public enum SmmReports
+        {
+           SmmReports
+        }
+
 
 
         public enum Profileid

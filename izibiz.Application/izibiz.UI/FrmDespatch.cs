@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using izibiz.SERVICES.serviceDespatch;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using System.ServiceModel;
 using System.Data.Entity.Validation;
 using izibiz.COMMON.FileControl;

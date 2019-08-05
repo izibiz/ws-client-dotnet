@@ -1,4 +1,4 @@
-﻿using izibiz.MODEL.DbTablesModels;
+﻿using izibiz.MODEL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -44,6 +44,8 @@ namespace izibiz.MODEL.Data
         public DbSet<DespatchAdvices> despatchAdvices { get; set; }
 
         public DbSet<Reconcilations> reconcilations { get; set; }
+
+        public DbSet<SelfEmploymentReceipts> selfEmployments { get; set; }
 
         public DbSet<InvoiceIdSerials> invoiceIdSerials { get; set; }
 

@@ -64,14 +64,15 @@
   <ItemGroup>
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Data\SqLiteConfiguration.cs" />
-    <Compile Include="DbTablesModels\ArchiveInvoices.cs" />
-    <Compile Include="DbTablesModels\ArchiveReports.cs" />
-    <Compile Include="DbTablesModels\DespatchAdvices.cs" />
-    <Compile Include="DbTablesModels\GibUsers.cs" />
-    <Compile Include="DbTablesModels\InvoiceIdSerial.cs" />
-    <Compile Include="DbTablesModels\Invoices.cs" />
-    <Compile Include="DbTablesModels\Reconcilations.cs" />
-    <Compile Include="DbTablesModels\UserInformation.cs" />
+    <Compile Include="Entities\ArchiveInvoices.cs" />
+    <Compile Include="Entities\ArchiveReports.cs" />
+    <Compile Include="Entities\DespatchAdvices.cs" />
+    <Compile Include="Entities\GibUsers.cs" />
+    <Compile Include="Entities\InvoiceIdSerial.cs" />
+    <Compile Include="Entities\Invoices.cs" />
+    <Compile Include="Entities\Reconcilations.cs" />
+    <Compile Include="Entities\SelfEmploymentReceipts.cs" />
+    <Compile Include="Entities\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

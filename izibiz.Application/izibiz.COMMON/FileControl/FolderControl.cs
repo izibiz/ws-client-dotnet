@@ -14,15 +14,16 @@ namespace izibiz.COMMON.FileControl
 {
     public class FolderControl
     {
-         static string inboxInvoiceFolderIn { get; } = "C:\\temp\\INVOICE\\GELEN\\";
-         static string inboxInvoiceFolderOut { get; } = "C:\\temp\\INVOICE\\GİDEN\\";
-         static string inboxInvoiceFolderDraft { get; } = "C:\\temp\\INVOICE\\TASLAK\\";
-        public static string inboxFolderArchive { get; } = "C:\\temp\\ARŞİV\\";
-        public static string inboxFolderArchiveReport { get; } = "C:\\temp\\ARSIVRAPOR\\";
-        static string inboxDespatchFolderIn { get; } = "C:\\temp\\DESPATCH\\GELEN\\";
-        static string inboxDespatchFolderOut { get; } = "C:\\temp\\DESPATCH\\GİDEN\\";
-        static string inboxDespatchFolderDraft { get; } = "C:\\temp\\DESPATCH\\TASLAK\\";
-
+         static string invoiceFolderInPath { get; } = "C:\\temp\\INVOICE\\GELEN\\";
+         static string invoiceFolderOutPath { get; } = "C:\\temp\\INVOICE\\GİDEN\\";
+         static string invoiceFolderDraftPath { get; } = "C:\\temp\\INVOICE\\TASLAK\\";
+        public static string archiveFolderPath { get; } = "C:\\temp\\ARŞİV\\";
+        public static string archiveFolderReportPath { get; } = "C:\\temp\\ARSIVRAPOR\\";
+        static string despatchFolderInPath { get; } = "C:\\temp\\DESPATCH\\GELEN\\";
+        static string despatchFolderOutPath { get; } = "C:\\temp\\DESPATCH\\GİDEN\\";
+        static string despatchFolderDraftPath { get; } = "C:\\temp\\DESPATCH\\TASLAK\\";
+        public static string smmFolderPath { get; } = "C:\\temp\\E-SMM\\";
+        public static string smmReportPath { get; } = "C:\\temp\\E-SMM-RAPOR\\";
 
 
         public static void deleteFileFromPath(string path)
@@ -36,15 +37,15 @@ namespace izibiz.COMMON.FileControl
         {
             if (direction.Equals(nameof(EI.Direction.IN)))
             {
-                return inboxInvoiceFolderIn + docName + "." + docType;
+                return invoiceFolderInPath + docName + "." + docType;
             }
             else if (direction.Equals(nameof(EI.Direction.OUT)))
             {
-                return inboxInvoiceFolderOut + docName + "." + docType;
+                return invoiceFolderOutPath + docName + "." + docType;
             }
             else  //draft
             {
-                return inboxInvoiceFolderDraft + docName + "." + docType;
+                return invoiceFolderDraftPath + docName + "." + docType;
             }
         }
 
@@ -54,15 +55,15 @@ namespace izibiz.COMMON.FileControl
         {
             if (direction.Equals(nameof(EI.Direction.IN)))
             {
-                return inboxDespatchFolderIn + docName + "." + docType;
+                return despatchFolderInPath + docName + "." + docType;
             }
             else if (direction.Equals(nameof(EI.Direction.OUT)))
             {
-                return inboxDespatchFolderOut + docName + "." + docType;
+                return despatchFolderOutPath + docName + "." + docType;
             }
             else  //draft
             {
-                return inboxDespatchFolderDraft + docName + "." + docType;
+                return despatchFolderDraftPath + docName + "." + docType;
             }
         }
 
@@ -112,11 +113,11 @@ namespace izibiz.COMMON.FileControl
 
             if (invoiceType == nameof(EI.Invoice.Invoices))
             {
-                xmlPath = inboxInvoiceFolderDraft + createdUBL.ID.Value + "." + nameof(EI.DocumentType.XML);
+                xmlPath = invoiceFolderDraftPath + createdUBL.ID.Value + "." + nameof(EI.DocumentType.XML);
             }
             else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
-                xmlPath = inboxFolderArchive + createdUBL.ID.Value + "." + nameof(EI.DocumentType.XML);
+                xmlPath = archiveFolderPath + createdUBL.ID.Value + "." + nameof(EI.DocumentType.XML);
             }
 
             createInboxIfDoesNotExist(Path.GetDirectoryName(xmlPath)); //dosya yolu yoksa olustur
@@ -195,15 +196,15 @@ namespace izibiz.COMMON.FileControl
             string inboxFolder;
             if (invDirection == nameof(EI.Direction.IN))
             {
-                inboxFolder = inboxInvoiceFolderIn;
+                inboxFolder = invoiceFolderInPath;
             }
             else if (invDirection == nameof(EI.Direction.OUT))
             {
-                inboxFolder = inboxInvoiceFolderOut;
+                inboxFolder = invoiceFolderOutPath;
             }
             else
             {
-                inboxFolder = inboxInvoiceFolderDraft;
+                inboxFolder = invoiceFolderDraftPath;
             }
             createInboxIfDoesNotExist(inboxFolder); //dosya yolu yoksa olustur
             System.IO.File.WriteAllBytes(inboxFolder + fileName + "." + docType, content);

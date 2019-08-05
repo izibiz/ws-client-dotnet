@@ -1,6 +1,6 @@
 ﻿using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceArchive;
 using System;
 using System.Collections.Generic;

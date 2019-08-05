@@ -3,7 +3,7 @@ using izibiz.COMMON.FileControl;
 using izibiz.COMMON.Language;
 using izibiz.COMMON.UBLCreate;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceDespatch;
 using System;
 using System.Collections.Generic;

@@ -75,6 +75,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\serviceSmm\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -504,6 +509,55 @@
     <None Include="Connected Services\serviceReconcilation\Reconciliation3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.CancelSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.CancelSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.GetSmmReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.GetSmmReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.GetSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.GetSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.GetSmmStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.GetSmmStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.LoadSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.LoadSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.SendSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.SendSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceSmm\SmmService.wsdl" />
+    <None Include="Connected Services\serviceSmm\SmmWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceSmm\SmmWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceSmm\SmmWS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceSmm\SmmWS3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -512,6 +566,7 @@
     <WCFMetadataStorage Include="Connected Services\serviceDespatch\" />
     <WCFMetadataStorage Include="Connected Services\serviceOib\" />
     <WCFMetadataStorage Include="Connected Services\serviceReconcilation\" />
+    <WCFMetadataStorage Include="Connected Services\serviceSmm\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceOib\configuration91.svcinfo" />
@@ -569,6 +624,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceReconcilation\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceSmm\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceSmm\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceSmm\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

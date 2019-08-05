@@ -132,6 +132,12 @@
     <Compile Include="FrmReconcilation.Designer.cs">
       <DependentUpon>FrmReconcilation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSelfEmployment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelfEmployment.Designer.cs">
+      <DependentUpon>FrmSelfEmployment.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWriteMail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReconcilation.resx">
       <DependentUpon>FrmReconcilation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelfEmployment.resx">
+      <DependentUpon>FrmSelfEmployment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWriteMail.resx">
       <DependentUpon>FrmWriteMail.cs</DependentUpon>

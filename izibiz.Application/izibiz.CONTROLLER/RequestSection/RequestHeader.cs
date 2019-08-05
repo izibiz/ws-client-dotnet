@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace izibiz.CONTROLLER.InvoiceRequestSection
+namespace izibiz.CONTROLLER.RequestSection
 {
     public  class RequestHeader
     {
@@ -20,13 +20,14 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
         public static SERVICES.serviceDespatch.REQUEST_HEADERType getRequestHeaderDespatch;
         public static SERVICES.serviceArchive.REQUEST_HEADERType getRequestHeaderArchive;
         public static SERVICES.serviceReconcilation.REQUEST_HEADERType getRequestHeaderReconcilation;
+        public static SERVICES.serviceSmm.REQUEST_HEADERType getRequestHeaderSmm;
 
 
 
 
 
 
-        public static void createrequestHeaderAuth()
+        public static void createRequestHeaderAuth()
         {
             getRequestHeaderAuth = new SERVICES.serviceAuth.REQUEST_HEADERType() //default degerler ısterse degısebılır
             {
@@ -79,6 +80,20 @@ namespace izibiz.CONTROLLER.InvoiceRequestSection
                 COMPRESSED = EI.ActiveOrPasive.Y.ToString()
             };
         }
+
+
+        public static void createRequestHeaderSmm()
+        {
+            getRequestHeaderSmm = new SERVICES.serviceSmm.REQUEST_HEADERType() //default degerler ısterse degısebılır
+            {
+                SESSION_ID = AuthenticationController.sesionID,
+                APPLICATION_NAME = "izibiz.Application",
+                COMPRESSED = EI.ActiveOrPasive.Y.ToString()
+            };
+        }
+
+
+
 
     }
 }

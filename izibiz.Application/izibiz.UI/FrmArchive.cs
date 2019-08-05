@@ -4,7 +4,7 @@ using izibiz.COMMON.Language;
 using izibiz.CONTROLLER;
 using izibiz.CONTROLLER.Model;
 using izibiz.CONTROLLER.Singleton;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceArchive;
 using System;
 using System.Collections.Generic;
@@ -211,7 +211,7 @@ namespace izibiz.UI
                     byte[] content = Singl.archiveControllerGet.getReadFromEArchive(uuid, docType);
                     if (content != null)
                     {
-                        string path = FolderControl.inboxFolderArchive + uuid + "." + docType;
+                        string path = FolderControl.archiveFolderPath + uuid + "." + docType;
                         FolderControl.writeFileOnDiskWithByte(content, path);
                         System.Diagnostics.Process.Start(path);
                     }
@@ -358,16 +358,15 @@ namespace izibiz.UI
 
                 try
                 {
-                    if (!gridMenuType.Equals(nameof(EI.Invoice.ArchiveInvoices))) //grid durumu arsıv raporlarında degılse
+                    if (!gridMenuType.Equals(nameof(EI.Invoice.ArchiveInvoices))) //grid durumu arsıv faturalarında degılse
                     {
-                        if (e.ColumnIndex == tableArchiveGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
+                        if (e.ColumnIndex == tableArchiveGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)//html goruntuleye tıkladı
                         {
 
                             // imzalı contentı getır
-                            string content;
                             if (gridMenuType.Equals(nameof(EI.ArchiveReports.ArchiveReports))) //arsıv raporlarında  ıse
                             {
-                                content = Singl.archiveControllerGet.getArchiveReportXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.ArchiveReports.reportNo)].Value.ToString());
+                                string content = Singl.archiveControllerGet.getArchiveReportXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.ArchiveReports.reportNo)].Value.ToString());
 
                                 if (content != null) //servisten veya dıskten getırlebılmısse
                                 {
@@ -381,7 +380,7 @@ namespace izibiz.UI
                             }
                             else  //taslak arsıv ıse
                             {
-                                content = Singl.archiveControllerGet.getArchiveContentXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString());
+                                string content = Singl.archiveControllerGet.getArchiveContentXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString());
 
                                 if (content != null) //servisten veya dıskten getırlebılmısse
                                 {
@@ -780,7 +779,7 @@ namespace izibiz.UI
                     if (signedXmlContent != null)
                     {
                         //contentı dıske yazdır
-                        FolderControl.writeFileOnDiskWithString(signedXmlContent, FolderControl.inboxFolderArchiveReport + reportNo + "." + nameof(EI.DocumentType.XML));
+                        FolderControl.writeFileOnDiskWithString(signedXmlContent, FolderControl.archiveFolderReportPath + reportNo + "." + nameof(EI.DocumentType.XML));
                         listReportNoSucc.Add(row.Cells[nameof(EI.ArchiveReports.reportNo)].Value.ToString());
                     }
                 }
@@ -821,7 +820,7 @@ namespace izibiz.UI
         private void ıtemDraftArchive_Click(object sender, EventArgs e)
         {
             gridMenuType = EI.Invoice.DraftArchive.ToString();
-            btnTakeArchiveInv.Visible = true;
+            btnTakeArchiveInv.Visible = false;
             pnlArchive.Visible = false;
             pnlArchiveReport.Visible = false;
             pnlDraftArchive.Visible = false;
@@ -949,7 +948,7 @@ namespace izibiz.UI
                             string oldFolderPath = Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid).folderPath;
 
                             //path degıstır
-                            string newFolderPath = FolderControl.inboxFolderArchive + newIdArr[cnt] + "." + nameof(EI.DocumentType.XML);
+                            string newFolderPath = FolderControl.archiveFolderPath + newIdArr[cnt] + "." + nameof(EI.DocumentType.XML);
                     
                             //guncelleme basarılıysa
                             if (Singl.archiveInvoiceDalGet.updateArchiveIdStateNoteDraftFlagFolderPath(archiveModelArr[cnt].uuid,
@@ -1013,7 +1012,7 @@ namespace izibiz.UI
                     byte[] content = Singl.archiveControllerGet.getReadFromEArchive(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString(), nameof(EI.DocumentType.XML));
                     if (content != null)
                     {
-                        string path = FolderControl.inboxFolderArchive + row.Cells[nameof(EI.Invoice.ID)].Value.ToString() + "." + nameof(EI.DocumentType.XML);
+                        string path = FolderControl.archiveFolderPath + row.Cells[nameof(EI.Invoice.ID)].Value.ToString() + "." + nameof(EI.DocumentType.XML);
                         FolderControl.writeFileOnDiskWithByte(content, path);
                     }
                     else

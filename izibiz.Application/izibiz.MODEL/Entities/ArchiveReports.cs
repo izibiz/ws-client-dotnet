@@ -13,7 +13,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using izibiz.COMMON;
 
-namespace izibiz.MODEL.DbTablesModels
+namespace izibiz.MODEL.Entities
 {
     public class ArchiveReports
     {

@@ -1,7 +1,7 @@
 ﻿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.MODEL.Data;
-using izibiz.MODEL.DbTablesModels;
+using izibiz.MODEL.Entities;
 using izibiz.SERVICES.serviceDespatch;
 using System;
 using System.Collections.Generic;
