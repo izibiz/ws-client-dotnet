@@ -13,6 +13,7 @@ using izibiz.SERVICES.serviceSmm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using izibiz.MODEL.Entities;
 
 namespace izibiz.UI
 {
@@ -81,48 +82,27 @@ namespace izibiz.UI
 
 
 
-        //private void gridArchiveUpdateList(List<ArchiveInvoices> archiveList)
-        //{
-        //    pnlSmm.Visible = false;
-        //    pnlSmmReports.Visible = false;
-        //    pnlDraftSmm.Visible = false;
+        private void gridSmmUpdateList(List<SelfEmploymentReceipts> smmList)
+        {
+            pnlSmm.Visible = false;
+            pnlSmmReports.Visible = false;
+            pnlDraftSmm.Visible = false;
 
-        //    tableGrid.DataSource = null;
-        //    tableGrid.Columns.Clear();
+            tableGrid.DataSource = null;
+            tableGrid.Columns.Clear();
 
-        //    if (archiveList.Count == 0)
-        //    {
-        //        MessageBox.Show(Lang.noShowInvoice);
-        //    }
-        //    else
-        //    {
+            if (smmList.Count == 0)
+            {
+                MessageBox.Show(Lang.noShowInvoice);
+            }
+            else
+            {
 
-        //        foreach (ArchiveInvoices arc in archiveList)
-        //        {
-        //            if (arc.reportFlag)
-        //            {
-        //                arc.reportFlagDesc = Lang.yes;
-        //            }
-        //            else
-        //            {
-        //                arc.reportFlagDesc = Lang.no;
-        //            }
-        //        }
+                tableGrid.DataSource = smmList;
+                addViewButtonToDatagridView();
 
-        //        tableGrid.DataSource = archiveList;
-        //        gridArchiveChangeColoumnHeaderText();
-
-        //        tableArchiveGrid.Columns[nameof(EI.Invoice.reportFlag)].Visible = false;
-        //        tableArchiveGrid.Columns[nameof(EI.Invoice.draftFlag)].Visible = false;
-        //        tableArchiveGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
-        //        tableArchiveGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
-
-        //        if (gridMenuType == EI.Invoice.DraftArchive.ToString()) //taslak ıse
-        //        {
-        //            tableGrid.Columns[nameof(EI.Invoice.reportFlagDesc)].Visible = false;
-        //        }
-        //    }
-        //}
+            }
+        }
 
 
 
@@ -136,9 +116,17 @@ namespace izibiz.UI
 
             try
             {
-                //db dekı raporlanmıs arsıv faturaları getır
 
+                string errorMessage = Singl.smmControllerGet.getSmmListOnServiceAndSaveDb();
 
+                if (errorMessage == null)
+                {
+                    gridSmmUpdateList(Singl.smmDalGet.getSmmWithDraft(false));
+                }
+                else
+                {
+                    MessageBox.Show(errorMessage);
+                }
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -177,8 +165,7 @@ namespace izibiz.UI
 
             try
             {
-                //db dekı raporlanmıs arsıv faturaları getır
-
+                gridSmmUpdateList(Singl.smmDalGet.getSmmWithDraft(false));
 
 
             }
@@ -209,16 +196,15 @@ namespace izibiz.UI
         {
             gridMenuType = EI.SelfEmploymentReceipt.draftSmm.ToString();
 
-            btnTakeSmm.Visible = true;
+            btnTakeSmm.Visible = false;
             pnlSmm.Visible = false;
             pnlDraftSmm.Visible = false;
             pnlSmmReports.Visible = false;
 
             try
             {
-                //db dekı raporlanmıs arsıv faturaları getır
 
-
+                gridSmmUpdateList(Singl.smmDalGet.getSmmWithDraft(true));
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)

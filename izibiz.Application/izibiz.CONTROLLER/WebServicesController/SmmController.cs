@@ -29,7 +29,7 @@ namespace izibiz.CONTROLLER.WebServicesController
         /// <summary>
         /// error mesaj varsa doner yoksa null donup getırılen lısteyı db ye kaydeder
         /// </summary>
-        public string getArchiveListOnServiceAndSaveDb()
+        public string getSmmListOnServiceAndSaveDb()
         {
             using (new OperationContextScope(smmPortClient.InnerChannel))
             {

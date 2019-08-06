@@ -39,13 +39,10 @@
             this.tableGrid = new System.Windows.Forms.DataGridView();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.pnlDraftSmm = new System.Windows.Forms.Panel();
-            this.btnSendSmm = new System.Windows.Forms.Button();
-            this.btnLoadDraftSmm = new System.Windows.Forms.Button();
             this.pnlSmm = new System.Windows.Forms.Panel();
             this.pnlSmmReports = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.menu.SuspendLayout();
-            this.pnlDraftSmm.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -178,45 +175,11 @@
             // 
             // pnlDraftSmm
             // 
-            this.pnlDraftSmm.Controls.Add(this.btnSendSmm);
-            this.pnlDraftSmm.Controls.Add(this.btnLoadDraftSmm);
             this.pnlDraftSmm.Location = new System.Drawing.Point(429, 34);
             this.pnlDraftSmm.Name = "pnlDraftSmm";
             this.pnlDraftSmm.Size = new System.Drawing.Size(765, 106);
             this.pnlDraftSmm.TabIndex = 62;
             this.pnlDraftSmm.Visible = false;
-            // 
-            // btnSendSmm
-            // 
-            this.btnSendSmm.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSendSmm.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnSendSmm.FlatAppearance.BorderSize = 2;
-            this.btnSendSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendSmm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSendSmm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSendSmm.Location = new System.Drawing.Point(208, 28);
-            this.btnSendSmm.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSendSmm.Name = "btnSendSmm";
-            this.btnSendSmm.Size = new System.Drawing.Size(160, 58);
-            this.btnSendSmm.TabIndex = 45;
-            this.btnSendSmm.Text = "Gönder";
-            this.btnSendSmm.UseVisualStyleBackColor = false;
-            // 
-            // btnLoadDraftSmm
-            // 
-            this.btnLoadDraftSmm.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnLoadDraftSmm.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnLoadDraftSmm.FlatAppearance.BorderSize = 2;
-            this.btnLoadDraftSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadDraftSmm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnLoadDraftSmm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLoadDraftSmm.Location = new System.Drawing.Point(18, 29);
-            this.btnLoadDraftSmm.Margin = new System.Windows.Forms.Padding(5);
-            this.btnLoadDraftSmm.Name = "btnLoadDraftSmm";
-            this.btnLoadDraftSmm.Size = new System.Drawing.Size(160, 58);
-            this.btnLoadDraftSmm.TabIndex = 44;
-            this.btnLoadDraftSmm.Text = "Portala Yukle";
-            this.btnLoadDraftSmm.UseVisualStyleBackColor = false;
             // 
             // pnlSmm
             // 
@@ -256,7 +219,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            this.pnlDraftSmm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,8 +236,6 @@
         private System.Windows.Forms.DataGridView tableGrid;
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.Panel pnlDraftSmm;
-        private System.Windows.Forms.Button btnSendSmm;
-        private System.Windows.Forms.Button btnLoadDraftSmm;
         private System.Windows.Forms.Panel pnlSmm;
         private System.Windows.Forms.Panel pnlSmmReports;
     }

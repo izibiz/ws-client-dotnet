@@ -25,6 +25,13 @@ namespace izibiz.CONTROLLER.DAL
         }
 
 
+        public List<SelfEmploymentReceipts> getSmmWithDraft(bool isDraft)
+        {
+            using (DatabaseContext databaseContext = new DatabaseContext())
+            {
+                return databaseContext.selfEmployments.Where(smm => smm.isDraft == isDraft).ToList();
+            }
+        }
 
 
 
