@@ -2,7 +2,7 @@
 Bu proje e-Fatura, e-Arşiv,e-İrsaliye, Mutabakat ve Smm  ürünlerinin izibiz  web servis metodlarının nasıl kullanılması gerektiği ile ilgili örnek olması için oluşturulmuştur. 
 Projede beş farklı ürünün web servis metodlarının ve Kimlik Doğrulama web servisinin kullanımları  bulunmaktadır. Yalnızca test web servis sisteminde çalışmakta ve web servislere bağlantı ayarları da projede bulunmaktadır.
 
-Projede Kullanılan teknolojiler:
+PROJEDE KULLANILAN TEKNOLOJİLER:
 Bu projede C# Windows Form teknolojisi ile yapıldı.
 Projede MVC mimari yapısı kullanıldı.
 Projede Singleton Pattern kullanıldı.
