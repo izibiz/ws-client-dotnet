@@ -12,11 +12,11 @@ Proje arayüzü İngilizce ve Türkçe dil desteği sağlamaktadır.
 
 PROJEDE KULLANILAN ÜRÜNLER:
 
-- Kimlik Doğrulama Servisi İçin:
+Kimlik Doğrulama Servisi İçin:
 -Giriş İşlemlerini Yapma
 -Gib Mükellef Listesi  Sorgulama
 
--e-Fatura Ürünü İçin:
+e-Fatura Ürünü İçin:
 -Gelen veya Giden veya Taslak Faturaları Alma 
 -Fatura Durumlarını Sorgulama      
 -Fatura Yanıtı Gönderme
@@ -37,7 +37,7 @@ e-Arşiv Ürünü İçin:
 -e-Arşiv  Fatura Gönderme
 -Gelen veya Gönderilen Faturaların HTML,PDF,XML Belgelerini İndirme
 
--e-İrsaliye Ürünü İçin:
+e-İrsaliye Ürünü İçin:
 -Gelen veya Giden veya Taslak e-İrsaliye Alma
 -e-İrsaliye Durumu Okundu veya Okunmadı Olarak İşaretleme
 -e-İrsaliye Durum Sorgulama  
@@ -45,13 +45,13 @@ e-Arşiv Ürünü İçin:
 -e-İrsaliye Taslak Yükleme
 -e-İrsaliye Gönderme
 
--Mutabakat  Ürünü İçin:
-- Mutabakat Gönderme
-- Mutabakat Durum Sorgulama  
-- Mutabakat Mail Gönderme
+Mutabakat  Ürünü İçin:
+-Mutabakat Gönderme
+-Mutabakat Durum Sorgulama  
+-Mutabakat Mail Gönderme
 
--SMM  Ürünü İçin:
-- SMM Alma
+SMM  Ürünü İçin:
+-SMM Alma
 işlemleri yapılmaktadır.
 
 KURULUM
