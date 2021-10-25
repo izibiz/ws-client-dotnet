@@ -66,6 +66,7 @@
     <Compile Include="Data\SqLiteConfiguration.cs" />
     <Compile Include="Entities\ArchiveInvoices.cs" />
     <Compile Include="Entities\ArchiveReports.cs" />
+    <Compile Include="Entities\CreditNote.cs" />
     <Compile Include="Entities\DespatchAdvices.cs" />
     <Compile Include="Entities\GibUsers.cs" />
     <Compile Include="Entities\InvoiceIdSerial.cs" />

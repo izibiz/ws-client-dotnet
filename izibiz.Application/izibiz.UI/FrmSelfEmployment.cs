@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using izibiz.MODEL.Entities;
+using izibiz.COMMON.FileControl;
 
 namespace izibiz.UI
 {
@@ -21,9 +22,8 @@ namespace izibiz.UI
     {
 
         private string gridMenuType;
-
-
-
+        private string gridDirection;
+        
 
         public FrmSelfEmployment()
         {
@@ -85,9 +85,9 @@ namespace izibiz.UI
         private void gridSmmUpdateList(List<SelfEmploymentReceipts> smmList)
         {
             pnlSmm.Visible = false;
-            pnlSmmReports.Visible = false;
+            pnlSmm.Visible = false;
             pnlDraftSmm.Visible = false;
-
+            gridDirection = nameof(EI.Direction.IN);
             tableGrid.DataSource = null;
             tableGrid.Columns.Clear();
 
@@ -98,10 +98,42 @@ namespace izibiz.UI
             else
             {
 
-                tableGrid.DataSource = smmList;
                 addViewButtonToDatagridView();
+                tableGrid.DataSource = smmList;
+                dataGridChangeColumnHeaderText();
+
+                //gridde taslak faturaları lısletemıyorsak
+                
+                tableGrid.Columns[nameof(EI.SelfEmploymentReceipt.isDraft)].Visible = false;
+                tableGrid.Columns[nameof(EI.SelfEmploymentReceipt.statusCode)].Visible = false;
+                tableGrid.Columns[nameof(EI.SelfEmploymentReceipt.status)].Visible = false;
+                tableGrid.Columns[nameof(EI.SelfEmploymentReceipt.emailStatusCode)].Visible = false;
+                tableGrid.Columns[nameof(EI.SelfEmploymentReceipt.folderPath)].Visible = false;
+
+
+                IblInformation.Text = Lang.clickRowInvoice;
+                IblInformation.Visible = true;
 
             }
+        }
+
+        private void dataGridChangeColumnHeaderText()
+        {
+
+            tableGrid.Columns[EI.SelfEmploymentReceipt.status.ToString()].HeaderText = Lang.status;
+
+
+            tableGrid.Columns[EI.SelfEmploymentReceipt.uuid.ToString()].HeaderText = Lang.uuid;
+
+            tableGrid.Columns[EI.SelfEmploymentReceipt.issueDate.ToString()].HeaderText = Lang.issueDate;
+
+            tableGrid.Columns[EI.SelfEmploymentReceipt.profileID.ToString()].HeaderText = Lang.profileid;
+
+            tableGrid.Columns[EI.SelfEmploymentReceipt.cDate.ToString()].HeaderText = Lang.cDate;
+
+            tableGrid.Columns[EI.SelfEmploymentReceipt.customerTitle.ToString()].HeaderText = Lang.customerTitle;
+
+            tableGrid.Columns[EI.SelfEmploymentReceipt.statusDesc.ToString()].HeaderText = Lang.statusDesc;
         }
 
 
@@ -359,6 +391,84 @@ namespace izibiz.UI
 
 
 
+
+        }
+
+        private void pnlDraftSmm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnCreditNoteView_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string uuid = tableGrid.SelectedRows[0].Cells[nameof(EI.SelfEmploymentReceipt.uuid)].Value.ToString();
+                CONTENT_TYPE docType = CONTENT_TYPE.XML;
+
+                if (rdViewHtml.Checked) //html
+                {
+                    string xmlContent = Singl.smmControllerGet.getSmmContentXml(uuid);
+                    if (xmlContent != null)
+                    {
+                        FrmView previewInvoices = new FrmView(xmlContent, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts));
+                        previewInvoices.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Lang.cantGetContent);//content dıskten sılınmıs ve servısten getırılemedı
+                    }
+                }
+                else  //html degılse
+                {
+                    if (rdViewXml.Checked) // xml ise
+                    {
+                        docType = CONTENT_TYPE.XML;
+                    }
+                    else //hicbirini secmezse pdf  görüntülenecektır
+                    {
+                        docType = CONTENT_TYPE.PDF;
+                    }
+                    /////////////
+                    byte[] content = Singl.smmControllerGet.getSmmWithType(uuid, docType);
+                    if (content != null)
+                    {
+                        string path = FolderControl.smmFolderPath + uuid + "." + docType;
+                        FolderControl.writeFileOnDiskWithByte(content, path);
+                        System.Diagnostics.Process.Start(path);
+                    }
+                    else
+                    {
+                        MessageBox.Show(Lang.cantGetContent);//content dıskten sılınmıs ve servısten getırılemedı
+                    }
+                }
+            }
+            catch (FaultException<SERVICES.serviceCreditNote.REQUEST_ERRORType> ex)  //archive req error
+            {
+                if (ex.Detail.ERROR_CODE == 2005)
+                {
+                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
+                }
+                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.DataException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        
+    }
+
+        private void tableGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

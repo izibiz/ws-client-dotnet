@@ -61,7 +61,10 @@ namespace izibiz.UI
                 {
                     viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibSmmReport, xmlContent);
                 }
-
+                else if (invoiceType == EI.CreditNote.CreditNotes.ToString())
+                {
+                    viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibCreditNote, xmlContent);
+                }
             }
             catch (Exception ex)
             {

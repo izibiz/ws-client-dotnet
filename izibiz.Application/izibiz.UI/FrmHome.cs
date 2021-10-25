@@ -94,5 +94,12 @@ namespace izibiz.UI
             frmSelfEmployment.Show();
             this.Hide();
         }
+
+        private void BtnMüstahsil_Click(object sender, EventArgs e)
+        {
+            FrmCreditNote frmCreditNote = new FrmCreditNote();
+            frmCreditNote.Show();
+            this.Hide();
+        }
     }
 }

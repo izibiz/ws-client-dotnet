@@ -56,7 +56,7 @@ namespace izibiz.CONTROLLER.DAL
                     selfEmployment.statusDesc = smm.HEADER.STATUS_DESCRIPTION;
                     selfEmployment.cDate = smm.HEADER.CDATE;
                     selfEmployment.issueDate = smm.HEADER.ISSUE_DATE;
-                    selfEmployment.email = smm.HEADER.EMAIL.First();
+                    selfEmployment.email = smm.HEADER.EMAIL != null ? smm.HEADER.EMAIL.First() : null;
                     selfEmployment.emailStatusCode = smm.HEADER.EMAIL_STATUS_CODE;
                     selfEmployment.folderPath = FolderControl.smmFolderPath + smm.ID + "." + nameof(EI.DocumentType.XML);
 

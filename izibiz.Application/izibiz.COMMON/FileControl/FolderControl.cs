@@ -24,6 +24,8 @@ namespace izibiz.COMMON.FileControl
         static string despatchFolderDraftPath { get; } = "C:\\temp\\DESPATCH\\TASLAK\\";
         public static string smmFolderPath { get; } = "C:\\temp\\E-SMM\\";
         public static string smmReportPath { get; } = "C:\\temp\\E-SMM-RAPOR\\";
+        public static string CreditNoteFolderPath { get; } = "C:\\temp\\E-CREDITNOTE\\";
+        public static string CreditNoteReportFolderPath { get; } = "C:\\temp\\E-CREDITNOTE-RAPOR\\";
 
 
         public static void deleteFileFromPath(string path)

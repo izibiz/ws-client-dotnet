@@ -19,13 +19,12 @@ namespace izibiz.CONTROLLER.RequestSection
         public static SERVICES.serviceOib.REQUEST_HEADERType getRequestHeaderOib;
         public static SERVICES.serviceDespatch.REQUEST_HEADERType getRequestHeaderDespatch;
         public static SERVICES.serviceArchive.REQUEST_HEADERType getRequestHeaderArchive;
+
+        
+
         public static SERVICES.serviceReconcilation.REQUEST_HEADERType getRequestHeaderReconcilation;
         public static SERVICES.serviceSmm.REQUEST_HEADERType getRequestHeaderSmm;
-
-
-
-
-
+        public static SERVICES.serviceCreditNote.REQUEST_HEADERType getRequestHeaderCreditNotes;
 
         public static void createRequestHeaderAuth()
         {
@@ -85,6 +84,15 @@ namespace izibiz.CONTROLLER.RequestSection
         public static void createRequestHeaderSmm()
         {
             getRequestHeaderSmm = new SERVICES.serviceSmm.REQUEST_HEADERType() //default degerler ısterse degısebılır
+            {
+                SESSION_ID = AuthenticationController.sesionID,
+                APPLICATION_NAME = "izibiz.Application",
+                COMPRESSED = EI.ActiveOrPasive.Y.ToString()
+            };
+        }
+        public static void createRequestHeaderCreditNote()
+        {
+            getRequestHeaderCreditNotes = new SERVICES.serviceCreditNote.REQUEST_HEADERType() //default degerler ısterse degısebılır
             {
                 SESSION_ID = AuthenticationController.sesionID,
                 APPLICATION_NAME = "izibiz.Application",

@@ -60,6 +60,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\serviceCreditNote\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\serviceDespatch\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\.editorconfig" />
     <None Include="Connected Services\serviceArchive\EFaturaArchive.wsdl" />
     <None Include="Connected Services\serviceArchive\EFaturaArchive.xsd">
       <SubType>Designer</SubType>
@@ -273,6 +279,61 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.LogoutResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\CreditNote.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\CreditNote1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\CreditNote2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\CreditNote3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\CreditNoteWS.wsdl" />
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.CancelCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.CancelCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceCreditNote\izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceDespatch\EIrsaliye.xsd">
@@ -563,6 +624,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\serviceArchive\" />
     <WCFMetadataStorage Include="Connected Services\serviceAuth\" />
+    <WCFMetadataStorage Include="Connected Services\serviceCreditNote\" />
     <WCFMetadataStorage Include="Connected Services\serviceDespatch\" />
     <WCFMetadataStorage Include="Connected Services\serviceOib\" />
     <WCFMetadataStorage Include="Connected Services\serviceReconcilation\" />
@@ -636,6 +698,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\serviceSmm\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceCreditNote\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceCreditNote\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\serviceCreditNote\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -58,7 +58,7 @@ namespace izibiz.MODEL.Entities
 
 
 
-        [Column(Name = nameof(EI.SelfEmploymentReceipt.CDate), DbType = "DATETIME")]
+        [Column(Name = nameof(EI.SelfEmploymentReceipt.cDate), DbType = "DATETIME")]
         public DateTime cDate { get; set; }
 
 

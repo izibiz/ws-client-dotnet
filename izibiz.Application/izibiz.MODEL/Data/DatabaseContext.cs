@@ -52,5 +52,8 @@ namespace izibiz.MODEL.Data
         public DbSet<UserInformation> userInformations { get; set; }
 
         public DbSet<GibUsers> gibUsers { get; set; }
+
+        public DbSet<CreditNotes> creditNotes { get; set; }
+        
     }
 }

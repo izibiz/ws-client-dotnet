@@ -1501,10 +1501,15 @@ namespace izibiz.UI
             Application.Exit();
         }
 
+        private void tableGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
 
+        private void lblInformation_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 
 }

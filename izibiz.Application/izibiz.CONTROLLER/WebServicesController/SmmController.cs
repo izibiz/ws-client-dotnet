@@ -62,7 +62,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 }
             }
         }
-
+     
 
         public string getSmmWithUuidOnService(string uuid)
         {
@@ -102,7 +102,25 @@ namespace izibiz.CONTROLLER.WebServicesController
             }
         }
 
+        public byte[] getSmmWithType(string uuid, CONTENT_TYPE type)
+        {
+            using (new OperationContextScope(smmPortClient.InnerChannel))
+            {
+                var req = new GetSmmRequest(); //sistemdeki gelen efatura listesi için request parametreleri
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderSmm;
+                req.SMM_SEARCH_KEY = SearchKey.GetSearchKeySmm;
+                req.SMM_SEARCH_KEY.UUID = uuid;
+                req.CONTENT_TYPE = type;
 
+                var response = smmPortClient.GetSmm(req);
+              
+                    if (response.SMM != null && response.SMM.Length > 0) //getırılen smm varsa
+                    {
+                        return Compress.UncompressFile(response.SMM[0].CONTENT.Value);
+                    }
+                    return null;//smm sayısı 0 ancak hata yok
+            }
+        }
 
 
 

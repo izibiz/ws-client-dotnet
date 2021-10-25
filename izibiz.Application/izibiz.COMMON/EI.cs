@@ -10,7 +10,7 @@ namespace izibiz.COMMON
     public partial class EI
 
     {
-
+        
 
         public enum Direction
         {
@@ -136,8 +136,10 @@ namespace izibiz.COMMON
             DraftArchive,
             receiverMail,
             reportFlag,
-            reportFlagDesc
-
+            reportFlagDesc,
+            draftDesc,
+            isDraft,
+            customerTitle
         }
         public enum ReconcilationAmountType
         {
@@ -178,11 +180,35 @@ namespace izibiz.COMMON
         {
             SelfEmploymentReceipts, 
             draftSmm,
-            uuid,
+            uuID,
             smmID,
             isDraft,
             customerTitle,
             customerID,
+            profileID,
+            status,
+            statusCode,
+            statusDesc,
+            cDate,
+            issueDate,
+            email,
+            emailStatusCode,
+            emailStatusDate,
+            folderPath,
+            uuid,
+            FLAG_VALUE
+        }
+        public enum CreditNote
+        {
+            CreditNotes,
+            creditNoteReports,
+            draftCreditNote,
+            uuid,
+            CreditNoteID,
+            ID,
+            isDraft,
+            customerTitle,
+            customerIdentifier,
             profileID,
             status,
             statusCode,
@@ -192,9 +218,14 @@ namespace izibiz.COMMON
             email,
             emailStatusCode,
             emailStatusDate,
-            folderPath
+            folderPath,
+            UUID,
+            FLAG_VALUE,
+            draftDesc,
+            profileId,
+            cDate,
+            creditNoteId
         }
-
         public enum SmmReports
         {
            SmmReports

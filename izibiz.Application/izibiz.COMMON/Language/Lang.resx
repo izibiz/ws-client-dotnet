@@ -711,4 +711,10 @@
   <data name="unSuccSaveStatus" xml:space="preserve">
     <value>Db ye  durum kaydetme basarısız</value>
   </data>
+  <data name="creditNoteID" xml:space="preserve">
+    <value>Müstahsil No</value>
+  </data>
+  <data name="customerTitle" xml:space="preserve">
+    <value>Müşteri Ünvan</value>
+  </data>
 </root>

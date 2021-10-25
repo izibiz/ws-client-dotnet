@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="DAL\ArchiveInvoicesDal.cs" />
     <Compile Include="DAL\ArchiveReportsDal.cs" />
+    <Compile Include="DAL\CreditNotesDal.cs" />
     <Compile Include="DAL\DespatchAdviceDal.cs" />
     <Compile Include="DAL\GibUsersDal.cs" />
     <Compile Include="DAL\IdSerilazeDal.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="DAL\SmmDal.cs" />
     <Compile Include="DAL\UserInformationDal.cs" />
     <Compile Include="InvoiceIdSetSerilaze.cs" />
+    <Compile Include="Model\CreditNoteModel.cs" />
     <Compile Include="RequestSection\SearchKey.cs" />
     <Compile Include="Model\ArchiveContentPropertiesModel.cs" />
     <Compile Include="Model\GibUserListXmlModel.cs" />
@@ -85,6 +87,7 @@
     </Compile>
     <Compile Include="WebServicesController\ArchiveController.cs" />
     <Compile Include="WebServicesController\AuthenticationController.cs" />
+    <Compile Include="WebServicesController\CreditNoteController.cs" />
     <Compile Include="WebServicesController\DespatchAdviceController.cs" />
     <Compile Include="WebServicesController\EInvoiceController.cs" />
     <Compile Include="WebServicesController\GibUserController.cs" />

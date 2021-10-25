@@ -45,14 +45,14 @@
             this.pnlArchive = new System.Windows.Forms.Panel();
             this.btnFilterArchiveReports = new System.Windows.Forms.Button();
             this.btnGetSignedXmlArchive = new System.Windows.Forms.Button();
+            this.btnArchiveCancel = new System.Windows.Forms.Button();
             this.pnlArchiveReport = new System.Windows.Forms.Panel();
             this.btnGetSingedXml = new System.Windows.Forms.Button();
             this.pnlDraftArchive = new System.Windows.Forms.Panel();
+            this.btnDeleteDraftArchive = new System.Windows.Forms.Button();
             this.btnSendDraftArchive = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnHomePage = new System.Windows.Forms.Button();
-            this.btnArchiveCancel = new System.Windows.Forms.Button();
-            this.btnDeleteDraftArchive = new System.Windows.Forms.Button();
             this.menuInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableArchiveGrid)).BeginInit();
             this.pnlArchive.SuspendLayout();
@@ -75,7 +75,6 @@
             this.menuInvoice.Location = new System.Drawing.Point(0, 0);
             this.menuInvoice.Margin = new System.Windows.Forms.Padding(0, 0, 27, 0);
             this.menuInvoice.Name = "menuInvoice";
-            this.menuInvoice.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuInvoice.Size = new System.Drawing.Size(182, 850);
             this.menuInvoice.TabIndex = 1;
             this.menuInvoice.Text = "menuStrip1";
@@ -135,7 +134,7 @@
             this.btnArchiveGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnArchiveGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnArchiveGetState.Location = new System.Drawing.Point(564, 17);
-            this.btnArchiveGetState.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnArchiveGetState.Margin = new System.Windows.Forms.Padding(5);
             this.btnArchiveGetState.Name = "btnArchiveGetState";
             this.btnArchiveGetState.Size = new System.Drawing.Size(160, 60);
             this.btnArchiveGetState.TabIndex = 28;
@@ -152,7 +151,7 @@
             this.btnSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendMail.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSendMail.Location = new System.Drawing.Point(1003, 17);
-            this.btnSendMail.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSendMail.Margin = new System.Windows.Forms.Padding(5);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(160, 59);
             this.btnSendMail.TabIndex = 30;
@@ -163,13 +162,13 @@
             // tableArchiveGrid
             // 
             this.tableArchiveGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableArchiveGrid.Location = new System.Drawing.Point(396, 276);
-            this.tableArchiveGrid.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableArchiveGrid.Location = new System.Drawing.Point(396, 559);
+            this.tableArchiveGrid.Margin = new System.Windows.Forms.Padding(5);
             this.tableArchiveGrid.Name = "tableArchiveGrid";
             this.tableArchiveGrid.ReadOnly = true;
             this.tableArchiveGrid.RowHeadersWidth = 51;
             this.tableArchiveGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableArchiveGrid.Size = new System.Drawing.Size(1077, 457);
+            this.tableArchiveGrid.Size = new System.Drawing.Size(1077, 291);
             this.tableArchiveGrid.TabIndex = 36;
             this.tableArchiveGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableArchiveGrid_CellClick);
             this.tableArchiveGrid.SelectionChanged += new System.EventHandler(this.tableArchiveGrid_SelectionChanged);
@@ -183,7 +182,7 @@
             this.btnArchiveView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnArchiveView.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnArchiveView.Location = new System.Drawing.Point(21, 21);
-            this.btnArchiveView.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnArchiveView.Margin = new System.Windows.Forms.Padding(5);
             this.btnArchiveView.Name = "btnArchiveView";
             this.btnArchiveView.Size = new System.Drawing.Size(136, 60);
             this.btnArchiveView.TabIndex = 37;
@@ -195,7 +194,7 @@
             // 
             this.rdViewHtml.AutoSize = true;
             this.rdViewHtml.Location = new System.Drawing.Point(213, 17);
-            this.rdViewHtml.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.rdViewHtml.Margin = new System.Windows.Forms.Padding(5);
             this.rdViewHtml.Name = "rdViewHtml";
             this.rdViewHtml.Size = new System.Drawing.Size(55, 21);
             this.rdViewHtml.TabIndex = 38;
@@ -207,7 +206,7 @@
             // 
             this.rdViewPdf.AutoSize = true;
             this.rdViewPdf.Location = new System.Drawing.Point(213, 46);
-            this.rdViewPdf.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.rdViewPdf.Margin = new System.Windows.Forms.Padding(5);
             this.rdViewPdf.Name = "rdViewPdf";
             this.rdViewPdf.Size = new System.Drawing.Size(49, 21);
             this.rdViewPdf.TabIndex = 39;
@@ -219,7 +218,7 @@
             // 
             this.rdViewXml.AutoSize = true;
             this.rdViewXml.Location = new System.Drawing.Point(213, 74);
-            this.rdViewXml.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.rdViewXml.Margin = new System.Windows.Forms.Padding(5);
             this.rdViewXml.Name = "rdViewXml";
             this.rdViewXml.Size = new System.Drawing.Size(88, 21);
             this.rdViewXml.TabIndex = 40;
@@ -236,7 +235,7 @@
             this.btnTakeArchiveInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnTakeArchiveInv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnTakeArchiveInv.Location = new System.Drawing.Point(299, 37);
-            this.btnTakeArchiveInv.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnTakeArchiveInv.Margin = new System.Windows.Forms.Padding(5);
             this.btnTakeArchiveInv.Name = "btnTakeArchiveInv";
             this.btnTakeArchiveInv.Size = new System.Drawing.Size(160, 60);
             this.btnTakeArchiveInv.TabIndex = 41;
@@ -256,8 +255,8 @@
             this.pnlArchive.Controls.Add(this.rdViewPdf);
             this.pnlArchive.Controls.Add(this.btnArchiveGetState);
             this.pnlArchive.Controls.Add(this.btnArchiveCancel);
-            this.pnlArchive.Location = new System.Drawing.Point(517, 18);
-            this.pnlArchive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlArchive.Location = new System.Drawing.Point(469, 303);
+            this.pnlArchive.Margin = new System.Windows.Forms.Padding(5);
             this.pnlArchive.Name = "pnlArchive";
             this.pnlArchive.Size = new System.Drawing.Size(990, 188);
             this.pnlArchive.TabIndex = 43;
@@ -272,7 +271,7 @@
             this.btnFilterArchiveReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnFilterArchiveReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnFilterArchiveReports.Location = new System.Drawing.Point(21, 124);
-            this.btnFilterArchiveReports.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnFilterArchiveReports.Margin = new System.Windows.Forms.Padding(5);
             this.btnFilterArchiveReports.Name = "btnFilterArchiveReports";
             this.btnFilterArchiveReports.Size = new System.Drawing.Size(171, 58);
             this.btnFilterArchiveReports.TabIndex = 42;
@@ -289,7 +288,7 @@
             this.btnGetSignedXmlArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGetSignedXmlArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnGetSignedXmlArchive.Location = new System.Drawing.Point(345, 17);
-            this.btnGetSignedXmlArchive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnGetSignedXmlArchive.Margin = new System.Windows.Forms.Padding(5);
             this.btnGetSignedXmlArchive.Name = "btnGetSignedXmlArchive";
             this.btnGetSignedXmlArchive.Size = new System.Drawing.Size(149, 60);
             this.btnGetSignedXmlArchive.TabIndex = 41;
@@ -297,11 +296,31 @@
             this.btnGetSignedXmlArchive.UseVisualStyleBackColor = false;
             this.btnGetSignedXmlArchive.Click += new System.EventHandler(this.btnGetSignedXmlArchive_Click);
             // 
+            // btnArchiveCancel
+            // 
+            this.btnArchiveCancel.BackColor = System.Drawing.Color.Crimson;
+            this.btnArchiveCancel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnArchiveCancel.FlatAppearance.BorderSize = 2;
+            this.btnArchiveCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArchiveCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnArchiveCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnArchiveCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnArchiveCancel.Image")));
+            this.btnArchiveCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnArchiveCancel.Location = new System.Drawing.Point(788, 17);
+            this.btnArchiveCancel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnArchiveCancel.Name = "btnArchiveCancel";
+            this.btnArchiveCancel.Size = new System.Drawing.Size(153, 59);
+            this.btnArchiveCancel.TabIndex = 27;
+            this.btnArchiveCancel.Text = "iade et";
+            this.btnArchiveCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnArchiveCancel.UseVisualStyleBackColor = false;
+            this.btnArchiveCancel.Click += new System.EventHandler(this.btnArchiveCancel_Click);
+            // 
             // pnlArchiveReport
             // 
             this.pnlArchiveReport.Controls.Add(this.btnGetSingedXml);
             this.pnlArchiveReport.Location = new System.Drawing.Point(517, 18);
-            this.pnlArchiveReport.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlArchiveReport.Margin = new System.Windows.Forms.Padding(5);
             this.pnlArchiveReport.Name = "pnlArchiveReport";
             this.pnlArchiveReport.Size = new System.Drawing.Size(990, 188);
             this.pnlArchiveReport.TabIndex = 45;
@@ -316,7 +335,7 @@
             this.btnGetSingedXml.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGetSingedXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnGetSingedXml.Location = new System.Drawing.Point(21, 12);
-            this.btnGetSingedXml.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnGetSingedXml.Margin = new System.Windows.Forms.Padding(5);
             this.btnGetSingedXml.Name = "btnGetSingedXml";
             this.btnGetSingedXml.Size = new System.Drawing.Size(160, 63);
             this.btnGetSingedXml.TabIndex = 45;
@@ -328,12 +347,32 @@
             // 
             this.pnlDraftArchive.Controls.Add(this.btnDeleteDraftArchive);
             this.pnlDraftArchive.Controls.Add(this.btnSendDraftArchive);
-            this.pnlDraftArchive.Location = new System.Drawing.Point(517, 18);
-            this.pnlDraftArchive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlDraftArchive.Location = new System.Drawing.Point(469, 13);
+            this.pnlDraftArchive.Margin = new System.Windows.Forms.Padding(5);
             this.pnlDraftArchive.Name = "pnlDraftArchive";
             this.pnlDraftArchive.Size = new System.Drawing.Size(990, 188);
             this.pnlDraftArchive.TabIndex = 46;
             this.pnlDraftArchive.Visible = false;
+            // 
+            // btnDeleteDraftArchive
+            // 
+            this.btnDeleteDraftArchive.BackColor = System.Drawing.Color.Crimson;
+            this.btnDeleteDraftArchive.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnDeleteDraftArchive.FlatAppearance.BorderSize = 2;
+            this.btnDeleteDraftArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteDraftArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDeleteDraftArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDeleteDraftArchive.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteDraftArchive.Image")));
+            this.btnDeleteDraftArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteDraftArchive.Location = new System.Drawing.Point(268, 20);
+            this.btnDeleteDraftArchive.Margin = new System.Windows.Forms.Padding(5);
+            this.btnDeleteDraftArchive.Name = "btnDeleteDraftArchive";
+            this.btnDeleteDraftArchive.Size = new System.Drawing.Size(116, 58);
+            this.btnDeleteDraftArchive.TabIndex = 42;
+            this.btnDeleteDraftArchive.Text = "Sil";
+            this.btnDeleteDraftArchive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteDraftArchive.UseVisualStyleBackColor = false;
+            this.btnDeleteDraftArchive.Click += new System.EventHandler(this.btnCancelDraftArchive_Click);
             // 
             // btnSendDraftArchive
             // 
@@ -344,7 +383,7 @@
             this.btnSendDraftArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSendDraftArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSendDraftArchive.Location = new System.Drawing.Point(21, 20);
-            this.btnSendDraftArchive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSendDraftArchive.Margin = new System.Windows.Forms.Padding(5);
             this.btnSendDraftArchive.Name = "btnSendDraftArchive";
             this.btnSendDraftArchive.Size = new System.Drawing.Size(160, 58);
             this.btnSendDraftArchive.TabIndex = 41;
@@ -384,46 +423,6 @@
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
-            // btnArchiveCancel
-            // 
-            this.btnArchiveCancel.BackColor = System.Drawing.Color.Crimson;
-            this.btnArchiveCancel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.btnArchiveCancel.FlatAppearance.BorderSize = 2;
-            this.btnArchiveCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchiveCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnArchiveCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnArchiveCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnArchiveCancel.Image")));
-            this.btnArchiveCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArchiveCancel.Location = new System.Drawing.Point(788, 17);
-            this.btnArchiveCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnArchiveCancel.Name = "btnArchiveCancel";
-            this.btnArchiveCancel.Size = new System.Drawing.Size(153, 59);
-            this.btnArchiveCancel.TabIndex = 27;
-            this.btnArchiveCancel.Text = "iade et";
-            this.btnArchiveCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnArchiveCancel.UseVisualStyleBackColor = false;
-            this.btnArchiveCancel.Click += new System.EventHandler(this.btnArchiveCancel_Click);
-            // 
-            // btnDeleteDraftArchive
-            // 
-            this.btnDeleteDraftArchive.BackColor = System.Drawing.Color.Crimson;
-            this.btnDeleteDraftArchive.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnDeleteDraftArchive.FlatAppearance.BorderSize = 2;
-            this.btnDeleteDraftArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteDraftArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnDeleteDraftArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteDraftArchive.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteDraftArchive.Image")));
-            this.btnDeleteDraftArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteDraftArchive.Location = new System.Drawing.Point(268, 20);
-            this.btnDeleteDraftArchive.Margin = new System.Windows.Forms.Padding(5);
-            this.btnDeleteDraftArchive.Name = "btnDeleteDraftArchive";
-            this.btnDeleteDraftArchive.Size = new System.Drawing.Size(116, 58);
-            this.btnDeleteDraftArchive.TabIndex = 42;
-            this.btnDeleteDraftArchive.Text = "Sil";
-            this.btnDeleteDraftArchive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDeleteDraftArchive.UseVisualStyleBackColor = false;
-            this.btnDeleteDraftArchive.Click += new System.EventHandler(this.btnCancelDraftArchive_Click);
-            // 
             // FrmArchive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -439,7 +438,7 @@
             this.Controls.Add(this.menuInvoice);
             this.Controls.Add(this.pnlArchiveReport);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmArchive";

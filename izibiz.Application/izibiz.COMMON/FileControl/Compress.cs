@@ -73,6 +73,11 @@ namespace izibiz.COMMON.FileControl
             return zipStream.ToArray();
         }
 
+        public static byte[] UncompressFile(object value)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
 

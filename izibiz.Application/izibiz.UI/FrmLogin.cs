@@ -24,7 +24,7 @@ namespace izibiz.UI
 
         public static string usurname;
         public static string password;
-        int saniye = 0;
+       //int saniye = 0;
 
         //   private static RemoteCertificateValidationCallback cert;
 

@@ -711,4 +711,10 @@
   <data name="unSuccSaveStatus" xml:space="preserve">
     <value>Unsucces save status on db</value>
   </data>
+  <data name="creditNoteID" xml:space="preserve">
+    <value>CreditNote Number</value>
+  </data>
+  <data name="customerTitle" xml:space="preserve">
+    <value>Customer Title</value>
+  </data>
 </root>
