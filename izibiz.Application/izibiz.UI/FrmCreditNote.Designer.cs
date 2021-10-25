@@ -40,13 +40,10 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.pnlDraftCreditNote = new System.Windows.Forms.Panel();
             this.pnlCreditNote = new System.Windows.Forms.Panel();
-            this.btnFilterArchiveReports = new System.Windows.Forms.Button();
             this.btnCreditNoteView = new System.Windows.Forms.Button();
             this.rdViewXml = new System.Windows.Forms.RadioButton();
             this.rdViewHtml = new System.Windows.Forms.RadioButton();
             this.rdViewPdf = new System.Windows.Forms.RadioButton();
-            this.btnArchiveGetState = new System.Windows.Forms.Button();
-            this.btnArchiveCancel = new System.Windows.Forms.Button();
             this.pnlCreditNoteReports = new System.Windows.Forms.Panel();
             this.lblInformation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
@@ -195,13 +192,10 @@
             // 
             // pnlCreditNote
             // 
-            this.pnlCreditNote.Controls.Add(this.btnFilterArchiveReports);
             this.pnlCreditNote.Controls.Add(this.btnCreditNoteView);
             this.pnlCreditNote.Controls.Add(this.rdViewXml);
             this.pnlCreditNote.Controls.Add(this.rdViewHtml);
             this.pnlCreditNote.Controls.Add(this.rdViewPdf);
-            this.pnlCreditNote.Controls.Add(this.btnArchiveGetState);
-            this.pnlCreditNote.Controls.Add(this.btnArchiveCancel);
             this.pnlCreditNote.Location = new System.Drawing.Point(4, 0);
             this.pnlCreditNote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlCreditNote.Name = "pnlCreditNote";
@@ -209,23 +203,6 @@
             this.pnlCreditNote.TabIndex = 63;
             this.pnlCreditNote.Visible = false;
             this.pnlCreditNote.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCreditNote_Paint);
-            // 
-            // btnFilterArchiveReports
-            // 
-            this.btnFilterArchiveReports.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnFilterArchiveReports.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnFilterArchiveReports.FlatAppearance.BorderSize = 2;
-            this.btnFilterArchiveReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilterArchiveReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnFilterArchiveReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFilterArchiveReports.Location = new System.Drawing.Point(842, 22);
-            this.btnFilterArchiveReports.Margin = new System.Windows.Forms.Padding(6);
-            this.btnFilterArchiveReports.Name = "btnFilterArchiveReports";
-            this.btnFilterArchiveReports.Size = new System.Drawing.Size(192, 72);
-            this.btnFilterArchiveReports.TabIndex = 50;
-            this.btnFilterArchiveReports.Text = "Raporlananlar";
-            this.btnFilterArchiveReports.UseVisualStyleBackColor = false;
-            this.btnFilterArchiveReports.Visible = false;
             // 
             // btnCreditNoteView
             // 
@@ -279,43 +256,6 @@
             this.rdViewPdf.TabStop = true;
             this.rdViewPdf.Text = "pdf";
             this.rdViewPdf.UseVisualStyleBackColor = true;
-            // 
-            // btnArchiveGetState
-            // 
-            this.btnArchiveGetState.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnArchiveGetState.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnArchiveGetState.FlatAppearance.BorderSize = 2;
-            this.btnArchiveGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchiveGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnArchiveGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnArchiveGetState.Location = new System.Drawing.Point(604, 24);
-            this.btnArchiveGetState.Margin = new System.Windows.Forms.Padding(6);
-            this.btnArchiveGetState.Name = "btnArchiveGetState";
-            this.btnArchiveGetState.Size = new System.Drawing.Size(180, 75);
-            this.btnArchiveGetState.TabIndex = 44;
-            this.btnArchiveGetState.Text = "Durum Sorgula";
-            this.btnArchiveGetState.UseVisualStyleBackColor = false;
-            this.btnArchiveGetState.Visible = false;
-            // 
-            // btnArchiveCancel
-            // 
-            this.btnArchiveCancel.BackColor = System.Drawing.Color.Crimson;
-            this.btnArchiveCancel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.btnArchiveCancel.FlatAppearance.BorderSize = 2;
-            this.btnArchiveCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchiveCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnArchiveCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnArchiveCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnArchiveCancel.Image")));
-            this.btnArchiveCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArchiveCancel.Location = new System.Drawing.Point(344, 24);
-            this.btnArchiveCancel.Margin = new System.Windows.Forms.Padding(6);
-            this.btnArchiveCancel.Name = "btnArchiveCancel";
-            this.btnArchiveCancel.Size = new System.Drawing.Size(172, 74);
-            this.btnArchiveCancel.TabIndex = 43;
-            this.btnArchiveCancel.Text = "İptal Et";
-            this.btnArchiveCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnArchiveCancel.UseVisualStyleBackColor = false;
-            this.btnArchiveCancel.Visible = false;
             // 
             // pnlCreditNoteReports
             // 
@@ -385,12 +325,9 @@
         private System.Windows.Forms.Panel pnlCreditNote;
         private System.Windows.Forms.Panel pnlCreditNoteReports;
         private System.Windows.Forms.Label lblInformation;
-        private System.Windows.Forms.Button btnFilterArchiveReports;
         private System.Windows.Forms.Button btnCreditNoteView;
         private System.Windows.Forms.RadioButton rdViewXml;
         private System.Windows.Forms.RadioButton rdViewHtml;
         private System.Windows.Forms.RadioButton rdViewPdf;
-        private System.Windows.Forms.Button btnArchiveGetState;
-        private System.Windows.Forms.Button btnArchiveCancel;
     }
 }

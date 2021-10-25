@@ -40,17 +40,15 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.pnlDraftSmm = new System.Windows.Forms.Panel();
             this.pnlSmm = new System.Windows.Forms.Panel();
-            this.btnFilterArchiveReports = new System.Windows.Forms.Button();
             this.btnGetSignedXmlArchive = new System.Windows.Forms.Button();
             this.btnCreditNoteView = new System.Windows.Forms.Button();
             this.rdViewXml = new System.Windows.Forms.RadioButton();
             this.rdViewHtml = new System.Windows.Forms.RadioButton();
             this.rdViewPdf = new System.Windows.Forms.RadioButton();
-            this.btnArchiveGetState = new System.Windows.Forms.Button();
-            this.btnArchiveCancel = new System.Windows.Forms.Button();
             this.pnlSmmReports = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
             this.menu.SuspendLayout();
+            this.pnlDraftSmm.SuspendLayout();
             this.pnlSmm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,10 +56,10 @@
             // 
             this.IblInformation.AutoSize = true;
             this.IblInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.IblInformation.Location = new System.Drawing.Point(255, 418);
+            this.IblInformation.Location = new System.Drawing.Point(287, 522);
             this.IblInformation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.IblInformation.Name = "IblInformation";
-            this.IblInformation.Size = new System.Drawing.Size(383, 20);
+            this.IblInformation.Size = new System.Drawing.Size(494, 25);
             this.IblInformation.TabIndex = 61;
             this.IblInformation.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
             // 
@@ -76,10 +74,10 @@
             this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
-            this.btnHomePage.Location = new System.Drawing.Point(14, 34);
-            this.btnHomePage.Margin = new System.Windows.Forms.Padding(5);
+            this.btnHomePage.Location = new System.Drawing.Point(16, 42);
+            this.btnHomePage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Size = new System.Drawing.Size(145, 86);
+            this.btnHomePage.Size = new System.Drawing.Size(163, 108);
             this.btnHomePage.TabIndex = 57;
             this.btnHomePage.Text = "Ana Sayfa";
             this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -93,7 +91,7 @@
             this.itemNewSmm.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
             this.itemNewSmm.Name = "itemNewSmm";
             this.itemNewSmm.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemNewSmm.Size = new System.Drawing.Size(154, 34);
+            this.itemNewSmm.Size = new System.Drawing.Size(176, 39);
             this.itemNewSmm.Text = "+ Yeni Smm";
             // 
             // itemGetSmmReports
@@ -103,7 +101,7 @@
             this.itemGetSmmReports.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
             this.itemGetSmmReports.Name = "itemGetSmmReports";
             this.itemGetSmmReports.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetSmmReports.Size = new System.Drawing.Size(154, 34);
+            this.itemGetSmmReports.Size = new System.Drawing.Size(176, 39);
             this.itemGetSmmReports.Text = "Smm Raporları";
             this.itemGetSmmReports.Click += new System.EventHandler(this.ItemGetSmmReports_Click);
             // 
@@ -115,7 +113,7 @@
             this.itemGetDraftSmm.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
             this.itemGetDraftSmm.Name = "itemGetDraftSmm";
             this.itemGetDraftSmm.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetDraftSmm.Size = new System.Drawing.Size(154, 37);
+            this.itemGetDraftSmm.Size = new System.Drawing.Size(176, 41);
             this.itemGetDraftSmm.Text = "Taslak Smm";
             this.itemGetDraftSmm.Click += new System.EventHandler(this.ItemGetDraftSmm_Click);
             // 
@@ -127,7 +125,7 @@
             this.itemGetSmm.Margin = new System.Windows.Forms.Padding(2, 140, 2, 2);
             this.itemGetSmm.Name = "itemGetSmm";
             this.itemGetSmm.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetSmm.Size = new System.Drawing.Size(154, 34);
+            this.itemGetSmm.Size = new System.Drawing.Size(176, 40);
             this.itemGetSmm.Text = "E-Smm";
             this.itemGetSmm.Click += new System.EventHandler(this.ItemGetSmm_Click);
             // 
@@ -139,10 +137,10 @@
             this.btnTakeSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTakeSmm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnTakeSmm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeSmm.Location = new System.Drawing.Point(261, 60);
-            this.btnTakeSmm.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTakeSmm.Location = new System.Drawing.Point(294, 75);
+            this.btnTakeSmm.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnTakeSmm.Name = "btnTakeSmm";
-            this.btnTakeSmm.Size = new System.Drawing.Size(160, 60);
+            this.btnTakeSmm.Size = new System.Drawing.Size(180, 75);
             this.btnTakeSmm.TabIndex = 56;
             this.btnTakeSmm.Text = "smm al";
             this.btnTakeSmm.UseVisualStyleBackColor = false;
@@ -152,13 +150,13 @@
             // tableGrid
             // 
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(259, 443);
-            this.tableGrid.Margin = new System.Windows.Forms.Padding(5);
+            this.tableGrid.Location = new System.Drawing.Point(291, 554);
+            this.tableGrid.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.RowHeadersWidth = 51;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(1077, 280);
+            this.tableGrid.Size = new System.Drawing.Size(1212, 350);
             this.tableGrid.TabIndex = 55;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellClick);
             this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellContentClick);
@@ -176,52 +174,36 @@
             this.itemGetSmmReports,
             this.itemNewSmm});
             this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Margin = new System.Windows.Forms.Padding(0, 0, 27, 0);
+            this.menu.Margin = new System.Windows.Forms.Padding(0, 0, 30, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(165, 746);
+            this.menu.Size = new System.Drawing.Size(187, 932);
             this.menu.TabIndex = 54;
             this.menu.Text = "menuStrip1";
             // 
             // pnlDraftSmm
             // 
-            this.pnlDraftSmm.Location = new System.Drawing.Point(429, 34);
+            this.pnlDraftSmm.Controls.Add(this.pnlSmmReports);
+            this.pnlDraftSmm.Location = new System.Drawing.Point(483, 42);
+            this.pnlDraftSmm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlDraftSmm.Name = "pnlDraftSmm";
-            this.pnlDraftSmm.Size = new System.Drawing.Size(921, 106);
+            this.pnlDraftSmm.Size = new System.Drawing.Size(1036, 132);
             this.pnlDraftSmm.TabIndex = 62;
             this.pnlDraftSmm.Visible = false;
             this.pnlDraftSmm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDraftSmm_Paint);
             // 
             // pnlSmm
             // 
-            this.pnlSmm.Controls.Add(this.btnFilterArchiveReports);
             this.pnlSmm.Controls.Add(this.btnGetSignedXmlArchive);
             this.pnlSmm.Controls.Add(this.btnCreditNoteView);
             this.pnlSmm.Controls.Add(this.rdViewXml);
             this.pnlSmm.Controls.Add(this.rdViewHtml);
             this.pnlSmm.Controls.Add(this.rdViewPdf);
-            this.pnlSmm.Controls.Add(this.btnArchiveGetState);
-            this.pnlSmm.Controls.Add(this.btnArchiveCancel);
-            this.pnlSmm.Location = new System.Drawing.Point(429, 146);
+            this.pnlSmm.Location = new System.Drawing.Point(480, 42);
+            this.pnlSmm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlSmm.Name = "pnlSmm";
-            this.pnlSmm.Size = new System.Drawing.Size(921, 115);
+            this.pnlSmm.Size = new System.Drawing.Size(1036, 144);
             this.pnlSmm.TabIndex = 63;
             this.pnlSmm.Visible = false;
-            // 
-            // btnFilterArchiveReports
-            // 
-            this.btnFilterArchiveReports.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnFilterArchiveReports.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnFilterArchiveReports.FlatAppearance.BorderSize = 2;
-            this.btnFilterArchiveReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilterArchiveReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnFilterArchiveReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFilterArchiveReports.Location = new System.Drawing.Point(744, 30);
-            this.btnFilterArchiveReports.Margin = new System.Windows.Forms.Padding(5);
-            this.btnFilterArchiveReports.Name = "btnFilterArchiveReports";
-            this.btnFilterArchiveReports.Size = new System.Drawing.Size(171, 58);
-            this.btnFilterArchiveReports.TabIndex = 58;
-            this.btnFilterArchiveReports.Text = "Raporlananlar";
-            this.btnFilterArchiveReports.UseVisualStyleBackColor = false;
             // 
             // btnGetSignedXmlArchive
             // 
@@ -231,10 +213,10 @@
             this.btnGetSignedXmlArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetSignedXmlArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGetSignedXmlArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetSignedXmlArchive.Location = new System.Drawing.Point(210, 30);
-            this.btnGetSignedXmlArchive.Margin = new System.Windows.Forms.Padding(5);
+            this.btnGetSignedXmlArchive.Location = new System.Drawing.Point(236, 38);
+            this.btnGetSignedXmlArchive.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnGetSignedXmlArchive.Name = "btnGetSignedXmlArchive";
-            this.btnGetSignedXmlArchive.Size = new System.Drawing.Size(149, 60);
+            this.btnGetSignedXmlArchive.Size = new System.Drawing.Size(168, 75);
             this.btnGetSignedXmlArchive.TabIndex = 57;
             this.btnGetSignedXmlArchive.Text = "imzalı Xml Al";
             this.btnGetSignedXmlArchive.UseVisualStyleBackColor = false;
@@ -247,10 +229,10 @@
             this.btnCreditNoteView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreditNoteView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCreditNoteView.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCreditNoteView.Location = new System.Drawing.Point(5, 29);
-            this.btnCreditNoteView.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCreditNoteView.Location = new System.Drawing.Point(6, 36);
+            this.btnCreditNoteView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCreditNoteView.Name = "btnCreditNoteView";
-            this.btnCreditNoteView.Size = new System.Drawing.Size(136, 60);
+            this.btnCreditNoteView.Size = new System.Drawing.Size(153, 75);
             this.btnCreditNoteView.TabIndex = 53;
             this.btnCreditNoteView.Text = "goruntule";
             this.btnCreditNoteView.UseVisualStyleBackColor = false;
@@ -259,10 +241,10 @@
             // rdViewXml
             // 
             this.rdViewXml.AutoSize = true;
-            this.rdViewXml.Location = new System.Drawing.Point(151, 82);
-            this.rdViewXml.Margin = new System.Windows.Forms.Padding(5);
+            this.rdViewXml.Location = new System.Drawing.Point(170, 102);
+            this.rdViewXml.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rdViewXml.Name = "rdViewXml";
-            this.rdViewXml.Size = new System.Drawing.Size(49, 21);
+            this.rdViewXml.Size = new System.Drawing.Size(57, 24);
             this.rdViewXml.TabIndex = 56;
             this.rdViewXml.TabStop = true;
             this.rdViewXml.Text = "xml";
@@ -271,10 +253,10 @@
             // rdViewHtml
             // 
             this.rdViewHtml.AutoSize = true;
-            this.rdViewHtml.Location = new System.Drawing.Point(151, 24);
-            this.rdViewHtml.Margin = new System.Windows.Forms.Padding(5);
+            this.rdViewHtml.Location = new System.Drawing.Point(170, 30);
+            this.rdViewHtml.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rdViewHtml.Name = "rdViewHtml";
-            this.rdViewHtml.Size = new System.Drawing.Size(55, 21);
+            this.rdViewHtml.Size = new System.Drawing.Size(64, 24);
             this.rdViewHtml.TabIndex = 54;
             this.rdViewHtml.TabStop = true;
             this.rdViewHtml.Text = "html";
@@ -283,65 +265,30 @@
             // rdViewPdf
             // 
             this.rdViewPdf.AutoSize = true;
-            this.rdViewPdf.Location = new System.Drawing.Point(151, 51);
-            this.rdViewPdf.Margin = new System.Windows.Forms.Padding(5);
+            this.rdViewPdf.Location = new System.Drawing.Point(170, 64);
+            this.rdViewPdf.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rdViewPdf.Name = "rdViewPdf";
-            this.rdViewPdf.Size = new System.Drawing.Size(49, 21);
+            this.rdViewPdf.Size = new System.Drawing.Size(57, 24);
             this.rdViewPdf.TabIndex = 55;
             this.rdViewPdf.TabStop = true;
             this.rdViewPdf.Text = "pdf";
             this.rdViewPdf.UseVisualStyleBackColor = true;
             // 
-            // btnArchiveGetState
-            // 
-            this.btnArchiveGetState.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnArchiveGetState.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnArchiveGetState.FlatAppearance.BorderSize = 2;
-            this.btnArchiveGetState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchiveGetState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnArchiveGetState.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnArchiveGetState.Location = new System.Drawing.Point(386, 30);
-            this.btnArchiveGetState.Margin = new System.Windows.Forms.Padding(5);
-            this.btnArchiveGetState.Name = "btnArchiveGetState";
-            this.btnArchiveGetState.Size = new System.Drawing.Size(160, 60);
-            this.btnArchiveGetState.TabIndex = 52;
-            this.btnArchiveGetState.Text = "durum sorgula";
-            this.btnArchiveGetState.UseVisualStyleBackColor = false;
-            // 
-            // btnArchiveCancel
-            // 
-            this.btnArchiveCancel.BackColor = System.Drawing.Color.Crimson;
-            this.btnArchiveCancel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.btnArchiveCancel.FlatAppearance.BorderSize = 2;
-            this.btnArchiveCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchiveCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnArchiveCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnArchiveCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnArchiveCancel.Image")));
-            this.btnArchiveCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArchiveCancel.Location = new System.Drawing.Point(566, 31);
-            this.btnArchiveCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnArchiveCancel.Name = "btnArchiveCancel";
-            this.btnArchiveCancel.Size = new System.Drawing.Size(153, 59);
-            this.btnArchiveCancel.TabIndex = 51;
-            this.btnArchiveCancel.Text = "iade et";
-            this.btnArchiveCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnArchiveCancel.UseVisualStyleBackColor = false;
-            // 
             // pnlSmmReports
             // 
-            this.pnlSmmReports.Location = new System.Drawing.Point(429, 285);
+            this.pnlSmmReports.Location = new System.Drawing.Point(0, 2);
+            this.pnlSmmReports.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlSmmReports.Name = "pnlSmmReports";
-            this.pnlSmmReports.Size = new System.Drawing.Size(921, 104);
+            this.pnlSmmReports.Size = new System.Drawing.Size(1036, 130);
             this.pnlSmmReports.TabIndex = 64;
             this.pnlSmmReports.Visible = false;
             // 
             // FrmSelfEmployment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1538, 746);
+            this.ClientSize = new System.Drawing.Size(1730, 932);
             this.ControlBox = false;
-            this.Controls.Add(this.pnlSmmReports);
             this.Controls.Add(this.pnlSmm);
             this.Controls.Add(this.pnlDraftSmm);
             this.Controls.Add(this.IblInformation);
@@ -349,6 +296,7 @@
             this.Controls.Add(this.btnTakeSmm);
             this.Controls.Add(this.tableGrid);
             this.Controls.Add(this.menu);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSelfEmployment";
@@ -357,6 +305,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.pnlDraftSmm.ResumeLayout(false);
             this.pnlSmm.ResumeLayout(false);
             this.pnlSmm.PerformLayout();
             this.ResumeLayout(false);
@@ -378,13 +327,10 @@
         private System.Windows.Forms.Panel pnlDraftSmm;
         private System.Windows.Forms.Panel pnlSmm;
         private System.Windows.Forms.Panel pnlSmmReports;
-        private System.Windows.Forms.Button btnFilterArchiveReports;
         private System.Windows.Forms.Button btnGetSignedXmlArchive;
         private System.Windows.Forms.Button btnCreditNoteView;
         private System.Windows.Forms.RadioButton rdViewXml;
         private System.Windows.Forms.RadioButton rdViewHtml;
         private System.Windows.Forms.RadioButton rdViewPdf;
-        private System.Windows.Forms.Button btnArchiveGetState;
-        private System.Windows.Forms.Button btnArchiveCancel;
     }
 }

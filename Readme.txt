@@ -18,6 +18,7 @@ Kimlik Doğrulama Servisi İçin:
 
 e-Fatura Ürünü İçin:
 -Gelen veya Giden veya Taslak Faturaları Alma 
+-Fatura Görüntüleme (Pdf,Xml,Html)
 -Fatura Durumlarını Sorgulama      
 -Fatura Yanıtı Gönderme
 -Fatura Durumu Okundu veya Okunmadı Olarak İşaretleme
@@ -28,6 +29,7 @@ e-Fatura Ürünü İçin:
 
 e-Arşiv Ürünü İçin:
 -Gelen veya Giden veya Taslak e-Arşiv Faturaları Alma 
+-e-Arşiv Görüntüleme (Pdf,Xml,Html)
 -e-Arşiv Rapor listesini Alma 
 -e-Arşiv Fatura Durum Sorgulama
 -e-Arşiv Fatura İptali
@@ -39,6 +41,7 @@ e-Arşiv Ürünü İçin:
 
 e-İrsaliye Ürünü İçin:
 -Gelen veya Giden veya Taslak e-İrsaliye Alma
+-e-İrsaliye Görüntüleme (Pdf,Xml,Html)
 -e-İrsaliye Durumu Okundu veya Okunmadı Olarak İşaretleme
 -e-İrsaliye Durum Sorgulama  
 -e-İrsaliye UBL-Document Oluşturma
@@ -52,6 +55,13 @@ Mutabakat  Ürünü İçin:
 
 SMM  Ürünü İçin:
 -SMM Alma
+-SMM Görüntüleme (Pdf,Xml,Html)
+işlemleri yapılmaktadır.
+
+Müstahsil  Ürünü İçin:
+-Müstahsil Alma
+-Müstahsil Görüntüleme (Pdf,Xml,Html)
+-Müstahsil okundu işaretleme
 işlemleri yapılmaktadır.
 
 KURULUM
