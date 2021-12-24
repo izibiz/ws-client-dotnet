@@ -58,3 +58,23 @@ C:\izibiz-projeler\github-projeler\ws-client-dotnet\izibiz.Application\izibiz.MO
 C:\izibiz-projeler\github-projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CopyComplete
 C:\izibiz-projeler\github-projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.dll
 C:\izibiz-projeler\github-projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.pdb
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.dll.config
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.MODEL.pdb
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\EntityFramework.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\EntityFramework.SqlServer.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.COMMON.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\System.Data.SQLite.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\System.Data.SQLite.EF6.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\System.Data.SQLite.Linq.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.COMMON.pdb
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\izibiz.COMMON.dll.config
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\EntityFramework.xml
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\EntityFramework.SqlServer.xml
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\System.Data.SQLite.xml
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\bin\Debug\en-US\izibiz.COMMON.resources.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csprojAssemblyReference.cache
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CoreCompileInputs.cache
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.csproj.CopyComplete
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.dll
+C:\izibiz-c# projeler\ws-client-dotnet\izibiz.Application\izibiz.MODEL\obj\Debug\izibiz.MODEL.pdb
