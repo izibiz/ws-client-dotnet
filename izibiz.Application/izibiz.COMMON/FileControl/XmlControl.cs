@@ -37,8 +37,13 @@ namespace izibiz.COMMON.FileControl
                     element.Value = newInvId;
 
                 }
-                else if (element.Name.LocalName.ToString().Equals("EmbeddedDocumentBinaryObject")
-                       && element.Parent.Name.LocalName.ToString().Equals("Attachment"))
+                else if (element.Name.LocalName.Equals("EmbeddedDocumentBinaryObject")
+                       && element.Parent.Name.LocalName.Equals("Attachment")
+                     && element.HasAttributes && element.Attribute("filename") != null
+                        && element.Attribute("filename").Value.ToLower().Contains(".xslt")
+                        && element.Parent.Parent.Descendants().ToList().Where(e => e.Name.LocalName.Equals("DocumentType") &&
+                   e.Value.Equals("XSLT")).FirstOrDefault() != null
+                      )
                 {
                     element.LastAttribute.Value = newInvId + ".xslt";
                     break;
