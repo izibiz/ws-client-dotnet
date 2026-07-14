@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.izibiz.com/ei/wsdl/reconciliation" xmlns:ns2="http://www.w3.org/2005/05/xmlmime" xmlns:ns1="http://schemas.i2i.com/ei/entity" targetNamespace="http://schemas.izibiz.com/ei/wsdl/reconciliation" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://efaturatest.izibiz.com.tr:443/ReconciliationWS?xsd=3" namespace="http://schemas.i2i.com/ei/entity" />
+  <xs:import schemaLocation="https://efaturatest.izibiz.com.tr:443/ReconciliationWS?xsd=1" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xs:element name="GetReconciliationStatusRequest" type="tns:GetReconciliationStatusRequest" />
+  <xs:element name="GetReconciliationStatusResponse" type="tns:GetReconciliationStatusResponse" />
+  <xs:element name="ReadReconciliationRequest" type="tns:ReadReconciliationRequest" />
+  <xs:element name="ReadReconciliationResponse" type="tns:ReadReconciliationResponse" />
+  <xs:element name="RequestFault" type="tns:RequestFaultType" />
+  <xs:element name="SendMailReconciliationRequest" type="tns:SendMailReconciliationRequest" />
+  <xs:element name="SendMailReconciliationResponse" type="tns:SendMailReconciliationResponse" />
+  <xs:element name="SendReconciliationRequest" type="tns:SendReconciliationRequest" />
+  <xs:element name="SendReconciliationResponse" type="tns:SendReconciliationResponse" />
+  <xs:complexType name="EMAIL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EMAIL_STATUS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="STATUS" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="STATUS_CODE" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="SEND_DATE" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" name="EMAIL_EVENTS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EVENT" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="DIAG" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="IP_ADDRESS" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="COUNTRY" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="REGION" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="CITY" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="EVENT_DATE" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RECONCILIATION_STATUS">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="RECONCILIATION">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="TYPE" type="tns:RECONCILIATION_TYPE" />
+            <xs:element name="UUID" type="xs:normalizedString" />
+            <xs:element name="CUSTOMER_IDENTIFIER" type="xs:normalizedString" />
+            <xs:element name="COMMERCIAL_NAME" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="BABS_ACCOUNTING_PERIOD" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="CM_DATE" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="CM_AMOUNT_TYPE" type="xs:normalizedString" />
+            <xs:element name="STATUS" type="xs:normalizedString" />
+            <xs:element name="STATUS_CODE" type="xs:normalizedString" />
+            <xs:element minOccurs="0" name="STATUS_DESCRIPTION" type="xs:normalizedString" />
+            <xs:element name="CREATE_DATE" type="xs:dateTime" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="EMAIL" type="tns:EMAIL" />
+            <xs:element minOccurs="0" name="ATTACHMENTS" type="tns:ATTACHMENTS" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ATTACHMENTS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ATTTACHMENT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="FILE_NAME" type="xs:string" />
+            <xs:element name="FILE_TYPE" type="xs:string" />
+            <xs:element name="CONTENT" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SendReconciliationRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:REQUEST">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="RECONCILIATION">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="TYPE" type="tns:RECONCILIATION_TYPE" />
+                <xs:element name="UUID" type="xs:string" />
+                <xs:element name="CUSTOMER_IDENTIFIER" type="xs:normalizedString" />
+                <xs:element name="COMMERCIAL_NAME" type="xs:normalizedString" />
+                <xs:element minOccurs="0" name="TAX_OFFICE" type="xs:normalizedString" />
+                <xs:element name="CUSTOMER_ADDRESS" type="xs:string" />
+                <xs:element minOccurs="0" name="TELEPHONE_NO" type="xs:normalizedString" />
+                <xs:element minOccurs="0" name="FAX_NO" type="xs:normalizedString" />
+                <xs:element name="EMAIL" type="xs:normalizedString" />
+                <xs:element name="CURRENCY_CODE" type="tns:CURRENCY_CODE" />
+                <xs:element minOccurs="0" name="BABS_ACCOUNTING_PERIOD" type="xs:normalizedString" />
+                <xs:element minOccurs="0" name="BA_DOCUMENT_COUNT" type="xs:int" />
+                <xs:element minOccurs="0" name="BA_DOCUMENT_AMOUNT" type="xs:decimal" />
+                <xs:element minOccurs="0" name="BS_DOCUMENT_COUNT" type="xs:int" />
+                <xs:element minOccurs="0" name="BS_DOCUMENT_AMOUNT" type="xs:decimal" />
+                <xs:element minOccurs="0" name="CM_DATE" type="xs:string" />
+                <xs:element minOccurs="0" name="CM_AMOUNT_TYPE" type="tns:CM_TYPE" />
+                <xs:element minOccurs="0" name="CM_AMOUNT" type="xs:decimal" />
+                <xs:element minOccurs="0" name="NOTE" type="xs:normalizedString" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SendMailReconciliationRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:REQUEST">
+        <xs:sequence>
+          <xs:element name="MAIL_SEARCHING">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="UUID" type="xs:normalizedString" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReadReconciliationRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:REQUEST">
+        <xs:sequence>
+          <xs:element name="RECONCILIATION_READ">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="UUID" type="xs:normalizedString" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GetReconciliationStatusRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:REQUEST">
+        <xs:sequence>
+          <xs:element name="RECONCILIATION_SEARCHING">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="UUID" type="xs:normalizedString" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RequestFaultType">
+    <xs:sequence>
+      <xs:element name="RequestFaultResponse" type="ns1:REQUEST_ERRORType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetReconciliationStatusResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="RECONCILIATION_STATUS" type="tns:RECONCILIATION_STATUS" />
+      <xs:element minOccurs="0" name="REQUEST_RETURN" type="ns1:REQUEST_RETURNType" />
+      <xs:element minOccurs="0" name="ERROR_TYPE" type="ns1:REQUEST_ERRORType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReadReconciliationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CONTENT" type="ns2:base64Binary" />
+      <xs:element minOccurs="0" name="ATTACHMENT" type="ns2:base64Binary" />
+      <xs:element minOccurs="0" name="RESPONSE_ATTACHMENT" type="ns2:base64Binary" />
+      <xs:element minOccurs="0" name="REQUEST_RETURN" type="ns1:REQUEST_RETURNType" />
+      <xs:element minOccurs="0" name="ERROR_TYPE" type="ns1:REQUEST_ERRORType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SendReconciliationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="REQUEST_RETURN" type="ns1:REQUEST_RETURNType" />
+      <xs:element minOccurs="0" name="ERROR_TYPE" type="ns1:REQUEST_ERRORType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SendMailReconciliationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="REQUEST_RETURN" type="ns1:REQUEST_RETURNType" />
+      <xs:element minOccurs="0" name="ERROR_TYPE" type="ns1:REQUEST_ERRORType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OIBOperation">
+    <xs:sequence>
+      <xs:element name="RequestFaultResponse" type="ns1:REQUEST_ERRORType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="RECONCILIATION_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EM" />
+      <xs:enumeration value="CM" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CURRENCY_CODE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRY" />
+      <xs:enumeration value="USD" />
+      <xs:enumeration value="EUR" />
+      <xs:enumeration value="GBP" />
+      <xs:enumeration value="CAD" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CM_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A" />
+      <xs:enumeration value="B" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

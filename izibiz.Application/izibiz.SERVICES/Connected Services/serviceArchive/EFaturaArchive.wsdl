@@ -125,6 +125,12 @@
   <wsdl:message name="EArchiveInvoiceCountResponseMessage">
     <wsdl:part name="response" element="tns:EArchiveInvoiceCountResponse" />
   </wsdl:message>
+  <wsdl:message name="GetELedgerStatusRequestMessage">
+    <wsdl:part name="request" element="tns:GetELedgerStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetELedgerStatusResponseMessage">
+    <wsdl:part name="response" element="tns:GetELedgerStatusResponse" />
+  </wsdl:message>
   <wsdl:message name="RequestFaultMessage">
     <wsdl:part name="parameters" element="tns:RequestFault" />
   </wsdl:message>
@@ -227,6 +233,11 @@
     <wsdl:operation name="EArchiveInvoiceCount">
       <wsdl:input message="tns:EArchiveInvoiceCountRequestMessage" />
       <wsdl:output message="tns:EArchiveInvoiceCountResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetELedgerStatus">
+      <wsdl:input message="tns:GetELedgerStatusRequestMessage" />
+      <wsdl:output message="tns:GetELedgerStatusResponseMessage" />
       <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
@@ -461,6 +472,18 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="EArchiveInvoiceCount">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetELedgerStatus">
       <soap:operation soapAction="" />
       <wsdl:input>
         <soap:body use="literal" />

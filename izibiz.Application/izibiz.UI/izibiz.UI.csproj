@@ -9,12 +9,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>izibiz.UI</RootNamespace>
     <AssemblyName>izibiz.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -248,7 +249,7 @@
       <Name>izibiz.MODEL</Name>
     </ProjectReference>
     <ProjectReference Include="..\izibiz.SERVICES\izibiz.SERVICES.csproj">
-      <Project>{6EBDB6B7-360A-454F-AB35-DE0D2C32905A}</Project>
+      <Project>{6ebdb6b7-360a-454f-ab35-de0d2c32905a}</Project>
       <Name>izibiz.SERVICES</Name>
     </ProjectReference>
   </ItemGroup>

@@ -111,7 +111,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var req = new GetCreditNoteRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderCreditNotes;
                 req.CREDITNOTE_SEARCH_KEY = SearchKey.GetSearchKeyCreditNotes;
-                req.CREDITNOTE_SEARCH_KEY.READ_INCLUDED = FLAG_VALUE.Y;
+                req.CREDITNOTE_SEARCH_KEY.READ_INCLUDED = "Y";
                 req.CREDITNOTE_SEARCH_KEY.ID = id;
 
                 var CreditNoteArr = CreditNotePortClient.GetCreditNote(req).CREDITNOTE; //tek bır smm gelmesını beklıyoruz
@@ -151,7 +151,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderCreditNotes;
                 req.CREDITNOTE_SEARCH_KEY = new GetCreditNoteRequestCREDITNOTE_SEARCH_KEY();
                 req.CREDITNOTE_SEARCH_KEY.UUID = uuid;
-                req.CONTENT_TYPE = type;
+                req.CONTENT_TYPE = type.ToString();
                 
                 var response = CreditNotePortClient.GetCreditNote(req);
                 if (response.ERROR_TYPE != null)  //error message varsa

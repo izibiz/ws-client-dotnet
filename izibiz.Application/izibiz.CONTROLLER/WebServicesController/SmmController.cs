@@ -71,7 +71,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 var req = new GetSmmRequest(); //sistemdeki gelen efatura listesi için request parametreleri
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderSmm;
                 req.SMM_SEARCH_KEY = SearchKey.GetSearchKeySmm;
-                req.SMM_SEARCH_KEY.READ_INCLUDED = FLAG_VALUE.Y;
+                req.SMM_SEARCH_KEY.READ_INCLUDED = "Y";
                 req.SMM_SEARCH_KEY.UUID = uuid;
 
                 var smmArr = smmPortClient.GetSmm(req).SMM; //tek bır smm gelmesını beklıyoruz
@@ -110,7 +110,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REQUEST_HEADER = RequestHeader.getRequestHeaderSmm;
                 req.SMM_SEARCH_KEY = SearchKey.GetSearchKeySmm;
                 req.SMM_SEARCH_KEY.UUID = uuid;
-                req.CONTENT_TYPE = type;
+                req.CONTENT_TYPE = type.ToString();
 
                 var response = smmPortClient.GetSmm(req);
               

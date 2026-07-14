@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsd:schema xmlns="http://uri.etsi.org/01903/v1.4.1#" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" elementFormDefault="qualified" targetNamespace="http://uri.etsi.org/01903/v1.4.1#" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns="http://uri.etsi.org/01903/v1.4.1#" elementFormDefault="qualified" targetNamespace="http://uri.etsi.org/01903/v1.4.1#" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIArchiveWS/EFaturaArchive?xsd=1" namespace="http://uri.etsi.org/01903/v1.3.2#" />
   <xsd:element name="TimeStampValidationData" type="ValidationDataType" />
   <xsd:complexType name="ValidationDataType">

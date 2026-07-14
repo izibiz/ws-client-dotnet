@@ -12,7 +12,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -142,26 +142,26 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class GetCreditNoteStatusResponse : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GetCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private CREDITNOTE[] cREDITNOTE_STATUSField;
+        private CREDITNOTE[] cREDITNOTEField;
         
         private REQUEST_ERRORType eRROR_TYPEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CREDITNOTE_STATUS", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public CREDITNOTE[] CREDITNOTE_STATUS {
+        [System.Xml.Serialization.XmlElementAttribute("CREDITNOTE", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public CREDITNOTE[] CREDITNOTE {
             get {
-                return this.cREDITNOTE_STATUSField;
+                return this.cREDITNOTEField;
             }
             set {
-                this.cREDITNOTE_STATUSField = value;
-                this.RaisePropertyChanged("CREDITNOTE_STATUS");
+                this.cREDITNOTEField = value;
+                this.RaisePropertyChanged("CREDITNOTE");
             }
         }
         
@@ -188,7 +188,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -262,7 +262,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -277,9 +277,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         private AmountType pAYABLE_AMOUNTField;
         
-        private PROFILE_ID pROFILE_IDField;
-        
-        private bool pROFILE_IDFieldSpecified;
+        private string pROFILE_IDField;
         
         private string sTATUSField;
         
@@ -374,26 +372,14 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public PROFILE_ID PROFILE_ID {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=3)]
+        public string PROFILE_ID {
             get {
                 return this.pROFILE_IDField;
             }
             set {
                 this.pROFILE_IDField = value;
                 this.RaisePropertyChanged("PROFILE_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PROFILE_IDSpecified {
-            get {
-                return this.pROFILE_IDFieldSpecified;
-            }
-            set {
-                this.pROFILE_IDFieldSpecified = value;
-                this.RaisePropertyChanged("PROFILE_IDSpecified");
             }
         }
         
@@ -672,7 +658,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -718,7 +704,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -778,17 +764,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public enum PROFILE_ID {
-        
-        /// <remarks/>
-        EARSIVBELGE,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -834,40 +810,114 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class CREDITNOTE_PROPERTIES : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string sMS_FLAGField;
+        
+        private string[] sMS_NUMBERField;
+        
+        private string eMAIL_FLAGField;
+        
+        private string[] eMAILField;
+        
+        private string sENDING_TYPEField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string SMS_FLAG {
+            get {
+                return this.sMS_FLAGField;
+            }
+            set {
+                this.sMS_FLAGField = value;
+                this.RaisePropertyChanged("SMS_FLAG");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("SMS_NUMBER", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string[] SMS_NUMBER {
+            get {
+                return this.sMS_NUMBERField;
+            }
+            set {
+                this.sMS_NUMBERField = value;
+                this.RaisePropertyChanged("SMS_NUMBER");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string EMAIL_FLAG {
+            get {
+                return this.eMAIL_FLAGField;
+            }
+            set {
+                this.eMAIL_FLAGField = value;
+                this.RaisePropertyChanged("EMAIL_FLAG");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("EMAIL", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string[] EMAIL {
+            get {
+                return this.eMAILField;
+            }
+            set {
+                this.eMAILField = value;
+                this.RaisePropertyChanged("EMAIL");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string SENDING_TYPE {
+            get {
+                return this.sENDING_TYPEField;
+            }
+            set {
+                this.sENDING_TYPEField = value;
+                this.RaisePropertyChanged("SENDING_TYPE");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
     public partial class SERIES_PROPERTIES : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private FLAG_VALUE sERIES_FLAGField;
-        
-        private bool sERIES_FLAGFieldSpecified;
+        private string sERIES_FLAGField;
         
         private string sERIES_PREFIXField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public FLAG_VALUE SERIES_FLAG {
+        public string SERIES_FLAG {
             get {
                 return this.sERIES_FLAGField;
             }
             set {
                 this.sERIES_FLAGField = value;
                 this.RaisePropertyChanged("SERIES_FLAG");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SERIES_FLAGSpecified {
-            get {
-                return this.sERIES_FLAGFieldSpecified;
-            }
-            set {
-                this.sERIES_FLAGFieldSpecified = value;
-                this.RaisePropertyChanged("SERIES_FLAGSpecified");
             }
         }
         
@@ -894,63 +944,30 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public enum FLAG_VALUE {
-        
-        /// <remarks/>
-        Y,
-        
-        /// <remarks/>
-        N,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class CREDITNOTE_PROPERTIES : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DOCUMENT_PROPERTIES : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private FLAG_VALUE sMS_FLAGField;
-        
-        private bool sMS_FLAGFieldSpecified;
+        private string sMS_FLAGField;
         
         private string[] sMS_NUMBERField;
         
-        private FLAG_VALUE eMAIL_FLAGField;
-        
-        private bool eMAIL_FLAGFieldSpecified;
+        private string eMAIL_FLAGField;
         
         private string[] eMAILField;
         
-        private SENDING_TYPE sENDING_TYPEField;
-        
-        private bool sENDING_TYPEFieldSpecified;
-        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public FLAG_VALUE SMS_FLAG {
+        public string SMS_FLAG {
             get {
                 return this.sMS_FLAGField;
             }
             set {
                 this.sMS_FLAGField = value;
                 this.RaisePropertyChanged("SMS_FLAG");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SMS_FLAGSpecified {
-            get {
-                return this.sMS_FLAGFieldSpecified;
-            }
-            set {
-                this.sMS_FLAGFieldSpecified = value;
-                this.RaisePropertyChanged("SMS_FLAGSpecified");
             }
         }
         
@@ -968,25 +985,13 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public FLAG_VALUE EMAIL_FLAG {
+        public string EMAIL_FLAG {
             get {
                 return this.eMAIL_FLAGField;
             }
             set {
                 this.eMAIL_FLAGField = value;
                 this.RaisePropertyChanged("EMAIL_FLAG");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool EMAIL_FLAGSpecified {
-            get {
-                return this.eMAIL_FLAGFieldSpecified;
-            }
-            set {
-                this.eMAIL_FLAGFieldSpecified = value;
-                this.RaisePropertyChanged("EMAIL_FLAGSpecified");
             }
         }
         
@@ -1002,141 +1007,370 @@ namespace izibiz.SERVICES.serviceCreditNote {
             }
         }
         
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class DOCUMENT : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DOCUMENTHEADER hEADERField;
+        
+        private base64Binary cONTENTField;
+        
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public SENDING_TYPE SENDING_TYPE {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public DOCUMENTHEADER HEADER {
             get {
-                return this.sENDING_TYPEField;
+                return this.hEADERField;
             }
             set {
-                this.sENDING_TYPEField = value;
-                this.RaisePropertyChanged("SENDING_TYPE");
+                this.hEADERField = value;
+                this.RaisePropertyChanged("HEADER");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public base64Binary CONTENT {
+            get {
+                return this.cONTENTField;
+            }
+            set {
+                this.cONTENTField = value;
+                this.RaisePropertyChanged("CONTENT");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class DOCUMENTHEADER : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idField;
+        
+        private string uUIDField;
+        
+        private CUSTOMER cUSTOMERField;
+        
+        private System.DateTime iSSUE_DATEField;
+        
+        private bool iSSUE_DATEFieldSpecified;
+        
+        private string iSSUE_TIMEField;
+        
+        private AmountType pAYABLE_AMOUNTField;
+        
+        private string pROFILE_IDField;
+        
+        private string sTATUSField;
+        
+        private int sTATUS_CODEField;
+        
+        private bool sTATUS_CODEFieldSpecified;
+        
+        private string sTATUS_DESCRIPTIONField;
+        
+        private int sMS_STATUS_CODEField;
+        
+        private bool sMS_STATUS_CODEFieldSpecified;
+        
+        private string sMS_STATUS_DESCRIPTIONField;
+        
+        private string[] eMAILField;
+        
+        private int eMAIL_STATUS_CODEField;
+        
+        private bool eMAIL_STATUS_CODEFieldSpecified;
+        
+        private string eMAIL_STATUS_DESCRIPTIONField;
+        
+        private string fILENAMEField;
+        
+        private string hASHField;
+        
+        private System.DateTime cDATEField;
+        
+        private bool cDATEFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=1)]
+        public string UUID {
+            get {
+                return this.uUIDField;
+            }
+            set {
+                this.uUIDField = value;
+                this.RaisePropertyChanged("UUID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public CUSTOMER CUSTOMER {
+            get {
+                return this.cUSTOMERField;
+            }
+            set {
+                this.cUSTOMERField = value;
+                this.RaisePropertyChanged("CUSTOMER");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=3)]
+        public System.DateTime ISSUE_DATE {
+            get {
+                return this.iSSUE_DATEField;
+            }
+            set {
+                this.iSSUE_DATEField = value;
+                this.RaisePropertyChanged("ISSUE_DATE");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SENDING_TYPESpecified {
+        public bool ISSUE_DATESpecified {
             get {
-                return this.sENDING_TYPEFieldSpecified;
+                return this.iSSUE_DATEFieldSpecified;
             }
             set {
-                this.sENDING_TYPEFieldSpecified = value;
-                this.RaisePropertyChanged("SENDING_TYPESpecified");
+                this.iSSUE_DATEFieldSpecified = value;
+                this.RaisePropertyChanged("ISSUE_DATESpecified");
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public enum SENDING_TYPE {
-        
         /// <remarks/>
-        ELEKTRONIK,
-        
-        /// <remarks/>
-        KAGIT,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class ATTRIBUTESTYPE : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.Xml.XmlElement[] anyField;
-        
-        private string nAMEField;
-        
-        private System.Xml.XmlAttribute[] anyAttrField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order=0)]
-        public System.Xml.XmlElement[] Any {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string ISSUE_TIME {
             get {
-                return this.anyField;
+                return this.iSSUE_TIMEField;
             }
             set {
-                this.anyField = value;
-                this.RaisePropertyChanged("Any");
+                this.iSSUE_TIMEField = value;
+                this.RaisePropertyChanged("ISSUE_TIME");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string NAME {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public AmountType PAYABLE_AMOUNT {
             get {
-                return this.nAMEField;
+                return this.pAYABLE_AMOUNTField;
             }
             set {
-                this.nAMEField = value;
-                this.RaisePropertyChanged("NAME");
+                this.pAYABLE_AMOUNTField = value;
+                this.RaisePropertyChanged("PAYABLE_AMOUNT");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
-        public System.Xml.XmlAttribute[] AnyAttr {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=6)]
+        public string PROFILE_ID {
             get {
-                return this.anyAttrField;
+                return this.pROFILE_IDField;
             }
             set {
-                this.anyAttrField = value;
-                this.RaisePropertyChanged("AnyAttr");
+                this.pROFILE_IDField = value;
+                this.RaisePropertyChanged("PROFILE_ID");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public partial class CHANGE_INFOType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.DateTime cDATEField;
-        
-        private long cPOSITION_IDField;
-        
-        private long cUSER_IDField;
-        
-        private System.DateTime uDATEField;
-        
-        private bool uDATEFieldSpecified;
-        
-        private long uPOSITION_IDField;
-        
-        private bool uPOSITION_IDFieldSpecified;
-        
-        private long uUSER_IDField;
-        
-        private bool uUSER_IDFieldSpecified;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public string STATUS {
+            get {
+                return this.sTATUSField;
+            }
+            set {
+                this.sTATUSField = value;
+                this.RaisePropertyChanged("STATUS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        public int STATUS_CODE {
+            get {
+                return this.sTATUS_CODEField;
+            }
+            set {
+                this.sTATUS_CODEField = value;
+                this.RaisePropertyChanged("STATUS_CODE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool STATUS_CODESpecified {
+            get {
+                return this.sTATUS_CODEFieldSpecified;
+            }
+            set {
+                this.sTATUS_CODEFieldSpecified = value;
+                this.RaisePropertyChanged("STATUS_CODESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        public string STATUS_DESCRIPTION {
+            get {
+                return this.sTATUS_DESCRIPTIONField;
+            }
+            set {
+                this.sTATUS_DESCRIPTIONField = value;
+                this.RaisePropertyChanged("STATUS_DESCRIPTION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        public int SMS_STATUS_CODE {
+            get {
+                return this.sMS_STATUS_CODEField;
+            }
+            set {
+                this.sMS_STATUS_CODEField = value;
+                this.RaisePropertyChanged("SMS_STATUS_CODE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SMS_STATUS_CODESpecified {
+            get {
+                return this.sMS_STATUS_CODEFieldSpecified;
+            }
+            set {
+                this.sMS_STATUS_CODEFieldSpecified = value;
+                this.RaisePropertyChanged("SMS_STATUS_CODESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
+        public string SMS_STATUS_DESCRIPTION {
+            get {
+                return this.sMS_STATUS_DESCRIPTIONField;
+            }
+            set {
+                this.sMS_STATUS_DESCRIPTIONField = value;
+                this.RaisePropertyChanged("SMS_STATUS_DESCRIPTION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("EMAIL", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        public string[] EMAIL {
+            get {
+                return this.eMAILField;
+            }
+            set {
+                this.eMAILField = value;
+                this.RaisePropertyChanged("EMAIL");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
+        public int EMAIL_STATUS_CODE {
+            get {
+                return this.eMAIL_STATUS_CODEField;
+            }
+            set {
+                this.eMAIL_STATUS_CODEField = value;
+                this.RaisePropertyChanged("EMAIL_STATUS_CODE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool EMAIL_STATUS_CODESpecified {
+            get {
+                return this.eMAIL_STATUS_CODEFieldSpecified;
+            }
+            set {
+                this.eMAIL_STATUS_CODEFieldSpecified = value;
+                this.RaisePropertyChanged("EMAIL_STATUS_CODESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
+        public string EMAIL_STATUS_DESCRIPTION {
+            get {
+                return this.eMAIL_STATUS_DESCRIPTIONField;
+            }
+            set {
+                this.eMAIL_STATUS_DESCRIPTIONField = value;
+                this.RaisePropertyChanged("EMAIL_STATUS_DESCRIPTION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
+        public string FILENAME {
+            get {
+                return this.fILENAMEField;
+            }
+            set {
+                this.fILENAMEField = value;
+                this.RaisePropertyChanged("FILENAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
+        public string HASH {
+            get {
+                return this.hASHField;
+            }
+            set {
+                this.hASHField = value;
+                this.RaisePropertyChanged("HASH");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
         public System.DateTime CDATE {
             get {
                 return this.cDATEField;
@@ -1148,98 +1382,14 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public long CPOSITION_ID {
-            get {
-                return this.cPOSITION_IDField;
-            }
-            set {
-                this.cPOSITION_IDField = value;
-                this.RaisePropertyChanged("CPOSITION_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public long CUSER_ID {
-            get {
-                return this.cUSER_IDField;
-            }
-            set {
-                this.cUSER_IDField = value;
-                this.RaisePropertyChanged("CUSER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=3)]
-        public System.DateTime UDATE {
-            get {
-                return this.uDATEField;
-            }
-            set {
-                this.uDATEField = value;
-                this.RaisePropertyChanged("UDATE");
-            }
-        }
-        
-        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UDATESpecified {
+        public bool CDATESpecified {
             get {
-                return this.uDATEFieldSpecified;
+                return this.cDATEFieldSpecified;
             }
             set {
-                this.uDATEFieldSpecified = value;
-                this.RaisePropertyChanged("UDATESpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public long UPOSITION_ID {
-            get {
-                return this.uPOSITION_IDField;
-            }
-            set {
-                this.uPOSITION_IDField = value;
-                this.RaisePropertyChanged("UPOSITION_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UPOSITION_IDSpecified {
-            get {
-                return this.uPOSITION_IDFieldSpecified;
-            }
-            set {
-                this.uPOSITION_IDFieldSpecified = value;
-                this.RaisePropertyChanged("UPOSITION_IDSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public long UUSER_ID {
-            get {
-                return this.uUSER_IDField;
-            }
-            set {
-                this.uUSER_IDField = value;
-                this.RaisePropertyChanged("UUSER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UUSER_IDSpecified {
-            get {
-                return this.uUSER_IDFieldSpecified;
-            }
-            set {
-                this.uUSER_IDFieldSpecified = value;
-                this.RaisePropertyChanged("UUSER_IDSpecified");
+                this.cDATEFieldSpecified = value;
+                this.RaisePropertyChanged("CDATESpecified");
             }
         }
         
@@ -1254,7 +1404,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1277,8 +1427,6 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         private bool aCTION_DATEFieldSpecified;
         
-        private CHANGE_INFOType cHANGE_INFOField;
-        
         private string rEASONField;
         
         private string aPPLICATION_NAMEField;
@@ -1290,8 +1438,6 @@ namespace izibiz.SERVICES.serviceCreditNote {
         private string sIMULATION_FLAGField;
         
         private string cOMPRESSEDField;
-        
-        private ATTRIBUTESTYPE[] aTTRIBUTESField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
@@ -1390,19 +1536,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public CHANGE_INFOType CHANGE_INFO {
-            get {
-                return this.cHANGE_INFOField;
-            }
-            set {
-                this.cHANGE_INFOField = value;
-                this.RaisePropertyChanged("CHANGE_INFO");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=5)]
         public string REASON {
             get {
                 return this.rEASONField;
@@ -1414,7 +1548,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=6)]
         public string APPLICATION_NAME {
             get {
                 return this.aPPLICATION_NAMEField;
@@ -1426,7 +1560,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=7)]
         public string HOSTNAME {
             get {
                 return this.hOSTNAMEField;
@@ -1438,7 +1572,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=8)]
         public string CHANNEL_NAME {
             get {
                 return this.cHANNEL_NAMEField;
@@ -1450,7 +1584,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=9)]
         public string SIMULATION_FLAG {
             get {
                 return this.sIMULATION_FLAGField;
@@ -1462,7 +1596,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=10)]
         public string COMPRESSED {
             get {
                 return this.cOMPRESSEDField;
@@ -1470,18 +1604,6 @@ namespace izibiz.SERVICES.serviceCreditNote {
             set {
                 this.cOMPRESSEDField = value;
                 this.RaisePropertyChanged("COMPRESSED");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ATTRIBUTES", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
-        public ATTRIBUTESTYPE[] ATTRIBUTES {
-            get {
-                return this.aTTRIBUTESField;
-            }
-            set {
-                this.aTTRIBUTESField = value;
-                this.RaisePropertyChanged("ATTRIBUTES");
             }
         }
         
@@ -1496,14 +1618,19 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoadCreditNoteRequest))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MarkCreditNoteRequest))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetCreditNoteRequest))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SendCreditNoteRequest))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetCreditNoteStatusRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetCreditNoteRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MarkCreditNoteRequest))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetCreditNoteReportRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetCreditNoteStatusRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoadCreditNoteRequest))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CancelCreditNoteRequest))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CancelDocumentRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetDocumentStatusRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SendDocumentRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoadDocumentRequest))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetDocumentRequest))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1535,16 +1662,20 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class LoadCreditNoteRequest : REQUEST {
+    public partial class SendCreditNoteRequest : REQUEST {
         
         private CREDITNOTE[] cREDITNOTEField;
         
+        private string xSLT_NAMEField;
+        
         private CREDITNOTE_PROPERTIES cREDITNOTE_PROPERTIESField;
+        
+        private SERIES_PROPERTIES sERIES_PROPERTIESField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("CREDITNOTE", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -1560,6 +1691,18 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string XSLT_NAME {
+            get {
+                return this.xSLT_NAMEField;
+            }
+            set {
+                this.xSLT_NAMEField = value;
+                this.RaisePropertyChanged("XSLT_NAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public CREDITNOTE_PROPERTIES CREDITNOTE_PROPERTIES {
             get {
                 return this.cREDITNOTE_PROPERTIESField;
@@ -1569,10 +1712,280 @@ namespace izibiz.SERVICES.serviceCreditNote {
                 this.RaisePropertyChanged("CREDITNOTE_PROPERTIES");
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public SERIES_PROPERTIES SERIES_PROPERTIES {
+            get {
+                return this.sERIES_PROPERTIESField;
+            }
+            set {
+                this.sERIES_PROPERTIESField = value;
+                this.RaisePropertyChanged("SERIES_PROPERTIES");
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class GetCreditNoteRequest : REQUEST {
+        
+        private GetCreditNoteRequestCREDITNOTE_SEARCH_KEY cREDITNOTE_SEARCH_KEYField;
+        
+        private string hEADER_ONLYField;
+        
+        private string cONTENT_TYPEField;
+        
+        public GetCreditNoteRequest() {
+            this.hEADER_ONLYField = "N";
+            this.cONTENT_TYPEField = "XML";
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public GetCreditNoteRequestCREDITNOTE_SEARCH_KEY CREDITNOTE_SEARCH_KEY {
+            get {
+                return this.cREDITNOTE_SEARCH_KEYField;
+            }
+            set {
+                this.cREDITNOTE_SEARCH_KEYField = value;
+                this.RaisePropertyChanged("CREDITNOTE_SEARCH_KEY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.ComponentModel.DefaultValueAttribute("N")]
+        public string HEADER_ONLY {
+            get {
+                return this.hEADER_ONLYField;
+            }
+            set {
+                this.hEADER_ONLYField = value;
+                this.RaisePropertyChanged("HEADER_ONLY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.ComponentModel.DefaultValueAttribute("XML")]
+        public string CONTENT_TYPE {
+            get {
+                return this.cONTENT_TYPEField;
+            }
+            set {
+                this.cONTENT_TYPEField = value;
+                this.RaisePropertyChanged("CONTENT_TYPE");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class GetCreditNoteRequestCREDITNOTE_SEARCH_KEY : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int lIMITField;
+        
+        private bool lIMITFieldSpecified;
+        
+        private string idField;
+        
+        private string uUIDField;
+        
+        private string fROMField;
+        
+        private string toField;
+        
+        private string dATE_TYPEField;
+        
+        private System.DateTime sTART_DATEField;
+        
+        private bool sTART_DATEFieldSpecified;
+        
+        private System.DateTime eND_DATEField;
+        
+        private bool eND_DATEFieldSpecified;
+        
+        private string rEAD_INCLUDEDField;
+        
+        private CUSTOMER cUSTOMERField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int LIMIT {
+            get {
+                return this.lIMITField;
+            }
+            set {
+                this.lIMITField = value;
+                this.RaisePropertyChanged("LIMIT");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool LIMITSpecified {
+            get {
+                return this.lIMITFieldSpecified;
+            }
+            set {
+                this.lIMITFieldSpecified = value;
+                this.RaisePropertyChanged("LIMITSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="normalizedString", Order=1)]
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="normalizedString", Order=2)]
+        public string UUID {
+            get {
+                return this.uUIDField;
+            }
+            set {
+                this.uUIDField = value;
+                this.RaisePropertyChanged("UUID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=3)]
+        public string FROM {
+            get {
+                return this.fROMField;
+            }
+            set {
+                this.fROMField = value;
+                this.RaisePropertyChanged("FROM");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=4)]
+        public string TO {
+            get {
+                return this.toField;
+            }
+            set {
+                this.toField = value;
+                this.RaisePropertyChanged("TO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public string DATE_TYPE {
+            get {
+                return this.dATE_TYPEField;
+            }
+            set {
+                this.dATE_TYPEField = value;
+                this.RaisePropertyChanged("DATE_TYPE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=6)]
+        public System.DateTime START_DATE {
+            get {
+                return this.sTART_DATEField;
+            }
+            set {
+                this.sTART_DATEField = value;
+                this.RaisePropertyChanged("START_DATE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool START_DATESpecified {
+            get {
+                return this.sTART_DATEFieldSpecified;
+            }
+            set {
+                this.sTART_DATEFieldSpecified = value;
+                this.RaisePropertyChanged("START_DATESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=7)]
+        public System.DateTime END_DATE {
+            get {
+                return this.eND_DATEField;
+            }
+            set {
+                this.eND_DATEField = value;
+                this.RaisePropertyChanged("END_DATE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool END_DATESpecified {
+            get {
+                return this.eND_DATEFieldSpecified;
+            }
+            set {
+                this.eND_DATEFieldSpecified = value;
+                this.RaisePropertyChanged("END_DATESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        public string READ_INCLUDED {
+            get {
+                return this.rEAD_INCLUDEDField;
+            }
+            set {
+                this.rEAD_INCLUDEDField = value;
+                this.RaisePropertyChanged("READ_INCLUDED");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        public CUSTOMER CUSTOMER {
+            get {
+                return this.cUSTOMERField;
+            }
+            set {
+                this.cUSTOMERField = value;
+                this.RaisePropertyChanged("CUSTOMER");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1595,7 +2008,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1641,40 +2054,79 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class GetCreditNoteRequest : REQUEST {
+    public partial class GetCreditNoteReportRequest : REQUEST {
         
-        private GetCreditNoteRequestCREDITNOTE_SEARCH_KEY cREDITNOTE_SEARCH_KEYField;
+        private System.DateTime sTART_DATEField;
         
-        private FLAG_VALUE hEADER_ONLYField;
+        private bool sTART_DATEFieldSpecified;
         
-        private CONTENT_TYPE cONTENT_TYPEField;
+        private System.DateTime eND_DATEField;
         
-        public GetCreditNoteRequest() {
-            this.hEADER_ONLYField = FLAG_VALUE.N;
-            this.cONTENT_TYPEField = CONTENT_TYPE.XML;
+        private bool eND_DATEFieldSpecified;
+        
+        private string hEADER_ONLYField;
+        
+        public GetCreditNoteReportRequest() {
+            this.hEADER_ONLYField = "N";
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public GetCreditNoteRequestCREDITNOTE_SEARCH_KEY CREDITNOTE_SEARCH_KEY {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
+        public System.DateTime START_DATE {
             get {
-                return this.cREDITNOTE_SEARCH_KEYField;
+                return this.sTART_DATEField;
             }
             set {
-                this.cREDITNOTE_SEARCH_KEYField = value;
-                this.RaisePropertyChanged("CREDITNOTE_SEARCH_KEY");
+                this.sTART_DATEField = value;
+                this.RaisePropertyChanged("START_DATE");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        [System.ComponentModel.DefaultValueAttribute(FLAG_VALUE.N)]
-        public FLAG_VALUE HEADER_ONLY {
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool START_DATESpecified {
+            get {
+                return this.sTART_DATEFieldSpecified;
+            }
+            set {
+                this.sTART_DATEFieldSpecified = value;
+                this.RaisePropertyChanged("START_DATESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=1)]
+        public System.DateTime END_DATE {
+            get {
+                return this.eND_DATEField;
+            }
+            set {
+                this.eND_DATEField = value;
+                this.RaisePropertyChanged("END_DATE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool END_DATESpecified {
+            get {
+                return this.eND_DATEFieldSpecified;
+            }
+            set {
+                this.eND_DATEFieldSpecified = value;
+                this.RaisePropertyChanged("END_DATESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.ComponentModel.DefaultValueAttribute("N")]
+        public string HEADER_ONLY {
             get {
                 return this.hEADER_ONLYField;
             }
@@ -1683,28 +2135,321 @@ namespace izibiz.SERVICES.serviceCreditNote {
                 this.RaisePropertyChanged("HEADER_ONLY");
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class GetCreditNoteStatusRequest : REQUEST {
+        
+        private string[] uUIDField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        [System.ComponentModel.DefaultValueAttribute(CONTENT_TYPE.XML)]
-        public CONTENT_TYPE CONTENT_TYPE {
+        [System.Xml.Serialization.XmlElementAttribute("UUID", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
+        public string[] UUID {
             get {
-                return this.cONTENT_TYPEField;
+                return this.uUIDField;
             }
             set {
-                this.cONTENT_TYPEField = value;
-                this.RaisePropertyChanged("CONTENT_TYPE");
+                this.uUIDField = value;
+                this.RaisePropertyChanged("UUID");
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class LoadCreditNoteRequest : REQUEST {
+        
+        private CREDITNOTE[] cREDITNOTEField;
+        
+        private CREDITNOTE_PROPERTIES cREDITNOTE_PROPERTIESField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CREDITNOTE", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public CREDITNOTE[] CREDITNOTE {
+            get {
+                return this.cREDITNOTEField;
+            }
+            set {
+                this.cREDITNOTEField = value;
+                this.RaisePropertyChanged("CREDITNOTE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public CREDITNOTE_PROPERTIES CREDITNOTE_PROPERTIES {
+            get {
+                return this.cREDITNOTE_PROPERTIESField;
+            }
+            set {
+                this.cREDITNOTE_PROPERTIESField = value;
+                this.RaisePropertyChanged("CREDITNOTE_PROPERTIES");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class CancelCreditNoteRequest : REQUEST {
+        
+        private string[] uUIDField;
+        
+        private string dELETE_FLAGField;
+        
+        public CancelCreditNoteRequest() {
+            this.dELETE_FLAGField = "N";
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("UUID", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
+        public string[] UUID {
+            get {
+                return this.uUIDField;
+            }
+            set {
+                this.uUIDField = value;
+                this.RaisePropertyChanged("UUID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.ComponentModel.DefaultValueAttribute("N")]
+        public string DELETE_FLAG {
+            get {
+                return this.dELETE_FLAGField;
+            }
+            set {
+                this.dELETE_FLAGField = value;
+                this.RaisePropertyChanged("DELETE_FLAG");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class CancelDocumentRequest : REQUEST {
+        
+        private string[] uUIDField;
+        
+        private string dELETE_FLAGField;
+        
+        public CancelDocumentRequest() {
+            this.dELETE_FLAGField = "N";
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("UUID", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
+        public string[] UUID {
+            get {
+                return this.uUIDField;
+            }
+            set {
+                this.uUIDField = value;
+                this.RaisePropertyChanged("UUID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.ComponentModel.DefaultValueAttribute("N")]
+        public string DELETE_FLAG {
+            get {
+                return this.dELETE_FLAGField;
+            }
+            set {
+                this.dELETE_FLAGField = value;
+                this.RaisePropertyChanged("DELETE_FLAG");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class GetDocumentStatusRequest : REQUEST {
+        
+        private string[] uUIDField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("UUID", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
+        public string[] UUID {
+            get {
+                return this.uUIDField;
+            }
+            set {
+                this.uUIDField = value;
+                this.RaisePropertyChanged("UUID");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class SendDocumentRequest : REQUEST {
+        
+        private DOCUMENT[] dOCUMENTField;
+        
+        private string xSLT_NAMEField;
+        
+        private DOCUMENT_PROPERTIES dOCUMENT_PROPERTIESField;
+        
+        private SERIES_PROPERTIES sERIES_PROPERTIESField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DOCUMENT", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public DOCUMENT[] DOCUMENT {
+            get {
+                return this.dOCUMENTField;
+            }
+            set {
+                this.dOCUMENTField = value;
+                this.RaisePropertyChanged("DOCUMENT");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string XSLT_NAME {
+            get {
+                return this.xSLT_NAMEField;
+            }
+            set {
+                this.xSLT_NAMEField = value;
+                this.RaisePropertyChanged("XSLT_NAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public DOCUMENT_PROPERTIES DOCUMENT_PROPERTIES {
+            get {
+                return this.dOCUMENT_PROPERTIESField;
+            }
+            set {
+                this.dOCUMENT_PROPERTIESField = value;
+                this.RaisePropertyChanged("DOCUMENT_PROPERTIES");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public SERIES_PROPERTIES SERIES_PROPERTIES {
+            get {
+                return this.sERIES_PROPERTIESField;
+            }
+            set {
+                this.sERIES_PROPERTIESField = value;
+                this.RaisePropertyChanged("SERIES_PROPERTIES");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class LoadDocumentRequest : REQUEST {
+        
+        private DOCUMENT[] dOCUMENTField;
+        
+        private DOCUMENT_PROPERTIES dOCUMENT_PROPERTIESField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DOCUMENT", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public DOCUMENT[] DOCUMENT {
+            get {
+                return this.dOCUMENTField;
+            }
+            set {
+                this.dOCUMENTField = value;
+                this.RaisePropertyChanged("DOCUMENT");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public DOCUMENT_PROPERTIES DOCUMENT_PROPERTIES {
+            get {
+                return this.dOCUMENT_PROPERTIESField;
+            }
+            set {
+                this.dOCUMENT_PROPERTIESField = value;
+                this.RaisePropertyChanged("DOCUMENT_PROPERTIES");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class GetDocumentRequest : REQUEST {
+        
+        private GetDocumentRequestSEARCH_KEY sEARCH_KEYField;
+        
+        private string hEADER_ONLYField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public GetDocumentRequestSEARCH_KEY SEARCH_KEY {
+            get {
+                return this.sEARCH_KEYField;
+            }
+            set {
+                this.sEARCH_KEYField = value;
+                this.RaisePropertyChanged("SEARCH_KEY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=1)]
+        public string HEADER_ONLY {
+            get {
+                return this.hEADER_ONLYField;
+            }
+            set {
+                this.hEADER_ONLYField = value;
+                this.RaisePropertyChanged("HEADER_ONLY");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class GetCreditNoteRequestCREDITNOTE_SEARCH_KEY : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GetDocumentRequestSEARCH_KEY : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int lIMITField;
         
@@ -1726,11 +2471,19 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         private bool eND_DATEFieldSpecified;
         
-        private FLAG_VALUE rEAD_INCLUDEDField;
+        private bool rEAD_INCLUDEDField;
         
         private bool rEAD_INCLUDEDFieldSpecified;
         
-        private CUSTOMER cUSTOMERField;
+        private string dIRECTIONField;
+        
+        private string sENDERField;
+        
+        private string rECEIVERField;
+        
+        private string cONTENT_TYPEField;
+        
+        private string dATE_TYPEField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -1854,7 +2607,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public FLAG_VALUE READ_INCLUDED {
+        public bool READ_INCLUDED {
             get {
                 return this.rEAD_INCLUDEDField;
             }
@@ -1877,14 +2630,62 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public CUSTOMER CUSTOMER {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=8)]
+        public string DIRECTION {
             get {
-                return this.cUSTOMERField;
+                return this.dIRECTIONField;
             }
             set {
-                this.cUSTOMERField = value;
-                this.RaisePropertyChanged("CUSTOMER");
+                this.dIRECTIONField = value;
+                this.RaisePropertyChanged("DIRECTION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=9)]
+        public string SENDER {
+            get {
+                return this.sENDERField;
+            }
+            set {
+                this.sENDERField = value;
+                this.RaisePropertyChanged("SENDER");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=10)]
+        public string RECEIVER {
+            get {
+                return this.rECEIVERField;
+            }
+            set {
+                this.rECEIVERField = value;
+                this.RaisePropertyChanged("RECEIVER");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
+        public string CONTENT_TYPE {
+            get {
+                return this.cONTENT_TYPEField;
+            }
+            set {
+                this.cONTENT_TYPEField = value;
+                this.RaisePropertyChanged("CONTENT_TYPE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        public string DATE_TYPE {
+            get {
+                return this.dATE_TYPEField;
+            }
+            set {
+                this.dATE_TYPEField = value;
+                this.RaisePropertyChanged("DATE_TYPE");
             }
         }
         
@@ -1898,250 +2699,9 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/common")]
-    public enum CONTENT_TYPE {
-        
-        /// <remarks/>
-        XML,
-        
-        /// <remarks/>
-        PDF,
-        
-        /// <remarks/>
-        HTML,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class SendCreditNoteRequest : REQUEST {
-        
-        private CREDITNOTE[] cREDITNOTEField;
-        
-        private CREDITNOTE_PROPERTIES cREDITNOTE_PROPERTIESField;
-        
-        private SERIES_PROPERTIES sERIES_PROPERTIESField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CREDITNOTE", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public CREDITNOTE[] CREDITNOTE {
-            get {
-                return this.cREDITNOTEField;
-            }
-            set {
-                this.cREDITNOTEField = value;
-                this.RaisePropertyChanged("CREDITNOTE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public CREDITNOTE_PROPERTIES CREDITNOTE_PROPERTIES {
-            get {
-                return this.cREDITNOTE_PROPERTIESField;
-            }
-            set {
-                this.cREDITNOTE_PROPERTIESField = value;
-                this.RaisePropertyChanged("CREDITNOTE_PROPERTIES");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public SERIES_PROPERTIES SERIES_PROPERTIES {
-            get {
-                return this.sERIES_PROPERTIESField;
-            }
-            set {
-                this.sERIES_PROPERTIESField = value;
-                this.RaisePropertyChanged("SERIES_PROPERTIES");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class GetCreditNoteStatusRequest : REQUEST {
-        
-        private string[] uUIDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("UUID", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
-        public string[] UUID {
-            get {
-                return this.uUIDField;
-            }
-            set {
-                this.uUIDField = value;
-                this.RaisePropertyChanged("UUID");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class GetCreditNoteReportRequest : REQUEST {
-        
-        private System.DateTime sTART_DATEField;
-        
-        private bool sTART_DATEFieldSpecified;
-        
-        private System.DateTime eND_DATEField;
-        
-        private bool eND_DATEFieldSpecified;
-        
-        private FLAG_VALUE hEADER_ONLYField;
-        
-        public GetCreditNoteReportRequest() {
-            this.hEADER_ONLYField = FLAG_VALUE.N;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
-        public System.DateTime START_DATE {
-            get {
-                return this.sTART_DATEField;
-            }
-            set {
-                this.sTART_DATEField = value;
-                this.RaisePropertyChanged("START_DATE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool START_DATESpecified {
-            get {
-                return this.sTART_DATEFieldSpecified;
-            }
-            set {
-                this.sTART_DATEFieldSpecified = value;
-                this.RaisePropertyChanged("START_DATESpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=1)]
-        public System.DateTime END_DATE {
-            get {
-                return this.eND_DATEField;
-            }
-            set {
-                this.eND_DATEField = value;
-                this.RaisePropertyChanged("END_DATE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool END_DATESpecified {
-            get {
-                return this.eND_DATEFieldSpecified;
-            }
-            set {
-                this.eND_DATEFieldSpecified = value;
-                this.RaisePropertyChanged("END_DATESpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        [System.ComponentModel.DefaultValueAttribute(FLAG_VALUE.N)]
-        public FLAG_VALUE HEADER_ONLY {
-            get {
-                return this.hEADER_ONLYField;
-            }
-            set {
-                this.hEADER_ONLYField = value;
-                this.RaisePropertyChanged("HEADER_ONLY");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class CancelCreditNoteRequest : REQUEST {
-        
-        private string[] uUIDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("UUID", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="token", Order=0)]
-        public string[] UUID {
-            get {
-                return this.uUIDField;
-            }
-            set {
-                this.uUIDField = value;
-                this.RaisePropertyChanged("UUID");
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", ConfigurationName="serviceCreditNote.CreditNoteServicePort")]
     public interface CreditNoteServicePort {
-        
-        // CODEGEN: GetCreditNoteStatus işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatus/Fault/Re" +
-            "questFaultMessage", Name="RequestFault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
-        izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1 GetCreditNoteStatus(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusResponse")]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1> GetCreditNoteStatusAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request);
-        
-        // CODEGEN: SendCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNote/Fault/Request" +
-            "FaultMessage", Name="RequestFault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
-        izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1 SendCreditNote(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteResponse")]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1> SendCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request);
-        
-        // CODEGEN: LoadCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNote/Fault/Request" +
-            "FaultMessage", Name="RequestFault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
-        izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse1 LoadCreditNote(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteResponse")]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse1> LoadCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest1 request);
-        
-        // CODEGEN: GetCreditNoteReport işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReport/Fault/Re" +
-            "questFaultMessage", Name="RequestFault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
-        izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1 GetCreditNoteReport(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportResponse")]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1> GetCreditNoteReportAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request);
         
         // CODEGEN: GetCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteResponse")]
@@ -2154,16 +2714,38 @@ namespace izibiz.SERVICES.serviceCreditNote {
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteResponse")]
         System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1> GetCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 request);
         
-        // CODEGEN: MarkCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNote/Fault/Request" +
+        // CODEGEN: LoadCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNote/Fault/Request" +
             "FaultMessage", Name="RequestFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
-        izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1 MarkCreditNote(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request);
+        izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse1 LoadCreditNote(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest1 request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteResponse")]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1> MarkCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/LoadCreditNoteResponse")]
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse1> LoadCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest1 request);
+        
+        // CODEGEN: SendCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNote/Fault/Request" +
+            "FaultMessage", Name="RequestFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
+        izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1 SendCreditNote(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/SendCreditNoteResponse")]
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1> SendCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request);
+        
+        // CODEGEN: GetCreditNoteStatus işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatus/Fault/Re" +
+            "questFaultMessage", Name="RequestFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
+        izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1 GetCreditNoteStatus(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteStatusResponse")]
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1> GetCreditNoteStatusAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request);
         
         // CODEGEN: CancelCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/CancelCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/CancelCreditNoteResponse")]
@@ -2175,22 +2757,45 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/CancelCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/CancelCreditNoteResponse")]
         System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.CancelCreditNoteResponse1> CancelCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.CancelCreditNoteRequest1 request);
+        
+        // CODEGEN: GetCreditNoteReport işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReport/Fault/Re" +
+            "questFaultMessage", Name="RequestFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
+        izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1 GetCreditNoteReport(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/GetCreditNoteReportResponse")]
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1> GetCreditNoteReportAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request);
+        
+        // CODEGEN: MarkCreditNote işlemi RPC ya da belge kaydırmalı olmadığından, ileti sözleşmesi oluşturuluyor.
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(izibiz.SERVICES.serviceCreditNote.REQUEST_ERRORType), Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNote/Fault/Request" +
+            "FaultMessage", Name="RequestFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(REQUEST))]
+        izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1 MarkCreditNote(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteRequest", ReplyAction="http://schemas.i2i.com/ei/wsdl/CreditNoteServicePort/MarkCreditNoteResponse")]
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1> MarkCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetCreditNoteStatusRequest1 {
+    public partial class GetCreditNoteRequest1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest;
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest;
         
-        public GetCreditNoteStatusRequest1() {
+        public GetCreditNoteRequest1() {
         }
         
-        public GetCreditNoteStatusRequest1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest) {
-            this.GetCreditNoteStatusRequest = GetCreditNoteStatusRequest;
+        public GetCreditNoteRequest1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest) {
+            this.GetCreditNoteRequest = GetCreditNoteRequest;
         }
     }
     
@@ -2198,26 +2803,27 @@ namespace izibiz.SERVICES.serviceCreditNote {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetCreditNoteStatusResponse1 {
+    public partial class GetCreditNoteResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse GetCreditNoteStatusResponse;
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse GetCreditNoteResponse;
         
-        public GetCreditNoteStatusResponse1() {
+        public GetCreditNoteResponse1() {
         }
         
-        public GetCreditNoteStatusResponse1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse GetCreditNoteStatusResponse) {
-            this.GetCreditNoteStatusResponse = GetCreditNoteStatusResponse;
+        public GetCreditNoteResponse1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse GetCreditNoteResponse) {
+            this.GetCreditNoteResponse = GetCreditNoteResponse;
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class SendCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class LoadCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
         
         private REQUEST_RETURNType rEQUEST_RETURNField;
         
@@ -2258,7 +2864,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2335,9 +2941,106 @@ namespace izibiz.SERVICES.serviceCreditNote {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class LoadCreditNoteRequest1 {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest LoadCreditNoteRequest;
+        
+        public LoadCreditNoteRequest1() {
+        }
+        
+        public LoadCreditNoteRequest1(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest LoadCreditNoteRequest) {
+            this.LoadCreditNoteRequest = LoadCreditNoteRequest;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class LoadCreditNoteResponse1 {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse LoadCreditNoteResponse;
+        
+        public LoadCreditNoteResponse1() {
+        }
+        
+        public LoadCreditNoteResponse1(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse LoadCreditNoteResponse) {
+            this.LoadCreditNoteResponse = LoadCreditNoteResponse;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class SendCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private REQUEST_RETURNType rEQUEST_RETURNField;
+        
+        private REQUEST_ERRORType eRROR_TYPEField;
+        
+        private string cREDIT_NOTE_IDField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public REQUEST_RETURNType REQUEST_RETURN {
+            get {
+                return this.rEQUEST_RETURNField;
+            }
+            set {
+                this.rEQUEST_RETURNField = value;
+                this.RaisePropertyChanged("REQUEST_RETURN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public REQUEST_ERRORType ERROR_TYPE {
+            get {
+                return this.eRROR_TYPEField;
+            }
+            set {
+                this.eRROR_TYPEField = value;
+                this.RaisePropertyChanged("ERROR_TYPE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string CREDIT_NOTE_ID {
+            get {
+                return this.cREDIT_NOTE_IDField;
+            }
+            set {
+                this.cREDIT_NOTE_IDField = value;
+                this.RaisePropertyChanged("CREDIT_NOTE_ID");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class SendCreditNoteRequest1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest SendCreditNoteRequest;
         
         public SendCreditNoteRequest1() {
@@ -2355,6 +3058,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     public partial class SendCreditNoteResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse SendCreditNoteResponse;
         
         public SendCreditNoteResponse1() {
@@ -2366,12 +3070,94 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class LoadCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GetCreditNoteStatusResponse : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CREDITNOTE[] cREDITNOTE_STATUSField;
+        
+        private REQUEST_ERRORType eRROR_TYPEField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CREDITNOTE_STATUS", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public CREDITNOTE[] CREDITNOTE_STATUS {
+            get {
+                return this.cREDITNOTE_STATUSField;
+            }
+            set {
+                this.cREDITNOTE_STATUSField = value;
+                this.RaisePropertyChanged("CREDITNOTE_STATUS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public REQUEST_ERRORType ERROR_TYPE {
+            get {
+                return this.eRROR_TYPEField;
+            }
+            set {
+                this.eRROR_TYPEField = value;
+                this.RaisePropertyChanged("ERROR_TYPE");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetCreditNoteStatusRequest1 {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest;
+        
+        public GetCreditNoteStatusRequest1() {
+        }
+        
+        public GetCreditNoteStatusRequest1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest) {
+            this.GetCreditNoteStatusRequest = GetCreditNoteStatusRequest;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetCreditNoteStatusResponse1 {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse GetCreditNoteStatusResponse;
+        
+        public GetCreditNoteStatusResponse1() {
+        }
+        
+        public GetCreditNoteStatusResponse1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse GetCreditNoteStatusResponse) {
+            this.GetCreditNoteStatusResponse = GetCreditNoteStatusResponse;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
+    public partial class CancelCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
         
         private REQUEST_RETURNType rEQUEST_RETURNField;
         
@@ -2415,16 +3201,17 @@ namespace izibiz.SERVICES.serviceCreditNote {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class LoadCreditNoteRequest1 {
+    public partial class CancelCreditNoteRequest1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest LoadCreditNoteRequest;
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.CancelCreditNoteRequest CancelCreditNoteRequest;
         
-        public LoadCreditNoteRequest1() {
+        public CancelCreditNoteRequest1() {
         }
         
-        public LoadCreditNoteRequest1(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteRequest LoadCreditNoteRequest) {
-            this.LoadCreditNoteRequest = LoadCreditNoteRequest;
+        public CancelCreditNoteRequest1(izibiz.SERVICES.serviceCreditNote.CancelCreditNoteRequest CancelCreditNoteRequest) {
+            this.CancelCreditNoteRequest = CancelCreditNoteRequest;
         }
     }
     
@@ -2432,21 +3219,22 @@ namespace izibiz.SERVICES.serviceCreditNote {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class LoadCreditNoteResponse1 {
+    public partial class CancelCreditNoteResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse LoadCreditNoteResponse;
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public izibiz.SERVICES.serviceCreditNote.CancelCreditNoteResponse CancelCreditNoteResponse;
         
-        public LoadCreditNoteResponse1() {
+        public CancelCreditNoteResponse1() {
         }
         
-        public LoadCreditNoteResponse1(izibiz.SERVICES.serviceCreditNote.LoadCreditNoteResponse LoadCreditNoteResponse) {
-            this.LoadCreditNoteResponse = LoadCreditNoteResponse;
+        public CancelCreditNoteResponse1(izibiz.SERVICES.serviceCreditNote.CancelCreditNoteResponse CancelCreditNoteResponse) {
+            this.CancelCreditNoteResponse = CancelCreditNoteResponse;
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2492,7 +3280,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2538,7 +3326,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2884,6 +3672,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     public partial class GetCreditNoteReportRequest1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest GetCreditNoteReportRequest;
         
         public GetCreditNoteReportRequest1() {
@@ -2901,6 +3690,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     public partial class GetCreditNoteReportResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse GetCreditNoteReportResponse;
         
         public GetCreditNoteReportResponse1() {
@@ -2912,87 +3702,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class GetCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private CREDITNOTE[] cREDITNOTEField;
-        
-        private REQUEST_ERRORType eRROR_TYPEField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CREDITNOTE", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public CREDITNOTE[] CREDITNOTE {
-            get {
-                return this.cREDITNOTEField;
-            }
-            set {
-                this.cREDITNOTEField = value;
-                this.RaisePropertyChanged("CREDITNOTE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public REQUEST_ERRORType ERROR_TYPE {
-            get {
-                return this.eRROR_TYPEField;
-            }
-            set {
-                this.eRROR_TYPEField = value;
-                this.RaisePropertyChanged("ERROR_TYPE");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetCreditNoteRequest1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest;
-        
-        public GetCreditNoteRequest1() {
-        }
-        
-        public GetCreditNoteRequest1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest) {
-            this.GetCreditNoteRequest = GetCreditNoteRequest;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetCreditNoteResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse GetCreditNoteResponse;
-        
-        public GetCreditNoteResponse1() {
-        }
-        
-        public GetCreditNoteResponse1(izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse GetCreditNoteResponse) {
-            this.GetCreditNoteResponse = GetCreditNoteResponse;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3044,6 +3754,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     public partial class MarkCreditNoteRequest1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest MarkCreditNoteRequest;
         
         public MarkCreditNoteRequest1() {
@@ -3061,6 +3772,7 @@ namespace izibiz.SERVICES.serviceCreditNote {
     public partial class MarkCreditNoteResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse MarkCreditNoteResponse;
         
         public MarkCreditNoteResponse1() {
@@ -3068,86 +3780,6 @@ namespace izibiz.SERVICES.serviceCreditNote {
         
         public MarkCreditNoteResponse1(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse MarkCreditNoteResponse) {
             this.MarkCreditNoteResponse = MarkCreditNoteResponse;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.i2i.com/ei/wsdl")]
-    public partial class CancelCreditNoteResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private REQUEST_RETURNType rEQUEST_RETURNField;
-        
-        private REQUEST_ERRORType eRROR_TYPEField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public REQUEST_RETURNType REQUEST_RETURN {
-            get {
-                return this.rEQUEST_RETURNField;
-            }
-            set {
-                this.rEQUEST_RETURNField = value;
-                this.RaisePropertyChanged("REQUEST_RETURN");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public REQUEST_ERRORType ERROR_TYPE {
-            get {
-                return this.eRROR_TYPEField;
-            }
-            set {
-                this.eRROR_TYPEField = value;
-                this.RaisePropertyChanged("ERROR_TYPE");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class CancelCreditNoteRequest1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.CancelCreditNoteRequest CancelCreditNoteRequest;
-        
-        public CancelCreditNoteRequest1() {
-        }
-        
-        public CancelCreditNoteRequest1(izibiz.SERVICES.serviceCreditNote.CancelCreditNoteRequest CancelCreditNoteRequest) {
-            this.CancelCreditNoteRequest = CancelCreditNoteRequest;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class CancelCreditNoteResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.i2i.com/ei/wsdl", Order=0)]
-        public izibiz.SERVICES.serviceCreditNote.CancelCreditNoteResponse CancelCreditNoteResponse;
-        
-        public CancelCreditNoteResponse1() {
-        }
-        
-        public CancelCreditNoteResponse1(izibiz.SERVICES.serviceCreditNote.CancelCreditNoteResponse CancelCreditNoteResponse) {
-            this.CancelCreditNoteResponse = CancelCreditNoteResponse;
         }
     }
     
@@ -3179,49 +3811,26 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteStatus(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request) {
-            return base.Channel.GetCreditNoteStatus(request);
+        izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNote(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 request) {
+            return base.Channel.GetCreditNote(request);
         }
         
-        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse GetCreditNoteStatus(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest) {
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1();
-            inValue.GetCreditNoteStatusRequest = GetCreditNoteStatusRequest;
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteStatus(inValue);
-            return retVal.GetCreditNoteStatusResponse;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteStatusAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request) {
-            return base.Channel.GetCreditNoteStatusAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1> GetCreditNoteStatusAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest) {
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1();
-            inValue.GetCreditNoteStatusRequest = GetCreditNoteStatusRequest;
-            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteStatusAsync(inValue);
+        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse GetCreditNote(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest) {
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1();
+            inValue.GetCreditNoteRequest = GetCreditNoteRequest;
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNote(inValue);
+            return retVal.GetCreditNoteResponse;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.SendCreditNote(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request) {
-            return base.Channel.SendCreditNote(request);
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 request) {
+            return base.Channel.GetCreditNoteAsync(request);
         }
         
-        public izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse SendCreditNote(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest SendCreditNoteRequest) {
-            izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1();
-            inValue.SendCreditNoteRequest = SendCreditNoteRequest;
-            izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).SendCreditNote(inValue);
-            return retVal.SendCreditNoteResponse;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.SendCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request) {
-            return base.Channel.SendCreditNoteAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1> SendCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest SendCreditNoteRequest) {
-            izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1();
-            inValue.SendCreditNoteRequest = SendCreditNoteRequest;
-            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).SendCreditNoteAsync(inValue);
+        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1> GetCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest) {
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1();
+            inValue.GetCreditNoteRequest = GetCreditNoteRequest;
+            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3248,72 +3857,49 @@ namespace izibiz.SERVICES.serviceCreditNote {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteReport(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request) {
-            return base.Channel.GetCreditNoteReport(request);
+        izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.SendCreditNote(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request) {
+            return base.Channel.SendCreditNote(request);
         }
         
-        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse GetCreditNoteReport(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest GetCreditNoteReportRequest) {
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1();
-            inValue.GetCreditNoteReportRequest = GetCreditNoteReportRequest;
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteReport(inValue);
-            return retVal.GetCreditNoteReportResponse;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteReportAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request) {
-            return base.Channel.GetCreditNoteReportAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1> GetCreditNoteReportAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest GetCreditNoteReportRequest) {
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1();
-            inValue.GetCreditNoteReportRequest = GetCreditNoteReportRequest;
-            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteReportAsync(inValue);
+        public izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse SendCreditNote(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest SendCreditNoteRequest) {
+            izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1();
+            inValue.SendCreditNoteRequest = SendCreditNoteRequest;
+            izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).SendCreditNote(inValue);
+            return retVal.SendCreditNoteResponse;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNote(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 request) {
-            return base.Channel.GetCreditNote(request);
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.SendCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 request) {
+            return base.Channel.SendCreditNoteAsync(request);
         }
         
-        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse GetCreditNote(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest) {
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1();
-            inValue.GetCreditNoteRequest = GetCreditNoteRequest;
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNote(inValue);
-            return retVal.GetCreditNoteResponse;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 request) {
-            return base.Channel.GetCreditNoteAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteResponse1> GetCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest GetCreditNoteRequest) {
-            izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteRequest1();
-            inValue.GetCreditNoteRequest = GetCreditNoteRequest;
-            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteAsync(inValue);
+        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.SendCreditNoteResponse1> SendCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest SendCreditNoteRequest) {
+            izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.SendCreditNoteRequest1();
+            inValue.SendCreditNoteRequest = SendCreditNoteRequest;
+            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).SendCreditNoteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.MarkCreditNote(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request) {
-            return base.Channel.MarkCreditNote(request);
+        izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteStatus(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request) {
+            return base.Channel.GetCreditNoteStatus(request);
         }
         
-        public izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse MarkCreditNote(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest MarkCreditNoteRequest) {
-            izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1();
-            inValue.MarkCreditNoteRequest = MarkCreditNoteRequest;
-            izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).MarkCreditNote(inValue);
-            return retVal.MarkCreditNoteResponse;
+        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse GetCreditNoteStatus(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest) {
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1();
+            inValue.GetCreditNoteStatusRequest = GetCreditNoteStatusRequest;
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteStatus(inValue);
+            return retVal.GetCreditNoteStatusResponse;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.MarkCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request) {
-            return base.Channel.MarkCreditNoteAsync(request);
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteStatusAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 request) {
+            return base.Channel.GetCreditNoteStatusAsync(request);
         }
         
-        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1> MarkCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest MarkCreditNoteRequest) {
-            izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1();
-            inValue.MarkCreditNoteRequest = MarkCreditNoteRequest;
-            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).MarkCreditNoteAsync(inValue);
+        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusResponse1> GetCreditNoteStatusAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest GetCreditNoteStatusRequest) {
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteStatusRequest1();
+            inValue.GetCreditNoteStatusRequest = GetCreditNoteStatusRequest;
+            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteStatusAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3337,6 +3923,52 @@ namespace izibiz.SERVICES.serviceCreditNote {
             izibiz.SERVICES.serviceCreditNote.CancelCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.CancelCreditNoteRequest1();
             inValue.CancelCreditNoteRequest = CancelCreditNoteRequest;
             return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).CancelCreditNoteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteReport(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request) {
+            return base.Channel.GetCreditNoteReport(request);
+        }
+        
+        public izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse GetCreditNoteReport(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest GetCreditNoteReportRequest) {
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1();
+            inValue.GetCreditNoteReportRequest = GetCreditNoteReportRequest;
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteReport(inValue);
+            return retVal.GetCreditNoteReportResponse;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.GetCreditNoteReportAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 request) {
+            return base.Channel.GetCreditNoteReportAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportResponse1> GetCreditNoteReportAsync(izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest GetCreditNoteReportRequest) {
+            izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.GetCreditNoteReportRequest1();
+            inValue.GetCreditNoteReportRequest = GetCreditNoteReportRequest;
+            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).GetCreditNoteReportAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1 izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.MarkCreditNote(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request) {
+            return base.Channel.MarkCreditNote(request);
+        }
+        
+        public izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse MarkCreditNote(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest MarkCreditNoteRequest) {
+            izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1();
+            inValue.MarkCreditNoteRequest = MarkCreditNoteRequest;
+            izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1 retVal = ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).MarkCreditNote(inValue);
+            return retVal.MarkCreditNoteResponse;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1> izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort.MarkCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 request) {
+            return base.Channel.MarkCreditNoteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<izibiz.SERVICES.serviceCreditNote.MarkCreditNoteResponse1> MarkCreditNoteAsync(izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest MarkCreditNoteRequest) {
+            izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1 inValue = new izibiz.SERVICES.serviceCreditNote.MarkCreditNoteRequest1();
+            inValue.MarkCreditNoteRequest = MarkCreditNoteRequest;
+            return ((izibiz.SERVICES.serviceCreditNote.CreditNoteServicePort)(this)).MarkCreditNoteAsync(inValue);
         }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.i2i.com/ei/wsdl" xmlns:gib1="http://gib.gov.tr/vedop3/eFatura" name="EFaturaOIB" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gib1="http://gib.gov.tr/vedop3/eFatura" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.i2i.com/ei/wsdl" name="EFaturaOIB" targetNamespace="http://schemas.i2i.com/ei/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema>
       <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EFaturaOIB?xsd=4" namespace="http://schemas.i2i.com/ei/wsdl" />
@@ -48,6 +48,12 @@
   </wsdl:message>
   <wsdl:message name="GetInvoiceResponseMessage">
     <wsdl:part name="response" element="tns:GetInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceResponseRequestMessage">
+    <wsdl:part name="request" element="tns:GetInvoiceResponseRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceResponseResponseMessage">
+    <wsdl:part name="response" element="tns:GetInvoiceResponseResponse" />
   </wsdl:message>
   <wsdl:message name="MarkInvoiceRequestMessage">
     <wsdl:part name="request" element="tns:MarkInvoiceRequest" />
@@ -145,6 +151,12 @@
   <wsdl:message name="CancelDraftInvoiceResponseMessage">
     <wsdl:part name="response" element="tns:CancelDraftInvoiceResponse" />
   </wsdl:message>
+  <wsdl:message name="ArchiveInvoiceRequestMessage">
+    <wsdl:part name="request" element="tns:ArchiveInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="ArchiveInvoiceResponseMessage">
+    <wsdl:part name="response" element="tns:ArchiveInvoiceResponse" />
+  </wsdl:message>
   <wsdl:message name="RequestFaultMessage">
     <wsdl:part name="parameters" element="tns:RequestFault" />
   </wsdl:message>
@@ -172,6 +184,11 @@
     <wsdl:operation name="GetInvoice">
       <wsdl:input message="tns:GetInvoiceRequestMessage" />
       <wsdl:output message="tns:GetInvoiceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceResponse">
+      <wsdl:input message="tns:GetInvoiceResponseRequestMessage" />
+      <wsdl:output message="tns:GetInvoiceResponseResponseMessage" />
       <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="MarkInvoice">
@@ -254,6 +271,11 @@
       <wsdl:output message="tns:CancelDraftInvoiceResponseMessage" />
       <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ArchiveInvoice">
+      <wsdl:input message="tns:ArchiveInvoiceRequestMessage" />
+      <wsdl:output message="tns:ArchiveInvoiceResponseMessage" />
+      <wsdl:fault name="RequestFault" message="tns:RequestFaultMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="EFaturaOIBPortBinding" type="tns:EFaturaOIBPort">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -306,6 +328,18 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetInvoice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceResponse">
       <soap:operation soapAction="" />
       <wsdl:input>
         <soap:body use="literal" />
@@ -498,6 +532,18 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CancelDraftInvoice">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestFault">
+        <soap:fault use="literal" name="RequestFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveInvoice">
       <soap:operation soapAction="" />
       <wsdl:input>
         <soap:body use="literal" />

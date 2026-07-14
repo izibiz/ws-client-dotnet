@@ -62,7 +62,7 @@ namespace izibiz.CONTROLLER.Web_Services
                     req.INVOICE_SEARCH_KEY.DIRECTION = direction;
                 }
 
-                INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
+                INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req).INVOICE;
                 if (invoiceArray != null && invoiceArray.Length > 0)
                 {
                     string markErrorMessage = invoiceMarkRead(invoiceArray);
@@ -110,7 +110,7 @@ namespace izibiz.CONTROLLER.Web_Services
                 {
                     req.INVOICE_SEARCH_KEY.DIRECTION = direction;
                 }
-                INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req);
+                INVOICE[] invoiceArray = eInvoiceOIBPortClient.GetInvoice(req).INVOICE;
 
                 if (invoiceArray != null && invoiceArray.Length != 0)
                 {
@@ -325,7 +325,7 @@ namespace izibiz.CONTROLLER.Web_Services
                     req.INVOICE_SEARCH_KEY.DRAFT_FLAG = nameof(EI.ActiveOrPasive.Y);
                 }
 
-                INVOICE[] invoiceArr = eInvoiceOIBPortClient.GetInvoice(req);
+                INVOICE[] invoiceArr = eInvoiceOIBPortClient.GetInvoice(req).INVOICE;
                 if (invoiceArr == null || invoiceArr.Length != 0)
                 {
                     foreach (var invoice in invoiceArr)
@@ -370,7 +370,7 @@ namespace izibiz.CONTROLLER.Web_Services
                     req.INVOICE_SEARCH_KEY.DRAFT_FLAG = nameof(EI.ActiveOrPasive.Y);
                 }
 
-                INVOICE[] invoice = eInvoiceOIBPortClient.GetInvoiceWithType(req);
+                INVOICE[] invoice = eInvoiceOIBPortClient.GetInvoiceWithType(req).INVOICE;
                 if (invoice == null || invoice.Length != 0)
                 {
                     return Compress.UncompressFile(invoice[0].CONTENT.Value);

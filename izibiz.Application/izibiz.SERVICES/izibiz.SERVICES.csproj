@@ -10,11 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>izibiz.SERVICES</RootNamespace>
     <AssemblyName>izibiz.SERVICES</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -196,6 +197,12 @@
     <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEArchiveReportResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetELedgerStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetELedgerStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceArchive\izibiz.SERVICES.serviceArchive.GetEmailEarchiveInvoiceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -258,6 +265,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.CheckUserResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.GetAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.GetAccountResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceAuth\izibiz.SERVICES.serviceAuth.GetGibUserListResponse.datasource">
@@ -364,6 +377,12 @@
     <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetDespatchAdviceStatusResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetDespatchAdviceWithStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetDespatchAdviceWithStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.GetReceiptAdviceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -406,6 +425,12 @@
     <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendDespatchAdviceResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendDespatchResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendDespatchResponseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceDespatch\izibiz.SERVICES.serviceDespatch.SendReceiptAdviceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -425,7 +450,10 @@
     <None Include="Connected Services\serviceOib\EFaturaOIB43.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.base64Binary.datasource">
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.ArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.ArchiveInvoiceResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.CancelDraftInvoiceResponse.datasource">
@@ -437,7 +465,7 @@
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.CheckUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.ENVELOPE.datasource">
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.CheckUserResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.getApplicationResponseResponse.datasource">
@@ -449,7 +477,13 @@
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetEnvelopeResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetEnvelopeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetEnvelopeStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetEnvelopeStatusResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceCountResponse.datasource">
@@ -461,7 +495,19 @@
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceResponseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceStatusAllResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceStatusAllResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceStatusResponse.datasource">
@@ -471,6 +517,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceWithTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetInvoiceWithTypeResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetUserListBinaryResponse.datasource">
@@ -483,12 +532,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GetUserListResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.GIBUSER.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.INVOICE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.LoadInvoiceResponse.datasource">
@@ -524,6 +567,9 @@
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.PrepareInvoiceResponseResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.PrepareInvoiceResponseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\serviceOib\izibiz.SERVICES.serviceOib.SendInvoiceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -545,7 +591,13 @@
     <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.GetReconciliationStatusResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.RECONCILIATION_STATUSRECONCILIATION.datasource">
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.GetReconciliationStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.ReadReconciliationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.ReadReconciliationResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.SendMailReconciliationResponse.datasource">
@@ -560,17 +612,17 @@
     <None Include="Connected Services\serviceReconcilation\izibiz.SERVICES.serviceReconcilation.SendReconciliationResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\serviceReconcilation\Reconciliation.wsdl" />
-    <None Include="Connected Services\serviceReconcilation\Reconciliation.xsd">
+    <None Include="Connected Services\serviceReconcilation\Reconciliation1.wsdl" />
+    <None Include="Connected Services\serviceReconcilation\ReconciliationWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceReconcilation\Reconciliation1.xsd">
+    <None Include="Connected Services\serviceReconcilation\ReconciliationWS1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceReconcilation\Reconciliation2.xsd">
+    <None Include="Connected Services\serviceReconcilation\ReconciliationWS2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\serviceReconcilation\Reconciliation3.xsd">
+    <None Include="Connected Services\serviceReconcilation\ReconciliationWS3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\serviceSmm\izibiz.SERVICES.serviceSmm.CancelSmmResponse.datasource">

@@ -409,4 +409,11 @@ namespace izibiz.COMMON
 
 
     }
+
+    public enum CONTENT_TYPE
+    {
+        XML,
+        PDF,
+        HTML
+    }
 }

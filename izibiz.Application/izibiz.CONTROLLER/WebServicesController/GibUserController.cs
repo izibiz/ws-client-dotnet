@@ -41,13 +41,13 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.REGISTER_TIME_START = DateTime.Now;
                 GetGibUserListResponse response = authenticationPortClient.GetGibUserList(req);
 
-                if (response.Item == null)
+                if (response.CONTENT == null)
                 {
                     return "basarısız işlem";
                 }
                 else
                 {
-                    base64Binary content = (base64Binary)response.Item;
+                    base64Binary content = response.CONTENT;
                     if (content.Value != null)
                     {
                         byte[] unCompressedContent = Compress.UncompressFile(content.Value);

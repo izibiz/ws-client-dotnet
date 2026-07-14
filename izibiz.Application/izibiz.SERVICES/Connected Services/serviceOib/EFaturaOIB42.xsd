@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsd:schema xmlns="http://schemas.i2i.com/ei/entity" xmlns:c="http://schemas.i2i.com/ei/common" targetNamespace="http://schemas.i2i.com/ei/entity" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:c="http://schemas.i2i.com/ei/common" xmlns="http://schemas.i2i.com/ei/entity" targetNamespace="http://schemas.i2i.com/ei/entity" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EFaturaOIB?xsd=1" namespace="http://schemas.i2i.com/ei/common" />
   <xsd:complexType name="REQUEST">
     <xsd:sequence>
@@ -88,6 +88,12 @@
         <xsd:annotation>
           <xsd:documentation>Attributes array that composed by name-value
 						pairs using for information manners.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="API_KEY" type="xsd:token">
+        <xsd:annotation>
+          <xsd:documentation>Request related information external customer key, it is not a SESSION_ID
 					</xsd:documentation>
         </xsd:annotation>
       </xsd:element>

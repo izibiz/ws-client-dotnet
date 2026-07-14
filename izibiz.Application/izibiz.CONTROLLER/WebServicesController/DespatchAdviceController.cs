@@ -114,8 +114,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 markReq.REQUEST_HEADER = RequestHeader.getRequestHeaderDespatch;
 
                 MarkDespatchAdviceRequestMARK markDespatch = new MarkDespatchAdviceRequestMARK();
-                markDespatch.value = MarkDespatchAdviceRequestMARKValue.READ;
-                markDespatch.valueSpecified = true;
+                markDespatch.value = "READ";
                 markReq.MARK = markDespatch;
 
                 DESPATCHADVICEINFO[] despatchAdviceInfoArr = new DESPATCHADVICEINFO[despatchArr.Length];

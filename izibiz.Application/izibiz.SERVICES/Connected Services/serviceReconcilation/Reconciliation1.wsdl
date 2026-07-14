@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.izibiz.com/ei/wsdl/reconciliation" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Reconciliation" targetNamespace="http://schemas.izibiz.com/ei/wsdl/reconciliation" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="ReconciliationPortBinding_MTOM_Policy-ReconciliationPortBinding_MTOM_Policy">
+    <ns1:OptimizedMimeSerialization xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/ReconciliationWS?xsd=1" namespace="http://www.w3.org/2005/05/xmlmime" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/ReconciliationWS?xsd=2" namespace="http://schemas.izibiz.com/ei/wsdl/reconciliation" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/ReconciliationWS?xsd=3" namespace="http://schemas.i2i.com/ei/entity" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/ReconciliationWS?xsd=4" namespace="http://schemas.i2i.com/ei/common" />
+    </xsd:schema>
+  </types>
+  <message name="SendReconciliation">
+    <part name="request" element="tns:SendReconciliationRequest" />
+  </message>
+  <message name="SendReconciliationResponse">
+    <part name="response" element="tns:SendReconciliationResponse" />
+  </message>
+  <message name="RequestFaultMessage">
+    <part name="fault" element="tns:RequestFault" />
+  </message>
+  <message name="GetReconciliationStatus">
+    <part name="request" element="tns:GetReconciliationStatusRequest" />
+  </message>
+  <message name="GetReconciliationStatusResponse">
+    <part name="response" element="tns:GetReconciliationStatusResponse" />
+  </message>
+  <message name="SendMailReconciliation">
+    <part name="request" element="tns:SendMailReconciliationRequest" />
+  </message>
+  <message name="SendMailReconciliationResponse">
+    <part name="response" element="tns:SendMailReconciliationResponse" />
+  </message>
+  <message name="ReadReconciliation">
+    <part name="request" element="tns:ReadReconciliationRequest" />
+  </message>
+  <message name="ReadReconciliationResponse">
+    <part name="response" element="tns:ReadReconciliationResponse" />
+  </message>
+  <portType name="ReconciliationPort">
+    <operation name="SendReconciliation">
+      <input wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/SendReconciliationRequest" message="tns:SendReconciliation" />
+      <output wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/SendReconciliationResponse" message="tns:SendReconciliationResponse" />
+      <fault wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/SendReconciliation/Fault/RequestFaultMessage" name="RequestFaultMessage" message="tns:RequestFaultMessage" />
+    </operation>
+    <operation name="GetReconciliationStatus">
+      <input wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/GetReconciliationStatusRequest" message="tns:GetReconciliationStatus" />
+      <output wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/GetReconciliationStatusResponse" message="tns:GetReconciliationStatusResponse" />
+      <fault wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/GetReconciliationStatus/Fault/RequestFaultMessage" name="RequestFaultMessage" message="tns:RequestFaultMessage" />
+    </operation>
+    <operation name="SendMailReconciliation">
+      <input wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/SendMailReconciliationRequest" message="tns:SendMailReconciliation" />
+      <output wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/SendMailReconciliationResponse" message="tns:SendMailReconciliationResponse" />
+      <fault wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/SendMailReconciliation/Fault/RequestFaultMessage" name="RequestFaultMessage" message="tns:RequestFaultMessage" />
+    </operation>
+    <operation name="ReadReconciliation">
+      <input wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/ReadReconciliationRequest" message="tns:ReadReconciliation" />
+      <output wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/ReadReconciliationResponse" message="tns:ReadReconciliationResponse" />
+      <fault wsam:Action="http://schemas.izibiz.com/ei/wsdl/reconciliation/ReconciliationPort/ReadReconciliation/Fault/RequestFaultMessage" name="RequestFaultMessage" message="tns:RequestFaultMessage" />
+    </operation>
+  </portType>
+  <binding name="ReconciliationPortBinding" type="tns:ReconciliationPort">
+    <wsp:PolicyReference URI="#ReconciliationPortBinding_MTOM_Policy-ReconciliationPortBinding_MTOM_Policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="SendReconciliation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="RequestFaultMessage">
+        <soap:fault use="literal" name="RequestFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="GetReconciliationStatus">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="RequestFaultMessage">
+        <soap:fault use="literal" name="RequestFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="SendMailReconciliation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="RequestFaultMessage">
+        <soap:fault use="literal" name="RequestFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="ReadReconciliation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="RequestFaultMessage">
+        <soap:fault use="literal" name="RequestFaultMessage" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="Reconciliation">
+    <port name="ReconciliationPort" binding="tns:ReconciliationPortBinding">
+      <soap:address location="https://efaturatest.izibiz.com.tr:443/ReconciliationWS" />
+    </port>
+  </service>
+</definitions>

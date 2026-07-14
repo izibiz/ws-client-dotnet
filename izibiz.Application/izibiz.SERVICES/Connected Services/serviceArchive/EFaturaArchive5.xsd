@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsd:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:earsiv="http://earsiv.efatura.gov.tr" xmlns:hr="http://www.hr-xml.org/3" xmlns:c="http://schemas.i2i.com/ei/common" xmlns="http://schemas.i2i.com/ei/wsdl/archive" xmlns:e="http://schemas.i2i.com/ei/entity" xmlns:pck="http://www.efatura.gov.tr/package-namespace" targetNamespace="http://schemas.i2i.com/ei/wsdl/archive" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:c="http://schemas.i2i.com/ei/common" xmlns:pck="http://www.efatura.gov.tr/package-namespace" xmlns:earsiv="http://earsiv.efatura.gov.tr" xmlns:e="http://schemas.i2i.com/ei/entity" xmlns:hr="http://www.hr-xml.org/3" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns="http://schemas.i2i.com/ei/wsdl/archive" targetNamespace="http://schemas.i2i.com/ei/wsdl/archive" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIArchiveWS/EFaturaArchive?xsd=6" namespace="http://schemas.i2i.com/ei/common" />
   <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIArchiveWS/EFaturaArchive?xsd=7" namespace="http://schemas.i2i.com/ei/entity" />
   <xsd:import schemaLocation="https://efaturatest.izibiz.com.tr:443/EIArchiveWS/EFaturaArchive?xsd=8" namespace="http://www.w3.org/2005/05/xmlmime" />
@@ -183,6 +183,10 @@
       <xsd:element minOccurs="0" maxOccurs="1" name="EARCHIVE_TEST_FLAG" type="FLAG_VALUE" />
       <xsd:element minOccurs="0" maxOccurs="1" name="EARSIV_SMS_FLAG" type="xsd:string" />
       <xsd:element minOccurs="0" maxOccurs="1" name="SMS_PHONE_NUMBER" type="xsd:string" />
+      <xsd:element minOccurs="0" name="VALIDATION_FLAG" type="FLAG_VALUE" />
+      <xsd:element minOccurs="0" name="XSLT_NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ECOMMERCE_UPLOAD" type="ECOMMERCE_UPLOAD" />
+      <xsd:element minOccurs="0" default="N" name="INCLUDE_IBANS" type="FLAG_VALUE" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="PDF_PROPERTIES">
@@ -193,6 +197,12 @@
       <xsd:element minOccurs="0" name="EARCHIVE_PDF_XSLT_FILENAME" type="xsd:string" />
       <xsd:element minOccurs="0" name="PDF_CONTENT" type="xmime:base64Binary" />
       <xsd:element minOccurs="0" name="EARCHIVE_PDF_VISUALSIGN_FILE" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ECOMMERCE_UPLOAD">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ECOMMERCE_ID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ECOMMERCE_PACKAGE_ID" type="xsd:string" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="EARSIV_TYPE_VALUE">
@@ -219,6 +229,7 @@
       <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
       <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
       <xsd:element minOccurs="0" name="INVOICE_ID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="WEB_KEY" type="xsd:string" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:element name="ArchiveGenericDocumentRequest" type="ArchiveGenericDocumentRequest" />
@@ -292,6 +303,9 @@
       <xsd:enumeration value="YEVMIYE DEFTERI" />
       <xsd:enumeration value="KEBIR BERATI" />
       <xsd:enumeration value="YEVMIYE BERATI" />
+      <xsd:enumeration value="GIB KEBIR BERATI" />
+      <xsd:enumeration value="GIB YEVMIYE BERATI" />
+      <xsd:enumeration value="DEFTER RAPORU" />
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:element name="ReadEArchiveReportRequest" type="ReadEArchiveReportRequest" />
@@ -324,6 +338,7 @@
             <xsd:element minOccurs="0" name="IPTAL_TARIHI" type="xsd:date" />
             <xsd:element minOccurs="0" name="TOPLAM_TUTAR" type="xsd:decimal" />
             <xsd:element minOccurs="0" maxOccurs="1" name="INVOICE_CONTENT" type="xmime:base64Binary" />
+            <xsd:element minOccurs="0" name="IPTAL_NOTU" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -400,6 +415,7 @@
           <xsd:sequence>
             <xsd:element minOccurs="1" name="VKN" type="xsd:string" />
             <xsd:element minOccurs="1" name="DONEM" type="xsd:string" />
+            <xsd:element minOccurs="0" name="SUBE_NO" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -582,6 +598,45 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" maxOccurs="1" name="PORTAL" type="xsd:int" />
       <xsd:element minOccurs="0" maxOccurs="1" name="WS" type="xsd:int" />
+      <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetELedgerStatusRequest" type="GetELedgerStatusRequest" />
+  <xsd:complexType name="GetELedgerStatusRequest">
+    <xsd:sequence>
+      <xsd:element name="REQUEST_HEADER" type="e:REQUEST_HEADERType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="PERIOD" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PART_NO" type="xsd:string" />
+      <xsd:element minOccurs="0" name="IDENTIFIER" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GetELedgerStatusResponse" type="GetELedgerStatusResponse" />
+  <xsd:complexType name="GetELedgerStatusResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ELEDGER">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="PART_NO" type="xsd:string" />
+            <xsd:element minOccurs="0" name="IDENTIFIER" type="xsd:string" />
+            <xsd:element minOccurs="0" name="PERIOD" type="xsd:string" />
+            <xsd:element minOccurs="0" name="GIB_ARCHIVE_CONSENT" type="xsd:string" />
+            <xsd:element minOccurs="0" name="GIB_ARCHIVE_CONSENT_DATE" type="xsd:date" />
+            <xsd:element minOccurs="0" name="GIB_ARCHIVE_STATUS" type="xsd:int" />
+            <xsd:element minOccurs="0" name="GIB_ARCHIVE_STATUS_DESC" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ELEDGER_DETAIL">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="1" name="UNIQUE_ID" type="xsd:string" />
+                  <xsd:element minOccurs="0" maxOccurs="1" name="TYPE" type="xsd:string" />
+                  <xsd:element minOccurs="0" maxOccurs="1" name="GIB_ARCHIVE_DATE" type="xsd:date" />
+                  <xsd:element minOccurs="0" maxOccurs="1" name="GIB_ARCHIVE_STATUS_DESC" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="REQUEST_RETURN" type="e:REQUEST_RETURNType" />
       <xsd:element minOccurs="0" name="ERROR_TYPE" type="e:REQUEST_ERRORType" />
     </xsd:sequence>
   </xsd:complexType>

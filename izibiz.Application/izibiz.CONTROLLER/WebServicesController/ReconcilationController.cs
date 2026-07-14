@@ -135,7 +135,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                 req.RECONCILIATION_SEARCHING = uuids;
 
 
-                 RECONCILIATION_STATUSRECONCILIATION[][] reconcilationsStatus = reconcilationPortClient.GetReconciliationStatus(req);
+                 RECONCILIATION_STATUSRECONCILIATION[][] reconcilationsStatus = reconcilationPortClient.GetReconciliationStatus(req).RECONCILIATION_STATUS;
 
                 if (reconcilationsStatus==null || reconcilationsStatus.First() == null || reconcilationsStatus.Length == 0)  //basarısızsa
                 {
