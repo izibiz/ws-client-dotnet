@@ -1,7 +1,9 @@
-﻿using izibiz.CONTROLLER.DAL;
+using izibiz.CONTROLLER.DAL;
 using izibiz.CONTROLLER.Web_Services;
 using izibiz.CONTROLLER.WebServicesController;
 using izibiz.MODEL.Data;
+using izibiz.REST.Infrastructure;
+using izibiz.REST.Concrete.Smm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +39,36 @@ namespace izibiz.CONTROLLER.Singleton
 
 
 
+
+        private static RestApiOptions _restOptions = null;
+        private static TokenProvider _tokenProvider = null;
+        private static SmmClient _smmClient = null;
+        private static System.Net.Http.HttpClient _restHttpClient = null;
+
+        public static void InitRest(string username, string password)
+        {
+            _restOptions = new RestApiOptions
+            {
+                BaseUrl = "https://apitest.izibiz.com.tr",
+                Version = "v2",
+                Username = username,
+                Password = password,
+                ErpCode = "erp-code"
+            };
+            _tokenProvider = new TokenProvider(_restOptions);
+            _restHttpClient = HttpClientProvider.Create(_restOptions, _tokenProvider);
+            _smmClient = new SmmClient(_restHttpClient, _restOptions);
+        }
+
+        public static SmmClient SmmClientGet
+        {
+            get { return _smmClient; }
+        }
+
+        public static TokenProvider TokenProviderGet
+        {
+            get { return _tokenProvider; }
+        }
 
         public static SmmDal smmDalGet
         {

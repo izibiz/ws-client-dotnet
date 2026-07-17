@@ -1,4 +1,4 @@
-﻿using izibiz.COMMON;
+using izibiz.COMMON;
 using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.Singleton;
 using System;
@@ -31,9 +31,51 @@ namespace izibiz.UI
         }
 
 
+        private Button btnRestListele;
+
         private void FrmSelfEmployment_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
+
+            // REST test butonu SOAP butonuyla uyumlu şekilde ekleniyor
+            btnRestListele = new Button();
+            btnRestListele.Text = "REST ile SMM Çek";
+            btnRestListele.Size = btnTakeSmm.Size;
+            btnRestListele.Location = new Point(btnTakeSmm.Location.X, btnTakeSmm.Location.Y + btnTakeSmm.Height + 10);
+            btnRestListele.BackColor = btnTakeSmm.BackColor;
+            btnRestListele.ForeColor = btnTakeSmm.ForeColor;
+            btnRestListele.FlatStyle = btnTakeSmm.FlatStyle;
+            btnRestListele.Font = btnTakeSmm.Font;
+            btnRestListele.FlatAppearance.BorderColor = btnTakeSmm.FlatAppearance.BorderColor;
+            btnRestListele.FlatAppearance.BorderSize = btnTakeSmm.FlatAppearance.BorderSize;
+            btnRestListele.Click += BtnRestListele_Click;
+            btnRestListele.Visible = false; // E-Smm menüsüne tıklanana kadar gizli
+            this.Controls.Add(btnRestListele);
+            btnRestListele.BringToFront();
+        }
+
+        private async void BtnRestListele_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var filter = new izibiz.REST.Models.Request.ListFilter
+                {
+                    Page = 1,
+                    PageSize = 50
+                };
+
+                // REST API'ye istek at
+                var result = await Singl.SmmClientGet.ListAsync(filter);
+
+                // Grid'e bağlama
+                tableGrid.DataSource = result.Contents;
+                
+                MessageBox.Show($"REST API'den başarıyla {result.Contents.Count} adet E-SMM çekildi!", "REST Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("REST API Hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -191,6 +233,7 @@ namespace izibiz.UI
             gridMenuType = EI.SelfEmploymentReceipt.SelfEmploymentReceipts.ToString();
 
             btnTakeSmm.Visible = true;
+            if (btnRestListele != null) btnRestListele.Visible = true;
             pnlSmm.Visible = false;
             pnlDraftSmm.Visible = false;
             pnlSmmReports.Visible = false;
@@ -301,7 +344,7 @@ namespace izibiz.UI
             }
         }
 
-        private void TableGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void TableGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -318,6 +361,8 @@ namespace izibiz.UI
                     pnlSmm.Visible = false;
                     pnlSmmReports.Visible = true;
                     pnlDraftSmm.Visible = false;
+                    btnTakeSmm.Visible = false;
+                    if (btnRestListele != null) btnRestListele.Visible = false;
                 }
                 else //taslak smm
                 {
@@ -348,16 +393,27 @@ namespace izibiz.UI
                         }
                         else  //smm  veya taslak smmde ıse
                         {
-                            string content = Singl.smmControllerGet.getSmmContentXml(tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString());
-
-                            if (content != null) //servisten veya dıskten getırlebılmısse
+                            var boundItem = tableGrid.Rows[e.RowIndex].DataBoundItem;
+                            if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
                             {
-                                FrmView previewInvoices = new FrmView(content, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts)); //taslak fatura olsa turu arsıvdır
+                                byte[] htmlBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), "html");
+                                string content = System.Text.Encoding.UTF8.GetString(htmlBytes);
+                                FrmView previewInvoices = new FrmView(content, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts)); 
                                 previewInvoices.ShowDialog();
                             }
                             else
                             {
-                                MessageBox.Show(Lang.cantGetContent);//content dıskten sılınmıs ve servısten getırılemedı
+                                string content = Singl.smmControllerGet.getSmmContentXml(tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString());
+
+                                if (content != null) //servisten veya dıskten getırlebılmısse
+                                {
+                                    FrmView previewInvoices = new FrmView(content, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts)); //taslak fatura olsa turu arsıvdır
+                                    previewInvoices.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Lang.cantGetContent);//content dıskten sılınmıs ve servısten getırılemedı
+                                }
                             }
                         }
                     }
@@ -399,11 +455,35 @@ namespace izibiz.UI
 
         }
 
-        private void btnCreditNoteView_Click(object sender, EventArgs e)
+        private async void btnCreditNoteView_Click(object sender, EventArgs e)
         {
 
             try
             {
+                var boundItem = tableGrid.SelectedRows[0].DataBoundItem;
+                if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
+                {
+                    string format = "pdf";
+                    if (rdViewHtml.Checked) format = "html";
+                    else if (rdViewXml.Checked) format = "xml";
+
+                    byte[] contentBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), format);
+
+                    if (format == "html" || format == "xml")
+                    {
+                        string strContent = System.Text.Encoding.UTF8.GetString(contentBytes);
+                        FrmView previewInvoices = new FrmView(strContent, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts));
+                        previewInvoices.ShowDialog();
+                    }
+                    else
+                    {
+                        string path = FolderControl.smmFolderPath + restItem.Uuid + ".pdf";
+                        FolderControl.writeFileOnDiskWithByte(contentBytes, path);
+                        System.Diagnostics.Process.Start(path);
+                    }
+                    return; // REST işlemi bitti, SOAP koduna geçme
+                }
+
                 string uuid = tableGrid.SelectedRows[0].Cells[nameof(EI.SelfEmploymentReceipt.uuid)].Value.ToString();
                 CONTENT_TYPE docType = CONTENT_TYPE.XML;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -121,6 +121,13 @@ namespace izibiz.UI
                     {
                         usurname = txtUsername.Text;
                         password = txtPassword.Text;
+
+                        // REST Client initialization
+                        Singl.InitRest(usurname, password);
+
+                        // Async olarak token alalım ve cache'de tutalım (isteğe bağlı ama faydalı)
+                        _ = Singl.TokenProviderGet.GetTokenAsync();
+
                         FrmHome frmHome = new FrmHome();
                         frmHome.Show();
                         this.Hide();

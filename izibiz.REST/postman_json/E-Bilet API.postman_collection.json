@@ -1,0 +1,108 @@
+{
+  "info": {
+    "_postman_id": "692a51ce-f365-4071-a44f-f46668892c77",
+    "name": "E-Bilet API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56415550",
+    "_collection_link": "https://go.postman.co/collection/56415550-692a51ce-f365-4071-a44f-f46668892c77?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "E-Bilet Gönderme",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpemliaXotZW50ZWdyYXN5b24iLCJyb2xlcyI6WyJjdXN0b21lckFkbWluIiwiaW52b2ljZVVzZXIiLCJhcmNoaXZlVXNlciIsImVMZWRnZXJVc2VyIiwiZWFyY2hpdmVVc2VyIiwiZWRlc3BhdGNoVXNlciIsInpSZXBvcnRVc2VyIiwicmVjb25jaWxhdGVVc2VyIiwiY3JlZGl0Tm90ZVVzZXIiLCJzbW1Vc2VyIiwiZWJpbGxVc2VyIiwiZXhjaGFuZ2VVc2VyIiwiZ2liSXZkRWFyY2hpdmVVc2VyIiwiZWRlY2xhcmF0aW9uVXNlciIsInBvcnRhbFVzZXIiLCJ0aWNrZXRVc2VyIiwiZUxlZGdlck9sZEFyY2hpdmVVc2VyIiwiYmFua1JlY2VpcHRVc2VyIl0sImF1dGhvcml0aWVzIjpbImRvY3VtZW50QXJjaGl2ZSIsImludm9pY2VNYXJrIiwiYmFua1JlY2VpcHRFeHBvcnQiLCJpbnZvaWNlRG93bmxvYWQiLCJkZXNwYXRjaFJlc3BvbnNlUHJpbnQiLCJiYW5rUmVjZWlwdENyZWF0ZSIsInNtbVZpZXciLCJ6UmVwb3J0UmVwb3J0cyIsImRlc3BhdGNoQ2FuY2VsIiwiYmFua1JlY2VpcHRWaWV3IiwiYWNjb3VudERldGFpbCIsImNyZWRpdE5vdGVWaWV3IiwiZGVzcGF0Y2hSZXNwb25zZU91dGJveFZpZXciLCJ6UmVwb3J0U2VuZCIsInRhcmlmZkFwcHJvdmUiLCJkZXNwYXRjaFNlbmQiLCJhZGRyZXNzQm9vayIsInRpY2tldEFyY2hpdmUiLCJkZWxldGVYc2x0IiwiY3JlYXRlU2VyaWVzIiwic21tTm90UmVwb3J0IiwiZGVzcGF0Y2hBcmNoaXZlIiwiZUxlZGdlck9sZEFyY2hpdmVWaWV3IiwiY3JlYXRlRG9jdW1lbnRFeHBvcnQiLCJpbnZvaWNlTG9hZCIsImJhbmtSZWNlaXB0U21zIiwielJlcG9ydENyZWF0ZSIsInNtbUNhbmNlbCIsInRpY2tldFVwZGF0ZSIsInJlYWREb2N1bWVudEV4cG9ydCIsImJhbmtSZWNlaXB0U2VuZCIsInJlY29uY2lsYXRlUGFnZVZpZXciLCJlTGVkZ2VyVXBkYXRlIiwicmVhZFhzbHQiLCJnaWJJdmRFYXJjaGl2ZSIsImNyZWRpdE5vdGVNYXJrIiwiYmFua1JlY2VpcHRFbWFpbCIsImViaWxsVXBkYXRlIiwicmVjb25jaWxhdGVDYW5jZWwiLCJlTGVkZ2VyRG93bmxvYWQiLCJiYW5rUmVjZWlwdEFyY2hpdmUiLCJpbnZvaWNlSW5jb21pbmciLCJkZXNwYXRjaFZpZXciLCJ0aWNrZXRTZW5kIiwic21tQ3JlYXRlIiwiY3JlYXRlWHNsdCIsImFjY2VzcyIsInJlY29uY2lsYXRlTG9hZCIsInNtbUxvYWQiLCJiYW5rUmVjZWlwdFVwZGF0ZSIsInRhcmlmZlVwZ3JhZGUiLCJzbW1BcmNoaXZlIiwiZXhjaGFuZ2VWaWV3Iiwic21tTWFyayIsImJhbmtSZWNlaXB0RGVsZXRlIiwiZUxlZGdlckNhbmNlbCIsImVMZWRnZXJMb2FkIiwiZGVzcGF0Y2hSZXNwb25zZVVwZGF0ZSIsImNyZWRpdE5vdGVSZXBvcnRzIiwiZUxlZGdlclByaW50IiwielJlcG9ydEFyY2hpdmUiLCJ0aWNrZXRWaWV3IiwiZURlZnRlciIsImRlc3BhdGNoRW1haWwiLCJkZXNwYXRjaFNtcyIsImludm9pY2VBcmNoaXZlSW5jb21pbmciLCJleHBvcnRJbnZvaWNlUGFnZSIsImRlc3BhdGNoTWFyayIsImRlc3BhdGNoUmVzcG9uc2VDYW5jZWwiLCJ0YXJpZmZSZWFkIiwidGlja2V0Q3JlYXRlIiwiZXhwb3J0SW52b2ljZVNlbmQiLCJleGNoYW5nZUNhbmNlbCIsImNyZWRpdE5vdGVQcmludCIsInRpY2tldFNtcyIsImNyZWRpdE5vdGVTZW5kIiwiaW52b2ljZUFyY2hpdmVEb3dubG9hZCIsImRlc3BhdGNoUmVzcG9uc2VTZW5kIiwidGlja2V0TWFyayIsImJhbmtSZWNlaXB0Q2FuY2VsIiwidXBkYXRlWHNsdCIsImVhcmNoaXZlSW52b2ljZVNlbmQiLCJlbGVkZ2VyQXJjaGl2ZSIsInpSZXBvcnRQcmludCIsImVhcmNoaXZlSW52b2ljZUNhbmNlbCIsImJhbmtSZWNlaXB0TWFyayIsImludm9pY2VBcmNoaXZlTG9hZCIsInNtbVJlcG9ydFZpZXciLCJleGNoYW5nZVNlbmQiLCJkZXNwYXRjaENyZWF0ZSIsInVwZGF0ZVNlcmllcyIsImRlc3BhdGNoUmVzcG9uc2VJbmJveFZpZXciLCJlTGVkZ2VyUmVhZCIsInJlY29uY2lsYXRlQ3JlYXRlIiwiZGVzcGF0Y2hMb2FkIiwibWVkdWxhSW52b2ljZVNlbmQiLCJiYW5rUmVjZWlwdFByaW50IiwiaW52b2ljZUFyY2hpdmUiLCJkZXNwYXRjaFJlc3BvbnNlQ3JlYXRlIiwiZ2liRWFyY2hpdmVPdXRnb2luZyIsImVhcmNoaXZlSW52b2ljZUxvYWQiLCJlYmlsbFNlbmQiLCJpbnZvaWNlQ3JlYXRlIiwiZUxlZGdlclZpZXciLCJzbW1SZXBvcnRzIiwidGlja2V0RGVsZXRlIiwiY3JlZGl0Tm90ZUNyZWF0ZSIsImV4Y2hhbmdlTG9hZCIsImNyZWRpdE5vdGVBcmNoaXZlIiwiZ2liVXNlckxpc3QiLCJlYXJjaGl2ZUludm9pY2VOb3RSZXBvcnQiLCJtZWR1bGFJbnZvaWNlVmlldyIsImFyY2hpdmUiLCJjdXN0b21lclJlcG9ydCIsInJlcG9ydHNSZWFkIiwiY3JlZGl0Tm90ZVVwZGF0ZSIsImVMZWRnZXJTZW5kIiwielJlcG9ydENhbmNlbCIsImViaWxsVmlldyIsInRpY2tldFByaW50IiwiZWFyY2hpdmVSZXBvcnQiLCJ6UmVwb3J0TG9hZCIsInRpY2tldERvd25sb2FkIiwiaW52b2ljZVNlbmQiLCJpbnZvaWNlT3V0Z29pbmciLCJkZXNwYXRjaE91dGJveFZpZXciLCJkZXNwYXRjaFJlc3BvbnNlTWFyayIsImludm9pY2VBcHByb3ZlIiwielJlcG9ydE1hcmsiLCJjcmVkaXROb3RlTG9hZCIsInNtbVByaW50IiwiZXhjaGFuZ2VOb3RSZXBvcnQiLCJkZXNwYXRjaFJlc3BvbnNlTG9hZCIsImRlc3BhdGNoVXBkYXRlIiwiZ2liSXZkRWFyY2hpdmVJbmNvbWluZyIsImRlc3BhdGNoUHJpbnQiLCJiYW5rUmVjZWlwdERvd25sb2FkIiwidGlja2V0RXhwb3J0IiwidGFyaWZmQXNzaWduIiwiZWFyY2hpdmVWaWV3IiwielJlcG9ydFVwZGF0ZSIsInJlY29uY2lsYXRlU2VuZCIsInRpY2tldEVtYWlsIiwiZWJpbGxDYW5jZWwiLCJzbW1TZW5kIiwiZWJpbGxMb2FkIiwidGlja2V0Q2FuY2VsIiwicmVhZFNlcmllcyIsImNyZWRpdE5vdGVDYW5jZWwiLCJkZXNwYXRjaEluYm94VmlldyIsInNtbVVwZGF0ZSIsIm1lZHVsYUludm9pY2VMb2FkIiwiY3JlZGl0Tm90ZU5vdFJlcG9ydCIsImludm9pY2UiLCJlZGVjbGFyYXRpb25WaWV3IiwidXNlciIsInpSZXBvcnRWaWV3IiwiYWNjb3VudCIsImludm9pY2VBcmNoaXZlT3V0Z29pbmciXSwiY3VzdG9tZXJJZCI6NTIsImRlYWxlcklkIjoxOCwic3ViRGVhbGVySWQiOjM1NjksImFjY291bnRJZCI6NDA0LCJ1c2VySWQiOjEyNTIyLCJpZGVudGlmaWVyIjoiNDg0MDg0NzIxMSIsImFjY291bnRJZHMiOls0MDQsMTA3NzAsMTEzMzAsMTE1NzAsMTIyOTAsMTQyOTEsMTQ4NzEsMTQ5NzAsMTYwNTBdLCJDbGllbnQtVHlwZSI6IiIsImNoYW5uZWxJRCI6MTcsImN1c3RvbWVyU3RhdHVzIjoiQSIsImlhdCI6MTc0OTA0MjQyMSwiZXhwIjoxNzQ5MDg1NjIxfQ.DZmhHtLBLW6VZOeFjR2muB7nowgji0Zl5FIjFoavmdA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"xsltName\": \"DEFAULT\",\n    \"documentAction\": \"SEND\",\n    \"content\": {\n        \"profile\": \"EBILET\",\n        \"documentTypeCode\": \"KARAYOLU\",\n        \"documentNo\": \"BLT2025000000005\",\n        \"issueDate\": \"2025-06-04\",\n        \"reservationNo\": \"BLT-50-01\",\n        \"expeditionTime\": \"2025-06-01T10:00:00\",\n        \"supplierParty\": {\n            \"name\": \"İSTANBUL SEYAHAT A.Ş.\",\n            \"identifier\": \"2821730808\",\n            \"taxOffice\": \"YAKACIK\",\n            \"centralRegistrationNo\": \"2821730818\",\n            \"address\": {\n                \"city\": \"ISTANBUL\",\n                \"subCity\": \"KADIKÖY\",\n                \"country\": \"Türkiye\",\n                \"postalCode\": \"34100\",\n                \"streetName\": \"Davutpaşa mahallesi YTU universite kampusu\",\n                \"buildingNumber\": \"21\",\n                \"buildingName\": \"D2 Blok\",\n                \"email\": \"yazilim@izibiz.com.tr\",\n                \"telephone\": \"(232) 323 23 23\"\n            }\n        },\n        \"customerParty\": {\n            \"firstName\": \"Mustafa\",\n            \"lastName\": \"YILMAZ\",\n            \"identifier\": \"2821730808\",\n            \"address\": {\n                \"postalCode\": \"34100\",\n                \"email\": \"yazilim@izibiz.com.tr\",\n                \"telephone\": \"(535) 876 91 00\"\n            }\n        },\n        \"paymentMeans\": [\n            {\n                \"paymentCode\": \"KREDIKARTI\"\n            }\n        ],\n        \"taxTotal\": {\n            \"taxAmount\": 150.00,\n            \"taxSubTotal\": [\n                {\n                    \"taxableAmount\": 900.00\n                }\n            ]\n        },\n        \"expenseIssuer\": {\n            \"commercialName\": \"İZİBİZ A.Ş.\",\n            \"identifier\": \"2821730808\"\n        },\n        \"travel\": {\n            \"travelType\": \"YUTRICI\",\n            \"travelDate\": \"2025-06-01\",\n            \"travelTime\": \"10:00:00\",\n            \"startingPoint\": \"İstanbul\",\n            \"destination\": \"Ankara\",\n            \"travelNumber\": \"123456\",\n            \"licensePlate\": \"34ABC123\",\n            \"vehicleOperator\": {\n                \"identifier\": \"1234567890\",\n                \"commissionAmount\": 100.00,\n                \"commissionTaxRate\": 20.00\n            }\n        },\n        \"lines\": [\n            {\n                \"typeOfService\": {\n                    \"tour\": \"SEYAHAT\",\n                    \"description\": \"Online Bilet\"\n                },\n                \"seat\": {\n                    \"seatNo\": \"1\",\n                    \"seatType\": \"STANDART\",\n                    \"passengerGender\": \"ERKEK\"\n                },\n                \"taxTotal\": {\n                    \"taxAmount\": 150.00,\n                    \"taxSubTotal\": [\n                        {\n                            \"taxableAmount\": 900.00\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/{{version}}/etickets/send",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "{{version}}",
+            "etickets",
+            "send"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E-Bilet İptal",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/{{version}}/ebilet/23309ce2-5bef-4bab-b73c-d4e2f16ea78a",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "{{version}}",
+            "ebilet",
+            "23309ce2-5bef-4bab-b73c-d4e2f16ea78a"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E-Bilet PDF Görüntüleme",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpemliaXotZW50ZWdyYXN5b24iLCJyb2xlcyI6WyJjdXN0b21lckFkbWluIiwiaW52b2ljZVVzZXIiLCJhcmNoaXZlVXNlciIsImVMZWRnZXJVc2VyIiwiZWFyY2hpdmVVc2VyIiwiZWRlc3BhdGNoVXNlciIsInpSZXBvcnRVc2VyIiwicmVjb25jaWxhdGVVc2VyIiwiY3JlZGl0Tm90ZVVzZXIiLCJzbW1Vc2VyIiwiZWJpbGxVc2VyIiwiZXhjaGFuZ2VVc2VyIiwiZ2liSXZkRWFyY2hpdmVVc2VyIiwiZWRlY2xhcmF0aW9uVXNlciIsInBvcnRhbFVzZXIiLCJ0aWNrZXRVc2VyIiwiZUxlZGdlck9sZEFyY2hpdmVVc2VyIiwiYmFua1JlY2VpcHRVc2VyIl0sImF1dGhvcml0aWVzIjpbImRvY3VtZW50QXJjaGl2ZSIsImludm9pY2VNYXJrIiwiYmFua1JlY2VpcHRFeHBvcnQiLCJpbnZvaWNlRG93bmxvYWQiLCJkZXNwYXRjaFJlc3BvbnNlUHJpbnQiLCJiYW5rUmVjZWlwdENyZWF0ZSIsInNtbVZpZXciLCJ0aWNrZXRzZW5kIiwielJlcG9ydFJlcG9ydHMiLCJkZXNwYXRjaENhbmNlbCIsImJhbmtSZWNlaXB0VmlldyIsImFjY291bnREZXRhaWwiLCJjcmVkaXROb3RlVmlldyIsImRlc3BhdGNoUmVzcG9uc2VPdXRib3hWaWV3IiwielJlcG9ydFNlbmQiLCJ0YXJpZmZBcHByb3ZlIiwiZGVzcGF0Y2hTZW5kIiwiYWRkcmVzc0Jvb2siLCJ0aWNrZXRBcmNoaXZlIiwiZGVsZXRlWHNsdCIsImNyZWF0ZVNlcmllcyIsInNtbU5vdFJlcG9ydCIsImRlc3BhdGNoQXJjaGl2ZSIsImVMZWRnZXJPbGRBcmNoaXZlVmlldyIsImNyZWF0ZURvY3VtZW50RXhwb3J0IiwiaW52b2ljZUxvYWQiLCJiYW5rUmVjZWlwdFNtcyIsInpSZXBvcnRDcmVhdGUiLCJzbW1DYW5jZWwiLCJ0aWNrZXRVcGRhdGUiLCJyZWFkRG9jdW1lbnRFeHBvcnQiLCJiYW5rUmVjZWlwdFNlbmQiLCJyZWNvbmNpbGF0ZVBhZ2VWaWV3IiwiZUxlZGdlclVwZGF0ZSIsInJlYWRYc2x0IiwiZ2liSXZkRWFyY2hpdmUiLCJjcmVkaXROb3RlTWFyayIsImJhbmtSZWNlaXB0RW1haWwiLCJlYmlsbFVwZGF0ZSIsInJlY29uY2lsYXRlQ2FuY2VsIiwiZUxlZGdlckRvd25sb2FkIiwiYmFua1JlY2VpcHRBcmNoaXZlIiwiaW52b2ljZUluY29taW5nIiwiZGVzcGF0Y2hWaWV3Iiwic21tQ3JlYXRlIiwiY3JlYXRlWHNsdCIsImFjY2VzcyIsInJlY29uY2lsYXRlTG9hZCIsInNtbUxvYWQiLCJiYW5rUmVjZWlwdFVwZGF0ZSIsInRhcmlmZlVwZ3JhZGUiLCJzbW1BcmNoaXZlIiwiZXhjaGFuZ2VWaWV3Iiwic21tTWFyayIsImJhbmtSZWNlaXB0RGVsZXRlIiwiZUxlZGdlckNhbmNlbCIsImVMZWRnZXJMb2FkIiwiZGVzcGF0Y2hSZXNwb25zZVVwZGF0ZSIsImNyZWRpdE5vdGVSZXBvcnRzIiwiZUxlZGdlclByaW50IiwielJlcG9ydEFyY2hpdmUiLCJ0aWNrZXRWaWV3IiwiZURlZnRlciIsImRlc3BhdGNoRW1haWwiLCJkZXNwYXRjaFNtcyIsImludm9pY2VBcmNoaXZlSW5jb21pbmciLCJleHBvcnRJbnZvaWNlUGFnZSIsImRlc3BhdGNoTWFyayIsImRlc3BhdGNoUmVzcG9uc2VDYW5jZWwiLCJ0YXJpZmZSZWFkIiwidGlja2V0Q3JlYXRlIiwiZXhwb3J0SW52b2ljZVNlbmQiLCJleGNoYW5nZUNhbmNlbCIsImNyZWRpdE5vdGVQcmludCIsInRpY2tldFNtcyIsImNyZWRpdE5vdGVTZW5kIiwiaW52b2ljZUFyY2hpdmVEb3dubG9hZCIsImRlc3BhdGNoUmVzcG9uc2VTZW5kIiwidGlja2V0TWFyayIsImJhbmtSZWNlaXB0Q2FuY2VsIiwidXBkYXRlWHNsdCIsImVhcmNoaXZlSW52b2ljZVNlbmQiLCJlbGVkZ2VyQXJjaGl2ZSIsInpSZXBvcnRQcmludCIsImVhcmNoaXZlSW52b2ljZUNhbmNlbCIsImJhbmtSZWNlaXB0TWFyayIsImludm9pY2VBcmNoaXZlTG9hZCIsInNtbVJlcG9ydFZpZXciLCJleGNoYW5nZVNlbmQiLCJkZXNwYXRjaENyZWF0ZSIsInVwZGF0ZVNlcmllcyIsImRlc3BhdGNoUmVzcG9uc2VJbmJveFZpZXciLCJlTGVkZ2VyUmVhZCIsInJlY29uY2lsYXRlQ3JlYXRlIiwiZGVzcGF0Y2hMb2FkIiwibWVkdWxhSW52b2ljZVNlbmQiLCJiYW5rUmVjZWlwdFByaW50IiwiaW52b2ljZUFyY2hpdmUiLCJkZXNwYXRjaFJlc3BvbnNlQ3JlYXRlIiwiZ2liRWFyY2hpdmVPdXRnb2luZyIsImVhcmNoaXZlSW52b2ljZUxvYWQiLCJlYmlsbFNlbmQiLCJpbnZvaWNlQ3JlYXRlIiwiZUxlZGdlclZpZXciLCJzbW1SZXBvcnRzIiwidGlja2V0RGVsZXRlIiwiY3JlZGl0Tm90ZUNyZWF0ZSIsImV4Y2hhbmdlTG9hZCIsImNyZWRpdE5vdGVBcmNoaXZlIiwiZ2liVXNlckxpc3QiLCJlYXJjaGl2ZUludm9pY2VOb3RSZXBvcnQiLCJtZWR1bGFJbnZvaWNlVmlldyIsImFyY2hpdmUiLCJjdXN0b21lclJlcG9ydCIsInJlcG9ydHNSZWFkIiwiY3JlZGl0Tm90ZVVwZGF0ZSIsImVMZWRnZXJTZW5kIiwielJlcG9ydENhbmNlbCIsImViaWxsVmlldyIsInRpY2tldFByaW50IiwiZWFyY2hpdmVSZXBvcnQiLCJ6UmVwb3J0TG9hZCIsInRpY2tldERvd25sb2FkIiwiaW52b2ljZVNlbmQiLCJpbnZvaWNlT3V0Z29pbmciLCJkZXNwYXRjaE91dGJveFZpZXciLCJkZXNwYXRjaFJlc3BvbnNlTWFyayIsImludm9pY2VBcHByb3ZlIiwielJlcG9ydE1hcmsiLCJjcmVkaXROb3RlTG9hZCIsInNtbVByaW50IiwiZXhjaGFuZ2VOb3RSZXBvcnQiLCJkZXNwYXRjaFJlc3BvbnNlTG9hZCIsImRlc3BhdGNoVXBkYXRlIiwiZ2liSXZkRWFyY2hpdmVJbmNvbWluZyIsImRlc3BhdGNoUHJpbnQiLCJiYW5rUmVjZWlwdERvd25sb2FkIiwidGlja2V0RXhwb3J0IiwidGFyaWZmQXNzaWduIiwiZWFyY2hpdmVWaWV3IiwielJlcG9ydFVwZGF0ZSIsInJlY29uY2lsYXRlU2VuZCIsInRpY2tldEVtYWlsIiwiZWJpbGxDYW5jZWwiLCJzbW1TZW5kIiwiZWJpbGxMb2FkIiwidGlja2V0Q2FuY2VsIiwicmVhZFNlcmllcyIsImNyZWRpdE5vdGVDYW5jZWwiLCJkZXNwYXRjaEluYm94VmlldyIsInNtbVVwZGF0ZSIsIm1lZHVsYUludm9pY2VMb2FkIiwiY3JlZGl0Tm90ZU5vdFJlcG9ydCIsImludm9pY2UiLCJlZGVjbGFyYXRpb25WaWV3IiwidXNlciIsInpSZXBvcnRWaWV3IiwiYWNjb3VudCIsImludm9pY2VBcmNoaXZlT3V0Z29pbmciXSwiY3VzdG9tZXJJZCI6NTIsImRlYWxlcklkIjoxOCwic3ViRGVhbGVySWQiOjM1NjksImFjY291bnRJZCI6NDA0LCJ1c2VySWQiOjEyNTIyLCJpZGVudGlmaWVyIjoiNDg0MDg0NzIxMSIsImFjY291bnRJZHMiOls0MDQsMTA3NzAsMTEzMzAsMTE1NzAsMTIyOTAsMTQyOTEsMTQ4NzEsMTQ5NzAsMTYwNTBdLCJDbGllbnQtVHlwZSI6IiIsImNoYW5uZWxJRCI6MTcsImN1c3RvbWVyU3RhdHVzIjoiQSIsImlhdCI6MTc0OTA0MTE5OSwiZXhwIjoxNzQ5MDg0Mzk5fQ.GBabZ5j0gECswHA2_AEqHkOwoGGJ0u-el7Dbba5Qxn8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v2/etickets/outbox/4/view/pdf",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "etickets",
+            "outbox",
+            "4",
+            "view",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

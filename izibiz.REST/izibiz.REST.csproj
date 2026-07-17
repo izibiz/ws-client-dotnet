@@ -44,10 +44,13 @@
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Mustahsil\MustahsilClient.cs" />
     <Compile Include="Concrete\Mustahsil\MustahsilListItem.cs" />
+    <Compile Include="Concrete\Smm\SmmClient.cs" />
+    <Compile Include="Concrete\Smm\SmmListItem.cs" />
     <Compile Include="Infrastructure\BearerTokenHandler.cs" />
     <Compile Include="Infrastructure\HttpClientProvider.cs" />
     <Compile Include="Infrastructure\RestApiOptions.cs" />
@@ -55,8 +58,10 @@
     <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\PagedResult.cs" />
     <Compile Include="Models\Request\ListFilter.cs" />
+    <Compile Include="Operations\RestDownloadStrategy.cs" />
     <Compile Include="Operations\RestListStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategy\IDownloadStrategy.cs" />
     <Compile Include="Strategy\IListStrategy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

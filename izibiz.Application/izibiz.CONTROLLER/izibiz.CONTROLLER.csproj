@@ -115,6 +115,7 @@
       <Project>{6ebdb6b7-360a-454f-ab35-de0d2c32905a}</Project>
       <Name>izibiz.SERVICES</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\izibiz.REST\izibiz.REST.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
