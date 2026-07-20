@@ -98,15 +98,15 @@ namespace izibiz.UI
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             FrmInvoice frmInvoice = new FrmInvoice();
-            frmInvoice.Show();
             this.Hide();
+            frmInvoice.Show();
         }
 
         private void btnArchive_Click(object sender, EventArgs e)
         {
             FrmArchive frmArchive = new FrmArchive();
-            frmArchive.Show();
             this.Hide();
+            frmArchive.Show();
         }
 
 
@@ -120,29 +120,29 @@ namespace izibiz.UI
         private void btnIrsaliye_Click(object sender, EventArgs e)
         {
             FrmDespatch frmDespatch = new FrmDespatch();
-            frmDespatch.Show();
             this.Hide();
+            frmDespatch.Show();
         }
 
         private void BtnMutabakat_Click(object sender, EventArgs e)
         {
             FrmReconcilation frmReconsilation = new FrmReconcilation();
-            frmReconsilation.Show();
             this.Hide();
+            frmReconsilation.Show();
         }
 
         private void BtnSmm_Click(object sender, EventArgs e)
         {
             FrmSelfEmployment frmSelfEmployment = new FrmSelfEmployment();
-            frmSelfEmployment.Show();
             this.Hide();
+            frmSelfEmployment.Show();
         }
 
         private void BtnMüstahsil_Click(object sender, EventArgs e)
         {
             FrmCreditNote frmCreditNote = new FrmCreditNote();
-            frmCreditNote.Show();
             this.Hide();
+            frmCreditNote.Show();
         }
     }
 }

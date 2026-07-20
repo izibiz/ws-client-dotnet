@@ -168,8 +168,8 @@ namespace izibiz.UI
                         _ = Singl.TokenProviderGet.GetTokenAsync();
 
                         FrmHome frmHome = new FrmHome();
-                        frmHome.Show();
                         this.Hide();
+                        frmHome.Show();
                         
                     }
                 }

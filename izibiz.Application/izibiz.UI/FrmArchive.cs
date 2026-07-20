@@ -307,6 +307,7 @@ namespace izibiz.UI
         private void btnHomePage_Click(object sender, EventArgs e)
         {
             FrmHome frmHome = new FrmHome();
+            this.Hide();
             frmHome.Show();
             this.Dispose();
         }
