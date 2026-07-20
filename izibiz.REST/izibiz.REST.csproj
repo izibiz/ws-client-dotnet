@@ -44,7 +44,6 @@
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
-    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Mustahsil\MustahsilClient.cs" />
@@ -60,9 +59,11 @@
     <Compile Include="Models\Request\ListFilter.cs" />
     <Compile Include="Operations\RestDownloadStrategy.cs" />
     <Compile Include="Operations\RestListStrategy.cs" />
+    <Compile Include="Operations\RestViewStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\IDownloadStrategy.cs" />
     <Compile Include="Strategy\IListStrategy.cs" />
+    <Compile Include="Strategy\IViewStrategy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

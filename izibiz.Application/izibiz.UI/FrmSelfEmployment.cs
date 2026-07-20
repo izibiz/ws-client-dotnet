@@ -396,7 +396,8 @@ namespace izibiz.UI
                             var boundItem = tableGrid.Rows[e.RowIndex].DataBoundItem;
                             if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
                             {
-                                byte[] htmlBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), "html");
+                                // Turuncu buton = ekranda önizleme = GET /view/html
+                                byte[] htmlBytes = await Singl.SmmClientGet.ViewAsync(restItem.Id.ToString());
                                 string content = System.Text.Encoding.UTF8.GetString(htmlBytes);
                                 FrmView previewInvoices = new FrmView(content, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts)); 
                                 previewInvoices.ShowDialog();
@@ -467,18 +468,21 @@ namespace izibiz.UI
                     if (rdViewHtml.Checked) format = "html";
                     else if (rdViewXml.Checked) format = "xml";
 
-                    byte[] contentBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), format);
-
-                    if (format == "html" || format == "xml")
+                    if (format == "html")
                     {
-                        string strContent = System.Text.Encoding.UTF8.GetString(contentBytes);
+                        // HTML seçiliyse = ekranda önizleme = GET /view/html
+                        byte[] viewBytes = await Singl.SmmClientGet.ViewAsync(restItem.Id.ToString());
+                        string strContent = System.Text.Encoding.UTF8.GetString(viewBytes);
                         FrmView previewInvoices = new FrmView(strContent, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts));
                         previewInvoices.ShowDialog();
                     }
                     else
                     {
-                        string path = FolderControl.smmFolderPath + restItem.Uuid + ".pdf";
-                        FolderControl.writeFileOnDiskWithByte(contentBytes, path);
+                        // PDF veya UBL seçiliyse = diske kaydet = POST /download
+                        byte[] downloadBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), format);
+                        string ext = format == "xml" ? ".xml" : ".pdf";
+                        string path = FolderControl.smmFolderPath + restItem.Uuid + ext;
+                        FolderControl.writeFileOnDiskWithByte(downloadBytes, path);
                         System.Diagnostics.Process.Start(path);
                     }
                     return; // REST işlemi bitti, SOAP koduna geçme
