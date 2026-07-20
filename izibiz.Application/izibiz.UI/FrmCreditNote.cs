@@ -656,7 +656,11 @@ namespace izibiz.UI
                 var boundItem = tableGrid.SelectedRows[0].DataBoundItem;
                 if (boundItem is izibiz.REST.Concrete.Mustahsil.MustahsilListItem restItem)
                 {
-                    byte[] downloadBytes = await Singl.MustahsilClientGet.DownloadAsync(restItem.Id.ToString(), e.Format);
+                    // API'de "xml" diye ayrı bir indirme formatı yok, XML içerik "ubl" formatı üzerinden geliyor.
+                    // Kullanıcıya hâlâ "xml" gösteriyoruz, dosyayı da .xml uzantısıyla kaydediyoruz.
+                    string apiFormat = e.Format == "xml" ? "ubl" : e.Format;
+
+                    byte[] downloadBytes = await Singl.MustahsilClientGet.DownloadAsync(restItem.Id.ToString(), apiFormat);
                     string path = FolderControl.CreditNoteFolderPath + restItem.Uuid + "." + e.Format;
                     FolderControl.writeFileOnDiskWithByte(downloadBytes, path);
                     System.Diagnostics.Process.Start(path);
