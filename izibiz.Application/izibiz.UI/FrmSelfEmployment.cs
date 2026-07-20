@@ -28,6 +28,7 @@ namespace izibiz.UI
         public FrmSelfEmployment()
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
         }
 
 

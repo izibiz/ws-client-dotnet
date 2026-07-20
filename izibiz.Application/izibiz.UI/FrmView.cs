@@ -29,6 +29,7 @@ namespace izibiz.UI
         public FrmView(string xmlContent, string invoiceType, bool isHtml = false)
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
             this.xmlContent = xmlContent;
             this.invoiceType = invoiceType;
             this.isHtml = isHtml;

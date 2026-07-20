@@ -1,4 +1,4 @@
-ï»¿using izibiz.COMMON;
+using izibiz.COMMON;
 using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Entities;
@@ -27,6 +27,7 @@ namespace izibiz.UI
         public FrmReconcilation()
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
         }
 
 
@@ -50,7 +51,7 @@ namespace izibiz.UI
                 Lang.Culture = new CultureInfo("");
             }
             #region writeAllFormItem
-            //eleman text yazdÄ±r
+            //eleman text yazdır
 
             this.Name = Lang.formReconcilation;
             lblInf.Text = Lang.rowClickForProses;
@@ -104,19 +105,19 @@ namespace izibiz.UI
 
             if (statusCode == "100")
             {
-                return "KUYRUÄA EKLENDÄ°";
+                return "KUYRUĞA EKLENDİ";
             }
             if (statusCode == "105")
             {
-                return "TASLAK Ä°ÅLENÄ°YOR";
+                return "TASLAK İŞLENİYOR";
             }
             if (statusCode == "110")
             {
-                return "Ä°ÅLENÄ°YOR";
+                return "İŞLENİYOR";
             }
             if (statusCode == "120")
             {
-                return "Ä°ÅLENDÄ°";
+                return "İŞLENDİ";
             }
             if (statusCode == "125")
             {
@@ -124,9 +125,9 @@ namespace izibiz.UI
             }
             if (statusCode == "126")
             {
-                return "MUTABIK DEÄÄ°L";
+                return "MUTABIK DEĞİL";
             }
-            return "durum atamasÄ± beklenÄ±yor";
+            return "durum ataması beklenıyor";
         }
 
 
@@ -137,21 +138,21 @@ namespace izibiz.UI
 
             if (mailStatusCode == "100")
             {
-                return "HENUZ Ä°SLENMEDÄ°";
+                return "HENUZ İSLENMEDİ";
             }
             if (mailStatusCode == "110")
             {
-                return "Ä°ÅLENÄ°YOR";
+                return "İŞLENİYOR";
             }
             if (mailStatusCode == "120")
             {
-                return "Ä°ÅLENDÄ°";
+                return "İŞLENDİ";
             }
             if (mailStatusCode == "130")
             {
-                return "E-POSTA GÃ–NDERÄ°M SONLANDI";
+                return "E-POSTA GÖNDERİM SONLANDI";
             }
-            return "durum atamasÄ± beklenÄ±yor";
+            return "durum ataması beklenıyor";
         }
 
 
@@ -177,7 +178,7 @@ namespace izibiz.UI
 
             if (gridListReconcilation.Count == 0)
             {
-                MessageBox.Show(Lang.noReconcilation);//"Getirilecek Mutabakat bulunamadÄ±"
+                MessageBox.Show(Lang.noReconcilation);//"Getirilecek Mutabakat bulunamadı"
             }
             else
             {
@@ -191,7 +192,7 @@ namespace izibiz.UI
                 tableGrid.DataSource = gridListReconcilation;
                 gridChangeReconcilationColumnHeadersText();
 
-                if (nameof(EI.Reconcilation.CM).Equals(reconcilationType)) //reconcÄ± type CurrentReconcilation ise
+                if (nameof(EI.Reconcilation.CM).Equals(reconcilationType)) //reconcı type CurrentReconcilation ise
                 {
                     tableGrid.Columns[EI.Reconcilation.baDocPiece.ToString()].Visible = false;
                     tableGrid.Columns[EI.Reconcilation.bsDocPiece.ToString()].Visible = false;
@@ -199,7 +200,7 @@ namespace izibiz.UI
                     tableGrid.Columns[EI.Reconcilation.bsDocAmount.ToString()].Visible = false;
                     tableGrid.Columns[EI.Reconcilation.period.ToString()].Visible = false;
                 }
-                else  //ba bs secÄ±lÄ± Ä±se
+                else  //ba bs secılı ıse
                 {
                     tableGrid.Columns[EI.Reconcilation.currentAmount.ToString()].Visible = false;
                     tableGrid.Columns[EI.Reconcilation.accountType.ToString()].Visible = false;
@@ -220,13 +221,13 @@ namespace izibiz.UI
 
 
 
-        private void Ä°temCurrentReconcilations_Click(object sender, EventArgs e)
+        private void İtemCurrentReconcilations_Click(object sender, EventArgs e)
         {
             reconcilationType = EI.Reconcilation.CM.ToString();
             pnlReconcilationButton.Enabled = false;
             try
             {
-                //db den getÄ±r
+                //db den getır
                 gridUpdateDespatchList(Singl.reconcilationDalGet.getReconcilationsWithType(reconcilationType));
 
             }
@@ -250,13 +251,13 @@ namespace izibiz.UI
 
 
 
-        private void Ä°temBaBsReconsilations_Click(object sender, EventArgs e)
+        private void İtemBaBsReconsilations_Click(object sender, EventArgs e)
         {
             reconcilationType = EI.Reconcilation.EM.ToString();
             pnlReconcilationButton.Enabled = false;
             try
             {
-                //db den getÄ±r
+                //db den getır
                 gridUpdateDespatchList(Singl.reconcilationDalGet.getReconcilationsWithType(reconcilationType));
 
             }
@@ -279,7 +280,7 @@ namespace izibiz.UI
 
 
 
-        private void Ä°temNewReconcilation_Click(object sender, EventArgs e)
+        private void İtemNewReconcilation_Click(object sender, EventArgs e)
         {
             FrmCreateReconcilation frmCreate = new FrmCreateReconcilation();
             frmCreate.Show();
@@ -308,24 +309,24 @@ namespace izibiz.UI
 
                     if (status != null)
                     {
-                        MessageBox.Show(Lang.succGetStatus);//"Servisten durum sorgulama iÅŸlemi basarÄ±lÄ±"
+                        MessageBox.Show(Lang.succGetStatus);//"Servisten durum sorgulama işlemi basarılı"
 
-                        //db ye durumu gÃ¶nderildi olarak guncelle
+                        //db ye durumu gönderildi olarak guncelle
                         if (Singl.reconcilationDalGet.updateStatusReconcilation(status))
 
-                            MessageBox.Show(Lang.succSaveStatus);//"Db ye  durum kaydetme basarÄ±lÄ±"
+                            MessageBox.Show(Lang.succSaveStatus);//"Db ye  durum kaydetme basarılı"
 
-                        // guncel durumunu gostermek Ä±cÄ±n tabloyu yenÄ±leyelÄ±m
+                        // guncel durumunu gostermek ıcın tabloyu yenıleyelım
                         gridUpdateDespatchList(Singl.reconcilationDalGet.getReconcilationsWithType(reconcilationType));
                     }
                     else
                     {
-                        MessageBox.Show(Lang.unSuccSaveStatus);//"Db ye mutaabakÄ±n  durumunu kaydetme basarÄ±sÄ±z"
+                        MessageBox.Show(Lang.unSuccSaveStatus);//"Db ye mutaabakın  durumunu kaydetme basarısız"
                     }
                 }
                 else
                 {
-                    MessageBox.Show(Lang.unsuccesChangeState, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//"Servisten durum sorgulama iÅŸlemi basarÄ±sÄ±z"
+                    MessageBox.Show(Lang.unsuccesChangeState, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//"Servisten durum sorgulama işlemi basarısız"
                 }
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
@@ -358,11 +359,11 @@ namespace izibiz.UI
 
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    if (Convert.ToBoolean(row.Cells[nameof(EI.Reconcilation.isSend)].Value))//daha once gonderÄ±lmÄ±s ise
+                    if (Convert.ToBoolean(row.Cells[nameof(EI.Reconcilation.isSend)].Value))//daha once gonderılmıs ise
                     {
                         beforeSendList.Add(row.Cells[nameof(EI.Reconcilation.uuid)].Value.ToString());
                     }
-                    else  //gonderÄ±lmemÄ±sse
+                    else  //gonderılmemısse
                     {
                         if (reconcilationType == EI.Reconcilation.EM.ToString()) //tipi ba bs 
                         {
@@ -373,7 +374,7 @@ namespace izibiz.UI
                                 Convert.ToDecimal(row.Cells[nameof(EI.Reconcilation.baDocAmount)].Value.ToString()), Convert.ToInt32(row.Cells[nameof(EI.Reconcilation.bsDocPiece)].Value.ToString()),
                                 Convert.ToDecimal(row.Cells[nameof(EI.Reconcilation.bsDocAmount)].Value.ToString()));
                         }
-                        else //tipi carÄ± mutabakat Ä±se
+                        else //tipi carı mutabakat ıse
                         {
                             Singl.reconcilationControllerGet.addListToSendReconcilationCM(
                                 row.Cells[nameof(EI.Reconcilation.uuid)].Value.ToString(), row.Cells[nameof(EI.Reconcilation.customerID)].Value.ToString(),
@@ -387,9 +388,9 @@ namespace izibiz.UI
                     }
                 }
 
-                if (beforeSendList.Count > 0) //onceden gonderÄ±lmÄ±s olanlar
+                if (beforeSendList.Count > 0) //onceden gonderılmıs olanlar
                 {
-                    MessageBox.Show(string.Join(Environment.NewLine, beforeSendList) + Environment.NewLine + Lang.hasIdReconBeforeSending);//nolu mutabak daha once gonderÄ±lmÄ±s tekrar gonderemezsÄ±nÄ±z
+                    MessageBox.Show(string.Join(Environment.NewLine, beforeSendList) + Environment.NewLine + Lang.hasIdReconBeforeSending);//nolu mutabak daha once gonderılmıs tekrar gonderemezsınız
                 }
 
                 if (validUuidList.Count > 0) //gonderilerecek faturalar varsa
@@ -397,18 +398,18 @@ namespace izibiz.UI
                     string errorMessage = Singl.reconcilationControllerGet.sendReconcilation();
                     if (errorMessage == null)
                     {
-                        MessageBox.Show(Lang.successLoad);//"Servise yukleme iÅŸlemi basarÄ±lÄ±"
-                        //db ye durumu gÃ¶nderildi olarak guncelle
+                        MessageBox.Show(Lang.successLoad);//"Servise yukleme işlemi basarılı"
+                        //db ye durumu gönderildi olarak guncelle
                         if (Singl.reconcilationDalGet.updateReconcilationIsSend(validUuidList, true))
                         {
-                            MessageBox.Show(Lang.succSaveStatus);//"Db ye mutaabakÄ±n gonderÄ±lme durumunu kaydetme basarÄ±lÄ±"
+                            MessageBox.Show(Lang.succSaveStatus);//"Db ye mutaabakın gonderılme durumunu kaydetme basarılı"
 
-                            //isSend in guncel durumunu gostermek Ä±cÄ±n tabloyu yenÄ±leyelÄ±m
+                            //isSend in guncel durumunu gostermek ıcın tabloyu yenıleyelım
                             gridUpdateDespatchList(Singl.reconcilationDalGet.getReconcilationsWithType(reconcilationType));
                         }
                         else
                         {
-                            MessageBox.Show(Lang.unSuccSaveStatus);//"Db ye mutaabakÄ±n gonderÄ±lme durumunu kaydetme basarÄ±sÄ±z"
+                            MessageBox.Show(Lang.unSuccSaveStatus);//"Db ye mutaabakın gonderılme durumunu kaydetme basarısız"
                         }
                     }
                     else
@@ -467,7 +468,7 @@ namespace izibiz.UI
 
                     if (errorMessage == null)
                     {
-                        MessageBox.Show(Lang.succSendMail);//"mail gÃ¶nderme iÅŸlemi basarÄ±lÄ±"
+                        MessageBox.Show(Lang.succSendMail);//"mail gönderme işlemi basarılı"
                     }
                     else
                     {

@@ -37,6 +37,7 @@ namespace izibiz.UI
         public FrmCreditNote()
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
         }
 
 
@@ -48,10 +49,7 @@ namespace izibiz.UI
             btnHomePage.BackgroundImage = Properties.Resources.izibizLogo;
             btnHomePage.BackgroundImageLayout = ImageLayout.Zoom;
 
-            using (var logoBmp = Properties.Resources.izibizLogo)
-            {
-                this.Icon = Icon.FromHandle(logoBmp.GetHicon());
-            }
+            // Removed custom icon assignment to use the application default
 
             sourceCardSoap.FetchClicked += BtnTakeCreditNote_Click;
             sourceCardRest.FetchClicked += BtnRestListele_Click;

@@ -1,4 +1,4 @@
-ï»¿using izibiz.CONTROLLER.Model;
+using izibiz.CONTROLLER.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +22,7 @@ namespace izibiz.UI
         public FrmWriteMail(List<SendMailModel> sendMailModelList)
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
             this.sendMailModelList = sendMailModelList;
         }
 
@@ -30,7 +31,7 @@ namespace izibiz.UI
         {
             localizationTextWrite();
 
-            //datagrid tablosuna Ä±d degerlerÄ±nÄ± yazÄ±yoruz ve  maÄ±l default olarak bÄ±r deger yazÄ±yoruz
+            //datagrid tablosuna ýd degerlerýný yazýyoruz ve  maýl default olarak býr deger yazýyoruz
             foreach(var model in sendMailModelList)
             {
                 gridSendMail.Rows.Add(model.id, "mail@mail.com");
@@ -51,7 +52,7 @@ namespace izibiz.UI
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            //datagÄ±rddekÄ± maÄ±l degerlerÄ±nÄ± model liste aktarÄ±yoruz
+            //datagýrddeký maýl degerlerýný model liste aktarýyoruz
             int cnt = 0;
             foreach (var model in sendMailModelList)
             {

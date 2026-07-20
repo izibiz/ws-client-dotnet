@@ -1,4 +1,4 @@
-ï»¿using izibiz.MODEL.Entities;
+using izibiz.MODEL.Entities;
 using izibiz.COMMON.Language;
 using System;
 using System.Collections.Generic;
@@ -39,6 +39,7 @@ namespace izibiz.UI
         public FrmCreateInvoice(string invoiceType)
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
             this.invoiceType = invoiceType;
         }
 
@@ -46,8 +47,8 @@ namespace izibiz.UI
         private void FrmCreateInvoice_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
-            //comboxlarÄ± Ä±tem ekle
-            //eger arsÄ±v Ä±se
+            //comboxlarý ýtem ekle
+            //eger arsýv ýse
             if (invoiceType == nameof(EI.Invoice.ArchiveInvoices))
             {
                 pnlArchiveInformation.Visible = true;
@@ -68,7 +69,7 @@ namespace izibiz.UI
         private void localizationItemTextWrite()
         {
             this.Text = Lang.FormCreateInvoice;
-            //alÄ±cÄ± bÄ±lgÄ±lerÄ±
+            //alýcý býlgýlerý
             grpReceiver.Text = Lang.receiver;
             lblVknTckn.Text = Lang.vknTckn;
             lblName.Text = Lang.name;
@@ -95,7 +96,7 @@ namespace izibiz.UI
             lblMiddleman.Text = Lang.middleman;
             lblPaymentDate.Text = Lang.date;
             lblInternetSalesInformation.Text = Lang.internetSalesInformation;
-            //gÃ¶nderim ÅŸekli
+            //gönderim þekli
             grpSendingType.Text = Lang.sendingType;
             lblCarrier.Text = Lang.carrier;
             rdReal.Text = Lang.real;
@@ -103,7 +104,7 @@ namespace izibiz.UI
             lblCarrierVknTckn.Text = Lang.carrierVknTckn;
             lblCarrierTitle.Text = Lang.carrierTitle;
             lblSendingDate.Text = Lang.date;
-            //satÄ±r bilgileri
+            //satýr bilgileri
             grpRowInformation.Text = Lang.rowInformation;
             gridPrice.Columns[nameof(EI.InvLineGridRowClm.productName)].HeaderText = Lang.productName;
             gridPrice.Columns[nameof(EI.InvLineGridRowClm.quantity)].HeaderText = Lang.quantity;
@@ -206,7 +207,7 @@ namespace izibiz.UI
         {
             if (gridPrice.Rows.Count == 10)
             {
-                MessageBox.Show("en fazla 10 satÄ±r eklenebÄ±lÄ±r");
+                MessageBox.Show("en fazla 10 satýr eklenebýlýr");
             }
             else
             {
@@ -220,10 +221,10 @@ namespace izibiz.UI
 
         private void btnRemoveRow_Click(object sender, EventArgs e)
         {
-            //toplam satÄ±r satÄ±sÄ± secÄ±lÄ± satÄ±rdan en az 1 fazla olmak zorunda
+            //toplam satýr satýsý secýlý satýrdan en az 1 fazla olmak zorunda
             if (gridPrice.Rows.Count == 1)
             {
-                MessageBox.Show("en az 1 satÄ±r bulunmak zorunda");
+                MessageBox.Show("en az 1 satýr bulunmak zorunda");
             }
             else
             {
@@ -237,12 +238,12 @@ namespace izibiz.UI
         private void gridPrice_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
 
-            //row miktar , birim fiyat ,kdv oranÄ±  rowlarÄ±ndaysa
+            //row miktar , birim fiyat ,kdv oraný  rowlarýndaysa
             if (gridPrice.Columns[e.ColumnIndex].Name.Equals(nameof(EI.InvLineGridRowClm.quantity))
                 || gridPrice.Columns[e.ColumnIndex].Name.Equals((nameof(EI.InvLineGridRowClm.unitPrice)))
                 || gridPrice.Columns[e.ColumnIndex].Name.Equals(nameof(EI.InvLineGridRowClm.taxPercent)))
             {
-                //girilen deger numerÄ±c degilse
+                //girilen deger numerýc degilse
                 int i = 0;
                 if (!int.TryParse(e.FormattedValue.ToString(), out i))
                 {
@@ -260,9 +261,9 @@ namespace izibiz.UI
         {
             bool valid = true;
 
-            foreach (Control item in grpReceiver.Controls)  //grupbox alÄ±cÄ± bilgileri
+            foreach (Control item in grpReceiver.Controls)  //grupbox alýcý bilgileri
             {
-                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox Ä±se
+                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ýse
                 {
                     if (item.Name == "msdVknTc")  //vkn_Tckn
                     {
@@ -288,7 +289,7 @@ namespace izibiz.UI
                             item.BackColor = Color.White;
                         }
                     }
-                    else   //phone numver veya tckn degÄ±lse
+                    else   //phone numver veya tckn degýlse
                     {
                         if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
                         {
@@ -304,7 +305,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpInvInformation.Controls)  //grupbox fatura bilgileri
             {
-                if (!(item is Label)) //label degÄ±lse
+                if (!(item is Label)) //label degýlse
                 {
                     if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                     {
@@ -318,19 +319,19 @@ namespace izibiz.UI
                     if (item is DateTimePicker)  //dateTimePicker ise
                     {
                         TimeSpan dateDifferent = DateTime.Today - Convert.ToDateTime(item.Text);
-                        if (dateDifferent.TotalDays > 7) //aradakÄ± fark 7 gunden buyukse
+                        if (dateDifferent.TotalDays > 7) //aradaký fark 7 gunden buyukse
                         {
-                            MessageBox.Show("en fazla 7 gun Ã¶ncesÄ±ne fatura kesÄ±lebÄ±lÄ±r");
+                            MessageBox.Show("en fazla 7 gun öncesýne fatura kesýlebýlýr");
                             valid = false;
                         }
                     }
                 }
             }
-            if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsÄ±v Ä±se
+            if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsýv ýse
             {
                 foreach (Control item in pnlArchive.Controls)
                 {
-                    if (!(item is Label)) //label degÄ±lse
+                    if (!(item is Label)) //label degýlse
                     {
                         if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                         {
@@ -344,11 +345,11 @@ namespace izibiz.UI
                     }
                 }
 
-                if (grpPaymentInformation.Visible == true) //Ä±nternetÄ± sectÄ±yse
+                if (grpPaymentInformation.Visible == true) //ýnternetý sectýyse
                 {
-                    foreach (Control item in grpPaymentInformation.Controls) //odeme bÄ±lgÄ±lerÄ±
+                    foreach (Control item in grpPaymentInformation.Controls) //odeme býlgýlerý
                     {
-                        if (!(item is Label)) //label degÄ±lse
+                        if (!(item is Label)) //label degýlse
                         {
                             if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                             {
@@ -361,9 +362,9 @@ namespace izibiz.UI
                             }
                         }
                     }
-                    foreach (Control item in grpSendingType.Controls)  //gonderÄ±m seklÄ±
+                    foreach (Control item in grpSendingType.Controls)  //gonderým seklý
                     {
-                        if (!(item is Label)) //label degÄ±lse
+                        if (!(item is Label)) //label degýlse
                         {
                             if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                             {
@@ -380,11 +381,11 @@ namespace izibiz.UI
             }
 
 
-            foreach (DataGridViewRow row in gridPrice.Rows)  //datagrid rowlarÄ±nda bos eleman var mÄ±
+            foreach (DataGridViewRow row in gridPrice.Rows)  //datagrid rowlarýnda bos eleman var mý
             {
                 for (int i = 0; i < gridPrice.ColumnCount; i++)
                 {
-                    //total ve tax total clmlarÄ± Ä±cÄ±n yapma
+                    //total ve tax total clmlarý ýcýn yapma
                     if (gridPrice.Columns[i].Name != nameof(EI.InvLineGridRowClm.taxAmount) && gridPrice.Columns[i].Name != nameof(EI.InvLineGridRowClm.total))
                     {
                         if (row.Cells[i].Value == null || String.IsNullOrEmpty(row.Cells[i].Value.ToString().Trim()))
@@ -401,7 +402,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpTotal.Controls)  //grupbox not ve toplam bilgileri
             {
-                if (item is RichTextBox) //label degÄ±lse
+                if (item is RichTextBox) //label degýlse
                 {
                     if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                     {
@@ -421,9 +422,9 @@ namespace izibiz.UI
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            foreach (Control item in grpReceiver.Controls)  //grupbox alÄ±cÄ± bilgileri
+            foreach (Control item in grpReceiver.Controls)  //grupbox alýcý bilgileri
             {
-                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox Ä±se
+                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ýse
                 {
                     item.Text = "";
                     item.BackColor = Color.White;
@@ -431,18 +432,18 @@ namespace izibiz.UI
             }
             foreach (Control item in grpInvInformation.Controls)  //grupbox fatura bilgileri
             {
-                if (!(item is Label)) //label degÄ±lse
+                if (!(item is Label)) //label degýlse
                 {
                     item.Text = "";
                     item.BackColor = Color.White;
                 }
             }
 
-            if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsÄ±v Ä±se
+            if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsýv ýse
             {
                 foreach (Control item in pnlArchive.Controls)
                 {
-                    if (!(item is Label)) //label degÄ±lse
+                    if (!(item is Label)) //label degýlse
                     {
 
                         item.Text = "";
@@ -450,19 +451,19 @@ namespace izibiz.UI
                     }
                 }
 
-                if (grpPaymentInformation.Visible == true) //Ä±nternetÄ± sectÄ±yse
+                if (grpPaymentInformation.Visible == true) //ýnternetý sectýyse
                 {
-                    foreach (Control item in grpPaymentInformation.Controls) //odeme bÄ±lgÄ±lerÄ±
+                    foreach (Control item in grpPaymentInformation.Controls) //odeme býlgýlerý
                     {
-                        if (!(item is Label)) //label degÄ±lse
+                        if (!(item is Label)) //label degýlse
                         {
                             item.Text = "";
                             item.BackColor = Color.White;
                         }
                     }
-                    foreach (Control item in grpSendingType.Controls)  //gonderÄ±m seklÄ±
+                    foreach (Control item in grpSendingType.Controls)  //gonderým seklý
                     {
-                        if (!(item is Label)) //label degÄ±lse
+                        if (!(item is Label)) //label degýlse
                         {
                             item.Text = "";
                             item.BackColor = Color.White;
@@ -472,7 +473,7 @@ namespace izibiz.UI
             }
 
             int rowCount = gridPrice.Rows.Count;
-            for (int i = 0; i < rowCount; i++) //datagrid butun rowlarÄ± sÄ±l en son 1 tane row ekle
+            for (int i = 0; i < rowCount; i++) //datagrid butun rowlarý sýl en son 1 tane row ekle
             {
                 var r = gridPrice.Rows[0];
                 gridPrice.Rows.Remove(r);
@@ -482,7 +483,7 @@ namespace izibiz.UI
 
             foreach (Control item in grpTotal.Controls)  //grupbox not ve toplam bilgileri
             {
-                if (!(item is Label)) //label degÄ±lse
+                if (!(item is Label)) //label degýlse
                 {
                     item.Text = "";
                     item.BackColor = Color.White;
@@ -502,13 +503,13 @@ namespace izibiz.UI
 
             foreach (DataGridViewRow row in gridPrice.Rows)
             {
-                //kdv sÄ±z tutar
+                //kdv sýz tutar
                 decimal totalRevenue = Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value)
                     * Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value);
 
 
-                decimal rowTaxAmount = totalRevenue * (Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value) / 100); //kdv tutarÄ±             
-                decimal rowTotalWithTax = totalRevenue + ((totalRevenue * Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value)) / 100); //kdv dahil tutarÄ±; 
+                decimal rowTaxAmount = totalRevenue * (Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value) / 100); //kdv tutarý             
+                decimal rowTotalWithTax = totalRevenue + ((totalRevenue * Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxPercent)].Value)) / 100); //kdv dahil tutarý; 
 
                 row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value = rowTaxAmount;
                 row.Cells[nameof(EI.InvLineGridRowClm.total)].Value = rowTotalWithTax;
@@ -577,7 +578,7 @@ namespace izibiz.UI
             {
                 grpSendingType.Visible = true;
                 grpPaymentInformation.Visible = true;
-                rdReal.Checked = true;  //herhangÄ± bÄ±rÄ± secÄ±lÄ± gelsÄ±n dÄ±ye
+                rdReal.Checked = true;  //herhangý býrý secýlý gelsýn dýye
             }
             else
             {
@@ -609,37 +610,37 @@ namespace izibiz.UI
         {
             try
             {
-                //bos eleamn olmamasÄ±
+                //bos eleamn olmamasý
                 if (validEmptyComponent())
                 {
-                    //iade secÄ±lÄ± Ä±se temel fatura olarak gonderÄ±lmesÄ±
+                    //iade secýlý ýse temel fatura olarak gonderýlmesý
                     if (isValidInvoice())
                     {
                         //tutar hesapla
                         calculateTotalMoney();
 
-                        //kullanÄ±cÄ± bÄ±lgÄ±lerÄ± getÄ±r              
+                        //kullanýcý býlgýlerý getýr              
                         getUserInformationOnDb();
 
                         ////////UBL OLUSTURMA ISLEMI////////
                         BaseInvoiceUBL invoice;
 
-                        //eger INVOÄ°CE Ä±se 
+                        //eger INVOÝCE ýse 
                         if (invoiceType == nameof(EI.Invoice.Invoices))
                         {
                             invoice = new InvoiceUBL(cmbScenario.Text, cmbInvType.Text);
                         }
-                        else //ARCHÄ°VE Ä°SE
+                        else //ARCHÝVE ÝSE
                         {
                             invoice = new ArchiveUBL(cmbArchiveSendingType.Text, cmbScenario.Text, cmbInvType.Text);
 
                             if (cmbArchiveType.Text == nameof(EI.ArchiveType.INTERNET))
                             {
-                                //eger gonderÄ±m tÄ±pÄ± Ä±nternet Ä±se ekstra adÄ±natÄ±onal ref ekle
+                                //eger gonderým týpý ýnternet ýse ekstra adýnatýonal ref ekle
                                 invoice.addAdditionalDocumentReference(nameof(EI.Profileid.EARSIVFATURA), cmbArchiveType.Text);
 
-                                //DELÄ°VERY BOLUMU EKLE
-                                //carrÄ±er ekle
+                                //DELÝVERY BOLUMU EKLE
+                                //carrýer ekle
                                 PartyType carrierParty = invoice.createParty(txtCarrierTitle.Text, "", "", "");
                                 invoice.addPartyIdentification(carrierParty, 1, nameof(EI.VknTckn.VKN), msdDeliveryVkn.Text, "", "", "", "");
                                 invoice.createDelivery(carrierParty, Convert.ToDateTime(datepicDespatchDate.Text));
@@ -653,14 +654,14 @@ namespace izibiz.UI
                         PartyType cusParty;
                         string partyIdentificationSchemaType;
                       
-                        //SUPPLÄ°ER  PARTY OLUSTURULMASI  
+                        //SUPPLÝER  PARTY OLUSTURULMASI  
                         supParty = invoice.createParty(partyName, cityName, telephone, mail);
                         if (senderVknTc.Length == 10) //sup vkn
                         {
                             partyIdentificationSchemaType = nameof(EI.VknTckn.VKN);
                             invoice.addPartyTaxSchemeOnParty(supParty);
                         }
-                        else  //sup tckn .. add person metodu eklenÄ±r
+                        else  //sup tckn .. add person metodu eklenýr
                         {
                             partyIdentificationSchemaType = nameof(EI.VknTckn.TCKN);
                             invoice.addPersonOnParty(supParty, firstName, familyName);
@@ -687,8 +688,8 @@ namespace izibiz.UI
                         //INV LINE OLUSTURULMASI
                         foreach (DataGridViewRow row in gridPrice.Rows)
                         {
-                            //Inv LÄ±ne OlusturulmasÄ±
-                            //unÄ±t code get fonk cagÄ±rÄ±larak secÄ±len bÄ±rÄ±mÄ±n unÄ±t codu getÄ±rÄ±lÄ±rilerek aktarÄ±lÄ±r
+                            //Inv Lýne Olusturulmasý
+                            //unýt code get fonk cagýrýlarak secýlen býrýmýn unýt codu getýrýlýrilerek aktarýlýr
                             invoice.addInvoiceLine(row.Index.ToString(), cmbMoneyType.Text, getUnitCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString())
                                 , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
                                 , Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.taxAmount)].Value), Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.total)].Value)
@@ -701,7 +702,7 @@ namespace izibiz.UI
                         invoice.SetLegalMonetaryTotal(invoice.CalculateLegalMonetaryTotal());
                         invoice.SetAllowanceCharge(invoice.CalculateAllowanceCharges());
 
-                        //olusturdugumuz nesne ubl turune cevrÄ±lÄ±r
+                        //olusturdugumuz nesne ubl turune cevrýlýr
                         var invoiceUbl = invoice.baseInvoiceUBL;
                         //xml olustur
                         string xmlPath = FolderControl.writeDiscInvoiceConvertUblToXml(invoiceUbl, invoiceType).ToString();
@@ -713,26 +714,26 @@ namespace izibiz.UI
                             {
                                 Singl.invoiceDalGet.insertDraftInvoice(invoiceUbl, xmlPath);
                             }
-                            else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsÄ±v Ä±se
+                            else if (invoiceType == nameof(EI.Invoice.ArchiveInvoices)) //arsýv ýse
                             {
                                 Singl.archiveInvoiceDalGet.insertArchiveOnDbFromUbl(invoiceUbl, xmlPath, chkSendMail.Checked);
                             }
 
-                            MessageBox.Show(xmlPath + "  faturalar kaydedÄ±ldÄ±");
+                            MessageBox.Show(xmlPath + "  faturalar kaydedýldý");
                         }
                         else
                         {
-                            MessageBox.Show("iÅŸlem basarÄ±sÄ±z");
+                            MessageBox.Show("iþlem basarýsýz");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("iade faturasÄ± secÄ±lÄ±yse temel olarak gonderÄ±lmelÄ±dÄ±r");
+                        MessageBox.Show("iade faturasý secýlýyse temel olarak gonderýlmelýdýr");
                     }
                 }
                 else  //bos eleman varsa
                 {
-                    MessageBox.Show("yÄ±ldÄ±zlÄ± alanlarÄ± bos bÄ±rakmayÄ±nÄ±z");
+                    MessageBox.Show("yýldýzlý alanlarý bos býrakmayýnýz");
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex) //oib req error

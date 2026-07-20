@@ -37,6 +37,7 @@ namespace izibiz.UI
 
 
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
             txtUsername.Text = "izibiz-test2";
             txtPassword.Text = "izi321";
         }

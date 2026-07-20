@@ -1,4 +1,4 @@
-ï»¿using izibiz.COMMON;
+using izibiz.COMMON;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +32,7 @@ namespace izibiz.UI
         public FrmDespatch()
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
         }
 
 
@@ -54,7 +55,7 @@ namespace izibiz.UI
                 Lang.Culture = new CultureInfo("");
             }
             #region writeAllFormItem
-            //eleman text yazdÄ±r
+            //eleman text yazdýr
             //panel gelen irsaliye
 
             //panel giden irsaliye
@@ -142,7 +143,7 @@ namespace izibiz.UI
 
             try
             {
-                //GÃ¶nderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu iÅŸlem en az 15 dk surer.
+                //Gönderici posta kutusu bilgilerini cekmek istiyor musunuz? Bu iþlem en az 15 dk surer.
                 DialogResult response = MessageBox.Show(Lang.wantGetUserList, Lang.warning, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (response == DialogResult.OK)
@@ -217,11 +218,11 @@ namespace izibiz.UI
 
             if (statusCode == "101")
             {
-                return "KUYRUÄžA EKLENDÄ°";
+                return "KUYRUÐA EKLENDÝ";
             }
             if (statusCode == "102")
             {
-                return "TASLAK Ä°ÅžLENÄ°YOR";
+                return "TASLAK ÝÞLENÝYOR";
             }
             if (statusCode == "103")
             {
@@ -229,7 +230,7 @@ namespace izibiz.UI
             }
             if (statusCode == "104")
             {
-                return "PAKETLENDÄ°";
+                return "PAKETLENDÝ";
             }
             if (statusCode == "105")
             {
@@ -241,65 +242,65 @@ namespace izibiz.UI
             }
             if (statusCode == "107")
             {
-                return "Ä°MZALANDI";
+                return "ÝMZALANDI";
             }
             if (statusCode == "109")
             {
-                return "GÄ°B DEN YANIT BEKLÄ°YOR";
+                return "GÝB DEN YANIT BEKLÝYOR";
             }
             if (statusCode == "110")
             {
-                return "ALICIDAN YANIT BEKLÄ°YOR";
+                return "ALICIDAN YANIT BEKLÝYOR";
             }
             if (statusCode == "111")
             {
-                return "ALICIDAN ONAY BEKLÄ°YOR";
+                return "ALICIDAN ONAY BEKLÝYOR";
             }
             if (statusCode == "112")
             {
-                return "KABUL EDÄ°LDÄ°";
+                return "KABUL EDÝLDÝ";
             }
             if (statusCode == "113")
             {
-                return "KABUL Ä°ÅžLENÄ°YOR";
+                return "KABUL ÝÞLENÝYOR";
             }
             if (statusCode == "114")
             {
-                return "KABUL GÄ°BDEN YANIT BEKLÄ°YOR";
+                return "KABUL GÝBDEN YANIT BEKLÝYOR";
             }
             if (statusCode == "115")
             {
-                return "KABUL ALICIDAN YANIT BEKLÄ°YOR";
+                return "KABUL ALICIDAN YANIT BEKLÝYOR";
             }
             if (statusCode == "116")
             {
-                return "KABUL Ä°ÅžLENÄ°YOR";
+                return "KABUL ÝÞLENÝYOR";
             }
             if (statusCode == "117")
             {
-                return "KABUL ALICIDAN YANIT BEKLÄ°YOR";
+                return "KABUL ALICIDAN YANIT BEKLÝYOR";
             }
             if (statusCode == "118")
             {
-                return "KABUL GÄ°BDEN YANIT BEKLÄ°YOR";
+                return "KABUL GÝBDEN YANIT BEKLÝYOR";
             }
             if (statusCode == "119")
             {
-                return "KABUL Ä°ÅžLENÄ°YOR";
+                return "KABUL ÝÞLENÝYOR";
             }
             if (statusCode == "120")
             {
-                return "KABUL EDÄ°LDÄ°";
+                return "KABUL EDÝLDÝ";
             }
             if (statusCode == "121")
             {
-                return "KABUL Ä°ÅžLEMÄ° BAÅžARISIZ";
+                return "KABUL ÝÞLEMÝ BAÞARISIZ";
             }
             if (statusCode == "122")
             {
-                return "KABUL EDÄ°LDÄ°";
+                return "KABUL EDÝLDÝ";
             }
-            return "DURUM HENÃœZ GÃœNCELLENMEDÄ°";
+            return "DURUM HENÜZ GÜNCELLENMEDÝ";
 
         }
 
@@ -333,7 +334,7 @@ namespace izibiz.UI
 
             //  tableGrid.Columns[EI.Despatch.draftFlag.ToString()].HeaderText = Lang.DR;
 
-            //devamÄ±nÄ± yap
+            //devamýný yap
 
 
         }
@@ -362,7 +363,7 @@ namespace izibiz.UI
 
             if (gridListDespatch.Count == 0)
             {
-                MessageBox.Show("Getirilecek irsaliye bulunamadÄ±");
+                MessageBox.Show("Getirilecek irsaliye bulunamadý");
                 lblRowClickInfo.Visible = false;
             }
             else
@@ -376,7 +377,7 @@ namespace izibiz.UI
                 tableGrid.DataSource = gridListDespatch;
                 dataGridChangeColumnHeaderText();
 
-                if (!nameof(EI.Direction.DRAFT).Equals(despactDirection)) //direction draft degÄ±lse
+                if (!nameof(EI.Direction.DRAFT).Equals(despactDirection)) //direction draft degýlse
                 {
                     tableGrid.Columns[EI.Despatch.draftFlag.ToString()].Visible = false;
                 }
@@ -410,14 +411,14 @@ namespace izibiz.UI
         {
             try
             {
-                //servisten yenÄ± irsaliyeleri cek db ye kaydet ve datagridde gÃ¶ster            
+                //servisten yený irsaliyeleri cek db ye kaydet ve datagridde göster            
                 string errorMessage = Singl.despatchControllerGet.despatchListSaveDbFromService(despactDirection);
 
-                if (errorMessage == null)//islem basarÄ±lÄ± sekÄ±lde kaydedÄ±lmÄ±sse
+                if (errorMessage == null)//islem basarýlý sekýlde kaydedýlmýsse
                 {
                     gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
                 }
-                else //islem basarÄ±zsa
+                else //islem basarýzsa
                 {
                     MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -460,7 +461,7 @@ namespace izibiz.UI
                     {
 
                         #region panelVisiblity
-                        if (despactDirection == nameof(EI.Direction.IN))//gelen faturalara tÄ±klandÄ±ysa
+                        if (despactDirection == nameof(EI.Direction.IN))//gelen faturalara týklandýysa
                         {
                             pnlIncomingDespatch.Visible = true;
                         }
@@ -474,13 +475,13 @@ namespace izibiz.UI
                         }
                         #endregion
 
-                        //html gÃ¶runtule butonuna tÄ±kladÄ±ysa
+                        //html göruntule butonuna týkladýysa
                         if (e.ColumnIndex == tableGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)
                         {
                             string uuid = tableGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
                           
                             string content = Singl.despatchControllerGet.getDespatchContentXml(uuid, despactDirection);
-                            if (content != null) //servisten veya dÄ±skten getÄ±rlebÄ±lmÄ±sse
+                            if (content != null) //servisten veya dýskten getýrlebýlmýsse
                             {
                                 FrmView previewInvoices = new FrmView(content, nameof(EI.Despatch.DespatchAdvices));
                                 previewInvoices.ShowDialog();
@@ -542,7 +543,7 @@ namespace izibiz.UI
             try
             {
 
-                //gelen irsalÄ±yelerÄ±n durumunu sorgula
+                //gelen irsalýyelerýn durumunu sorgula
                 List<string> uuidList = new List<string>();
 
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
@@ -558,19 +559,19 @@ namespace izibiz.UI
                 if (uuidList.Count > 0)
                 {
                     string errorMessage = Singl.despatchControllerGet.getDespatchStatusAndSaveDb(despactDirection, uuidList.ToArray());
-                    if (errorMessage == null)//islem basarÄ±lÄ± sekÄ±lde kaydedÄ±lmÄ±sse
+                    if (errorMessage == null)//islem basarýlý sekýlde kaydedýlmýsse
                     {
-                        MessageBox.Show(Lang.succesful); //iÅŸlem basarÄ±lÄ±
+                        MessageBox.Show(Lang.succesful); //iþlem basarýlý
                         gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
                     }
-                    else //islem basarÄ±zsa
+                    else //islem basarýzsa
                     {
                         MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Sorgulanacak uygun fatura bulunamadÄ±");
+                    MessageBox.Show("Sorgulanacak uygun fatura bulunamadý");
                 }
 
 
@@ -605,7 +606,7 @@ namespace izibiz.UI
         {
             try
             {
-                //servisten tarih aralÄ±ÄŸÄ±na uygun faturalarÄ± getÄ±r
+                //servisten tarih aralýðýna uygun faturalarý getýr
                 gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchListOnFilter(despactDirection, timeStartFilter.Value.Date, timeFinishFilter.Value.Date));
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -631,7 +632,7 @@ namespace izibiz.UI
         private IdArrContentArrModel createInvListWithNewId(string serialName)
         {
 
-            //verÄ±lmek Ä±stenen Ä±d on ekÄ±ye aÄ±t yenÄ± Ä±d serÄ±al arr olusturulur
+            //verýlmek ýstenen ýd on ekýye aýt yený ýd serýal arr olusturulur
             IdArrContentArrModel idArrContentArr = new IdArrContentArrModel();
 
             //id serisi olusturuldu
@@ -645,9 +646,9 @@ namespace izibiz.UI
                 string uuidRow = tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
 
                 string xmlContent = Singl.despatchControllerGet.getDespatchContentXml(uuidRow, despactDirection);
-                if (xmlContent == null) //content gerÄ±lemedÄ±yse
+                if (xmlContent == null) //content gerýlemedýyse
                 {
-                    MessageBox.Show("content getÄ±rÄ±lemedÄ±  " + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Despatch.ID)].Value.ToString());
+                    MessageBox.Show("content getýrýlemedý  " + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Despatch.ID)].Value.ToString());
                     return null;
                 }
 
@@ -670,28 +671,28 @@ namespace izibiz.UI
         {
             try
             {
-                //db den getÄ±rÄ±len serÄ± NamelerÄ± comboboxda sectÄ±r
+                //db den getýrýlen serý Namelerý comboboxda sectýr
                 FrmDialogSelectItem frmDialogIdSeriName = new FrmDialogSelectItem(true, "");
                 if (frmDialogIdSeriName.ShowDialog() == DialogResult.OK)
                 {
-                    IdArrContentArrModel idArrContentArrModel = createInvListWithNewId(frmDialogIdSeriName.selectedValue); //load Ä±nvda  direction degÄ±stÄ±rmÄ±yoruz o yuzden false
+                    IdArrContentArrModel idArrContentArrModel = createInvListWithNewId(frmDialogIdSeriName.selectedValue); //load ýnvda  direction degýstýrmýyoruz o yuzden false
 
                     if (idArrContentArrModel != null)
                     {
                         string errorMessage = Singl.despatchControllerGet.loadDespatchToService();
 
-                        if (errorMessage != null) //  basarÄ±sÄ±zsa
+                        if (errorMessage != null) //  basarýsýzsa
                         {
                             MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else //servÄ±se yukleme Ä±slemÄ± basarÄ±lÄ±ysa
+                        else //servýse yukleme ýslemý basarýlýysa
                         {
 
                             for (int cnt = 0; cnt < tableGrid.SelectedRows.Count; cnt++)
                             {
                                 string uuidRow = tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.uuid)].Value.ToString();
 
-                                //yenÄ± Ä±d ile yenÄ± folderpath olustur
+                                //yený ýd ile yený folderpath olustur
                                 string newFolderPath = FolderControl.createDespatchDocPath(idArrContentArrModel.newIdArr[cnt], nameof(EI.Direction.DRAFT), nameof(EI.DocumentType.XML));
 
                                 string oldFolderPath = Singl.DespatchAdviceDalGet.getDespatch(uuidRow, nameof(EI.Direction.DRAFT)).folderPath;
@@ -702,26 +703,26 @@ namespace izibiz.UI
                                   idArrContentArrModel.newIdArr[cnt], DateTime.Now, nameof(EI.StatusType.LOAD) + " - " + nameof(EI.SubStatusType.SUCCEED),
                                    -1, nameof(EI.StatusType.LOAD), newFolderPath) == 1)
                                 {
-                                    //yenÄ± olust. folderpath Ä±le xml Ä± dÄ±ske kaydet
+                                    //yený olust. folderpath ýle xml ý dýske kaydet
                                     FolderControl.writeFileOnDiskWithString(idArrContentArrModel.newXmlContentArr[cnt], newFolderPath);
 
-                                    //eskÄ± folderPathdekÄ± dosyayÄ± konumdan sÄ±ler
+                                    //eský folderPathdeký dosyayý konumdan sýler
                                     FolderControl.deleteFileFromPath(oldFolderPath);
                                 }
                                 else
                                 {
-                                    MessageBox.Show("GÃ¼ncel bilgileri Db ye kaydetme iÅŸlemi basarÄ±sÄ±z,Ä°ÅŸlemi tekrar gerceklestÄ±rÄ±nÄ±z" + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Despatch.ID)].Value.ToString());
+                                    MessageBox.Show("Güncel bilgileri Db ye kaydetme iþlemi basarýsýz,Ýþlemi tekrar gerceklestýrýnýz" + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Despatch.ID)].Value.ToString());
                                     return;
                                 }
                             }
 
-                            //db ye, en son olusturulan yenÄ± Ä±nv id serisinin son itemi Ä±le serÄ± no ve yÄ±l guncelle
+                            //db ye, en son olusturulan yený ýnv id serisinin son itemi ýle serý no ve yýl guncelle
                             Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(idArrContentArrModel.newIdArr.Last());
 
-                            // db den cekÄ±len taslak faturalarÄ± datagrÄ±dde listele
+                            // db den cekýlen taslak faturalarý datagrýdde listele
                             gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(nameof(EI.Direction.DRAFT)));
 
-                            MessageBox.Show(Lang.successLoad);//"yukleme basarÄ±lÄ±"
+                            MessageBox.Show(Lang.successLoad);//"yukleme basarýlý"
                         }
                     }
                     frmDialogIdSeriName.Dispose();
@@ -755,29 +756,29 @@ namespace izibiz.UI
                 bool valid = true;
 
 
-                //aynÄ± kÄ±sÄ±ye gÄ±decek faturalar secÄ±lÄ± mÄ± kontrolu
+                //ayný kýsýye gýdecek faturalar secýlý mý kontrolu
                 string receiverVkn = tableGrid.SelectedRows[0].Cells[nameof(EI.Despatch.receiverVkn)].Value.ToString();
                 foreach (DataGridViewRow row in tableGrid.SelectedRows)
                 {
-                    if (row.Cells[nameof(EI.Despatch.receiverVkn)].Value != null && row.Cells[nameof(EI.Despatch.receiverVkn)].Value.ToString() != receiverVkn) //vkn farklÄ± Ä±se
+                    if (row.Cells[nameof(EI.Despatch.receiverVkn)].Value != null && row.Cells[nameof(EI.Despatch.receiverVkn)].Value.ToString() != receiverVkn) //vkn farklý ýse
                     {
-                        MessageBox.Show(Lang.selectOnePerson);//sadece aynÄ± kÄ±sÄ±ye olan faturalarÄ± bÄ±rlÄ±kte gonderebÄ±lÄ±rsÄ±nÄ±z
+                        MessageBox.Show(Lang.selectOnePerson);//sadece ayný kýsýye olan faturalarý býrlýkte gonderebýlýrsýnýz
                         valid = false; break;
                     }
                 }
 
                 if (valid) //uymayan irsaliye durumu yoksa
                 {
-                    //db den getÄ±rÄ±len serÄ± NamelerÄ± comboboxda sectÄ±r
+                    //db den getýrýlen serý Namelerý comboboxda sectýr
                     FrmDialogSelectItem frmDialogSelectSeriName = new FrmDialogSelectItem(true, "");
                     if (frmDialogSelectSeriName.ShowDialog() == DialogResult.OK)
                     {
 
                         FrmDialogSelectItem frmDialogIdSelectAlias = new FrmDialogSelectItem(false, receiverVkn);
-                        ////gb  sectÄ±r
+                        ////gb  sectýr
                         if (frmDialogIdSelectAlias.ShowDialog() == DialogResult.OK)
                         {
-                            IdArrContentArrModel Ä±dContentModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue);
+                            IdArrContentArrModel ýdContentModel = createInvListWithNewId(frmDialogSelectSeriName.selectedValue);
 
                             //send despatch 
                             string errorMessage = Singl.despatchControllerGet.sendDespatch(frmDialogIdSelectAlias.selectedValue,receiverVkn);
@@ -793,36 +794,36 @@ namespace izibiz.UI
 
                                     string oldFolderPath = Singl.DespatchAdviceDalGet.getDespatch(uuidRow, nameof(EI.Direction.DRAFT)).folderPath;
 
-                                    //yenÄ± folderpath olustur
-                                    string newFolderPath = FolderControl.createDespatchDocPath(Ä±dContentModel.newIdArr[cnt], nameof(EI.Direction.OUT),
-                                        nameof(EI.DocumentType.XML)); // yenÄ± path db ye yazÄ±lÄ±r
+                                    //yený folderpath olustur
+                                    string newFolderPath = FolderControl.createDespatchDocPath(ýdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT),
+                                        nameof(EI.DocumentType.XML)); // yený path db ye yazýlýr
 
 
 
-                                    //db de yenÄ± id,direction,folderpath,statenote guncellenÄ±r
+                                    //db de yený id,direction,folderpath,statenote guncellenýr
                                     if (Singl.DespatchAdviceDalGet.updateDespatchIdDirectionFolderPathStateNote(uuidRow, nameof(EI.Direction.DRAFT),
-                                         Ä±dContentModel.newIdArr[cnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND)) == 1)
+                                         ýdContentModel.newIdArr[cnt], nameof(EI.Direction.OUT), newFolderPath, nameof(EI.StatusType.SEND)) == 1)
                                     {
-                                        //eskÄ± folderPathdekÄ± dosyayÄ± konumdan sÄ±ler
+                                        //eský folderPathdeký dosyayý konumdan sýler
                                         FolderControl.deleteFileFromPath(oldFolderPath);
 
-                                        //yenÄ± folderpath ile yenÄ± id eklenmÄ±s xmli diske kaydet
-                                        FolderControl.writeFileOnDiskWithString(Ä±dContentModel.newXmlContentArr[cnt], newFolderPath);
+                                        //yený folderpath ile yený id eklenmýs xmli diske kaydet
+                                        FolderControl.writeFileOnDiskWithString(ýdContentModel.newXmlContentArr[cnt], newFolderPath);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("GÃ¼ncel bilgileri Db ye kaydetme iÅŸlemi basarÄ±sÄ±z,Ä°ÅŸlemi tekrar gerceklestÄ±rÄ±nÄ±z" + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                                        MessageBox.Show("Güncel bilgileri Db ye kaydetme iþlemi basarýsýz,Ýþlemi tekrar gerceklestýrýnýz" + tableGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
                                         return;
                                     }
                                 }
 
-                                //db ye, en son olusturulan yenÄ± Ä±nv id serisinin son itemi Ä±le serÄ± no ve yÄ±l guncelle
-                                Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(Ä±dContentModel.newIdArr.Last());
+                                //db ye, en son olusturulan yený ýnv id serisinin son itemi ýle serý no ve yýl guncelle
+                                Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(ýdContentModel.newIdArr.Last());
 
-                                //datagrÄ±d listesini guncelle
+                                //datagrýd listesini guncelle
                                 gridUpdateDespatchList(Singl.DespatchAdviceDalGet.getDespatchList(despactDirection));
 
-                                MessageBox.Show(Lang.succesful);//"basarÄ±lÄ±"
+                                MessageBox.Show(Lang.succesful);//"basarýlý"
                             }
                         }
                         frmDialogIdSelectAlias.Dispose();
@@ -838,7 +839,7 @@ namespace izibiz.UI
                 {
                     Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
                 }
-                MessageBox.Show(Lang.operationFailed + ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error); //iÅŸlem basarÄ±sÄ±z
+                MessageBox.Show(Lang.operationFailed + ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error); //iþlem basarýsýz
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
@@ -879,11 +880,11 @@ namespace izibiz.UI
 
                 if (idList.Count > 0)
                 {
-                    MessageBox.Show(string.Join(Environment.NewLine, idList) + Environment.NewLine + "Kaydedildi");//SeÃ§ili arsivler getirilemedi
+                    MessageBox.Show(string.Join(Environment.NewLine, idList) + Environment.NewLine + "Kaydedildi");//Seçili arsivler getirilemedi
                 }
                 else
                 {
-                    MessageBox.Show("iÅŸlem BasarÄ±sÄ±z", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("iþlem Basarýsýz", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

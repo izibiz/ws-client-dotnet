@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +18,7 @@ namespace izibiz.UI
         public FrmHome()
         {
             InitializeComponent();
+            try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
         }
 
 
@@ -34,12 +35,12 @@ namespace izibiz.UI
         }
 
         /// <summary>
-        /// 6 Ã¼rÃ¼nÃ¼ ekranÄ±n ortasÄ±nda, 3x2 modern bir kart dÃ¼zeninde konumlandÄ±rÄ±r.
-        /// Pencere yeniden boyutlandÄ±rÄ±ldÄ±ÄŸÄ±nda da yeniden hesaplanÄ±r (Resize event'i ile).
+        /// 6 ürünü ekranýn ortasýnda, 3x2 modern bir kart düzeninde konumlandýrýr.
+        /// Pencere yeniden boyutlandýrýldýðýnda da yeniden hesaplanýr (Resize event'i ile).
         /// </summary>
         private void ArrangeProductGrid()
         {
-            var buttons = new[] { btnInvoice, btnArchive, btnIrsaliye, btnMutabakat, btnSmm, btnMÃ¼stahsil };
+            var buttons = new[] { btnInvoice, btnArchive, btnIrsaliye, btnMutabakat, btnSmm, btnMüstahsil };
             var labels = new Label[] { lblInvoiceTitle, lblArchiveTitle, lblIrsaliyeTitle, lblMutabakatTitle, lblSmmTitle, lblMustahsilTitle };
 
             const int iconSize = 200;
@@ -83,14 +84,14 @@ namespace izibiz.UI
             }
 
             #region writeFormInItem
-            //eleman text yazdÄ±r
+            //eleman text yazdýr
             this.Text = Lang.formHomePage;
             lblInvoiceTitle.Text = Lang.eInvoice;
             lblArchiveTitle.Text = Lang.eArchive;
             lblIrsaliyeTitle.Text = Lang.eDispatch;
             lblMutabakatTitle.Text = Lang.eReconciliation;
             lblSmmTitle.Text = Lang.eFreeJob;
-            lblMustahsilTitle.Text = "E-MÃ¼stahsil";
+            lblMustahsilTitle.Text = "E-Müstahsil";
             #endregion
         }
 
@@ -137,7 +138,7 @@ namespace izibiz.UI
             this.Hide();
         }
 
-        private void BtnMÃ¼stahsil_Click(object sender, EventArgs e)
+        private void BtnMüstahsil_Click(object sender, EventArgs e)
         {
             FrmCreditNote frmCreditNote = new FrmCreditNote();
             frmCreditNote.Show();
