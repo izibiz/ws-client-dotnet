@@ -15,6 +15,7 @@ using izibiz.COMMON.Language;
 using System.Net.Security;
 using System.Net;
 using izibiz.COMMON;
+using izibiz.UI.Controls;
 
 namespace izibiz.UI
 {
@@ -45,6 +46,43 @@ namespace izibiz.UI
         private void Form1_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
+
+            RoundedPathHelper.ApplyRoundedRegion(pnlLoginCard, 20);
+            RoundedPathHelper.ApplyRoundedRegion(btnLogin, 10);
+            CenterLoginCard();
+        }
+
+        private void FrmLogin_Resize(object sender, EventArgs e)
+        {
+            CenterLoginCard();
+            this.Invalidate();
+        }
+
+        private void CenterLoginCard()
+        {
+            pnlLoginCard.Location = new Point(
+                (this.ClientSize.Width - pnlLoginCard.Width) / 2,
+                (this.ClientSize.Height - pnlLoginCard.Height) / 2 + 15);
+        }
+
+        private void pnlLoginCard_Paint(object sender, PaintEventArgs e)
+        {
+            var rect = new Rectangle(0, 0, pnlLoginCard.Width - 1, pnlLoginCard.Height - 1);
+            RoundedPathHelper.DrawBorder(e.Graphics, rect, 20, Color.FromArgb(226, 232, 240));
+        }
+
+        /// <summary>
+        /// Giriş kutusunun altına yumuşak bir gölge çizer (Form'un kendi Paint'inde, kart üzerine gelmeden önce).
+        /// </summary>
+        private void FrmLogin_Paint(object sender, PaintEventArgs e)
+        {
+            var rect = new Rectangle(pnlLoginCard.Left + 4, pnlLoginCard.Top + 4, pnlLoginCard.Width, pnlLoginCard.Height);
+            using (var path = RoundedPathHelper.GetPath(rect, 20))
+            using (var brush = new SolidBrush(Color.FromArgb(30, 0, 0, 0)))
+            {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                e.Graphics.FillPath(brush, path);
+            }
         }
 
 

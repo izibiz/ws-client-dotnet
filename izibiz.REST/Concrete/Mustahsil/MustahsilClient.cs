@@ -8,18 +8,34 @@ using izibiz.REST.Strategy;
 
 namespace izibiz.REST.Concrete.Mustahsil
 {
-    public class MustahsilClient : IListStrategy<MustahsilListItem>
+    public class MustahsilClient : IListStrategy<MustahsilListItem>, IViewStrategy, IDownloadStrategy
     {
         private readonly RestListStrategy<MustahsilListItem> _listStrategy;
+        private readonly RestViewStrategy _viewStrategy;
+        private readonly RestDownloadStrategy _downloadStrategy;
 
         public MustahsilClient(HttpClient httpClient, RestApiOptions options)
         {
-            _listStrategy = new RestListStrategy<MustahsilListItem>(httpClient, $"/{options.Version}/ecreditnotes/outbox");
+            string basePath = $"/{options.Version}/ecreditnotes/outbox";
+
+            _listStrategy = new RestListStrategy<MustahsilListItem>(httpClient, basePath);
+            _viewStrategy = new RestViewStrategy(httpClient, basePath);
+            _downloadStrategy = new RestDownloadStrategy(httpClient, basePath);
         }
 
         public Task<PagedResult<MustahsilListItem>> ListAsync(ListFilter filter)
         {
             return _listStrategy.ListAsync(filter);
+        }
+
+        public Task<byte[]> ViewAsync(string id)
+        {
+            return _viewStrategy.ViewAsync(id);
+        }
+
+        public Task<byte[]> DownloadAsync(string id, string format)
+        {
+            return _downloadStrategy.DownloadAsync(id, format);
         }
     }
 }

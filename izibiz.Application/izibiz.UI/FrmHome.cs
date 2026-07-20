@@ -25,9 +25,50 @@ namespace izibiz.UI
         private void FrmHome_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
+            ArrangeProductGrid();
         }
 
+        private void FrmHome_Resize(object sender, EventArgs e)
+        {
+            ArrangeProductGrid();
+        }
 
+        /// <summary>
+        /// 6 ürünü ekranın ortasında, 3x2 modern bir kart düzeninde konumlandırır.
+        /// Pencere yeniden boyutlandırıldığında da yeniden hesaplanır (Resize event'i ile).
+        /// </summary>
+        private void ArrangeProductGrid()
+        {
+            var buttons = new[] { btnInvoice, btnArchive, btnIrsaliye, btnMutabakat, btnSmm, btnMüstahsil };
+            var labels = new Label[] { lblInvoiceTitle, lblArchiveTitle, lblIrsaliyeTitle, lblMutabakatTitle, lblSmmTitle, lblMustahsilTitle };
+
+            const int iconSize = 200;
+            const int colGap = 80;
+            const int rowGap = 60;
+            const int labelHeight = 32;
+            const int cols = 3;
+            const int rows = 2;
+
+            int gridWidth = cols * iconSize + (cols - 1) * colGap;
+            int gridHeight = rows * (iconSize + 8 + labelHeight) + (rows - 1) * rowGap;
+
+            int startX = (this.ClientSize.Width - gridWidth) / 2;
+            int startY = (this.ClientSize.Height - gridHeight) / 2;
+
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                int col = i % cols;
+                int row = i / cols;
+                int x = startX + col * (iconSize + colGap);
+                int y = startY + row * (iconSize + 8 + labelHeight + rowGap);
+
+                buttons[i].Location = new Point(x, y);
+                buttons[i].Size = new Size(iconSize, iconSize);
+
+                labels[i].Location = new Point(x, y + iconSize + 8);
+                labels[i].Size = new Size(iconSize, labelHeight);
+            }
+        }
 
         private void localizationItemTextWrite()
         {
@@ -44,11 +85,12 @@ namespace izibiz.UI
             #region writeFormInItem
             //eleman text yazdır
             this.Text = Lang.formHomePage;
-            btnInvoice.Text = Lang.eInvoice;
-            btnArchive.Text = Lang.eArchive;
-            btnIrsaliye.Text = Lang.eDispatch;
-            btnMutabakat.Text = Lang.eReconciliation;
-            btnSmm.Text = Lang.eFreeJob;
+            lblInvoiceTitle.Text = Lang.eInvoice;
+            lblArchiveTitle.Text = Lang.eArchive;
+            lblIrsaliyeTitle.Text = Lang.eDispatch;
+            lblMutabakatTitle.Text = Lang.eReconciliation;
+            lblSmmTitle.Text = Lang.eFreeJob;
+            lblMustahsilTitle.Text = "E-Müstahsil";
             #endregion
         }
 

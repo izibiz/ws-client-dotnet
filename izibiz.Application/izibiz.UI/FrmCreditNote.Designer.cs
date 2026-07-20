@@ -1,4 +1,4 @@
-﻿namespace izibiz.UI
+namespace izibiz.UI
 {
     partial class FrmCreditNote
     {
@@ -28,283 +28,283 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCreditNote));
-            this.label1 = new System.Windows.Forms.Label();
+            this.pnlSidebar = new System.Windows.Forms.Panel();
             this.btnHomePage = new System.Windows.Forms.Button();
-            this.itemNewCreditNote = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGetCreditNotes = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGetDraftCreditNote = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGetCreditNote = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnTakeCreditNote = new System.Windows.Forms.Button();
+            this.btnHamburger = new System.Windows.Forms.Button();
+            this.btnNavMustahsil = new System.Windows.Forms.Button();
+            this.btnNavDraft = new System.Windows.Forms.Button();
+            this.btnNavReports = new System.Windows.Forms.Button();
+            this.btnNavNew = new System.Windows.Forms.Button();
             this.tableGrid = new System.Windows.Forms.DataGridView();
-            this.menu = new System.Windows.Forms.MenuStrip();
-            this.pnlDraftCreditNote = new System.Windows.Forms.Panel();
-            this.pnlCreditNote = new System.Windows.Forms.Panel();
-            this.btnCreditNoteView = new System.Windows.Forms.Button();
-            this.rdViewXml = new System.Windows.Forms.RadioButton();
-            this.rdViewHtml = new System.Windows.Forms.RadioButton();
-            this.rdViewPdf = new System.Windows.Forms.RadioButton();
-            this.pnlCreditNoteReports = new System.Windows.Forms.Panel();
+            this.sourceCardSoap = new izibiz.UI.Controls.SourceCard();
+            this.sourceCardRest = new izibiz.UI.Controls.SourceCard();
+            this.documentActionsCard1 = new izibiz.UI.Controls.DocumentActionsCard();
             this.lblInformation = new System.Windows.Forms.Label();
+            this.lblEmptyIcon = new System.Windows.Forms.Label();
+            this.lblEmptyText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
-            this.menu.SuspendLayout();
-            this.pnlDraftCreditNote.SuspendLayout();
-            this.pnlCreditNote.SuspendLayout();
-            this.pnlCreditNoteReports.SuspendLayout();
+            this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(287, 522);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 25);
-            this.label1.TabIndex = 61;
-            // 
+            //
+            // pnlSidebar
+            //
+            this.pnlSidebar.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.pnlSidebar.Controls.Add(this.btnNavNew);
+            this.pnlSidebar.Controls.Add(this.btnNavReports);
+            this.pnlSidebar.Controls.Add(this.btnNavDraft);
+            this.pnlSidebar.Controls.Add(this.btnNavMustahsil);
+            this.pnlSidebar.Controls.Add(this.btnHamburger);
+            this.pnlSidebar.Controls.Add(this.btnHomePage);
+            this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
+            this.pnlSidebar.Name = "pnlSidebar";
+            this.pnlSidebar.Size = new System.Drawing.Size(256, 932);
+            this.pnlSidebar.TabIndex = 54;
+            //
+            // btnHamburger
+            //
+            this.btnHamburger.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnHamburger.FlatAppearance.BorderSize = 0;
+            this.btnHamburger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHamburger.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.btnHamburger.ForeColor = System.Drawing.Color.White;
+            this.btnHamburger.Location = new System.Drawing.Point(196, 24);
+            this.btnHamburger.Name = "btnHamburger";
+            this.btnHamburger.Size = new System.Drawing.Size(44, 44);
+            this.btnHamburger.TabIndex = 58;
+            this.btnHamburger.Text = "☰";
+            this.btnHamburger.UseVisualStyleBackColor = false;
+            this.btnHamburger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHamburger.Click += new System.EventHandler(this.BtnHamburger_Click);
+            //
             // btnHomePage
-            // 
-            this.btnHomePage.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnHomePage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHomePage.BackgroundImage")));
-            this.btnHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            //
+            this.btnHomePage.BackColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.btnHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnHomePage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHomePage.FlatAppearance.BorderSize = 0;
-            this.btnHomePage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnHomePage.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
-            this.btnHomePage.Location = new System.Drawing.Point(16, 42);
-            this.btnHomePage.Margin = new System.Windows.Forms.Padding(6);
+            this.btnHomePage.Location = new System.Drawing.Point(24, 24);
             this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Size = new System.Drawing.Size(163, 108);
+            this.btnHomePage.Padding = new System.Windows.Forms.Padding(12);
+            this.btnHomePage.Size = new System.Drawing.Size(76, 76);
             this.btnHomePage.TabIndex = 57;
-            this.btnHomePage.Text = "Ana Sayfa";
-            this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHomePage.Text = "";
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.BtnHomePage_Click);
-            // 
-            // itemNewCreditNote
-            // 
-            this.itemNewCreditNote.BackColor = System.Drawing.Color.Teal;
-            this.itemNewCreditNote.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemNewCreditNote.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
-            this.itemNewCreditNote.Name = "itemNewCreditNote";
-            this.itemNewCreditNote.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemNewCreditNote.Size = new System.Drawing.Size(245, 39);
-            this.itemNewCreditNote.Text = "+ Yeni E-Müstahsil";
-            // 
-            // itemGetCreditNotes
-            // 
-            this.itemGetCreditNotes.BackColor = System.Drawing.Color.Teal;
-            this.itemGetCreditNotes.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemGetCreditNotes.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
-            this.itemGetCreditNotes.Name = "itemGetCreditNotes";
-            this.itemGetCreditNotes.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetCreditNotes.Size = new System.Drawing.Size(245, 39);
-            this.itemGetCreditNotes.Text = "E-Müstahsil Raporları";
-            this.itemGetCreditNotes.Click += new System.EventHandler(this.ItemGetCreditNote_Click);
-            // 
-            // itemGetDraftCreditNote
-            // 
-            this.itemGetDraftCreditNote.BackColor = System.Drawing.Color.Teal;
-            this.itemGetDraftCreditNote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.itemGetDraftCreditNote.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemGetDraftCreditNote.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
-            this.itemGetDraftCreditNote.Name = "itemGetDraftCreditNote";
-            this.itemGetDraftCreditNote.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetDraftCreditNote.Size = new System.Drawing.Size(245, 41);
-            this.itemGetDraftCreditNote.Text = "Taslak E-Müstahsil";
-            this.itemGetDraftCreditNote.Click += new System.EventHandler(this.ItemGetDraftCreditNote_Click);
-            // 
-            // itemGetCreditNote
-            // 
-            this.itemGetCreditNote.BackColor = System.Drawing.Color.Teal;
-            this.itemGetCreditNote.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.itemGetCreditNote.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemGetCreditNote.Margin = new System.Windows.Forms.Padding(2, 140, 2, 2);
-            this.itemGetCreditNote.Name = "itemGetCreditNote";
-            this.itemGetCreditNote.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetCreditNote.Size = new System.Drawing.Size(245, 40);
-            this.itemGetCreditNote.Text = "E-Müstahsil";
-            this.itemGetCreditNote.Click += new System.EventHandler(this.ItemGetCreditNote_Click);
-            // 
-            // btnTakeCreditNote
-            // 
-            this.btnTakeCreditNote.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeCreditNote.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeCreditNote.FlatAppearance.BorderSize = 2;
-            this.btnTakeCreditNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeCreditNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeCreditNote.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeCreditNote.Location = new System.Drawing.Point(294, 75);
-            this.btnTakeCreditNote.Margin = new System.Windows.Forms.Padding(6);
-            this.btnTakeCreditNote.Name = "btnTakeCreditNote";
-            this.btnTakeCreditNote.Size = new System.Drawing.Size(180, 75);
-            this.btnTakeCreditNote.TabIndex = 56;
-            this.btnTakeCreditNote.Text = "E-Müstahsil al";
-            this.btnTakeCreditNote.UseVisualStyleBackColor = false;
-            this.btnTakeCreditNote.Visible = false;
-            this.btnTakeCreditNote.Click += new System.EventHandler(this.BtnTakeCreditNote_Click);
-            // 
+            //
+            // btnNavMustahsil
+            //
+            this.btnNavMustahsil.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavMustahsil.FlatAppearance.BorderSize = 0;
+            this.btnNavMustahsil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavMustahsil.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavMustahsil.ForeColor = System.Drawing.Color.White;
+            this.btnNavMustahsil.Location = new System.Drawing.Point(16, 220);
+            this.btnNavMustahsil.Name = "btnNavMustahsil";
+            this.btnNavMustahsil.Size = new System.Drawing.Size(224, 48);
+            this.btnNavMustahsil.TabIndex = 59;
+            this.btnNavMustahsil.Tag = "E-Müstahsil";
+            this.btnNavMustahsil.Text = "E-Müstahsil";
+            this.btnNavMustahsil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavMustahsil.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavMustahsil.UseVisualStyleBackColor = false;
+            this.btnNavMustahsil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavMustahsil.Click += new System.EventHandler(this.ItemGetCreditNote_Click);
+            //
+            // btnNavDraft
+            //
+            this.btnNavDraft.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavDraft.FlatAppearance.BorderSize = 0;
+            this.btnNavDraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavDraft.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavDraft.ForeColor = System.Drawing.Color.White;
+            this.btnNavDraft.Location = new System.Drawing.Point(16, 280);
+            this.btnNavDraft.Name = "btnNavDraft";
+            this.btnNavDraft.Size = new System.Drawing.Size(224, 48);
+            this.btnNavDraft.TabIndex = 60;
+            this.btnNavDraft.Tag = "Taslak E-Müstahsil";
+            this.btnNavDraft.Text = "Taslak E-Müstahsil";
+            this.btnNavDraft.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavDraft.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavDraft.UseVisualStyleBackColor = false;
+            this.btnNavDraft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavDraft.Click += new System.EventHandler(this.ItemGetDraftCreditNote_Click);
+            //
+            // btnNavReports
+            //
+            this.btnNavReports.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavReports.FlatAppearance.BorderSize = 0;
+            this.btnNavReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavReports.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavReports.ForeColor = System.Drawing.Color.White;
+            this.btnNavReports.Location = new System.Drawing.Point(16, 340);
+            this.btnNavReports.Name = "btnNavReports";
+            this.btnNavReports.Size = new System.Drawing.Size(224, 48);
+            this.btnNavReports.TabIndex = 61;
+            this.btnNavReports.Tag = "E-Müstahsil Raporları";
+            this.btnNavReports.Text = "E-Müstahsil Raporları";
+            this.btnNavReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavReports.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavReports.UseVisualStyleBackColor = false;
+            this.btnNavReports.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavReports.Click += new System.EventHandler(this.ItemGetCreditNote_Click);
+            //
+            // btnNavNew
+            //
+            this.btnNavNew.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavNew.FlatAppearance.BorderSize = 0;
+            this.btnNavNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavNew.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavNew.ForeColor = System.Drawing.Color.White;
+            this.btnNavNew.Location = new System.Drawing.Point(16, 420);
+            this.btnNavNew.Name = "btnNavNew";
+            this.btnNavNew.Size = new System.Drawing.Size(224, 48);
+            this.btnNavNew.TabIndex = 62;
+            this.btnNavNew.Tag = "+ Yeni E-Müstahsil";
+            this.btnNavNew.Text = "+ Yeni E-Müstahsil";
+            this.btnNavNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavNew.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavNew.UseVisualStyleBackColor = false;
+            this.btnNavNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            //
             // tableGrid
-            // 
+            //
+            this.tableGrid.BackgroundColor = System.Drawing.Color.White;
+            this.tableGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(291, 554);
+            this.tableGrid.EnableHeadersVisualStyles = false;
+            this.tableGrid.GridColor = izibiz.UI.Controls.BrandColors.CardBorder;
+            this.tableGrid.Location = new System.Drawing.Point(291, 495);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(6);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
-            this.tableGrid.RowHeadersWidth = 51;
+            this.tableGrid.RowHeadersWidth = 28;
+            this.tableGrid.RowTemplate.Height = 42;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(1262, 350);
+            this.tableGrid.Size = new System.Drawing.Size(1262, 390);
+            this.tableGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tableGrid.TabIndex = 55;
+            this.tableGrid.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.tableGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.tableGrid.ColumnHeadersDefaultCellStyle.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tableGrid.ColumnHeadersHeight = 46;
+            this.tableGrid.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tableGrid.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(10, 0, 6, 0);
+            this.tableGrid.DefaultCellStyle.SelectionBackColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.tableGrid.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.tableGrid.RowsDefaultCellStyle.SelectionBackColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.tableGrid.RowHeadersDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellClick);
             this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellContentClick);
-            // 
-            // menu
-            // 
-            this.menu.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.menu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.menu.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.menu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
-            this.menu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemGetCreditNote,
-            this.itemGetDraftCreditNote,
-            this.itemGetCreditNotes,
-            this.itemNewCreditNote});
-            this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Margin = new System.Windows.Forms.Padding(0, 0, 30, 0);
-            this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(256, 932);
-            this.menu.TabIndex = 54;
-            this.menu.Text = "menuStrip1";
-            // 
-            // pnlDraftCreditNote
-            // 
-            this.pnlDraftCreditNote.Controls.Add(this.pnlCreditNoteReports);
-            this.pnlDraftCreditNote.Location = new System.Drawing.Point(519, 52);
-            this.pnlDraftCreditNote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlDraftCreditNote.Name = "pnlDraftCreditNote";
-            this.pnlDraftCreditNote.Size = new System.Drawing.Size(1071, 132);
-            this.pnlDraftCreditNote.TabIndex = 62;
-            this.pnlDraftCreditNote.Visible = false;
-            // 
-            // pnlCreditNote
-            // 
-            this.pnlCreditNote.Controls.Add(this.btnCreditNoteView);
-            this.pnlCreditNote.Controls.Add(this.rdViewXml);
-            this.pnlCreditNote.Controls.Add(this.rdViewHtml);
-            this.pnlCreditNote.Controls.Add(this.rdViewPdf);
-            this.pnlCreditNote.Location = new System.Drawing.Point(4, 0);
-            this.pnlCreditNote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlCreditNote.Name = "pnlCreditNote";
-            this.pnlCreditNote.Size = new System.Drawing.Size(1071, 136);
-            this.pnlCreditNote.TabIndex = 63;
-            this.pnlCreditNote.Visible = false;
-            this.pnlCreditNote.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCreditNote_Paint);
-            // 
-            // btnCreditNoteView
-            // 
-            this.btnCreditNoteView.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnCreditNoteView.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnCreditNoteView.FlatAppearance.BorderSize = 2;
-            this.btnCreditNoteView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditNoteView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCreditNoteView.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCreditNoteView.Location = new System.Drawing.Point(10, 22);
-            this.btnCreditNoteView.Margin = new System.Windows.Forms.Padding(6);
-            this.btnCreditNoteView.Name = "btnCreditNoteView";
-            this.btnCreditNoteView.Size = new System.Drawing.Size(153, 75);
-            this.btnCreditNoteView.TabIndex = 45;
-            this.btnCreditNoteView.Text = "Görüntüle";
-            this.btnCreditNoteView.UseVisualStyleBackColor = false;
-            this.btnCreditNoteView.Click += new System.EventHandler(this.btnArchiveView_Click);
-            // 
-            // rdViewXml
-            // 
-            this.rdViewXml.AutoSize = true;
-            this.rdViewXml.Location = new System.Drawing.Point(174, 88);
-            this.rdViewXml.Margin = new System.Windows.Forms.Padding(6);
-            this.rdViewXml.Name = "rdViewXml";
-            this.rdViewXml.Size = new System.Drawing.Size(57, 24);
-            this.rdViewXml.TabIndex = 48;
-            this.rdViewXml.TabStop = true;
-            this.rdViewXml.Text = "xml";
-            this.rdViewXml.UseVisualStyleBackColor = true;
-            // 
-            // rdViewHtml
-            // 
-            this.rdViewHtml.AutoSize = true;
-            this.rdViewHtml.Location = new System.Drawing.Point(174, 15);
-            this.rdViewHtml.Margin = new System.Windows.Forms.Padding(6);
-            this.rdViewHtml.Name = "rdViewHtml";
-            this.rdViewHtml.Size = new System.Drawing.Size(64, 24);
-            this.rdViewHtml.TabIndex = 46;
-            this.rdViewHtml.TabStop = true;
-            this.rdViewHtml.Text = "html";
-            this.rdViewHtml.UseVisualStyleBackColor = true;
-            // 
-            // rdViewPdf
-            // 
-            this.rdViewPdf.AutoSize = true;
-            this.rdViewPdf.Location = new System.Drawing.Point(174, 49);
-            this.rdViewPdf.Margin = new System.Windows.Forms.Padding(6);
-            this.rdViewPdf.Name = "rdViewPdf";
-            this.rdViewPdf.Size = new System.Drawing.Size(57, 24);
-            this.rdViewPdf.TabIndex = 47;
-            this.rdViewPdf.TabStop = true;
-            this.rdViewPdf.Text = "pdf";
-            this.rdViewPdf.UseVisualStyleBackColor = true;
-            // 
-            // pnlCreditNoteReports
-            // 
-            this.pnlCreditNoteReports.Controls.Add(this.pnlCreditNote);
-            this.pnlCreditNoteReports.Location = new System.Drawing.Point(4, 4);
-            this.pnlCreditNoteReports.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlCreditNoteReports.Name = "pnlCreditNoteReports";
-            this.pnlCreditNoteReports.Size = new System.Drawing.Size(1071, 141);
-            this.pnlCreditNoteReports.TabIndex = 64;
-            this.pnlCreditNoteReports.Visible = false;
-            this.pnlCreditNoteReports.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCreditNotes_Paint);
-            // 
+            //
+            // sourceCardSoap
+            //
+            this.sourceCardSoap.AccentColor = izibiz.UI.Controls.BrandColors.Purple;
+            this.sourceCardSoap.ButtonText = "SOAP ile Çek";
+            this.sourceCardSoap.DescriptionText = "Mevcut SOAP servisi";
+            this.sourceCardSoap.FetchButtonVisible = false;
+            this.sourceCardSoap.IconGlyph = "⚙";
+            this.sourceCardSoap.IconTintColor = izibiz.UI.Controls.BrandColors.PurpleLight;
+            this.sourceCardSoap.Location = new System.Drawing.Point(627, 40);
+            this.sourceCardSoap.Name = "sourceCardSoap";
+            this.sourceCardSoap.Size = new System.Drawing.Size(280, 190);
+            this.sourceCardSoap.TabIndex = 66;
+            this.sourceCardSoap.TitleText = "SOAP";
+            //
+            // sourceCardRest
+            //
+            this.sourceCardRest.AccentColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.sourceCardRest.ButtonText = "REST ile Çek";
+            this.sourceCardRest.DescriptionText = "REST API üzerinden";
+            this.sourceCardRest.FetchButtonVisible = false;
+            this.sourceCardRest.IconGlyph = "☁";
+            this.sourceCardRest.IconTintColor = izibiz.UI.Controls.BrandColors.TealLight;
+            this.sourceCardRest.Location = new System.Drawing.Point(937, 40);
+            this.sourceCardRest.Name = "sourceCardRest";
+            this.sourceCardRest.Size = new System.Drawing.Size(280, 190);
+            this.sourceCardRest.TabIndex = 67;
+            this.sourceCardRest.TitleText = "REST";
+            //
+            // documentActionsCard1
+            //
+            this.documentActionsCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.documentActionsCard1.DescriptionText = "Seçili belgeyi görüntüleyin veya indirin";
+            this.documentActionsCard1.Location = new System.Drawing.Point(291, 250);
+            this.documentActionsCard1.Name = "documentActionsCard1";
+            this.documentActionsCard1.Size = new System.Drawing.Size(1262, 200);
+            this.documentActionsCard1.TabIndex = 68;
+            this.documentActionsCard1.TitleText = "Belge Görüntüleme / İndirme";
+            this.documentActionsCard1.Visible = false;
+            //
             // lblInformation
-            // 
+            //
             this.lblInformation.AutoSize = true;
-            this.lblInformation.Location = new System.Drawing.Point(307, 511);
+            this.lblInformation.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Italic);
+            this.lblInformation.ForeColor = izibiz.UI.Controls.BrandColors.TextMuted;
+            this.lblInformation.Location = new System.Drawing.Point(294, 465);
             this.lblInformation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInformation.Name = "lblInformation";
             this.lblInformation.Size = new System.Drawing.Size(352, 20);
             this.lblInformation.TabIndex = 65;
             this.lblInformation.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
             this.lblInformation.Visible = false;
-            // 
+            //
+            // lblEmptyIcon
+            //
+            this.lblEmptyIcon.Font = new System.Drawing.Font("Segoe UI", 42F);
+            this.lblEmptyIcon.ForeColor = izibiz.UI.Controls.BrandColors.TealLight;
+            this.lblEmptyIcon.Location = new System.Drawing.Point(291, 560);
+            this.lblEmptyIcon.Name = "lblEmptyIcon";
+            this.lblEmptyIcon.Size = new System.Drawing.Size(1262, 80);
+            this.lblEmptyIcon.TabIndex = 69;
+            this.lblEmptyIcon.Text = "📄";
+            this.lblEmptyIcon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // lblEmptyText
+            //
+            this.lblEmptyText.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblEmptyText.ForeColor = izibiz.UI.Controls.BrandColors.TextMuted;
+            this.lblEmptyText.Location = new System.Drawing.Point(291, 640);
+            this.lblEmptyText.Name = "lblEmptyText";
+            this.lblEmptyText.Size = new System.Drawing.Size(1262, 30);
+            this.lblEmptyText.TabIndex = 70;
+            this.lblEmptyText.Text = "Henüz belge yok — yukarıdan SOAP ya da REST ile çekin";
+            this.lblEmptyText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
             // FrmCreditNote
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = izibiz.UI.Controls.BrandColors.PageBackground;
             this.ClientSize = new System.Drawing.Size(1730, 932);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ControlBox = false;
+            this.Controls.Add(this.lblEmptyText);
+            this.Controls.Add(this.lblEmptyIcon);
             this.Controls.Add(this.lblInformation);
-            this.Controls.Add(this.pnlDraftCreditNote);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnHomePage);
-            this.Controls.Add(this.btnTakeCreditNote);
+            this.Controls.Add(this.documentActionsCard1);
+            this.Controls.Add(this.sourceCardRest);
+            this.Controls.Add(this.sourceCardSoap);
             this.Controls.Add(this.tableGrid);
-            this.Controls.Add(this.menu);
+            this.Controls.Add(this.pnlSidebar);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
             this.Name = "FrmCreditNote";
             this.Text = "FrmCreditNote";
             this.Load += new System.EventHandler(this.FrmCreditNote_Load);
+            this.Resize += new System.EventHandler(this.FrmCreditNote_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
-            this.menu.ResumeLayout(false);
-            this.menu.PerformLayout();
-            this.pnlDraftCreditNote.ResumeLayout(false);
-            this.pnlCreditNote.ResumeLayout(false);
-            this.pnlCreditNote.PerformLayout();
-            this.pnlCreditNoteReports.ResumeLayout(false);
+            this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,22 +312,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlSidebar;
         private System.Windows.Forms.Button btnHomePage;
-        private System.Windows.Forms.ToolStripMenuItem itemNewCreditNote;
-        private System.Windows.Forms.ToolStripMenuItem itemGetCreditNotes;
-        private System.Windows.Forms.ToolStripMenuItem itemGetDraftCreditNote;
-        private System.Windows.Forms.ToolStripMenuItem itemGetCreditNote;
-        private System.Windows.Forms.Button btnTakeCreditNote;
+        private System.Windows.Forms.Button btnHamburger;
+        private System.Windows.Forms.Button btnNavMustahsil;
+        private System.Windows.Forms.Button btnNavDraft;
+        private System.Windows.Forms.Button btnNavReports;
+        private System.Windows.Forms.Button btnNavNew;
         private System.Windows.Forms.DataGridView tableGrid;
-        private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.Panel pnlDraftCreditNote;
-        private System.Windows.Forms.Panel pnlCreditNote;
-        private System.Windows.Forms.Panel pnlCreditNoteReports;
+        private izibiz.UI.Controls.SourceCard sourceCardSoap;
+        private izibiz.UI.Controls.SourceCard sourceCardRest;
+        private izibiz.UI.Controls.DocumentActionsCard documentActionsCard1;
         private System.Windows.Forms.Label lblInformation;
-        private System.Windows.Forms.Button btnCreditNoteView;
-        private System.Windows.Forms.RadioButton rdViewXml;
-        private System.Windows.Forms.RadioButton rdViewHtml;
-        private System.Windows.Forms.RadioButton rdViewPdf;
+        private System.Windows.Forms.Label lblEmptyIcon;
+        private System.Windows.Forms.Label lblEmptyText;
     }
 }

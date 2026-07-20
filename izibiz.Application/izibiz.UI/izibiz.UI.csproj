@@ -7,6 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E2194951-B062-405A-8AA7-1DB9EDB41686}</ProjectGuid>
     <OutputType>WinExe</OutputType>
+    <ApplicationIcon>izibiz.ico</ApplicationIcon>
     <RootNamespace>izibiz.UI</RootNamespace>
     <AssemblyName>izibiz.UI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -140,6 +141,23 @@
     <Compile Include="FrmCreditNote.Designer.cs">
       <DependentUpon>FrmCreditNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModernSidebarRenderer.cs" />
+    <Compile Include="Controls\RoundedPathHelper.cs" />
+    <Compile Include="Controls\BrandColors.cs" />
+    <Compile Include="Controls\HoverAnimator.cs" />
+    <Compile Include="Controls\DocumentActionEventArgs.cs" />
+    <Compile Include="Controls\SourceCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SourceCard.Designer.cs">
+      <DependentUpon>SourceCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DocumentActionsCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DocumentActionsCard.Designer.cs">
+      <DependentUpon>DocumentActionsCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSelfEmployment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconXml.png" />
+    <None Include="Resources\izibizLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconPdf.png" />

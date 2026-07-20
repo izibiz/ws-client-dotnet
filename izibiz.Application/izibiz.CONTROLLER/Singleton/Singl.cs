@@ -4,6 +4,7 @@ using izibiz.CONTROLLER.WebServicesController;
 using izibiz.MODEL.Data;
 using izibiz.REST.Infrastructure;
 using izibiz.REST.Concrete.Smm;
+using izibiz.REST.Concrete.Mustahsil;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,7 @@ namespace izibiz.CONTROLLER.Singleton
         private static RestApiOptions _restOptions = null;
         private static TokenProvider _tokenProvider = null;
         private static SmmClient _smmClient = null;
+        private static MustahsilClient _mustahsilClient = null;
         private static System.Net.Http.HttpClient _restHttpClient = null;
 
         public static void InitRest(string username, string password)
@@ -58,11 +60,17 @@ namespace izibiz.CONTROLLER.Singleton
             _tokenProvider = new TokenProvider(_restOptions);
             _restHttpClient = HttpClientProvider.Create(_restOptions, _tokenProvider);
             _smmClient = new SmmClient(_restHttpClient, _restOptions);
+            _mustahsilClient = new MustahsilClient(_restHttpClient, _restOptions);
         }
 
         public static SmmClient SmmClientGet
         {
             get { return _smmClient; }
+        }
+
+        public static MustahsilClient MustahsilClientGet   // ← bunu ekle
+        {
+            get { return _mustahsilClient; }
         }
 
         public static TokenProvider TokenProviderGet
