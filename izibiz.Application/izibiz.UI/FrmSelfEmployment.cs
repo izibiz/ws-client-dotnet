@@ -396,10 +396,10 @@ namespace izibiz.UI
                             var boundItem = tableGrid.Rows[e.RowIndex].DataBoundItem;
                             if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
                             {
-                                // Turuncu buton = ekranda önizleme = GET /view/html
-                                byte[] htmlBytes = await Singl.SmmClientGet.ViewAsync(restItem.Id.ToString());
-                                string content = System.Text.Encoding.UTF8.GetString(htmlBytes);
-                                FrmView previewInvoices = new FrmView(content, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts)); 
+                                // Turuncu buton = Ekranda GİB formatlı orijinal önizleme için UBL'i (XML) çekip XSLT'ye sokuyoruz
+                                byte[] xmlBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), "ubl");
+                                string content = System.Text.Encoding.UTF8.GetString(xmlBytes);
+                                FrmView previewInvoices = new FrmView(content, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts), isHtml: false); 
                                 previewInvoices.ShowDialog();
                             }
                             else
@@ -470,10 +470,10 @@ namespace izibiz.UI
 
                     if (format == "html")
                     {
-                        // HTML seçiliyse = ekranda önizleme = GET /view/html
-                        byte[] viewBytes = await Singl.SmmClientGet.ViewAsync(restItem.Id.ToString());
-                        string strContent = System.Text.Encoding.UTF8.GetString(viewBytes);
-                        FrmView previewInvoices = new FrmView(strContent, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts));
+                        // HTML seçiliyse = Ekranda GİB formatlı orijinal önizleme için UBL'i (XML) çekip XSLT'ye sokuyoruz
+                        byte[] xmlBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), "ubl");
+                        string strContent = System.Text.Encoding.UTF8.GetString(xmlBytes);
+                        FrmView previewInvoices = new FrmView(strContent, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts), isHtml: false);
                         previewInvoices.ShowDialog();
                     }
                     else

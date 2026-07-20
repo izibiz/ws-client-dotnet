@@ -1,4 +1,4 @@
-﻿using izibiz.COMMON;
+using izibiz.COMMON;
 using izibiz.COMMON.Ubl_Tr;
 using izibiz.COMMON.FileControl;
 using System;
@@ -24,12 +24,14 @@ namespace izibiz.UI
 
         private string xmlContent;
         private string invoiceType;
+        private bool isHtml;
 
-        public FrmView(string xmlContent, string invoiceType)
+        public FrmView(string xmlContent, string invoiceType, bool isHtml = false)
         {
             InitializeComponent();
             this.xmlContent = xmlContent;
             this.invoiceType = invoiceType;
+            this.isHtml = isHtml;
         }
 
         private void PreviewInvoices_Load(object sender, EventArgs e)
@@ -37,6 +39,12 @@ namespace izibiz.UI
             localizationItemTextWrite();
             try
             {
+                if (isHtml)
+                {
+                    viewDoc.DocumentText = xmlContent;
+                    return;
+                }
+
                 if (invoiceType == EI.Invoice.ArchiveInvoices.ToString())
                 {
                     viewDoc.DocumentText = XmlControl.xmlToHtml(Xslt.xsltGibArchive, xmlContent);
