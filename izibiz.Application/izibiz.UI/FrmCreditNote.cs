@@ -582,7 +582,8 @@ namespace izibiz.UI
                     if (e.Format == "html")
                     {
                         // Ekranda önizleme: hiçbir şey diske yazılmıyor.
-                        byte[] xmlBytes = await Singl.MustahsilClientGet.DownloadAsync(restItem.Id.ToString(), "ubl");
+                        var xmlResult = await Singl.MustahsilClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, "ubl");
+                        byte[] xmlBytes = System.Linq.Enumerable.FirstOrDefault(xmlResult.Values);
                         string strContent = System.Text.Encoding.UTF8.GetString(xmlBytes);
                         FrmView previewInvoices = new FrmView(strContent, nameof(EI.CreditNote.CreditNotes), isHtml: false);
                         previewInvoices.ShowDialog();
@@ -590,7 +591,8 @@ namespace izibiz.UI
                     else
                     {
                         // PDF önizleme: geçici klasöre yazılır, kalıcı bir indirme sayılmaz.
-                        byte[] pdfBytes = await Singl.MustahsilClientGet.DownloadAsync(restItem.Id.ToString(), "pdf");
+                        var pdfResult = await Singl.MustahsilClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, "pdf");
+                        byte[] pdfBytes = System.Linq.Enumerable.FirstOrDefault(pdfResult.Values);
                         string tempPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), restItem.Uuid + ".pdf");
                         FolderControl.writeFileOnDiskWithByte(pdfBytes, tempPath);
                         System.Diagnostics.Process.Start(tempPath);
@@ -667,7 +669,8 @@ namespace izibiz.UI
                     // Kullanıcıya hâlâ "xml" gösteriyoruz, dosyayı da .xml uzantısıyla kaydediyoruz.
                     string apiFormat = e.Format == "xml" ? "ubl" : e.Format;
 
-                    byte[] downloadBytes = await Singl.MustahsilClientGet.DownloadAsync(restItem.Id.ToString(), apiFormat);
+                    var result = await Singl.MustahsilClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, apiFormat);
+                    byte[] downloadBytes = System.Linq.Enumerable.FirstOrDefault(result.Values);
                     string path = FolderControl.CreditNoteFolderPath + restItem.Uuid + "." + e.Format;
                     FolderControl.writeFileOnDiskWithByte(downloadBytes, path);
                     System.Diagnostics.Process.Start(path);

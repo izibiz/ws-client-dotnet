@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using izibiz.REST.Infrastructure;
@@ -41,9 +42,9 @@ namespace izibiz.REST.Concrete.Smm
         /// <summary>
         /// Belgeyi diske kaydetmek için POST /download ile indirir.
         /// </summary>
-        public Task<byte[]> DownloadAsync(string id, string format)
+        public Task<Dictionary<string, byte[]>> DownloadAsync(List<string> ids, string format)
         {
-            return _downloadStrategy.DownloadAsync(id, format);
+            return _downloadStrategy.DownloadAsync(ids, format);
         }
     }
 }

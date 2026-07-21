@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using izibiz.REST.Infrastructure;
 using izibiz.REST.Models;
@@ -33,9 +34,9 @@ namespace izibiz.REST.Concrete.Mustahsil
             return _viewStrategy.ViewAsync(id);
         }
 
-        public Task<byte[]> DownloadAsync(string id, string format)
+        public Task<Dictionary<string, byte[]>> DownloadAsync(List<string> ids, string format)
         {
-            return _downloadStrategy.DownloadAsync(id, format);
+            return _downloadStrategy.DownloadAsync(ids, format);
         }
     }
 }

@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace izibiz.REST.Strategy
 {
     public interface IDownloadStrategy
     {
-        Task<byte[]> DownloadAsync(string id, string format);
+        Task<Dictionary<string, byte[]>> DownloadAsync(List<string> ids, string format);
     }
 }
