@@ -392,6 +392,7 @@
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.Location = new System.Drawing.Point(182, 193);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.RowHeadersWidth = 51;
@@ -564,7 +565,7 @@
             this.BackColor = System.Drawing.Color.MintCream;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1371, 697);
-            this.ControlBox = false;
+            this.ControlBox = true;
             this.Controls.Add(this.lblInformation);
             this.Controls.Add(this.btnHomePage);
             this.Controls.Add(this.grpFilter);

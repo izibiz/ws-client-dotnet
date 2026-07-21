@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -71,7 +71,7 @@ namespace izibiz.UI
             pnlHeader.Controls.Add(btnClose);
 
             Button btnMaximize = new Button();
-            btnMaximize.Text = "🗖"; // Maximize symbol
+            btnMaximize.Text = "??"; // Maximize symbol
             btnMaximize.Dock = DockStyle.Right;
             btnMaximize.Width = 45;
             btnMaximize.FlatStyle = FlatStyle.Flat;
@@ -88,7 +88,7 @@ namespace izibiz.UI
             pnlHeader.Controls.Add(btnMaximize);
 
             Button btnMinimize = new Button();
-            btnMinimize.Text = "🗕"; // Minimize symbol
+            btnMinimize.Text = "??"; // Minimize symbol
             btnMinimize.Dock = DockStyle.Right;
             btnMinimize.Width = 45;
             btnMinimize.FlatStyle = FlatStyle.Flat;

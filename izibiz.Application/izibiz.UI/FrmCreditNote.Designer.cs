@@ -106,7 +106,7 @@ namespace izibiz.UI
             this.btnNavMustahsil.Name = "btnNavMustahsil";
             this.btnNavMustahsil.Size = new System.Drawing.Size(308, 56);
             this.btnNavMustahsil.TabIndex = 59;
-            this.btnNavMustahsil.Text = "📄   E-Müstahsil";
+            this.btnNavMustahsil.Text = "\uD83D\uDCC4   E-Müstahsil";
             this.btnNavMustahsil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavMustahsil.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavMustahsil.UseVisualStyleBackColor = false;
@@ -124,7 +124,7 @@ namespace izibiz.UI
             this.btnNavDraft.Name = "btnNavDraft";
             this.btnNavDraft.Size = new System.Drawing.Size(308, 56);
             this.btnNavDraft.TabIndex = 60;
-            this.btnNavDraft.Text = "📝   Taslak E-Müstahsil";
+            this.btnNavDraft.Text = "\uD83D\uDCDD   Taslak";
             this.btnNavDraft.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavDraft.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavDraft.UseVisualStyleBackColor = false;
@@ -142,7 +142,7 @@ namespace izibiz.UI
             this.btnNavReports.Name = "btnNavReports";
             this.btnNavReports.Size = new System.Drawing.Size(308, 56);
             this.btnNavReports.TabIndex = 61;
-            this.btnNavReports.Text = "📊   E-Müstahsil Raporları";
+            this.btnNavReports.Text = "\uD83D\uDCCA   Rapor E-Müstahsil";
             this.btnNavReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavReports.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavReports.UseVisualStyleBackColor = false;
@@ -176,8 +176,10 @@ namespace izibiz.UI
             this.tableGrid.GridColor = izibiz.UI.Controls.BrandColors.CardBorder;
             this.tableGrid.Location = new System.Drawing.Point(291, 600);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(6);
+            this.tableGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableGrid.Name = "tableGrid";
-            this.tableGrid.ReadOnly = true;
+            this.tableGrid.ReadOnly = false;
+            this.tableGrid.RowHeadersVisible = false;
             this.tableGrid.RowHeadersWidth = 28;
             this.tableGrid.RowTemplate.Height = 42;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -201,6 +203,8 @@ namespace izibiz.UI
             this.tableGrid.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellClick);
             this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellContentClick);
+            this.tableGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.tableGrid_CurrentCellDirtyStateChanged);
+            this.tableGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellValueChanged);
             //
             // sourceCardSoap
             //
@@ -283,7 +287,7 @@ namespace izibiz.UI
             this.BackColor = izibiz.UI.Controls.BrandColors.PageBackground;
             this.ClientSize = new System.Drawing.Size(1730, 932);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.ControlBox = false;
+            this.ControlBox = true;
             this.Controls.Add(this.lblEmptyText);
             this.Controls.Add(this.lblEmptyIcon);
             this.Controls.Add(this.lblInformation);

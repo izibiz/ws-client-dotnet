@@ -1,4 +1,4 @@
-namespace izibiz.UI
+﻿namespace izibiz.UI
 {
     partial class FrmHome
     {
@@ -34,7 +34,7 @@ namespace izibiz.UI
             this.btnArchive = new System.Windows.Forms.Button();
             this.btnIrsaliye = new System.Windows.Forms.Button();
             this.btnMutabakat = new System.Windows.Forms.Button();
-            this.btnMüstahsil = new System.Windows.Forms.Button();
+            this.BtnMüstahsil = new System.Windows.Forms.Button();
             this.lblInvoiceTitle = new System.Windows.Forms.Label();
             this.lblArchiveTitle = new System.Windows.Forms.Label();
             this.lblIrsaliyeTitle = new System.Windows.Forms.Label();
@@ -133,23 +133,23 @@ namespace izibiz.UI
             this.btnMutabakat.UseVisualStyleBackColor = false;
             this.btnMutabakat.Click += new System.EventHandler(this.BtnMutabakat_Click);
             //
-            // btnMüstahsil
+            // BtnMüstahsil
             //
-            this.btnMüstahsil.BackColor = System.Drawing.Color.FromArgb(238, 242, 255);
-            this.btnMüstahsil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMüstahsil.BackgroundImage")));
-            this.btnMüstahsil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnMüstahsil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMüstahsil.FlatAppearance.BorderSize = 0;
-            this.btnMüstahsil.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(226, 232, 240);
-            this.btnMüstahsil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMüstahsil.Location = new System.Drawing.Point(556, 256);
-            this.btnMüstahsil.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMüstahsil.Name = "btnMüstahsil";
-            this.btnMüstahsil.Size = new System.Drawing.Size(200, 200);
-            this.btnMüstahsil.TabIndex = 27;
-            this.btnMüstahsil.Text = "";
-            this.btnMüstahsil.UseVisualStyleBackColor = false;
-            this.btnMüstahsil.Click += new System.EventHandler(this.BtnMüstahsil_Click);
+            this.BtnMüstahsil.BackColor = System.Drawing.Color.FromArgb(238, 242, 255);
+            this.BtnMüstahsil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnMüstahsil.BackgroundImage")));
+            this.BtnMüstahsil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnMüstahsil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnMüstahsil.FlatAppearance.BorderSize = 0;
+            this.BtnMüstahsil.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.BtnMüstahsil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMüstahsil.Location = new System.Drawing.Point(556, 256);
+            this.BtnMüstahsil.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnMüstahsil.Name = "BtnMüstahsil";
+            this.BtnMüstahsil.Size = new System.Drawing.Size(200, 200);
+            this.BtnMüstahsil.TabIndex = 27;
+            this.BtnMüstahsil.Text = "";
+            this.BtnMüstahsil.UseVisualStyleBackColor = false;
+            this.BtnMüstahsil.Click += new System.EventHandler(this.BtnMüstahsil_Click);
             //
             // lblInvoiceTitle
             //
@@ -206,7 +206,7 @@ namespace izibiz.UI
             this.Controls.Add(this.lblIrsaliyeTitle);
             this.Controls.Add(this.lblArchiveTitle);
             this.Controls.Add(this.lblInvoiceTitle);
-            this.Controls.Add(this.btnMüstahsil);
+            this.Controls.Add(this.BtnMüstahsil);
             this.Controls.Add(this.btnInvoice);
             this.Controls.Add(this.btnSmm);
             this.Controls.Add(this.btnArchive);
@@ -231,7 +231,7 @@ namespace izibiz.UI
         private System.Windows.Forms.Button btnArchive;
         private System.Windows.Forms.Button btnIrsaliye;
         private System.Windows.Forms.Button btnMutabakat;
-        private System.Windows.Forms.Button btnMüstahsil;
+        private System.Windows.Forms.Button BtnMüstahsil;
         private System.Windows.Forms.Label lblInvoiceTitle;
         private System.Windows.Forms.Label lblArchiveTitle;
         private System.Windows.Forms.Label lblIrsaliyeTitle;
@@ -240,3 +240,6 @@ namespace izibiz.UI
         private System.Windows.Forms.Label lblMustahsilTitle;
     }
 }
+
+
+

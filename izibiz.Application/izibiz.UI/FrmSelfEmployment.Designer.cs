@@ -152,6 +152,7 @@
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.Location = new System.Drawing.Point(291, 554);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tableGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.RowHeadersWidth = 51;
@@ -288,7 +289,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1730, 932);
-            this.ControlBox = false;
+            this.ControlBox = true;
             this.Controls.Add(this.pnlSmm);
             this.Controls.Add(this.pnlDraftSmm);
             this.Controls.Add(this.IblInformation);

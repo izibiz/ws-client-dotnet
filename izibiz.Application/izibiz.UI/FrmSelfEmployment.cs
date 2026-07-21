@@ -1,4 +1,4 @@
-using izibiz.COMMON;
+﻿using izibiz.COMMON;
 using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.Singleton;
 using System;

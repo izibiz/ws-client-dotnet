@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +17,21 @@ namespace izibiz.REST.Concrete.Mustahsil
         public MustahsilDocumentStatus DocumentStatus { get; set; }
         public MustahsilParty Sender { get; set; }
         public MustahsilParty Receiver { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string DocumentStatusLabel => DocumentStatus?.Label;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string ReceiverIdentifier => Receiver?.Identifier;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string ReceiverName => Receiver?.Name;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string ProfileId => "EARSIVBELGE";
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string TypeCode => "MUSTAHSILMAKBUZ";
     }
 
     public class MustahsilDocumentStatus

@@ -1,4 +1,4 @@
-namespace izibiz.UI
+﻿namespace izibiz.UI
 {
     partial class FrmLogin
     {

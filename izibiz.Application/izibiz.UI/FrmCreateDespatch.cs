@@ -1,4 +1,4 @@
-using izibiz.COMMON;
+ï»¿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.COMMON.Language;
 using izibiz.COMMON.UBLCreate;
@@ -116,7 +116,7 @@ namespace izibiz.UI
         {
             if (gridPrice.Rows.Count == 10)
             {
-                MessageBox.Show("en fazla 10 satýr eklenebýlýr");
+                MessageBox.Show("en fazla 10 satÄ±r eklenebÄ±lÄ±r");
             }
             else
             {
@@ -129,10 +129,10 @@ namespace izibiz.UI
 
         private void btnRemoveRow_Click(object sender, EventArgs e)
         {
-            //toplam satýr satýsý secýlý satýrdan en az 1 fazla olmak zorunda
+            //toplam satÄ±r satÄ±sÄ± secÄ±lÄ± satÄ±rdan en az 1 fazla olmak zorunda
             if (gridPrice.Rows.Count == 1)
             {
-                MessageBox.Show("en az 1 satýr bulunmak zorunda");
+                MessageBox.Show("en az 1 satÄ±r bulunmak zorunda");
             }
             else
             {
@@ -146,9 +146,9 @@ namespace izibiz.UI
 
         private void btnClean_Click(object sender, EventArgs e)
         {
-            foreach (Control item in grpReceiver.Controls)  //grupbox alýcý bilgileri
+            foreach (Control item in grpReceiver.Controls)  //grupbox alÄ±cÄ± bilgileri
             {
-                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ýse
+                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox Ä±se
                 {
                     item.Text = "";
                     item.BackColor = Color.White;
@@ -156,7 +156,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpDespatchInformation.Controls)
             {
-                if (!(item is Label)) //label degýlse
+                if (!(item is Label)) //label degÄ±lse
                 {
                     item.Text = "";
                     item.BackColor = Color.White;
@@ -164,7 +164,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpOrderInformation.Controls)
             {
-                if (!(item is Label)) //label degýlse
+                if (!(item is Label)) //label degÄ±lse
                 {
 
                     item.Text = "";
@@ -173,7 +173,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpCarrierInformation.Controls)
             {
-                if (!(item is Label)) //label degýlse
+                if (!(item is Label)) //label degÄ±lse
                 {
                     item.Text = "";
                     item.BackColor = Color.White;
@@ -181,7 +181,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpChauffeurInformation.Controls)
             {
-                if (!(item is Label)) //label degýlse
+                if (!(item is Label)) //label degÄ±lse
                 {
                     item.Text = "";
                     item.BackColor = Color.White;
@@ -192,7 +192,7 @@ namespace izibiz.UI
             txtTotalAmount.BackColor = Color.White;
 
             int rowCount = gridPrice.Rows.Count;
-            for (int i = 0; i < rowCount; i++) //datagrid butun rowlarý sýl en son 1 tane row ekle
+            for (int i = 0; i < rowCount; i++) //datagrid butun rowlarÄ± sÄ±l en son 1 tane row ekle
             {
                 var r = gridPrice.Rows[0];
                 gridPrice.Rows.Remove(r);
@@ -211,7 +211,7 @@ namespace izibiz.UI
 
             foreach (DataGridViewRow row in gridPrice.Rows)
             {
-                //kdv sýz tutar
+                //kdv sÄ±z tutar
                 decimal totalRevenue = Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value)
                     * Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value);
 
@@ -228,9 +228,9 @@ namespace izibiz.UI
         {
             bool valid = true;
 
-            foreach (Control item in grpReceiver.Controls)  //grupbox alýcý bilgileri
+            foreach (Control item in grpReceiver.Controls)  //grupbox alÄ±cÄ± bilgileri
             {
-                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ýse
+                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox Ä±se
                 {
                     if (item.Name == "msdVknTc")  //vkn_Tckn
                     {
@@ -245,7 +245,7 @@ namespace izibiz.UI
                         }
                     }
 
-                    else   // tckn degýlse
+                    else   // tckn degÄ±lse
                     {
                         if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
                         {
@@ -262,7 +262,7 @@ namespace izibiz.UI
 
             foreach (Control item in grpDespatchInformation.Controls)
             {
-                if (!(item is Label)) //label degýlse
+                if (!(item is Label)) //label degÄ±lse
                 {
                     if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                     {
@@ -277,7 +277,7 @@ namespace izibiz.UI
             }
             foreach (Control item in grpOrderInformation.Controls)  //grupbox not ve toplam bilgileri
             {
-                if (!(item is Label)) //label degýlse
+                if (!(item is Label)) //label degÄ±lse
                 {
                     if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                     {
@@ -293,7 +293,7 @@ namespace izibiz.UI
 
             foreach (Control item in grpChauffeurInformation.Controls)  //grupbox sofor bilgileri
             {
-                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ýse
+                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox Ä±se
                 {
                     if (item.Name == "msdDriverTc")  //tckn
                     {
@@ -307,7 +307,7 @@ namespace izibiz.UI
                             item.BackColor = Color.White;
                         }
                     }
-                    else   // tckn degýlse
+                    else   // tckn degÄ±lse
                     {
                         if (item.Text.Replace(" ", String.Empty).Length < 3) //text null veya bos ise
                         {
@@ -325,7 +325,7 @@ namespace izibiz.UI
            
             foreach (Control item in grpCarrierInformation.Controls)  //grupbox not ve toplam bilgileri
             {
-                if (!(item is Label)) //label degýlse
+                if (!(item is Label)) //label degÄ±lse
                 {
                     if (String.IsNullOrEmpty(item.Text.Trim())) //item null veya bos ise
                     {
@@ -338,7 +338,7 @@ namespace izibiz.UI
                     }
                 }
             }
-            foreach (DataGridViewRow row in gridPrice.Rows)  //datagrid rowlarýnda bos eleman var mý
+            foreach (DataGridViewRow row in gridPrice.Rows)  //datagrid rowlarÄ±nda bos eleman var mÄ±
             {
                 for (int i = 0; i < gridPrice.ColumnCount; i++)
                 {
@@ -367,13 +367,13 @@ namespace izibiz.UI
         {
             try
             {
-                //bos eleamn olmamasý
+                //bos eleamn olmamasÄ±
                 if (validEmptyComponent())
                 {
                     //tutar hesapla
                     calculateTotalAmount();
 
-                    //kullanýcý býlgýlerý getýr              
+                    //kullanÄ±cÄ± bÄ±lgÄ±lerÄ± getÄ±r              
                     getUserInformationOnDb();
 
                     //////////UBL OLUSTURMA ISLEMI////////
@@ -385,14 +385,14 @@ namespace izibiz.UI
                     PartyType cusParty;
                     string schemaType;
 
-                    //SUPPLÝER  PARTY OLUSTURULMASI  
+                    //SUPPLÄ°ER  PARTY OLUSTURULMASI  
                     supParty = despatch.createParty(partyName, cityName, telephone, mail);
                     if (senderVknTc.Length == 10) //sup vkn
                     {
                         schemaType = nameof(EI.VknTckn.VKN);
                         despatch.addPartyTaxSchemeOnParty(supParty);
                     }
-                    else  //sup tckn .. add person metodu eklenýr
+                    else  //sup tckn .. add person metodu eklenÄ±r
                     {
                         schemaType = nameof(EI.VknTckn.TCKN);
                         despatch.addPersonOnParty(supParty, firstName, familyName);
@@ -415,7 +415,7 @@ namespace izibiz.UI
                     despatch.addPartyIdentification(cusParty, 1, schemaType, msdVknTc.Text, "", "", "", "");  
                     despatch.SetCustomerParty(cusParty);
 
-                    //SHÝPMENT 
+                    //SHÄ°PMENT 
                     if (msdCarrierTcVkn.Text.Length == 10)
                     {
                         schemaType = nameof(EI.VknTckn.VKN);
@@ -430,8 +430,8 @@ namespace izibiz.UI
                     //INV LINE OLUSTURULMASI
                     foreach (DataGridViewRow row in gridPrice.Rows)
                     {
-                        //Inv Lýne Olusturulmasý
-                        //unýt code get fonk cagýrýlarak secýlen býrýmýn unýt codu getýrýlýrilerek aktarýlýr
+                        //Inv LÄ±ne OlusturulmasÄ±
+                        //unÄ±t code get fonk cagÄ±rÄ±larak secÄ±len bÄ±rÄ±mÄ±n unÄ±t codu getÄ±rÄ±lÄ±rilerek aktarÄ±lÄ±r
                         despatch.addDespatchLine((row.Index+1).ToString(),getUnitTimeCode(row.Cells[nameof(EI.InvLineGridRowClm.unit)].Value.ToString()),Convert.ToInt32(row.Cells[nameof(EI.InvLineGridRowClm.quantity)].Value),
                             row.Cells[nameof(EI.InvLineGridRowClm.productName)].Value.ToString(),Convert.ToDecimal(row.Cells[nameof(EI.InvLineGridRowClm.unitPrice)].Value),cmbMoneyType.Text);
                     }
@@ -439,33 +439,33 @@ namespace izibiz.UI
                     despatch.setDespatchLines();
 
 
-                    //olusturdugumuz nesne ubl turune cevrýlýr
+                    //olusturdugumuz nesne ubl turune cevrÄ±lÄ±r
                     var despatchUbl = despatch.baseDespatchUbl;
 
-                    //xml olusturup dýske yazdýr
+                    //xml olusturup dÄ±ske yazdÄ±r
                     string xmlPath = FolderControl.writeDiscDespatchConvertUblToXml(despatchUbl);
                  
-                    //xml olusturup yazdýrma basarýlý mý
+                    //xml olusturup yazdÄ±rma basarÄ±lÄ± mÄ±
                     if (xmlPath != null)
                     {
                         //db ye kaydet
                         if (Singl.DespatchAdviceDalGet.insertDespatchOnDbFromUbl(despatchUbl, xmlPath) == 1)
                         {
-                            MessageBox.Show(xmlPath + "  irsaliye kaydedýldý");
+                            MessageBox.Show(xmlPath + "  irsaliye kaydedÄ±ldÄ±");
                         }
                         else
                         {
-                            MessageBox.Show("Db ye kaydetme baþarýsýz");
+                            MessageBox.Show("Db ye kaydetme baÅŸarÄ±sÄ±z");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("iþlem basarýsýz");
+                        MessageBox.Show("iÅŸlem basarÄ±sÄ±z");
                     }
                 }
                 else  //bos eleman varsa
                 {
-                    MessageBox.Show("yýldýzlý alanlarý bos býrakmayýnýz");
+                    MessageBox.Show("yÄ±ldÄ±zlÄ± alanlarÄ± bos bÄ±rakmayÄ±nÄ±z");
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex) //oib req error

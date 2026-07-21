@@ -1,4 +1,4 @@
-using izibiz.CONTROLLER.Model;
+ï»¿using izibiz.CONTROLLER.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +31,7 @@ namespace izibiz.UI
         {
             localizationTextWrite();
 
-            //datagrid tablosuna ıd degerlerını yazıyoruz ve  maıl default olarak bır deger yazıyoruz
+            //datagrid tablosuna Ä±d degerlerÄ±nÄ± yazÄ±yoruz ve  maÄ±l default olarak bÄ±r deger yazÄ±yoruz
             foreach(var model in sendMailModelList)
             {
                 gridSendMail.Rows.Add(model.id, "mail@mail.com");
@@ -52,7 +52,7 @@ namespace izibiz.UI
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            //datagırddekı maıl degerlerını model liste aktarıyoruz
+            //datagÄ±rddekÄ± maÄ±l degerlerÄ±nÄ± model liste aktarÄ±yoruz
             int cnt = 0;
             foreach (var model in sendMailModelList)
             {

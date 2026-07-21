@@ -120,6 +120,7 @@
             this.tableGrid.GridColor = System.Drawing.SystemColors.Control;
             this.tableGrid.Location = new System.Drawing.Point(251, 218);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.RowHeadersWidth = 51;
@@ -223,7 +224,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 750);
-            this.ControlBox = false;
+            this.ControlBox = true;
             this.Controls.Add(this.lblInf);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.tableGrid);

@@ -1,4 +1,4 @@
-using izibiz.COMMON.Language;
+ï»¿using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.DAL;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.SERVICES.serviceOib;
@@ -28,7 +28,7 @@ namespace izibiz.UI
             {
                 InitializeComponent();
             try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
-                if (isSeriName)  //seri no sectýrýceksek
+                if (isSeriName)  //seri no sectÄ±rÄ±ceksek
                 {
                     lblInformation.Text = Lang.selectSeriName;
                     cmbSeriNames.DataSource = Singl.invIdSerilazeDalGet.getSeriNames();
@@ -125,7 +125,7 @@ namespace izibiz.UI
                 }
                 else
                 {
-                    MessageBox.Show(Lang.seriNameControl);//seri name;  bos olamaz,karakter sayýsý 3 den kucuk veya kucuk harf olamaz
+                    MessageBox.Show(Lang.seriNameControl);//seri name;  bos olamaz,karakter sayÄ±sÄ± 3 den kucuk veya kucuk harf olamaz
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex) //oib req error

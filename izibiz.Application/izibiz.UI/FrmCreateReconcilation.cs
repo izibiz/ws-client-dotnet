@@ -1,4 +1,4 @@
-using izibiz.COMMON;
+ï»¿using izibiz.COMMON;
 using izibiz.COMMON.Language;
 using izibiz.CONTROLLER.Singleton;
 using izibiz.MODEL.Entities;
@@ -44,7 +44,7 @@ namespace izibiz.UI
                 Lang.Culture = new CultureInfo("");
             }
             #region writeAllFormItem
-            //eleman text yazdýr
+            //eleman text yazdÄ±r
 
 
 
@@ -85,7 +85,7 @@ namespace izibiz.UI
 
             foreach (Control item in pnlPartner.Controls)
             {
-                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox ýse
+                if (item is TextBox || item is MaskedTextBox) //texbox veya maskedbox Ä±se
                 {
                     if (item == msdReceiverVkn)  //vkn_Tckn
                     {
@@ -100,7 +100,7 @@ namespace izibiz.UI
                         }
                     }
 
-                    else   // maskedbox degýlse
+                    else   // maskedbox degÄ±lse
                     {
                         if (item.Text.Replace(" ", String.Empty).Length == 0) //text null veya bos ise
                         {
@@ -117,9 +117,9 @@ namespace izibiz.UI
 
             if (reconcilationType == EI.Reconcilation.EM.ToString())
             {
-                foreach (Control item in pnlBaBsDocPiece.Controls)  //grupbox alýcý bilgileri
+                foreach (Control item in pnlBaBsDocPiece.Controls)  //grupbox alÄ±cÄ± bilgileri
                 {
-                    if (item is TextBox) //texbox  ýse
+                    if (item is TextBox) //texbox  Ä±se
                     {
 
                         if (item.Text.Replace(" ", String.Empty).Length == 0) //text null veya bos ise
@@ -137,9 +137,9 @@ namespace izibiz.UI
             }
             else
             {
-                foreach (Control item in pnlCurrentPiece.Controls)  //grupbox alýcý bilgileri
+                foreach (Control item in pnlCurrentPiece.Controls)  //grupbox alÄ±cÄ± bilgileri
                 {
-                    if (item is TextBox) //texbox  ýse
+                    if (item is TextBox) //texbox  Ä±se
                     {
                         if (item.Text.Replace(" ", String.Empty).Length == 0) //text null veya bos ise
                         {
@@ -176,7 +176,7 @@ namespace izibiz.UI
                     reconcilation.type = reconcilationType;
                     reconcilation.createDate = DateTime.Now;
 
-                    if (reconcilationType.Equals(EI.Reconcilation.CM.ToString()))//carý mutabakt
+                    if (reconcilationType.Equals(EI.Reconcilation.CM.ToString()))//carÄ± mutabakt
                     {
                         reconcilation.currentAmount = Convert.ToDecimal(txtCurrentAmount.Text);
                         if (cmbAccountType.SelectedIndex == 0)//alacak
@@ -243,14 +243,14 @@ namespace izibiz.UI
         {
             if (!isCount(docCount))
             {
-                MessageBox.Show("document tutarý alaný sayý olmalý");
+                MessageBox.Show("document tutarÄ± alanÄ± sayÄ± olmalÄ±");
                 return false;
             }
             else
             {
                 if (Convert.ToInt32(docCount) < 5000)
                 {
-                    MessageBox.Show("document tutarý alaný 5000 den buyuk olmalý");
+                    MessageBox.Show("document tutarÄ± alanÄ± 5000 den buyuk olmalÄ±");
                     return false;
                 }
             }

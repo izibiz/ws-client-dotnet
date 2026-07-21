@@ -1,4 +1,4 @@
-using izibiz.COMMON;
+ï»¿using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.COMMON.Language;
 using izibiz.CONTROLLER;
@@ -65,10 +65,10 @@ namespace izibiz.UI
             btnArchiveGetState.Text = Lang.updateState;
             btnArchiveCancel.Text = Lang.cancel;
             btnGetSignedXmlArchive.Text = Lang.takeSignedXml;
-            //arsýv raporlarý
+            //arsÄ±v raporlarÄ±
             itemGetReportList.Text = Lang.archiveReport;
             btnGetSingedXml.Text = Lang.takeSignedXml;
-            //taslak arsýv
+            //taslak arsÄ±v
             itemDraftArchive.Text = Lang.draftArchives;
             btnSendDraftArchive.Text = Lang.send;
             btnDeleteDraftArchive.Text = Lang.delete;
@@ -139,11 +139,11 @@ namespace izibiz.UI
             }
             else
             {
-                if (gridMenuType == EI.Invoice.DraftArchive.ToString()) //taslak ýse
+                if (gridMenuType == EI.Invoice.DraftArchive.ToString()) //taslak Ä±se
                 {
                     addViewButtonToDatagridView();
                 }
-                else  //draft arcýve degýlse
+                else  //draft arcÄ±ve degÄ±lse
                 {
                     foreach (ArchiveInvoices arc in archiveList)
                     {
@@ -165,7 +165,7 @@ namespace izibiz.UI
                 tableArchiveGrid.Columns[nameof(EI.Invoice.stateNote)].Visible = false;
                 tableArchiveGrid.Columns[nameof(EI.Invoice.folderPath)].Visible = false;
 
-                if (gridMenuType == EI.Invoice.DraftArchive.ToString()) //taslak ýse
+                if (gridMenuType == EI.Invoice.DraftArchive.ToString()) //taslak Ä±se
                 {
                     tableArchiveGrid.Columns[nameof(EI.Invoice.reportFlagDesc)].Visible = false;
                 }
@@ -195,16 +195,16 @@ namespace izibiz.UI
                     }
                     else
                     {
-                        MessageBox.Show(Lang.cantGetContent);//content dýskten sýlýnmýs ve servýsten getýrýlemedý
+                        MessageBox.Show(Lang.cantGetContent);//content dÄ±skten sÄ±lÄ±nmÄ±s ve servÄ±sten getÄ±rÄ±lemedÄ±
                     }
                 }
-                else  //html degýlse
+                else  //html degÄ±lse
                 {
-                    if (rdViewXml.Checked) //imzalý xml ise
+                    if (rdViewXml.Checked) //imzalÄ± xml ise
                     {
                         docType = EI.DocumentType.XML.ToString();
                     }
-                    else //hicbirini secmezse pdf  görüntülenecektýr
+                    else //hicbirini secmezse pdf  gÃ¶rÃ¼ntÃ¼lenecektÄ±r
                     {
                         docType = EI.DocumentType.PDF.ToString();
                     }
@@ -218,7 +218,7 @@ namespace izibiz.UI
                     }
                     else
                     {
-                        MessageBox.Show(Lang.cantGetContent);//content dýskten sýlýnmýs ve servýsten getýrýlemedý
+                        MessageBox.Show(Lang.cantGetContent);//content dÄ±skten sÄ±lÄ±nmÄ±s ve servÄ±sten getÄ±rÄ±lemedÄ±
                     }
                 }
             }
@@ -252,14 +252,14 @@ namespace izibiz.UI
             {
                 if (gridMenuType == nameof(EI.Invoice.ArchiveInvoices))
                 {
-                    //servisten yený faturalarý cek db ye kaydet.. hata var mý
+                    //servisten yenÄ± faturalarÄ± cek db ye kaydet.. hata var mÄ±
                     string errorMessage = Singl.archiveControllerGet.getArchiveListOnServiceAndSaveDb();
 
-                    if (errorMessage == null)//islem basarýlý sekýlde kaydedýlmýsse
+                    if (errorMessage == null)//islem basarÄ±lÄ± sekÄ±lde kaydedÄ±lmÄ±sse
                     {
                         gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveList(false));
                     }
-                    else //islem basarýzsa
+                    else //islem basarÄ±zsa
                     {
                         MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -267,14 +267,14 @@ namespace izibiz.UI
                 else if (gridMenuType == nameof(EI.ArchiveReports.ArchiveReports))
                 { 
                     
-                    //servisten yený faturalarý cek db ye kaydet.. hata var mý
+                    //servisten yenÄ± faturalarÄ± cek db ye kaydet.. hata var mÄ±
                     string errorMessage = Singl.archiveControllerGet.getReportListOnServiceAndSaveDb();
 
-                    if (errorMessage == null)//islem basarýlý sekýlde kaydedýlmýsse
+                    if (errorMessage == null)//islem basarÄ±lÄ± sekÄ±lde kaydedÄ±lmÄ±sse
                     {
                         gridReportUpdateList(Singl.ArchiveReportsDalGet.getReportList());
                     }
-                    else //islem basarýzsa
+                    else //islem basarÄ±zsa
                     {
                         MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -338,19 +338,19 @@ namespace izibiz.UI
             if (e.RowIndex >= 0)
             {
                 #region panelVisiblity
-                if (gridMenuType == EI.Invoice.ArchiveInvoices.ToString())//arsýv ýnvoices
+                if (gridMenuType == EI.Invoice.ArchiveInvoices.ToString())//arsÄ±v Ä±nvoices
                 {
                     pnlArchive.Visible = true;
                     pnlDraftArchive.Visible = false;
                     pnlArchiveReport.Visible = false;
                 }
-                else if (gridMenuType == EI.ArchiveReports.ArchiveReports.ToString()) //arsýv report
+                else if (gridMenuType == EI.ArchiveReports.ArchiveReports.ToString()) //arsÄ±v report
                 {
                     pnlArchive.Visible = false;
                     pnlDraftArchive.Visible = false;
                     pnlArchiveReport.Visible = true;
                 }
-                else //taslak archýve
+                else //taslak archÄ±ve
                 {
                     pnlDraftArchive.Visible = true;
                     pnlArchiveReport.Visible = false;
@@ -360,38 +360,38 @@ namespace izibiz.UI
 
                 try
                 {
-                    if (!gridMenuType.Equals(nameof(EI.Invoice.ArchiveInvoices))) //grid durumu arsýv faturalarýnda degýlse
+                    if (!gridMenuType.Equals(nameof(EI.Invoice.ArchiveInvoices))) //grid durumu arsÄ±v faturalarÄ±nda degÄ±lse
                     {
-                        if (e.ColumnIndex == tableArchiveGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)//html goruntuleye týkladý
+                        if (e.ColumnIndex == tableArchiveGrid.Columns[nameof(EI.GridBtnClmName.previewHtml)].Index)//html goruntuleye tÄ±kladÄ±
                         {
 
-                            // imzalý contentý getýr
-                            if (gridMenuType.Equals(nameof(EI.ArchiveReports.ArchiveReports))) //arsýv raporlarýnda  ýse
+                            // imzalÄ± contentÄ± getÄ±r
+                            if (gridMenuType.Equals(nameof(EI.ArchiveReports.ArchiveReports))) //arsÄ±v raporlarÄ±nda  Ä±se
                             {
                                 string content = Singl.archiveControllerGet.getArchiveReportXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.ArchiveReports.reportNo)].Value.ToString());
 
-                                if (content != null) //servisten veya dýskten getýrlebýlmýsse
+                                if (content != null) //servisten veya dÄ±skten getÄ±rlebÄ±lmÄ±sse
                                 {
                                     FrmView previewInvoices = new FrmView(content, gridMenuType);
                                     previewInvoices.ShowDialog();
                                 }
                                 else
                                 {
-                                    MessageBox.Show(Lang.cantGetContent);//content dýskten sýlýnmýs ve servýsten getýrýlemedý
+                                    MessageBox.Show(Lang.cantGetContent);//content dÄ±skten sÄ±lÄ±nmÄ±s ve servÄ±sten getÄ±rÄ±lemedÄ±
                                 }
                             }
-                            else  //taslak arsýv ýse
+                            else  //taslak arsÄ±v Ä±se
                             {
                                 string content = Singl.archiveControllerGet.getArchiveContentXml(tableArchiveGrid.Rows[e.RowIndex].Cells[nameof(EI.Invoice.uuid)].Value.ToString());
 
-                                if (content != null) //servisten veya dýskten getýrlebýlmýsse
+                                if (content != null) //servisten veya dÄ±skten getÄ±rlebÄ±lmÄ±sse
                                 {
-                                    FrmView previewInvoices = new FrmView(content, nameof(EI.Invoice.ArchiveInvoices)); //taslak fatura olsa turu arsývdýr
+                                    FrmView previewInvoices = new FrmView(content, nameof(EI.Invoice.ArchiveInvoices)); //taslak fatura olsa turu arsÄ±vdÄ±r
                                     previewInvoices.ShowDialog();
                                 }
                                 else
                                 {
-                                    MessageBox.Show(Lang.cantGetContent);//content dýskten sýlýnmýs ve servýsten getýrýlemedý
+                                    MessageBox.Show(Lang.cantGetContent);//content dÄ±skten sÄ±lÄ±nmÄ±s ve servÄ±sten getÄ±rÄ±lemedÄ±
                                 }
                             }
                         }
@@ -430,10 +430,10 @@ namespace izibiz.UI
                 List<string> unvalidList = new List<string>();
                 bool inUnreportedArchive=false;
 
-                //cancelcontentlýst deký cancel contentlerý foreachle gecerken olusturuyoruz
+                //cancelcontentlÄ±st dekÄ± cancel contentlerÄ± foreachle gecerken olusturuyoruz
                 foreach (DataGridViewRow row in tableArchiveGrid.SelectedRows)
                 {
-                    //daha onceden ýptal edýlmýs mý
+                    //daha onceden Ä±ptal edÄ±lmÄ±s mÄ±
                     if (row.Cells[nameof(EI.Invoice.stateNote)].Value != null && row.Cells[nameof(EI.Invoice.stateNote)].Value.ToString().Contains(nameof(EI.StateNote.IPTAL)))
                     {
                         unvalidList.Add(row.Cells[nameof(EI.Invoice.ID)].Value.ToString());
@@ -441,34 +441,34 @@ namespace izibiz.UI
                     else
                     {
                         bool reportFlag = true;
-                        if (row.Cells[nameof(EI.Invoice.reportFlag)].Value.ToString() != true.ToString())//bu arsýv raporlanmamýs varsa
+                        if (row.Cells[nameof(EI.Invoice.reportFlag)].Value.ToString() != true.ToString())//bu arsÄ±v raporlanmamÄ±s varsa
                         {
                             reportFlag = false;
-                            inUnreportedArchive = true;//ýcerýsýnde raporlanmýs fatura var
+                            inUnreportedArchive = true;//Ä±cerÄ±sÄ±nde raporlanmÄ±s fatura var
                         }
 
-                        //validse cancel contentlerý olustur 
+                        //validse cancel contentlerÄ± olustur 
                         Singl.archiveControllerGet.addContentCancelArcOnCancelContentArr(reportFlag,
                             row.Cells[nameof(EI.Invoice.uuid)].Value.ToString(),
                             row.Cells[nameof(EI.Invoice.ID)].Value.ToString());
 
-                        //validse RowUnique yý kaydet
+                        //validse RowUnique yÄ± kaydet
                         validRowUuidList.Add(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
                     }
                 }
 
                 if (unvalidList.Count != 0)
                 {
-                    //nolu faturalar daha onceden ýptal edýlmýs bunlar ýsleme alýnmayacak devam etmek istiyor musunuz
+                    //nolu faturalar daha onceden Ä±ptal edÄ±lmÄ±s bunlar Ä±sleme alÄ±nmayacak devam etmek istiyor musunuz
                     DialogResult result = MessageBox.Show(string.Join(Environment.NewLine, unvalidList) + Lang.hasNoInvoiceBeforeCanceled, Lang.warning, MessageBoxButtons.YesNo);
                     if (result != DialogResult.Yes)
                     {
                         return;
                     }
                 }
-                if(inUnreportedArchive)//icinde raporlanmamýs fatura varsa
+                if(inUnreportedArchive)//icinde raporlanmamÄ±s fatura varsa
                 {
-                    DialogResult result = MessageBox.Show("Seçili faturalarda raporlanmamýs faturalar vardýr,bunlar tamamen silinecektýr" +
+                    DialogResult result = MessageBox.Show("SeÃ§ili faturalarda raporlanmamÄ±s faturalar vardÄ±r,bunlar tamamen silinecektÄ±r" +
                         "devam etmek istiyor musunuz?", Lang.warning, MessageBoxButtons.YesNo);
                     if (result != DialogResult.Yes)
                     {
@@ -480,17 +480,17 @@ namespace izibiz.UI
                 if (validRowUuidList.Count != 0)
                 {
                     string responseErrorMesage = Singl.archiveControllerGet.cancelEarchive();
-                    if (responseErrorMesage == null) //return code 0 ise ,basarýlý ýse
+                    if (responseErrorMesage == null) //return code 0 ise ,basarÄ±lÄ± Ä±se
                     {
 
-                        //valid olanlarý db de status note iptal yap
+                        //valid olanlarÄ± db de status note iptal yap
                         foreach (string uuid in validRowUuidList)
                         {
 
                             Singl.archiveInvoiceDalGet.updateArchiveStateNote(uuid, EI.StateNote.IPTAL.ToString());
                         }
 
-                        MessageBox.Show(validRowUuidList + Environment.NewLine + Lang.succCancelSelectedInvoice);//secýlý arsýv basarýyla iptal edildi
+                        MessageBox.Show(validRowUuidList + Environment.NewLine + Lang.succCancelSelectedInvoice);//secÄ±lÄ± arsÄ±v basarÄ±yla iptal edildi
                     }
                     else
                     {
@@ -531,11 +531,11 @@ namespace izibiz.UI
             List<string> unvalidListId = new List<string>();
             foreach (DataGridViewRow row in tableArchiveGrid.SelectedRows)
             {
-                if (row.Cells[nameof(EI.Invoice.statusCode)].Value.Equals(200)) //raporlanmýs fatura ýse
+                if (row.Cells[nameof(EI.Invoice.statusCode)].Value.Equals(200)) //raporlanmÄ±s fatura Ä±se
                 {
                     listUuid.Add(row.Cells[nameof(EI.Invoice.ID)].Value.ToString());
                 }
-                else  //raporlanmamýs ýse
+                else  //raporlanmamÄ±s Ä±se
                 {
                     listUuid.Add(row.Cells[nameof(EI.Invoice.uuid)].Value.ToString());
                 }
@@ -543,7 +543,7 @@ namespace izibiz.UI
 
             if (unvalidListId.Count > 0)  //uygun olmayan fatura varsa
             {     
-                MessageBox.Show(string.Join(Environment.NewLine, listUuid) + Environment.NewLine + "raporlandýgý için durum sorgulamasý yapýlamaz");
+                MessageBox.Show(string.Join(Environment.NewLine, listUuid) + Environment.NewLine + "raporlandÄ±gÄ± iÃ§in durum sorgulamasÄ± yapÄ±lamaz");
             }
             if (listUuid.Count > 0) //uygun fatura varsa
             {
@@ -555,7 +555,7 @@ namespace izibiz.UI
                     //string message = string.Join(Environment.NewLine, listUuid) + Environment.NewLine + Lang.noInvUpdated; //nolu faturalar guncellendi           
                     //MessageBox.Show(message);
                 }
-                else//basarýsýzsa false dondur
+                else//basarÄ±sÄ±zsa false dondur
                 {
                     MessageBox.Show(resErrorMessage);
                 }
@@ -587,7 +587,7 @@ namespace izibiz.UI
 
                 if (frmSelectMail.DialogResult == DialogResult.OK)
                 {
-                    //mail sec dýalog formunda maýl kýsýmlarý doldurulan model lýste esýtledýk
+                    //mail sec dÄ±alog formunda maÄ±l kÄ±sÄ±mlarÄ± doldurulan model lÄ±ste esÄ±tledÄ±k
                     sendMailModelList = frmSelectMail.sendMailModelList;
 
                     List<string> errorFailedIdMessage = new List<string>();
@@ -595,16 +595,16 @@ namespace izibiz.UI
                     foreach (var model in sendMailModelList)
                     {
                         string responseErrorMessage = Singl.archiveControllerGet.sendArchiveMail(model.uuid, model.mail);
-                        if (responseErrorMessage != null)  //islem basarýsýzsa
+                        if (responseErrorMessage != null)  //islem basarÄ±sÄ±zsa
                         {
                             errorFailedIdMessage.Add(model.id + "  " + responseErrorMessage);
                         }
                     }
-                    if (errorFailedIdMessage.Count > 0) //barasýrýz olan varsa onu goster
+                    if (errorFailedIdMessage.Count > 0) //barasÄ±rÄ±z olan varsa onu goster
                     {
                         MessageBox.Show(string.Join(Environment.NewLine, errorFailedIdMessage) + Environment.NewLine, Lang.operationFailed, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else  //basarýsýz yoksa
+                    else  //basarÄ±sÄ±z yoksa
                     {
                         MessageBox.Show(Lang.succesful);
                     }
@@ -645,7 +645,7 @@ namespace izibiz.UI
             pnlArchiveReport.Visible = false;
             try
             {
-                //db deký raporlanmýs arsýv faturalarý getýr
+                //db dekÄ± raporlanmÄ±s arsÄ±v faturalarÄ± getÄ±r
                 gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveList(false));
             }
 
@@ -684,7 +684,7 @@ namespace izibiz.UI
             pnlArchiveReport.Visible = false;
             try
             {
-                //db deký raporlanmýs arsýv faturalarý getýr
+                //db dekÄ± raporlanmÄ±s arsÄ±v faturalarÄ± getÄ±r
                 gridReportUpdateList(Singl.ArchiveReportsDalGet.getReportList());
             }
 
@@ -780,7 +780,7 @@ namespace izibiz.UI
                     string signedXmlContent = Singl.archiveControllerGet.getArchiveReportXml(reportNo);
                     if (signedXmlContent != null)
                     {
-                        //contentý dýske yazdýr
+                        //contentÄ± dÄ±ske yazdÄ±r
                         FolderControl.writeFileOnDiskWithString(signedXmlContent, FolderControl.archiveFolderReportPath + reportNo + "." + nameof(EI.DocumentType.XML));
                         listReportNoSucc.Add(row.Cells[nameof(EI.ArchiveReports.reportNo)].Value.ToString());
                     }
@@ -788,11 +788,11 @@ namespace izibiz.UI
 
                 if (listReportNoSucc.Count > 0)
                 {
-                    MessageBox.Show(string.Join(Environment.NewLine, listReportNoSucc) + Environment.NewLine + Lang.hasIdArchiveReportSave);//"secýlý arsýv raporlarý basarýyla kaydedýldý"
+                    MessageBox.Show(string.Join(Environment.NewLine, listReportNoSucc) + Environment.NewLine + Lang.hasIdArchiveReportSave);//"secÄ±lÄ± arsÄ±v raporlarÄ± basarÄ±yla kaydedÄ±ldÄ±"
                 }
                 else
                 {
-                    MessageBox.Show(Lang.operationFailed);//"islem basarýsýz"
+                    MessageBox.Show(Lang.operationFailed);//"islem basarÄ±sÄ±z"
                 }
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -819,7 +819,7 @@ namespace izibiz.UI
 
 
 
-        private void ýtemDraftArchive_Click(object sender, EventArgs e)
+        private void Ä±temDraftArchive_Click(object sender, EventArgs e)
         {
             gridMenuType = EI.Invoice.DraftArchive.ToString();
             btnTakeArchiveInv.Visible = false;
@@ -863,7 +863,7 @@ namespace izibiz.UI
         {
             try
             {
-                //taslak oldugu ýcýn SADECE db den faturayý sýl
+                //taslak oldugu Ä±cÄ±n SADECE db den faturayÄ± sÄ±l
                 foreach (DataGridViewRow row in tableArchiveGrid.SelectedRows)
                 {
                     string uuid = row.Cells[nameof(EI.Invoice.uuid)].Value.ToString();
@@ -904,7 +904,7 @@ namespace izibiz.UI
         {
             try
             {
-                //db den getýrýlen serý Namelerý comboboxda sectýr
+                //db den getÄ±rÄ±len serÄ± NamelerÄ± comboboxda sectÄ±r
                 FrmDialogSelectItem frmDialogSelectSeriName = new FrmDialogSelectItem(true, "");
                 if (frmDialogSelectSeriName.ShowDialog() == DialogResult.OK)
                 {
@@ -922,11 +922,11 @@ namespace izibiz.UI
 
                         archiveContentPropertiesModel.archiveType = tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.eArchiveType)].Value.ToString();
                        
-                        //alýnan contenttýn ýdsýný degýstýrerek koy
+                        //alÄ±nan contenttÄ±n Ä±dsÄ±nÄ± degÄ±stÄ±rerek koy
                         string content = Singl.archiveControllerGet.getArchiveContentXml(archiveContentPropertiesModel.uuid);
                         archiveContentPropertiesModel.content= XmlControl.xmlInvoiceChangeIdValue(content, newIdArr[cnt]);
 
-                        if (tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.receiverMail)].Value != null) //mail gonderýlmek ýsstenýyorsa
+                        if (tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.receiverMail)].Value != null) //mail gonderÄ±lmek Ä±sstenÄ±yorsa
                         {
                             archiveContentPropertiesModel.mail = tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.receiverMail)].Value.ToString();
                         }
@@ -943,36 +943,36 @@ namespace izibiz.UI
                     }
                     else
                     {
-                        //db de fatura durumunu taslaktan cýkar
+                        //db de fatura durumunu taslaktan cÄ±kar
                         for (int cnt = 0; cnt < archiveModelArr.Length; cnt++)
                         {
                            
                             string oldFolderPath = Singl.archiveInvoiceDalGet.findArchive(archiveModelArr[cnt].uuid).folderPath;
 
-                            //path degýstýr
+                            //path degÄ±stÄ±r
                             string newFolderPath = FolderControl.archiveFolderPath + newIdArr[cnt] + "." + nameof(EI.DocumentType.XML);
                     
-                            //guncelleme basarýlýysa
+                            //guncelleme basarÄ±lÄ±ysa
                             if (Singl.archiveInvoiceDalGet.updateArchiveIdStateNoteDraftFlagFolderPath(archiveModelArr[cnt].uuid,
                                  newIdArr[cnt], EI.StateNote.SEND.ToString(), false, newFolderPath) == 1)
                             {
                                 //diskten xmli sil
                                 FolderControl.deleteFileFromPath(oldFolderPath);
                                
-                                //yený kontentý dýske kaydet
+                                //yenÄ± kontentÄ± dÄ±ske kaydet
                                 FolderControl.writeFileOnDiskWithString(archiveModelArr[cnt].content, newFolderPath);
                             }
                             else
                             {
-                                MessageBox.Show("Db ye kaydetme iþlemi basarýsýz,Ýþlemi tekrar gerceklestýrýnýz" + tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
+                                MessageBox.Show("Db ye kaydetme iÅŸlemi basarÄ±sÄ±z,Ä°ÅŸlemi tekrar gerceklestÄ±rÄ±nÄ±z" + tableArchiveGrid.SelectedRows[cnt].Cells[nameof(EI.Invoice.ID)].Value.ToString());
                                 return;
                             }
                         }
 
-                        //db ye, en son olusturulan yený ýnv id serisinin son itemi ýle serý no ve yýl guncelle
+                        //db ye, en son olusturulan yenÄ± Ä±nv id serisinin son itemi Ä±le serÄ± no ve yÄ±l guncelle
                         Singl.invIdSerilazeDalGet.updateLastAddedInvIdSeri(newIdArr.Last());
 
-                        MessageBox.Show(Lang.succesful);//"Baþarýlý"
+                        MessageBox.Show(Lang.succesful);//"BaÅŸarÄ±lÄ±"
                         gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveList(true));
                     }
                 }
@@ -1006,7 +1006,7 @@ namespace izibiz.UI
         {
             try
             {
-                //gridde secýlý arsývlerýn ýmzalý xmlýný dýske yazar
+                //gridde secÄ±lÄ± arsÄ±vlerÄ±n Ä±mzalÄ± xmlÄ±nÄ± dÄ±ske yazar
                 List<string> listUnvalidArchive = new List<string>();
 
                 foreach (DataGridViewRow row in tableArchiveGrid.SelectedRows)
@@ -1025,11 +1025,11 @@ namespace izibiz.UI
 
                 if (listUnvalidArchive.Count > 0)
                 {
-                    MessageBox.Show(string.Join(Environment.NewLine, listUnvalidArchive) + Environment.NewLine + Lang.noGetInvoice);//Seçili arsivler getirilemedi
+                    MessageBox.Show(string.Join(Environment.NewLine, listUnvalidArchive) + Environment.NewLine + Lang.noGetInvoice);//SeÃ§ili arsivler getirilemedi
                 }
                 else
                 {
-                    MessageBox.Show(Lang.succesful);//"Baþarýlý"
+                    MessageBox.Show(Lang.succesful);//"BaÅŸarÄ±lÄ±"
                 }
 
             }
@@ -1063,10 +1063,10 @@ namespace izibiz.UI
             {
                 List<string> listUuid = Singl.archiveInvoiceDalGet.getArchiveUuidList(false);
 
-                //guncel durumunu db ye yazdýr
+                //guncel durumunu db ye yazdÄ±r
                 Singl.archiveControllerGet.getArchiveStatusAndSaveDb(listUuid.ToArray());
 
-                //db den report flag true  olanlarý getýr
+                //db den report flag true  olanlarÄ± getÄ±r
                 gridArchiveUpdateList(Singl.archiveInvoiceDalGet.getArchiveReportList());
             }
             catch (FaultException<REQUEST_ERRORType> ex)

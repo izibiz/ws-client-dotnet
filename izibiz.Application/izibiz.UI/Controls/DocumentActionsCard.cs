@@ -62,6 +62,26 @@ namespace izibiz.UI.Controls
             set => lblDesc.Text = value;
         }
 
+        public bool ViewButtonEnabled
+        {
+            get => btnView.Enabled;
+            set
+            {
+                btnView.Enabled = value;
+                btnView.BackColor = value ? BrandColors.CardBorder : Color.LightGray;
+            }
+        }
+
+        public bool CancelButtonEnabled
+        {
+            get => btnCancel.Enabled;
+            set
+            {
+                btnCancel.Enabled = value;
+                btnCancel.BackColor = value ? BrandColors.CardBorder : Color.LightGray;
+            }
+        }
+
         /// <summary>Görüntüleme için seçili format: "pdf" veya "html".</summary>
         public string SelectedViewFormat => rdViewHtml.Checked ? "html" : "pdf";
 

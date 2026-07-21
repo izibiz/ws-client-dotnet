@@ -11,14 +11,31 @@ using System.Windows.Forms;
 using izibiz.COMMON.Language;
 
 
+using izibiz.UI.Controls;
+
 namespace izibiz.UI
 {
     public partial class FrmHome : Form
     {
+        private PictureBox pbLogo;
+
         public FrmHome()
         {
             InitializeComponent();
             try { this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); } catch { }
+
+            // Apply Theme
+            this.BackColor = BrandColors.PageBackground;
+
+            // Setup Logo
+            pbLogo = new PictureBox
+            {
+                Image = Properties.Resources.izibizLogoFull,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Size = new Size(300, 100),
+                BackColor = Color.Transparent
+            };
+            this.Controls.Add(pbLogo);
         }
 
 
@@ -26,7 +43,31 @@ namespace izibiz.UI
         private void FrmHome_Load(object sender, EventArgs e)
         {
             localizationItemTextWrite();
+            ApplyModernStyling();
             ArrangeProductGrid();
+        }
+
+        private void ApplyModernStyling()
+        {
+            var buttons = new[] { btnInvoice, btnArchive, btnIrsaliye, btnMutabakat, btnSmm, BtnMÃ¼stahsil };
+            var labels = new Label[] { lblInvoiceTitle, lblArchiveTitle, lblIrsaliyeTitle, lblMutabakatTitle, lblSmmTitle, lblMustahsilTitle };
+
+            foreach (var btn in buttons)
+            {
+                btn.BackColor = Color.White;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.FlatAppearance.MouseOverBackColor = Color.White; // Handle color by Animator
+                btn.FlatAppearance.MouseDownBackColor = BrandColors.TealHover;
+                
+                RoundedPathHelper.ApplyRoundedRegion(btn, 15);
+                HoverAnimator.Attach(btn, Color.White, BrandColors.TealLight);
+            }
+
+            foreach (var lbl in labels)
+            {
+                lbl.ForeColor = BrandColors.TextDark;
+                lbl.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(162)));
+            }
         }
 
         private void FrmHome_Resize(object sender, EventArgs e)
@@ -35,12 +76,14 @@ namespace izibiz.UI
         }
 
         /// <summary>
-        /// 6 ürünü ekranýn ortasýnda, 3x2 modern bir kart düzeninde konumlandýrýr.
-        /// Pencere yeniden boyutlandýrýldýðýnda da yeniden hesaplanýr (Resize event'i ile).
+        /// 6 Ã¼rÃ¼nÃ¼ ekranÄ±n ortasÄ±nda, 3x2 modern bir kart dÃ¼zeninde konumlandÄ±rÄ±r.
+        /// Pencere yeniden boyutlandÄ±rÄ±ldÄ±ÄŸÄ±nda da yeniden hesaplanÄ±r (Resize event'i ile).
         /// </summary>
         private void ArrangeProductGrid()
         {
-            var buttons = new[] { btnInvoice, btnArchive, btnIrsaliye, btnMutabakat, btnSmm, btnMüstahsil };
+            if (pbLogo == null) return;
+
+            var buttons = new[] { btnInvoice, btnArchive, btnIrsaliye, btnMutabakat, btnSmm, BtnMÃ¼stahsil };
             var labels = new Label[] { lblInvoiceTitle, lblArchiveTitle, lblIrsaliyeTitle, lblMutabakatTitle, lblSmmTitle, lblMustahsilTitle };
 
             const int iconSize = 200;
@@ -53,21 +96,31 @@ namespace izibiz.UI
             int gridWidth = cols * iconSize + (cols - 1) * colGap;
             int gridHeight = rows * (iconSize + 8 + labelHeight) + (rows - 1) * rowGap;
 
+            // Make space for the logo at the top
+            int totalHeight = pbLogo.Height + 50 + gridHeight;
+            
             int startX = (this.ClientSize.Width - gridWidth) / 2;
-            int startY = (this.ClientSize.Height - gridHeight) / 2;
+            int startY = (this.ClientSize.Height - totalHeight) / 2;
+
+            // Position Logo
+            pbLogo.Location = new Point((this.ClientSize.Width - pbLogo.Width) / 2, startY);
+            
+            // Offset grid Y below the logo
+            int gridStartY = startY + pbLogo.Height + 50;
 
             for (int i = 0; i < buttons.Length; i++)
             {
                 int col = i % cols;
                 int row = i / cols;
                 int x = startX + col * (iconSize + colGap);
-                int y = startY + row * (iconSize + 8 + labelHeight + rowGap);
+                int y = gridStartY + row * (iconSize + 8 + labelHeight + rowGap);
 
                 buttons[i].Location = new Point(x, y);
                 buttons[i].Size = new Size(iconSize, iconSize);
 
-                labels[i].Location = new Point(x, y + iconSize + 8);
+                labels[i].Location = new Point(x, y + iconSize + 15);
                 labels[i].Size = new Size(iconSize, labelHeight);
+                labels[i].TextAlign = ContentAlignment.TopCenter;
             }
         }
 
@@ -84,14 +137,14 @@ namespace izibiz.UI
             }
 
             #region writeFormInItem
-            //eleman text yazdýr
+            //eleman text yazdÄ±r
             this.Text = Lang.formHomePage;
             lblInvoiceTitle.Text = Lang.eInvoice;
             lblArchiveTitle.Text = Lang.eArchive;
             lblIrsaliyeTitle.Text = Lang.eDispatch;
             lblMutabakatTitle.Text = Lang.eReconciliation;
             lblSmmTitle.Text = Lang.eFreeJob;
-            lblMustahsilTitle.Text = "E-Müstahsil";
+            lblMustahsilTitle.Text = "E-MÃ¼stahsil";
             #endregion
         }
 
@@ -138,7 +191,7 @@ namespace izibiz.UI
             frmSelfEmployment.Show();
         }
 
-        private void BtnMüstahsil_Click(object sender, EventArgs e)
+        private void BtnMÃ¼stahsil_Click(object sender, EventArgs e)
         {
             FrmCreditNote frmCreditNote = new FrmCreditNote();
             this.Hide();

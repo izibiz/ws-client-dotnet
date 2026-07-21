@@ -1,4 +1,4 @@
-namespace izibiz.UI.Controls
+﻿namespace izibiz.UI.Controls
 {
     partial class DocumentActionsCard
     {

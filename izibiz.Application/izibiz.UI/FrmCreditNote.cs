@@ -59,8 +59,7 @@ namespace izibiz.UI
 
             SetupSidebarHoverEffects();
 
-            // Form açılır açılmaz "E-Müstahsil" seçili gelsin; kullanıcı ayrıca tıklamak zorunda kalmasın.
-            ItemGetCreditNote_Click(btnNavMustahsil, EventArgs.Empty);
+            // Kullanıcı soldaki menüden seçmedikçe listeleme yapma.
             UpdateEmptyState();
 
             ArrangeResponsiveLayout();
@@ -95,6 +94,9 @@ namespace izibiz.UI
                 SetSidebarContentVisible(false);
             }
 
+            // Animasyon sırasında grid titremesini önlemek için sütun oto-boyutlandırmayı geçici olarak durdur
+            tableGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
             if (_sidebarAnimTimer == null)
             {
                 _sidebarAnimTimer = new Timer { Interval = 10 };
@@ -124,14 +126,17 @@ namespace izibiz.UI
                 {
                     SetSidebarContentVisible(true);
                 }
+
+                // Animasyon bittiğinde sütun boyutlandırmayı eski haline (Fill) getir
+                tableGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                ArrangeResponsiveLayout();
             }
             else
             {
                 pnlSidebar.Width += diff / 3;
+                btnHamburger.Location = new Point(pnlSidebar.Width - 60, 24);
+                ArrangeResponsiveLayout();
             }
-
-            btnHamburger.Location = new Point(pnlSidebar.Width - 60, 24);
-            ArrangeResponsiveLayout();
         }
 
         /// <summary>
@@ -142,7 +147,7 @@ namespace izibiz.UI
         {
             bool isEmpty = tableGrid.Rows.Count == 0;
             lblEmptyIcon.Visible = isEmpty;
-            lblEmptyText.Visible = isEmpty;
+            lblEmptyText.Visible = false;
             tableGrid.Visible = !isEmpty;
         }
 
@@ -181,7 +186,8 @@ namespace izibiz.UI
             tableGrid.Location = new Point(contentLeft, tableGrid.Top);
             tableGrid.Width = contentWidth;
             lblInformation.Location = new Point(contentLeft + 3, lblInformation.Top);
-            lblEmptyIcon.Location = new Point(contentLeft, lblEmptyIcon.Top);
+            int emptyCenterY = tableGrid.Top + (tableGrid.Height / 2) - (lblEmptyIcon.Height / 2);
+            lblEmptyIcon.Location = new Point(contentLeft, emptyCenterY);
             lblEmptyIcon.Width = contentWidth;
             lblEmptyText.Location = new Point(contentLeft, lblEmptyText.Top);
             lblEmptyText.Width = contentWidth;
@@ -195,6 +201,8 @@ namespace izibiz.UI
                 var result = await Singl.MustahsilClientGet.ListAsync(filter);
 
                 tableGrid.DataSource = result.Contents;
+                EnsureCheckboxColumn();
+                FormatGridColumns();
                 UpdateEmptyState();
 
                 gridMenuType = EI.CreditNote.CreditNotes.ToString();
@@ -287,51 +295,63 @@ namespace izibiz.UI
 
                 addViewButtonToDatagridView();
                 tableGrid.DataSource = CreditNoteList;
+                EnsureCheckboxColumn();
+                FormatGridColumns();
                 UpdateEmptyState();
-                dataGridChangeColumnHeaderText();
-
-                //gridde taslak faturaları lısletemıyorsak
-                if (!gridDirection.Equals(nameof(EI.Direction.DRAFT)))
-                {
-                    tableGrid.Columns[nameof(EI.CreditNote.draftDesc)].Visible = false;
-                }
-                tableGrid.Columns[nameof(EI.CreditNote.isDraft)].Visible = false;
-                tableGrid.Columns[nameof(EI.CreditNote.statusCode)].Visible = false;
-                tableGrid.Columns[nameof(EI.CreditNote.status)].Visible = false;
-                tableGrid.Columns[nameof(EI.CreditNote.emailStatusCode)].Visible = false;
-                tableGrid.Columns[nameof(EI.CreditNote.folderPath)].Visible = false;
-
 
                 lblInformation.Text = Lang.clickRowInvoice;
                 lblInformation.Visible = true;
-
             }
         }
 
-        private void dataGridChangeColumnHeaderText()
+        private void FormatGridColumns()
         {
+            // First, hide all columns to avoid clutter
+            foreach (DataGridViewColumn col in tableGrid.Columns)
+            {
+                if (col.Name != "chkSelect" && col.Name != nameof(EI.GridBtnClmName.previewHtml))
+                {
+                    col.Visible = false;
+                }
+            }
 
-            tableGrid.Columns[EI.CreditNote.status.ToString()].HeaderText = Lang.status;
+            // We need to determine if we are in SOAP or REST mode by checking if a specific column exists.
+            bool isRest = tableGrid.Columns.Contains("DocumentNo");
 
+            // We set the DisplayIndex and HeaderText for the desired columns to match the web portal.
+            int displayIdx = 2; // chkSelect is 0, previewHtml is 1
 
-            tableGrid.Columns[EI.CreditNote.uuid.ToString()].HeaderText = Lang.uuid;
+            void SetupCol(string colName, string headerText)
+            {
+                if (tableGrid.Columns.Contains(colName))
+                {
+                    tableGrid.Columns[colName].Visible = true;
+                    tableGrid.Columns[colName].HeaderText = headerText;
+                    tableGrid.Columns[colName].DisplayIndex = displayIdx++;
+                }
+            }
 
-            tableGrid.Columns[EI.CreditNote.issueDate.ToString()].HeaderText = Lang.issueDate;
-
-            tableGrid.Columns[EI.CreditNote.profileId.ToString()].HeaderText = Lang.profileid;
-
-            tableGrid.Columns[EI.CreditNote.cDate.ToString()].HeaderText = Lang.cDate;
-
-            tableGrid.Columns[EI.CreditNote.draftDesc.ToString()].HeaderText = Lang.fromPortal;
-
-            tableGrid.Columns[EI.CreditNote.customerTitle.ToString()].HeaderText = Lang.customerTitle;
-
-            tableGrid.Columns[EI.CreditNote.CreditNoteID.ToString()].HeaderText = Lang.creditNoteID;
-
-            tableGrid.Columns[EI.CreditNote.customerIdentifier.ToString()].HeaderText = Lang.vknTckn;
-
-            tableGrid.Columns[EI.CreditNote.statusDesc.ToString()].HeaderText = Lang.statusDesc;
-
+            if (isRest)
+            {
+                SetupCol("DocumentNo", "Belge No");
+                SetupCol("ReceiverIdentifier", "VKN/TCKN");
+                SetupCol("ReceiverName", "Firma Unvanı");
+                SetupCol("IssueDate", "Belge Tarihi");
+                SetupCol("Amount", "Tutar");
+                SetupCol("ProfileId", "Senaryo");
+                SetupCol("TypeCode", "Tip");
+                SetupCol("DocumentStatusLabel", "Durum");
+            }
+            else // SOAP
+            {
+                SetupCol("CreditNoteID", "Belge No");
+                SetupCol("customerIdentifier", "VKN/TCKN");
+                SetupCol("customerTitle", "Firma Unvanı");
+                SetupCol("issueDate", "Belge Tarihi");
+                SetupCol("cDate", "Gönderilme Zamanı");
+                SetupCol("profileID", "Senaryo");
+                SetupCol("statusDesc", "Durum");
+            }
         }
 
 
@@ -381,7 +401,7 @@ namespace izibiz.UI
 
 
 
-        private void ItemGetCreditNote_Click(object sender, EventArgs e)
+        private async void ItemGetCreditNote_Click(object sender, EventArgs e)
         {
             gridMenuType = EI.CreditNote.CreditNotes.ToString();
 
@@ -391,7 +411,8 @@ namespace izibiz.UI
 
             try
             {
-                gridCreditNoteUpdateList(Singl.creditNotesDalGet.getCreditNoteWithDraft(false));
+                var list = await Task.Run(() => Singl.creditNotesDalGet.getCreditNoteWithDraft(false));
+                gridCreditNoteUpdateList(list);
 
 
             }
@@ -418,7 +439,7 @@ namespace izibiz.UI
 
         }
 
-        private void ItemGetDraftCreditNote_Click(object sender, EventArgs e)
+        private async void ItemGetDraftCreditNote_Click(object sender, EventArgs e)
         {
             gridMenuType = EI.CreditNote.draftCreditNote.ToString();
             gridDirection = nameof(EI.Direction.DRAFT);
@@ -427,8 +448,8 @@ namespace izibiz.UI
 
             try
             {
-
-                gridCreditNoteUpdateList(Singl.creditNotesDalGet.getCreditNoteWithDraft(true));
+                var list = await Task.Run(() => Singl.creditNotesDalGet.getCreditNoteWithDraft(true));
+                gridCreditNoteUpdateList(list);
 
             }
             catch (FaultException<REQUEST_ERRORType> ex)
@@ -656,6 +677,69 @@ namespace izibiz.UI
             }
         }
 
+        private void EnsureCheckboxColumn()
+        {
+            if (!tableGrid.Columns.Contains("chkSelect"))
+            {
+                var chkCol = new DataGridViewCheckBoxColumn
+                {
+                    Name = "chkSelect",
+                    HeaderText = "",
+                    Width = 40,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    ReadOnly = false
+                };
+                tableGrid.Columns.Insert(0, chkCol);
+            }
+            
+            foreach (DataGridViewColumn col in tableGrid.Columns)
+            {
+                if (col.Name != "chkSelect" && col.Name != nameof(EI.GridBtnClmName.previewHtml))
+                {
+                    col.ReadOnly = true;
+                }
+            }
+        }
+
+        private void tableGrid_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (tableGrid.IsCurrentCellDirty && tableGrid.CurrentCell.OwningColumn.Name == "chkSelect")
+            {
+                tableGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void tableGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && tableGrid.Columns[e.ColumnIndex].Name == "chkSelect")
+            {
+                UpdateActionButtonsState();
+            }
+        }
+
+        private void UpdateActionButtonsState()
+        {
+            int checkedCount = 0;
+            foreach (DataGridViewRow row in tableGrid.Rows)
+            {
+                if (row.Cells["chkSelect"].Value != null && Convert.ToBoolean(row.Cells["chkSelect"].Value))
+                {
+                    checkedCount++;
+                }
+            }
+
+            if (checkedCount > 1)
+            {
+                documentActionsCard1.ViewButtonEnabled = false;
+                documentActionsCard1.CancelButtonEnabled = false;
+            }
+            else
+            {
+                documentActionsCard1.ViewButtonEnabled = true;
+                documentActionsCard1.CancelButtonEnabled = true;
+            }
+        }
+
         /// <summary>
         /// İndir: seçili formatı (pdf/html/xml) kalıcı olarak diske kaydeder ve açar.
         /// </summary>
@@ -663,20 +747,68 @@ namespace izibiz.UI
         {
             try
             {
-                var boundItem = tableGrid.SelectedRows[0].DataBoundItem;
-                if (boundItem is izibiz.REST.Concrete.Mustahsil.MustahsilListItem restItem)
+                var checkedRows = new System.Collections.Generic.List<DataGridViewRow>();
+                foreach (DataGridViewRow row in tableGrid.Rows)
                 {
-                    // API'de "xml" diye ayrı bir indirme formatı yok, XML içerik "ubl" formatı üzerinden geliyor.
-                    // Kullanıcıya hâlâ "xml" gösteriyoruz, dosyayı da .xml uzantısıyla kaydediyoruz.
+                    if (row.Cells["chkSelect"].Value != null && Convert.ToBoolean(row.Cells["chkSelect"].Value))
+                    {
+                        checkedRows.Add(row);
+                    }
+                }
+
+                if (checkedRows.Count == 0)
+                {
+                    if (tableGrid.SelectedRows.Count > 0)
+                    {
+                        checkedRows.Add(tableGrid.SelectedRows[0]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lütfen indirmek için en az bir belge seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                var idsToDownload = new System.Collections.Generic.List<string>();
+                string singlePathToOpen = null;
+
+                foreach (var row in checkedRows)
+                {
+                    if (row.DataBoundItem is izibiz.REST.Concrete.Mustahsil.MustahsilListItem restItem)
+                    {
+                        idsToDownload.Add(restItem.Id.ToString());
+                    }
+                }
+
+                if (idsToDownload.Count > 0)
+                {
                     string apiFormat = e.Format == "xml" ? "ubl" : e.Format;
+                    var result = await Singl.MustahsilClientGet.DownloadAsync(idsToDownload, apiFormat);
 
-                    var result = await Singl.MustahsilClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, apiFormat);
-                    byte[] downloadBytes = System.Linq.Enumerable.FirstOrDefault(result.Values);
-                    string path = FolderControl.CreditNoteFolderPath + restItem.Uuid + "." + e.Format;
-                    FolderControl.writeFileOnDiskWithByte(downloadBytes, path);
-                    System.Diagnostics.Process.Start(path);
+                    foreach (var kvp in result)
+                    {
+                        string safeFileName = System.IO.Path.GetFileName(kvp.Key);
+                        string path = System.IO.Path.Combine(FolderControl.CreditNoteFolderPath, safeFileName);
+                        FolderControl.writeFileOnDiskWithByte(kvp.Value, path);
+                        if (idsToDownload.Count == 1)
+                        {
+                            singlePathToOpen = path;
+                        }
+                    }
 
-                    MessageBox.Show($"Belge indirildi: {path}", "İndirme Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (idsToDownload.Count == 1)
+                    {
+                        if (!string.IsNullOrEmpty(singlePathToOpen))
+                        {
+                            System.Diagnostics.Process.Start(singlePathToOpen);
+                        }
+                        MessageBox.Show($"Belge indirildi.", "İndirme Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process.Start(FolderControl.CreditNoteFolderPath);
+                        MessageBox.Show($"{idsToDownload.Count} adet belge başarıyla indirildi.\nKlasör: {FolderControl.CreditNoteFolderPath}", "Toplu İndirme Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
