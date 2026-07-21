@@ -9,19 +9,22 @@ using izibiz.REST.Strategy;
 
 namespace izibiz.REST.Concrete.Mustahsil
 {
-    public class MustahsilClient : IListStrategy<MustahsilListItem>, IViewStrategy, IDownloadStrategy
+    public class MustahsilClient : IListStrategy<MustahsilListItem>, IViewStrategy, IDownloadStrategy, ICancelStrategy
     {
         private readonly RestListStrategy<MustahsilListItem> _listStrategy;
         private readonly RestViewStrategy _viewStrategy;
         private readonly RestDownloadStrategy _downloadStrategy;
+        private readonly RestCancelStrategy _cancelStrategy;
 
         public MustahsilClient(HttpClient httpClient, RestApiOptions options)
         {
             string basePath = $"/{options.Version}/ecreditnotes/outbox";
+            string cancelPath = $"/{options.Version}/ecreditnotes";
 
             _listStrategy = new RestListStrategy<MustahsilListItem>(httpClient, basePath);
             _viewStrategy = new RestViewStrategy(httpClient, basePath);
             _downloadStrategy = new RestDownloadStrategy(httpClient, basePath);
+            _cancelStrategy = new RestCancelStrategy(httpClient, cancelPath);
         }
 
         public Task<PagedResult<MustahsilListItem>> ListAsync(ListFilter filter)
@@ -37,6 +40,11 @@ namespace izibiz.REST.Concrete.Mustahsil
         public Task<Dictionary<string, byte[]>> DownloadAsync(List<string> ids, string format)
         {
             return _downloadStrategy.DownloadAsync(ids, format);
+        }
+
+        public Task CancelAsync(string uuid, bool deleteDocument = false)
+        {
+            return _cancelStrategy.CancelAsync(uuid, deleteDocument);
         }
     }
 }

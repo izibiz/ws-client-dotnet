@@ -14,6 +14,7 @@ namespace izibiz.UI.Controls
     {
         public event EventHandler<DocumentActionEventArgs> ViewRequested;
         public event EventHandler<DocumentActionEventArgs> DownloadRequested;
+        public event EventHandler CancelRequested;
 
         private Color _borderColor = BrandColors.CardBorder;
 
@@ -29,12 +30,16 @@ namespace izibiz.UI.Controls
 
             btnView.Click += (s, e) => ViewRequested?.Invoke(this, new DocumentActionEventArgs(SelectedViewFormat));
             btnDownload.Click += (s, e) => DownloadRequested?.Invoke(this, new DocumentActionEventArgs(SelectedDownloadFormat));
+            btnCancel.Click += (s, e) => CancelRequested?.Invoke(this, EventArgs.Empty);
 
             btnView.FlatAppearance.MouseOverBackColor = BrandColors.Neutral;
             HoverAnimator.Attach(btnView, BrandColors.Neutral, BrandColors.NeutralHover);
 
             btnDownload.FlatAppearance.MouseOverBackColor = BrandColors.Green;
             HoverAnimator.Attach(btnDownload, BrandColors.Green, BrandColors.GreenHover);
+
+            btnCancel.FlatAppearance.MouseOverBackColor = BrandColors.Danger;
+            HoverAnimator.Attach(btnCancel, BrandColors.Danger, BrandColors.DangerHover);
 
             HoverAnimator.AttachCustom(this, BrandColors.CardBorder, Color.FromArgb(148, 163, 184), c =>
             {
@@ -77,6 +82,7 @@ namespace izibiz.UI.Controls
             RoundedPathHelper.ApplyRoundedRegion(this, 16);
             RoundedPathHelper.ApplyRoundedRegion(btnView, 10);
             RoundedPathHelper.ApplyRoundedRegion(btnDownload, 10);
+            RoundedPathHelper.ApplyRoundedRegion(btnCancel, 10);
             RoundedPathHelper.ApplyRoundedRegion(rdViewPdf, 10);
             RoundedPathHelper.ApplyRoundedRegion(rdViewHtml, 10);
             RoundedPathHelper.ApplyRoundedRegion(rdDownloadPdf, 10);
@@ -89,9 +95,11 @@ namespace izibiz.UI.Controls
             var rect = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
             RoundedPathHelper.DrawBorder(e.Graphics, rect, 16, _borderColor);
 
-            // Görüntüle/İndir bölümlerini ayıran ince dikey çizgi.
-            int dividerX = pnlDownloadFormats.Left - 20;
-            e.Graphics.DrawLine(new Pen(BrandColors.CardBorder), dividerX, 90, dividerX, 222);
+            // Görüntüle/İndir/Sil bölümlerini ayıran ince dikey çizgiler.
+            int dividerX1 = pnlDownloadFormats.Left - 20;
+            int dividerX2 = lblCancelHeader.Left - 20;
+            e.Graphics.DrawLine(new Pen(BrandColors.CardBorder), dividerX1, 90, dividerX1, 222);
+            e.Graphics.DrawLine(new Pen(BrandColors.CardBorder), dividerX2, 90, dividerX2, 222);
         }
 
         private void FormatOption_CheckedChanged(object sender, EventArgs e)

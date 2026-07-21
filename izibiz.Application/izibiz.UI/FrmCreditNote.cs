@@ -55,6 +55,7 @@ namespace izibiz.UI
             sourceCardRest.FetchClicked += BtnRestListele_Click;
             documentActionsCard1.ViewRequested += DocumentActionsCard1_ViewRequested;
             documentActionsCard1.DownloadRequested += DocumentActionsCard1_DownloadRequested;
+            documentActionsCard1.CancelRequested += DocumentActionsCard1_CancelRequested;
 
             SetupSidebarHoverEffects();
 
@@ -685,6 +686,47 @@ namespace izibiz.UI
             catch (Exception ex)
             {
                 MessageBox.Show("İndirme Hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Sil: seçili belgeyi iptal eder. Geri alınamaz bir işlem olduğu için önce onay istenir.
+        /// </summary>
+        private async void DocumentActionsCard1_CancelRequested(object sender, EventArgs e)
+        {
+            if (tableGrid.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Lütfen tablodan bir belge seçin.");
+                return;
+            }
+
+            var boundItem = tableGrid.SelectedRows[0].DataBoundItem;
+            if (!(boundItem is izibiz.REST.Concrete.Mustahsil.MustahsilListItem restItem))
+            {
+                MessageBox.Show("Silme özelliği şu an sadece REST verileri için kullanılabilir.");
+                return;
+            }
+
+            var confirm = MessageBox.Show(
+                $"'{restItem.Uuid}' numaralı belgeyi iptal etmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+                "Belgeyi Sil",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                await Singl.MustahsilClientGet.CancelAsync(restItem.Uuid);
+                MessageBox.Show("Belge başarıyla iptal edildi.", "İptal Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BtnRestListele_Click(sender, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("İptal Hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

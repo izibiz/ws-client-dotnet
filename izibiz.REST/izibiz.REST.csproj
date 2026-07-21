@@ -59,10 +59,12 @@
     <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\PagedResult.cs" />
     <Compile Include="Models\Request\ListFilter.cs" />
+    <Compile Include="Operations\RestCancelStrategy.cs" />
     <Compile Include="Operations\RestDownloadStrategy.cs" />
     <Compile Include="Operations\RestListStrategy.cs" />
     <Compile Include="Operations\RestViewStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategy\ICancelStrategy.cs" />
     <Compile Include="Strategy\IDownloadStrategy.cs" />
     <Compile Include="Strategy\IListStrategy.cs" />
     <Compile Include="Strategy\IViewStrategy.cs" />

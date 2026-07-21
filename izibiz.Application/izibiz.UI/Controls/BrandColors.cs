@@ -32,5 +32,8 @@ namespace izibiz.UI.Controls
         public static readonly Color NeutralDisabled = Color.FromArgb(190, 190, 190);
         public static readonly Color TextMuted = Color.FromArgb(100, 116, 139);
         public static readonly Color TextDark = Color.FromArgb(30, 41, 59);
+
+        public static readonly Color Danger = Color.FromArgb(185, 28, 28);
+        public static readonly Color DangerHover = Color.FromArgb(220, 38, 38);
     }
 }

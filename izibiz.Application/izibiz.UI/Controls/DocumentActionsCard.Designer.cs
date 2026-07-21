@@ -30,6 +30,8 @@ namespace izibiz.UI.Controls
             this.rdDownloadHtml = new System.Windows.Forms.RadioButton();
             this.rdDownloadXml = new System.Windows.Forms.RadioButton();
             this.btnDownload = new System.Windows.Forms.Button();
+            this.lblCancelHeader = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.lblNote = new System.Windows.Forms.Label();
             this.pnlViewFormats.SuspendLayout();
             this.pnlDownloadFormats.SuspendLayout();
@@ -224,6 +226,33 @@ namespace izibiz.UI.Controls
             this.btnDownload.UseVisualStyleBackColor = false;
             this.btnDownload.Cursor = System.Windows.Forms.Cursors.Hand;
             //
+            // lblCancelHeader
+            //
+            this.lblCancelHeader.AutoSize = true;
+            this.lblCancelHeader.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblCancelHeader.ForeColor = System.Drawing.Color.FromArgb(185, 28, 28);
+            this.lblCancelHeader.Location = new System.Drawing.Point(1000, 92);
+            this.lblCancelHeader.Name = "lblCancelHeader";
+            this.lblCancelHeader.Size = new System.Drawing.Size(40, 25);
+            this.lblCancelHeader.TabIndex = 9;
+            this.lblCancelHeader.Text = "Sil";
+            //
+            // btnCancel
+            //
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(185, 28, 28);
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(220, 38, 38);
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(1000, 177);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(210, 45);
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Belgeyi Sil";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            //
             // lblNote
             //
             this.lblNote.AutoSize = true;
@@ -239,6 +268,8 @@ namespace izibiz.UI.Controls
             //
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblNote);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.lblCancelHeader);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.pnlDownloadFormats);
             this.Controls.Add(this.lblDownloadHeader);
@@ -272,6 +303,8 @@ namespace izibiz.UI.Controls
         private System.Windows.Forms.RadioButton rdDownloadHtml;
         private System.Windows.Forms.RadioButton rdDownloadXml;
         private System.Windows.Forms.Button btnDownload;
+        private System.Windows.Forms.Label lblCancelHeader;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblNote;
     }
 }

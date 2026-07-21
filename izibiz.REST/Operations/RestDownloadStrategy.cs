@@ -11,11 +11,7 @@ using izibiz.REST.Strategy;
 
 namespace izibiz.REST.Operations
 {
-    /// <summary>
-    /// POST /download/{format} endpoint'ine istek atarak
-    /// belgeyi ZIP içinde Base64 olarak indirir.
-    /// Hafızada ZIP'i çözüp asıl dosyanın baytlarını döndürür.
-    /// </summary>
+
     public class RestDownloadStrategy : IDownloadStrategy
     {
         private readonly HttpClient _httpClient;
