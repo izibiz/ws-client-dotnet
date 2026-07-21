@@ -275,6 +275,7 @@
   <ItemGroup>
     <None Include="Resources\iconXml.png" />
     <None Include="Resources\izibizLogo.png" />
+    <None Include="Resources\izibizLogoFull.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconPdf.png" />

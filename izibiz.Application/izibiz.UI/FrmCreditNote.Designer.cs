@@ -58,7 +58,7 @@ namespace izibiz.UI
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(256, 932);
+            this.pnlSidebar.Size = new System.Drawing.Size(340, 932);
             this.pnlSidebar.TabIndex = 54;
             //
             // btnHamburger
@@ -68,7 +68,7 @@ namespace izibiz.UI
             this.btnHamburger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHamburger.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnHamburger.ForeColor = System.Drawing.Color.White;
-            this.btnHamburger.Location = new System.Drawing.Point(196, 24);
+            this.btnHamburger.Location = new System.Drawing.Point(280, 24);
             this.btnHamburger.Name = "btnHamburger";
             this.btnHamburger.Size = new System.Drawing.Size(44, 44);
             this.btnHamburger.TabIndex = 58;
@@ -79,17 +79,17 @@ namespace izibiz.UI
             //
             // btnHomePage
             //
-            this.btnHomePage.BackColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.btnHomePage.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
             this.btnHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnHomePage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHomePage.FlatAppearance.BorderSize = 0;
             this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHomePage.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
-            this.btnHomePage.Location = new System.Drawing.Point(24, 24);
+            this.btnHomePage.Location = new System.Drawing.Point(16, 20);
             this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Padding = new System.Windows.Forms.Padding(12);
-            this.btnHomePage.Size = new System.Drawing.Size(76, 76);
+            this.btnHomePage.Padding = new System.Windows.Forms.Padding(6);
+            this.btnHomePage.Size = new System.Drawing.Size(308, 90);
             this.btnHomePage.TabIndex = 57;
             this.btnHomePage.Text = "";
             this.btnHomePage.UseVisualStyleBackColor = false;
@@ -100,14 +100,13 @@ namespace izibiz.UI
             this.btnNavMustahsil.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
             this.btnNavMustahsil.FlatAppearance.BorderSize = 0;
             this.btnNavMustahsil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNavMustahsil.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavMustahsil.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
             this.btnNavMustahsil.ForeColor = System.Drawing.Color.White;
-            this.btnNavMustahsil.Location = new System.Drawing.Point(16, 220);
+            this.btnNavMustahsil.Location = new System.Drawing.Point(16, 144);
             this.btnNavMustahsil.Name = "btnNavMustahsil";
-            this.btnNavMustahsil.Size = new System.Drawing.Size(224, 48);
+            this.btnNavMustahsil.Size = new System.Drawing.Size(308, 56);
             this.btnNavMustahsil.TabIndex = 59;
-            this.btnNavMustahsil.Tag = "E-Müstahsil";
-            this.btnNavMustahsil.Text = "E-Müstahsil";
+            this.btnNavMustahsil.Text = "📄   E-Müstahsil";
             this.btnNavMustahsil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavMustahsil.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavMustahsil.UseVisualStyleBackColor = false;
@@ -119,14 +118,13 @@ namespace izibiz.UI
             this.btnNavDraft.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
             this.btnNavDraft.FlatAppearance.BorderSize = 0;
             this.btnNavDraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNavDraft.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavDraft.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
             this.btnNavDraft.ForeColor = System.Drawing.Color.White;
-            this.btnNavDraft.Location = new System.Drawing.Point(16, 280);
+            this.btnNavDraft.Location = new System.Drawing.Point(16, 228);
             this.btnNavDraft.Name = "btnNavDraft";
-            this.btnNavDraft.Size = new System.Drawing.Size(224, 48);
+            this.btnNavDraft.Size = new System.Drawing.Size(308, 56);
             this.btnNavDraft.TabIndex = 60;
-            this.btnNavDraft.Tag = "Taslak E-Müstahsil";
-            this.btnNavDraft.Text = "Taslak E-Müstahsil";
+            this.btnNavDraft.Text = "📝   Taslak E-Müstahsil";
             this.btnNavDraft.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavDraft.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavDraft.UseVisualStyleBackColor = false;
@@ -138,14 +136,13 @@ namespace izibiz.UI
             this.btnNavReports.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
             this.btnNavReports.FlatAppearance.BorderSize = 0;
             this.btnNavReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNavReports.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavReports.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
             this.btnNavReports.ForeColor = System.Drawing.Color.White;
-            this.btnNavReports.Location = new System.Drawing.Point(16, 340);
+            this.btnNavReports.Location = new System.Drawing.Point(16, 312);
             this.btnNavReports.Name = "btnNavReports";
-            this.btnNavReports.Size = new System.Drawing.Size(224, 48);
+            this.btnNavReports.Size = new System.Drawing.Size(308, 56);
             this.btnNavReports.TabIndex = 61;
-            this.btnNavReports.Tag = "E-Müstahsil Raporları";
-            this.btnNavReports.Text = "E-Müstahsil Raporları";
+            this.btnNavReports.Text = "📊   E-Müstahsil Raporları";
             this.btnNavReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavReports.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavReports.UseVisualStyleBackColor = false;
@@ -157,14 +154,13 @@ namespace izibiz.UI
             this.btnNavNew.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
             this.btnNavNew.FlatAppearance.BorderSize = 0;
             this.btnNavNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNavNew.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavNew.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
             this.btnNavNew.ForeColor = System.Drawing.Color.White;
-            this.btnNavNew.Location = new System.Drawing.Point(16, 420);
+            this.btnNavNew.Location = new System.Drawing.Point(16, 416);
             this.btnNavNew.Name = "btnNavNew";
-            this.btnNavNew.Size = new System.Drawing.Size(224, 48);
+            this.btnNavNew.Size = new System.Drawing.Size(308, 56);
             this.btnNavNew.TabIndex = 62;
-            this.btnNavNew.Tag = "+ Yeni E-Müstahsil";
-            this.btnNavNew.Text = "+ Yeni E-Müstahsil";
+            this.btnNavNew.Text = "➕   Yeni E-Müstahsil";
             this.btnNavNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavNew.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavNew.UseVisualStyleBackColor = false;
@@ -178,14 +174,14 @@ namespace izibiz.UI
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.EnableHeadersVisualStyles = false;
             this.tableGrid.GridColor = izibiz.UI.Controls.BrandColors.CardBorder;
-            this.tableGrid.Location = new System.Drawing.Point(291, 495);
+            this.tableGrid.Location = new System.Drawing.Point(291, 600);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(6);
             this.tableGrid.Name = "tableGrid";
             this.tableGrid.ReadOnly = true;
             this.tableGrid.RowHeadersWidth = 28;
             this.tableGrid.RowTemplate.Height = 42;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(1262, 390);
+            this.tableGrid.Size = new System.Drawing.Size(1262, 300);
             this.tableGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.tableGrid.TabIndex = 55;
@@ -216,7 +212,7 @@ namespace izibiz.UI
             this.sourceCardSoap.IconTintColor = izibiz.UI.Controls.BrandColors.PurpleLight;
             this.sourceCardSoap.Location = new System.Drawing.Point(627, 40);
             this.sourceCardSoap.Name = "sourceCardSoap";
-            this.sourceCardSoap.Size = new System.Drawing.Size(280, 190);
+            this.sourceCardSoap.Size = new System.Drawing.Size(340, 230);
             this.sourceCardSoap.TabIndex = 66;
             this.sourceCardSoap.TitleText = "SOAP";
             //
@@ -230,7 +226,7 @@ namespace izibiz.UI
             this.sourceCardRest.IconTintColor = izibiz.UI.Controls.BrandColors.TealLight;
             this.sourceCardRest.Location = new System.Drawing.Point(937, 40);
             this.sourceCardRest.Name = "sourceCardRest";
-            this.sourceCardRest.Size = new System.Drawing.Size(280, 190);
+            this.sourceCardRest.Size = new System.Drawing.Size(340, 230);
             this.sourceCardRest.TabIndex = 67;
             this.sourceCardRest.TitleText = "REST";
             //
@@ -238,9 +234,9 @@ namespace izibiz.UI
             //
             this.documentActionsCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.documentActionsCard1.DescriptionText = "Seçili belgeyi görüntüleyin veya indirin";
-            this.documentActionsCard1.Location = new System.Drawing.Point(291, 250);
+            this.documentActionsCard1.Location = new System.Drawing.Point(291, 295);
             this.documentActionsCard1.Name = "documentActionsCard1";
-            this.documentActionsCard1.Size = new System.Drawing.Size(1262, 200);
+            this.documentActionsCard1.Size = new System.Drawing.Size(1262, 265);
             this.documentActionsCard1.TabIndex = 68;
             this.documentActionsCard1.TitleText = "Belge Görüntüleme / İndirme";
             this.documentActionsCard1.Visible = false;
@@ -250,7 +246,7 @@ namespace izibiz.UI
             this.lblInformation.AutoSize = true;
             this.lblInformation.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Italic);
             this.lblInformation.ForeColor = izibiz.UI.Controls.BrandColors.TextMuted;
-            this.lblInformation.Location = new System.Drawing.Point(294, 465);
+            this.lblInformation.Location = new System.Drawing.Point(294, 570);
             this.lblInformation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInformation.Name = "lblInformation";
             this.lblInformation.Size = new System.Drawing.Size(352, 20);
@@ -262,7 +258,7 @@ namespace izibiz.UI
             //
             this.lblEmptyIcon.Font = new System.Drawing.Font("Segoe UI", 42F);
             this.lblEmptyIcon.ForeColor = izibiz.UI.Controls.BrandColors.TealLight;
-            this.lblEmptyIcon.Location = new System.Drawing.Point(291, 560);
+            this.lblEmptyIcon.Location = new System.Drawing.Point(291, 660);
             this.lblEmptyIcon.Name = "lblEmptyIcon";
             this.lblEmptyIcon.Size = new System.Drawing.Size(1262, 80);
             this.lblEmptyIcon.TabIndex = 69;
@@ -273,7 +269,7 @@ namespace izibiz.UI
             //
             this.lblEmptyText.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblEmptyText.ForeColor = izibiz.UI.Controls.BrandColors.TextMuted;
-            this.lblEmptyText.Location = new System.Drawing.Point(291, 640);
+            this.lblEmptyText.Location = new System.Drawing.Point(291, 745);
             this.lblEmptyText.Name = "lblEmptyText";
             this.lblEmptyText.Size = new System.Drawing.Size(1262, 30);
             this.lblEmptyText.TabIndex = 70;

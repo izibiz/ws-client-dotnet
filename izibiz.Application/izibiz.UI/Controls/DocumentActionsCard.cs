@@ -5,9 +5,9 @@ using System.Windows.Forms;
 namespace izibiz.UI.Controls
 {
     /// <summary>
-    /// Bir belgeyi görüntülemek/indirmek için format seçimi (PDF/HTML/XML) ve
-    /// Görüntüle/İndir aksiyonlarını içeren yeniden kullanılabilir kart.
-    /// XML seçiliyken Görüntüle otomatik devre dışı kalır (XML sadece indirilebilir).
+    /// Bir belgeyi görüntülemek/indirmek için ayrı ayrı format seçimi (Görüntüle: PDF/HTML,
+    /// İndir: PDF/HTML/XML) ve Görüntüle/İndir aksiyonlarını içeren yeniden kullanılabilir kart.
+    /// XML sadece indirme grubunda bulunur; görüntüleme grubunda hiç sunulmaz.
     /// Yeni bir işlem/ürün eklerken bu kontrolü forma sürükleyip ViewRequested/DownloadRequested'ı dinlemek yeterli.
     /// </summary>
     public partial class DocumentActionsCard : UserControl
@@ -21,12 +21,14 @@ namespace izibiz.UI.Controls
         {
             InitializeComponent();
 
-            rdPdf.CheckedChanged += FormatOption_CheckedChanged;
-            rdHtml.CheckedChanged += FormatOption_CheckedChanged;
-            rdXml.CheckedChanged += FormatOption_CheckedChanged;
+            rdViewPdf.CheckedChanged += FormatOption_CheckedChanged;
+            rdViewHtml.CheckedChanged += FormatOption_CheckedChanged;
+            rdDownloadPdf.CheckedChanged += FormatOption_CheckedChanged;
+            rdDownloadHtml.CheckedChanged += FormatOption_CheckedChanged;
+            rdDownloadXml.CheckedChanged += FormatOption_CheckedChanged;
 
-            btnView.Click += (s, e) => ViewRequested?.Invoke(this, new DocumentActionEventArgs(SelectedFormat));
-            btnDownload.Click += (s, e) => DownloadRequested?.Invoke(this, new DocumentActionEventArgs(SelectedFormat));
+            btnView.Click += (s, e) => ViewRequested?.Invoke(this, new DocumentActionEventArgs(SelectedViewFormat));
+            btnDownload.Click += (s, e) => DownloadRequested?.Invoke(this, new DocumentActionEventArgs(SelectedDownloadFormat));
 
             btnView.FlatAppearance.MouseOverBackColor = BrandColors.Neutral;
             HoverAnimator.Attach(btnView, BrandColors.Neutral, BrandColors.NeutralHover);
@@ -40,9 +42,7 @@ namespace izibiz.UI.Controls
                 Invalidate();
             });
 
-            StyleFormatToggle(rdPdf);
-            StyleFormatToggle(rdHtml);
-            StyleFormatToggle(rdXml);
+            RestyleAllToggles();
         }
 
         public string TitleText
@@ -57,13 +57,16 @@ namespace izibiz.UI.Controls
             set => lblDesc.Text = value;
         }
 
-        /// <summary>Şu an seçili format: "pdf", "html" veya "xml".</summary>
-        public string SelectedFormat
+        /// <summary>Görüntüleme için seçili format: "pdf" veya "html".</summary>
+        public string SelectedViewFormat => rdViewHtml.Checked ? "html" : "pdf";
+
+        /// <summary>İndirme için seçili format: "pdf", "html" veya "xml".</summary>
+        public string SelectedDownloadFormat
         {
             get
             {
-                if (rdHtml.Checked) return "html";
-                if (rdXml.Checked) return "xml";
+                if (rdDownloadHtml.Checked) return "html";
+                if (rdDownloadXml.Checked) return "xml";
                 return "pdf";
             }
         }
@@ -74,33 +77,35 @@ namespace izibiz.UI.Controls
             RoundedPathHelper.ApplyRoundedRegion(this, 16);
             RoundedPathHelper.ApplyRoundedRegion(btnView, 10);
             RoundedPathHelper.ApplyRoundedRegion(btnDownload, 10);
-            RoundedPathHelper.ApplyRoundedRegion(rdPdf, 10);
-            RoundedPathHelper.ApplyRoundedRegion(rdHtml, 10);
-            RoundedPathHelper.ApplyRoundedRegion(rdXml, 10);
+            RoundedPathHelper.ApplyRoundedRegion(rdViewPdf, 10);
+            RoundedPathHelper.ApplyRoundedRegion(rdViewHtml, 10);
+            RoundedPathHelper.ApplyRoundedRegion(rdDownloadPdf, 10);
+            RoundedPathHelper.ApplyRoundedRegion(rdDownloadHtml, 10);
+            RoundedPathHelper.ApplyRoundedRegion(rdDownloadXml, 10);
         }
 
         private void DocumentActionsCard_Paint(object sender, PaintEventArgs e)
         {
             var rect = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
             RoundedPathHelper.DrawBorder(e.Graphics, rect, 16, _borderColor);
+
+            // Görüntüle/İndir bölümlerini ayıran ince dikey çizgi.
+            int dividerX = pnlDownloadFormats.Left - 20;
+            e.Graphics.DrawLine(new Pen(BrandColors.CardBorder), dividerX, 90, dividerX, 222);
         }
 
         private void FormatOption_CheckedChanged(object sender, EventArgs e)
         {
-            StyleFormatToggle(rdPdf);
-            StyleFormatToggle(rdHtml);
-            StyleFormatToggle(rdXml);
+            RestyleAllToggles();
+        }
 
-            if (rdXml.Checked)
-            {
-                btnView.Enabled = false;
-                btnView.BackColor = BrandColors.NeutralDisabled;
-            }
-            else
-            {
-                btnView.Enabled = true;
-                btnView.BackColor = BrandColors.Neutral;
-            }
+        private void RestyleAllToggles()
+        {
+            StyleFormatToggle(rdViewPdf);
+            StyleFormatToggle(rdViewHtml);
+            StyleFormatToggle(rdDownloadPdf);
+            StyleFormatToggle(rdDownloadHtml);
+            StyleFormatToggle(rdDownloadXml);
         }
 
         private static void StyleFormatToggle(RadioButton rb)

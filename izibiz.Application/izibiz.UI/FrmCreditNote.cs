@@ -25,8 +25,8 @@ namespace izibiz.UI
         private string gridMenuType;
         private string gridDirection;
 
-        private const int SidebarExpandedWidth = 256;
-        private const int SidebarCollapsedWidth = 88;
+        private const int SidebarExpandedWidth = 340;
+        private const int SidebarCollapsedWidth = 64;
         private bool _sidebarCollapsed = false;
         private Timer _sidebarAnimTimer;
         private int _sidebarTargetWidth;
@@ -45,8 +45,8 @@ namespace izibiz.UI
         {
             localizationItemTextWrite();
 
-            RoundedPathHelper.ApplyRoundedRegion(btnHomePage, 38);
-            btnHomePage.BackgroundImage = Properties.Resources.izibizLogo;
+            RoundedPathHelper.ApplyRoundedRegion(btnHomePage, 14);
+            btnHomePage.BackgroundImage = Properties.Resources.izibizLogoFull;
             btnHomePage.BackgroundImageLayout = ImageLayout.Zoom;
 
             // Removed custom icon assignment to use the application default
@@ -57,6 +57,9 @@ namespace izibiz.UI
             documentActionsCard1.DownloadRequested += DocumentActionsCard1_DownloadRequested;
 
             SetupSidebarHoverEffects();
+
+            // Form açılır açılmaz "E-Müstahsil" seçili gelsin; kullanıcı ayrıca tıklamak zorunda kalmasın.
+            ItemGetCreditNote_Click(btnNavMustahsil, EventArgs.Empty);
             UpdateEmptyState();
 
             ArrangeResponsiveLayout();
@@ -71,34 +74,24 @@ namespace izibiz.UI
             foreach (var navBtn in new[] { btnNavMustahsil, btnNavDraft, btnNavReports, btnNavNew })
             {
                 HoverAnimator.Attach(navBtn, BrandColors.SidebarDark, BrandColors.SidebarHover);
+                RoundedPathHelper.ApplyRoundedRegion(navBtn, 10);
             }
         }
 
         /// <summary>
         /// Hamburger butonu: sidebar'ı animasyonlu şekilde daraltır/genişletir.
-        /// Öğe sayısı arttıkça (yeni menü eklendikçe) daraltılmış hâl yer kazandırır.
+        /// İçerik (logo, menü yazıları) hiçbir zaman küçültülmez/kısaltılmaz; sadece
+        /// panel dar durumdayken gizlenir, tam genişliğe ulaşınca geri gösterilir.
+        /// (İçeriği panel hâlâ dar iken göstermek, logonun taşmış gibi görünmesine sebep oluyordu.)
         /// </summary>
         private void BtnHamburger_Click(object sender, EventArgs e)
         {
             _sidebarCollapsed = !_sidebarCollapsed;
             _sidebarTargetWidth = _sidebarCollapsed ? SidebarCollapsedWidth : SidebarExpandedWidth;
 
-            foreach (var navBtn in new[] { btnNavMustahsil, btnNavDraft, btnNavReports, btnNavNew })
+            if (_sidebarCollapsed)
             {
-                if (_sidebarCollapsed)
-                {
-                    navBtn.Text = navBtn.Text.Substring(0, 1);
-                    navBtn.TextAlign = ContentAlignment.MiddleCenter;
-                    navBtn.Padding = new Padding(0);
-                    navBtn.Width = SidebarCollapsedWidth - 32;
-                }
-                else
-                {
-                    navBtn.Text = (string)navBtn.Tag;
-                    navBtn.TextAlign = ContentAlignment.MiddleLeft;
-                    navBtn.Padding = new Padding(20, 0, 0, 0);
-                    navBtn.Width = SidebarExpandedWidth - 32;
-                }
+                SetSidebarContentVisible(false);
             }
 
             if (_sidebarAnimTimer == null)
@@ -109,6 +102,15 @@ namespace izibiz.UI
             _sidebarAnimTimer.Start();
         }
 
+        private void SetSidebarContentVisible(bool visible)
+        {
+            btnHomePage.Visible = visible;
+            foreach (var navBtn in new[] { btnNavMustahsil, btnNavDraft, btnNavReports, btnNavNew })
+            {
+                navBtn.Visible = visible;
+            }
+        }
+
         private void SidebarAnimTimer_Tick(object sender, EventArgs e)
         {
             int diff = _sidebarTargetWidth - pnlSidebar.Width;
@@ -116,6 +118,11 @@ namespace izibiz.UI
             {
                 pnlSidebar.Width = _sidebarTargetWidth;
                 _sidebarAnimTimer.Stop();
+
+                if (!_sidebarCollapsed)
+                {
+                    SetSidebarContentVisible(true);
+                }
             }
             else
             {
@@ -135,6 +142,7 @@ namespace izibiz.UI
             bool isEmpty = tableGrid.Rows.Count == 0;
             lblEmptyIcon.Visible = isEmpty;
             lblEmptyText.Visible = isEmpty;
+            tableGrid.Visible = !isEmpty;
         }
 
         /// <summary>
@@ -151,8 +159,8 @@ namespace izibiz.UI
         {
             int contentLeft = pnlSidebar.Width + 35;
             const int rightMargin = 30;
-            const int cardWidth = 280;
-            const int cardGap = 30;
+            const int cardWidth = 340;
+            const int cardGap = 40;
             const int pairWidth = cardWidth * 2 + cardGap;
 
             int contentWidth = this.ClientSize.Width - contentLeft - rightMargin;
