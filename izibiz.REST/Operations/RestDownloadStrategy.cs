@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -25,10 +27,14 @@ namespace izibiz.REST.Operations
             _resourcePath = resourcePath; // e.g. "/v2/esmms/outbox"
         }
 
-        public async Task<byte[]> DownloadAsync(string id, string format)
+        public async Task<Dictionary<string, byte[]>> DownloadAsync(List<string> ids, string format)
         {
+            if (ids == null || ids.Count == 0)
+                return new Dictionary<string, byte[]>();
+
             var url = $"{_resourcePath}/download/{format.ToLower()}";
-            var body = $"[{{\"id\":{id}}}]";
+            var idObjects = ids.Select(id => $"{{\"id\":{id}}}");
+            var body = $"[{string.Join(",", idObjects)}]";
             var content = new StringContent(body, Encoding.UTF8, "application/json");
 
             var response = await _httpClient.PostAsync(url, content);
@@ -55,10 +61,10 @@ namespace izibiz.REST.Operations
                     using (var memoryStream = new MemoryStream(zipBytes))
                     using (var archive = new ZipArchive(memoryStream))
                     {
+                        var result = new Dictionary<string, byte[]>();
+
                         if (archive.Entries.Count > 0)
                         {
-                            var entry = archive.Entries[0];
-                            
                             // İstenilen formata göre (pdf, xml, html) zipten doğru dosyayı bul
                             string targetExt = "." + format.ToLower();
                             if (targetExt == ".ubl") targetExt = ".xml"; // UBL = XML
@@ -67,18 +73,32 @@ namespace izibiz.REST.Operations
                             {
                                 if(e.FullName.EndsWith(targetExt, StringComparison.OrdinalIgnoreCase))
                                 {
-                                    entry = e;
-                                    break; // İstediğimiz formatı bulduk, döngüden çık
+                                    using (var entryStream = e.Open())
+                                    using (var ms = new MemoryStream())
+                                    {
+                                        await entryStream.CopyToAsync(ms);
+                                        result[e.FullName] = ms.ToArray();
+                                    }
                                 }
                             }
 
-                            using (var entryStream = entry.Open())
-                            using (var ms = new MemoryStream())
+                            // Eğer uzantı tutmadıysa ama dosya varsa hepsini al (fallback)
+                            if (result.Count == 0 && archive.Entries.Count > 0)
                             {
-                                await entryStream.CopyToAsync(ms);
-                                byte[] extractedBytes = ms.ToArray();
-                                
-                                return extractedBytes;
+                                foreach(var e in archive.Entries)
+                                {
+                                    using (var entryStream = e.Open())
+                                    using (var ms = new MemoryStream())
+                                    {
+                                        await entryStream.CopyToAsync(ms);
+                                        result[e.FullName] = ms.ToArray();
+                                    }
+                                }
+                            }
+
+                            if (result.Count > 0)
+                            {
+                                return result;
                             }
                         }
                     }

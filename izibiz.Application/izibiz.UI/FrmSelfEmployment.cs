@@ -399,7 +399,8 @@ namespace izibiz.UI
                             if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
                             {
                                 // Turuncu buton = Ekranda GİB formatlı orijinal önizleme için UBL'i (XML) çekip XSLT'ye sokuyoruz
-                                byte[] xmlBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), "ubl");
+                                var xmlResult = await Singl.SmmClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, "ubl");
+                                byte[] xmlBytes = System.Linq.Enumerable.FirstOrDefault(xmlResult.Values);
                                 string content = System.Text.Encoding.UTF8.GetString(xmlBytes);
                                 FrmView previewInvoices = new FrmView(content, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts), isHtml: false); 
                                 previewInvoices.ShowDialog();
@@ -473,7 +474,8 @@ namespace izibiz.UI
                     if (format == "html")
                     {
                         // HTML seçiliyse = Ekranda GİB formatlı orijinal önizleme için UBL'i (XML) çekip XSLT'ye sokuyoruz
-                        byte[] xmlBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), "ubl");
+                        var xmlResult = await Singl.SmmClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, "ubl");
+                        byte[] xmlBytes = System.Linq.Enumerable.FirstOrDefault(xmlResult.Values);
                         string strContent = System.Text.Encoding.UTF8.GetString(xmlBytes);
                         FrmView previewInvoices = new FrmView(strContent, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts), isHtml: false);
                         previewInvoices.ShowDialog();
@@ -481,7 +483,8 @@ namespace izibiz.UI
                     else
                     {
                         // PDF veya UBL seçiliyse = diske kaydet = POST /download
-                        byte[] downloadBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), format);
+                        var downloadResult = await Singl.SmmClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, format);
+                        byte[] downloadBytes = System.Linq.Enumerable.FirstOrDefault(downloadResult.Values);
                         string ext = format == "xml" ? ".xml" : ".pdf";
                         string path = FolderControl.smmFolderPath + restItem.Uuid + ext;
                         FolderControl.writeFileOnDiskWithByte(downloadBytes, path);

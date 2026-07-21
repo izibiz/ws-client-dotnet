@@ -138,14 +138,16 @@ namespace izibiz.UI
 
                     if (format == "html")
                     {
-                        byte[] xmlBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), "ubl");
+                        var xmlResult = await Singl.SmmClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, "ubl");
+                        byte[] xmlBytes = System.Linq.Enumerable.FirstOrDefault(xmlResult.Values);
                         string strContent = System.Text.Encoding.UTF8.GetString(xmlBytes);
                         FrmView previewInvoices = new FrmView(strContent, nameof(EI.SelfEmploymentReceipt.SelfEmploymentReceipts), isHtml: false);
                         previewInvoices.ShowDialog();
                     }
                     else
                     {
-                        byte[] downloadBytes = await Singl.SmmClientGet.DownloadAsync(restItem.Id.ToString(), format);
+                        var downloadResult = await Singl.SmmClientGet.DownloadAsync(new System.Collections.Generic.List<string> { restItem.Id.ToString() }, format);
+                        byte[] downloadBytes = System.Linq.Enumerable.FirstOrDefault(downloadResult.Values);
                         string ext = format == "xml" ? ".xml" : ".pdf";
                         string path = FolderControl.smmFolderPath + restItem.Uuid + ext;
                         FolderControl.writeFileOnDiskWithByte(downloadBytes, path);
