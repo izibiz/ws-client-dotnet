@@ -37,17 +37,24 @@ namespace izibiz.CONTROLLER.DAL
 
 
 
-        public int addCreditNoteToDbAndSaveContentOnDisk(CREDITNOTE[] creditNoteArr, string isDraft)
+        public int addCreditNoteToDbAndSaveContentOnDisk(CREDITNOTE[] creditNoteArr)
         {
-            CreditNotes CreditNote;
-
             using (DatabaseContext databaseContext = new DatabaseContext())
             {
                 foreach (var creditNotes in creditNoteArr)
                 {
-                    CreditNote = new CreditNotes();
+                    // Aynı uuid daha önce kaydedilmişse (ör. servis tarafında tekrar okunmuşsa)
+                    // yeniden Add etmek PRIMARY KEY çakışmasına (DbUpdateException) sebep oluyordu.
+                    // Varsa güncelle, yoksa ekle.
+                    CreditNotes CreditNote = databaseContext.creditNotes.Find(creditNotes.UUID);
+                    bool isNew = CreditNote == null;
+                    if (isNew)
+                    {
+                        CreditNote = new CreditNotes();
+                        CreditNote.uuid = creditNotes.UUID;
+                    }
+
                     CreditNote.CreditNoteID = creditNotes.ID;
-                    CreditNote.uuid = creditNotes.UUID;
                     CreditNote.customerTitle = creditNotes.HEADER.CUSTOMER.NAME;
                     CreditNote.customerIdentifier = creditNotes.HEADER.CUSTOMER.IDENTIFIER;
                     CreditNote.profileID = creditNotes.HEADER.PROFILE_ID.ToString();
@@ -58,18 +65,23 @@ namespace izibiz.CONTROLLER.DAL
                     CreditNote.issueDate = creditNotes.HEADER.ISSUE_DATE;
                     CreditNote.email = creditNotes.HEADER.EMAIL != null ? creditNotes.HEADER.EMAIL.First() : null;
                     CreditNote.emailStatusCode = creditNotes.HEADER.EMAIL_STATUS_CODE;
-                    CreditNote.isDraft = isDraft;
+                    // Servis "taslak/gönderilmemiş" belgeler için STATUS_DESCRIPTION alanında "TASLAK" döner;
+                    // isDraft'ı sabit bir değer yerine gerçek statüden türetiyoruz.
+                    CreditNote.isDraft = creditNotes.HEADER.STATUS_DESCRIPTION == "TASLAK"
+                        ? nameof(EI.ActiveOrPasive.Y)
+                        : nameof(EI.ActiveOrPasive.N);
                     CreditNote.folderPath = FolderControl.CreditNoteFolderPath + CreditNote.CreditNoteID + "." + nameof(EI.DocumentType.XML);
 
                     FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(Compress.UncompressFile(creditNotes.CONTENT.Value)), CreditNote.folderPath);
 
-                    databaseContext.creditNotes.Add(CreditNote);
-
-
+                    if (isNew)
+                    {
+                        databaseContext.creditNotes.Add(CreditNote);
+                    }
                 }
-              
-                    return databaseContext.SaveChanges();
-  
+
+                databaseContext.SaveChanges();
+                return creditNoteArr.Length;
             }
 
         }

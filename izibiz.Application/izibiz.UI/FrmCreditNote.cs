@@ -197,16 +197,23 @@ namespace izibiz.UI
         {
             try
             {
-                var filter = new izibiz.REST.Models.Request.ListFilter { Page = 1, PageSize = 50 };
-                var result = await Singl.MustahsilClientGet.ListAsync(filter);
+                // Taslak ekranındaysak REST'in ayrı "draft" endpoint'ini kullanıyoruz;
+                // /outbox endpoint'i taslak/numara atandı durumundaki belgeleri hiç döndürmüyor.
+                bool isDraftContext = gridMenuType == EI.CreditNote.draftCreditNote.ToString();
+
+                // API sayfalaması 0'dan başlıyor (page=0 ilk sayfa); Page=1 vermek ikinci sayfayı
+                // getirip en güncel kayıtları (ör. Numara Atandı belgelerini) atlıyordu.
+                var filter = new izibiz.REST.Models.Request.ListFilter { Page = 0, PageSize = 50 };
+                var result = isDraftContext
+                    ? await Singl.MustahsilClientGet.ListDraftsAsync(filter)
+                    : await Singl.MustahsilClientGet.ListAsync(filter);
 
                 tableGrid.DataSource = result.Contents;
                 EnsureCheckboxColumn();
                 FormatGridColumns();
                 UpdateEmptyState();
 
-                gridMenuType = EI.CreditNote.CreditNotes.ToString();
-                documentActionsCard1.Visible = true;
+                documentActionsCard1.Visible = result.Contents.Count > 0;
 
                 MessageBox.Show($"REST API'den başarıyla {result.Contents.Count} adet E-Müstahsil çekildi!", "REST Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -298,9 +305,6 @@ namespace izibiz.UI
                 EnsureCheckboxColumn();
                 FormatGridColumns();
                 UpdateEmptyState();
-
-                lblInformation.Text = Lang.clickRowInvoice;
-                lblInformation.Visible = true;
             }
         }
 
@@ -360,6 +364,7 @@ namespace izibiz.UI
         private void BtnTakeCreditNote_Click(object sender, EventArgs e)
         {
             documentActionsCard1.Visible = false;
+            bool isDraftContext = gridMenuType == EI.CreditNote.draftCreditNote.ToString();
 
             try
             {
@@ -368,7 +373,12 @@ namespace izibiz.UI
 
                 if (errorMessage == null)
                 {
-                    gridCreditNoteUpdateList(Singl.creditNotesDalGet.getCreditNoteWithDraft(false));
+                    gridCreditNoteUpdateList(Singl.creditNotesDalGet.getCreditNoteWithDraft(isDraftContext));
+
+                    if (tableGrid.Rows.Count > 0)
+                    {
+                        documentActionsCard1.Visible = true;
+                    }
                 }
                 else
                 {
@@ -401,7 +411,7 @@ namespace izibiz.UI
 
 
 
-        private async void ItemGetCreditNote_Click(object sender, EventArgs e)
+        private void ItemGetCreditNote_Click(object sender, EventArgs e)
         {
             gridMenuType = EI.CreditNote.CreditNotes.ToString();
 
@@ -409,71 +419,26 @@ namespace izibiz.UI
             sourceCardRest.FetchButtonVisible = true;
             documentActionsCard1.Visible = false;
 
-            try
-            {
-                var list = await Task.Run(() => Singl.creditNotesDalGet.getCreditNoteWithDraft(false));
-                gridCreditNoteUpdateList(list);
-
-
-            }
-            catch (FaultException<REQUEST_ERRORType> ex)
-            {
-                if (ex.Detail.ERROR_CODE == 2005)
-                {
-                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
-                }
-                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
-            {
-                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.Data.DataException ex)
-            {
-                MessageBox.Show(ex.InnerException.Message.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
+            // Menüden E-Müstahsil'e geçişte otomatik listeleme yapılmaz;
+            // liste ancak "SOAP ile Çek" veya "REST ile Çek" ile çekilir.
+            tableGrid.DataSource = null;
+            tableGrid.Columns.Clear();
+            UpdateEmptyState();
         }
 
-        private async void ItemGetDraftCreditNote_Click(object sender, EventArgs e)
+        private void ItemGetDraftCreditNote_Click(object sender, EventArgs e)
         {
             gridMenuType = EI.CreditNote.draftCreditNote.ToString();
-            gridDirection = nameof(EI.Direction.DRAFT);
-            sourceCardSoap.FetchButtonVisible = false;
+
+            sourceCardSoap.FetchButtonVisible = true;
+            sourceCardRest.FetchButtonVisible = true;
             documentActionsCard1.Visible = false;
 
-            try
-            {
-                var list = await Task.Run(() => Singl.creditNotesDalGet.getCreditNoteWithDraft(true));
-                gridCreditNoteUpdateList(list);
-
-            }
-            catch (FaultException<REQUEST_ERRORType> ex)
-            {
-                if (ex.Detail.ERROR_CODE == 2005)
-                {
-                    Singl.authControllerGet.Login(FrmLogin.usurname, FrmLogin.password);
-                }
-                MessageBox.Show(ex.Detail.ERROR_SHORT_DES, "ProcessingFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
-            {
-                MessageBox.Show(Lang.dbFault + " " + ex.InnerException.Message.ToString(), "DataBaseFault", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.Data.DataException ex)
-            {
-                MessageBox.Show(ex.InnerException.Message.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-
+            // Menüden Taslak'a geçişte otomatik listeleme yapılmaz;
+            // liste ancak "SOAP ile Çek" veya "REST ile Çek" ile çekilir.
+            tableGrid.DataSource = null;
+            tableGrid.Columns.Clear();
+            UpdateEmptyState();
         }
 
         private void ItemGetCreditNoteReports_Click(object sender, EventArgs e)
@@ -516,7 +481,8 @@ namespace izibiz.UI
         {
             if (e.RowIndex >= 0)
             {
-                documentActionsCard1.Visible = (gridMenuType == EI.CreditNote.CreditNotes.ToString());
+                documentActionsCard1.Visible = (gridMenuType == EI.CreditNote.CreditNotes.ToString()
+                    || gridMenuType == EI.CreditNote.draftCreditNote.ToString());
 
                 try
                 {
@@ -809,10 +775,41 @@ namespace izibiz.UI
                         System.Diagnostics.Process.Start(FolderControl.CreditNoteFolderPath);
                         MessageBox.Show($"{idsToDownload.Count} adet belge başarıyla indirildi.\nKlasör: {FolderControl.CreditNoteFolderPath}", "Toplu İndirme Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    return;
+                }
+
+                // REST kaynaklı satır yoksa SOAP verisi olabilir; SOAP tarafında da indirme destekleniyor.
+                CONTENT_TYPE soapDocType = e.Format == "xml" ? CONTENT_TYPE.XML : e.Format == "html" ? CONTENT_TYPE.HTML : CONTENT_TYPE.PDF;
+                int soapSavedCount = 0;
+
+                foreach (var row in checkedRows)
+                {
+                    if (row.DataBoundItem is CreditNotes soapItem)
+                    {
+                        byte[] content = Singl.creditNoteControllerGet.getCreditNoteWithType(soapItem.uuid, soapDocType);
+                        if (content != null)
+                        {
+                            string path = FolderControl.CreditNoteFolderPath + soapItem.uuid + "." + soapDocType;
+                            FolderControl.writeFileOnDiskWithByte(content, path);
+                            singlePathToOpen = path;
+                            soapSavedCount++;
+                        }
+                    }
+                }
+
+                if (soapSavedCount == 0)
+                {
+                    MessageBox.Show("İndirme özelliği şu an sadece REST verileri için kullanılabilir.");
+                }
+                else if (soapSavedCount == 1)
+                {
+                    System.Diagnostics.Process.Start(singlePathToOpen);
+                    MessageBox.Show("Belge indirildi.", "İndirme Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("İndirme özelliği şu an sadece REST verileri için kullanılabilir.");
+                    System.Diagnostics.Process.Start(FolderControl.CreditNoteFolderPath);
+                    MessageBox.Show($"{soapSavedCount} adet belge başarıyla indirildi.\nKlasör: {FolderControl.CreditNoteFolderPath}", "Toplu İndirme Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

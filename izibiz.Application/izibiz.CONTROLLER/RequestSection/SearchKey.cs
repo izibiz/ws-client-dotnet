@@ -73,9 +73,6 @@ namespace izibiz.CONTROLLER.RequestSection
                 LIMIT = 10,
                 LIMITSpecified = true,
                 READ_INCLUDED = "N",
-                UUID = "ACFBC9C4-1F83-D7A3-A579-E8B59C67581B",//müstahsil servisinde uuid zorunludur.
-                //burada örnek bir uuid verilmiştir, siz hangi müstahsili getirmek istiyorsanız müstahsile ait uuid bilgisini parametre gecmeniz
-                //gerekmektedir.
             };
         }
 

@@ -56,7 +56,7 @@ namespace izibiz.CONTROLLER.WebServicesController
                             return markErrorMessage;
                         }
                         //getirilen smmlerı db ye kaydetme basarılı mı ... hepsı kaydedıldı mı
-                        if (Singl.creditNotesDalGet.addCreditNoteToDbAndSaveContentOnDisk(response.CREDITNOTE,"N") == response.CREDITNOTE.Length)
+                        if (Singl.creditNotesDalGet.addCreditNoteToDbAndSaveContentOnDisk(response.CREDITNOTE) == response.CREDITNOTE.Length)
                         {
                         }
                         else
