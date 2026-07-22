@@ -16,11 +16,17 @@ namespace izibiz.UI.Controls
         public event EventHandler<DocumentActionEventArgs> DownloadRequested;
         public event EventHandler CancelRequested;
 
-        private Color _borderColor = BrandColors.CardBorder;
+        private Color _borderColor = Color.Transparent;
+        private ContextMenuStrip _ctxDownload;
 
         public DocumentActionsCard()
         {
             InitializeComponent();
+
+            _ctxDownload = new ContextMenuStrip();
+            _ctxDownload.Items.Add("PDF").Click += (s, e) => { SelectedDownloadFormat = "pdf"; DownloadRequested?.Invoke(this, new DocumentActionEventArgs(SelectedDownloadFormat)); };
+            _ctxDownload.Items.Add("HTML").Click += (s, e) => { SelectedDownloadFormat = "html"; DownloadRequested?.Invoke(this, new DocumentActionEventArgs(SelectedDownloadFormat)); };
+            _ctxDownload.Items.Add("XML").Click += (s, e) => { SelectedDownloadFormat = "xml"; DownloadRequested?.Invoke(this, new DocumentActionEventArgs(SelectedDownloadFormat)); };
 
             rdViewPdf.CheckedChanged += FormatOption_CheckedChanged;
             rdViewHtml.CheckedChanged += FormatOption_CheckedChanged;
@@ -29,7 +35,7 @@ namespace izibiz.UI.Controls
             rdDownloadXml.CheckedChanged += FormatOption_CheckedChanged;
 
             btnView.Click += (s, e) => ViewRequested?.Invoke(this, new DocumentActionEventArgs(SelectedViewFormat));
-            btnDownload.Click += (s, e) => DownloadRequested?.Invoke(this, new DocumentActionEventArgs(SelectedDownloadFormat));
+            btnDownload.Click += (s, e) => _ctxDownload.Show(btnDownload, new Point(0, btnDownload.Height));
             btnCancel.Click += (s, e) => CancelRequested?.Invoke(this, EventArgs.Empty);
 
             btnView.FlatAppearance.MouseOverBackColor = BrandColors.Neutral;
@@ -38,16 +44,12 @@ namespace izibiz.UI.Controls
             btnDownload.FlatAppearance.MouseOverBackColor = BrandColors.Green;
             HoverAnimator.Attach(btnDownload, BrandColors.Green, BrandColors.GreenHover);
 
-            btnCancel.FlatAppearance.MouseOverBackColor = BrandColors.Danger;
-            HoverAnimator.Attach(btnCancel, BrandColors.Danger, BrandColors.DangerHover);
+            btnCancel.BackColor = Color.FromArgb(249, 115, 22);
+            btnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(234, 88, 12);
+            HoverAnimator.Attach(btnCancel, Color.FromArgb(249, 115, 22), Color.FromArgb(234, 88, 12));
 
-            HoverAnimator.AttachCustom(this, BrandColors.CardBorder, Color.FromArgb(148, 163, 184), c =>
-            {
-                _borderColor = c;
-                Invalidate();
-            });
-
-            RestyleAllToggles();
+            // Remove custom border for toolbar style
+            // RestyleAllToggles();
         }
 
         public string TitleText
@@ -72,13 +74,21 @@ namespace izibiz.UI.Controls
             }
         }
 
-        public bool CancelButtonEnabled
+        public bool DownloadButtonEnabled
         {
-            get => btnCancel.Enabled;
+            get => btnDownload.Enabled;
             set
             {
-                btnCancel.Enabled = value;
-                btnCancel.BackColor = value ? BrandColors.CardBorder : Color.LightGray;
+                btnDownload.Enabled = value;
+            }
+        }
+
+        public bool CancelButtonEnabled
+        {
+            get => btnCancel.Visible;
+            set
+            {
+                btnCancel.Visible = value;
             }
         }
 
@@ -86,15 +96,7 @@ namespace izibiz.UI.Controls
         public string SelectedViewFormat => rdViewHtml.Checked ? "html" : "pdf";
 
         /// <summary>İndirme için seçili format: "pdf", "html" veya "xml".</summary>
-        public string SelectedDownloadFormat
-        {
-            get
-            {
-                if (rdDownloadHtml.Checked) return "html";
-                if (rdDownloadXml.Checked) return "xml";
-                return "pdf";
-            }
-        }
+        public string SelectedDownloadFormat { get; private set; } = "pdf";
 
         protected override void OnHandleCreated(EventArgs e)
         {

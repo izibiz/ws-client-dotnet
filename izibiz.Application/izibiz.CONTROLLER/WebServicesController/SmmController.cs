@@ -1,4 +1,4 @@
-﻿using izibiz.COMMON;
+using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.CONTROLLER.RequestSection;
 using izibiz.CONTROLLER.Singleton;
@@ -122,11 +122,22 @@ namespace izibiz.CONTROLLER.WebServicesController
             }
         }
 
+        public string cancelSmm(string uuid)
+        {
+            using (SmmServicePortClient smmPortClient = new SmmServicePortClient())
+            {
+                CancelSmmRequest req = new CancelSmmRequest();
+                req.REQUEST_HEADER = RequestHeader.getRequestHeaderSmm;
+                req.UUID = new string[] { uuid };
 
-
-
-
-
+                var response = smmPortClient.CancelSmm(req);
+                if (response.ERROR_TYPE != null && response.ERROR_TYPE.ERROR_CODE != 0)
+                {
+                    return response.ERROR_TYPE.ERROR_SHORT_DES;
+                }
+                return null; // Başarılı
+            }
+        }
 
 
     }

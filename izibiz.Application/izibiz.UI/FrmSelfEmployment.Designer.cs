@@ -1,4 +1,4 @@
-﻿namespace izibiz.UI
+namespace izibiz.UI
 {
     partial class FrmSelfEmployment
     {
@@ -28,287 +28,283 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSelfEmployment));
-            this.IblInformation = new System.Windows.Forms.Label();
+            this.pnlSidebar = new System.Windows.Forms.Panel();
             this.btnHomePage = new System.Windows.Forms.Button();
-            this.itemNewSmm = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGetSmmReports = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGetDraftSmm = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGetSmm = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnTakeSmm = new System.Windows.Forms.Button();
+            this.btnHamburger = new System.Windows.Forms.Button();
+            this.btnNavSmm = new System.Windows.Forms.Button();
+            this.btnNavDraftSmm = new System.Windows.Forms.Button();
+            this.btnNavSmmReports = new System.Windows.Forms.Button();
+            this.btnNavNewSmm = new System.Windows.Forms.Button();
             this.tableGrid = new System.Windows.Forms.DataGridView();
-            this.menu = new System.Windows.Forms.MenuStrip();
-            this.pnlDraftSmm = new System.Windows.Forms.Panel();
-            this.pnlSmm = new System.Windows.Forms.Panel();
-            this.btnGetSignedXmlArchive = new System.Windows.Forms.Button();
-            this.btnCreditNoteView = new System.Windows.Forms.Button();
-            this.rdViewXml = new System.Windows.Forms.RadioButton();
-            this.rdViewHtml = new System.Windows.Forms.RadioButton();
-            this.rdViewPdf = new System.Windows.Forms.RadioButton();
-            this.pnlSmmReports = new System.Windows.Forms.Panel();
+            this.sourceCardSoap = new izibiz.UI.Controls.SourceCard();
+            this.sourceCardRest = new izibiz.UI.Controls.SourceCard();
+            this.documentActionsCard1 = new izibiz.UI.Controls.DocumentActionsCard();
+            this.lblInformation = new System.Windows.Forms.Label();
+            this.lblEmptyIcon = new System.Windows.Forms.Label();
+            this.lblEmptyText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).BeginInit();
-            this.menu.SuspendLayout();
-            this.pnlDraftSmm.SuspendLayout();
-            this.pnlSmm.SuspendLayout();
+            this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // IblInformation
-            // 
-            this.IblInformation.AutoSize = true;
-            this.IblInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.IblInformation.Location = new System.Drawing.Point(287, 522);
-            this.IblInformation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.IblInformation.Name = "IblInformation";
-            this.IblInformation.Size = new System.Drawing.Size(494, 25);
-            this.IblInformation.TabIndex = 61;
-            this.IblInformation.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
-            // 
+            //
+            // pnlSidebar
+            //
+            this.pnlSidebar.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.pnlSidebar.Controls.Add(this.btnNavNewSmm);
+            this.pnlSidebar.Controls.Add(this.btnNavSmmReports);
+            this.pnlSidebar.Controls.Add(this.btnNavDraftSmm);
+            this.pnlSidebar.Controls.Add(this.btnNavSmm);
+            this.pnlSidebar.Controls.Add(this.btnHamburger);
+            this.pnlSidebar.Controls.Add(this.btnHomePage);
+            this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
+            this.pnlSidebar.Name = "pnlSidebar";
+            this.pnlSidebar.Size = new System.Drawing.Size(340, 932);
+            this.pnlSidebar.TabIndex = 54;
+            //
+            // btnHamburger
+            //
+            this.btnHamburger.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnHamburger.FlatAppearance.BorderSize = 0;
+            this.btnHamburger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHamburger.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.btnHamburger.ForeColor = System.Drawing.Color.White;
+            this.btnHamburger.Location = new System.Drawing.Point(280, 24);
+            this.btnHamburger.Name = "btnHamburger";
+            this.btnHamburger.Size = new System.Drawing.Size(44, 44);
+            this.btnHamburger.TabIndex = 58;
+            this.btnHamburger.Text = "☰";
+            this.btnHamburger.UseVisualStyleBackColor = false;
+            this.btnHamburger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHamburger.Click += new System.EventHandler(this.BtnHamburger_Click);
+            //
             // btnHomePage
-            // 
-            this.btnHomePage.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnHomePage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHomePage.BackgroundImage")));
-            this.btnHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            //
+            this.btnHomePage.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnHomePage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHomePage.FlatAppearance.BorderSize = 0;
-            this.btnHomePage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnHomePage.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.btnHomePage.ForeColor = System.Drawing.Color.Snow;
-            this.btnHomePage.Location = new System.Drawing.Point(16, 42);
-            this.btnHomePage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnHomePage.Location = new System.Drawing.Point(16, 20);
             this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Size = new System.Drawing.Size(163, 108);
+            this.btnHomePage.Padding = new System.Windows.Forms.Padding(6);
+            this.btnHomePage.Size = new System.Drawing.Size(308, 90);
             this.btnHomePage.TabIndex = 57;
-            this.btnHomePage.Text = "Ana Sayfa";
-            this.btnHomePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHomePage.Text = "";
             this.btnHomePage.UseVisualStyleBackColor = false;
             this.btnHomePage.Click += new System.EventHandler(this.BtnHomePage_Click);
-            // 
-            // itemNewSmm
-            // 
-            this.itemNewSmm.BackColor = System.Drawing.Color.Teal;
-            this.itemNewSmm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemNewSmm.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
-            this.itemNewSmm.Name = "itemNewSmm";
-            this.itemNewSmm.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemNewSmm.Size = new System.Drawing.Size(176, 39);
-            this.itemNewSmm.Text = "+ Yeni Smm";
-            // 
-            // itemGetSmmReports
-            // 
-            this.itemGetSmmReports.BackColor = System.Drawing.Color.Teal;
-            this.itemGetSmmReports.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemGetSmmReports.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
-            this.itemGetSmmReports.Name = "itemGetSmmReports";
-            this.itemGetSmmReports.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetSmmReports.Size = new System.Drawing.Size(176, 39);
-            this.itemGetSmmReports.Text = "Smm Raporları";
-            this.itemGetSmmReports.Click += new System.EventHandler(this.ItemGetSmmReports_Click);
-            // 
-            // itemGetDraftSmm
-            // 
-            this.itemGetDraftSmm.BackColor = System.Drawing.Color.Teal;
-            this.itemGetDraftSmm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.itemGetDraftSmm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemGetDraftSmm.Margin = new System.Windows.Forms.Padding(2, 40, 2, 2);
-            this.itemGetDraftSmm.Name = "itemGetDraftSmm";
-            this.itemGetDraftSmm.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetDraftSmm.Size = new System.Drawing.Size(176, 41);
-            this.itemGetDraftSmm.Text = "Taslak Smm";
-            this.itemGetDraftSmm.Click += new System.EventHandler(this.ItemGetDraftSmm_Click);
-            // 
-            // itemGetSmm
-            // 
-            this.itemGetSmm.BackColor = System.Drawing.Color.Teal;
-            this.itemGetSmm.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.itemGetSmm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.itemGetSmm.Margin = new System.Windows.Forms.Padding(2, 140, 2, 2);
-            this.itemGetSmm.Name = "itemGetSmm";
-            this.itemGetSmm.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.itemGetSmm.Size = new System.Drawing.Size(176, 40);
-            this.itemGetSmm.Text = "E-Smm";
-            this.itemGetSmm.Click += new System.EventHandler(this.ItemGetSmm_Click);
-            // 
-            // btnTakeSmm
-            // 
-            this.btnTakeSmm.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnTakeSmm.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnTakeSmm.FlatAppearance.BorderSize = 2;
-            this.btnTakeSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTakeSmm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTakeSmm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTakeSmm.Location = new System.Drawing.Point(294, 75);
-            this.btnTakeSmm.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.btnTakeSmm.Name = "btnTakeSmm";
-            this.btnTakeSmm.Size = new System.Drawing.Size(180, 75);
-            this.btnTakeSmm.TabIndex = 56;
-            this.btnTakeSmm.Text = "smm al";
-            this.btnTakeSmm.UseVisualStyleBackColor = false;
-            this.btnTakeSmm.Visible = false;
-            this.btnTakeSmm.Click += new System.EventHandler(this.BtnTakeSmm_Click);
-            // 
+            //
+            // btnNavSmm
+            //
+            this.btnNavSmm.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavSmm.FlatAppearance.BorderSize = 0;
+            this.btnNavSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavSmm.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavSmm.ForeColor = System.Drawing.Color.White;
+            this.btnNavSmm.Location = new System.Drawing.Point(16, 144);
+            this.btnNavSmm.Name = "btnNavSmm";
+            this.btnNavSmm.Size = new System.Drawing.Size(308, 56);
+            this.btnNavSmm.TabIndex = 59;
+            this.btnNavSmm.Text = "📜   E-SMM";
+            this.btnNavSmm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavSmm.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavSmm.UseVisualStyleBackColor = false;
+            this.btnNavSmm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavSmm.Click += new System.EventHandler(this.ItemGetSmm_Click);
+            //
+            // btnNavDraftSmm
+            //
+            this.btnNavDraftSmm.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavDraftSmm.FlatAppearance.BorderSize = 0;
+            this.btnNavDraftSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavDraftSmm.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavDraftSmm.ForeColor = System.Drawing.Color.White;
+            this.btnNavDraftSmm.Location = new System.Drawing.Point(16, 228);
+            this.btnNavDraftSmm.Name = "btnNavDraftSmm";
+            this.btnNavDraftSmm.Size = new System.Drawing.Size(308, 56);
+            this.btnNavDraftSmm.TabIndex = 60;
+            this.btnNavDraftSmm.Text = "📝   Taslak";
+            this.btnNavDraftSmm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavDraftSmm.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavDraftSmm.UseVisualStyleBackColor = false;
+            this.btnNavDraftSmm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavDraftSmm.Click += new System.EventHandler(this.ItemGetDraftSmm_Click);
+            //
+            // btnNavSmmReports
+            //
+            this.btnNavSmmReports.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavSmmReports.FlatAppearance.BorderSize = 0;
+            this.btnNavSmmReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavSmmReports.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavSmmReports.ForeColor = System.Drawing.Color.White;
+            this.btnNavSmmReports.Location = new System.Drawing.Point(16, 312);
+            this.btnNavSmmReports.Name = "btnNavSmmReports";
+            this.btnNavSmmReports.Size = new System.Drawing.Size(308, 56);
+            this.btnNavSmmReports.TabIndex = 61;
+            this.btnNavSmmReports.Text = "📊   Rapor E-SMM";
+            this.btnNavSmmReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavSmmReports.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavSmmReports.UseVisualStyleBackColor = false;
+            this.btnNavSmmReports.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavSmmReports.Click += new System.EventHandler(this.ItemGetSmmReports_Click);
+            //
+            // btnNavNewSmm
+            //
+            this.btnNavNewSmm.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.btnNavNewSmm.FlatAppearance.BorderSize = 0;
+            this.btnNavNewSmm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavNewSmm.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
+            this.btnNavNewSmm.ForeColor = System.Drawing.Color.White;
+            this.btnNavNewSmm.Location = new System.Drawing.Point(16, 416);
+            this.btnNavNewSmm.Name = "btnNavNewSmm";
+            this.btnNavNewSmm.Size = new System.Drawing.Size(308, 56);
+            this.btnNavNewSmm.TabIndex = 62;
+            this.btnNavNewSmm.Text = "➕   Yeni E-SMM";
+            this.btnNavNewSmm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNavNewSmm.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNavNewSmm.UseVisualStyleBackColor = false;
+            this.btnNavNewSmm.Cursor = System.Windows.Forms.Cursors.Hand;
+            //
             // tableGrid
-            // 
+            //
+            this.tableGrid.BackgroundColor = System.Drawing.Color.White;
+            this.tableGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableGrid.Location = new System.Drawing.Point(291, 554);
-            this.tableGrid.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tableGrid.EnableHeadersVisualStyles = false;
+            this.tableGrid.GridColor = izibiz.UI.Controls.BrandColors.CardBorder;
+            this.tableGrid.Location = new System.Drawing.Point(291, 300);
+            this.tableGrid.Margin = new System.Windows.Forms.Padding(6);
             this.tableGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableGrid.Name = "tableGrid";
-            this.tableGrid.ReadOnly = true;
-            this.tableGrid.RowHeadersWidth = 51;
+            this.tableGrid.ReadOnly = false;
+            this.tableGrid.RowHeadersVisible = false;
+            this.tableGrid.RowHeadersWidth = 28;
+            this.tableGrid.RowTemplate.Height = 42;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(1212, 350);
+            this.tableGrid.Size = new System.Drawing.Size(1262, 600);
+            this.tableGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tableGrid.TabIndex = 55;
+            this.tableGrid.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.tableGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.BackColor = izibiz.UI.Controls.BrandColors.SidebarDark;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.tableGrid.ColumnHeadersDefaultCellStyle.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tableGrid.ColumnHeadersHeight = 46;
+            this.tableGrid.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tableGrid.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(10, 0, 6, 0);
+            this.tableGrid.DefaultCellStyle.SelectionBackColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.tableGrid.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.tableGrid.RowsDefaultCellStyle.SelectionBackColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.tableGrid.RowHeadersDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.tableGrid.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellClick);
             this.tableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellContentClick);
-            // 
-            // menu
-            // 
-            this.menu.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.menu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.menu.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.menu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
-            this.menu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemGetSmm,
-            this.itemGetDraftSmm,
-            this.itemGetSmmReports,
-            this.itemNewSmm});
-            this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Margin = new System.Windows.Forms.Padding(0, 0, 30, 0);
-            this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(187, 932);
-            this.menu.TabIndex = 54;
-            this.menu.Text = "menuStrip1";
-            // 
-            // pnlDraftSmm
-            // 
-            this.pnlDraftSmm.Controls.Add(this.pnlSmmReports);
-            this.pnlDraftSmm.Location = new System.Drawing.Point(483, 42);
-            this.pnlDraftSmm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlDraftSmm.Name = "pnlDraftSmm";
-            this.pnlDraftSmm.Size = new System.Drawing.Size(1036, 132);
-            this.pnlDraftSmm.TabIndex = 62;
-            this.pnlDraftSmm.Visible = false;
-            this.pnlDraftSmm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDraftSmm_Paint);
-            // 
-            // pnlSmm
-            // 
-            this.pnlSmm.Controls.Add(this.btnGetSignedXmlArchive);
-            this.pnlSmm.Controls.Add(this.btnCreditNoteView);
-            this.pnlSmm.Controls.Add(this.rdViewXml);
-            this.pnlSmm.Controls.Add(this.rdViewHtml);
-            this.pnlSmm.Controls.Add(this.rdViewPdf);
-            this.pnlSmm.Location = new System.Drawing.Point(480, 42);
-            this.pnlSmm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlSmm.Name = "pnlSmm";
-            this.pnlSmm.Size = new System.Drawing.Size(1036, 144);
-            this.pnlSmm.TabIndex = 63;
-            this.pnlSmm.Visible = false;
-            // 
-            // btnGetSignedXmlArchive
-            // 
-            this.btnGetSignedXmlArchive.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnGetSignedXmlArchive.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnGetSignedXmlArchive.FlatAppearance.BorderSize = 2;
-            this.btnGetSignedXmlArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGetSignedXmlArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGetSignedXmlArchive.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetSignedXmlArchive.Location = new System.Drawing.Point(236, 38);
-            this.btnGetSignedXmlArchive.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.btnGetSignedXmlArchive.Name = "btnGetSignedXmlArchive";
-            this.btnGetSignedXmlArchive.Size = new System.Drawing.Size(168, 75);
-            this.btnGetSignedXmlArchive.TabIndex = 57;
-            this.btnGetSignedXmlArchive.Text = "imzalı Xml Al";
-            this.btnGetSignedXmlArchive.UseVisualStyleBackColor = false;
-            // 
-            // btnCreditNoteView
-            // 
-            this.btnCreditNoteView.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnCreditNoteView.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btnCreditNoteView.FlatAppearance.BorderSize = 2;
-            this.btnCreditNoteView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditNoteView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCreditNoteView.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCreditNoteView.Location = new System.Drawing.Point(6, 36);
-            this.btnCreditNoteView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.btnCreditNoteView.Name = "btnCreditNoteView";
-            this.btnCreditNoteView.Size = new System.Drawing.Size(153, 75);
-            this.btnCreditNoteView.TabIndex = 53;
-            this.btnCreditNoteView.Text = "goruntule";
-            this.btnCreditNoteView.UseVisualStyleBackColor = false;
-            this.btnCreditNoteView.Click += new System.EventHandler(this.btnCreditNoteView_Click);
-            // 
-            // rdViewXml
-            // 
-            this.rdViewXml.AutoSize = true;
-            this.rdViewXml.Location = new System.Drawing.Point(170, 102);
-            this.rdViewXml.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.rdViewXml.Name = "rdViewXml";
-            this.rdViewXml.Size = new System.Drawing.Size(57, 24);
-            this.rdViewXml.TabIndex = 56;
-            this.rdViewXml.TabStop = true;
-            this.rdViewXml.Text = "xml";
-            this.rdViewXml.UseVisualStyleBackColor = true;
-            // 
-            // rdViewHtml
-            // 
-            this.rdViewHtml.AutoSize = true;
-            this.rdViewHtml.Location = new System.Drawing.Point(170, 30);
-            this.rdViewHtml.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.rdViewHtml.Name = "rdViewHtml";
-            this.rdViewHtml.Size = new System.Drawing.Size(64, 24);
-            this.rdViewHtml.TabIndex = 54;
-            this.rdViewHtml.TabStop = true;
-            this.rdViewHtml.Text = "html";
-            this.rdViewHtml.UseVisualStyleBackColor = true;
-            // 
-            // rdViewPdf
-            // 
-            this.rdViewPdf.AutoSize = true;
-            this.rdViewPdf.Location = new System.Drawing.Point(170, 64);
-            this.rdViewPdf.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.rdViewPdf.Name = "rdViewPdf";
-            this.rdViewPdf.Size = new System.Drawing.Size(57, 24);
-            this.rdViewPdf.TabIndex = 55;
-            this.rdViewPdf.TabStop = true;
-            this.rdViewPdf.Text = "pdf";
-            this.rdViewPdf.UseVisualStyleBackColor = true;
-            // 
-            // pnlSmmReports
-            // 
-            this.pnlSmmReports.Location = new System.Drawing.Point(0, 2);
-            this.pnlSmmReports.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlSmmReports.Name = "pnlSmmReports";
-            this.pnlSmmReports.Size = new System.Drawing.Size(1036, 130);
-            this.pnlSmmReports.TabIndex = 64;
-            this.pnlSmmReports.Visible = false;
-            // 
+            this.tableGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.tableGrid_CurrentCellDirtyStateChanged);
+            this.tableGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableGrid_CellValueChanged);
+            //
+            // sourceCardSoap
+            //
+            this.sourceCardSoap.AccentColor = izibiz.UI.Controls.BrandColors.Purple;
+            this.sourceCardSoap.ButtonText = "SOAP ile Çek";
+            this.sourceCardSoap.DescriptionText = "Mevcut SOAP servisi";
+            this.sourceCardSoap.FetchButtonVisible = false;
+            this.sourceCardSoap.IconGlyph = "⚙";
+            this.sourceCardSoap.IconTintColor = izibiz.UI.Controls.BrandColors.PurpleLight;
+            this.sourceCardSoap.Location = new System.Drawing.Point(627, 40);
+            this.sourceCardSoap.Name = "sourceCardSoap";
+            this.sourceCardSoap.Size = new System.Drawing.Size(340, 230);
+            this.sourceCardSoap.TabIndex = 66;
+            this.sourceCardSoap.TitleText = "SOAP";
+            //
+            // sourceCardRest
+            //
+            this.sourceCardRest.AccentColor = izibiz.UI.Controls.BrandColors.Teal;
+            this.sourceCardRest.ButtonText = "REST ile Çek";
+            this.sourceCardRest.DescriptionText = "REST API üzerinden";
+            this.sourceCardRest.FetchButtonVisible = false;
+            this.sourceCardRest.IconGlyph = "☁";
+            this.sourceCardRest.IconTintColor = izibiz.UI.Controls.BrandColors.TealLight;
+            this.sourceCardRest.Location = new System.Drawing.Point(937, 40);
+            this.sourceCardRest.Name = "sourceCardRest";
+            this.sourceCardRest.Size = new System.Drawing.Size(340, 230);
+            this.sourceCardRest.TabIndex = 67;
+            this.sourceCardRest.TitleText = "REST";
+            //
+            // documentActionsCard1
+            //
+            this.documentActionsCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.documentActionsCard1.DescriptionText = "Seçili belgeyi görüntüleyin veya indirin";
+            this.documentActionsCard1.Location = new System.Drawing.Point(291, 248);
+            this.documentActionsCard1.Name = "documentActionsCard1";
+            this.documentActionsCard1.Size = new System.Drawing.Size(250, 45);
+            this.documentActionsCard1.TabIndex = 68;
+            this.documentActionsCard1.TitleText = "Belge Görüntüleme / İndirme";
+            this.documentActionsCard1.Visible = false;
+            //
+            // lblInformation
+            //
+            this.lblInformation.AutoSize = true;
+            this.lblInformation.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Italic);
+            this.lblInformation.ForeColor = izibiz.UI.Controls.BrandColors.TextMuted;
+            this.lblInformation.Location = new System.Drawing.Point(294, 570);
+            this.lblInformation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInformation.Name = "lblInformation";
+            this.lblInformation.Size = new System.Drawing.Size(352, 20);
+            this.lblInformation.TabIndex = 65;
+            this.lblInformation.Text = "islem yapabılmek ıcın tablodan bir veriye  tıklayınız";
+            this.lblInformation.Visible = false;
+            //
+            // lblEmptyIcon
+            //
+            this.lblEmptyIcon.Font = new System.Drawing.Font("Segoe UI", 42F);
+            this.lblEmptyIcon.ForeColor = izibiz.UI.Controls.BrandColors.TealLight;
+            this.lblEmptyIcon.Location = new System.Drawing.Point(291, 660);
+            this.lblEmptyIcon.Name = "lblEmptyIcon";
+            this.lblEmptyIcon.Size = new System.Drawing.Size(1262, 80);
+            this.lblEmptyIcon.TabIndex = 69;
+            this.lblEmptyIcon.Text = "📄";
+            this.lblEmptyIcon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // lblEmptyText
+            //
+            this.lblEmptyText.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblEmptyText.ForeColor = izibiz.UI.Controls.BrandColors.TextMuted;
+            this.lblEmptyText.Location = new System.Drawing.Point(291, 745);
+            this.lblEmptyText.Name = "lblEmptyText";
+            this.lblEmptyText.Size = new System.Drawing.Size(1262, 30);
+            this.lblEmptyText.TabIndex = 70;
+            this.lblEmptyText.Text = "Henüz belge yok — yukarıdan SOAP ya da REST ile çekin";
+            this.lblEmptyText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
             // FrmSelfEmployment
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = izibiz.UI.Controls.BrandColors.PageBackground;
             this.ClientSize = new System.Drawing.Size(1730, 932);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ControlBox = true;
-            this.Controls.Add(this.pnlSmm);
-            this.Controls.Add(this.pnlDraftSmm);
-            this.Controls.Add(this.IblInformation);
-            this.Controls.Add(this.btnHomePage);
-            this.Controls.Add(this.btnTakeSmm);
+            this.Controls.Add(this.lblEmptyText);
+            this.Controls.Add(this.lblEmptyIcon);
+            this.Controls.Add(this.lblInformation);
+            this.Controls.Add(this.documentActionsCard1);
+            this.Controls.Add(this.sourceCardRest);
+            this.Controls.Add(this.sourceCardSoap);
             this.Controls.Add(this.tableGrid);
-            this.Controls.Add(this.menu);
+            this.Controls.Add(this.pnlSidebar);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
             this.Name = "FrmSelfEmployment";
             this.Text = "FrmSelfEmployment";
             this.Load += new System.EventHandler(this.FrmSelfEmployment_Load);
+            this.Resize += new System.EventHandler(this.FrmSelfEmployment_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.tableGrid)).EndInit();
-            this.menu.ResumeLayout(false);
-            this.menu.PerformLayout();
-            this.pnlDraftSmm.ResumeLayout(false);
-            this.pnlSmm.ResumeLayout(false);
-            this.pnlSmm.PerformLayout();
+            this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,22 +312,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Label IblInformation;
+        private System.Windows.Forms.Panel pnlSidebar;
         private System.Windows.Forms.Button btnHomePage;
-        private System.Windows.Forms.ToolStripMenuItem itemNewSmm;
-        private System.Windows.Forms.ToolStripMenuItem itemGetSmmReports;
-        private System.Windows.Forms.ToolStripMenuItem itemGetDraftSmm;
-        private System.Windows.Forms.ToolStripMenuItem itemGetSmm;
-        private System.Windows.Forms.Button btnTakeSmm;
+        private System.Windows.Forms.Button btnHamburger;
+        private System.Windows.Forms.Button btnNavSmm;
+        private System.Windows.Forms.Button btnNavDraftSmm;
+        private System.Windows.Forms.Button btnNavSmmReports;
+        private System.Windows.Forms.Button btnNavNewSmm;
         private System.Windows.Forms.DataGridView tableGrid;
-        private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.Panel pnlDraftSmm;
-        private System.Windows.Forms.Panel pnlSmm;
-        private System.Windows.Forms.Panel pnlSmmReports;
-        private System.Windows.Forms.Button btnGetSignedXmlArchive;
-        private System.Windows.Forms.Button btnCreditNoteView;
-        private System.Windows.Forms.RadioButton rdViewXml;
-        private System.Windows.Forms.RadioButton rdViewHtml;
-        private System.Windows.Forms.RadioButton rdViewPdf;
+        private izibiz.UI.Controls.SourceCard sourceCardSoap;
+        private izibiz.UI.Controls.SourceCard sourceCardRest;
+        private izibiz.UI.Controls.DocumentActionsCard documentActionsCard1;
+        private System.Windows.Forms.Label lblInformation;
+        private System.Windows.Forms.Label lblEmptyIcon;
+        private System.Windows.Forms.Label lblEmptyText;
     }
 }

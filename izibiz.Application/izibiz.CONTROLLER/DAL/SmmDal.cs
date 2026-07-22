@@ -1,4 +1,4 @@
-﻿using izibiz.COMMON;
+using izibiz.COMMON;
 using izibiz.COMMON.FileControl;
 using izibiz.MODEL.Data;
 using izibiz.MODEL.Entities;
@@ -44,11 +44,16 @@ namespace izibiz.CONTROLLER.DAL
             {
                 foreach (var smm in smmArr)
                 {
+                    if (databaseContext.selfEmployments.Find(smm.UUID) != null)
+                    {
+                        continue;
+                    }
+
                     selfEmployment = new SelfEmploymentReceipts();
 
                     selfEmployment.smmID = smm.ID;
                     selfEmployment.uuid = smm.UUID;
-                    selfEmployment.customerTitle =smm.HEADER.CUSTOMER.NAME;
+                    selfEmployment.customerTitle = smm.HEADER.CUSTOMER.NAME;
                     selfEmployment.customerID = smm.HEADER.CUSTOMER.IDENTIFIER;
                     selfEmployment.profileID = smm.HEADER.PROFILE_ID.ToString();
                     selfEmployment.status = smm.HEADER.STATUS;
@@ -58,13 +63,14 @@ namespace izibiz.CONTROLLER.DAL
                     selfEmployment.issueDate = smm.HEADER.ISSUE_DATE;
                     selfEmployment.email = smm.HEADER.EMAIL != null ? smm.HEADER.EMAIL.First() : null;
                     selfEmployment.emailStatusCode = smm.HEADER.EMAIL_STATUS_CODE;
-                    selfEmployment.folderPath = FolderControl.smmFolderPath + smm.ID + "." + nameof(EI.DocumentType.XML);
+                    selfEmployment.folderPath = FolderControl.smmFolderPath + smm.UUID + "." + nameof(EI.DocumentType.XML);
 
                     FolderControl.writeFileOnDiskWithString(Encoding.UTF8.GetString(Compress.UncompressFile(smm.CONTENT.Value)), selfEmployment.folderPath);
 
                     databaseContext.selfEmployments.Add(selfEmployment);
                 }
-                return databaseContext.SaveChanges();
+                databaseContext.SaveChanges();
+                return smmArr.Length; // Dönen sayı hata vermemesi için smmArr.Length olarak ayarlandı, çünkü daha önce eklenenler skip ediliyor.
             }
         }
 

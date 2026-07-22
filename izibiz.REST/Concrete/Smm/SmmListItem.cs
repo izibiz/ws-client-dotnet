@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace izibiz.REST.Concrete.Smm
 {
@@ -12,6 +12,29 @@ namespace izibiz.REST.Concrete.Smm
         public SmmDocumentStatus DocumentStatus { get; set; }
         public SmmParty Sender { get; set; }
         public SmmParty Receiver { get; set; }
+
+        public decimal Amount { get; set; }
+        public string CDate { get; set; }
+        public string CreateDate { get; set; }
+        public string SendDate { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string DocumentStatusLabel => DocumentStatus?.Label;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string ReceiverIdentifier => Receiver?.Identifier;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string ReceiverName => Receiver?.Name;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string ProfileId => "EARSIVBELGE";
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string TypeCode => "SERBESTMESLEKMAKBUZ";
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string SentTime => !string.IsNullOrEmpty(CDate) ? CDate : (!string.IsNullOrEmpty(CreateDate) ? CreateDate : (!string.IsNullOrEmpty(SendDate) ? SendDate : IssueDate));
     }
 
     public class SmmDocumentStatus

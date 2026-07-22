@@ -1,4 +1,4 @@
-﻿namespace izibiz.UI.Controls
+namespace izibiz.UI.Controls
 {
     partial class DocumentActionsCard
     {
@@ -47,6 +47,7 @@
             this.lblTitle.Size = new System.Drawing.Size(300, 35);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Belge Görüntüleme / İndirme";
+            this.lblTitle.Visible = false;
             //
             // lblDesc
             //
@@ -58,6 +59,7 @@
             this.lblDesc.Size = new System.Drawing.Size(320, 19);
             this.lblDesc.TabIndex = 1;
             this.lblDesc.Text = "Seçili belgeyi görüntüleyin veya indirin";
+            this.lblDesc.Visible = false;
             //
             // lblViewHeader
             //
@@ -69,6 +71,7 @@
             this.lblViewHeader.Size = new System.Drawing.Size(90, 25);
             this.lblViewHeader.TabIndex = 2;
             this.lblViewHeader.Text = "Görüntüle";
+            this.lblViewHeader.Visible = false;
             //
             // pnlViewFormats
             //
@@ -79,6 +82,7 @@
             this.pnlViewFormats.Name = "pnlViewFormats";
             this.pnlViewFormats.Size = new System.Drawing.Size(210, 45);
             this.pnlViewFormats.TabIndex = 3;
+            this.pnlViewFormats.Visible = false;
             //
             // rdViewPdf
             //
@@ -132,6 +136,7 @@
             this.btnView.Text = "Görüntüle";
             this.btnView.UseVisualStyleBackColor = false;
             this.btnView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnView.Visible = false;
             //
             // lblDownloadHeader
             //
@@ -143,6 +148,7 @@
             this.lblDownloadHeader.Size = new System.Drawing.Size(60, 25);
             this.lblDownloadHeader.TabIndex = 5;
             this.lblDownloadHeader.Text = "İndir";
+            this.lblDownloadHeader.Visible = false;
             //
             // pnlDownloadFormats
             //
@@ -152,8 +158,9 @@
             this.pnlDownloadFormats.Controls.Add(this.rdDownloadXml);
             this.pnlDownloadFormats.Location = new System.Drawing.Point(650, 122);
             this.pnlDownloadFormats.Name = "pnlDownloadFormats";
-            this.pnlDownloadFormats.Size = new System.Drawing.Size(320, 45);
+            this.pnlDownloadFormats.Size = new System.Drawing.Size(315, 45);
             this.pnlDownloadFormats.TabIndex = 6;
+            this.pnlDownloadFormats.Visible = false;
             //
             // rdDownloadPdf
             //
@@ -218,11 +225,11 @@
             this.btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDownload.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnDownload.ForeColor = System.Drawing.Color.White;
-            this.btnDownload.Location = new System.Drawing.Point(650, 177);
+            this.btnDownload.Location = new System.Drawing.Point(0, 0);
             this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(210, 45);
+            this.btnDownload.Size = new System.Drawing.Size(95, 40);
             this.btnDownload.TabIndex = 7;
-            this.btnDownload.Text = "İndir";
+            this.btnDownload.Text = "İndir ˅";
             this.btnDownload.UseVisualStyleBackColor = false;
             this.btnDownload.Cursor = System.Windows.Forms.Cursors.Hand;
             //
@@ -236,6 +243,7 @@
             this.lblCancelHeader.Size = new System.Drawing.Size(40, 25);
             this.lblCancelHeader.TabIndex = 9;
             this.lblCancelHeader.Text = "Sil";
+            this.lblCancelHeader.Visible = false;
             //
             // btnCancel
             //
@@ -245,11 +253,11 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(1000, 177);
+            this.btnCancel.Location = new System.Drawing.Point(105, 0);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(210, 45);
-            this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "Belgeyi Sil";
+            this.btnCancel.Size = new System.Drawing.Size(130, 40);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "İptal Raporla";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             //
@@ -263,10 +271,11 @@
             this.lblNote.Size = new System.Drawing.Size(300, 19);
             this.lblNote.TabIndex = 8;
             this.lblNote.Text = "Not: Görüntüleme geçicidir, indirme belgeyi klasörünüze kalıcı olarak kaydeder.";
+            this.lblNote.Visible = false;
             //
             // DocumentActionsCard
             //
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblCancelHeader);
@@ -279,7 +288,7 @@
             this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.lblTitle);
             this.Name = "DocumentActionsCard";
-            this.Size = new System.Drawing.Size(1262, 265);
+            this.Size = new System.Drawing.Size(250, 45);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DocumentActionsCard_Paint);
             this.pnlViewFormats.ResumeLayout(false);
             this.pnlDownloadFormats.ResumeLayout(false);
