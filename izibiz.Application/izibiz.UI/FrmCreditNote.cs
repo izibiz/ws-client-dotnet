@@ -208,7 +208,12 @@ namespace izibiz.UI
                     ? await Singl.MustahsilClientGet.ListDraftsAsync(filter)
                     : await Singl.MustahsilClientGet.ListAsync(filter);
 
-                tableGrid.DataSource = result.Contents;
+                // API'nin döndürdüğü sıra bir belge güncellendiğinde (ör. iptal edilince) değişebiliyor;
+                // bu da her yenilemede listenin "oynamasına" ve belge bulmayı zorlaştırmasına sebep oluyordu.
+                // Belge No'ya göre sabit sıralayınca konumlar yenilemeler arasında tutarlı kalıyor.
+                var sortedContents = result.Contents.OrderBy(c => c.DocumentNo).ToList();
+
+                tableGrid.DataSource = sortedContents;
                 EnsureCheckboxColumn();
                 FormatGridColumns();
                 UpdateEmptyState();
@@ -345,6 +350,13 @@ namespace izibiz.UI
                 SetupCol("ProfileId", "Senaryo");
                 SetupCol("TypeCode", "Tip");
                 SetupCol("DocumentStatusLabel", "Durum");
+
+                // Belge No sütunu Fill modunda çok daralıp "..." ile kesiliyordu;
+                // benzer önekli belge numaralarını ayırt edebilmek için asgari genişlik veriyoruz.
+                if (tableGrid.Columns.Contains("DocumentNo"))
+                {
+                    tableGrid.Columns["DocumentNo"].MinimumWidth = 180;
+                }
             }
             else // SOAP
             {
@@ -355,6 +367,11 @@ namespace izibiz.UI
                 SetupCol("cDate", "Gönderilme Zamanı");
                 SetupCol("profileID", "Senaryo");
                 SetupCol("statusDesc", "Durum");
+
+                if (tableGrid.Columns.Contains("CreditNoteID"))
+                {
+                    tableGrid.Columns["CreditNoteID"].MinimumWidth = 180;
+                }
             }
         }
 
@@ -819,7 +836,9 @@ namespace izibiz.UI
         }
 
         /// <summary>
-        /// Sil: seçili belgeyi iptal eder. Geri alınamaz bir işlem olduğu için önce onay istenir.
+        /// Sil: Taslak'ta belgeyi tamamen siler (henüz GİB'e gönderilmedi), Giden'de ise
+        /// belgeyi "İptal Raporlandı" durumuna geçirir (soft-cancel, listede kalır).
+        /// Zaten iptal edilmiş bir belge tekrar iptal edilemez; geri alınamaz olduğu için önce onay istenir.
         /// </summary>
         private async void DocumentActionsCard1_CancelRequested(object sender, EventArgs e)
         {
@@ -836,8 +855,21 @@ namespace izibiz.UI
                 return;
             }
 
+            string status = restItem.DocumentStatusLabel;
+            if (status == "İptal Raporlandı" || status == "İptal Edildi")
+            {
+                MessageBox.Show("Bu belge zaten iptal edilmiş, tekrar iptal edilemez.", "İşlem Yapılamaz", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool isDraftContext = gridMenuType == EI.CreditNote.draftCreditNote.ToString();
+
+            string confirmMessage = isDraftContext
+                ? $"'{restItem.Uuid}' numaralı taslağı silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
+                : $"'{restItem.Uuid}' numaralı belgeyi iptal etmek istediğinize emin misiniz? Belge \"İptal Raporlandı\" durumuna geçecek. Bu işlem geri alınamaz.";
+
             var confirm = MessageBox.Show(
-                $"'{restItem.Uuid}' numaralı belgeyi iptal etmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+                confirmMessage,
                 "Belgeyi Sil",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
@@ -849,13 +881,17 @@ namespace izibiz.UI
 
             try
             {
-                await Singl.MustahsilClientGet.CancelAsync(restItem.Uuid);
-                MessageBox.Show("Belge başarıyla iptal edildi.", "İptal Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Taslak: henüz GİB'e gönderilmediği için gerçekten silinir (deleteDocument: true).
+                // Giden: soft-cancel, "İptal Raporlandı" durumuna geçer, listede kalır.
+                await Singl.MustahsilClientGet.CancelAsync(restItem.Uuid, deleteDocument: isDraftContext);
+                MessageBox.Show(
+                    isDraftContext ? "Taslak başarıyla silindi." : "Belge başarıyla iptal edildi.",
+                    "İşlem Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 BtnRestListele_Click(sender, EventArgs.Empty);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("İptal Hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("İşlem Hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

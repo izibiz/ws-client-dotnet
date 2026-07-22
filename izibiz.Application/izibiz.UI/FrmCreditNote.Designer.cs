@@ -106,7 +106,7 @@ namespace izibiz.UI
             this.btnNavMustahsil.Name = "btnNavMustahsil";
             this.btnNavMustahsil.Size = new System.Drawing.Size(308, 56);
             this.btnNavMustahsil.TabIndex = 59;
-            this.btnNavMustahsil.Text = "\uD83D\uDCC4   E-Müstahsil";
+            this.btnNavMustahsil.Text = "\uD83D\uDCC4   Giden E-Müstahsil";
             this.btnNavMustahsil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavMustahsil.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNavMustahsil.UseVisualStyleBackColor = false;
@@ -174,7 +174,7 @@ namespace izibiz.UI
             this.tableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableGrid.EnableHeadersVisualStyles = false;
             this.tableGrid.GridColor = izibiz.UI.Controls.BrandColors.CardBorder;
-            this.tableGrid.Location = new System.Drawing.Point(291, 600);
+            this.tableGrid.Location = new System.Drawing.Point(291, 300);
             this.tableGrid.Margin = new System.Windows.Forms.Padding(6);
             this.tableGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableGrid.Name = "tableGrid";
@@ -183,7 +183,7 @@ namespace izibiz.UI
             this.tableGrid.RowHeadersWidth = 28;
             this.tableGrid.RowTemplate.Height = 42;
             this.tableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableGrid.Size = new System.Drawing.Size(1262, 300);
+            this.tableGrid.Size = new System.Drawing.Size(1262, 600);
             this.tableGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.tableGrid.TabIndex = 55;
@@ -238,9 +238,9 @@ namespace izibiz.UI
             //
             this.documentActionsCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.documentActionsCard1.DescriptionText = "Seçili belgeyi görüntüleyin veya indirin";
-            this.documentActionsCard1.Location = new System.Drawing.Point(291, 295);
+            this.documentActionsCard1.Location = new System.Drawing.Point(291, 248);
             this.documentActionsCard1.Name = "documentActionsCard1";
-            this.documentActionsCard1.Size = new System.Drawing.Size(1262, 265);
+            this.documentActionsCard1.Size = new System.Drawing.Size(250, 45);
             this.documentActionsCard1.TabIndex = 68;
             this.documentActionsCard1.TitleText = "Belge Görüntüleme / İndirme";
             this.documentActionsCard1.Visible = false;
