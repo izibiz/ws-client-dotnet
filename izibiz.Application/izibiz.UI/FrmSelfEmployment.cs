@@ -49,10 +49,12 @@ namespace izibiz.UI
             documentActionsCard1.ViewRequested += DocumentActionsCard1_ViewRequested;
             documentActionsCard1.DownloadRequested += DocumentActionsCard1_DownloadRequested;
             documentActionsCard1.CancelRequested += DocumentActionsCard1_CancelRequested;
+            documentActionsCard1.AssignNumberRequested += DocumentActionsCard1_AssignNumberRequested;
 
             tableGrid.CellPainting += tableGrid_CellPainting;
             tableGrid.CellMouseMove += TableGrid_CellMouseMove;
             tableGrid.CellMouseLeave += TableGrid_CellMouseLeave;
+            tableGrid.SelectionChanged += TableGrid_SelectionChanged;
 
             SetupSidebarHoverEffects();
             UpdateEmptyState();
@@ -170,24 +172,132 @@ namespace izibiz.UI
 
         private async void BtnRestListele_Click(object sender, EventArgs e)
         {
+            await LoadRestDataAsync(showSuccessMessage: true);
+        }
+
+        private async Task LoadRestDataAsync(bool showSuccessMessage = false)
+        {
             try
             {
-                var filter = new izibiz.REST.Models.Request.ListFilter { Page = 1, PageSize = 50 };
+                // Mevcut seçili olan elemanları ve scroll pozisyonunu hafızaya al
+                var selectedIds = new System.Collections.Generic.List<long>();
+                foreach (DataGridViewRow row in tableGrid.Rows)
+                {
+                    if (row.Cells["chkSelect"]?.Value != null && (bool)row.Cells["chkSelect"].Value == true)
+                    {
+                        if (row.DataBoundItem is izibiz.REST.Concrete.Smm.SmmListItem item)
+                        {
+                            selectedIds.Add(item.Id);
+                        }
+                    }
+                }
+                int firstDisplayedRowIndex = tableGrid.FirstDisplayedScrollingRowIndex;
+
+                string folder = (gridMenuType == EI.SelfEmploymentReceipt.draftSmm.ToString()) ? "draft" : "outbox";
+                var filter = new izibiz.REST.Models.Request.ListFilter { Page = 1, PageSize = 50, Folder = folder };
                 var result = await Singl.SmmClientGet.ListAsync(filter);
 
-                tableGrid.DataSource = result.Contents;
+                if (folder == "outbox")
+                {
+                    // "Giden E-SMM" ekranında taslaklar, numara atananlar olmamalı
+                    var draftStatuses = new[] { "Taslak", "Numara Atanıyor", "Numara Atandı" };
+                    result.Contents = System.Linq.Enumerable.ToList(System.Linq.Enumerable.Where(result.Contents, c => !draftStatuses.Contains(c.DocumentStatusLabel)));
+                }
+
+                // Listeyi belge numarasına ve ID'ye göre sıralayarak ekrandaki oynamayı (zıplamayı) engelle
+                var sortedContents = System.Linq.Enumerable.ToList(System.Linq.Enumerable.OrderByDescending(result.Contents, c => c.Id));
+
+                tableGrid.DataSource = sortedContents;
                 EnsureCheckboxColumn();
                 FormatGridColumns();
                 UpdateEmptyState();
 
-                gridMenuType = EI.SelfEmploymentReceipt.SelfEmploymentReceipts.ToString();
+                // Hafızaya alınan seçimleri geri yükle
+                bool selectionRestored = false;
+                foreach (DataGridViewRow row in tableGrid.Rows)
+                {
+                    if (row.DataBoundItem is izibiz.REST.Concrete.Smm.SmmListItem item && selectedIds.Contains(item.Id))
+                    {
+                        row.Cells["chkSelect"].Value = true;
+                        selectionRestored = true;
+                    }
+                }
+
+                // Scroll pozisyonunu geri yükle
+                if (firstDisplayedRowIndex >= 0 && firstDisplayedRowIndex < tableGrid.Rows.Count)
+                {
+                    tableGrid.FirstDisplayedScrollingRowIndex = firstDisplayedRowIndex;
+                }
+
+                if (selectionRestored)
+                {
+                    UpdateActionButtonsState();
+                }
+
                 documentActionsCard1.Visible = true;
 
-                MessageBox.Show($"REST API'den başarıyla {result.Contents.Count} adet E-SMM çekildi!", "REST Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Seri ön eklerini çek
+                var series = await Singl.SmmClientGet.GetSeriesAsync();
+                if (series != null)
+                {
+                    documentActionsCard1.SetPrefixes(series.Select(s => s.Prefix).ToArray());
+                }
+
+                if (showSuccessMessage)
+                {
+                    MessageBox.Show($"REST API'den başarıyla {result.Contents.Count} adet E-SMM çekildi!", "REST Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("REST API Hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TableGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            // Logic moved to UpdateActionButtonsState
+        }
+
+        private async void DocumentActionsCard1_AssignNumberRequested(object sender, string prefix)
+        {
+            var selectedRows = GetSelectedRows();
+            if (selectedRows.Count == 0) return;
+            
+            var ids = new List<long>();
+            foreach (var row in selectedRows)
+            {
+                var boundItem = row.DataBoundItem;
+                if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
+                {
+                    ids.Add(restItem.Id);
+                }
+            }
+
+            if (ids.Count > 0)
+            {
+                documentActionsCard1.Enabled = false;
+                try
+                {
+                    bool success = await Singl.SmmClientGet.AssignNumberAsync(ids, prefix, autoSend: false);
+                    if (success)
+                    {
+                        await LoadRestDataAsync(showSuccessMessage: false);
+                        MessageBox.Show("Numara atama işlemi sıraya alındı.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Numara atama işlemi başarısız oldu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Numara atanırken hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    documentActionsCard1.Enabled = true;
+                }
             }
         }
 
@@ -296,6 +406,7 @@ namespace izibiz.UI
                 SetupCol("Amount", "Tutar");
                 SetupCol("ProfileId", "Senaryo");
                 SetupCol("TypeCode", "Tip");
+                SetupCol("DocumentStatusLabel", "Durum");
 
                 if (tableGrid.Columns.Contains("Amount"))
                 {
@@ -436,7 +547,8 @@ namespace izibiz.UI
 
         private void UpdateActionButtonsState()
         {
-            int selectedCount = GetSelectedRows().Count;
+            var selectedRows = GetSelectedRows();
+            int selectedCount = selectedRows.Count;
             if (selectedCount == 0)
             {
                 documentActionsCard1.Visible = false;
@@ -444,19 +556,41 @@ namespace izibiz.UI
                 documentActionsCard1.DownloadButtonEnabled = false;
                 documentActionsCard1.CancelButtonEnabled = false;
             }
-            else if (selectedCount == 1)
-            {
-                documentActionsCard1.Visible = true;
-                documentActionsCard1.ViewButtonEnabled = true;
-                documentActionsCard1.DownloadButtonEnabled = true;
-                documentActionsCard1.CancelButtonEnabled = true;
-            }
             else
             {
                 documentActionsCard1.Visible = true;
-                documentActionsCard1.ViewButtonEnabled = false;
-                documentActionsCard1.DownloadButtonEnabled = true;
-                documentActionsCard1.CancelButtonEnabled = false;
+                bool allDrafts = true;
+
+                foreach (var row in selectedRows)
+                {
+                    string statusStr = "";
+                    if (row.DataBoundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
+                    {
+                        statusStr = restItem.DocumentStatusLabel;
+                    }
+                    else if (row.Cells[nameof(EI.SelfEmploymentReceipt.statusDesc)] != null)
+                    {
+                        statusStr = row.Cells[nameof(EI.SelfEmploymentReceipt.statusDesc)].Value?.ToString();
+                    }
+
+                    if (statusStr != null && !(statusStr.Equals("Taslak", StringComparison.OrdinalIgnoreCase) || statusStr.Equals("Draft", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        allDrafts = false;
+                        break;
+                    }
+                }
+
+                if (allDrafts)
+                {
+                    documentActionsCard1.CardMode = DocumentCardMode.AssignNumber;
+                }
+                else
+                {
+                    documentActionsCard1.CardMode = DocumentCardMode.ViewDownload;
+                    documentActionsCard1.ViewButtonEnabled = selectedCount == 1;
+                    documentActionsCard1.DownloadButtonEnabled = true;
+                    documentActionsCard1.CancelButtonEnabled = selectedCount == 1;
+                }
             }
         }
 
@@ -503,44 +637,136 @@ namespace izibiz.UI
 
         private void tableGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && tableGrid.Columns[e.ColumnIndex].Name == nameof(EI.GridBtnClmName.previewHtml))
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                e.PaintBackground(e.CellBounds, true);
+                string colName = tableGrid.Columns[e.ColumnIndex].Name;
 
-                Rectangle btnRect = new Rectangle(e.CellBounds.X + 8, e.CellBounds.Y + 8, e.CellBounds.Width - 16, e.CellBounds.Height - 16);
-                bool isHovered = (_htmlBtnHoveredRow == e.RowIndex);
-                
-                Color btnColor = isHovered ? System.Drawing.Color.FromArgb(226, 232, 240) : System.Drawing.Color.FromArgb(248, 250, 252);
-                Color borderColor = isHovered ? System.Drawing.Color.FromArgb(148, 163, 184) : System.Drawing.Color.FromArgb(203, 213, 225);
-
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                using (var path = new System.Drawing.Drawing2D.GraphicsPath())
+                if (colName == nameof(EI.GridBtnClmName.previewHtml))
                 {
-                    int r = 6;
-                    path.AddArc(btnRect.X, btnRect.Y, r, r, 180, 90);
-                    path.AddArc(btnRect.Right - r, btnRect.Y, r, r, 270, 90);
-                    path.AddArc(btnRect.Right - r, btnRect.Bottom - r, r, r, 0, 90);
-                    path.AddArc(btnRect.X, btnRect.Bottom - r, r, r, 90, 90);
-                    path.CloseFigure();
+                    e.PaintBackground(e.CellBounds, true);
 
-                    using (var brush = new System.Drawing.SolidBrush(btnColor))
+                    Rectangle btnRect = new Rectangle(e.CellBounds.X + 8, e.CellBounds.Y + 8, e.CellBounds.Width - 16, e.CellBounds.Height - 16);
+                    bool isHovered = (_htmlBtnHoveredRow == e.RowIndex);
+                    
+                    Color btnColor = isHovered ? System.Drawing.Color.FromArgb(226, 232, 240) : System.Drawing.Color.FromArgb(248, 250, 252);
+                    Color borderColor = isHovered ? System.Drawing.Color.FromArgb(148, 163, 184) : System.Drawing.Color.FromArgb(203, 213, 225);
+
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    using (var path = new System.Drawing.Drawing2D.GraphicsPath())
                     {
-                        e.Graphics.FillPath(brush, path);
+                        int r = 6;
+                        path.AddArc(btnRect.X, btnRect.Y, r, r, 180, 90);
+                        path.AddArc(btnRect.Right - r, btnRect.Y, r, r, 270, 90);
+                        path.AddArc(btnRect.Right - r, btnRect.Bottom - r, r, r, 0, 90);
+                        path.AddArc(btnRect.X, btnRect.Bottom - r, r, r, 90, 90);
+                        path.CloseFigure();
+
+                        using (var brush = new System.Drawing.SolidBrush(btnColor))
+                        {
+                            e.Graphics.FillPath(brush, path);
+                        }
+                        using (var pen = new System.Drawing.Pen(borderColor, 1))
+                        {
+                            e.Graphics.DrawPath(pen, path);
+                        }
                     }
-                    using (var pen = new System.Drawing.Pen(borderColor, 1))
-                    {
-                        e.Graphics.DrawPath(pen, path);
-                    }
+
+                    System.Drawing.Image icon = Properties.Resources.iconHtml;
+                    int iconWidth = 18;
+                    int iconHeight = 18;
+                    int iconX = btnRect.X + (btnRect.Width - iconWidth) / 2;
+                    int iconY = btnRect.Y + (btnRect.Height - iconHeight) / 2;
+                    e.Graphics.DrawImage(icon, iconX, iconY, iconWidth, iconHeight);
+
+                    e.Handled = true;
                 }
+                else if (colName == "DocumentStatusLabel" || colName == "DocumentStatus" || colName == nameof(EI.SelfEmploymentReceipt.statusDesc) || colName == nameof(EI.SelfEmploymentReceipt.status))
+                {
+                    e.PaintBackground(e.CellBounds, true);
 
-                System.Drawing.Image icon = Properties.Resources.iconHtml;
-                int iconWidth = 18;
-                int iconHeight = 18;
-                int iconX = btnRect.X + (btnRect.Width - iconWidth) / 2;
-                int iconY = btnRect.Y + (btnRect.Height - iconHeight) / 2;
-                e.Graphics.DrawImage(icon, iconX, iconY, iconWidth, iconHeight);
+                    object val = e.Value;
+                    string statusText = val != null ? val.ToString() : "";
 
-                e.Handled = true;
+                    if (!string.IsNullOrEmpty(statusText))
+                    {
+                        SizeF textSize = e.Graphics.MeasureString(statusText, new Font("Segoe UI Semibold", 8.5F));
+                        int paddingX = 12;
+                        int paddingY = 6;
+                        int badgeWidth = (int)textSize.Width + paddingX * 2;
+                        int badgeHeight = (int)textSize.Height + paddingY * 2;
+
+                        int badgeX = e.CellBounds.X + (e.CellBounds.Width - badgeWidth) / 2;
+                        int badgeY = e.CellBounds.Y + (e.CellBounds.Height - badgeHeight) / 2;
+                        Rectangle badgeRect = new Rectangle(badgeX, badgeY, badgeWidth, badgeHeight);
+
+                        Color badgeColor = Color.FromArgb(59, 130, 246); // Default Blue
+                        Color textColor = Color.White;
+
+                        // Retrieve the specific item if it's REST to check for a custom color
+                        var boundItem = tableGrid.Rows[e.RowIndex].DataBoundItem;
+                        bool apiColorApplied = false;
+                        if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem && restItem.DocumentStatus != null)
+                        {
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(restItem.DocumentStatus.BackgroundColor))
+                                {
+                                    badgeColor = ColorTranslator.FromHtml(restItem.DocumentStatus.BackgroundColor);
+                                    apiColorApplied = true;
+                                }
+                                else if (!string.IsNullOrEmpty(restItem.DocumentStatus.Color)) // API bazen sadece color dönüyor
+                                {
+                                    badgeColor = ColorTranslator.FromHtml(restItem.DocumentStatus.Color);
+                                    apiColorApplied = true;
+                                }
+
+                                if (!string.IsNullOrEmpty(restItem.DocumentStatus.Color) && !string.IsNullOrEmpty(restItem.DocumentStatus.BackgroundColor))
+                                {
+                                    textColor = ColorTranslator.FromHtml(restItem.DocumentStatus.Color);
+                                }
+                            }
+                            catch { /* fallback to default if parsing fails */ }
+                        }
+
+                        if (!apiColorApplied)
+                        {
+                            string lowerStatus = statusText.ToLower(); // Türkçe karakter sorununu aşmak için ToLower() kullanıyoruz
+                            if (lowerStatus.Contains("hata") || lowerStatus.Contains("i̇ptal") || lowerStatus.Contains("iptal"))
+                                badgeColor = Color.FromArgb(239, 68, 68); // Red
+                            else if (lowerStatus.Contains("başarı") || lowerStatus.Contains("onay") || lowerStatus.Contains("işlendi"))
+                                badgeColor = Color.FromArgb(34, 197, 94); // Green
+                            else if (lowerStatus.Contains("taslak"))
+                                badgeColor = Color.FromArgb(100, 116, 139); // Slate Gray
+                            else if (lowerStatus.Contains("atanıyor"))
+                                badgeColor = Color.FromArgb(234, 179, 8); // Amber/Yellow
+                        }
+
+                        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+                        using (var path = new System.Drawing.Drawing2D.GraphicsPath())
+                        {
+                            int r = 10;
+                            path.AddArc(badgeRect.X, badgeRect.Y, r, r, 180, 90);
+                            path.AddArc(badgeRect.Right - r, badgeRect.Y, r, r, 270, 90);
+                            path.AddArc(badgeRect.Right - r, badgeRect.Bottom - r, r, r, 0, 90);
+                            path.AddArc(badgeRect.X, badgeRect.Bottom - r, r, r, 90, 90);
+                            path.CloseFigure();
+
+                            using (var brush = new SolidBrush(badgeColor))
+                            {
+                                e.Graphics.FillPath(brush, path);
+                            }
+                        }
+
+                        using (var brush = new SolidBrush(textColor))
+                        {
+                            var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+                            e.Graphics.DrawString(statusText, new Font("Segoe UI Semibold", 8.5F), brush, badgeRect, sf);
+                        }
+                    }
+
+                    e.Handled = true;
+                }
             }
         }
 
@@ -690,7 +916,7 @@ namespace izibiz.UI
                 }
                 else
                 {
-                    MessageBox.Show(Lang.cantGetContent);
+                        MessageBox.Show(Lang.cantGetContent);
                 }
             }
             catch (Exception ex)
@@ -704,70 +930,63 @@ namespace izibiz.UI
             var selectedRows = GetSelectedRows();
             if (selectedRows.Count == 0) return;
 
-            var result = MessageBox.Show("Seçili belgeleri iptal etmek istediğinize emin misiniz?", "İptal Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result != DialogResult.Yes) return;
-
-            try
+            // Çoklu silme desteklenmiyor, sadece ilk seçili öğe üzerinden işlem yapalım (Müstahsil ile aynı mantık)
+            var boundItem = selectedRows[0].DataBoundItem;
+            if (!(boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem))
             {
-                int successCount = 0;
-                int failCount = 0;
-                string lastError = "";
+                // SOAP için iptal işlemleri 
+                var result = MessageBox.Show("Seçili belgeleri iptal etmek istediğinize emin misiniz?", "İptal Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result != DialogResult.Yes) return;
+                
+                int soapSuccess = 0;
+                int soapFail = 0;
+                string soapError = "";
 
                 foreach (DataGridViewRow row in selectedRows)
                 {
-                    var boundItem = row.DataBoundItem;
-                    if (boundItem is izibiz.REST.Concrete.Smm.SmmListItem restItem)
-                    {
-                        try
-                        {
-                            await Singl.SmmClientGet.CancelAsync(restItem.Id.ToString());
-                            successCount++;
-                        }
-                        catch (Exception ex)
-                        {
-                            failCount++;
-                            lastError = ex.Message;
-                        }
-                    }
-                    else
-                    {
-                        string uuid = row.Cells[nameof(EI.SelfEmploymentReceipt.uuid)].Value.ToString();
-                        string err = Singl.smmControllerGet.cancelSmm(uuid);
-                        if (string.IsNullOrEmpty(err))
-                        {
-                            successCount++;
-                        }
-                        else
-                        {
-                            failCount++;
-                            lastError = err;
-                        }
-                    }
+                    string uuid = row.Cells[nameof(EI.SelfEmploymentReceipt.uuid)].Value.ToString();
+                    string err = Singl.smmControllerGet.cancelSmm(uuid);
+                    if (string.IsNullOrEmpty(err)) soapSuccess++;
+                    else { soapFail++; soapError = err; }
                 }
 
-                string msg = $"{successCount} belge başarıyla iptal edildi.";
-                if (failCount > 0)
-                {
-                    msg += $"\n{failCount} belge iptal edilemedi.\nSon Hata: {lastError}";
-                    MessageBox.Show(msg, "İşlem Tamamlandı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show(msg, "İşlem Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                if (soapFail > 0) MessageBox.Show($"Başarılı: {soapSuccess}\nHatalı: {soapFail}\nSon Hata: {soapError}", "İşlem Sonucu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else MessageBox.Show($"{soapSuccess} belge başarıyla iptal edildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-                if (selectedRows[0].DataBoundItem is izibiz.REST.Concrete.Smm.SmmListItem)
-                {
-                    BtnRestListele_Click(null, null);
-                }
-                else
-                {
-                    BtnTakeSmm_Click(null, null);
-                }
+            string status = restItem.DocumentStatusLabel;
+            if (status == "İptal Raporlandı" || status == "İptal Edildi" || status == "İptal")
+            {
+                MessageBox.Show("Bu belge zaten iptal edilmiş, tekrar iptal edilemez.", "İşlem Yapılamaz", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool isDraftContext = gridMenuType == EI.SelfEmploymentReceipt.draftSmm.ToString();
+
+            string confirmMessage = isDraftContext
+                ? $"'{restItem.Uuid}' numaralı taslağı silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
+                : $"'{restItem.Uuid}' numaralı belgeyi iptal etmek istediğinize emin misiniz? Belge \"İptal\" durumuna geçecek. Bu işlem geri alınamaz.";
+
+            var confirm = MessageBox.Show(confirmMessage, "Belgeyi Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                // Taslak: deleteDocument = true ile tamamen silinir.
+                // Giden: deleteDocument = false ile "İptal" statüsüne alınır.
+                await Singl.SmmClientGet.CancelAsync(restItem.Uuid, deleteDocument: isDraftContext);
+                
+                MessageBox.Show(
+                    isDraftContext ? "Taslak başarıyla silindi." : "Belge başarıyla iptal edildi.",
+                    "İşlem Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                // Tabloyu yenile
+                await LoadRestDataAsync();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("İşlem Hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

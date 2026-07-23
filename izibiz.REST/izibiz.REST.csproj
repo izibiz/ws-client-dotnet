@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Concrete\Mustahsil\MustahsilClient.cs" />
     <Compile Include="Concrete\Mustahsil\MustahsilListItem.cs" />
+    <Compile Include="Concrete\Smm\SeriesItem.cs" />
     <Compile Include="Concrete\Smm\SmmClient.cs" />
     <Compile Include="Concrete\Smm\SmmListItem.cs" />
     <Compile Include="Infrastructure\BearerTokenHandler.cs" />
@@ -58,12 +59,15 @@
     <Compile Include="Infrastructure\TokenProvider.cs" />
     <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\PagedResult.cs" />
+    <Compile Include="Models\Request\AssignNumberRequest.cs" />
     <Compile Include="Models\Request\ListFilter.cs" />
+    <Compile Include="Operations\RestAssignNumberStrategy.cs" />
     <Compile Include="Operations\RestCancelStrategy.cs" />
     <Compile Include="Operations\RestDownloadStrategy.cs" />
     <Compile Include="Operations\RestListStrategy.cs" />
     <Compile Include="Operations\RestViewStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategy\IAssignNumberStrategy.cs" />
     <Compile Include="Strategy\ICancelStrategy.cs" />
     <Compile Include="Strategy\IDownloadStrategy.cs" />
     <Compile Include="Strategy\IListStrategy.cs" />

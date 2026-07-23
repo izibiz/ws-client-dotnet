@@ -35,6 +35,10 @@ namespace izibiz.UI.Controls
             this.lblNote = new System.Windows.Forms.Label();
             this.pnlViewFormats.SuspendLayout();
             this.pnlDownloadFormats.SuspendLayout();
+            this.pnlAssignNumber = new System.Windows.Forms.Panel();
+            this.cmbPrefix = new System.Windows.Forms.ComboBox();
+            this.btnAssignNumber = new System.Windows.Forms.Button();
+            this.pnlAssignNumber.SuspendLayout();
             this.SuspendLayout();
             //
             // lblTitle
@@ -273,9 +277,45 @@ namespace izibiz.UI.Controls
             this.lblNote.Text = "Not: Görüntüleme geçicidir, indirme belgeyi klasörünüze kalıcı olarak kaydeder.";
             this.lblNote.Visible = false;
             //
+            // pnlAssignNumber
+            //
+            this.pnlAssignNumber.Controls.Add(this.cmbPrefix);
+            this.pnlAssignNumber.Controls.Add(this.btnAssignNumber);
+            this.pnlAssignNumber.Location = new System.Drawing.Point(0, 0);
+            this.pnlAssignNumber.Name = "pnlAssignNumber";
+            this.pnlAssignNumber.Size = new System.Drawing.Size(250, 45);
+            this.pnlAssignNumber.TabIndex = 10;
+            this.pnlAssignNumber.Visible = false;
+            //
+            // cmbPrefix
+            //
+            this.cmbPrefix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrefix.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbPrefix.FormattingEnabled = true;
+            this.cmbPrefix.Location = new System.Drawing.Point(0, 8);
+            this.cmbPrefix.Name = "cmbPrefix";
+            this.cmbPrefix.Size = new System.Drawing.Size(100, 31);
+            this.cmbPrefix.TabIndex = 0;
+            //
+            // btnAssignNumber
+            //
+            this.btnAssignNumber.BackColor = System.Drawing.Color.FromArgb(95, 130, 35);
+            this.btnAssignNumber.FlatAppearance.BorderSize = 0;
+            this.btnAssignNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAssignNumber.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnAssignNumber.ForeColor = System.Drawing.Color.White;
+            this.btnAssignNumber.Location = new System.Drawing.Point(110, 5);
+            this.btnAssignNumber.Name = "btnAssignNumber";
+            this.btnAssignNumber.Size = new System.Drawing.Size(130, 35);
+            this.btnAssignNumber.TabIndex = 1;
+            this.btnAssignNumber.Text = "Numara Ata";
+            this.btnAssignNumber.UseVisualStyleBackColor = false;
+            this.btnAssignNumber.Cursor = System.Windows.Forms.Cursors.Hand;
+            //
             // DocumentActionsCard
             //
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.pnlAssignNumber);
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblCancelHeader);
@@ -292,6 +332,7 @@ namespace izibiz.UI.Controls
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DocumentActionsCard_Paint);
             this.pnlViewFormats.ResumeLayout(false);
             this.pnlDownloadFormats.ResumeLayout(false);
+            this.pnlAssignNumber.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +356,8 @@ namespace izibiz.UI.Controls
         private System.Windows.Forms.Label lblCancelHeader;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblNote;
+        private System.Windows.Forms.Panel pnlAssignNumber;
+        private System.Windows.Forms.ComboBox cmbPrefix;
+        private System.Windows.Forms.Button btnAssignNumber;
     }
 }

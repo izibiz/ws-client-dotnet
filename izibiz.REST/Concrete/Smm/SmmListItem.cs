@@ -9,7 +9,9 @@ namespace izibiz.REST.Concrete.Smm
         public string DocumentNo { get; set; }
         public string IssueDate { get; set; }
         public string Currency { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("documentStatus")]
         public SmmDocumentStatus DocumentStatus { get; set; }
+        public SmmDocumentStatus SubStatus { get; set; }
         public SmmParty Sender { get; set; }
         public SmmParty Receiver { get; set; }
 
@@ -20,6 +22,9 @@ namespace izibiz.REST.Concrete.Smm
 
         [System.Text.Json.Serialization.JsonIgnore]
         public string DocumentStatusLabel => DocumentStatus?.Label;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string SubStatusLabel => SubStatus?.Label;
 
         [System.Text.Json.Serialization.JsonIgnore]
         public string ReceiverIdentifier => Receiver?.Identifier;
@@ -39,8 +44,17 @@ namespace izibiz.REST.Concrete.Smm
 
     public class SmmDocumentStatus
     {
+        [System.Text.Json.Serialization.JsonPropertyName("value")]
         public string Value { get; set; }
+        
+        [System.Text.Json.Serialization.JsonPropertyName("label")]
         public string Label { get; set; }
+        
+        [System.Text.Json.Serialization.JsonPropertyName("color")]
+        public string Color { get; set; }
+        
+        [System.Text.Json.Serialization.JsonPropertyName("backgroundColor")]
+        public string BackgroundColor { get; set; }
 
         public override string ToString() => Label ?? Value;
     }

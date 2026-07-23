@@ -1,4 +1,4 @@
-﻿using System.Net.Http;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using izibiz.REST.Models;
@@ -20,7 +20,8 @@ namespace izibiz.REST.Operations
 
         public async Task<PagedResult<TItem>> ListAsync(ListFilter filter)
         {
-            var url = $"{_resourcePath}?page={filter.Page}&pageSize={filter.PageSize}";
+            var folderPath = string.IsNullOrEmpty(filter.Folder) ? "outbox" : filter.Folder;
+            var url = $"{_resourcePath}/{folderPath}?page={filter.Page}&pageSize={filter.PageSize}";
 
             var response = await _httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
